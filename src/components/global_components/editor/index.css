@@ -1,0 +1,49 @@
+.my_editor{
+    width: 100%;
+    position: relative;
+    /* display: flex; */
+}
+.my_editor #content{
+    flex: 1;
+}
+.my_editor .w-e-toolbar{
+    border-radius: 5px 5px 0 0;
+}
+.my_editor .w-e-text-container{
+    border-radius: 0 0 5px 5px;
+    min-height: 40px;
+    padding-bottom: 30px;
+    resize: vertical;
+}
+.my_editor .count{
+    width: 80px;
+    position: absolute;
+    right: 2.5%;
+    bottom: 1px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    margin-left: 10px;
+    font-size: 12px;
+    color: #333;
+    z-index: 2;
+    padding:3px 6px;
+    background: #fff;
+    border-top-left-radius: 5px;
+}
+.my_editor .count span{
+    color: #888;font-size: 12px;
+}
+.my_editor .w-e-text-container .placeholder{
+    color: #888;
+}
+.my_editor .w-e-text{
+    padding-bottom: 20px;
+}
+.my_editor .count span.out_active{
+    color: red;
+}
+
+.w-e-toolbar .w-e-menu i{
+    font-size: inherit;
+}

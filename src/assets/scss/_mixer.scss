@@ -1,0 +1,13 @@
+//混合器
+@mixin wrap_style($width_base:1200px) {
+    width: $width_base;
+    margin: 0 auto;
+    background: #f7f7f7;
+    padding: 10px 30px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 2px red;
+}
+
+@function double($size) {
+    @return $size * 10
+}
