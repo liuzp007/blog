@@ -4,7 +4,6 @@ import { Switch, Route, Redirect, withRouter } from 'react-router-dom'
 class RouterView extends Component {
     render() {
         let { routers } = this.props;
-
         let redirect = routers && routers.filter(v => v.redirect);
         let newroutes = routers && routers.filter(v => !v.redirect);
         return (
@@ -19,6 +18,7 @@ class RouterView extends Component {
                     }} />
                 })}
                 {redirect && redirect.map((v, i) => {
+                    console.log(<Redirect exact={v.exact} key={i} from={v.path} to={v.redirect} />)
                     return <Redirect exact={v.exact} key={i} from={v.path} to={v.redirect} />
                 })}
             </Switch>

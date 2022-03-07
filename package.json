@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@testing-library/react": "^9.3.2",
+    "animejs": "^3.2.1",
     "axios": "^0.19.2",
     "js-cookie": "^2.2.1",
     "js-md5": "^0.7.3",
@@ -11,7 +12,7 @@
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-loadable": "^5.5.0",
-    "react-redux": "^7.2.1",
+    "react-redux": "^7.2.6",
     "react-router-dom": "^5.2.0",
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0"

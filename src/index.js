@@ -20,20 +20,18 @@ function create(src) {
         }
     };
 }
-const getImgSrc = getImageOssBaseurl({ type: '100007' });
+const getImgSrc = new Promise(res=>res({result:{}}));
 getImgSrc.then((res) => {
     if (res) {
         res = res.result;
-        window.$$imgSrc = create(res.config['public-resource']);
-        window.$$newSrc = create(res.config['static-img']);
-        document.title = res?.config?.title?.AE; //title
-        document.querySelector('link[rel="icon"]').href = window.$$newSrc(
-            res?.config?.favicon
-        ); //ico'
-        if (res?.config) {
-            initSecretUrlByType07(res?.config);
-            Http.defaults.baseURL = baseURL;
-        }
+        // window.$$imgSrc = create(res.config['public-resource']);
+        // window.$$newSrc = create(res.config['static-img']);
+        document.title = 'Blog'; //title
+        document.querySelector('link[rel="icon"]').href = 'javaScript:;'; //ico'
+        // if (res?.config) {
+        //     initSecretUrlByType07(undefined);
+        //     // Http.defaults.baseURL = baseURL;
+        // }
         ReactDOM.render(
             <Provider store={store}>
                 <App />
