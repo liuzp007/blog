@@ -47,10 +47,14 @@ export default function Home({ history }) {
   };
   const autoPlay = () => {
     const myMusic = document.getElementById('myMusic')
-
+    const playPromise = myMusic.play(); //chrom 5.0 以上 play() 需要返回promise
     setPlay(play => {
-      if (play) {
-        myMusic.play()
+      if (play&&playPromise !== null) {
+        playPromise.then(() => {
+          myMusic.play()
+      }).catch(e=> {
+         throw(e)
+      })
       } else {
         myMusic.pause();
       }
