@@ -3,15 +3,81 @@
 
 <head>
   <meta charset="utf-8" />
-  <link rel="icon" href="javaScript:;" />
+  <link rel="icon" href="%PUBLIC_URL%/nb.jpeg" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
   <meta http-equiv="cache-control" content="no-cache" />
   <link rel="apple-touch-icon" href="javaScript:;" />
   <title></title>
+  <style>
+    #wrapper {
+      position: fixed;
+      bottom: 35px;
+      left: 0;
+      padding: 0 25px;
+      width: 100vw;
+      height: 20px;
+      border: 1px solid darkgray;
+    }
+
+    #progressbar {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      margin-left: -90px;
+      margin-top: -10px;
+      width: 100%;
+      height: 20px;
+      /* border:1px solid darkgray; */
+
+    }
+
+    /*在进度条元素上调用动画*/
+    #fill {
+      animation: move 2s;
+      text-align: center;
+      background-color: #6caf00;
+    }
+
+    /*实现元素宽度的过渡动画效果*/
+    @keyframes move {
+      0% {
+        width: 0;
+
+      }
+
+      100% {
+        width: 100%;
+      }
+    }
+  </style>
 </head>
 
 <body>
-  <div id="root"></div>
+  <div id="root">
+    <div id="wrapper">
+      <div id="progressbar">
+        <div id="fill"></div>
+      </div>
+    </div>
+  </div>
+  <script>
+    const fill = document.getElementById('fill');
+    const progressbar = {
+      init: function () {
+        let count = 0;
+        //通过间隔定时器实现百分比文字效果,通过计算CSS动画持续时间进行间隔设置
+        const timer = setInterval(function (e) {
+          count += 10;
+          fill.innerHTML = count + '%';
+          if (count === 90) clearInterval(timer);
+        }, 10);
+      }
+    };
+    progressbar.init();
+    window.onload = () => {
+      fill.innerHTML = 100 + '%';
+    }
+  </script>
 </body>
 
 </html>

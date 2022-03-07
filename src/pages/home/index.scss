@@ -8,9 +8,15 @@
     flex-wrap: wrap;
     flex-direction: column;
     user-select: none;
+    min-width: 1024px;
     >.title {
         font-size: 18px;
         color: $setColor;
+        #myMusic{
+            visibility: hidden;
+            position: fixed;
+            top: -1000px;
+        }
     }
 
     >.toggle {
