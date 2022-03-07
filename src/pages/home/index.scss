@@ -7,10 +7,10 @@
     background-color: black;
     flex-wrap: wrap;
     flex-direction: column;
-
+    user-select: none;
     >.title {
         font-size: 18px;
-        color: blanchedalmond;
+        color: $setColor;
     }
 
     >.toggle {
@@ -32,7 +32,8 @@
             align-items: center;
             flex-wrap: wrap;
             cursor: pointer;
-
+            transition:all 0.4s line;
+            // transform:scale(0,0);
             >div {
                 width: 4px;
                 height: 4px;
@@ -44,6 +45,65 @@
             }
         }
     }
+    .showModalBox{
+        // background-color: ;
+        .ant-modal-content{
+            width: 30vw;
+            background-color: rgba($color: #000000, $alpha: .76); 
+            .modalCenter{
+                width: 100%;
+                // background-color: red;
+                display: flex;
+                justify-content: space-evenly;
+                align-items: center;
+                flex-wrap: wrap;
+                >div{
+                    text-align: center;
+                    margin-bottom: 55px;
+                    border: 1px solid $setColor;
+                    border-color: rgba($color: $setColor, $alpha: .46);
+                    border-radius: 7px;
+                    width: 158px;
+                    height: 158px;
+                    line-height: 175px;
+                    position: relative;
+                    overflow: hidden;
+                    >svg{
+                        fill:rgba($color: #FFF, $alpha: .9);
+                        width: 40px;
+                        height: 40px;
+                        opacity: 1;
+                        transition:  .55s cubic-bezier(0.190,1.000,0.220,1.000) 0s, .45s ease-in-out 0s;
 
+                    }
+                    &>.after{
+                        display: block;
+                        width: 100%;
+                        height: 0;
+                        background-color: rgba(70,37,95,0.5);
+                        position: absolute;
+                        left: 0;
+                        bottom: 0;
+                        transition:  .25s cubic-bezier(0.190,1.000,0.220,1.000) 0s, .45s ease-in-out 0s;
+                        border-radius: 7px;
+                        color: $setColor;
+                    } 
+                    &:not(&:nth-of-type(3n)) {
+                        // margin-right: 145px;
+                        margin-right: 25px;
+                    }
+                    &:hover{
+                        &>.after{
+                            height: 100%;
+                        }
+                        >svg{
+                            opacity: 0;
+                        }
+                    }
+                }
+                
+            }
+        }
+    }
 
 }
