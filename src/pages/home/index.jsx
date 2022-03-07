@@ -53,6 +53,7 @@ export default function Home({ history }) {
         playPromise.then(() => {
           myMusic.play()
       }).catch(e=> {
+        myMusic.play()
          throw(e)
       })
       } else {
