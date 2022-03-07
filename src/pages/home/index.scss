@@ -48,7 +48,7 @@
     .showModalBox{
         // background-color: ;
         .ant-modal-content{
-            width: 30vw;
+            width: 120%;
             background-color: rgba($color: #000000, $alpha: .76); 
             .modalCenter{
                 width: 100%;
@@ -90,7 +90,7 @@
                     } 
                     &:not(&:nth-of-type(3n)) {
                         // margin-right: 145px;
-                        margin-right: 25px;
+                        margin-right: 5%;
                     }
                     &:hover{
                         &>.after{
