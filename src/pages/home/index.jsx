@@ -1,13 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { message, Modal, notification, Divider, Space, Button } from 'antd';
 import clickEffect from '@/components/setMouse'
-import {
-  RadiusUpleftOutlined,
-  RadiusUprightOutlined,
-  RadiusBottomleftOutlined,
-  RadiusBottomrightOutlined,
-} from '@ant-design/icons';
-import ICON,{pup} from './svg'
+
+import ICON,{} from './svg'
 import './index.scss'
 
 const Context = React.createContext({ name: 'Default' });

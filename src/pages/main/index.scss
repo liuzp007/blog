@@ -1,0 +1,53 @@
+.mainWrap {
+    width: 100vw;
+    height: 100vh;
+    background-color: $backgroundCOlor;
+
+    .mainContent {
+        max-width: 1360px;
+        min-width: 1200px;
+        margin: 0 auto;
+
+    }
+
+    .ant-menu.ant-menu-root {
+        text-align: center;
+        color: $setColor;
+        background-color: $backgroundCOlor;
+    }
+    .ant-menu-inline, .ant-menu-vertical, .ant-menu-vertical-left{
+        border-right-color: $setColor;
+
+    }
+    .ant-menu.ant-menu-sub.ant-menu-inline {
+        text-align: center;
+    }
+    .ant-menu-submenu.ant-menu-submenu-inline{
+        font-size: 18px;
+    }
+    .ant-menu-item.ant-menu-item-only-child{
+        font-size: 14px;
+    }
+    // .ant-menu-item-selected{
+    //     background-color:$setColor ;
+    //     color: $backgroundCOlor;
+    // }
+    .ant-menu-submenu.ant-menu-submenu-inline,
+    .ant-menu-item.ant-menu-item-only-child{
+        &:hover{
+            background-color:$setColor ;
+            color: $backgroundCOlor;
+        }
+    }
+
+    .ant-menu.ant-menu-sub.ant-menu-inline {
+        background-color: $backgroundCOlor;
+        color: $setColor;
+    }
+
+    .ant-menu-sub.ant-menu-inline .ant-menu-item-group-title {
+        padding-left: 0px;
+        color: $setColor;
+
+    }
+}
