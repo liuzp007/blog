@@ -7,9 +7,21 @@
         max-width: 1360px;
         min-width: 1200px;
         margin: 0 auto;
-
+        height: 100%;
     }
-
+    .layoutWarp{
+        background-color: $backgroundCOlor;
+        height: 100%;
+        >aside{
+        background-color: $backgroundCOlor;
+        }
+    }
+    .warpheight{
+        background-color: $backgroundCOlor;
+        color: $setColor;
+        padding: 10px 25px;
+        font-size: 14px;
+    }
     .ant-menu.ant-menu-root {
         text-align: center;
         color: $setColor;
@@ -47,6 +59,10 @@
 
     .ant-menu-sub.ant-menu-inline .ant-menu-item-group-title {
         padding-left: 0px;
+        color: $setColor;
+
+    }
+    .ant-menu-submenu-arrow{
         color: $setColor;
 
     }

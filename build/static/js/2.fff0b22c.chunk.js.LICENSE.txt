@@ -19,6 +19,15 @@ object-assign
  */
 
 /**
+ * Prism: Lightweight, robust, elegant syntax highlighting
+ *
+ * @license MIT <https://opensource.org/licenses/MIT>
+ * @author Lea Verou <https://lea.verou.me>
+ * @namespace
+ * @public
+ */
+
+/**
  * [js-md5]{@link https://github.com/emn178/js-md5}
  *
  * @namespace md5

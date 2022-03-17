@@ -1,0 +1,25 @@
+.headerWarp {
+    width: 100vw;
+    height: 45px;
+    margin: 0 auto 20px;
+
+    .header {
+        max-width: 1360px;
+        min-width: 1200px;
+        padding-left: 30px;
+        height: 100%;
+        margin: 0 auto;
+        color: $setColor;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        .logo{
+            position: relative;
+            #canvas2{
+                position: absolute;
+                left: 22px;
+                top: 0;
+            }
+        }
+    }
+}

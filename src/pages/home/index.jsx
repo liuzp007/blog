@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { message, Modal, notification, Divider, Space, Button } from 'antd';
 import clickEffect from '@/components/setMouse'
 
-import ICON,{} from './svg'
+import ICON, { } from './svg'
 import './index.scss'
 
 const Context = React.createContext({ name: 'Default' });
@@ -45,13 +45,13 @@ export default function Home({ history }) {
     const myMusic = document.getElementById('myMusic')
     const playPromise = myMusic?.play(); //chrom 5.0 以上 start() 需要返回promise
     setStart(start => {
-      if (start&&playPromise !== null) {
+      if (start && playPromise !== null) {
         playPromise.then(() => {
           myMusic.play()
-      }).catch(e=> {
-        myMusic.play()
-         throw(e)
-      })
+        }).catch(e => {
+          myMusic.play()
+          throw (e)
+        })
       } else {
         myMusic.pause();
       }
@@ -70,9 +70,25 @@ export default function Home({ history }) {
           <source src="./music/suddenly.mp3" type="audio/ogg"></source>
         </audio>
       </p>
-      <p className={"title"} onClick={toPath}  >Welcome to my blog</p>
+      <p className={"titleStyle"} onClick={toPath}  > 
+        <span>W</span>
+        <span>e</span>
+        <span>l</span>
+        <span>c</span>
+        <span>o</span>
+        <span>m</span>
+        <span>e</span>
+        <span></span>
+        <span>m</span>
+        <span>y</span>
+        <span></span>
+        <span>b</span>
+        <span>l</span>
+        <span>o</span>
+        <span>g</span>
+      </p>
       <div className="toggle">
-        <div className={showModal ? "toggle_body showModalAndToggleBody" :'toggle_body '} onClick={showModalFun} >
+        <div className={showModal ? "toggle_body showModalAndToggleBody" : 'toggle_body '} onClick={showModalFun} >
           {
             [0, 1, 2, 3, 4, 5, 6, 7, 8].map(i => (
               <div key={i}></div>
@@ -92,14 +108,14 @@ export default function Home({ history }) {
       >
         <div className={'modalCenter'}>
           {
-            [0, 1, 2, 3, 4, 5, 6, 7, 8].map((i,index) => {
+            [0, 1, 2, 3, 4, 5, 6, 7, 8].map((i, index) => {
 
-               return (
+              return (
                 <div key={i}>
-                  {ICON[index > 1 ? index%2 :index]}
+                  {ICON[index > 1 ? index % 2 : index]}
                   <div className="after" onClick={() => { message.success("You're the best. I didn't think it when I said it, but I said it when I thought about it") }} >
                     you see what ? 👀
-                
+
                     {/* <Context.Provider value={{ name: 'blog' }}>
                       {contextHolder}
                       <div onClick={(e) => openNotification('topRight',e)}>

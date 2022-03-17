@@ -1,143 +1,82 @@
-/*eslint eqeqeq: ["off", "smart"]*/
-import React, { Component } from "react";
-import { Row, Col, Avatar } from "antd";
-import "./index.scss";
-import Cookies from "js-cookie";
-import { connect } from "react-redux";
+import React, { useEffect } from 'react'
+import './index.scss'
 
-class Header extends Component {
-  state = {
-    userInfoStyle: {
-      transform: "rotateY(90deg)",
-      opacity: 1,
-    },
-    isShow: true,
-    info: Cookies.get("info") ? JSON.parse(Cookies.get("info")) : {},
-    list: [
-      {
-        name: "首页",
-        path: "/main/home",
-        activeArr: ["home"],
-      },
-      {
-        name: "我的课程",
-        path: "",
-      },
-      {
-        name: "我的直播",
-        path: "",
-      },
-      {
-        name: "批改作业",
-        path: "",
-      },
-      {
-        name: "我的作业库",
-        path: "",
-      },
-      {
-        name: "资源中心",
-        path: "",
-      },
-      {
-        name: "试题中心",
-        path: "",
-      },
-    ],
-  };
-  // 个人中心
-  PersonalCenter(e) {
-    e.stopPropagation();
-    if (this.state.isShow) {
-      this.setState({
-        userInfoStyle: {
-          transform: "rotateY(0)",
-          opacity: 1,
-        },
-        isShow: false,
-      });
+function setCanvas(id, x = 30, y = 80) {
+
+  // 使用id来寻找canvas元素
+  var myCanvas = document.getElementById(id);
+  if (myCanvas.getContext) {
+    // 创建context对象
+    // getContext("2d") 对象是内建的 HTML5 对象，拥有多种绘制路径、矩形、圆形、字符以及添加图像的方法
+    var ctx = myCanvas.getContext("2d");
+    var horn = 5; // 画5个角
+    var angle = 360 / horn; // 五个角的度数
+    // 两个圆的半径
+    var R = 20;
+    var r = 12;
+    // 坐标
+    var x = x;
+    var y = y;
+    var rot = 10;
+
+    function drawStar(ctx, R, r, rotate) {
+      // beginPath：开始绘制一段新的路径
+      ctx.beginPath();
+      for (var i = 0; i < horn; i++) {
+        // 角度转弧度：角度/180*Math.PI
+        var roateAngle = i * angle - rotate; // 旋转动起来
+        // 外圆顶点坐标
+        ctx.lineTo(Math.cos((18 + roateAngle) / 180 * Math.PI) * R + x, -Math.sin((18 + roateAngle) / 180 * Math.PI) * R + y);
+        // 內圆顶点坐标
+        ctx.lineTo(Math.cos((54 + roateAngle) / 180 * Math.PI) * r + x, -Math.sin((54 + roateAngle) / 180 * Math.PI) * r + y);
+      }
+      // closePath：关闭路径，将路径的终点与起点相连
+      ctx.closePath();
+      ctx.lineWidth = "3";
+      ctx.fillStyle = '#E4EF00';
+      ctx.strokeStyle = "red";
+      ctx.fill();
+      ctx.stroke();
     }
-    if (!this.state.isShow) {
-      this.setState({
-        userInfoStyle: {
-          display: "none",
-        },
-        isShow: true,
-      });
+    drawStar(ctx, R, r, 20);
+
+    // setInterval(function (){
+    //     ctx.clearRect(0, 0, myCanvas.width, myCanvas.height);
+    //     drawStar(ctx, R, r, rot);
+    //     rot += 2;
+    // }, 30);
+
+    // 更加流畅的动画：window.requestAnimationFrame
+    function step() {
+      ctx.clearRect(0, 0, myCanvas.width, myCanvas.height);
+      drawStar(ctx, R, r, rot);
+      rot += 1;
+      window.requestAnimationFrame(step);
     }
+    window.requestAnimationFrame(step);
   }
-  onClickLike = (v) => {
-    if (v.path) {
-      this.props.history.push(v.menuUrl);
-    }
-  };
-  render() {
-    let { navName, menuList } = this.props;
-    const { imgSrc } = window;
-    const { list, info } = this.state;
-    let pathname = this.props.location.pathname;
-    return (
-      <div className="header-wrap-stud">
-        <Row type="flex" justify="space-around" className="row-flex">
-          <Col span={6}>
-            <div className="tohome-left">
-              <img
-                src={imgSrc + "logo.png"}
-                style={{
-                  marginLeft: 30,
-                  verticalAlign: "-2px",
-                  width: "237px",
-                  height: "32px",
-                }}
-                alt=""
-              />
-              {/* </Link> */}
-            </div>
-          </Col>
-          <Col span={15}>
-            <div className="tohome">
-              {menuList &&
-                menuList.map((v, i) => {
-                  return (
-                    <div
-                      key={i}
-                      onClick={() => {
-                        this.onClickLike(v);
-                      }}
-                    >
-                      <span
-                        className={`common-header-item ${
-                          pathname.includes(v.menuUrl) ? "common-active" : ""
-                        }`}
-                      >
-                        {/* <span
-                      className={`common-header-item ${v.activeArr&&v.activeArr.includes(navName)?'common-active':''}`}
-                    > */}
-                        {v.menuName}
-                      </span>
-                    </div>
-                  );
-                })}
-            </div>
-          </Col>
-          <Col span={3} className="header-right">
-            <span className="header-right-name">{info.fullName}</span>
-            <Avatar
-              src={`https://zjyddev.oss-cn-beijing.aliyuncs.com/${info.portraitId}`}
-              onClick={(e) => {
-                this.PersonalCenter(e);
-              }}
-            />
-            <div className="userinfo-modal" style={this.state.userInfoStyle}>
-              <span></span>
-              <p>个人中心</p>
-              <p onClick={this.handleLogout}>退出</p>
-            </div>
-          </Col>
-        </Row>
-      </div>
-    );
-  }
+
 }
 
-export default Header;
+
+
+export default function Header() {
+  useEffect(() => {
+    // setCanvas('canvas1')
+    // setCanvas('canvas2')
+  }, [])
+  return (
+    <div className={'headerWarp'}>
+      <div className='header'>
+        <div className='logo'>
+          <canvas id='canvas1'>
+
+          </canvas>
+          <canvas id='canvas2'>
+
+          </canvas>
+        </div>
+      </div>
+    </div>
+  )
+}

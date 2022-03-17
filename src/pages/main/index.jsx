@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { getMenu } from "../../api/serve";
-import { Menu } from "antd";
-import  './index.scss'
+import { Menu, Layout } from "antd";
+import RouterView from '../../router/router_view'
+import Header from '../../components/header'
+import './index.scss'
 const { SubMenu } = Menu;
+const { Sider, Content } = Layout;
 function game() {
   let time = new Date()
   console.log("/**")
@@ -38,59 +41,67 @@ function game() {
 
 }
 
-export default function Main() {
+export default function Main(props) {
   const [menu, setMenu] = useState([])
   useEffect(() => {
     game()
+    console.log(props)
     getMenu().then((res) => {
       setMenu(res)
     })
   }, [])
   const handleClick = e => {
-    console.log('click ', e);
+    console.log('/main' + e.key)
+    props.history.push('/main' + e.key)
   };
-  const itemStyle = {
-    textAlign:'center'
-  }
+
   return (
     <div className={'mainWrap'}>
-      <div  className={'mainContent'}> 
-      <Menu
-        onClick={handleClick}
-        style={{ width: '13%', textAlign:'center' }}
-        defaultSelectedKeys={['1']}
-        defaultOpenKeys={[`${menu[0]?.path}`]}
-        mode="inline"
-      >
-        {
-          menu.map(({ path, name, children, comparison },index) => {
-            if (comparison) {
-              console.log(path)
-              return <SubMenu key={path} title={name} >
-                {comparison.map(({ name: n, path: p, list }) =>
-                  <Menu.ItemGroup key={p} title={n}>
-                    {list.map(({ name: title, path: route }) => (
-                      <Menu.Item key={route}>{title}</Menu.Item>
-                    ))
+      <Header />
+      <div className={'mainContent'}>
+        <Layout className='layoutWarp'>
+          <Sider trigger={null} collapsible collapsed={false}>
+            <Menu
+              onClick={handleClick}
+              style={{ textAlign: 'center' }}
+              defaultSelectedKeys={['/react/class']}
+              defaultOpenKeys={[`/react/class/render`]}
+              mode="inline"
+            >
+              {
+                menu.map(({ path, name, children, comparison }, index) => {
+                  if (comparison) {
+                    return <SubMenu key={path} title={name} >
+                      {comparison.map(({ name: n, path: p, list }) =>
+                        <Menu.ItemGroup key={p} title={n}>
+                          {list.map(({ name: title, path: route }) => (
+                            <Menu.Item key={route}>{title}</Menu.Item>
+                          ))
 
-                    }
-                  </Menu.ItemGroup>
-                )
-                }
-              </SubMenu>
-            }
-            else {
-              return <SubMenu key={path} title={name} >
-                <Menu.Item key="9">Option 9</Menu.Item>
-                <Menu.Item key="10">Option 10</Menu.Item>
-                <Menu.Item key="11">Option 11</Menu.Item>
-                <Menu.Item key="12">Option 12</Menu.Item>
-              </SubMenu>
-            }
-          })
-        }
+                          }
+                        </Menu.ItemGroup>
+                      )
+                      }
+                    </SubMenu>
+                  }
+                  return children ? <SubMenu key={path} title={name} >
+                    {children.map((item) => {
+                      return <Menu.Item key="11">Option 11</Menu.Item>
 
-      </Menu>
+                    })}
+                  </SubMenu> :
+                    <Menu.Item key={path}>{name}</Menu.Item>
+
+                })
+              }
+            </Menu>
+          </Sider>
+          <Layout>
+            <Content className="warpheight" style={{ minHeight: ' calc(100vh - 141px)', minWidth: '920px' }}>
+              <RouterView routers={props.routers}></RouterView>
+            </Content>
+          </Layout>
+        </Layout>
       </div>
     </div>
   )
