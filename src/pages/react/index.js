@@ -1,7 +1,8 @@
 import React from 'react'
-import './index.scss'
-export default function ReactCom() {
+// import useMediaRecorder from './screenRecording'
+export default function index() {
+    // const {} = useMediaRecorder
   return (
-    <div className='reactWrap'>ReactCom</div>
+    <div>index</div>
   )
 }

@@ -43,11 +43,22 @@ export const Menu = [
     {
         name: 'Vue',
         path: '/vue',
-        children: [
+        comparison: [
             {
-                name: 'Vue-1',
-                path: '/vue-1'
+                name: 'vue x2',
+                path: '/vuex2',
+                list: [
+                 
+                ]
             },
+            {
+                name: 'vue x3',
+                path: '/vuex3',
+                list: [
+                 
+                ]
+            },
+            
  
         ]
     },

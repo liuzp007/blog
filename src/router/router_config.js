@@ -25,7 +25,16 @@ let router_config = [{
             name:'render',
             path:'/main/render',
             component:result.Render,
-            // exact:true
+        },
+        {
+            name:'render',
+            path:'/main/rendering',
+            component:result.Rendering,
+        },
+        {
+            name:'diff',
+            path:'/main/diff',
+            component:result.Diff,
         },
     ]
 },
