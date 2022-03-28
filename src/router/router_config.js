@@ -36,6 +36,11 @@ let router_config = [{
             path:'/main/diff',
             component:result.Diff,
         },
+        {
+            name:'setState',
+            path:'/main/setState',
+            component:result.SetState,
+        },
     ]
 },
 

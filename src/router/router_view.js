@@ -18,7 +18,6 @@ class RouterView extends Component {
                     }} />
                 })}
                 {redirect && redirect.map((v, i) => {
-                    console.log(<Redirect exact={v.exact} key={i} from={v.path} to={v.redirect} />)
                     return <Redirect exact={v.exact} key={i} from={v.path} to={v.redirect} />
                 })}
             </Switch>

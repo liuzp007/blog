@@ -1,13 +1,13 @@
 .mainWrap {
     width: 100vw;
-    height: 100vh;
+    // height: 100vh;
     background-color: $backgroundCOlor;
 
     .mainContent {
         max-width: 1360px;
         min-width: 1200px;
         margin: 0 auto;
-        height: 100%;
+        // height: 100%;
     }
     .layoutWarp{
         background-color: $backgroundCOlor;
@@ -21,6 +21,11 @@
         color: $setColor;
         padding: 10px 25px;
         font-size: 14px;
+        min-height: calc(100vh - 141px);
+        min-width: 920px;
+        overflow-y: auto;
+        max-height: calc(100vh - 50px);
+        padding-bottom: 100px;
     }
     .ant-menu.ant-menu-root {
         text-align: center;

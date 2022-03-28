@@ -45,13 +45,11 @@ export default function Main(props) {
   const [menu, setMenu] = useState([])
   useEffect(() => {
     game()
-    console.log(props)
     getMenu().then((res) => {
       setMenu(res)
     })
   }, [])
   const handleClick = e => {
-    console.log('/main' + e.key)
     props.history.push('/main' + e.key)
   };
 
@@ -64,13 +62,14 @@ export default function Main(props) {
             <Menu
               onClick={handleClick}
               style={{ textAlign: 'center' }}
-              defaultSelectedKeys={['/react/class']}
-              defaultOpenKeys={[`/react/class/render`]}
+              defaultSelectedKeys={['/react/rendering']}
+              defaultOpenKeys={[`/react`]}
               mode="inline"
             >
               {
                 menu.map(({ path, name, children, comparison }, index) => {
                   if (comparison) {
+                    console.log(path)
                     return <SubMenu key={path} title={name} >
                       {comparison.map(({ name: n, path: p, list }) =>
                         <Menu.ItemGroup key={p} title={n}>
@@ -97,7 +96,7 @@ export default function Main(props) {
             </Menu>
           </Sider>
           <Layout>
-            <Content className="warpheight" style={{ minHeight: ' calc(100vh - 141px)', minWidth: '920px' }}>
+            <Content className="warpheight" /* style={{ minHeight: ' calc(100vh - 141px)', minWidth: '920px' }} */>
               <RouterView routers={props.routers}></RouterView>
             </Content>
           </Layout>

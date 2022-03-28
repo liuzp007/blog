@@ -15,7 +15,6 @@ export default function Home({ history }) {
 
   useEffect(() => {
     clickEffect(true)
-
     return () => {
       clickEffect(false)
     }
@@ -57,8 +56,6 @@ export default function Home({ history }) {
       }
       return !start
     })
-
-
 
   }
   return (
@@ -108,7 +105,7 @@ export default function Home({ history }) {
       >
         <div className={'modalCenter'}>
           {
-            [0, 1, 2, 3, 4, 5, 6, 7, 8].map((i, index) => {
+            [0,1,2,3,4,5,6,7,8].map((i, index) => {
 
               return (
                 <div key={i}>

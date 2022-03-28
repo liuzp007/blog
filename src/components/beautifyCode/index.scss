@@ -2,3 +2,6 @@
 div:not(pre) > code[class*="language-"], pre[class*="language-"]{
 
 }
+code{
+    overflow-x: auto;
+}

@@ -24,6 +24,10 @@ export const Menu = [
                     {
                         name:'render',
                         path:'/render'
+                    },
+                    {
+                        name:'setState',
+                        path:'/setState'
                     }
                 ]
             },

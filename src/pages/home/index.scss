@@ -160,10 +160,17 @@
             }
         }
     }
+    >div:nth-of-type(2){
+        transform-style: flat;
+       >div{
+        transform-style: flat;
 
+       }
+    }
     .showModalBox {
-
-        // background-color: ;
+       width: 100vw;
+       height: 100vh;
+        position: absolute;
         .ant-modal-content {
             width: 120%;
             background-color: rgba($color: #000000, $alpha: .76);
