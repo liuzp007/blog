@@ -14,6 +14,7 @@
         height: 100%;
         >aside{
         background-color: $backgroundCOlor;
+        user-select: none;
         }
     }
     .warpheight{

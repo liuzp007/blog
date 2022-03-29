@@ -10,6 +10,7 @@ let result = moduleFile.keys().reduce((prev, item) => {
     });
     return prev;
 }, {});
+console.log(result)
 let router_config = [{
     name: 'home',
     path: '/',
@@ -41,6 +42,16 @@ let router_config = [{
             path:'/main/setState',
             component:result.SetState,
         },
+        {
+            name:'didMount and willUnMount',
+            path:'/main/didMount',
+            component:result.DidMount,
+        },
+        {
+            name:'componentWillMount',
+            path:'/main/willMount',
+            component:result.WillMount
+        }
     ]
 },
 

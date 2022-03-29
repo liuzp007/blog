@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import './index.scss'
 
 function setCanvas(id, x = 30, y = 80) {
@@ -33,8 +33,8 @@ function setCanvas(id, x = 30, y = 80) {
       // closePath：关闭路径，将路径的终点与起点相连
       ctx.closePath();
       ctx.lineWidth = "3";
-      ctx.fillStyle = '#E4EF00';
-      ctx.strokeStyle = "red";
+      ctx.fillStyle = '';
+      ctx.strokeStyle = "gray";
       ctx.fill();
       ctx.stroke();
     }
@@ -60,20 +60,23 @@ function setCanvas(id, x = 30, y = 80) {
 
 
 
-export default function Header() {
+export default function Header({history}) {
+  const [topNum,setTopNum] = useState('-110px')
   useEffect(() => {
-    // setCanvas('canvas1')
-    // setCanvas('canvas2')
+    setCanvas('canvas1')
+    setCanvas('canvas2')
   }, [])
+ const  toHome = ()=>{
+  history.push('/')
+  }
   return (
     <div className={'headerWarp'}>
       <div className='header'>
-        <div className='logo'>
+        <div className='logo' >
+          <span className='spanbg' onClick={toHome}> ？？？？</span>
           <canvas id='canvas1'>
-
           </canvas>
           <canvas id='canvas2'>
-
           </canvas>
         </div>
       </div>

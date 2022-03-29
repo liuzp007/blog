@@ -10,6 +10,7 @@ const render = `- componentWillReceiveProps
 以上钩子的执行都会触发render函数的执行
 
 
+
 import React, { Component } from 'react'
 
 export default class index extends Component {

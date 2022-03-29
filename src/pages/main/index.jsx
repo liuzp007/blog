@@ -50,12 +50,12 @@ export default function Main(props) {
     })
   }, [])
   const handleClick = e => {
+    if(window.location.hash.includes('/main' + e.key)) return
     props.history.push('/main' + e.key)
-  };
-
+  }
   return (
     <div className={'mainWrap'}>
-      <Header />
+      <Header {...props}/>
       <div className={'mainContent'}>
         <Layout className='layoutWarp'>
           <Sider trigger={null} collapsible collapsed={false}>
@@ -69,7 +69,6 @@ export default function Main(props) {
               {
                 menu.map(({ path, name, children, comparison }, index) => {
                   if (comparison) {
-                    console.log(path)
                     return <SubMenu key={path} title={name} >
                       {comparison.map(({ name: n, path: p, list }) =>
                         <Menu.ItemGroup key={p} title={n}>

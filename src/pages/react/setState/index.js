@@ -1,4 +1,4 @@
-import React from 'react';
+import React ,{useState, Component} from 'react';
 import {BeautifyCode, BeautifyCodeList} from '../../../components/beautifyCode';
 
 
@@ -17,7 +17,90 @@ setState会同步更新this.state, 但是,有一个函数 batchedUpdates,这个�
 `,
   D: `setStaet的‘异步’ 不是内部由异步代码实现的，本身的执行过程以及代码都是同步的，只是在合成事件和生命周期的调用顺序在更新之前，导致没法立即拿到更新后的值
 `,
+  E:` 函数式
+  export function Test() {
+
+    let  [count, setCount] = useState(1)
+  
+    const changeCount  =(type)=>{
+
+      return ()=>{
+
+        if(type === 'add') {
+          // setCount(count +2)  
+          // console.log(count) // 拿不到最新的值
+    
+          // let num = count +2 
+          // setCount(num);
+          // console.log(num) //可以拿到
+    
+          // setCount((count)=>{
+    
+          //  let num = count +2 
+          //   console.log(num) //  可以拿到
+          //   return num
+          
+          // })
+        }else{
+          setCount(count -2 )
+        }
+      }
+    }
+    return (
+      <div>
+        <p>{count}</p>
+        <button onClick={changeCount('add')}>count add</button>
+      </div>
+    )
+  }`,
+  F:`类式
+  class Test extends Component {
+    constructor(props){
+      super(props)
+     this.state={
+       count:1
+     }
+     this.changeCount = this.changeCount.bind(this)
+    }
+   changeCount(type){
+     let {count} = this.state
+     return ()=>{
+  
+       if(type === 'add') {
+         // this.setState({count:++count})
+         // console.log(count) // 拿不到最新的 count
+  
+         // const num = ++count
+         // this.setState({count:num})
+         // console.log(num)  // 可以拿到最新的 count
+  
+         this.setState({count:++count},()=>{
+           console.log(this.state.count) // 可以拿到最新的 count
+         })
+       }else{
+        this.setState({count:--count},()=>{
+          console.log(this.state.count)
+        })
+       }
+     }
+   }
+   render() {
+     const {count} = this.state
+     const {changeCount} = this
+     return (
+       <div>
+       <p>{count}</p>
+       <button onClick={changeCount('add')}> count add</button>
+       <button onClick={changeCount('cutDown')}> count cut down </button>
+   </div>
+     )
+   }
+  }
+  `
+
 }
+
+
 
 export default function setState(props) {
   return (
@@ -27,4 +110,12 @@ export default function setState(props) {
     </div>
   )
 }
+
+
+
+
+
+
+
+
 

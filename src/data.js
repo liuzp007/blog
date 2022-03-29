@@ -14,7 +14,11 @@ export const Menu = [
                     {
                         name:'diff 算法',
                         path:'/diff'
-                    }
+                    },
+                    {
+                        name:'setState',
+                        path:'/setState'
+                    },
                 ]
             },
             {
@@ -22,12 +26,17 @@ export const Menu = [
                 path: '/class',
                 list: [
                     {
+                        name:'componentWillMount',
+                        path:'/willMount'
+                    },
+                    {
                         name:'render',
                         path:'/render'
                     },
+                    
                     {
-                        name:'setState',
-                        path:'/setState'
+                        name:'didMount',
+                        path:'/didMount'
                     }
                 ]
             },

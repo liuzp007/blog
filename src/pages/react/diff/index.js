@@ -23,7 +23,6 @@ const list = {
             ·当处于同一层级，有三个操作（移动、插入、删除），react使用唯一的key值来区分，这样就可以区分用户的操作
     `,
 }
-console.log(list)
 export default function diff(props) {
   return (
     <div>
