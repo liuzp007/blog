@@ -35,7 +35,7 @@ export const Menu = [
                     },
                     
                     {
-                        name:'didMount',
+                        name:'componentDidMount',
                         path:'/didMount'
                     }
                 ]
@@ -45,12 +45,16 @@ export const Menu = [
                 path: '/function',
                 list:[
                     {
-                        name:'useState',
-                        path:'/useState'
+                        name:'useEffect',
+                        path:'/useEffect'
                     }
                 ]
             },
-        ]
+        ],
+        children:[{
+            name:'11111111111111',
+            path:'/??'
+        }]
        
     },
     {

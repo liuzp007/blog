@@ -82,7 +82,7 @@ export default function Main(props) {
                       }
                     </SubMenu>
                   }
-                  return children ? <SubMenu key={path} title={name} >
+                  return  children ?   <SubMenu key={path} title={name} >
                     {children.map((item) => {
                       return <Menu.Item key="11">Option 11</Menu.Item>
 

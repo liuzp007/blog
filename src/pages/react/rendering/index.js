@@ -4,7 +4,7 @@ import {BeautifyCode, BeautifyCodeList} from '../../../components/beautifyCode';
 
 let renderObj = {
   A: `jsx经过babel编译后的React.createElement`,
-  B: `babel在编译时会判断JSX中组件的首字母：
+  B: `babel在编译时会判断JSX中标签的首字母：
 当首字母为小写时，其被认定为原生D0M标
 签，createElement的第一个变量被编译为字符串
 。当首字母为大写时，其被认定为自定义组件， createElement的第一个变量被编译为对象
@@ -27,7 +27,7 @@ C: `在react中，节点大致可以分成四个类别：
 export default function Rendering(props) {
   return (
     <div>
-      <h2 className='titles'>react的 渲染原理</h2>
+      <h2 className='titles' >react的 渲染原理</h2>
       <BeautifyCodeList list={renderObj}/>
     </div>
   )

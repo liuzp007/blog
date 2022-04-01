@@ -51,7 +51,12 @@ let router_config = [{
             name:'componentWillMount',
             path:'/main/willMount',
             component:result.WillMount
-        }
+        },
+        {
+            name:'useEffect',
+            path:'/main/useEffect',
+            component:result.UseEffect
+        },
     ]
 },
 
