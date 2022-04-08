@@ -58,9 +58,18 @@ export default function Home({ history }) {
     })
 
   }
+  let HelloWorld = ' Hello world'
+  let wellcome = 'wellcome my blog'
   return (
     <div className={'HomeWrap'} id={'HomeWrap'} >
-      <p className={"title"} onClick={autoPlay} >Hello world
+      <p className={"title"} onClick={autoPlay} >
+      <span className={'titleStyle'} >
+        {
+          HelloWorld.split('').map((v,i)=>(
+            <span key={i} style={{ animationDelay:'1.2s'}} >{v.toLocaleLowerCase()}</span>
+          ))
+        }
+      </span>
         <audio controls="controls" height="100" width="100" id="myMusic">
           <source src="./music/suddenly.mp3" type="audio/mp3" />
           <embed height="100" width="100" src="./music/suddenly.mp3" />
