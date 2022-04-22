@@ -10,7 +10,7 @@ let result = moduleFile.keys().reduce((prev, item) => {
     });
     return prev;
 }, {});
-console.log(result)
+
 let router_config = [{
     name: 'home',
     path: '/',
@@ -65,6 +65,12 @@ let router_config = [{
 //     path:'/main/*',
 //     redirect:'/404'
 // },
+{
+    name:'简历',
+    path:'/resume',
+    component:result.Resume
+},
+
 {
     name:404,
     path:'/404',

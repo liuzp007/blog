@@ -119,8 +119,9 @@ class Message {
     }
     //打开吐司
     show = () => {
+        this.div.style.position = 'absolute'
         document.body.appendChild(this.div);
-        console.log(this.options)
+
         ReactDom.render(
             <MessagePop {...this.options} />,
             this.div

@@ -14,6 +14,7 @@
         font-size: 18px;
         color: $setColor;
         margin-bottom: 20px;
+        cursor:url(../../assets/img/cursor.png), pointer;;
         #myMusic {
             visibility: hidden;
             position: fixed;
@@ -28,9 +29,8 @@
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         font-size: 16px;
         color: rgba($color: $setColor, $alpha: .46);
-
         span {
-            animation: shan 5.2s linear infinite;
+            animation: shan 2.6s linear infinite;
             text-transform: uppercase;
             display: inline-block;
             margin-right: 6px;
@@ -137,7 +137,6 @@
             flex-wrap: wrap;
             cursor: pointer;
             transition: all 0.4s line;
-
             // transform:scale(0,0);
             >div {
                 width: 4px;
@@ -183,7 +182,7 @@
                 justify-content: space-evenly;
                 align-items: center;
                 flex-wrap: wrap;
-
+                cursor: pointer;
                 >div {
                     text-align: center;
                     margin-bottom: 55px;
@@ -238,329 +237,4 @@
         }
     }
 
-}
-
-//  svg
-.st0 {
-    display: none;
-}
-
-.st1 {
-    display: inline;
-    fill: #F2C87E;
-}
-
-.st2 {
-    display: inline;
-    fill: #F9F6E8;
-}
-
-.st3 {
-    display: inline;
-}
-
-.st4 {
-    clip-path: url(#XMLID_30_);
-    fill: #F9F6E8;
-}
-
-.st5 {
-    display: inline;
-    fill: #020202;
-}
-
-.st6 {
-    fill: #EDF2F4;
-}
-
-.st7 {
-    fill: #FFFFFF;
-}
-
-.st8 {
-    fill: #F9F6E8;
-}
-
-.st9 {
-    display: inline;
-    fill: #3D2222;
-}
-
-.st10 {
-    display: inline;
-    fill: #FF8581;
-}
-
-.st11 {
-    display: inline;
-    fill: #D6D4D2;
-}
-
-.st12 {
-    clip-path: url(#XMLID_31_);
-    fill: #45423E;
-}
-
-.st13 {
-    fill: #45423E;
-}
-
-.st14 {
-    fill: #FF8581;
-}
-
-.st15 {
-    fill: #3D2222;
-}
-
-.st16 {
-    fill: #1BADED;
-    stroke: #231815;
-    stroke-width: 5;
-    stroke-miterlimit: 10;
-}
-
-.st17 {
-    display: inline;
-    fill: #F4AB87;
-}
-
-.st18 {
-    clip-path: url(#XMLID_32_);
-    fill: #FFD7A0;
-}
-
-.st19 {
-    fill: #FFD7A0;
-}
-
-.st20 {
-    fill: #D67D4A;
-}
-
-.st21 {
-    fill: #FC7F7E;
-}
-
-.st22 {
-    display: inline;
-    fill: #F4CF67;
-}
-
-.st23 {
-    fill: #994C0F;
-}
-
-.st24 {
-    fill: #EE8E2D;
-}
-
-.st25 {
-    fill: #F4F3F2;
-}
-
-.st26 {
-    display: inline;
-    fill: #BECEEA;
-}
-
-.st27 {
-    fill: #DA7A4A;
-}
-
-.st28 {
-    display: inline;
-    fill: #ADA3C1;
-}
-
-.st29 {
-    display: inline;
-    fill: #403D45;
-}
-
-.st30 {
-    display: inline;
-    fill: #DA7A4A;
-}
-
-.st31 {
-    display: inline;
-    fill: #F4BB87;
-}
-
-.st32 {
-    fill: #403D45;
-}
-
-.st33 {
-    clip-path: url(#XMLID_33_);
-    fill: #F7F7F7;
-}
-
-.st34 {
-    clip-path: url(#XMLID_34_);
-    fill: #F7F7F7;
-}
-
-.st35 {
-    clip-path: url(#XMLID_35_);
-    fill: #F7F7F7;
-}
-
-.st36 {
-    clip-path: url(#XMLID_36_);
-    fill: #F7F7F7;
-}
-
-.st37 {
-    clip-path: url(#XMLID_37_);
-    fill: #F7F7F7;
-}
-
-.st38 {
-    clip-path: url(#XMLID_38_);
-    fill: #F7F7F7;
-}
-
-.st39 {
-    clip-path: url(#XMLID_39_);
-    fill: #F7F7F7;
-}
-
-.st40 {
-    clip-path: url(#XMLID_40_);
-    fill: #F7F7F7;
-}
-
-.st41 {
-    fill: #F9F6DB;
-}
-
-.st42 {
-    fill: #B2AD9D;
-}
-
-.st43 {
-    fill: #DFD8BD;
-}
-
-.st44 {
-    display: inline;
-    fill: #F9A230;
-}
-
-.st45 {
-    clip-path: url(#XMLID_41_);
-    fill: #F9F6E8;
-}
-
-.st46 {
-    fill: #D28957;
-}
-
-.st47 {
-    clip-path: url(#XMLID_42_);
-    fill: #F7F6F5;
-}
-
-.st48 {
-    fill: #F4C295;
-}
-
-.st49 {
-    display: none;
-    fill: #AD84B7;
-}
-
-.st50 {
-    clip-path: url(#XMLID_43_);
-    fill: #FF8581;
-}
-
-.st51 {
-    clip-path: url(#XMLID_44_);
-    fill: #FF8581;
-}
-
-.st52 {
-    clip-path: url(#XMLID_45_);
-    fill: #944906;
-}
-
-.st53 {
-    fill: #944906;
-}
-
-.st54 {
-    clip-path: url(#XMLID_47_);
-    fill: #45423E;
-}
-
-.st55 {
-    fill: #D3D1C9;
-}
-
-.st56 {
-    clip-path: url(#XMLID_48_);
-    fill: #45423E;
-}
-
-.st57 {
-    clip-path: url(#XMLID_49_);
-    fill: #45423E;
-}
-
-.st58 {
-    fill: #656466;
-}
-
-.st59 {
-    fill: #F9F9F9;
-}
-
-.st60 {
-    fill: #F1C28A;
-}
-
-.st61 {
-    clip-path: url(#XMLID_52_);
-    fill: #EDDDEA;
-}
-
-.st62 {
-    clip-path: url(#XMLID_53_);
-    fill: #EDDDEA;
-}
-
-.st63 {
-    clip-path: url(#XMLID_54_);
-    fill: #FFFFFF;
-}
-
-.st64 {
-    fill: #E4C2DC;
-}
-
-.st65 {
-    clip-path: url(#XMLID_55_);
-    fill: #3D200A;
-}
-
-.st66 {
-    clip-path: url(#XMLID_55_);
-    fill: #FFFFFF;
-}
-
-.st67 {
-    clip-path: url(#XMLID_56_);
-    fill: #3D200A;
-}
-
-.st68 {
-    clip-path: url(#XMLID_56_);
-    fill: #FFFFFF;
-}
-
-.st69 {
-    fill: #3D200A;
 }

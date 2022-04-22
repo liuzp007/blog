@@ -84,7 +84,7 @@
 .my_message_box {
     background: rgba(0, 0, 0, .7);
     width: auto;
-    min-width: 180px;
+    min-width: 290px;
     height: 60px;
     border-radius: 6px;
     position: fixed;

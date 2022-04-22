@@ -1,9 +1,47 @@
-import React, { useState, useEffect } from 'react';
-import { message, Modal, notification, Divider, Space, Button } from 'antd';
-import clickEffect from '@/components/setMouse'
-
-import ICON, { } from './svg'
+import React, { useState, useEffect, Component } from 'react';
+import {message, Modal, notification, Divider, Space, Button, Tooltip } from 'antd';
+import clickEffect from '@/components/setMouse';
+import ICON, { musicPlay } from './svg';
 import './index.scss'
+const {mesSuccess} = Component.prototype
+const ModalList = [
+  {
+    desc: '简历',
+    path: '/resume'
+  },
+  {
+    desc: 'code',
+    path: '/main'
+  },
+  {
+    desc: null,
+    path: null
+  },
+  {
+    desc: null,
+    path: null
+  },
+  {
+    desc: null,
+    path: null
+  },
+  {
+    desc: null,
+    path: null
+  },
+  {
+    desc: null,
+    path: null
+  },
+  {
+    desc: null,
+    path: null
+  },
+  {
+    desc: null,
+    path: null
+  }
+]
 
 const Context = React.createContext({ name: 'Default' });
 
@@ -20,9 +58,9 @@ export default function Home({ history }) {
     }
   }, [])
 
-  const toPath = () => {
-    history.push('/main')
-  }
+  // const toPath = () => {
+  //   history.push('/main')
+  // }
   const showModalFun = () => {
     setShowModal(!showModal)
   }
@@ -58,26 +96,29 @@ export default function Home({ history }) {
     })
 
   }
-  let HelloWorld = ' Hello world'
-  let wellcome = 'wellcome my blog'
+  const pushRouter = (path) => {
+    return () => {
+      if(!path) return mesSuccess('正在加急建设中。。。',1500)
+      history.push(path);
+    }
+
+  }
+  const HelloWorld = ' Hello world'
+  const wellcome = 'wellcome my blog'
   return (
     <div className={'HomeWrap'} id={'HomeWrap'} >
-      <p className={"title"} onClick={autoPlay} >
-      <span className={'titleStyle'} >
-        {
-          HelloWorld.split('').map((v,i)=>(
-            <span key={i} style={{ animationDelay:'1.2s'}} >{v.toLocaleLowerCase()}</span>
-          ))
-        }
-      </span>
+      <p className={"title"} onClick={autoPlay} title="play music" >
+        <Tooltip title="播放音乐：忽然-李志">
+          Hello world
+        </Tooltip>
         <audio controls="controls" height="100" width="100" id="myMusic">
           <source src="./music/suddenly.mp3" type="audio/mp3" />
           <embed height="100" width="100" src="./music/suddenly.mp3" />
           <source src="./music/suddenly.mp3" type="audio/ogg"></source>
         </audio>
       </p>
-      <p className={"titleStyle"} onClick={toPath}  > 
-        <span>W</span>
+      <p className={"titleStyle"}  /* onClick={toPath} */  >
+        {/* <span>W</span>
         <span>e</span>
         <span>l</span>
         <span>c</span>
@@ -91,7 +132,13 @@ export default function Home({ history }) {
         <span>b</span>
         <span>l</span>
         <span>o</span>
-        <span>g</span>
+        <span>g</span> */}
+        {
+          [...wellcome].map((v, i) => {
+            return <span key={i} style={{ animationDelay: '1.2s' }} >{v.toLocaleLowerCase()}</span>
+
+          })
+        }
       </p>
       <div className="toggle">
         <div className={showModal ? "toggle_body showModalAndToggleBody" : 'toggle_body '} onClick={showModalFun} >
@@ -114,13 +161,12 @@ export default function Home({ history }) {
       >
         <div className={'modalCenter'}>
           {
-            [0,1,2,3,4,5,6,7,8].map((i, index) => {
-
+            ModalList.map((i, index) => {
               return (
-                <div key={i}>
+                <div key={index}>
                   {ICON[index > 1 ? index % 2 : index]}
-                  <div className="after" onClick={() => { message.success("You're the best. I didn't think it when I said it, but I said it when I thought about it") }} >
-                    you see what ? 👀
+                  <div className="after" onClick={pushRouter(i.path)} >
+                    {i.desc ?? 'you see what ? 👀'}
 
                     {/* <Context.Provider value={{ name: 'blog' }}>
                       {contextHolder}

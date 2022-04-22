@@ -10,7 +10,7 @@ import '@/components/global_components/confirm/index.css';
 import '@/components/global_components/confirm/index.js';
 import { initSecretUrlByType07, baseURL } from './config/secret';
 import Http from './utils/axios_instans';
-window.apiPrefix = '/api/exam';
+
 function create(src) {
     return function (path) {
         if (!path) return;
@@ -35,7 +35,7 @@ getImgSrc.then((res) => {
         // }
         ReactDOM.render(
             <Provider store={store}>
-                <App />
+              <App />
             </Provider>,
             document.getElementById('root')
         );
