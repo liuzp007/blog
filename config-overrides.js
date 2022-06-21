@@ -1,6 +1,7 @@
 const BundleAnalyzerPlugin = require("webpack-bundle-analyzer")
   .BundleAnalyzerPlugin;
 const path = require("path");
+console.log(process)
 const {
   override,
   addDecoratorsLegacy,
@@ -32,9 +33,9 @@ module.exports = override(
     }
   }),
   (config) => {
-    if (process.env.NODE_ENV === "production") {
+    if ((process && process?.env.NODE_ENV === "production") || true) {
       config.devtool = false;
-      // config.plugins.push(new BundleAnalyzerPlugin());
+      // config.plugins.push(new BundleAnalyzerPlugin()); // 打包之后 包分析器插件
       config.externals = {
         React: "react",
         Swiper: "swiper",

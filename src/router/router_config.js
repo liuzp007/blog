@@ -1,6 +1,6 @@
 import LoadableComponent from '../utils/LoadableComponent';
-import NotFound from '../components/notFound'
-
+import NotFound from '../components/notFound';
+import data  from '../data';
 let moduleFile = require.context('../pages', true, /index.(js|jsx)$/);
 let result = moduleFile.keys().reduce((prev, item) => {
     let str = item.split('/')[item.split('/').length - 2];
@@ -10,6 +10,25 @@ let result = moduleFile.keys().reduce((prev, item) => {
     });
     return prev;
 }, {});
+
+let Component = new Array()
+data?.forEach((item)=>{
+    if(item.comparison?.length > 0){
+        const {comparison} = item
+        comparison.forEach((element)=>{
+            element.list?.forEach((i)=>{
+                let  {name,path} = i
+                path = path[1].toLocaleUpperCase() + path.slice(2)
+                console.log(path)
+                Component.push({
+                    name,
+                    path:`/main/${path}`,
+                    component:result[path]
+                })
+            })
+        })
+    }
+})
 
 let router_config = [{
     name: 'home',
@@ -22,41 +41,47 @@ let router_config = [{
     path:'/main',
     component:result.Main,
     children:[
-        {
-            name:'render',
-            path:'/main/render',
-            component:result.Render,
-        },
-        {
-            name:'render',
-            path:'/main/rendering',
-            component:result.Rendering,
-        },
-        {
-            name:'diff',
-            path:'/main/diff',
-            component:result.Diff,
-        },
-        {
-            name:'setState',
-            path:'/main/setState',
-            component:result.SetState,
-        },
-        {
-            name:'didMount and willUnMount',
-            path:'/main/didMount',
-            component:result.DidMount,
-        },
-        {
-            name:'componentWillMount',
-            path:'/main/willMount',
-            component:result.WillMount
-        },
-        {
-            name:'useEffect',
-            path:'/main/useEffect',
-            component:result.UseEffect
-        },
+        // {
+        //     name:'render',
+        //     path:'/main/render',
+        //     component:result.Render,
+        // },
+        // {
+        //     name:'render',
+        //     path:'/main/rendering',
+        //     component:result.Rendering,
+        // },
+        // {
+        //     name:'diff',
+        //     path:'/main/diff',
+        //     component:result.Diff,
+        // },
+        // {
+        //     name:'setState',
+        //     path:'/main/setState',
+        //     component:result.SetState,
+        // },
+        // {
+        //     name:'didMount and willUnMount',
+        //     path:'/main/didMount',
+        //     component:result.DidMount,
+        // },
+        // {
+        //     name:'componentWillMount',
+        //     path:'/main/willMount',
+        //     component:result.WillMount
+        // },
+        // {
+        //     name:'useEffect',
+        //     path:'/main/useEffect',
+        //     component:result.UseEffect
+        // },
+        // {
+        //     name:'useMomo',
+        //     path:'/main/useMomo',
+        //     component:result.UseMomo
+        // },
+        ...Component
     ]
 },
 

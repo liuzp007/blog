@@ -1,0 +1,246 @@
+.pdfWrap {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  .pdf_container_pos {
+    position: absolute;
+    top: 0;
+    left: 0;
+    // margin-left: -940px;
+    z-index: 4;
+    width: 100%;
+    background-color: #fff;
+    color: $setColor;
+  }
+
+  .pdf_top_optionWidth {
+    width: 100% !important;
+  }
+
+  .pdf_top_option {
+    width: 850px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    box-sizing: border-box;
+    background: rgb(252, 252, 252);
+    z-index: 1;
+
+    .svg {
+      >svg {
+        position: relative;
+        top: 3px;
+      }
+    }
+
+    >span {
+      margin-right: 30px;
+      cursor: pointer;
+      font-size: 16px;
+
+      >svg {
+        path {
+          fill: #333333;
+        }
+      }
+    }
+  }
+
+  .preview_resource_content {
+    background: #fff;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: auto;
+    margin-bottom: 40px;
+    width: 100%;
+
+    .Document_wrap_c {
+      min-height: 500px;
+      position: relative;
+      width: 100%;
+
+
+      .pagenum {
+        margin: 0 auto;
+        text-align: center;
+        height: 80px;
+        line-height: 80px;
+      }
+    }
+
+    .pdf_footer_mantle {
+      position: absolute;
+      width: 1200px;
+      height: 240px;
+      box-sizing: border-box;
+      padding-top: 200px;
+      bottom: 0;
+      left: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(rgba($color: white, $alpha: 0), rgba($color: white, $alpha: 1));
+      color: $setColor;
+
+      >p {
+        line-height: 40px;
+        margin: 0;
+        color: #e0e0e0;
+
+        span {
+          color: #3e78ed;
+          cursor: pointer;
+        }
+
+        &::before {
+          content: "";
+          position: absolute;
+          height: 1px;
+          width: 170px;
+          border-bottom: 1px solid #e0e0e0;
+          left: 290px;
+          bottom: 20px;
+        }
+
+        &::after {
+          content: "";
+          position: absolute;
+          height: 1px;
+          width: 170px;
+          border-bottom: 1px solid #e0e0e0;
+          left: 735px;
+          bottom: 20px;
+        }
+      }
+
+      ::after {
+        content: "";
+        position: absolute;
+        width: 1200px;
+        height: 40px;
+        bottom: -40px;
+        left: 0;
+        background: white;
+      }
+    }
+
+    .content_iframe {
+      width: 100%;
+      min-height: 500px;
+    }
+
+    .custom-video-warpper {
+      height: 500px;
+
+      .scree-dpi {
+        right: 20px;
+      }
+
+      .video-js {
+        width: 1200px;
+        height: 500px;
+        overflow: hidden;
+
+        .vjs-tech {
+          width: auto;
+          height: 100%;
+          top: 0;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          margin: auto;
+        }
+      }
+    }
+
+    audio {
+      width: 1200px;
+      background: rgb(241, 243, 244);
+    }
+  }
+
+  .pdf_footer_mantle {
+    text-align: center;
+    color: #e0e0e0;
+
+    >p {
+      line-height: 40px;
+      margin: 0;
+      position: relative;
+
+      span {
+        color: #3e78ed;
+        cursor: pointer;
+      }
+
+      &::before {
+        content: "";
+        position: absolute;
+        height: 1px;
+        width: 170px;
+        border-bottom: 1px solid #e0e0e0;
+        left: 130px;
+        bottom: 20px;
+      }
+
+      &::after {
+        content: "";
+        position: absolute;
+        height: 1px;
+        width: 170px;
+        border-bottom: 1px solid #e0e0e0;
+        right: 130px;
+        bottom: 20px;
+      }
+    }
+  }
+  .pdf_item{
+    position: relative;
+    .last,.next{
+      width: 30px;
+      height: 30px;
+      position: absolute;
+      bottom: 45px;
+      right: 20px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      &::after{
+      transition: all 0.3s ease;
+      }
+      &:hover{
+        transform: scale(1.6);
+        &::after{
+          border-color: #3e78ed;
+        }
+      }
+      &::after{
+        content: '';
+        position: absolute;
+        left: 4px;
+        top: 7px;
+        width: 50%;
+        height: 50%;
+        border-top: 2px solid rgb(0, 0, 0)  ;
+        border-right: 2px solid rgb(0, 0, 0) ;
+        transform: rotate(45deg);
+       
+      }
+    }
+    .last{
+      right: 75px;
+      
+     &::after{
+       left: 4px;
+       top: 6px;
+       border-left: 2px solid black ;
+       transform: rotate(-45deg);
+       border-right: none ;
+
+     }
+
+    }
+  }
+}

@@ -1,7 +1,11 @@
 
 div:not(pre) > code[class*="language-"], pre[class*="language-"]{
-
+    @include codeColor;
 }
 code{
     overflow-x: auto;
+    @include codeColor;
+}
+.token.operator{ // 重置符号背景色  例如 = +
+    background: none;
 }

@@ -47,6 +47,10 @@ export const Menu = [
                     {
                         name:'useEffect',
                         path:'/useEffect'
+                    },
+                    {
+                        name:'useMomo',
+                        path:'/useMomo'
                     }
                 ]
             },
@@ -88,3 +92,4 @@ export const Menu = [
         path: '/git'
     }
 ]
+export default Menu
