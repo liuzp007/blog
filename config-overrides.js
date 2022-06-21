@@ -1,7 +1,7 @@
 const BundleAnalyzerPlugin = require("webpack-bundle-analyzer")
   .BundleAnalyzerPlugin;
 const path = require("path");
-console.log(process)
+
 const {
   override,
   addDecoratorsLegacy,
