@@ -19,7 +19,6 @@ data?.forEach((item)=>{
             element.list?.forEach((i)=>{
                 let  {name,path} = i
                 path = path[1].toLocaleUpperCase() + path.slice(2)
-                console.log(path)
                 Component.push({
                     name,
                     path:`/main/${path}`,
@@ -94,6 +93,11 @@ let router_config = [{
     name:'简历',
     path:'/resume',
     component:result.Resume
+},
+{
+    name:'简历',
+    path:'/standard',
+    component:result.Standard
 },
 
 {

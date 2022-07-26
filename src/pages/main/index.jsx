@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, Component } from 'react'
 import { getMenu } from "../../api/serve";
 import { Menu, Layout } from "antd";
 import RouterView from '../../router/router_view'
-import Header from '../../components/header'
+import Header from '../../components/header';
+import {withRouter} from 'react-router-dom'
 import './index.scss'
 const { SubMenu } = Menu;
 const { Sider, Content } = Layout;
@@ -40,6 +41,18 @@ function game() {
   console.log("time:", time.toLocaleDateString())
 
 }
+class  ScrollToTop extends Component {
+  componentDidUpdate(prevProps) { //跳转路由回到顶部
+    if (this.props.location.pathname !== prevProps.location.pathname) {
+      let divBox =  document.getElementById('contentID')
+      divBox.scrollTo(0, 0)
+    }
+  }
+  render() {
+    return this.props.children
+  }
+}
+let ScrollToTops =  withRouter(ScrollToTop);
 
 export default function Main(props) {
   const [menu, setMenu] = useState([])
@@ -95,8 +108,10 @@ export default function Main(props) {
             </Menu>
           </Sider>
           <Layout>
-            <Content className="warpheight" /* style={{ minHeight: ' calc(100vh - 141px)', minWidth: '920px' }} */>
+            <Content className="warpheight" id={'contentID'} /* style={{ minHeight: ' calc(100vh - 141px)', minWidth: '920px' }} */>
+              <ScrollToTops>
               <RouterView routers={props.routers}></RouterView>
+              </ScrollToTops>
             </Content>
           </Layout>
         </Layout>

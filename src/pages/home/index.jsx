@@ -14,8 +14,8 @@ const ModalList = [
     path: '/main'
   },
   {
-    desc: null,
-    path: null
+    desc: '规范',
+    path: '/standard'
   },
   {
     desc: null,
