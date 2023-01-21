@@ -148,7 +148,14 @@
       text-align: center;
       font-family: 'Courier New', Courier, monospace, '微软雅黑';
       text-shadow: 3px 3px 5px rgba(255, 255, 255, 1);
-    }
+}
+.author{
+    position:fixed;
+    right:20px;
+    bottom:20px;
+    font-size:12px;
+    color:#FFF;
+}
   </style>
   <title>2023新年快乐</title>
 </head>
@@ -162,6 +169,7 @@
   <div class="city">
     <img src="https://production-4gnv3qeqb070546b-1312154413.tcloudbaseapp.com/newyear2/img/city.png" alt="" />
   </div>
+  <p class="author">刘志鹏</p>
   <script>
     const query = new URLSearchParams(location.search)
     const preview = query.get('p')
