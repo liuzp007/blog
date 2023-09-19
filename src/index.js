@@ -27,7 +27,7 @@ getImgSrc.then((res) => {
         res = res.result;
         // window.$$imgSrc = create(res.config['public-resource']);
         // window.$$newSrc = create(res.config['static-img']);
-        document.title = 'Blog'; //title
+        document.title = 'Blog • Roc'; //title
         // document.querySelector('link[rel="icon"]').href = 'javaScript:;'; //ico'
         // if (res?.config) {
         //     initSecretUrlByType07(undefined);

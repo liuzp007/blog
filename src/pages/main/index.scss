@@ -9,37 +9,50 @@
         min-width: 1200px;
         margin: 0 auto;
         // height: 100%;
+        .ant-layout-sider-children{
+            overflow: hidden;
+        }
     }
 
-    .layoutWarp {
+    .layoutWrap {
         background-color: $backgroundCOlor;
         @include bgImg;
         height: 100%;
-
+        display: grid;
+        grid-template-columns: 230px 1fr;
         >aside {
             background-color: $backgroundCOlor;
             @include bgImg;
             user-select: none;
+            max-width: unset !important;
+            width: 100% !important;
+            height: 460px;
+            overflow: auto;
         }
     }
 
-    .warpheight {
+    .wrapheight {
         background-color: $backgroundCOlor;
         @include bgImg;
         color: $setColor;
         padding: 10px 25px;
+        padding-top: 0;
         font-size: 14px;
-        min-height: calc(100vh - 141px);
+        // min-height: calc(100vh - 141px);
         min-width: 920px;
         overflow-y: auto;
-        max-height: calc(100vh - 50px);
+        max-height: calc(100vh - 47px);
         padding-bottom: 100px;
+
     }
 
     .ant-menu.ant-menu-root {
         text-align: center;
         color: $setColor;
         background-color: $backgroundCOlor;
+        overflow-y:scroll;
+        overflow-x: hidden;
+        height: 460px;
         @include bgImg;
     }
 

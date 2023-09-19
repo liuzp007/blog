@@ -29,18 +29,6 @@ const ModalList = [
     desc: null,
     path: null
   },
-  {
-    desc: null,
-    path: null
-  },
-  {
-    desc: null,
-    path: null
-  },
-  {
-    desc: null,
-    path: null
-  }
 ]
 
 const Context = React.createContext({ name: 'Default' });

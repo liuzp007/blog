@@ -49,8 +49,32 @@ export const Menu = [
                         path:'/useEffect'
                     },
                     {
-                        name:'useMomo',
-                        path:'/useMomo'
+                        name:'useMemo',
+                        path:'/useMemo'
+                    },
+                    {
+                        name:'useCallback',
+                        path:'/useCallback'
+                    },
+                    {
+                        name:'useReducer',
+                        path:'/useReducer'
+                    },
+                    {
+                        name:'useRef',
+                        path:'/useRef'
+                    },
+                    {
+                        name:'useImperativeHandle',
+                        path:'/useImperativeHandle'
+                    },
+                    {
+                        name:'useLayoutEffect',
+                        path:'/useLayoutEffect'
+                    },
+                    {
+                        name:'自定义hooks',
+                        path:'/customHooks'
                     }
                 ]
             },

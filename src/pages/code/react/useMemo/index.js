@@ -16,8 +16,8 @@ const MemoChildList = useMemo(() => <ChildList list={props.list} />, [
   5: `优点: 对组件有一定程度的优化 ，不需要再父组件每次更新的时候重新计算，只要在依赖项发生变化的时候计算即可`,
 
 }
-export default function UseMomo() {
+export default function UseMemo() {
   return (
-    <Body title={"useMomo"} data={data} />
+    <Body title={"useMemo"} data={data} />
   )
 }

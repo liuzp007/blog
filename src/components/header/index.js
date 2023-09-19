@@ -1,5 +1,6 @@
 import { Tooltip } from 'antd';
 import React, { useEffect, useState } from 'react'
+import Vinyl from '../vinyl'
 import './index.scss'
 
 function setCanvas(id, x = 30, y = 80) {
@@ -71,12 +72,13 @@ export default function Header({ history }) {
     history.push('/')
   }
   return (
-    <div className={'headerWarp'}>
+    <div className={'headerWrap'}>
       <div className='header'>
         <div className='logo' >
-         <Tooltip title={'TO home'} placement="right" >
+          <Vinyl className='spanbg'/>
+         {/* <Tooltip title={'TO home'} placement="right" >
          <span className='spanbg' onClick={toHome}>这是一个logo</span>
-         </Tooltip>
+         </Tooltip> */}
           {/* <canvas id='canvas1'>
           </canvas>
           <canvas id='canvas2'>

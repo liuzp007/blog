@@ -70,7 +70,7 @@ export default function Main(props) {
     <div className={'mainWrap'}>
       <Header {...props}/>
       <div className={'mainContent'}>
-        <Layout className='layoutWarp'>
+        <Layout className='layoutWrap'>
           <Sider trigger={null} collapsible collapsed={false}>
             <Menu
               onClick={handleClick}
@@ -108,7 +108,7 @@ export default function Main(props) {
             </Menu>
           </Sider>
           <Layout>
-            <Content className="warpheight" id={'contentID'} /* style={{ minHeight: ' calc(100vh - 141px)', minWidth: '920px' }} */>
+            <Content className="wrapheight" id={'contentID'} /* style={{ minHeight: ' calc(100vh - 141px)', minWidth: '920px' }} */>
               <ScrollToTops>
               <RouterView routers={props.routers}></RouterView>
               </ScrollToTops>
