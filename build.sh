@@ -3,51 +3,23 @@
 
 if ! [ -x "$(command -v yarn)" ]; then
     echo 'Error: yarn is not installed. install yarn...' >&2
-    npm install -g yarn 
+    npm install -g yarn
 fi
-# function make_output() {
-#     local build="build"
 
-#         if [ -d $build ];then
-#            (
-#         # 拷贝build目录下的文件备份
-#         cp -rf ./build/*/ &&
+# 执行构建或打包命令（例如，使用 npm）
+npm run build
 
-#         mv ${build} ${build}.old &&
+# 提交所有修改到 Git 仓库
+git add .
 
-#         echo -e "===== Generate build.old ok ====="
-#         ) || {
+# 提取传递给脚本的第一个参数作为提交消息（如果未提供参数，则使用默认消息）
+commit_message="$1"
+if [ -z "$commit_message" ]; then
+  commit_message="Automated build and push"
+fi
 
-#         # 填充output目录失败后, 退出码为 非0
-#          echo -e "=====Generate build.old failure ====="; exit 2;
-#          }
-#         rm -rf $build
-#         local ret=$?
-#         if [ $ret -ne 0 ];then
-#             echo "====== Remove $build failure ======"
-#             exit $ret
-#         else
-#             echo "====== Remove $build success ======"
-#         # 打包
-#          yarn build
-#             echo "======  yarn build success ======"
-#         fi
-#         else
-#              echo "====== not find build  ======"
-#         # 打包
-#         yarn build
-#             echo "======  yarn build success ======"
+# 提交代码并添加提交消息
+git commit -m "feat: $commit_message"
 
-#         fi
-   
-# }
-# make_output
-
-# yarn install
-#  yarn run build 
-
-function runBuild (){
-   
-    yarn run build
-}
-runBuild
+# 推送到远程仓库（修改为你的远程仓库地址和分支）
+git push origin master
