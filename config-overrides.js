@@ -7,7 +7,7 @@ const {
   addDecoratorsLegacy,
   adjustStyleLoaders,
   addWebpackAlias,
-  fixBabelImports 
+  fixBabelImports
 } = require("customize-cra");
 module.exports = override(
   fixBabelImports("import", {
@@ -33,8 +33,9 @@ module.exports = override(
     }
   }),
   (config) => {
-    if ((process && process?.env.NODE_ENV === "production") || true) {
-      config.devtool = false;
+    const isProduction = process?.env.NODE_ENV === "production"
+    config.devtool = isProduction ? "nosources-source-map" : "source-map";
+    if (isProduction) {
       // config.plugins.push(new BundleAnalyzerPlugin()); // 打包之后 包分析器插件
       config.externals = {
         React: "react",

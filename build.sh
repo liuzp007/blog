@@ -9,6 +9,7 @@ fi
 # 执行构建或打包命令（例如，使用 npm）
 npm run build
 
+git pull
 # 提交所有修改到 Git 仓库
 git add .
 

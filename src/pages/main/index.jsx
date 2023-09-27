@@ -57,7 +57,7 @@ let ScrollToTops =  withRouter(ScrollToTop);
 export default function Main(props) {
   const [menu, setMenu] = useState([])
   useEffect(() => {
-    game()
+    // game()
     getMenu().then((res) => {
       setMenu(res)
     })
@@ -96,9 +96,8 @@ export default function Main(props) {
                     </SubMenu>
                   }
                   return  children ?   <SubMenu key={path} title={name} >
-                    {children.map((item) => {
-                      return <Menu.Item key="11">Option 11</Menu.Item>
-
+                    {children.map((item,index) => {
+                      return <Menu.Item key={item.path}>{item.name}</Menu.Item>
                     })}
                   </SubMenu> :
                     <Menu.Item key={path}>{name}</Menu.Item>

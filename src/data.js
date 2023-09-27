@@ -5,7 +5,7 @@ export const Menu = [
         comparison: [
             {
                 name: 'react 原理',
-                path: '/theory',
+                path: '/react',
                 list: [
                     {
                         name:'渲染原理',
@@ -23,7 +23,7 @@ export const Menu = [
             },
             {
                 name: '类式',
-                path: '/class',
+                path: '/react',
                 list: [
                     {
                         name:'componentWillMount',
@@ -33,16 +33,20 @@ export const Menu = [
                         name:'render',
                         path:'/render'
                     },
-                    
+
                     {
                         name:'componentDidMount',
                         path:'/didMount'
+                    },
+                    {
+                        name:'Memo',
+                        path:'/memo'
                     }
                 ]
             },
             {
                 name: '函数式',
-                path: '/function',
+                path: '/react',
                 list:[
                     {
                         name:'useEffect',
@@ -79,11 +83,7 @@ export const Menu = [
                 ]
             },
         ],
-        children:[{
-            name:'11111111111111',
-            path:'/??'
-        }]
-       
+
     },
     {
         name: 'Vue',
@@ -93,23 +93,29 @@ export const Menu = [
                 name: 'vue x2',
                 path: '/vuex2',
                 list: [
-                 
+
                 ]
             },
             {
                 name: 'vue x3',
                 path: '/vuex3',
                 list: [
-                 
+
                 ]
             },
-            
- 
+
+
         ]
     },
     {
         name: 'webpack',
-        path: '/webpack'
+        path: '/webpack',
+        children:[
+            {
+                name:'起源',
+                path:'/webpack'
+            }
+        ]
     },
     {
         name: 'Git',
