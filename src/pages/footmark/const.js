@@ -1,6 +1,6 @@
 import sunImg from "./img/sun.jpg"; //太阳
 import mercuryImg from "./img/mercury.jpg"; //水星
-import venusImg from "./img/venus.jpg"; //金星
+import venusImg from "./img/venus.png"; //金星
 import earthImg from "./img/earth.jpg"; //地球
 import marsImg from "./img/mars.jpg"; //火星
 import jupiterImg from "./img/jupiter.jpg"; //木星

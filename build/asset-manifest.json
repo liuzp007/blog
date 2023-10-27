@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "./static/css/main.f880f5d7.css",
-    "main.js": "./static/js/main.2a454dbf.js",
+    "main.js": "./static/js/main.e80619be.js",
     "static/css/703.f68f2ac6.chunk.css": "./static/css/703.f68f2ac6.chunk.css",
     "static/js/703.64559414.chunk.js": "./static/js/703.64559414.chunk.js",
     "static/css/901.f68f2ac6.chunk.css": "./static/css/901.f68f2ac6.chunk.css",
@@ -26,12 +26,12 @@
     "static/media/earth.jpg": "./static/media/earth.5b0816d3a395a7fd7cf0.jpg",
     "static/media/eris.jpg": "./static/media/eris.8f08d66e596d0c888412.jpg",
     "static/media/makemake.jpg": "./static/media/makemake.0a47bbc5c4c8c720a51e.jpg",
+    "static/media/venus.png": "./static/media/venus.bf65522b0e5517ef1478.png",
     "static/media/haumea.jpg": "./static/media/haumea.ae75469c49a7f3cabf86.jpg",
     "static/media/universe.jpg": "./static/media/universe.f14eb947d32d231862d6.jpg",
     "static/media/earthClouds.jpg": "./static/media/earthClouds.b4bfcac1cd7376e68036.jpg",
     "static/media/moon.jpg": "./static/media/moon.520ccf616d25dfabc20f.jpg",
     "static/media/mercury.jpg": "./static/media/mercury.9ada9b276a25154cbb35.jpg",
-    "static/media/venus.jpg": "./static/media/venus.aa3a8d47ddd181c66509.jpg",
     "static/media/sun.jpg": "./static/media/sun.1de06c9476127a442f10.jpg",
     "static/media/mars.jpg": "./static/media/mars.55c57a8d0d3ec7ab6fdc.jpg",
     "static/media/jupiter.jpg": "./static/media/jupiter.47170d53648ea15cf80b.jpg",
@@ -44,7 +44,7 @@
     "static/media/neptune.jpg": "./static/media/neptune.55dd1c80c4dd3196401e.jpg",
     "index.html": "./index.html",
     "main.f880f5d7.css.map": "./static/css/main.f880f5d7.css.map",
-    "main.2a454dbf.js.map": "./static/js/main.2a454dbf.js.map",
+    "main.e80619be.js.map": "./static/js/main.e80619be.js.map",
     "703.f68f2ac6.chunk.css.map": "./static/css/703.f68f2ac6.chunk.css.map",
     "703.64559414.chunk.js.map": "./static/js/703.64559414.chunk.js.map",
     "901.f68f2ac6.chunk.css.map": "./static/css/901.f68f2ac6.chunk.css.map",
@@ -58,6 +58,6 @@
   },
   "entrypoints": [
     "static/css/main.f880f5d7.css",
-    "static/js/main.2a454dbf.js"
+    "static/js/main.e80619be.js"
   ]
 }
