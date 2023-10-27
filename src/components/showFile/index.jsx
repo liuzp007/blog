@@ -1,11 +1,10 @@
 import React, { useRef, useState, forwardRef } from "react";
-import { Icon, Spin, Tooltip, Input, InputNumber } from 'antd';
 import { Document, Page, pdfjs } from "react-pdf";
 import Loading from "../loading";
 import './index.scss'
-pdfjs.GlobalWorkerOptions.workerSrc = `http://cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
+pdfjs.GlobalWorkerOptions.workerSrc = `${window.location.protocol}//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 
-const PdfWrapper = forwardRef(({ src }, ref) => {
+const PdfWrapper = forwardRef(({ src }) => {
     const [page, setPage] = useState(0);
     const [pageNumber, setPageNumber] = useState(1);
     const [pageNumberText, setPageNumberText] = useState(2);
@@ -17,16 +16,6 @@ const PdfWrapper = forwardRef(({ src }, ref) => {
     const pdfRef = useRef();
     const onDocumentLoadSuccess = e => {
         setPage(e._pdfInfo.numPages);
-    };
-    const changeScalcnum = num => {
-        // if (pdfRef.current.timer) return;
-        // pdfRef.current.timer = setTimeout(() => {
-        //     clearTimeout(pdfRef.current.timer);
-        //     pdfRef.current.timer = null;
-        // }, 1000);
-        if (num < 1.5 && num > 0.5) {
-            setScalcnum(num);
-        }
     };
     const pageFullscreen = () => {
         if (fullscreen) {
