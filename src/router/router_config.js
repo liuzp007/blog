@@ -39,6 +39,11 @@ let router_config = [
     exact: true,
   },
   {
+    name:'home',
+    path:'/home',
+    component:result.Home
+  },
+  {
     name: "main",
     path: "/main",
     component: result.Main,
@@ -55,11 +60,15 @@ let router_config = [
     component: result.Resume,
   },
   {
-    name: "简历",
+    name: "规范",
     path: "/standard",
     component: result.Standard,
   },
-
+  {
+    name:'足迹',
+    path:'/footmark',
+    component:result.Footmark
+  },
   {
     name: 404,
     path: "/404",

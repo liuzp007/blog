@@ -1,249 +1,140 @@
 .HomeWrap {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100vw;
-    height: 100vh;
-    background-color: $backgroundCOlor;
-    @include bgImg;
-    flex-wrap: wrap;
-    flex-direction: column;
-    user-select: none;
-    min-width: 1024px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background-color: $backgroundCOlor;
+  @include bgImg;
+  flex-wrap: wrap;
+  flex-direction: column;
+  user-select: none;
+  min-width: 1024px;
 
-    >.title {
-        font-size: 18px;
-        color: $setColor;
-        margin-bottom: 20px;
-        cursor:url(../../assets/img/cursor.png), pointer;;
-        #myMusic {
-            visibility: hidden;
-            position: fixed;
-            top: -1000px;
-        }
+  > .title {
+    font-size: 18px;
+    color: $setColor;
+    margin-bottom: 20px;
+    cursor: url(../../assets/img/cursor.png), pointer;
+    #myMusic {
+      visibility: hidden;
+      position: fixed;
+      top: -1000px;
+    }
+  }
+
+  .titleStyle {
+    // margin: 200px auto;
+    // width: 1000px;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 16px;
+    color: rgba($color: $setColor, $alpha: 0.46);
+    span {
+      animation: shan 2.6s linear infinite;
+      text-transform: uppercase;
+      display: inline-block;
+      margin-right: 6px;
     }
 
-    .titleStyle {
-
-        // margin: 200px auto;
-        // width: 1000px;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        font-size: 16px;
-        color: rgba($color: $setColor, $alpha: .46);
-        span {
-            animation: shan 2.6s linear infinite;
-            text-transform: uppercase;
-            display: inline-block;
-            margin-right: 6px;
-          
-        }
-
-        span:nth-child(1) {
-            animation-delay: 0s;
-        }
-
-        span:nth-child(2) {
-            animation-delay: .4s;
-        }
-
-        span:nth-child(3) {
-            animation-delay: .8s;
-        }
-
-        span:nth-child(4) {
-            animation-delay: 1.2s;
-        }
-
-        span:nth-child(5) {
-            animation-delay: 1.6s;
-        }
-
-        span:nth-child(6) {
-            animation-delay: 2s;
-        }
-
-        span:nth-child(7) {
-            animation-delay: 2.4s;
-        }
-
-        span:nth-child(9) {
-            animation-delay: 2.8s;
-        }
-
-        span:nth-child(10) {
-            animation-delay: 3.2s;
-        }
-        span:nth-child(12) {
-            animation-delay: 3.6s;
-        }
-        span:nth-child(13) {
-            animation-delay: 4.0s;
-        }
-        span:nth-child(14) {
-            animation-delay: 4.4s;
-        }
-        span:nth-child(15) {
-            animation-delay: 4.8s;
-        }
-        span:nth-child(16) {
-            animation-delay: 5.2s;
-        }
-
-        @keyframes shan {
-
-            0%{
-                color: rgb(168, 167, 167);
-            }
-            100% {
-                color: white;
-                text-shadow: 0 0 4px pink,
-                    0 0 10px pink,
-                    0 0 20px pink,
-                    0 0 30px pink,
-                    0 0 40px pink,
-                    0 0 50px pink,
-                    0 0 60px pink,
-                    0 0 70px pink,
-                    0 0 80px pink,
-                    0 0 90px pink,
-                    0 0 100px pink;
-            }
-
-            30%,
-            90% {
-                color: transparent;
-                text-shadow: none;
-            }
-        }
-
+    span:nth-child(1) {
+      animation-delay: 0s;
     }
 
-    >.toggle {
-        width: 100px;
-        height: 100px;
-        position: fixed;
-        left: 0;
-        top: 0;
+    span:nth-child(2) {
+      animation-delay: 0.4s;
+    }
+
+    span:nth-child(3) {
+      animation-delay: 0.8s;
+    }
+
+    span:nth-child(4) {
+      animation-delay: 1.2s;
+    }
+
+    span:nth-child(5) {
+      animation-delay: 1.6s;
+    }
+
+    span:nth-child(6) {
+      animation-delay: 2s;
+    }
+
+    span:nth-child(7) {
+      animation-delay: 2.4s;
+    }
+
+    span:nth-child(9) {
+      animation-delay: 2.8s;
+    }
+
+    span:nth-child(10) {
+      animation-delay: 3.2s;
+    }
+    span:nth-child(12) {
+      animation-delay: 3.6s;
+    }
+    span:nth-child(13) {
+      animation-delay: 4s;
+    }
+    span:nth-child(14) {
+      animation-delay: 4.4s;
+    }
+    span:nth-child(15) {
+      animation-delay: 4.8s;
+    }
+    span:nth-child(16) {
+      animation-delay: 5.2s;
+    }
+
+    @keyframes shan {
+      0% {
+        color: rgb(168, 167, 167);
+      }
+      100% {
+        color: white;
+        text-shadow: 0 0 4px pink, 0 0 10px pink, 0 0 20px pink, 0 0 30px pink,
+          0 0 40px pink, 0 0 50px pink, 0 0 60px pink, 0 0 70px pink,
+          0 0 80px pink, 0 0 90px pink, 0 0 100px pink;
+      }
+
+      30%,
+      90% {
+        color: transparent;
+        text-shadow: none;
+      }
+    }
+  }
+
+  > div:nth-of-type(2) {
+    transform-style: flat;
+    > div {
+      transform-style: flat;
+    }
+  }
+
+  > canvas {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+  .toggle {
+    position: absolute;
+    left: 0;
+    top: 20px;
+    z-index: 2;
+    >div{
         display: flex;
-        justify-content: center;
-        align-items: center;
-
-        >.toggle_body {
-            // margin: 38px;
-            width: 24px;
-            height: 24px;
-            display: flex;
-            justify-content: space-evenly;
-            align-items: center;
-            flex-wrap: wrap;
-            cursor: pointer;
-            transition: all 0.4s line;
-            // transform:scale(0,0);
-            >div {
-                width: 4px;
-                height: 4px;
-                background-color: #FFF;
-
-                &:not(&:nth-of-type(3n)) {
-                    margin-right: 3px;
-                }
-            }
-        }
-
-        >.showModalAndToggleBody {
-            width: 15px;
-            height: 15px;
-
-            >div {
-                &:not(&:nth-of-type(3n)) {
-                    margin-right: 0;
-                }
-            }
+        margin-bottom: 18px;
+        font-size: 18px;
+        color: #F5f6f7;
+        cursor: pointer;
+        height: 32px;
+        line-height: 32px;
+        svg{
+            height: 16px;
+            fill:#F5f6f7
         }
     }
-    >div:nth-of-type(2){
-        transform-style: flat;
-       >div{
-        transform-style: flat;
-
-       }
-    }
-    .ant-modal-mask{
-        @include bgImg;
-    }
-    .showModalBox {
-       width: 100vw;
-       height: 100%;
-        position: absolute;
-        .ant-modal-content {
-            // width: 120%;
-            // background-color: rgba($color: #000000, $alpha: .76);
-            @include bgImg;
-            .modalCenter {
-                width: 100%;
-                // background-color: red;
-                // display: grid;
-                // justify-content: space-evenly;
-                // align-items: center;
-                // // flex-wrap: wrap;
-                // grid-template-columns: repeat(3,1fr);
-                // grid-template-rows: repeat(3,33%);
-                // gap: 30px;
-                cursor: pointer;
-                >div {
-                    text-align: center;
-                    // margin-bottom: 55px;
-                    border: 1px solid $setColor;
-                    border-color: rgba($color: $setColor, $alpha: .46);
-                    border-radius: 7px;
-                    // width: 158px;
-                    height: 42px;
-                    // height: 158px;
-                    // line-height: 175px;
-                    line-height: 42px;
-                    position: relative;
-                    overflow: hidden;
-                    margin-bottom: 12px;
-                    >svg {
-                        fill: rgba($color: #FFF, $alpha: .9);
-                        width: 20px;
-                        height: 20px;
-                        opacity: 1;
-                        transition: .55s cubic-bezier(0.190, 1.000, 0.220, 1.000) 0s, .45s ease-in-out 0s;
-
-                    }
-
-                    &>.after {
-                        display: block;
-                        width: 100%;
-                        height: 0;
-                        background-color: rgba(70, 37, 95, 0.5);
-                        position: absolute;
-                        left: 0;
-                        bottom: 0;
-                        transition: .25s cubic-bezier(0.190, 1.000, 0.220, 1.000) 0s, .45s ease-in-out 0s;
-                        border-radius: 7px;
-                        color: $setColor;
-                    }
-
-                    &:not(&:nth-of-type(3n)) {
-                        // margin-right: 145px;
-                        // margin-right: 5%;
-                    }
-
-                    &:hover {
-                        &>.after {
-                            height: 100%;
-                        }
-
-                        >svg {
-                            opacity: 0;
-                        }
-                    }
-                }
-
-            }
-        }
-    }
-
+  }
 }
