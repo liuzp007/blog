@@ -16,6 +16,9 @@
     color: $setColor;
     margin-bottom: 20px;
     cursor: url(../../assets/img/cursor.png), pointer;
+    >span{
+      letter-spacing: 2px;
+    }
     #myMusic {
       visibility: hidden;
       position: fixed;
