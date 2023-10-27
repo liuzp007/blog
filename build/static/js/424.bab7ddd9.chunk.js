@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkappa=self.webpackChunkappa||[]).push([[424],{4424:function(a,e,p){a.exports=p.p+"static/media/makemake.0a47bbc5c4c8c720a51e.jpg"}}]);

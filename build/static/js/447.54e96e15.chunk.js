@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkappa=self.webpackChunkappa||[]).push([[447],{7447:function(e,p,a){e.exports=a.p+"static/media/ceres.e1131835256c79ff7d72.jpg"}}]);

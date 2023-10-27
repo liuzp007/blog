@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkappa=self.webpackChunkappa||[]).push([[452],{452:function(p,e,a){p.exports=a.p+"static/media/eris.8f08d66e596d0c888412.jpg"}}]);
