@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Great Big Nothing</title>
+    <meta name="title" content="Great Big Nothing" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="Description" content="You're dead." />
+    <meta name="viewport" content="initial-scale=0.6 user-scalable=no" />
+
+    <meta property="og:title" content="Great Big Nothing" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://greatbignothing.com" />
+    <meta property="og:image" content="https://greatbignothing.com/icon.png" />
+    <meta property="og:description" content="" />
+    <meta property="og:site_name" content="Great Big Nothing" />
+
+    <link rel="shortcut icon" href="https://greatbignothing.com/favicon.ico">
+    <link rel="image_src" href="https://greatbignothing.com/gb.gif">
+    <link rel="image_src" href="icon.png" />
+
+    <title>Great Big Nothing</title>
+    <style>
+        html,
+        body,
+        div,
+        span,
+        applet,
+        object,
+        iframe,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        p,
+        blockquote,
+        pre,
+        a,
+        abbr,
+        acronym,
+        address,
+        big,
+        cite,
+        code,
+        del,
+        dfn,
+        em,
+        font,
+        img,
+        ins,
+        kbd,
+        q,
+        s,
+        samp,
+        small,
+        strike,
+        strong,
+        sub,
+        sup,
+        tt,
+        var,
+        dl,
+        dt,
+        dd,
+        ol,
+        ul,
+        li,
+        fieldset,
+        form,
+        label,
+        legend,
+        table,
+        caption,
+        tbody,
+        tfoot,
+        thead,
+        tr,
+        th,
+        td {
+            margin: 0;
+            padding: 0;
+            border: 0;
+            outline: 0;
+            font-weight: inherit;
+            font-style: inherit;
+            font-size: 100%;
+            font-family: inherit;
+            vertical-align: baseline;
+        }
+
+        html {
+            min-width: 320px;
+        }
+
+
+
+
+        body {
+
+            margin: 0;
+            padding: 0;
+        }
+
+        .animated {
+            -webkit-animation-duration: 3s;
+            animation-duration: 3s;
+            -webkit-animation-fill-mode: both;
+            animation-fill-mode: both;
+        }
+
+
+        .fadeOut {
+            -webkit-animation-name: fadeOut;
+            animation-name: fadeOut;
+        }
+
+
+        #pagez {
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            position: fixed;
+            background-color: rgba(255, 255, 255, 1);
+            z-index: 5000;
+        }
+
+
+        #screen {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            -webkit-animation: pulse 240s infinite alternate;
+            -moz-animation: pulse 240s infinite alternate;
+            -ms-animation: pulse 240s infinite alternate;
+            -animation: pulse 240s infinite alternate;
+        }
+
+        /*--------------------------------------------------
+				COLOR CHANGE
+---------------------------------------------------*/
+
+        @-webkit-keyframes pulse {
+            0% {
+                background-color: #cbeff8;
+            }
+
+            20% {
+                background-color: #a9fbd9;
+            }
+
+            40% {
+                background-color: #f4f8cb;
+            }
+
+            60% {
+                background-color: #f8decb;
+            }
+
+            80% {
+                background-color: #f8cbdd;
+            }
+
+            90% {
+                background-color: #e1cbf8;
+            }
+
+            100% {
+                background-color: #cbeff8;
+            }
+        }
+
+        @-moz-keyframes pulse {
+            0% {
+                background-color: #cbeff8;
+            }
+
+            20% {
+                background-color: #a9fbd9;
+            }
+
+            40% {
+                background-color: #f4f8cb;
+            }
+
+            60% {
+                background-color: #f8decb;
+            }
+
+            80% {
+                background-color: #f8cbdd;
+            }
+
+            90% {
+                background-color: #e1cbf8;
+            }
+
+            100% {
+                background-color: #cbeff8;
+            }
+        }
+
+        @-ms-keyframes pulse {
+            0% {
+                background-color: #cbeff8;
+            }
+
+            20% {
+                background-color: #a9fbd9;
+            }
+
+            40% {
+                background-color: #f4f8cb;
+            }
+
+            60% {
+                background-color: #f8decb;
+            }
+
+            80% {
+                background-color: #f8cbdd;
+            }
+
+            90% {
+                background-color: #e1cbf8;
+            }
+
+            100% {
+                background-color: #cbeff8;
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                background-color: #cbeff8;
+            }
+
+            20% {
+                background-color: #a9fbd9;
+            }
+
+            40% {
+                background-color: #f4f8cb;
+            }
+
+            60% {
+                background-color: #f8decb;
+            }
+
+            80% {
+                background-color: #f8cbdd;
+            }
+
+            90% {
+                background-color: #e1cbf8;
+            }
+
+            100% {
+                background-color: #cbeff8;
+            }
+        }
+
+
+        /*--------------------------------------------------
+				FADE OUT
+---------------------------------------------------*/
+
+        @-webkit-keyframes fadeOut {
+            0% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+            }
+        }
+
+        @keyframes fadeOut {
+            0% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+            }
+        }
+    </style>
+
+
+
+
+
+</head>
+
+<body>
+    <div id="pagez" class="animated fadeOut"></div>
+
+    <div id="screen"> </div>
+
+    <script>
+
+        // Great Big Nothing, 2013 // Tara Sinn // tara-sinn.com
+        // http://www.greatbignothing.com
+
+        var numclouds = 25, dist = 100, cloudimg = "imgs/cloud.png", cloudwid = 200, cloudhei = 113, speed = 0.55, spin = 0.002;
+        cloudimg = 'https://greatbignothing.com/icon.png'
+        var cloud = new Array(), moz = (document.getElementById && !document.all) ? 1 : 0;
+        function newCloud(x) { cloud[x] = new Array(0, Math.random() * (2 * Math.PI), Math.random() * (dist / 4)); }
+        function cloudsT() {
+            winWid = (moz) ? window.innerWidth : document.body.clientWidth;
+            winHei = (moz) ? window.innerHeight : document.body.clientHeight;
+            zero = (moz) ? window.pageYOffset : document.body.scrollTop;
+            for (n = 0; n < numclouds; n++) {
+                if (cloud.length < numclouds) { newCloud(n); document.write('<img id="cloud' + n + '" src="' + cloudimg + '" style="position:absolute;">'); }
+                cloud[n][0] += speed; cloud[n][1] += spin;
+                yp = (winHei / 2) + (cloud[n][0] * (Math.sin(cloud[n][1]) * cloud[n][2]));
+                xp = (winWid / 2) + (cloud[n][0] * (Math.cos(cloud[n][1]) * cloud[n][2]));
+                if ((cloud[n][0] >= dist) || (xp >= (winWid - cloudwid)) || (yp >= (winHei - cloudhei)) || (xp <= 0) || (yp <= 0)) { newCloud(n); }
+                with (eval("document.getElementById('cloud'+n).style")) {
+                    top = yp + zero;
+                    left = xp;
+                    height = parseInt((cloudhei / dist) * cloud[n][0]) + "px";
+                    width = parseInt((cloudwid / dist) * cloud[n][0]) + "px";
+                }
+            }
+            moving = setTimeout('cloudsT()', 30);
+        }
+        cloudsT();
+    </script>
+    <script type="text/javascript">
+
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-37969269-1']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+
+    </script>
+
+</body>
+
+</html>
