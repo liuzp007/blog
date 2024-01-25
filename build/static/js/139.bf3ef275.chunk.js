@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkappa=self.webpackChunkappa||[]).push([[139],{9139:function(a,p,s){a.exports=s.p+"static/media/icon.f22508915461a3657775.svg"}}]);

@@ -1,11 +1,10 @@
 import React, { Component } from "react";
-import { HashRouter } from "react-router-dom";
+import { HashRouter,withRouter } from "react-router-dom";
 import RouterView from "./router/router_view";
 import { message } from "antd";
 import routers from "./router/router_config";
 import resetAntd from "./config/antd_global";
 import createName from "./utils/createName";
-import {clockCursor} from './clock'
 window.$$create = createName;
 
 message.config({
@@ -14,10 +13,7 @@ message.config({
   maxCount: 3, // 最大显示数, 超过限制时，最早的消息会被自动关闭
 });
 class App extends Component {
-  componentDidMount() {
-    // new emojiCursor();
-    clockCursor()
-  }
+
   render() {
     return (
       <HashRouter>

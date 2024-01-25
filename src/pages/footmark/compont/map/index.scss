@@ -1,4 +1,59 @@
-.map-wrap{
-    width: 100vw;
-    height: 100vh;
+.container {
+  padding: 0px;
+  margin: 0px;
+  width: 100%;
+}
+.footmark {
+  position: relative;
+  .custom-content-marker {
+    > img {
+      width: 20px;
+      height: 20px;
+    }
+  }
+}
+.input-card {
+  display: flex;
+  flex-direction: column;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border-radius: 0.25rem;
+  width: 14rem;
+  border-width: 0;
+  box-shadow: 0 2px 6px 0 rgba(114, 124, 245, 0.5);
+  position: fixed;
+  top: 0.4rem;
+  left: 0.4rem;
+
+  padding: 0.75rem 1.25rem;
+  .ant-card-body {
+    padding: 0;
+    .ant-radio-group {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.5rem;
+    }
+  }
+}
+.input-card-input-card {
+  width: 14rem;
+  position: fixed;
+  bottom: 7rem !important;
+  right: 2rem !important;
+  background-color: #fff;
+  background-clip: border-box;
+  border-radius: 0.25rem;
+  padding: 0.5rem;
+  >h4{
+    font-size: 1rem;
+    text-align: center;
+    font-weight: 600;
+    margin-bottom: 0.4rem;
+  }
+  > .btns {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
+  }
 }

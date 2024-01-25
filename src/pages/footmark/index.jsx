@@ -16,6 +16,7 @@ function Footmark() {
     setShowCloud(false);
     setMap(true);
   };
+
   return (
     <div className="footmark">
       {showSolar ? <SolarSystem callBack={solarToCloud} /> : ""}

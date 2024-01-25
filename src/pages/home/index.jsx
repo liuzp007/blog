@@ -3,6 +3,8 @@ import { message, Modal, notification, Tooltip } from "antd";
 import { Particles } from "react-tsparticles";
 import { loadFull } from "tsparticles";
 import ParticleButton from "react-particle-effect-button";
+import {clockCursor} from '../../components/clock'
+
 // import clickEffect from "@/components/setMouse";
 import ICON from "./svg";
 import "./index.scss";
@@ -172,7 +174,10 @@ export default function Home({ history }) {
   const [, setStart] = useState(true);
   const [particleButtonHidden, setParticleButtonHidden] = useState(false);
   useEffect(() => {
+    const clock =  clockCursor()
+
     return () => {
+      clock.destroy()
     };
   }, []);
 

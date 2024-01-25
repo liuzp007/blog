@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkappa=self.webpackChunkappa||[]).push([[4],{8004:function(a,p,c){a.exports=c.p+"static/media/locationIcon.c716a1b6e5a43b517687.svg"}}]);
