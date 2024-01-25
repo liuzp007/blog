@@ -1,9 +1,28 @@
 .container {
-    height: 100vh;
-    width: 100vw;
-    position: relative;
-    #planetDiv {
-      height: 100%;
-      width: 100%;
-    }
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+  #planetDiv {
+    height: 100%;
+    width: 100%;
   }
+  .click-title {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    color: #f5f6f7;
+    font-size: 1rem;
+  }
+}
+.click-title {
+  animation: neon 1.5s infinite alternate;
+}
+@keyframes neon {
+  0% {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #ff00e5
+    0px #ff00e5, 0 0 70px #ff00e5, 0 0 80px #ff00e5, 0 0 100px #ff00e5;
+  }
+  100% {
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #ff00e5, 0 0 20px #ff00e5, 0 0 35px #ff00e5, 0 0 40px #ff00e5, 0 0 50px #ff00e5;
+  }
+}

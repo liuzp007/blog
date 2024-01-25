@@ -588,6 +588,7 @@ function Footmark(props) {
   return (
     <div className="container">
       <div id="planetDiv" ref={planetDivRef}></div>
+      <div className="click-title">双击地球</div>
     </div>
   );
 }
