@@ -2,694 +2,761 @@
 <html>
 
 <head>
-  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
-  <meta name="viewport" content="user-scalable=no">
+  <title>趣味自拍相机 Pro</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    html,
-    body {
-      width: 100%;
-      height: 100%;
+    /* 全局样式优化 */
+    * {
       margin: 0;
       padding: 0;
-      background-color: #03061A;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary-color: #6366f1;
+      --secondary-color: #8b5cf6;
+      --text-color: #1f2937;
+      --bg-color: #f5f7fa;
+      --border-radius: 16px;
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background: linear-gradient(135deg, var(--bg-color) 0%, #c3cfe2 100%);
+      min-height: 100vh;
+      color: var(--text-color);
+    }
+
+    .container {
+      text-align: center;
+      padding: 20px;
+      max-width: 1400px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    /* 相机预览区域优化 */
+    .camera-container {
+      position: relative;
+      margin: 20px auto;
+      border-radius: var(--border-radius);
+      overflow: hidden;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+      background: #fff;
+      padding: 25px;
+      transition: var(--transition);
+    }
+
+    #video,
+    #canvas {
+      width: 100%;
+      max-width: 1000px;
+      margin: 0 auto;
+      border-radius: calc(var(--border-radius) - 4px);
+      transition: var(--transition);
+      object-fit: cover;
+    }
+
+    #canvas {
+      border: 4px solid #fff;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
+    }
+
+    /* 按钮样式优化 */
+    .btn {
+      padding: 16px 32px;
+      font-size: 17px;
+      font-weight: 600;
+      background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+      color: white;
+      border: none;
+      border-radius: 40px;
+      cursor: pointer;
+      margin: 15px;
+      transition: var(--transition);
+      box-shadow: 0 6px 15px rgba(99, 102, 241, 0.25);
       position: relative;
       overflow: hidden;
-      
     }
 
-    .star {
-      width: 3px;
-      height: 3px;
-      border-radius: 50%;
-      position: absolute;
-      background-color: rgba(237, 205, 163, 0.8);
-      box-shadow: 0 0 40px 0 rgba(237, 205, 163, 0.8), 0 0 20px 0 #FFFFFF;
-      animation: glow 5s infinite;
-    }
-
-    .star--medium {
-      width: 6px;
-      height: 6px;
-    }
-
-    .star--big {
-      width: 9px;
-      height: 9px;
-      box-shadow: 0 0 40px 0 #EDCDA3, 0 0 20px 0 #FFFFFF, inset 0 0 4px #FFFFFF;
-    }
-
-    .comet {
-      width: 6px;
-      height: 6px;
-      background-color: rgba(255, 255, 255, 0.6);
-      box-shadow: 0 0 40px 0 #EDCDA3, 0 0 20px 0 #FFFFFF, inset 0 0 8px rgba(255, 255, 255, 0.6);
-      top: 0;
-      left: 80%;
-      opacity: 0.3;
-      transform: rotate(-45deg) translate(0, -50px);
-      animation: comet 6s infinite;
-    }
-
-    .comet:after {
+    .btn::after {
       content: '';
-      width: 20vw;
-      height: 6px;
-      border-radius: 50%;
-      background-color: rgba(255, 255, 255, 0.1);
-      box-shadow: 0 0 20px rgba(237, 205, 163, 0.4);
       position: absolute;
       top: 0;
       left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(45deg, rgba(255, 255, 255, 0.2), transparent);
+      transition: var(--transition);
     }
 
-    @keyframes glow {
+    .btn:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 25px rgba(99, 102, 241, 0.35);
+    }
+
+    .btn:hover::after {
+      transform: translateX(100%);
+    }
+
+    .btn:active {
+      transform: translateY(1px);
+    }
+
+    /* 照片墙容器优化 */
+    .photo-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      perspective: 2000px;
+      z-index: 10;
+    }
+
+    /* 照片项样式优化 */
+    .photo-item {
+      position: absolute;
+      width: 320px;
+      border-radius: calc(var(--border-radius) - 4px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.18);
+      transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+      opacity: 0;
+      animation: fadeIn 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+      cursor: pointer;
+      transform-style: preserve-3d;
+      backface-visibility: hidden;
+      border: 5px solid #fff;
+      pointer-events: auto;
+    }
+
+    .photo-item:hover {
+      transform: scale(1.1) translateZ(40px) rotateY(5deg);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+      z-index: 100 !important;
+    }
+
+    /* 滤镜选项优化 */
+    .filter-options {
+      margin: 30px 0;
+      display: flex;
+      justify-content: center;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .filter-btn {
+      padding: 14px 28px;
+      border: 2.5px solid #e5e7eb;
+      border-radius: 35px;
+      background: white;
+      cursor: pointer;
+      transition: var(--transition);
+      font-weight: 600;
+      font-size: 15px;
+      color: #4b5563;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .filter-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+      opacity: 0;
+      transition: var(--transition);
+      z-index: -1;
+    }
+
+    .filter-btn:hover {
+      background: transparent;
+      color: white;
+      transform: translateY(-3px);
+    }
+
+    .filter-btn:hover::before {
+      opacity: 1;
+    }
+
+    .filter-btn.active {
+      background: var(--primary-color);
+      color: white;
+      border-color: var(--primary-color);
+    }
+
+    /* 倒计时动画优化 */
+    .countdown {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 250px;
+      font-weight: bold;
+      color: white;
+      text-shadow: 0 0 40px rgba(0, 0, 0, 0.35);
+      z-index: 1000;
+      display: none;
+      animation: pulseAndRotate 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) infinite;
+    }
+
+    @keyframes pulseAndRotate {
       0% {
-        opacity: 0.9;
+        transform: translate(-50%, -50%) scale(1) rotate(0deg);
+        opacity: 0.8;
       }
 
       50% {
-        opacity: 0.2;
-      }
-
-      100% {
-        opacity: 0.9;
-      }
-    }
-
-    @keyframes comet {
-      0% {
-        transform: rotate(-45deg) translateX(0);
-        opacity: 0.3;
-      }
-
-      10% {
+        transform: translate(-50%, -50%) scale(1.3) rotate(8deg);
         opacity: 1;
       }
 
-      20% {
-        transform: rotate(-45deg) translateX(-100vw);
-        opacity: 0;
-      }
-
       100% {
-        transform: rotate(-45deg) translateX(-100vw);
-        opacity: 0;
+        transform: translate(-50%, -50%) scale(1) rotate(0deg);
+        opacity: 0.8;
       }
     }
 
-    html,
-    body {
-      margin: 0;
-      padding: 0;
-      overflow: hidden;
-      background-color: black;
-      user-select: none;
-      margin: 0;
-    }
-
-    .city {
-      width: 100%;
+    /* 加载动画优化 */
+    .loading {
       position: fixed;
-      bottom: 0px;
-      z-index: 100;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.9);
+      backdrop-filter: blur(10px);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      color: white;
+      font-size: 26px;
     }
 
-    .tips {
-      z-index: 200;
+    /* 提示框样式优化 */
+    .tooltip {
       position: absolute;
-      right: 1%;
-      bottom: 1%;
-      color: rgba(255, 255, 255, 0.5);
-      font-size: 18px;
+      background: rgba(0, 0, 0, 0.9);
+      color: white;
+      padding: 12px 20px;
+      border-radius: 12px;
+      font-size: 15px;
+      pointer-events: none;
+      transition: var(--transition);
+      z-index: 1000;
+      backdrop-filter: blur(6px);
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
     }
 
-    .city img {
-      width: 100%;
+    /* 响应式优化 */
+    @media (max-width: 768px) {
+      .container {
+        padding: 10px;
+      }
+
+      .btn {
+        padding: 12px 20px;
+        font-size: 14px;
+        margin: 8px;
+      }
+
+      .photo-item {
+        width: 200px;
+      }
+
+      .countdown {
+        font-size: 120px;
+      }
+
+      .filter-options {
+        margin: 15px 0;
+        gap: 10px;
+      }
+
+      .filter-btn {
+        padding: 10px 16px;
+        font-size: 13px;
+      }
+
+      .camera-container {
+        padding: 15px;
+      }
+
+      #video,
+      #canvas {
+        max-width: 100%;
+      }
+
+      .tooltip {
+        padding: 8px 12px;
+        font-size: 13px;
+      }
     }
 
-    audio {
-      opacity: 0;
+    @media (max-width: 480px) {
+      .container {
+        padding: 8px;
+      }
+
+      .btn {
+        padding: 10px 16px;
+        font-size: 13px;
+        margin: 6px;
+      }
+
+      .filter-btn {
+        padding: 8px 14px;
+        font-size: 12px;
+      }
+
+      .photo-item {
+        width: 160px;
+      }
+
+      .countdown {
+        font-size: 100px;
+      }
+
+      .camera-container {
+        padding: 10px;
+        margin: 10px auto;
+      }
+
+      .loading {
+        font-size: 20px;
+      }
     }
 
-    .shape {
-      z-index: 9999 !important;
-    }
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: scale(0.8) translateY(20px);
+      }
 
-    .username {
-      width: 90%;
-      overflow: hidden;
-      position: fixed;
-      left: 50%;
-      top: 40%;
-      transform: translate(-50%, 0);
-      font-size: 100px;
-      z-index: 100;
-      color: #fff;
-      text-align: center;
-      font-family: 'Courier New', Courier, monospace, '微软雅黑';
-      text-shadow: 3px 3px 5px rgba(255, 255, 255, 1);
-}
-.author1{
-    position:fixed;
-    right:20px;
-    bottom:20px;
-    font-size:12px;
-    color:#FFF;
-}
+      to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+      }
+    }
   </style>
-  <title>祝您：2023新年快乐</title>
 </head>
 
-<body onselectstart="return false">
-  <canvas id="cas" style="background-color: rgba(0, 5, 24, 1); z-index: 9999">
-    浏览器不支持canvas
-  </canvas>
-  <div class="username"></div>
-  <!-- <div class="tips">点击屏幕加音效</div> -->
-  <div class="city">
-    <img src="https://production-4gnv3qeqb070546b-1312154413.tcloudbaseapp.com/newyear2/img/city.png" alt="" />
+<body>
+  <div class="container">
+    <div style="position: relative;">
+      <video id="video" autoplay playsinline></video>
+      <canvas id="canvas"></canvas>
+      <div class="countdown" id="countdown"></div>
+    </div>
+    <div class="filter-options">
+      <button class="filter-btn active" data-filter="normal" title="原始效果">正常</button>
+      <button class="filter-btn" data-filter="grayscale" title="黑白滤镜">黑白</button>
+      <button class="filter-btn" data-filter="sepia" title="复古效果">复古</button>
+      <button class="filter-btn" data-filter="invert" title="反色效果">反色</button>
+      <button class="filter-btn" data-filter="blur" title="模糊效果">模糊</button>
+      <button class="filter-btn" data-filter="brightness" title="明亮效果">明亮</button>
+      <button class="filter-btn" data-filter="contrast" title="对比度效果">对比度</button>
+      <button class="filter-btn" data-filter="saturate" title="饱和度效果">饱和度</button>
+    </div>
+    <button id="takePhotoBtn" class="btn">📸 拍照</button>
+    <button id="generateBtn" class="btn" style="display: none;">✨ 生成趣味照片墙</button>
+    <button id="retakeBtn" class="btn" style="display: none;">📸 重新拍照</button>
+    <button id="saveBtn" class="btn" style="display: none;">💾 保存照片</button>
   </div>
-  
+  <div class="photo-container" id="photoContainer"></div>
+
   <script>
-    const query = new URLSearchParams(location.search)
-    const preview = query.get('p')
-    let data = query.get("data");
-    try {
-      data = JSON.parse(decodeURIComponent(data)) || {};
-    } catch (err) {
-      console.log("err", err);
-      data = {};
-    }
-    //data=data
+    window.addEventListener('DOMContentLoaded', () => {
+      const video = document.getElementById('video')
+      const canvas = document.getElementById('canvas')
+      const takePhotoBtn = document.getElementById('takePhotoBtn')
+      const generateBtn = document.getElementById('generateBtn')
+      const retakeBtn = document.getElementById('retakeBtn')
+      const saveBtn = document.getElementById('saveBtn')
+      const photoContainer = document.getElementById('photoContainer')
+      const countdown = document.getElementById('countdown')
+      let currentFilter = 'normal'
+      let isGenerating = false
 
-    const initData = {
-      text: '',
-      textColor: 'ffffff',
-      shapes: [
-        {
-          type: 'text',
-          value: '2023新年快乐'
-        },
-        {
-          type: 'text',
-          value: '🏮恭喜发财🏮'
-        },
-        {
-          type: 'text',
-          value: '🏮万事如意🏮'
-        },
-        {
-          type: 'text',
-          value: '🏮💰🐰无忧🏮'
-        },
-        {
-          type: 'text',
-          value: '🏮🐰然暴富🏮'
-        },
-        {
-          type: 'text',
-          value: '🏮好事成🐰🏮'
-        },
-        {
-          type: 'text',
-          value: '🏮大展宏🐰🏮'
-        },
-      ],
-      imgs: ['https://production-4gnv3qeqb070546b-1312154413.tcloudbaseapp.com/newyear2/img/01.png', 'https://production-4gnv3qeqb070546b-1312154413.tcloudbaseapp.com/newyear2/img/02.png'],
-      bgi: ''
-    }
+      // 检测是否为移动设备
+      const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 
-    const opt = Object.assign({}, initData, data)
+      // 扩展滤镜效果
+      const filters = {
+        normal: '',
+        grayscale: 'grayscale(100%)',
+        sepia: 'sepia(100%)',
+        invert: 'invert(100%)',
+        blur: 'blur(3px)',
+        brightness: 'brightness(130%)',
+        contrast: 'contrast(150%)',
+        saturate: 'saturate(180%)'
+      }
 
-    // greeting转成shapes(String->Array)
-    if (opt.greeting) {
-      opt.shapes = opt.greeting.split(/\n+/).filter(item => item.length > 0)
-    }
+      // 扩展随机文字数组
+      const funnyTexts = [
+        { cn: '你看啥呢', en: 'What are you looking at' },
+        { cn: '我超帅的', en: "I'm so handsome" },
+        { cn: '来张自拍', en: 'Selfie time' },
+        { cn: '笑一个呗', en: 'Smile please' },
+        { cn: '这是什么表情', en: 'What kind of face is this' },
+        { cn: '今天真开心', en: "Today is awesome" },
+        { cn: '打个招呼', en: 'Say hello' },
+        { cn: '记录美好时刻', en: 'Capture the moment' },
+        { cn: '这一刻真美', en: 'Beautiful moment' },
+        { cn: '永远年轻', en: 'Forever young' }
+      ]
 
+      // 显示加载动画
+      function showLoading(message) {
+        const loading = document.createElement('div')
+        loading.className = 'loading'
+        loading.innerHTML = `
+          <div style="text-align: center">
+            <div style="margin-bottom: 15px">${message}</div>
+            <div class="loading-spinner"></div>
+          </div>
+        `
+        document.body.appendChild(loading)
+        return loading
+      }
 
-    // 增加文字出现几率
-    opt.shapes.push(...opt.shapes);
-    opt.shapes = opt.shapes.map(item => {
-      if (typeof item === 'string') {
-        const [name, ext] = item.split('.')
+      // 启动摄像头
+      async function startCamera() {
+        const loading = showLoading('正在启动摄像头...')
+        try {
+          const constraints = {
+            video: {
+              width: { ideal: isMobile ? 1280 : 1920 },
+              height: { ideal: isMobile ? 720 : 1080 },
+              facingMode: isMobile ? "environment" : "user"
+            }
+          }
+          const stream = await navigator.mediaDevices.getUserMedia(constraints)
+          video.srcObject = stream
+
+          video.addEventListener('loadeddata', () => {
+            loading.remove()
+            canvas.style.display = 'none'
+            video.style.display = 'block'
+            takePhotoBtn.style.display = 'inline-block'
+            generateBtn.style.display = 'none'
+            retakeBtn.style.display = 'none'
+            saveBtn.style.display = 'none'
+          })
+
+        } catch (err) {
+          loading.remove()
+          console.error('无法访问摄像头:', err)
+          if (confirm('请允许访问摄像头以继续使用！点击确定重试。')) {
+            startCamera()
+          }
+        }
+      }
+
+      // 增强的倒计时效果
+      function startCountdown() {
+        let count = isMobile ? 2 : 3 // 移动端缩短倒计时
+        countdown.style.display = 'block'
+        countdown.style.opacity = '0'
+
+        const timer = setInterval(() => {
+          countdown.style.opacity = '1'
+          countdown.textContent = count
+          if (count === 0) {
+            clearInterval(timer)
+            countdown.style.display = 'none'
+            takePhoto()
+          }
+          count--
+        }, 1000)
+      }
+
+      // 优化的随机位置生成
+      function getRandomPosition() {
+        const margin = isMobile ? 30 : 60
+        const photoWidth = isMobile ? 160 : 280
         return {
-          type: item.startsWith('data:image') || /png|jpe?g|gif|webp/.test(ext) ? 'image' : 'text',
-          value: item
+          x: margin + Math.random() * (window.innerWidth - photoWidth - margin * 2),
+          y: margin + Math.random() * (window.innerHeight - photoWidth - margin * 2),
+          rotate: (Math.random() - 0.5) * (isMobile ? 25 : 35),
+          scale: isMobile ? (0.7 + Math.random() * 0.3) : (0.85 + Math.random() * 0.4)
         }
       }
-      return item;
-    });
-    console.log('opt', opt)
 
-    // 把imgs写入shapes
-    const imgs = opt.imgs.map((item, idx) => {
-      // if (item.startsWith('http')) {
-      //   var xhr = new XMLHttpRequest();
-      //   xhr.open("GET", item, true);
-      //   xhr.responseType = "arraybuffer";
-      //   xhr.onload = function () {
+      // 增强的照片墙生成效果
+      async function generatePhotos() {
+        if (isGenerating) return;
+        isGenerating = true;
 
-      //     var img = new Blob([new Int8Array(xhr.response)]); 
+        try {
+          if (!canvas.toDataURL) {
+            throw new Error('Canvas not ready');
+          }
 
-      //     // 第二种方法 二进制文件中只包含图片 图片文件转换为base64
-      //     const reader = new FileReader()
-      //     reader.readAsDataURL(img);
-      //     reader.onload = function () {
-      //       imgs[idx].value = reader.result;
-      //       console.log('opt.shapes',opt.shapes)
-      //     }
-      //   }
-      //   xhr.send()
-      // }
-      return { type: 'image', value: item }
-    })
-    // opt.shapes.push(...imgs)
+          const imageUrl = canvas.toDataURL('image/png');
+          if (imageUrl === 'data:,') {
+            throw new Error('Canvas is empty');
+          }
 
-    const $username = document.querySelector('.username');
-    $username.innerHTML = opt.text;
-    $username.style.color = "#" + opt.textColor;
+          photoContainer.innerHTML = '';
 
+          // 使用requestAnimationFrame和Promise来分批创建照片
+          const totalPhotos = isMobile ? 50 : 65;
+          const batchSize = isMobile ? 3 : 5;
+          const batches = Math.ceil(totalPhotos / batchSize);
 
-  </script>
-  <script>
-    var canvas = document.getElementById("cas");
-    var ocas = document.createElement("canvas");
-    var octx = ocas.getContext("2d");
-    var ctx = canvas.getContext("2d");
-    ocas.width = canvas.width = window.innerWidth;
-    ocas.height = canvas.height = window.innerHeight;
-    var bigbooms = [];
-    // const shapes = document.querySelectorAll(".shape")
-    const host = 'https://production-4gnv3qeqb070546b-1312154413.tcloudbaseapp.com/newyear2'
-    const shapes = opt.shapes
-    const boomPlayer = new Audio()
-    const firePlayer = new Audio()
-    boomPlayer.src = host + '/media/boom.mp3'
-    firePlayer.src = host + '/media/fire.mp3'
-    const $bgi = new Image()
-    if (opt.bgi) {
-      $bgi.src = opt.bgi
-    }
+          for (let batch = 0; batch < batches; batch++) {
+            await new Promise(resolve => {
+              requestAnimationFrame(() => {
+                for (let i = 0; i < batchSize; i++) {
+                  const index = batch * batchSize + i;
+                  if (index >= totalPhotos) break;
 
-    window.onload = function () {
-      initAnimate();
-    };
+                  const img = document.createElement('img');
+                  img.src = imageUrl;
+                  img.className = 'photo-item';
+                  const { x, y, rotate, scale } = getRandomPosition();
+                  img.style.left = `${x}px`;
+                  img.style.top = `${y}px`;
+                  img.style.transform = `rotate(${rotate}deg) scale(${scale})`;
+                  img.style.zIndex = Math.floor(Math.random() * 40);
+                  img.style.animationDelay = `${index * (isMobile ? 0.08 : 0.12)}s`;
 
-    // document.getElementById("iframMusic").onload = function () {
-    //   var music = document.getElementById("music");
-    //   music.src = "https://production-4gnv3qeqb070546b-1312154413.tcloudbaseapp.com/heart/bgm/%E7%88%86%E7%AB%B9%E5%A3%B0%E5%A3%B0%E5%93%8D.mp3";
-    //   music.oncanplay = function () {
-    //     // music.play();
-    //   };
-    // };
+                  // 添加触摸/点击事件
+                  if (isMobile) {
+                    img.addEventListener('click', () => {
+                      const modal = document.createElement('div');
+                      Object.assign(modal.style, {
+                        position: 'fixed',
+                        top: '0',
+                        left: '0',
+                        width: '100%',
+                        height: '100%',
+                        background: 'rgba(0,0,0,0.95)',
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        zIndex: '9999'
+                      });
 
-    function initAnimate() {
-      drawBg();
-      lastTime = new Date();
-      animate();
-    }
-    var lastTime;
+                      const modalImg = document.createElement('img');
+                      Object.assign(modalImg.style, {
+                        maxWidth: '95%',
+                        maxHeight: '95%',
+                        borderRadius: '8px',
+                        border: '3px solid white'
+                      });
+                      modalImg.src = imageUrl;
 
-    function animate() {
-      ctx.save();
-      ctx.fillStyle = "rgba(0,5,24,0.1)";
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-      ctx.restore();
-      ctx.drawImage($bgi, canvas.width / 2 - $bgi.width / 2, canvas.height / 2 - $bgi.height / 2, $bgi.width, $bgi.height);
-      var newTime = new Date();
-      if (newTime - lastTime > 3000 + (window.innerHeight - 767) / 2) {
-        var random = Math.random() * 100 > 80 ? true : false;
-        var x = getRandom(canvas.width / 5, (canvas.width * 4) / 5);
-        var y = getRandom(50, 200); console.log('random', random)
-        if (random) {
-          var bigboom = new Boom(
-            getRandom(canvas.width / 3, (canvas.width * 2) / 3),
-            2,
-            "#FFF",
-            {
-              x: x,
-              y: y,
-            }
-          );
-          bigbooms.push(bigboom);
-        } else {
-          var bigboom = new Boom(
-            getRandom(canvas.width / 3, (canvas.width * 2) / 3),
-            2,
-            "#FFF",
-            {
-              x: canvas.width / 2,
-              y: 200,
-            },
-            shapes[
-            parseInt(getRandom(0, shapes.length))
-            ]
-          );
-          bigbooms.push(bigboom);
+                      modal.appendChild(modalImg);
+                      document.body.appendChild(modal);
+
+                      modal.addEventListener('click', () => {
+                        modal.remove();
+                      });
+                    });
+                  } else {
+                    // 桌面端保持原有的悬停效果
+                    img.addEventListener('mouseover', (e) => {
+                      const tooltip = document.createElement('div');
+                      tooltip.className = 'tooltip';
+                      tooltip.textContent = '点击查看大图';
+                      tooltip.style.left = `${e.pageX + 15}px`;
+                      tooltip.style.top = `${e.pageY + 15}px`;
+                      document.body.appendChild(tooltip);
+
+                      const moveHandler = (e) => {
+                        tooltip.style.left = `${e.pageX + 15}px`;
+                        tooltip.style.top = `${e.pageY + 15}px`;
+                      };
+
+                      img.addEventListener('mousemove', moveHandler);
+
+                      img.addEventListener('mouseout', () => {
+                        tooltip.remove();
+                        img.removeEventListener('mousemove', moveHandler);
+                      }, { once: true });
+                    });
+
+                    img.addEventListener('click', () => {
+                      const modal = document.createElement('div');
+                      Object.assign(modal.style, {
+                        position: 'fixed',
+                        top: '0',
+                        left: '0',
+                        width: '100%',
+                        height: '100%',
+                        background: 'rgba(0,0,0,0.95)',
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        zIndex: '9999',
+                        backdropFilter: 'blur(10px)'
+                      });
+
+                      const modalImg = document.createElement('img');
+                      Object.assign(modalImg.style, {
+                        maxWidth: '95%',
+                        maxHeight: '95%',
+                        borderRadius: '12px',
+                        border: '5px solid white',
+                        boxShadow: '0 15px 40px rgba(0,0,0,0.3)',
+                        transition: 'var(--transition)'
+                      });
+                      modalImg.src = imageUrl;
+
+                      modal.appendChild(modalImg);
+                      document.body.appendChild(modal);
+
+                      modal.addEventListener('click', () => {
+                        modal.remove();
+                      });
+                    });
+                  }
+
+                  photoContainer.appendChild(img);
+                }
+                resolve();
+              });
+            });
+          }
+        } catch (error) {
+          console.error('生成照片墙时出错:', error);
+        } finally {
+          isGenerating = false;
         }
-        lastTime = newTime;
-        console.log(bigbooms);
       }
-      stars.foreach(function () {
-        this.paint();
-      });
-      drawMoon();
-      bigbooms.foreach(function (index) {
-        var that = this;
-        if (!this.dead) {
-          this._move();
-          this._drawLight();
-        } else {
-          this.booms.foreach(function (index) {
-            if (!this.dead) {
-              this.moveTo(index);
-            } else {
-              if (index === that.booms.length - 1) {
-                // bigbooms[bigbooms.indexOf(that)] = null;
-                bigbooms.splice(bigbooms.indexOf(that), 1)
-              }
-            }
+
+      // 优化的拍照功能
+      function takePhoto() {
+        canvas.width = video.videoWidth
+        canvas.height = video.videoHeight
+
+        const context = canvas.getContext('2d')
+        context.filter = filters[currentFilter]
+        context.drawImage(video, 0, 0, canvas.width, canvas.height)
+
+        const randomText = funnyTexts[Math.floor(Math.random() * funnyTexts.length)]
+
+        // 优化文字渲染
+        context.filter = 'none'
+        context.font = `bold ${isMobile ? '36px' : '52px'} Arial`
+        context.textAlign = 'center'
+
+        // 添加文字阴影效果
+        context.shadowColor = 'rgba(0,0,0,0.6)'
+        context.shadowBlur = isMobile ? 8 : 12
+        context.shadowOffsetX = isMobile ? 2 : 3
+        context.shadowOffsetY = isMobile ? 2 : 3
+
+        // 中文字幕
+        context.strokeStyle = 'white'
+        context.lineWidth = isMobile ? 4 : 5
+        context.strokeText(randomText.cn, canvas.width / 2, canvas.height - (isMobile ? 50 : 70))
+        context.fillStyle = 'black'
+        context.fillText(randomText.cn, canvas.width / 2, canvas.height - (isMobile ? 50 : 70))
+
+        // 英文字幕
+        context.font = `bold ${isMobile ? '26px' : '38px'} Arial`
+        context.strokeText(randomText.en, canvas.width / 2, canvas.height - (isMobile ? 15 : 25))
+        context.fillText(randomText.en, canvas.width / 2, canvas.height - (isMobile ? 15 : 25))
+
+
+        canvas.toBlob((blob) => {
+          const file = new File([blob], 'canvas-image.png', {
+            type: 'image/png',
+            lastModified: Date.now()
           });
-        }
-      });
-      raf(animate);
-    }
 
-    function drawMoon() {
-      // var moon = document.getElementById("moon");
+          const formData = new FormData();
+          formData.append('image', file); // 确保字段名称为 'image'
 
-      const moon = new Image()
-      moon.src = host + '/img/moon.png'
-      var centerX = canvas.width - 200,
-        centerY = 100,
-        width = 80;
-      if (moon.complete) {
-        ctx.drawImage(moon, centerX, centerY, width, width);
-      } else {
-        moon.onload = function () {
-          ctx.drawImage(moon, centerX, centerY, width, width);
-        };
+          fetch('http://10.220.140.192:10086/upload', {
+            method: 'POST',
+            body: formData
+          })
+            .then(response => response.json())
+            .then(data => {
+              console.log(data); // 处理成功响应
+            })
+            .catch(error => {
+              console.error('上传失败:', error); // 处理错误
+            });
+        }, 'image/png', 0.9);
+
+
+        // 关闭摄像头
+        const stream = video.srcObject
+        const tracks = stream.getTracks()
+        tracks.forEach(track => track.stop())
+        video.srcObject = null
+        video.style.display = 'none'
+        canvas.style.display = 'block'
+
+        // 显示相关按钮
+        takePhotoBtn.style.display = 'none'
+        generateBtn.style.display = 'inline-block'
+        retakeBtn.style.display = 'inline-block'
+        saveBtn.style.display = 'inline-block'
       }
 
-      // 鏈堜寒鍏夋檿
-      var index = 0;
-      for (var i = 0; i < 10; i++) {
-        ctx.save();
-        ctx.beginPath();
-        ctx.arc(
-          centerX + width / 2,
-          centerY + width / 2,
-          width / 2 + index,
-          0,
-          2 * Math.PI
-        );
-        ctx.fillStyle = "rgba(240,219,120,0.005)";
-        index += 2;
-        ctx.fill();
-        ctx.restore();
-      }
+      // 保存照片功能
+      saveBtn.addEventListener('click', () => {
+        const link = document.createElement('a')
+        link.download = `selfie-${new Date().toISOString().slice(0, 10)}-${new Date().getTime()}.png`
+        link.href = canvas.toDataURL()
+        link.click()
+      })
 
-    }
-    Array.prototype.foreach = function (callback) {
-      for (var i = 0; i < this.length; i++) {
-        if (this[i] !== null) {
-          callback.apply(this[i], [i]);
-        }
-      }
-    };
-    var raf =
-      window.requestAnimationFrame ||
-      window.webkitRequestAnimationFrame ||
-      window.mozRequestAnimationFrame ||
-      window.oRequestAnimationFrame ||
-      window.msRequestAnimationFrame ||
-      function (callback) {
-        window.setTimeout(callback, 1000 / 60);
-      };
-    canvas.onclick = function () {
-      var x = event.clientX;
-      var y = event.clientY;
-      var bigboom = new Boom(
-        getRandom(canvas.width / 3, (canvas.width * 2) / 3),
-        2,
-        "#FFF",
-        {
-          x: x,
-          y: y,
-        }
-      );
-      bigbooms.push(bigboom);
-    };
-    var Boom = function (x, r, c, boomArea, shape) {
-      this.booms = [];
-      this.x = x;
-      this.y = canvas.height + r;
-      this.r = r;
-      this.c = c;
-      this.shape = shape || false;
-      this.boomArea = boomArea;
-      this.theta = 0;
-      this.dead = false;
-      this.ba = parseInt(getRandom(80, 200));
-      console.log('Boom')
+      // 重新拍照
+      retakeBtn.addEventListener('click', () => {
+        photoContainer.innerHTML = ''
+        startCamera()
+      })
 
-      // 鍜粇~
-      firePlayer.play();
-    };
-    Boom.prototype = {
-      _paint: function () {
-        ctx.save();
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.r, 0, 2 * Math.PI);
-        ctx.fillStyle = this.c;
-        ctx.fill();
-        ctx.restore();
-      },
-      _move: function () {
-        var dx = this.boomArea.x - this.x,
-          dy = this.boomArea.y - this.y;
-        this.x = this.x + dx * 0.01;
-        this.y = this.y + dy * 0.01;
-        if (Math.abs(dx) <= this.ba && Math.abs(dy) <= this.ba) {
-          if (this.shape) {
-            this._shapBoom();
-          } else {
-            this._boom();
+      // 滤镜切换
+      document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          currentFilter = e.target.dataset.filter
+          document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'))
+          e.target.classList.add('active')
+          video.style.filter = filters[currentFilter]
+        })
+      })
+
+      // 启动摄像头
+      startCamera()
+
+      // 绑定按钮点击事件
+      takePhotoBtn.addEventListener('click', startCountdown)
+      generateBtn.addEventListener('click', generatePhotos)
+
+      // 仅在非移动端添加键盘快捷键
+      if (!isMobile) {
+        document.addEventListener('keydown', (e) => {
+          if (e.code === 'Space') {
+            e.preventDefault()
+            if (takePhotoBtn.style.display !== 'none') {
+              startCountdown()
+            } else if (generateBtn.style.display !== 'none') {
+              generatePhotos()
+            }
+          } else if (e.code === 'KeyR') {
+            retakeBtn.click()
+          } else if (e.code === 'KeyS') {
+            e.preventDefault()
+            saveBtn.click()
           }
-          this.dead = true;
-        } else {
-          this._paint();
-        }
-      },
-      _drawLight: function () {
-        ctx.save();
-        ctx.fillStyle = "rgba(255,228,150,0.3)";
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.r + 3 * Math.random() + 1, 0, 2 * Math.PI);
-        ctx.fill();
-        ctx.restore();
-      },
-      _boom: function () {
-        var fragNum = getRandom(30, 200);
-        var style = getRandom(0, 10) >= 5 ? 1 : 2;
-        var color;
-        if (style === 1) {
-          color = {
-            a: parseInt(getRandom(128, 255)),
-            b: parseInt(getRandom(128, 255)),
-            c: parseInt(getRandom(128, 255)),
-          };
-        }
-        var fanwei = parseInt(getRandom(300, 400));
-        for (var i = 0; i < fragNum; i++) {
-          if (style === 2) {
-            color = {
-              a: parseInt(getRandom(128, 255)),
-              b: parseInt(getRandom(128, 255)),
-              c: parseInt(getRandom(128, 255)),
-            };
-          }
-          var a = getRandom(-Math.PI, Math.PI);
-          var x = getRandom(0, fanwei) * Math.cos(a) + this.x;
-          var y = getRandom(0, fanwei) * Math.sin(a) + this.y;
-          var radius = getRandom(0, 2);
-          var frag = new Frag(this.x, this.y, radius, color, x, y);
-          this.booms.push(frag);
-
-          boomPlayer.play();
-        }
-      },
-      _shapBoom: function () {
-        var that = this;
-        putValue(ocas, octx, this.shape, 5, function (dots) {
-          var dx = canvas.width / 2 - that.x;
-          var dy = canvas.height / 2 - that.y;
-          for (var i = 0; i < dots.length; i++) {
-            color = {
-              a: dots[i].a,
-              b: dots[i].b,
-              c: dots[i].c,
-            };
-            var x = dots[i].x;
-            var y = dots[i].y;
-            var radius = 1;
-            var frag = new Frag(that.x, that.y, radius, color, x - dx, y - dy);
-            that.booms.push(frag);
-
-
-          }
-        });
-      },
-    };
-
-    function putValue(canvas, context, ele, dr, callback) {
-      context.clearRect(0, 0, canvas.width, canvas.height);
-      // if (ele.innerHTML.indexOf("img") >= 0) {
-      if (ele.type === 'image') {
-        var img = new Image();
-        img.crossOrigin = true; // 瑙ｅ喅璺ㄥ煙闂
-        img.src = ele.value
-        imgload(img, function () {
-          context.drawImage(
-            img,
-            canvas.width / 2 - img.width / 2,
-            canvas.height / 2 - img.width / 2
-          );
-          dots = getimgData(canvas, context, dr);
-          callback(dots);
-        });
-      } else {
-        var text = ele.value;
-        context.save();
-        var fontSize = 150;
-        context.font = fontSize + "px 瀹嬩綋 bold";
-        context.textAlign = "center";
-        context.textBaseline = "middle";
-        context.fillStyle =
-          "rgba(" +
-          parseInt(getRandom(128, 255)) +
-          "," +
-          parseInt(getRandom(128, 255)) +
-          "," +
-          parseInt(getRandom(128, 255)) +
-          " , 1)";
-        context.fillText(text, canvas.width / 2, canvas.height / 2);
-        context.restore();
-        dots = getimgData(canvas, context, dr);
-        callback(dots);
+        })
       }
-    }
-
-    function imgload(img, callback) {
-      if (img.complete) {
-        callback.call(img);
-      } else {
-        img.onload = function () {
-          callback.call(this);
-        };
-      }
-    }
-
-    function getimgData(canvas, context, dr) {
-      var imgData = context.getImageData(0, 0, canvas.width, canvas.height);
-      context.clearRect(0, 0, canvas.width, canvas.height);
-      var dots = [];
-      for (var x = 0; x < imgData.width; x += dr) {
-        for (var y = 0; y < imgData.height; y += dr) {
-          var i = (y * imgData.width + x) * 4;
-          if (imgData.data[i + 3] > 128) {
-            var dot = {
-              x: x,
-              y: y,
-              a: imgData.data[i],
-              b: imgData.data[i + 1],
-              c: imgData.data[i + 2],
-            };
-            dots.push(dot);
-          }
-        }
-      }
-      return dots;
-    }
-
-    function getRandom(a, b) {
-      return Math.random() * (b - a) + a;
-    }
-    var maxRadius = 1,
-      stars = [];
-
-    function drawBg() {
-      for (var i = 0; i < 100; i++) {
-        var r = Math.random() * maxRadius;
-        var x = Math.random() * canvas.width;
-        var y = Math.random() * 2 * canvas.height - canvas.height;
-        var star = new Star(x, y, r);
-        stars.push(star);
-        star.paint();
-      }
-    }
-    var Star = function (x, y, r) {
-      this.x = x;
-      this.y = y;
-      this.r = r;
-    };
-    Star.prototype = {
-      paint: function () {
-        ctx.save();
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.r, 0, 2 * Math.PI);
-        ctx.fillStyle = "rgba(255,255,255," + this.r + ")";
-        ctx.fill();
-        ctx.restore();
-      },
-    };
-    var focallength = 250;
-    var Frag = function (centerX, centerY, radius, color, tx, ty) {
-      this.tx = tx;
-      this.ty = ty;
-      this.x = centerX;
-      this.y = centerY;
-      this.dead = false;
-      this.centerX = centerX;
-      this.centerY = centerY;
-      this.radius = radius;
-      this.color = color;
-    };
-    Frag.prototype = {
-      paint: function () {
-        ctx.save();
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI);
-        ctx.fillStyle =
-          "rgba(" + this.color.a + "," + this.color.b + "," + this.color.c + ",1)";
-        ctx.fill();
-        ctx.restore();
-      },
-      moveTo: function (index) {
-        this.ty = this.ty + 0.3;
-        var dx = this.tx - this.x,
-          dy = this.ty - this.y;
-        this.x = Math.abs(dx) < 0.1 ? this.tx : this.x + dx * 0.1;
-        this.y = Math.abs(dy) < 0.1 ? this.ty : this.y + dy * 0.1;
-        if (dx === 0 && Math.abs(dy) <= 80) {
-          this.dead = true;
-        }
-        this.paint();
-      },
-    };
-  </script>
-  <script>
-    var wH = window.innerHeight;
-    var wW = window.innerWidth;
-    var generateStars = function generateStars(f) {
-      for (var e = 0; e < f; e++) {
-        var d = document.createElement("div");
-        d.className = e % 20 == 0 ? "star star--big" : e % 9 == 0 ? "star star--medium" : "star";
-        d.setAttribute("style", "top:" + Math.round(Math.random() * wH) + "px;left:" + Math.round(Math.random() * wW) + "px;animation-duration:" + (Math.round(Math.random() * 3000) + 3000) + "ms;animation-delay:" + Math.round(Math.random() * 3000) + "ms;");
-        document.body.appendChild(d)
-      }
-    };
-    generateStars(50);
+    })
   </script>
 </body>
 
