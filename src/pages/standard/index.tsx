@@ -1,4 +1,15 @@
-import { CompassOutlined, FileTextOutlined, ThunderboltOutlined } from '@ant-design/icons'
+import {
+  ArrowRightOutlined,
+  BookOutlined,
+  CodeOutlined,
+  CompassOutlined,
+  ExperimentOutlined,
+  FileTextOutlined,
+  ThunderboltOutlined
+} from '@ant-design/icons'
+import { Button } from 'antd'
+import type { RouteComponentProps } from 'react-router-dom'
+import './index.css'
 
 const STANDARD_CONTENT = [
   {
@@ -35,16 +46,6 @@ const STANDARD_CONTENT = [
     ]
   }
 ]
-
-import {
-  ArrowRightOutlined,
-  BookOutlined,
-  CodeOutlined,
- ExperimentOutlined
-} from '@ant-design/icons'
-import { Button } from 'antd'
-import type { RouteComponentProps } from 'react-router-dom'
-import './index.css'
 
 interface StandardProps {
   history: RouteComponentProps['history']
