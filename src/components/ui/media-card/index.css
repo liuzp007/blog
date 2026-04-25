@@ -1,0 +1,15 @@
+.media-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  background: var(--media-card-overlay);
+}
+
+.media-card:hover::before,
+.media-card:focus-within::before {
+  opacity: 1;
+}

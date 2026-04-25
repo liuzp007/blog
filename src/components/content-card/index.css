@@ -1,0 +1,68 @@
+.content-card__skeleton {
+  animation: content-card-shimmer 1.5s infinite;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+.content-card__progressive-image[data-loaded='true'] .content-card__skeleton {
+  opacity: 0;
+}
+
+.content-card__cover-image {
+  opacity: 0;
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
+}
+
+.content-card__progressive-image[data-loaded='true'] .content-card__cover-image {
+  opacity: 1;
+}
+
+.content-card:hover .content-card__cover-image {
+  transform: scale(1.05);
+}
+
+.content-card__overlay {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.content-card:hover .content-card__overlay {
+  opacity: 1;
+}
+
+.content-card__overlay-meta {
+  opacity: 0.8;
+}
+
+.content-card__tag--difficulty {
+  letter-spacing: 0.02em;
+}
+
+.content-card__action-button {
+  cursor: pointer;
+}
+
+.content-card__action-button.is-active {
+  color: var(--color-danger-strong);
+  background: var(--danger-alpha-10);
+}
+
+.content-card__status-icon--featured {
+  color: var(--color-warning-strong);
+}
+
+.content-card__status-icon--trending {
+  color: var(--color-danger-strong);
+}
+
+@keyframes content-card-shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+
+  100% {
+    background-position: 200% 0;
+  }
+}

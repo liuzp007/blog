@@ -1,0 +1,80 @@
+/* showcase-orbit — 仅保留 Tailwind 无法表达的样式 */
+
+/* 页面容器：多层渐变背景 */
+.orbit-slinger {
+  min-height: 100dvh;
+  color: var(--orbit-text-primary);
+  font-family: var(--font-family-sans-sc);
+  background:
+    radial-gradient(
+      circle at 12% 18%,
+      color-mix(in srgb, var(--orbit-color-nebula) 22%, transparent),
+      transparent 24%
+    ),
+    radial-gradient(
+      circle at 86% 14%,
+      color-mix(in srgb, var(--orbit-color-ring) 14%, transparent),
+      transparent 28%
+    ),
+    linear-gradient(
+      180deg,
+      var(--orbit-bg-top) 0%,
+      color-mix(in srgb, var(--orbit-bg-bottom) 68%, var(--orbit-bg-top)) 52%,
+      var(--orbit-bg-bottom) 100%
+    );
+}
+
+/* 舞台叠加层：伪元素渐变遮罩 */
+.orbit-slinger__stage::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, var(--white-alpha-04), transparent 18%),
+    radial-gradient(circle at center, transparent 0%, var(--orbit-canvas-launch-shadow) 84%);
+  pointer-events: none;
+}
+
+/* Ant Design 组件覆写 */
+.orbit-slinger .ant-progress-bg {
+  box-shadow: 0 0 18px color-mix(in srgb, var(--orbit-color-ring) 40%, transparent);
+}
+
+.orbit-slinger .ant-progress-inner {
+  background: var(--white-alpha-08);
+}
+
+.orbit-slinger .ant-slider-rail {
+  background: var(--white-alpha-08);
+}
+
+.orbit-slinger .ant-slider-track {
+  background: var(--orbit-button-bg);
+}
+
+.orbit-slinger .ant-slider-handle {
+  border-color: color-mix(in srgb, var(--orbit-color-ring) 70%, #fff);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--orbit-color-ring) 12%, transparent);
+}
+
+.orbit-slinger .ant-segmented {
+  width: 100%;
+  padding: 4px;
+  border-radius: 16px;
+  background: var(--orbit-surface-chip);
+}
+
+.orbit-slinger .ant-segmented-item {
+  min-height: 42px;
+  border-radius: 12px;
+  color: var(--orbit-text-soft);
+}
+
+.orbit-slinger .ant-segmented-item-selected {
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--orbit-color-ring) 22%, transparent),
+    color-mix(in srgb, var(--orbit-planet-c) 18%, transparent)
+  );
+  box-shadow: none;
+}

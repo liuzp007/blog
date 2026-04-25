@@ -1,0 +1,111 @@
+/*
+ * Confirm / Message 遗留弹层隔离层：
+ * 这里只服务 confirm 与 toast 的独立挂载容器，
+ * 不作为通用弹窗、按钮或全局消息样式入口。
+ */
+.confirm-mask {
+  --ui-confirm-dialog-width: 430px;
+  --ui-confirm-dialog-min-height: 230px;
+  --ui-confirm-dialog-header-height: 55px;
+  --ui-confirm-dialog-padding-inline: 30px;
+  --ui-confirm-dialog-body-inline-end: 48px;
+  --ui-confirm-dialog-body-block-end: 56px;
+  --ui-confirm-dialog-icon-gap: 15px;
+  --ui-confirm-dialog-action-min-width: 91px;
+  --ui-confirm-dialog-action-gap: 30px;
+
+  position: fixed;
+  inset: 0;
+  background: var(--black-alpha-60);
+}
+
+.confirm-dialog {
+  width: min(calc(100vw - 32px), var(--ui-confirm-dialog-width));
+  min-height: var(--ui-confirm-dialog-min-height);
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--color-white);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+}
+
+.confirm-dialog__title {
+  min-height: var(--ui-confirm-dialog-header-height);
+  padding-inline: var(--ui-confirm-dialog-padding-inline);
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  color: var(--color-text-default);
+  background: var(--color-surface-muted);
+  border-top-left-radius: var(--radius-md);
+  border-top-right-radius: var(--radius-md);
+}
+
+.confirm-dialog__body-inner {
+  padding: 30px var(--ui-confirm-dialog-body-inline-end) var(--ui-confirm-dialog-body-block-end)
+    var(--ui-confirm-dialog-padding-inline);
+  display: flex;
+  align-items: flex-start;
+  gap: var(--ui-confirm-dialog-icon-gap);
+}
+
+.confirm-dialog__icon {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.confirm-dialog__text {
+  margin: 0;
+  font-size: 14px;
+  color: var(--color-text-default);
+  line-height: var(--line-height-relaxed);
+}
+
+.confirm-dialog__footer {
+  padding: 0 var(--ui-confirm-dialog-padding-inline) 12px;
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--ui-confirm-dialog-action-gap);
+}
+
+.confirm-dialog__action {
+  min-width: var(--ui-confirm-dialog-action-min-width);
+}
+
+.confirm-toast {
+  --ui-confirm-toast-min-width: 290px;
+  --ui-confirm-toast-height: 60px;
+  --ui-confirm-toast-padding-inline: 30px;
+  --ui-confirm-toast-gap: 12px;
+
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 200000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--ui-confirm-toast-gap);
+  min-width: var(--ui-confirm-toast-min-width);
+  min-height: var(--ui-confirm-toast-height);
+  padding: 10px var(--ui-confirm-toast-padding-inline);
+  box-sizing: border-box;
+  background: var(--black-alpha-70);
+  border-radius: var(--radius-sm);
+}
+
+.confirm-toast__icon {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.confirm-toast__text {
+  margin: 0;
+  font-size: 18px;
+  color: var(--color-white);
+}

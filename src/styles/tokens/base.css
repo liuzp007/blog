@@ -1,0 +1,261 @@
+/**
+ * 基础设计 token。
+ * 规则：
+ * 1. 这里只放原始值和通用尺度，不直接表达业务语义。
+ * 2. 页面和组件不要直接消费 `--raw-*`，应优先使用 `semantic.css` 中的语义 token。
+ * 3. 如果只是想改“用途”的表现，应去改语义 token 或主题覆盖，而不是直接改业务样式。
+ * 4. 已存在 token 默认视为 frozen，优先追加新 token，不要无注释地复用旧 token 改语义。
+ */
+:root {
+  /**
+   * 原始色板（Raw Palette）
+   * 包含中性色、品牌色、强调色、状态色和代码高亮色。
+   * 这是整站颜色的来源层，不建议业务文件直接引用。
+   * 少量 `brand-link` / `code-*` 为历史过渡 raw token，当前冻结保留，不再新增同类命名。
+   */
+  --raw-white: #fff;
+  --raw-black: #000;
+  --raw-slate-950: #050b12;
+  --raw-slate-900: #08111d;
+  --raw-slate-850: #101010;
+  --raw-slate-845: #0d0d0d;
+  --raw-slate-840: #0a0a0a;
+  --raw-slate-825: #111;
+  --raw-slate-800: #141414;
+  --raw-slate-775: #1a1a1a;
+  --raw-slate-750: #1a1a2e;
+  --raw-slate-725: #2a2a2a;
+  --raw-slate-300: #cbd5e1;
+  --raw-slate-200: #e5e7eb;
+  --raw-slate-100: #e8e8e8;
+  --raw-gray-700: #333;
+  --raw-gray-500: #888;
+
+  /* 历史桥接色源：保留给 semantic alias 迁移使用，新 token 不要继续沿用用途化 raw 命名。 */
+  --raw-brand-blue: #1890ff;
+  --raw-brand-link: #3e78ed;
+  --raw-cyan-400: #40ffff;
+  --raw-cyan-500: #0ff;
+  --raw-pink-450: #f58;
+  --raw-pink-500: #f26;
+  --raw-purple-500: #9945ff;
+  --raw-yellow-400: #ffd700;
+  --raw-yellow-500: #ff0;
+  --raw-orange-500: #e87a3d;
+  --raw-gold-500: #d4a84b;
+  --raw-indigo-500: #6366f1;
+  --raw-indigo-400: #94a3ff;
+  --raw-indigo-300: #a5b4fc;
+  --raw-success-500: #4ade80;
+  --raw-success-600: #52c41a;
+  --raw-warning-500: #fbbf24;
+  --raw-warning-600: #faad14;
+  --raw-danger-500: #f87171;
+  --raw-danger-600: #ef4444;
+  --raw-danger-700: #f5222d;
+
+  /* 代码高亮源色：当前仍作为 raw source 保留，后续不再扩张新的 `raw-code-*` 族。 */
+  --raw-code-violet: #8b5cf6;
+  --raw-code-green: #22c55e;
+
+  /**
+   * 中性色透明层（Neutral Alpha Layers）
+   * 用于玻璃态背景、边框、遮罩、悬浮态和阴影等透明叠加场景。
+   * 业务层优先通过语义 token 间接使用，不直接手写 rgba。
+   */
+  --white-alpha-01: rgb(255 255 255 / 1%);
+  --white-alpha-02: rgb(255 255 255 / 2%);
+  --white-alpha-03: rgb(255 255 255 / 3%);
+  --white-alpha-04: rgb(255 255 255 / 4%);
+  --white-alpha-05: rgb(255 255 255 / 5%);
+  --white-alpha-06: rgb(255 255 255 / 6%);
+  --white-alpha-07: rgb(255 255 255 / 7%);
+  --white-alpha-08: rgb(255 255 255 / 8%);
+  --white-alpha-10: rgb(255 255 255 / 10%);
+  --white-alpha-12: rgb(255 255 255 / 12%);
+  --white-alpha-14: rgb(255 255 255 / 14%);
+  --white-alpha-16: rgb(255 255 255 / 16%);
+  --white-alpha-18: rgb(255 255 255 / 18%);
+  --white-alpha-20: rgb(255 255 255 / 20%);
+  --white-alpha-30: rgb(255 255 255 / 30%);
+  --white-alpha-35: rgb(255 255 255 / 35%);
+  --white-alpha-40: rgb(255 255 255 / 40%);
+  --white-alpha-50: rgb(255 255 255 / 50%);
+  --white-alpha-60: rgb(255 255 255 / 60%);
+  --white-alpha-70: rgb(255 255 255 / 70%);
+  --white-alpha-72: rgb(255 255 255 / 72%);
+  --white-alpha-80: rgb(255 255 255 / 80%);
+  --white-alpha-90: rgb(255 255 255 / 90%);
+  --black-alpha-05: rgb(0 0 0 / 5%);
+  --black-alpha-08: rgb(0 0 0 / 8%);
+  --black-alpha-10: rgb(0 0 0 / 10%);
+  --black-alpha-20: rgb(0 0 0 / 20%);
+  --black-alpha-28: rgb(0 0 0 / 28%);
+  --black-alpha-30: rgb(0 0 0 / 30%);
+  --black-alpha-37: rgb(0 0 0 / 37%);
+  --black-alpha-40: rgb(0 0 0 / 40%);
+  --black-alpha-50: rgb(0 0 0 / 50%);
+  --black-alpha-60: rgb(0 0 0 / 60%);
+  --black-alpha-70: rgb(0 0 0 / 70%);
+  --black-alpha-80: rgb(0 0 0 / 80%);
+  --black-alpha-90: rgb(0 0 0 / 90%);
+  --black-alpha-95: rgb(0 0 0 / 95%);
+
+  /**
+   * 状态色透明层（Status Alpha Layers）
+   * 用于成功、警告、危险等状态的弱提示背景、提示边框和代码语义高亮。
+   * 这组 token 主要服务组件层，业务页面不建议直接拼接使用。
+   */
+  --danger-alpha-10: rgb(245 34 45 / 10%);
+  --danger-alpha-60: rgb(245 34 45 / 60%);
+  --danger-alpha-soft: rgb(255 0 0 / 10%);
+  --danger-soft-alpha-20: rgb(248 113 113 / 20%);
+  --danger-soft-alpha-30: rgb(248 113 113 / 30%);
+  --success-alpha-20: rgb(74 222 128 / 20%);
+  --success-alpha-30: rgb(74 222 128 / 30%);
+  --warning-alpha-20: rgb(251 191 36 / 20%);
+  --warning-alpha-30: rgb(251 191 36 / 30%);
+  --orange-500-alpha-10: rgb(232 122 61 / 10%);
+  --orange-500-alpha-30: rgb(232 122 61 / 30%);
+  --orange-500-alpha-50: rgb(232 122 61 / 50%);
+  --orange-500-alpha-60: rgb(232 122 61 / 60%);
+  --indigo-400-alpha-40: rgb(148 163 255 / 40%);
+  --indigo-alpha-10: rgb(99 102 241 / 10%);
+  --indigo-alpha-15: rgb(99 102 241 / 15%);
+  --indigo-alpha-20: rgb(99 102 241 / 20%);
+  --indigo-alpha-30: rgb(99 102 241 / 30%);
+  --indigo-alpha-40: rgb(99 102 241 / 40%);
+  --indigo-alpha-50: rgb(99 102 241 / 50%);
+  --indigo-alpha-60: rgb(99 102 241 / 60%);
+
+  /**
+   * 代码高亮透明层（Code Highlight Alpha Layers）
+   * 这组 token 主要服务代码块主题与演示内容，不建议扩展成通用业务状态色。
+   */
+  --code-indigo-alpha-05: rgb(99 102 241 / 5%);
+  --code-indigo-alpha-10: rgb(99 102 241 / 10%);
+  --code-indigo-alpha-20: rgb(99 102 241 / 20%);
+  --code-indigo-alpha-30: rgb(99 102 241 / 30%);
+  --code-indigo-alpha-40: rgb(99 102 241 / 40%);
+  --code-indigo-alpha-50: rgb(99 102 241 / 50%);
+  --code-violet-alpha-05: rgb(139 92 246 / 5%);
+  --code-violet-alpha-10: rgb(139 92 246 / 10%);
+  --code-violet-alpha-15: rgb(139 92 246 / 15%);
+  --code-violet-alpha-20: rgb(139 92 246 / 20%);
+  --code-violet-alpha-30: rgb(139 92 246 / 30%);
+  --code-violet-alpha-40: rgb(139 92 246 / 40%);
+  --code-green-alpha-05: rgb(34 197 94 / 5%);
+  --code-green-alpha-10: rgb(34 197 94 / 10%);
+  --code-green-alpha-20: rgb(34 197 94 / 20%);
+  --code-green-alpha-30: rgb(34 197 94 / 30%);
+  --code-green-alpha-50: rgb(34 197 94 / 50%);
+  --code-red-alpha-05: rgb(239 68 68 / 5%);
+  --code-red-alpha-10: rgb(239 68 68 / 10%);
+  --code-red-alpha-30: rgb(239 68 68 / 30%);
+
+  /**
+   * 字体家族（Typography Families）
+   * body / heading / mono 分别对应正文、标题和代码区。
+   * brand / display / condensed / tech / wide / sans-sc / serif-sc 用于页面主题里的品牌正文、展示标题和强调字形。
+   * 页面层不要再直接硬编码 font-family，优先消费这里的语义字体变量。
+   */
+  --font-family-body: 'PingFang SC', 'Microsoft YaHei', 'Helvetica Neue', arial, sans-serif;
+  --font-family-heading: 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  --font-family-brand:
+    'IBM Plex Sans', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+  --font-family-brand-sc: 'IBM Plex Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  --font-family-sans-sc: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  --font-family-display: 'Cormorant Garamond', georgia, serif;
+  --font-family-condensed: 'DIN Condensed', 'Avenir Next Condensed', 'Oswald', sans-serif;
+  --font-family-tech: 'Orbitron', 'Segoe UI', sans-serif;
+  --font-family-wide: 'Unbounded', 'Segoe UI', sans-serif;
+  --font-family-mono: 'Fira Code', 'Courier New', monospace;
+  --font-family-system:
+    -apple-system, blinkmacsystemfont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell',
+    'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+
+  /**
+   * 字号刻度（Type Scale）
+   * 作为整站排版的基础刻度，标题、正文、按钮、标签都从这里推导。
+   */
+  --font-size-2xs: 12px;
+  --font-size-xs: 13px;
+  --font-size-sm: 14px;
+  --font-size-md: 16px;
+  --font-size-lg: 18px;
+  --font-size-xl: 20px;
+  --font-size-2xl: 24px;
+  --font-size-3xl: 32px;
+  --font-size-4xl: 40px;
+
+  /**
+   * 阅读节奏（Line Height & Weight）
+   * 统一文本的行高和字重，避免页面各自定义造成观感不一致。
+   */
+  --line-height-tight: 1.2;
+  --line-height-snug: 1.35;
+  --line-height-normal: 1.6;
+  --line-height-relaxed: 1.8;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  /**
+   * 间距刻度（Spacing Scale）
+   * 所有 margin / padding / gap 优先从这里取值，便于统一调节页面密度。
+   */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-12: 48px;
+
+  /**
+   * 圆角体系（Radius Scale）
+   * xs-sm 适合小标签和输入框，md-lg 适合卡片和面板，pill 适合按钮与胶囊标签。
+   */
+  --radius-sm: 0.25rem; /* 4px */
+  --radius-md: 0.375rem; /* 6px */
+  --radius-lg: 16px;
+  --radius-xl: 0.75rem; /* 12px */
+  --radius-2xl: 1rem; /* 16px */
+  --radius-pill: 999px;
+  --radius-full: 9999px;
+
+  /**
+   * 控件高度（Control Height）
+   * 统一按钮、输入框、筛选器等交互控件的垂直尺寸。
+   */
+  --control-height-sm: 32px;
+  --control-height-md: 40px;
+  --control-height-lg: 48px;
+
+  /**
+   * 阴影层级（Elevation）
+   * 从轻微悬浮到强浮层使用不同层级，避免每个组件各写一套阴影。
+   */
+  --shadow-xs: 0 2px 6px var(--black-alpha-10);
+  --shadow-sm: 0 1px 2px 0 var(--black-alpha-05);
+  --shadow-md: 0 12px 32px var(--black-alpha-28);
+  --shadow-lg: 0 10px 15px -3px var(--black-alpha-10);
+  --shadow-xl: 0 20px 25px -5px var(--black-alpha-10);
+
+  /**
+   * 动效节奏（Motion Tokens）
+   * 所有过渡时长和缓动函数统一走这里，后续接 reduced-motion 时可以整体收口。
+   */
+  --motion-fast: 160ms;
+  --motion-base: 240ms;
+  --easing-standard: cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Tailwind 风格别名（向后兼容） */
+  --text-xs: 0.75rem; /* 12px */
+  --text-sm: 0.875rem; /* 14px */
+  --ui-code-size: 0.8125rem; /* 13px */
+  --spacing-4: var(--space-4);
+  --spacing-48: calc(var(--space-8) * 6);
+}

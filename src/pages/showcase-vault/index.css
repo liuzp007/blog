@@ -1,0 +1,69 @@
+/* showcase-vault — 仅保留 Tailwind 无法表达的样式 */
+
+/* 页面容器：多层渐变背景 */
+.sonar-depth {
+  min-height: 100dvh;
+  position: relative;
+  overflow: hidden;
+  color: var(--sonar-text-primary);
+  font-family: var(--font-family-sans-sc);
+  background:
+    radial-gradient(
+      circle at 18% 14%,
+      color-mix(in srgb, var(--sonar-color-cyan) 22%, transparent),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at 82% 74%,
+      color-mix(in srgb, var(--sonar-color-mint) 14%, transparent),
+      transparent 26%
+    ),
+    linear-gradient(180deg, var(--sonar-bg-0) 0%, var(--sonar-bg-1) 44%, var(--sonar-bg-2) 100%);
+}
+
+/* Ant Design 组件覆写 */
+.sonar-depth .ant-progress-bg {
+  border-radius: 999px;
+}
+
+/* 噪点叠加层：内联 SVG data URI */
+.sonar-depth__noise {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.88' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* 光束叠加层：多层渐变 + mix-blend-mode */
+.sonar-depth__beams {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(
+      120deg,
+      transparent 0%,
+      color-mix(in srgb, var(--sonar-color-cyan) 6%, transparent) 28%,
+      transparent 48%
+    ),
+    linear-gradient(
+      290deg,
+      transparent 0%,
+      color-mix(in srgb, var(--sonar-color-mint) 6%, transparent) 30%,
+      transparent 54%
+    );
+  mix-blend-mode: screen;
+}
+
+/* 响应式：移动端 hero 标题和 stage 高度 */
+@media (width <= 720px) {
+  .sonar-depth__hero h1 {
+    font-size: clamp(34px, 11vw, 56px);
+  }
+
+  .sonar-depth__stage {
+    height: 56vh;
+    min-height: 360px;
+  }
+}

@@ -1,0 +1,734 @@
+/*
+ * 按钮视觉基线：
+ * 这里只定义字号、过渡和按钮壳布局；
+ * cursor / disabled cursor 等交互基线统一交给 global-ui.css。
+ * 不修改默认的 padding 和 border-radius，保持 Ant Design 原始样式。
+ */
+:where(
+  button,
+  .btn,
+  .btn-primary,
+  .btn-secondary,
+  .btn-ghost,
+  .btn-danger,
+  .ui-button-primary,
+  .ui-button-secondary,
+  .ui-button-ghost,
+  .ui-button-danger
+) {
+  --ui-button-gap: var(--button-icon-gap);
+
+  min-height: var(--ui-button-height, var(--button-height));
+  font-size: var(--ui-button-font-size, var(--button-font-size));
+  font-weight: var(--button-font-weight);
+  transition:
+    transform var(--motion-base) var(--easing-standard),
+    box-shadow var(--motion-base) var(--easing-standard),
+    background-color var(--motion-base) var(--easing-standard),
+    border-color var(--motion-base) var(--easing-standard),
+    color var(--motion-base) var(--easing-standard);
+}
+
+/*
+ * 按钮/链接的壳布局只在这里定义。
+ * 这里不兜底 cursor，避免与 global-ui.css 重复。
+ */
+:where(
+  button,
+  .btn,
+  .btn-primary,
+  .btn-secondary,
+  .btn-ghost,
+  .btn-danger,
+  .ui-button-primary,
+  .ui-button-secondary,
+  .ui-button-ghost,
+  .ui-button-danger
+) {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--ui-button-gap, var(--button-icon-gap));
+  text-decoration: none;
+  vertical-align: middle;
+}
+
+/*
+ * 不修改 Button 默认样式。
+ * 保持 Ant Design Button 的原始 padding 和 border-radius。
+ */
+:where(
+  .btn,
+  .btn-primary,
+  .btn-secondary,
+  .btn-ghost,
+  .btn-danger,
+  .ui-button-primary,
+  .ui-button-secondary,
+  .ui-button-ghost,
+  .ui-button-danger
+):focus-visible,
+:where(button, [type='button'], [type='submit'], [type='reset']):focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--focus-ring);
+}
+
+/**
+ * 通用排版类
+ * 这组类用于把“首屏标题 / 页面标题 / 区块标题 / 卡片标题 / 导语 / 元信息”
+ * 从局部样式里抽出来。新页面优先直接复用，避免再次发明一套字号和字重。
+ */
+.ui-display-title,
+.ui-page-title,
+.ui-section-title,
+.ui-subsection-title,
+.ui-card-title {
+  margin: 0;
+  color: var(--color-text-heading);
+  font-family: var(--font-family-heading);
+  line-height: var(--heading-line-height);
+  letter-spacing: var(--heading-section-letter-spacing);
+}
+
+.ui-display-title {
+  font-size: var(--heading-display-size);
+  font-weight: var(--heading-font-weight);
+  line-height: var(--heading-display-line-height);
+  letter-spacing: -0.04em;
+}
+
+.ui-page-title {
+  font-size: var(--heading-1-size);
+  font-weight: var(--heading-font-weight);
+}
+
+.ui-section-title {
+  font-size: var(--heading-2-size);
+  font-weight: var(--heading-font-weight);
+}
+
+.ui-subsection-title {
+  font-size: var(--heading-3-size);
+  font-weight: var(--font-weight-semibold);
+}
+
+.ui-card-title {
+  font-size: var(--ui-card-title-size, var(--heading-card-size));
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--ui-card-title-line-height, var(--heading-card-line-height));
+}
+
+.ui-lead-text,
+.ui-body-text,
+.ui-body-text-strong,
+.ui-muted-text,
+.ui-caption,
+.ui-meta-text,
+.ui-eyebrow,
+.ui-overline {
+  margin: 0;
+  font-family: var(--font-family-body);
+}
+
+.ui-lead-text {
+  color: var(--color-text-primary);
+  font-size: var(--ui-lead-size, var(--text-lead-size));
+  line-height: var(--ui-lead-line-height, var(--text-lead-line-height));
+}
+
+.ui-body-text {
+  color: var(--color-text-primary);
+  font-size: var(--ui-card-body-size, var(--text-body-size));
+  line-height: var(--ui-card-body-line-height, var(--text-body-line-height));
+  font-weight: var(--text-body-regular-weight);
+}
+
+.ui-body-text-strong {
+  color: var(--color-text-primary);
+  font-size: var(--ui-card-body-size, var(--text-body-size));
+  line-height: var(--ui-card-body-line-height, var(--text-body-relaxed-line-height));
+  font-weight: var(--text-body-strong-weight);
+}
+
+.ui-muted-text {
+  color: var(--color-text-muted);
+  font-size: var(--ui-card-body-size, var(--text-body-size));
+  line-height: var(--ui-card-body-line-height, var(--text-body-line-height));
+}
+
+.ui-caption {
+  color: var(--color-text-secondary);
+  font-size: var(--text-caption-size);
+  line-height: var(--line-height-normal);
+}
+
+.ui-meta-text {
+  color: var(--color-text-secondary);
+  font-size: var(--text-meta-size);
+  line-height: var(--text-meta-line-height);
+}
+
+.ui-eyebrow {
+  color: var(--color-accent-cyan);
+  font-size: var(--ui-eyebrow-size, var(--text-eyebrow-size));
+  font-weight: var(--tag-uppercase-weight);
+  line-height: var(--line-height-tight);
+  letter-spacing: var(--ui-eyebrow-letter-spacing, var(--text-eyebrow-letter-spacing));
+  text-transform: uppercase;
+}
+
+.ui-overline {
+  color: var(--color-text-secondary);
+  font-size: var(--ui-card-overline-size, var(--text-overline-size));
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-tight);
+  letter-spacing: var(--ui-card-overline-letter-spacing, var(--text-overline-letter-spacing));
+  text-transform: uppercase;
+}
+
+/**
+ * 通用按钮类
+ * 如果已经使用 Ant Design Button，优先保留 Antd 组件。
+ * 这些类主要给原生 `button` / `a` / `Link` 之类的场景复用。
+ */
+.ui-button-sm {
+  --ui-button-height: var(--button-height-sm);
+  --ui-button-padding-inline: var(--button-padding-inline-sm);
+  --ui-button-font-size: var(--text-caption-size);
+}
+
+.ui-button-md {
+  --ui-button-height: var(--button-height-md);
+  --ui-button-padding-inline: var(--button-padding-inline-md);
+  --ui-button-font-size: var(--button-font-size);
+}
+
+.ui-button-lg {
+  --ui-button-height: var(--button-height-lg);
+  --ui-button-padding-inline: var(--button-padding-inline-lg);
+  --ui-button-font-size: var(--text-body-size);
+}
+
+.ui-button-pill {
+  --ui-button-radius: var(--button-radius-pill);
+}
+
+.ui-button-cta {
+  min-width: 146px;
+  height: 46px;
+  padding-inline: var(--button-padding-inline-md);
+  border-radius: var(--button-radius-pill);
+}
+
+.ui-button-block {
+  width: 100%;
+}
+
+.ui-button-icon {
+  --ui-button-padding-inline: 0;
+
+  inline-size: var(--ui-button-height, var(--button-height));
+}
+
+.btn-primary,
+.ui-button-primary {
+  border: 1px solid var(--ui-button-primary-border, var(--button-primary-border));
+  background: var(--ui-button-primary-bg, var(--button-primary-bg));
+  color: var(--ui-button-primary-text, var(--button-primary-text));
+  box-shadow: var(--shadow-xs);
+}
+
+.btn-primary:hover,
+.btn-primary:focus,
+.ui-button-primary:hover,
+.ui-button-primary:focus {
+  background: var(--ui-button-primary-bg-hover, var(--button-primary-bg-hover));
+  border-color: transparent;
+  color: var(--ui-button-primary-text, var(--button-primary-text));
+}
+
+.btn-secondary,
+.ui-button-secondary {
+  border: 1px solid var(--button-secondary-border);
+  background: var(--button-secondary-bg);
+  color: var(--button-secondary-text);
+}
+
+.btn-secondary:hover,
+.btn-secondary:focus,
+.ui-button-secondary:hover,
+.ui-button-secondary:focus {
+  border-color: var(--button-secondary-border);
+  background: var(--button-secondary-bg-hover);
+  color: var(--button-secondary-text);
+}
+
+.btn-ghost,
+.ui-button-ghost {
+  border: 1px solid var(--ui-button-ghost-border, var(--button-ghost-border));
+  background: var(--ui-button-ghost-bg, var(--button-ghost-bg));
+  color: var(--ui-button-ghost-text, var(--button-ghost-text));
+}
+
+.btn-ghost:hover,
+.btn-ghost:focus,
+.ui-button-ghost:hover,
+.ui-button-ghost:focus {
+  background: var(--ui-button-ghost-bg-hover, var(--button-ghost-bg-hover));
+  color: var(--ui-button-ghost-text, var(--button-ghost-text));
+}
+
+.btn-danger,
+.ui-button-danger {
+  border: 1px solid var(--button-danger-border);
+  background: var(--button-danger-bg);
+  color: var(--button-danger-text);
+  box-shadow: var(--shadow-xs);
+}
+
+.btn-danger:hover,
+.btn-danger:focus,
+.ui-button-danger:hover,
+.ui-button-danger:focus {
+  background: var(--button-danger-bg-hover);
+  border-color: var(--button-danger-border);
+  color: var(--button-danger-text);
+}
+
+:where(
+  button:disabled,
+  .ui-button-primary:disabled,
+  .ui-button-secondary:disabled,
+  .ui-button-ghost:disabled,
+  .ui-button-danger:disabled
+) {
+  background: var(--button-disabled-bg);
+  border-color: var(--button-disabled-border);
+  color: var(--button-disabled-text);
+  box-shadow: none;
+}
+
+/* 工具栏按钮变体 - 图标按钮，完全透明背景，hover 时浅灰 */
+.ui-button--icon-ghost {
+  --ui-button-height: var(--button-tool-height);
+  --ui-button-padding-inline: var(--button-tool-padding-inline);
+  --ui-button-radius: var(--button-tool-radius);
+  --ui-button-border: var(--button-tool-border);
+  --ui-button-bg: var(--button-tool-bg);
+  --ui-button-text: var(--button-tool-text);
+  --ui-button-ring: var(--button-tool-ring);
+
+  height: var(--ui-button-height, var(--button-height));
+  padding-inline: var(--ui-button-padding-inline, var(--button-padding-inline));
+  border-radius: var(--ui-button-radius, var(--button-radius));
+  border: var(--ui-button-border, var(--button-ghost-border));
+  background: var(--ui-button-bg, var(--button-ghost-bg));
+  color: var(--ui-button-text, var(--button-ghost-text));
+}
+
+.ui-button--icon-ghost:hover,
+.ui-button--icon-ghost:focus {
+  background: var(--button-tool-bg-hover);
+  color: var(--button-tool-text-hover);
+}
+
+.ui-button--icon-ghost:disabled {
+  background: var(--button-disabled-bg);
+  border-color: var(--button-disabled-border);
+  color: var(--button-disabled-text);
+}
+
+/**
+ * 通用标签类
+ * `ui-tag` 用于分类、技术栈、状态徽标等轻量信息块。
+ */
+:where(.ui-tag, .ant-tag.ui-tag) {
+  --ui-tag-font-size: var(--tag-font-size);
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--ui-tag-height, var(--tag-height));
+
+  /* padding-inline: var(--ui-tag-padding-inline, var(--tag-padding-inline)); */
+  border-radius: var(--ui-tag-radius, var(--tag-radius));
+  border: 1px solid var(--ui-tag-border, var(--tag-border));
+  background: var(--ui-tag-bg, var(--tag-bg));
+  color: var(--ui-tag-text, var(--tag-text));
+  font-size: var(--ui-tag-font-size, var(--tag-font-size));
+  font-weight: var(--ui-tag-font-weight, var(--tag-font-weight));
+  line-height: 1;
+  letter-spacing: var(--ui-tag-letter-spacing, var(--tag-letter-spacing));
+  white-space: nowrap;
+  margin-inline-end: 0;
+}
+
+.ui-tag--sm {
+  --ui-tag-height: var(--tag-height-sm);
+  --ui-tag-padding-inline: var(--tag-padding-inline-sm);
+}
+
+.ui-tag--md {
+  --ui-tag-height: var(--tag-height-md);
+  --ui-tag-padding-inline: var(--tag-padding-inline-md);
+}
+
+.ui-tag--tone-gold {
+  --ui-tag-tone-source: var(--ui-tag-tone-gold-source, var(--accent-gold));
+}
+
+.ui-tag--tone-cyan {
+  --ui-tag-tone-source: var(--ui-tag-tone-cyan-source, var(--accent-cyan));
+}
+
+.ui-tag--tone-coral {
+  --ui-tag-tone-source: var(--ui-tag-tone-coral-source, var(--accent-warm));
+}
+
+.ui-tag--tone-mint {
+  --ui-tag-tone-source: var(--ui-tag-tone-mint-source, var(--accent-cyan));
+}
+
+.ui-tag--glass,
+.ui-tag--soft,
+.ui-tag--badge {
+  border-color: color-mix(
+    in srgb,
+    var(--ui-tag-tone-source) var(--ui-tag-tone-border-strength, 24%),
+    transparent
+  );
+  background:
+    linear-gradient(180deg, var(--ui-tag-sheen, var(--white-alpha-08)), transparent),
+    color-mix(
+      in srgb,
+      var(--ui-tag-tone-source) var(--ui-tag-tone-bg-strength, 14%),
+      var(--ui-tag-bg-base, transparent)
+    );
+  color: color-mix(
+    in srgb,
+    var(--ui-tag-tone-source) var(--ui-tag-tone-text-strength, 22%),
+    var(--ui-tag-text-base, var(--color-white))
+  );
+  text-transform: none;
+}
+
+.ui-tag--glass {
+  --ui-tag-glass-shadow: inset 0 1px 0 var(--white-alpha-10);
+
+  box-shadow: var(--ui-tag-glass-shadow, inset 0 1px 0 var(--white-alpha-10));
+}
+
+.ui-tag--soft {
+  --ui-tag-soft-font-weight: 600;
+
+  box-shadow: var(--ui-tag-soft-shadow, inset 0 1px 0 var(--white-alpha-10));
+  font-weight: var(--ui-tag-soft-font-weight, 600);
+  letter-spacing: var(--ui-tag-soft-letter-spacing, 0.03em);
+}
+
+.ui-tag--badge {
+  --ui-tag-badge-height: 24px;
+  --ui-tag-badge-padding-inline: 9px;
+  --ui-tag-badge-font-size: 10px;
+  --ui-tag-badge-font-weight: 700;
+  --ui-tag-badge-letter-spacing: 0.12em;
+  --ui-tag-height: var(--ui-tag-badge-height, 24px);
+  --ui-tag-padding-inline: var(--ui-tag-badge-padding-inline, 9px);
+
+  font-size: var(--ui-tag-badge-font-size, 10px);
+  font-weight: var(--ui-tag-badge-font-weight, 700);
+  letter-spacing: var(--ui-tag-badge-letter-spacing, 0.12em);
+  text-transform: uppercase;
+  box-shadow: var(
+    --ui-tag-badge-shadow,
+    inset 0 1px 0 var(--white-alpha-16),
+    0 6px 18px var(--black-alpha-30)
+  );
+}
+
+.ui-tag--outline {
+  background: transparent;
+}
+
+.ui-tag--solid {
+  color: var(--color-white);
+}
+
+.ui-tag--interactive {
+  cursor: pointer;
+  transition:
+    transform var(--motion-base) var(--easing-standard),
+    border-color var(--motion-base) var(--easing-standard),
+    background-color var(--motion-base) var(--easing-standard),
+    color var(--motion-base) var(--easing-standard);
+}
+
+.ui-tag--interactive:hover,
+.ui-tag--interactive:focus-visible {
+  transform: translateY(-1px);
+  border-color: var(--card-border-interactive);
+}
+
+.ui-tag--accent {
+  background: var(--tag-accent-bg);
+  border-color: var(--tag-accent-border);
+  color: var(--tag-accent-text);
+}
+
+.ui-tag--success {
+  background: var(--tag-success-bg);
+  border-color: var(--tag-success-border);
+  color: var(--tag-success-text);
+}
+
+.ui-tag--warning {
+  background: var(--tag-warning-bg);
+  border-color: var(--tag-warning-border);
+  color: var(--tag-warning-text);
+}
+
+.ui-tag--danger {
+  background: var(--tag-danger-bg);
+  border-color: var(--tag-danger-border);
+  color: var(--tag-danger-text);
+}
+
+/**
+ * 通用输入类
+ * `ui-input` 兼容原生 input / textarea，以及 Ant Design Input / Select。
+ */
+:where(
+  input.ui-input,
+  textarea.ui-input,
+  .ant-input.ui-input,
+  .ant-input-affix-wrapper.ui-input,
+  .ant-select.ui-input .ant-select-selector
+) {
+  --ui-input-text: var(--input-text);
+  --ui-input-font-size: var(--input-font-size);
+
+  min-height: var(--ui-input-height, var(--input-height));
+
+  /* padding-inline: var(--ui-input-padding-inline, var(--input-padding-inline)); */
+  border-radius: var(--input-radius);
+  border-color: var(--input-border);
+  background: var(--input-bg);
+  color: var(--ui-input-text, var(--input-text));
+  font-size: var(--ui-input-font-size, var(--input-font-size));
+  transition:
+    border-color var(--motion-base) var(--easing-standard),
+    box-shadow var(--motion-base) var(--easing-standard),
+    background-color var(--motion-base) var(--easing-standard);
+}
+
+.ui-input--sm {
+  --ui-input-height: var(--input-height-sm);
+  --ui-input-padding-inline: var(--input-padding-inline-sm);
+}
+
+.ui-input--md {
+  --ui-input-height: var(--input-height-md);
+  --ui-input-padding-inline: var(--input-padding-inline-md);
+}
+
+.ui-input--lg {
+  --ui-input-height: var(--input-height-lg);
+  --ui-input-padding-inline: var(--input-padding-inline-lg);
+}
+
+:where(input.ui-input, textarea.ui-input, .ant-input.ui-input)::placeholder {
+  color: var(--input-placeholder);
+}
+
+:where(.ant-input-affix-wrapper.ui-input input) {
+  color: var(--input-text);
+  font-size: var(--input-font-size);
+  background: transparent;
+}
+
+:where(.ant-input-affix-wrapper.ui-input input)::placeholder {
+  color: var(--input-placeholder);
+}
+
+:where(.ant-select.ui-input .ant-select-selection-item) {
+  color: var(--input-text);
+  font-size: var(--input-font-size);
+}
+
+:where(.ant-select.ui-input .ant-select-selection-placeholder) {
+  color: var(--input-placeholder);
+}
+
+:where(
+  input.ui-input:hover,
+  textarea.ui-input:hover,
+  .ant-input.ui-input:hover,
+  .ant-input-affix-wrapper.ui-input:hover,
+  .ant-select.ui-input:hover .ant-select-selector
+) {
+  border-color: var(--input-border-hover);
+  background: var(--input-bg-hover);
+}
+
+:where(
+  input.ui-input:focus,
+  textarea.ui-input:focus,
+  .ant-input.ui-input:focus,
+  .ant-input-affix-wrapper.ui-input:focus-within,
+  .ant-select.ui-input.ant-select-focused .ant-select-selector
+) {
+  border-color: var(--input-border-focus);
+  box-shadow: var(--input-shadow-focus);
+  outline: none;
+}
+
+.ui-input-group {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.ui-input-label {
+  margin: 0;
+  color: var(--color-text-secondary);
+  font-size: var(--input-label-size);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-normal);
+}
+
+.ui-input-help {
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: var(--input-help-size);
+  line-height: var(--line-height-normal);
+}
+
+.ui-input-error {
+  margin: 0;
+  color: var(--color-danger-strong);
+  font-size: var(--input-help-size);
+  line-height: var(--line-height-normal);
+}
+
+/**
+ * 通用卡片类
+ * `.ui-card` 用于标准内容卡片，`.ui-card--interactive` 用于可点击或可 hover 的卡片。
+ */
+.ui-card {
+  background: var(--card-bg);
+  border-color: var(--card-border);
+  box-shadow: var(--card-shadow);
+}
+
+.ui-card {
+  border-radius: var(--ui-card-radius, var(--card-radius));
+  display: grid;
+  gap: var(--ui-card-gap, var(--card-gap));
+  padding: var(--ui-card-padding, var(--card-padding));
+  border: 1px solid var(--card-border);
+}
+
+.ui-card--compact {
+  --ui-card-padding: var(--card-padding-sm);
+}
+
+.ui-card--elevated {
+  border-color: var(--card-border-strong);
+  box-shadow: var(--card-shadow-hover);
+}
+
+.ui-card--muted {
+  background: var(--color-surface-muted);
+}
+
+.ui-card--metric {
+  --ui-card-padding: var(--card-metric-padding);
+  --ui-card-gap: var(--card-metric-gap);
+  --ui-card-title-size: var(--card-metric-title-size);
+  --ui-card-title-line-height: var(--card-metric-title-line-height);
+  --ui-card-overline-size: var(--card-metric-overline-size);
+  --ui-card-overline-letter-spacing: var(--card-metric-overline-letter-spacing);
+}
+
+.ui-card--dense {
+  --ui-card-padding: var(--card-dense-padding);
+  --ui-card-gap: var(--card-dense-gap);
+}
+
+.ui-card--feature {
+  --ui-card-padding: var(--card-feature-padding);
+  --ui-card-radius: var(--card-feature-radius);
+  --ui-card-gap: var(--card-feature-gap);
+  --ui-card-title-size: var(--card-feature-title-size);
+  --ui-card-title-line-height: var(--card-feature-title-line-height);
+  --ui-card-body-size: var(--card-feature-text-size);
+  --ui-card-body-line-height: var(--card-feature-text-line-height);
+}
+
+.ui-card--showcase {
+  --ui-card-padding: var(--card-showcase-padding);
+  --ui-card-radius: var(--card-showcase-radius);
+  --ui-card-gap: var(--card-showcase-gap);
+  --ui-card-title-size: var(--card-showcase-title-size);
+  --ui-card-title-line-height: var(--card-showcase-title-line-height);
+  --ui-card-body-size: var(--card-showcase-text-size);
+  --ui-card-body-line-height: var(--card-showcase-text-line-height);
+}
+
+.ui-card--media-split {
+  --ui-card-padding: var(--card-media-split-padding);
+  --ui-card-gap: var(--card-media-split-gap);
+
+  overflow: hidden;
+}
+
+.ui-card--media-split .ui-card__media {
+  position: relative;
+  overflow: hidden;
+}
+
+.ui-card--media-split .ui-card__body {
+  padding: var(--card-media-split-body-padding);
+}
+
+.ui-card--timeline {
+  --ui-card-padding: var(--card-timeline-padding);
+  --ui-card-radius: var(--card-timeline-radius);
+  --ui-card-overline-size: var(--card-timeline-overline-size);
+  --ui-card-overline-letter-spacing: var(--card-timeline-overline-letter-spacing);
+}
+
+.ui-card__header,
+.ui-card__body,
+.ui-card__footer {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.ui-card__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  align-items: center;
+}
+
+.ui-card--interactive {
+  cursor: pointer;
+  transition:
+    transform var(--motion-base) var(--easing-standard),
+    box-shadow var(--motion-base) var(--easing-standard),
+    border-color var(--motion-base) var(--easing-standard),
+    background-color var(--motion-base) var(--easing-standard);
+}
+
+.ui-card--interactive:hover,
+.ui-card--interactive:focus-visible {
+  background: var(--card-bg-hover);
+  border-color: var(--card-border-interactive);
+  box-shadow: var(--card-shadow-hover);
+  transform: translateY(-2px);
+}
+
+.ui-card--interactive:focus-visible {
+  outline: none;
+  box-shadow: var(--card-shadow-focus);
+}

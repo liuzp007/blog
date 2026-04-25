@@ -1,0 +1,68 @@
+/*
+ * WangEditor 遗留隔离层：
+ * 这里只保留第三方编辑器的深层覆写和字数统计浮层，
+ * 不承担通用输入框或全局编辑器视觉职责。
+ */
+.legacy-editor {
+  --ui-editor-radius: var(--input-radius);
+  --ui-editor-count-width: 80px;
+  --ui-editor-count-inline-end: 2.5%;
+  --ui-editor-count-block-end: 1px;
+  --ui-editor-count-padding-inline: 6px;
+  --ui-editor-count-padding-block: 3px;
+  --ui-editor-count-min-height: 40px;
+  --ui-editor-text-padding-bottom: 20px;
+  --ui-editor-container-padding-bottom: 30px;
+
+  width: 100%;
+  position: relative;
+}
+
+.legacy-editor .w-e-toolbar {
+  border-radius: var(--ui-editor-radius) var(--ui-editor-radius) 0 0;
+}
+
+.legacy-editor .w-e-text-container {
+  border-radius: 0 0 var(--ui-editor-radius) var(--ui-editor-radius);
+  min-height: var(--ui-editor-count-min-height);
+  padding-bottom: var(--ui-editor-container-padding-bottom);
+  resize: vertical;
+}
+
+.legacy-editor .w-e-text-container .placeholder {
+  color: var(--color-text-muted);
+}
+
+.legacy-editor .w-e-text {
+  padding-bottom: var(--ui-editor-text-padding-bottom);
+}
+
+.legacy-editor .w-e-toolbar .w-e-menu i {
+  font-size: inherit;
+}
+
+.legacy-editor__count {
+  width: var(--ui-editor-count-width);
+  position: absolute;
+  right: var(--ui-editor-count-inline-end);
+  bottom: var(--ui-editor-count-block-end);
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  margin-left: 10px;
+  z-index: 2;
+  padding: var(--ui-editor-count-padding-block) var(--ui-editor-count-padding-inline);
+  background: var(--color-white);
+  border-top-left-radius: var(--ui-editor-radius);
+  color: var(--color-text-default);
+  font-size: var(--text-caption-size);
+}
+
+.legacy-editor__count-value {
+  color: var(--color-text-muted);
+  font-size: inherit;
+}
+
+.legacy-editor__count-value--danger {
+  color: var(--color-danger);
+}

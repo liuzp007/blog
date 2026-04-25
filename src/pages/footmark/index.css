@@ -1,0 +1,942 @@
+/* --- 页面根层与阶段背景 --- */
+.footmark-cosmos {
+  /* 页面私有颜色与阴影变量已迁移到 src/styles/themes/footmark-pages.css。 */
+  min-height: 100vh;
+  color: var(--footmark-text-primary);
+  background: var(--footmark-page-bg);
+  overflow-x: hidden;
+}
+
+.footmark-cosmos__scrollShell {
+  position: relative;
+}
+
+.footmark-cosmos__stage {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+.footmark-cosmos__stage::before,
+.footmark-cosmos__stage::after {
+  content: '';
+  position: absolute;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.footmark-cosmos.phase-orbit .footmark-cosmos__stage::before {
+  top: 18%;
+  right: 10%;
+  width: 520px;
+  height: 520px;
+  border-radius: 999px;
+  background: var(--footmark-orbit-glow);
+  filter: blur(6px);
+  opacity: 0.78;
+}
+
+.footmark-cosmos.phase-orbit .footmark-cosmos__stage::after {
+  top: 10%;
+  right: -2%;
+  width: 760px;
+  height: 760px;
+  border-radius: 999px;
+  border: 1px solid var(--footmark-orbit-ring-border);
+  box-shadow: var(--footmark-orbit-ring-shadow);
+  opacity: 0.42;
+  transform: perspective(960px) rotateX(74deg);
+}
+
+.footmark-cosmos.phase-cloud .footmark-cosmos__stage::before {
+  inset: auto;
+  top: 12%;
+  right: 9%;
+  width: 560px;
+  height: 560px;
+  border-radius: 999px;
+  background: var(--footmark-cloud-glow);
+  filter: blur(14px);
+}
+
+.footmark-cosmos.phase-cloud .footmark-cosmos__stage::after {
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 180px;
+  background: var(--footmark-cloud-fade);
+}
+
+.footmark-cosmos.phase-earth .footmark-cosmos__stage::before {
+  top: 16%;
+  right: 12%;
+  width: 420px;
+  height: 420px;
+  border-radius: 999px;
+  background: var(--footmark-earth-glow);
+  filter: blur(8px);
+  opacity: 0.88;
+}
+
+.footmark-cosmos.phase-earth .footmark-cosmos__stage::after {
+  top: 8%;
+  right: 4%;
+  width: 620px;
+  height: 620px;
+  border-radius: 999px;
+  border: 1px solid var(--footmark-earth-ring-border);
+  box-shadow: var(--footmark-earth-ring-shadow);
+  opacity: 0.36;
+}
+
+.footmark-cosmos.is-map-phase .footmark-cosmos__stage::before,
+.footmark-cosmos.is-map-phase .footmark-cosmos__stage::after {
+  display: none;
+}
+
+/* --- 场景层：solar / cloud / map stack --- */
+.footmark-cosmos__sceneStack,
+.footmark-cosmos__sceneWrap,
+.footmark-cosmos__sceneLayer,
+.footmark-mapScene,
+.footmark-mapScene__canvas {
+  position: absolute;
+  inset: 0;
+}
+
+.footmark-cosmos__sceneStack {
+  pointer-events: none;
+}
+
+.footmark-cosmos__sceneWrap {
+  transition: opacity 0.24s ease-out;
+}
+
+.footmark-cosmos__sceneWrap--map {
+  transform: scale(1.02);
+}
+
+.footmark-cosmos__sceneWrap--map,
+.footmark-mapScene.is-interactive,
+.footmark-mapScene.is-interactive .footmark-mapScene__canvas,
+.footmark-mapScene.is-interactive .footmark-mapScene__card {
+  pointer-events: auto;
+}
+
+.footmark-cosmos__gradientMask {
+  position: absolute;
+  inset: 0;
+  background: var(--footmark-stage-mask);
+}
+
+.footmark-cosmos__hud,
+.footmark-cosmos__storyRail {
+  position: relative;
+  z-index: 3;
+}
+
+/* --- HUD 与首屏文案层 --- */
+.footmark-cosmos__backLink {
+  color: var(--footmark-text-link);
+  background: var(--footmark-surface-glass);
+  box-shadow: inset 0 0 0 1px var(--footmark-line-backlink);
+  backdrop-filter: blur(16px);
+}
+
+.footmark-cosmos__progressStop {
+  min-width: 78px;
+  padding: 10px 14px;
+  border-radius: 999px;
+  color: var(--footmark-text-progress);
+  font-size: var(--text-meta-size);
+  letter-spacing: var(--text-overline-letter-spacing);
+  text-transform: uppercase;
+  background: var(--footmark-surface-progress);
+  box-shadow: inset 0 0 0 1px var(--footmark-line-faint);
+}
+
+.footmark-cosmos__progressStop.is-active {
+  color: var(--footmark-text-progress-active);
+  background: var(--footmark-surface-progress-active);
+  box-shadow:
+    inset 0 0 0 1px var(--footmark-line-progress-active),
+    var(--footmark-shadow-progress-active);
+}
+
+.footmark-cosmos__copy {
+  border-radius: 30px;
+  border: none;
+  background: var(--footmark-copy-bg);
+  box-shadow:
+    inset 0 0 0 1px var(--footmark-line-copy),
+    var(--footmark-shadow-panel-lg);
+  backdrop-filter: blur(18px);
+}
+
+.footmark-cosmos__eyebrow {
+  width: fit-content;
+  padding: 8px 12px;
+  border-radius: 999px;
+  color: var(--footmark-text-eyebrow);
+  background: var(--footmark-surface-eyebrow);
+  box-shadow: inset 0 0 0 1px var(--footmark-line-eyebrow);
+  font-size: var(--text-eyebrow-size);
+  letter-spacing: 0.2em;
+}
+
+.footmark-cosmos__titleOverline {
+  margin: 0;
+  font-size: clamp(18px, 2vw, 24px);
+  font-weight: 500;
+  letter-spacing: 0.26em;
+  color: var(--footmark-text-copy-title);
+}
+
+.footmark-cosmos__heroTitle {
+  margin: 0;
+  color: var(--footmark-text-heading);
+  font-size: clamp(34px, 5vw, var(--heading-display-size));
+  line-height: 1.08;
+  letter-spacing: -0.04em;
+  text-wrap: balance;
+  text-shadow: 0 10px 36px var(--black-alpha-28);
+}
+
+.footmark-cosmos__heroDesc {
+  margin: 0;
+  max-width: 480px;
+  color: var(--footmark-text-soft);
+  font-size: var(--text-lead-size);
+  line-height: var(--text-lead-line-height);
+}
+
+.footmark-cosmos__statCard {
+  padding: 16px 18px;
+  border-radius: 22px;
+  border: none;
+  background: var(--footmark-surface-note);
+  box-shadow: inset 0 0 0 1px var(--footmark-line-stat);
+  backdrop-filter: blur(16px);
+}
+
+.footmark-cosmos__statLabel {
+  display: block;
+  color: var(--footmark-text-label);
+  font-size: var(--text-meta-size);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.footmark-cosmos__statValue {
+  display: block;
+  margin-top: 12px;
+  font-size: var(--heading-card-size);
+  line-height: 1.2;
+}
+
+.footmark-cosmos__phaseNotes.is-dimmed {
+  opacity: 0.26;
+}
+
+.footmark-cosmos__note {
+  border: none;
+  background: var(--footmark-surface-panel);
+  box-shadow:
+    inset 0 0 0 1px var(--footmark-line-soft),
+    var(--footmark-shadow-panel);
+  backdrop-filter: blur(14px);
+}
+
+.footmark-cosmos__note .ui-body-text-strong {
+  color: var(--footmark-text-note);
+}
+
+.footmark-cosmos__note .anticon {
+  color: var(--footmark-text-accent);
+  font-size: 18px;
+  margin-top: 2px;
+}
+
+.footmark-cosmos__scrollCue {
+  z-index: 3;
+  padding: 10px 14px;
+  border-radius: 999px;
+  color: var(--footmark-text-muted);
+  background: var(--footmark-surface-panel-soft);
+  box-shadow: inset 0 0 0 1px var(--footmark-line-scrollcue);
+  backdrop-filter: blur(18px);
+  transition:
+    opacity 0.24s ease,
+    transform 0.24s ease;
+}
+
+.footmark-cosmos__scrollCue.is-hidden {
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.footmark-cosmos__scrollCue .anticon {
+  font-size: 14px;
+}
+
+.footmark-cosmos__storyRail {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 0.35s ease,
+    transform 0.35s ease;
+}
+
+.footmark-cosmos__storyRail.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.footmark-cosmos__storyChip {
+  padding: 14px 12px;
+  border-radius: 18px;
+  background: var(--footmark-surface-story);
+  box-shadow: inset 0 0 0 1px var(--footmark-line-storychip);
+  color: var(--footmark-text-dim);
+  transition:
+    opacity 0.24s ease,
+    transform 0.24s ease,
+    background 0.24s ease,
+    box-shadow 0.24s ease,
+    color 0.24s ease;
+}
+
+.footmark-cosmos__storyChip span,
+.footmark-cosmos__storyChip strong {
+  display: block;
+}
+
+.footmark-cosmos__storyChip span {
+  color: inherit;
+}
+
+.footmark-cosmos__storyChip strong {
+  margin-top: 6px;
+  font-size: var(--text-meta-size);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: inherit;
+}
+
+.footmark-cosmos__storyChip.is-active {
+  color: var(--footmark-text-strong);
+  background: var(--footmark-surface-story-active);
+  box-shadow:
+    inset 0 0 0 1px var(--footmark-line-storychip-active),
+    var(--footmark-shadow-chip);
+}
+
+/* --- 地图卡片层 --- */
+.footmark-mapScene__card {
+  position: absolute;
+  left: 28px;
+  bottom: 112px;
+  width: min(440px, calc(100% - 56px));
+  padding: 22px 24px;
+  border-radius: 24px;
+  background: var(--footmark-surface-panel-strong);
+  box-shadow:
+    inset 0 0 0 1px var(--footmark-line-map-card),
+    var(--footmark-shadow-floating);
+  backdrop-filter: blur(16px);
+}
+
+.footmark-mapScene__eyebrow,
+.footmark-mapScene__card .ui-tag {
+  display: inline-flex;
+  padding: 6px 10px;
+  border-radius: 999px;
+  color: var(--footmark-text-accent-strong);
+  background: var(--footmark-surface-map-eyebrow);
+  font-size: var(--text-eyebrow-size);
+  font-weight: var(--tag-uppercase-weight);
+  letter-spacing: var(--text-eyebrow-letter-spacing);
+  text-transform: uppercase;
+}
+
+.footmark-mapScene__title,
+.footmark-mapScene__card .ui-card-title,
+.footmark-mapScene__card h3 {
+  margin: 14px 0 10px;
+  color: var(--footmark-text-heading);
+  font-size: clamp(24px, 3vw, var(--heading-card-size));
+  line-height: var(--heading-card-line-height);
+}
+
+.footmark-mapScene__desc,
+.footmark-mapScene__card .ui-body-text,
+.footmark-mapScene__card p {
+  margin: 0;
+  color: var(--footmark-text-map-copy);
+  font-size: var(--text-body-size);
+  line-height: var(--text-body-relaxed-line-height);
+}
+
+.footmark-mapScene__meta {
+  color: var(--footmark-text-meta);
+  font-size: var(--text-meta-size);
+  line-height: var(--text-meta-line-height);
+}
+
+.footmark-mapScene__meta .ui-meta-text,
+.footmark-mapScene__meta span {
+  color: inherit;
+}
+
+.footmark-mapScene__action,
+.footmark-mapScene__action.ui-button-primary {
+  margin-top: 18px;
+  min-height: var(--button-height-lg);
+  height: var(--button-height-lg);
+  padding-inline: var(--button-padding-inline-md);
+  border: none;
+  border-radius: var(--button-radius-md);
+  font-size: var(--button-font-size);
+  font-weight: var(--button-font-weight);
+  background: var(--footmark-map-action-bg);
+  box-shadow: var(--footmark-shadow-action);
+}
+
+.footmark-mapScene__action:hover,
+.footmark-mapScene__action:focus,
+.footmark-mapScene__action.ui-button-primary:hover,
+.footmark-mapScene__action.ui-button-primary:focus {
+  background: var(--footmark-map-action-bg-hover);
+}
+
+/* --- 地图 marker 系统 --- */
+.footmark-mapMarker {
+  --footmark-map-marker-color: var(--footmark-marker-default);
+  --footmark-map-marker-shadow: var(--footmark-marker-default-shadow);
+
+  position: relative;
+  width: 36px;
+  height: 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  transform: scale(0.92);
+  opacity: 0.56;
+  transition:
+    transform 0.24s ease,
+    opacity 0.24s ease;
+  cursor: pointer;
+}
+
+.footmark-mapMarker__pulse {
+  position: absolute;
+  inset: 4px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--footmark-map-marker-color) 18%, transparent);
+  animation: footmarkMarkerPulse 2.4s ease-out infinite;
+}
+
+.footmark-mapMarker__dot {
+  position: relative;
+  z-index: 1;
+  width: 11px;
+  height: 11px;
+  border-radius: 999px;
+  background: var(--footmark-map-marker-color);
+  box-shadow:
+    0 0 0 5px color-mix(in srgb, var(--footmark-map-marker-color) 22%, transparent),
+    0 0 18px var(--footmark-map-marker-shadow);
+}
+
+.footmark-mapMarker__label {
+  position: absolute;
+  top: 50%;
+  left: calc(100% + 8px);
+  z-index: 2;
+  padding: 6px 10px;
+  border-radius: 999px;
+  color: var(--footmark-text-marker-label);
+  background: var(--footmark-surface-panel-solid);
+  box-shadow: inset 0 0 0 1px var(--footmark-line-marker-label);
+  font-size: var(--text-caption-size);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+  opacity: 0;
+  transform: translate3d(-8px, -50%, 0);
+  transition:
+    transform 0.24s ease,
+    opacity 0.24s ease;
+  pointer-events: none;
+}
+
+.footmark-mapMarker.is-active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.footmark-mapMarker.is-active .footmark-mapMarker__label {
+  opacity: 1;
+  transform: translate3d(0, -50%, 0);
+}
+
+.footmark-mapMarker--origin {
+  --footmark-map-marker-color: var(--footmark-marker-origin);
+  --footmark-map-marker-shadow: var(--footmark-marker-origin-shadow);
+}
+
+.footmark-mapMarker--growth {
+  --footmark-map-marker-color: var(--footmark-marker-growth);
+  --footmark-map-marker-shadow: var(--footmark-marker-growth-shadow);
+}
+
+.footmark-mapMarker--craft {
+  --footmark-map-marker-color: var(--footmark-marker-craft);
+  --footmark-map-marker-shadow: var(--footmark-marker-craft-shadow);
+}
+
+.footmark-mapMarker--horizon {
+  --footmark-map-marker-color: var(--footmark-marker-horizon);
+  --footmark-map-marker-shadow: var(--footmark-marker-horizon-shadow);
+}
+
+@keyframes footmarkMarkerPulse {
+  0% {
+    transform: scale(0.72);
+    opacity: 0.72;
+  }
+
+  70% {
+    transform: scale(1.24);
+    opacity: 0;
+  }
+
+  100% {
+    transform: scale(1.24);
+    opacity: 0;
+  }
+}
+
+/* --- 地图总结卡层 --- */
+.footmark-cosmos__summaryHead {
+  border: none;
+  background: var(--footmark-surface-summary-card);
+  box-shadow: inset 0 0 0 1px var(--footmark-line-summary-card);
+}
+
+.footmark-cosmos__summaryKicker {
+  display: inline-flex;
+  padding: 7px 12px;
+  border-radius: 999px;
+  color: var(--footmark-text-accent-soft);
+  background: var(--footmark-surface-summary-kicker);
+  letter-spacing: 0.18em;
+}
+
+.footmark-cosmos__summaryTitle {
+  margin: 18px 0 10px;
+  font-size: clamp(28px, 5vw, 44px);
+  line-height: 1.1;
+}
+
+.footmark-cosmos__summaryDesc {
+  margin: 0;
+  color: var(--footmark-text-muted-soft);
+}
+
+.footmark-cosmos__summaryCard {
+  border-radius: 24px;
+  border: none;
+  background: var(--footmark-surface-summary-card);
+  box-shadow: inset 0 0 0 1px var(--footmark-line-summary-card);
+}
+
+.footmark-cosmos__summaryTag {
+  align-self: flex-start;
+  letter-spacing: 0.14em;
+}
+
+.footmark-cosmos__summaryCity {
+  margin: 18px 0 10px;
+}
+
+.footmark-cosmos__summaryText {
+  margin: 0;
+  color: var(--footmark-text-summary-copy);
+}
+
+.footmark-cosmos__summaryAction {
+  border-color: var(--footmark-line-chip);
+  color: var(--footmark-text-strong);
+  background: var(--footmark-surface-chip);
+}
+
+.footmark-cosmos__summaryAction:hover,
+.footmark-cosmos__summaryAction:focus {
+  border-color: var(--footmark-line-chip-hover);
+  color: var(--footmark-text-strong);
+  background: var(--footmark-surface-chip-hover);
+}
+
+.footmark-cosmos__summaryCard--origin .footmark-cosmos__summaryTag {
+  color: var(--footmark-summary-origin-text);
+  background: var(--footmark-summary-origin-bg);
+}
+
+.footmark-cosmos__summaryCard--growth .footmark-cosmos__summaryTag {
+  color: var(--footmark-summary-growth-text);
+  background: var(--footmark-summary-growth-bg);
+}
+
+.footmark-cosmos__summaryCard--craft .footmark-cosmos__summaryTag {
+  color: var(--footmark-summary-craft-text);
+  background: var(--footmark-summary-craft-bg);
+}
+
+.footmark-cosmos__summaryCard--horizon .footmark-cosmos__summaryTag {
+  color: var(--footmark-summary-horizon-text);
+  background: var(--footmark-summary-horizon-bg);
+}
+
+.footmark-cosmos.is-map-phase .footmark-cosmos__copy {
+  background: var(--footmark-map-copy-bg);
+}
+
+.footmark-cosmos.is-map-phase .footmark-cosmos__titleOverline {
+  max-width: 240px;
+  font-size: 18px;
+  line-height: 1.04;
+  letter-spacing: 0.18em;
+}
+
+.footmark-cosmos.is-map-phase .footmark-cosmos__statCard {
+  padding: 12px 14px;
+  border-radius: 18px;
+}
+
+.footmark-cosmos.is-map-phase .footmark-cosmos__statValue {
+  margin-top: 8px;
+  font-size: 18px;
+}
+
+/* --- 城市详情弹层与作品面板 --- */
+.footmark-detailModal .ant-modal-content,
+.footmark-detailDrawer .ant-drawer-content {
+  color: var(--footmark-text-heading);
+  background: var(--footmark-detail-modal-bg);
+}
+
+.footmark-detailModal .ant-modal-header,
+.footmark-detailDrawer .ant-drawer-header {
+  color: var(--footmark-text-heading);
+  background: transparent;
+  border-bottom-color: var(--footmark-line-detail-modal);
+}
+
+.footmark-detailModal .ant-modal-title,
+.footmark-detailDrawer .ant-drawer-title {
+  color: var(--footmark-text-heading);
+}
+
+.footmark-detailModal .ant-modal-close,
+.footmark-detailDrawer .ant-drawer-close {
+  color: var(--footmark-text-soft-strong);
+}
+
+.footmark-detail__eyebrow,
+.footmark-detail__head .ui-tag {
+  width: fit-content;
+  padding: 6px 10px;
+  border-radius: 999px;
+  color: var(--footmark-text-accent-strong);
+  background: var(--footmark-surface-detail-eyebrow);
+  font-size: var(--text-eyebrow-size);
+  font-weight: var(--tag-uppercase-weight);
+  letter-spacing: var(--text-eyebrow-letter-spacing);
+  text-transform: uppercase;
+}
+
+.footmark-detail__cityTitle,
+.footmark-detail__head .ui-display-title,
+.footmark-detail__head h2 {
+  margin: 0;
+  font-size: clamp(30px, 4vw, var(--heading-1-size));
+  line-height: var(--heading-line-height);
+}
+
+.footmark-detail__citySummary,
+.footmark-detail__head .ui-lead-text,
+.footmark-detail__head p {
+  margin: 0;
+  max-width: 680px;
+  color: var(--footmark-text-detail-copy);
+  font-size: var(--text-body-size);
+  line-height: var(--text-body-relaxed-line-height);
+}
+
+.footmark-detail__mediaCard {
+  overflow: hidden;
+  border-radius: 22px;
+  background: var(--footmark-detail-card-bg);
+  box-shadow: inset 0 0 0 1px var(--footmark-line-detail-card);
+}
+
+.footmark-detail__image,
+.footmark-detail__image .ant-image-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 220px;
+  object-fit: cover;
+}
+
+.footmark-detail__placeholder {
+  background: var(--footmark-detail-placeholder-bg);
+  box-shadow: inset 0 0 0 1px var(--footmark-line-detail-card);
+}
+
+.footmark-detail__placeholder strong {
+  font-size: var(--heading-card-size);
+  line-height: var(--heading-card-line-height);
+}
+
+.footmark-detail__placeholder span {
+  color: var(--footmark-text-detail-placeholder);
+  font-size: var(--text-body-size);
+  line-height: var(--text-body-relaxed-line-height);
+}
+
+.footmark-detail__content {
+  background: var(--footmark-detail-content-bg);
+  box-shadow: inset 0 0 0 1px var(--footmark-line-detail-content);
+}
+
+.footmark-detail__label {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--footmark-text-detail-label);
+  font-size: var(--text-meta-size);
+  letter-spacing: var(--text-eyebrow-letter-spacing);
+  text-transform: uppercase;
+}
+
+.footmark-detail__workTitle,
+.footmark-detail__workTop .ui-card-title,
+.footmark-detail__workTop h3 {
+  margin: 0;
+  font-size: var(--heading-card-size);
+  line-height: var(--heading-card-line-height);
+}
+
+.footmark-detail__pager {
+  color: var(--footmark-text-detail-pager);
+}
+
+.footmark-detail__shotAt {
+  margin: 0;
+  color: var(--footmark-text-detail-shot);
+  font-size: var(--text-meta-size);
+  letter-spacing: var(--text-overline-letter-spacing);
+  text-transform: uppercase;
+}
+
+.footmark-detail__description,
+.footmark-detail__content .ui-body-text {
+  margin: 0;
+  color: var(--footmark-text-muted);
+  font-size: var(--text-body-size);
+  line-height: var(--text-body-relaxed-line-height);
+}
+
+.footmark-detail__tags .ant-tag.ui-tag {
+  margin-inline-end: 0;
+  border-color: var(--footmark-line-tag);
+  color: var(--footmark-text-strong);
+  background: var(--footmark-surface-detail-tag);
+}
+
+.footmark-detail__workChip,
+.footmark-detail__workChip.ui-button-secondary {
+  height: auto;
+  padding: 10px 14px;
+  border-radius: 14px;
+  border-color: var(--footmark-line-detail-workchip);
+  color: var(--footmark-text-soft-strong);
+  background: var(--footmark-surface-chip-soft);
+}
+
+.footmark-detail__workChip.is-active,
+.footmark-detail__workChip:hover,
+.footmark-detail__workChip:focus,
+.footmark-detail__workChip.ui-button-secondary:hover,
+.footmark-detail__workChip.ui-button-secondary:focus {
+  border-color: var(--footmark-line-tag-hover);
+  color: var(--footmark-text-strong);
+  background: var(--footmark-surface-chip-soft-hover);
+}
+
+.footmark-detail__storyText,
+.footmark-detail__story .ui-body-text,
+.footmark-detail__story p {
+  margin: 0;
+  color: var(--footmark-text-detail-story);
+  font-size: var(--text-body-size);
+  line-height: var(--text-body-relaxed-line-height);
+}
+
+/* --- 响应式收口 --- */
+@media (width <= 900px) {
+  .footmark-mapScene__card {
+    left: 16px;
+    right: 16px;
+    width: auto;
+    bottom: 210px;
+  }
+
+  .footmark-cosmos.is-map-phase .footmark-cosmos__storyRail {
+    grid-template-columns: none;
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(132px, 1fr);
+    gap: 10px;
+    overflow: auto hidden;
+    padding-bottom: 4px;
+    scrollbar-width: none;
+  }
+
+  .footmark-cosmos.is-map-phase .footmark-cosmos__storyRail::-webkit-scrollbar {
+    display: none;
+  }
+
+  .footmark-cosmos.is-map-phase .footmark-mapScene__card {
+    bottom: 118px;
+  }
+}
+
+@media (width <= 640px) {
+  .footmark-cosmos.is-map-phase .footmark-cosmos__backLink {
+    padding: 10px 14px;
+  }
+
+  .footmark-cosmos__heroDesc {
+    font-size: 15px;
+  }
+
+  .footmark-mapScene__card {
+    bottom: 188px;
+    padding: 18px;
+  }
+
+  .footmark-cosmos.is-map-phase .footmark-mapScene__card {
+    bottom: 176px;
+  }
+
+  .footmark-cosmos.is-map-phase .footmark-cosmos__storyRail {
+    display: none;
+  }
+
+  .footmark-cosmos.is-map-phase .footmark-cosmos__copy {
+    border-radius: 22px;
+    background: var(--footmark-map-copy-bg-mobile);
+  }
+
+  .footmark-cosmos.is-map-phase .footmark-cosmos__titleOverline {
+    display: none;
+  }
+
+  .footmark-cosmos.is-map-phase .footmark-cosmos__eyebrow {
+    padding: 6px 10px;
+    font-size: 10px;
+    letter-spacing: 0.14em;
+  }
+
+  .footmark-cosmos.is-map-phase .footmark-cosmos__statCard {
+    padding: 10px;
+  }
+
+  .footmark-cosmos.is-map-phase .footmark-cosmos__statLabel {
+    font-size: 10px;
+  }
+
+  .footmark-cosmos.is-map-phase .footmark-cosmos__statValue {
+    margin-top: 6px;
+    font-size: 15px;
+  }
+
+  .footmark-cosmos.is-map-phase .footmark-mapScene__card {
+    left: 12px;
+    right: 12px;
+    width: auto;
+    bottom: calc(env(safe-area-inset-bottom, 0px) + 18px);
+    padding: 16px 16px calc(env(safe-area-inset-bottom, 0px) + 16px);
+    border-radius: 22px;
+    background: var(--footmark-map-card-mobile-bg);
+  }
+
+  .footmark-cosmos.is-map-phase .footmark-mapScene__title,
+  .footmark-cosmos.is-map-phase .footmark-mapScene__card .ui-card-title,
+  .footmark-cosmos.is-map-phase .footmark-mapScene__card h3 {
+    margin: 12px 0 8px;
+    font-size: 24px;
+  }
+
+  .footmark-cosmos.is-map-phase .footmark-mapScene__desc,
+  .footmark-cosmos.is-map-phase .footmark-mapScene__card .ui-body-text,
+  .footmark-cosmos.is-map-phase .footmark-mapScene__card p {
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    line-height: 1.65;
+  }
+
+  .footmark-cosmos.is-map-phase .footmark-mapScene__meta {
+    font-size: 12px;
+  }
+
+  .footmark-cosmos.is-map-phase .footmark-mapScene__action {
+    width: 100%;
+    margin-top: 14px;
+    min-height: 46px;
+    height: 46px;
+    padding-inline: 14px;
+    border-radius: var(--button-radius-md);
+  }
+
+  .footmark-cosmos.is-map-phase .footmark-mapMarker {
+    width: 28px;
+    height: 28px;
+  }
+
+  .footmark-cosmos.is-map-phase .footmark-mapMarker__pulse {
+    inset: 3px;
+  }
+
+  .footmark-cosmos.is-map-phase .footmark-mapMarker__dot {
+    width: 9px;
+    height: 9px;
+  }
+
+  .footmark-cosmos.is-map-phase .footmark-mapMarker__label {
+    left: 50%;
+    top: calc(100% + 8px);
+    transform: translate3d(-50%, -4px, 0);
+    font-size: 11px;
+  }
+
+  .footmark-cosmos.is-map-phase .footmark-mapMarker.is-active .footmark-mapMarker__label {
+    transform: translate3d(-50%, 0, 0);
+  }
+
+  .footmark-detail__cityTitle,
+  .footmark-detail__head .ui-display-title,
+  .footmark-detail__head h2 {
+    font-size: 28px;
+  }
+
+  .footmark-detail__workTitle,
+  .footmark-detail__workTop .ui-card-title,
+  .footmark-detail__workTop h3 {
+    font-size: 22px;
+  }
+}

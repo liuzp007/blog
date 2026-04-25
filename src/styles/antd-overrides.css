@@ -1,0 +1,209 @@
+/*
+ * 这里只放“全局允许存在”的 Ant Design 组件覆写。
+ * 组件/页面私有的 `.ant-*` 深层样式必须留在各自局部样式文件中。
+ */
+
+/*
+ * Ant 组件全局交互基线统一放在这里，避免 global-ui.css 与 components.css
+ * 同时持有 `.ant-*` 的 cursor / focus 权限。
+ */
+:where(
+  .ant-btn:not([disabled], .ant-btn-disabled),
+  .ant-switch,
+  .ant-menu-item,
+  .ant-menu-submenu-title,
+  .ant-pagination-item,
+  .ant-pagination-prev,
+  .ant-pagination-next,
+  .ant-pagination-jump-prev,
+  .ant-pagination-jump-next,
+  .ant-segmented,
+  .ant-segmented-item,
+  .ant-slider-handle,
+  .ant-select-selector,
+  .ant-drawer-close,
+  .ant-collapse-header,
+  .ant-input-clear-icon
+) {
+  cursor: pointer;
+}
+
+:where(.ant-btn[disabled], .ant-btn-disabled) {
+  cursor: not-allowed;
+}
+
+/* Global Ant button / card theming */
+.ant-btn {
+  border-radius: 12px;
+}
+
+.ant-btn-primary {
+  border: 1px solid var(--ui-button-primary-border, var(--button-primary-border));
+  background: var(--ui-button-primary-bg, var(--button-primary-bg));
+  color: var(--ui-button-primary-text, var(--button-primary-text));
+  box-shadow: var(--shadow-xs);
+}
+
+.ant-btn-primary:hover,
+.ant-btn-primary:focus {
+  background: var(--ui-button-primary-bg-hover, var(--button-primary-bg-hover));
+  border-color: transparent;
+  color: var(--ui-button-primary-text, var(--button-primary-text));
+}
+
+.ant-btn-default {
+  border: 1px solid var(--button-secondary-border);
+  background: var(--button-secondary-bg);
+  color: var(--button-secondary-text);
+}
+
+.ant-btn-default:hover,
+.ant-btn-default:focus {
+  border-color: var(--button-secondary-border);
+  background: var(--button-secondary-bg-hover);
+  color: var(--button-secondary-text);
+}
+
+.ant-btn-text,
+.ant-btn-link {
+  border: 1px solid var(--ui-button-ghost-border, var(--button-ghost-border));
+  background: var(--ui-button-ghost-bg, var(--button-ghost-bg));
+  color: var(--ui-button-ghost-text, var(--button-ghost-text));
+}
+
+.ant-btn-text:hover,
+.ant-btn-text:focus,
+.ant-btn-link:hover,
+.ant-btn-link:focus {
+  background: var(--ui-button-ghost-bg-hover, var(--button-ghost-bg-hover));
+  color: var(--ui-button-ghost-text, var(--button-ghost-text));
+}
+
+.ant-btn[disabled],
+.ant-btn-disabled {
+  background: var(--button-disabled-bg);
+  border-color: var(--button-disabled-border);
+  color: var(--button-disabled-text);
+  box-shadow: none;
+}
+
+.ant-btn:focus-visible,
+.ant-drawer-close:focus-visible,
+.ant-select:focus-visible,
+.ant-pagination .ant-pagination-item:focus-visible,
+.ant-pagination .ant-pagination-prev:focus-visible,
+.ant-pagination .ant-pagination-next:focus-visible {
+  box-shadow: 0 0 0 2px var(--focus-ring);
+}
+
+.ant-card {
+  background: var(--card-bg);
+  border-color: var(--card-border);
+  box-shadow: var(--card-shadow);
+  border-radius: var(--card-radius);
+}
+
+/* Global Ant select / pagination theming */
+.ant-pagination {
+  /* 保留现有分页控件的视觉密度，不再散落 26.36 / 26.37 magic number */
+  --antd-pagination-control-size: 26.36px;
+}
+
+.ant-select-selector {
+  background: var(--white-alpha-06);
+  color: var(--color-text-soft);
+  border-color: var(--glass-border-strong);
+}
+
+.ant-select-arrow {
+  color: var(--color-text-soft);
+}
+
+.ant-pagination .ant-pagination-item-active {
+  border-color: var(--white-alpha-35);
+}
+
+.ant-pagination > li {
+  width: var(--antd-pagination-control-size);
+  height: var(--antd-pagination-control-size);
+  min-width: var(--antd-pagination-control-size);
+  line-height: var(--antd-pagination-control-size);
+  text-align: center;
+}
+
+.ant-pagination li a {
+  padding: 0;
+}
+
+.ant-pagination li.ant-pagination-options {
+  width: auto;
+}
+
+.ant-pagination li.ant-pagination-options .ant-select {
+  height: var(--antd-pagination-control-size);
+}
+
+.ant-pagination li.ant-pagination-options .ant-select-selector {
+  height: var(--antd-pagination-control-size);
+}
+
+.ant-select-single .ant-select-selector {
+  align-items: center;
+}
+
+.ant-select-single .ant-select-selector .ant-select-selection-item {
+  font-size: 12px;
+  color: var(--color-text-default);
+  line-height: var(--antd-pagination-control-size);
+}
+
+.ant-select-item-option-content {
+  font-size: 12px;
+  color: var(--color-text-default);
+}
+
+.ant-pagination-item-active {
+  background: var(--color-brand-link-legacy);
+  border-color: var(--color-brand-link-legacy);
+}
+
+.ant-pagination-item-active a {
+  color: var(--color-white);
+  font-size: 14px;
+}
+
+.ant-pagination-item:focus,
+.ant-pagination-item:hover {
+  border-color: var(--color-brand-link-legacy);
+}
+
+.ant-pagination-item:focus a,
+.ant-pagination-item:hover a {
+  color: var(--color-brand-link-legacy);
+}
+
+.ant-pagination-item-active:hover a,
+.ant-pagination-item-active:focus a {
+  color: var(--color-white);
+}
+
+.ant-pagination-item-active:hover,
+.ant-pagination-item-active:focus {
+  background-color: var(--color-brand-link-legacy);
+  border-color: var(--color-brand-link-legacy);
+}
+
+.ant-pagination-next:hover .ant-pagination-item-link,
+.ant-pagination-prev:hover .ant-pagination-item-link {
+  color: var(--color-brand-link-legacy);
+  border-color: var(--color-brand-link-legacy);
+}
+
+.ant-select:not(.ant-select-disabled):hover .ant-select-selector {
+  border-color: var(--color-brand-link-legacy);
+}
+
+.ant-select-focused:not(.ant-select-disabled).ant-select:not(.ant-select-customize-input)
+  .ant-select-selector {
+  border-color: var(--color-brand-link-legacy);
+}

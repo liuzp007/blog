@@ -1,0 +1,142 @@
+/* 旧壳层与遗留页面 palette。
+ * 这层承载 header、主内容壳层、知识页和 project canvas 展示页的历史视觉。
+ * 旧页面/组件只消费这里的变量，避免继续在业务文件里散落透明色与渐变。
+ * 当前通过 src/styles/palettes.css 接入；这里只允许把变量挂在既有宿主类上，不再承担 theme.css 的全局主题职责。
+ */
+
+.mainWrap {
+  /* --- 主壳层（Main Shell） --- */
+  --main-shell-bg: var(--bg-primary);
+  --main-shell-header-bg: var(--glass-bg-strong);
+  --main-shell-header-border: var(--glass-border);
+  --main-shell-sidebar-bg: var(--sidebar-bg);
+  --main-shell-panel-bg: var(--glass-bg);
+  --main-shell-panel-text: color-mix(in srgb, var(--text-primary) 85%, transparent);
+  --main-shell-panel-border: var(--glass-border-soft);
+  --main-shell-panel-shadow: var(--card-shadow);
+  --main-shell-scrollbar-track: var(--black-alpha-10);
+  --main-shell-scrollbar-thumb: var(--white-alpha-20);
+  --main-shell-scrollbar-thumb-hover: var(--white-alpha-40);
+  --main-shell-inline-code-bg: color-mix(in srgb, var(--accent-pink) 10%, transparent);
+  --main-shell-inline-code-border: color-mix(in srgb, var(--accent-pink) 30%, transparent);
+  --main-shell-inline-code-shadow: 0 0 5px color-mix(in srgb, var(--accent-pink) 20%, transparent);
+  --main-shell-menu-text: color-mix(in srgb, var(--text-primary) 65%, transparent);
+  --main-shell-menu-active-bg: color-mix(in srgb, var(--accent-cyan) 15%, transparent);
+  --main-shell-menu-active-shadow:
+    0 0 15px color-mix(in srgb, var(--accent-cyan) 20%, transparent),
+    inset 0 0 10px color-mix(in srgb, var(--accent-cyan) 10%, transparent);
+  --main-shell-submenu-bg: var(--black-alpha-20);
+  --main-shell-menu-shine: linear-gradient(90deg, transparent, var(--white-alpha-10), transparent);
+}
+
+.headerWrap,
+.headerDrawer {
+  /* --- 头部导航（Header Shell） --- */
+  --header-shell-bg:
+    linear-gradient(
+      120deg,
+      color-mix(in srgb, var(--surface-panel-start) 94%, transparent),
+      color-mix(in srgb, var(--surface-panel-mid) 88%, transparent)
+    ),
+    color-mix(in srgb, var(--surface-night) 90%, transparent);
+  --header-shell-border: var(--white-alpha-08);
+  --header-shell-shadow: var(--shadow-lg);
+  --header-shell-brand: color-mix(in srgb, var(--text-primary) 96%, transparent);
+  --header-shell-brand-strong: var(--text-heading);
+  --header-shell-brand-subtitle: color-mix(in srgb, var(--text-soft) 58%, transparent);
+  --header-shell-disc-bg: radial-gradient(
+    circle at 35% 35%,
+    var(--white-alpha-18),
+    color-mix(in srgb, var(--accent-pink) 8%, transparent)
+  );
+  --header-shell-disc-ring: inset 0 0 0 1px var(--white-alpha-08);
+  --header-shell-nav-text: color-mix(in srgb, var(--text-soft) 72%, transparent);
+  --header-shell-nav-subtitle: color-mix(in srgb, var(--text-soft) 48%, transparent);
+  --header-shell-nav-hover-text: var(--color-white);
+  --header-shell-nav-hover-bg: var(--white-alpha-06);
+  --header-shell-nav-active-bg: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--accent-pink) 20%, transparent),
+    color-mix(in srgb, var(--accent-cyan) 16%, transparent)
+  );
+  --header-shell-nav-active-ring: inset 0 0 0 1px var(--white-alpha-08);
+  --header-shell-nav-active-subtitle: color-mix(in srgb, var(--text-soft) 72%, transparent);
+  --header-shell-cta-bg: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--accent-pink) 82%, var(--color-white) 8%),
+    color-mix(in srgb, var(--accent-warm) 88%, var(--color-white) 10%)
+  );
+  --header-shell-cta-shadow: 0 14px 40px color-mix(in srgb, var(--accent-pink) 28%, transparent);
+  --header-shell-cta-text: var(--color-white);
+  --header-shell-menu-text: color-mix(in srgb, var(--text-primary) 94%, transparent);
+  --header-shell-menu-bg: var(--white-alpha-06);
+  --header-shell-drawer-bg: color-mix(in srgb, var(--surface-page) 96%, transparent);
+  --header-shell-drawer-text: color-mix(in srgb, var(--text-primary) 98%, transparent);
+  --header-shell-drawer-item-bg: var(--white-alpha-04);
+  --header-shell-drawer-item-subtitle: color-mix(in srgb, var(--text-soft) 62%, transparent);
+  --header-shell-drawer-item-active-bg: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--accent-pink) 20%, transparent),
+    color-mix(in srgb, var(--accent-cyan) 18%, transparent)
+  );
+}
+
+.projectCanvasExperience {
+  /* --- Project Canvas 展示页 --- */
+  --project-canvas-page-bg:
+    radial-gradient(circle at top, var(--accent-warm-glow), transparent 28%),
+    linear-gradient(180deg, var(--surface-page) 0%, var(--surface-base) 100%);
+  --project-canvas-nav-bg: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--surface-page) 92%, transparent),
+    color-mix(in srgb, var(--surface-page) 65%, transparent)
+  );
+  --project-canvas-nav-border: var(--white-alpha-08);
+  --project-canvas-nav-text: color-mix(in srgb, var(--text-primary) 86%, transparent);
+  --project-canvas-copy-text: color-mix(in srgb, var(--text-primary) 72%, transparent);
+  --project-canvas-eyebrow-bg: color-mix(in srgb, var(--accent-warm) 12%, transparent);
+  --project-canvas-eyebrow-text: var(--accent-warm);
+  --project-canvas-tag-bg: var(--white-alpha-05);
+  --project-canvas-tag-text: color-mix(in srgb, var(--text-primary) 86%, transparent);
+  --project-canvas-primary-bg: linear-gradient(135deg, var(--accent-warm), var(--accent-gold));
+  --project-canvas-primary-text: var(--color-black);
+  --project-canvas-ghost-bg: var(--white-alpha-06);
+  --project-canvas-ghost-text: color-mix(in srgb, var(--text-primary) 88%, transparent);
+  --project-canvas-ghost-ring: inset 0 0 0 1px var(--white-alpha-08);
+  --project-canvas-panel-bg: var(--white-alpha-03);
+  --project-canvas-panel-border: var(--white-alpha-08);
+  --project-canvas-panel-shadow: 0 28px 100px var(--black-alpha-40);
+  --project-canvas-hint-bg: color-mix(in srgb, var(--color-black) 56%, transparent);
+  --project-canvas-hint-text: color-mix(in srgb, var(--text-primary) 72%, transparent);
+  --project-canvas-card-bg: var(--white-alpha-04);
+  --project-canvas-card-border: var(--white-alpha-06);
+  --project-canvas-canvas-bg: color-mix(in srgb, var(--surface-page) 92%, var(--color-black) 8%);
+  --project-canvas-canvas-warm-line: color-mix(in srgb, var(--accent-warm) 50%, transparent);
+  --project-canvas-canvas-warm-line-strong: color-mix(in srgb, var(--accent-warm) 60%, transparent);
+}
+
+.knowledge-page {
+  /* --- Knowledge 列表页 --- */
+  --knowledge-title-shadow: 0 5px 15px var(--black-alpha-50);
+  --knowledge-card-bg: var(--glass-bg-strong);
+  --knowledge-card-border: var(--glass-border);
+  --knowledge-card-hover-shadow:
+    0 20px 40px var(--black-alpha-40),
+    0 0 20px color-mix(in srgb, var(--accent-cyan) 20%, transparent);
+  --knowledge-card-hover-border: color-mix(in srgb, var(--accent-cyan) 50%, transparent);
+  --knowledge-card-footer-bg: var(--white-alpha-05);
+  --knowledge-tag-bg: color-mix(in srgb, var(--accent-pink) 20%, transparent);
+  --knowledge-tag-border: color-mix(in srgb, var(--accent-pink) 30%, transparent);
+  --knowledge-resource-bg: var(--glass-bg);
+  --knowledge-resource-hover-bg: var(--white-alpha-05);
+  --knowledge-resource-type-bg: var(--white-alpha-10);
+}
+
+.advanced-background {
+  /* --- AboutMe 高级背景层 --- */
+  --about-advanced-bg: linear-gradient(135deg, #0a0a0a 0%, #101010 100%);
+  --about-advanced-pink-glow: drop-shadow(0 0 10px rgb(255 34 102 / 30%));
+  --about-advanced-hologram: #0f8;
+  --about-advanced-hologram-shadow:
+    0 0 10px rgb(0 255 136 / 50%), 0 0 20px rgb(0 255 136 / 30%), 0 0 30px rgb(0 255 136 / 10%);
+}

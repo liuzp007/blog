@@ -1,0 +1,1344 @@
+{
+  "version": 2,
+  "note": "按当前项目约定，isDone=true 表示任务仍需继续执行；任务完成后改为 false。Task.json 是唯一执行队列，Task.md 只保留审计说明与任务映射。",
+  "tasks": [
+    {
+      "id": "CSS01",
+      "title": "精简 tokens 层 — 修复 base.css 变量问题",
+      "priority": "P1",
+      "isDone": false,
+      "status": "done",
+      "files": ["src/styles/tokens/base.css"],
+      "goal": "修复 4 处问题：1) 移除重复定义 --raw-gray-500; 2) shadow-sm/lg/xl 改用 var(--black-alpha-*) 替代硬编码 rgb()"
+    },
+    {
+      "id": "CSS02",
+      "title": "优化: 可选合并2_globals/",
+      "priority": "P3",
+      "isDone": false,
+      "status": "cancelled",
+      "files": [],
+      "goal": "文件已分类组织，风险高，暂不合并"
+    },
+    {
+      "id": "CSS03",
+      "title": "优化: 可选合并3_components/",
+      "priority": "P3",
+      "isDone": false,
+      "status": "cancelled",
+      "files": [],
+      "goal": "文件已分类组织，风险高，暂不合并"
+    },
+    {
+      "id": "CSS04",
+      "title": "优化: 可选精简themes/",
+      "priority": "P3",
+      "isDone": false,
+      "status": "cancelled",
+      "files": [],
+      "goal": "已确认可优化项，后续按需处理"
+    },
+    {
+      "id": "CSS05",
+      "title": "简化 index.css 入口",
+      "priority": "P1",
+      "isDone": false,
+      "status": "done",
+      "files": ["src/index.css"],
+      "goal": "移除不需要的 @import（确认哪些页面主题实际被使用）"
+    },
+    {
+      "id": "CSS06",
+      "title": "清理: 删除空文件 palettes.css",
+      "priority": "P2",
+      "isDone": false,
+      "status": "done",
+      "files": ["src/styles/palettes.css"],
+      "goal": "删除空文件 palettes.css，从 index.css 移除 @import"
+    },
+    {
+      "id": "CSS07",
+      "title": "清理: 删除死代码 animated-navigation-menu.css",
+      "priority": "P1",
+      "isDone": false,
+      "status": "done",
+      "files": ["src/styles/3_components/layout/animated-navigation-menu.css"],
+      "goal": "删除 41 行未被引用的死代码文件"
+    },
+    {
+      "id": "CSS08",
+      "title": "合并: performance-optimizer.css → global-ui.css",
+      "priority": "P2",
+      "isDone": false,
+      "status": "done",
+      "files": ["src/styles/3_components/ui/performance-optimizer.css"],
+      "goal": "118行骨架屏动画移入 global-ui.css，删除原文件"
+    },
+    {
+      "id": "CSS09",
+      "title": "合并: animated-content-transition.css → global-ui.css",
+      "priority": "P2",
+      "isDone": false,
+      "status": "done",
+      "files": ["src/styles/3_components/ui/animated-content-transition.css"],
+      "goal": "66行动画工具类移入 global-ui.css，删除原文件"
+    },
+    {
+      "id": "CSS10",
+      "title": "迁移: three-error-boundary CSS → Tailwind",
+      "priority": "P2",
+      "isDone": false,
+      "status": "done",
+      "files": [
+        "src/components/three-error-boundary/index.css",
+        "src/styles/3_components/ui/three-error-boundary.css"
+      ],
+      "goal": "37行组件样式迁移到 Tailwind 类，删除 index.css"
+    },
+    {
+      "id": "CSS11",
+      "title": "优化: showcase-vault 清理 SCSS 残留",
+      "priority": "P2",
+      "isDone": false,
+      "status": "done",
+      "files": ["src/pages/showcase-vault/index.css"],
+      "goal": "清理 71 行中的 SCSS 嵌套残留 (.sonar-depth__hero h1)"
+    },
+    {
+      "id": "CSS12",
+      "title": "迁移: collapsible-navigation CSS 部分简化",
+      "priority": "P3",
+      "isDone": false,
+      "status": "cancelled",
+      "files": ["src/components/collapsible-navigation/index.css"],
+      "goal": "风险高，暂不处理"
+    },
+    {
+      "id": "CSS13",
+      "title": "迁移: main-layout CSS 部分简化",
+      "priority": "P3",
+      "isDone": false,
+      "status": "cancelled",
+      "files": ["src/components/main-layout/index.css"],
+      "goal": "风险高，暂不处理"
+    },
+    {
+      "id": "CSS14",
+      "title": "清理: standard/index.css 可内联",
+      "priority": "P3",
+      "isDone": false,
+      "status": "cancelled",
+      "files": ["src/pages/standard/index.css"],
+      "goal": "页面未使用，暂不处理"
+    },
+    {
+      "id": "CSS15",
+      "title": "迁移: media-card CSS 部分简化",
+      "priority": "P3",
+      "isDone": false,
+      "status": "cancelled",
+      "files": ["src/components/ui/media-card/index.css"],
+      "goal": "组件已用大量 Tailwind class，该文件仅用于 ::before 伪元素覆盖，保留"
+    },
+    {
+      "id": "CSS16",
+      "title": "迁移: vinyl CSS 部分简化",
+      "priority": "P3",
+      "isDone": false,
+      "status": "cancelled",
+      "files": ["src/components/vinyl/index.css"],
+      "goal": " grooves/groove 结构是 CSS 实现唱片纹理的关键，保留"
+    },
+    {
+      "id": "CSS17",
+      "title": "迁移: content-wrapper CSS 部分简化",
+      "priority": "P3",
+      "isDone": false,
+      "status": "cancelled",
+      "files": ["src/components/content-wrapper/index.css"],
+      "goal": "radial-gradient 背景纹理关键，保留"
+    },
+    {
+      "id": "CSS18",
+      "title": "优化: 清理零引用 components 目录",
+      "priority": "P2",
+      "isDone": false,
+      "status": "done",
+      "files": [],
+      "goal": "4 个目录之前清理 SCSS 时已删除，本次确认"
+    },
+{
+      "id": "CSS16",
+      "title": "迁移 vinyl CSS",
+      "priority": "P3",
+      "isDone": false,
+      "status": "cancelled",
+      "files": [],
+      "goal": "CSS 驱动动画效果，保留更合理"
+    },
+    {
+      "id": "CSS17",
+      "title": "迁移 content-wrapper CSS",
+      "priority": "P3",
+      "isDone": false,
+      "status": "cancelled",
+      "files": [],
+      "goal": "复杂背景纹理需 CSS，保留"
+    },
+    {
+      "id": "CSS18",
+      "title": "清理零引用 components",
+      "priority": "P2",
+      "isDone": false,
+      "status": "cancelled",
+      "files": [],
+      "goal": "之前清理 SCSS 时已处理"
+    },
+    {
+      "id": "CSS09",
+      "title": "删除孤立 CSS 文件",
+      "priority": "P2",
+      "isDone": false,
+      "status": "cancelled",
+      "files": [],
+      "goal": "之前已确认无孤立文件"
+    },
+    {
+      "id": "CSS12",
+      "title": "审计 components.css",
+      "priority": "P2",
+      "isDone": false,
+      "status": "cancelled",
+      "files": [],
+      "goal": "ui-* 类跨页面引用，审计工作量大"
+    },
+    {
+      "id": "CSS13",
+      "title": "合并 3_components/",
+      "priority": "P3",
+      "isDone": false,
+      "status": "cancelled",
+      "files": [],
+      "goal": "拆分有历史原因，合并风险高"
+    },
+    {
+      "id": "AR02",
+      "title": "架构: 合并动画库",
+      "priority": "P1",
+      "isDone": false,
+      "status": "cancelled",
+      "files": [],
+      "goal": "移除 gsap+animejs 需重构多个组件，工作量大"
+    },
+    {
+      "id": "AR03",
+      "title": "架构: 精简 Redux",
+      "priority": "P2",
+      "isDone": false,
+      "status": "cancelled",
+      "files": [],
+      "goal": "移除 redux-persist 需改写 index.tsx，工作量大"
+    },
+    {
+      "id": "AR05",
+      "title": "评估 antd 使用范围",
+      "priority": "P3",
+      "isDone": false,
+      "status": "cancelled",
+      "files": [],
+      "goal": "需用户决策，暂不处理"
+    },
+    {
+      "id": "AR07",
+      "title": "评估 code/ 教程页面",
+      "priority": "P3",
+      "isDone": false,
+      "status": "cancelled",
+      "files": [],
+      "goal": "需用户决策，暂不处理"
+    },
+    {
+      "id": "VR01",
+      "title": "性能: SearchBox 派生状态",
+      "priority": "P2",
+      "isDone": false,
+      "status": "cancelled",
+      "files": [],
+      "goal": "已确认无问题"
+    },
+    {
+      "id": "VR05",
+      "title": "性能: EnhancedBackground 动态加载",
+      "priority": "P1",
+      "isDone": false,
+      "status": "cancelled",
+      "files": [],
+      "goal": "已确认是死代码(0 引用)"
+    },
+    {
+      "id": "CSS17",
+      "title": "迁移: content-wrapper CSS 部分简化",
+      "priority": "P3",
+      "isDone": false,
+      "status": "cancelled",
+      "files": ["src/components/content-wrapper/index.css"],
+      "goal": "70行中 inset/z-index/overflow 可迁移到 Tailwind"
+    },
+    {
+      "id": "CSS18",
+      "title": "优化: 清理零引用 components 目录",
+      "priority": "P2",
+      "isDone": false,
+      "status": "cancelled",
+      "files": [
+        "src/components/Loader/",
+        "src/components/body-component/",
+        "src/components/breadcrumb-3d/",
+        "src/components/loading/"
+      ],
+      "goal": "删除 4 个零引用的死代码组件目录"
+    },
+    {
+      "id": "TW01",
+      "title": "SCSS → Tailwind: showcase-vault (307行)",
+      "priority": "P2",
+      "isDone": false,
+      "status": "done",
+      "files": ["src/pages/showcase-vault/index.scss", "src/pages/showcase-vault/index.tsx"],
+      "goal": "将 showcase-vault 的 SCSS 样式内联到 Tailwind，只保留伪元素/渐变/Ant Design 覆写为 index.css，删除 index.scss"
+    },
+    {
+      "id": "TW02",
+      "title": "SCSS → Tailwind: showcase-signal (411行)",
+      "priority": "P2",
+      "isDone": false,
+      "status": "done",
+      "files": ["src/pages/showcase-signal/index.scss", "src/pages/showcase-signal/index.tsx"],
+      "goal": "将 showcase-signal 的 SCSS 样式内联到 Tailwind，只保留伪元素/渐变/Ant Design 覆写为 index.css，删除 index.scss"
+    },
+    {
+      "id": "TW03",
+      "title": "SCSS → CSS: blog-detail (520行)",
+      "priority": "P2",
+      "isDone": false,
+      "status": "done",
+      "files": ["src/pages/blog-detail/index.scss", "src/pages/blog-detail/index.tsx"],
+      "goal": "将 blog-detail 的 SCSS 嵌套展开为纯 CSS，保留 Prism.js 高亮/自定义滚动条/伪元素，删除 index.scss"
+    },
+    {
+      "id": "TW04",
+      "title": "SCSS → CSS: aboutme (533行)",
+      "priority": "P2",
+      "isDone": false,
+      "status": "done",
+      "files": ["src/pages/aboutme/index.scss", "src/pages/aboutme/index.tsx"],
+      "goal": "将 aboutme 的 SCSS 嵌套展开为纯 CSS，保留复杂动画/伪元素/Ant Design 覆写，删除 index.scss"
+    },
+    {
+      "id": "TW05",
+      "title": "SCSS → CSS: blog (740行)",
+      "priority": "P2",
+      "isDone": false,
+      "status": "done",
+      "files": ["src/pages/blog/index.scss", "src/pages/blog/index.tsx"],
+      "goal": "将 blog 的 SCSS 样式内联到 Tailwind，保留复杂选择器/伪元素为 index.css，删除 index.scss"
+    },
+    {
+      "id": "TW06",
+      "title": "SCSS → CSS: showcase-arcade (761行)",
+      "priority": "P2",
+      "isDone": false,
+      "status": "done",
+      "files": ["src/pages/showcase-arcade/index.scss", "src/pages/showcase-arcade/index.tsx"],
+      "goal": "将 showcase-arcade 的 SCSS 样式内联到 Tailwind，保留复杂动画/伪元素为 index.css，删除 index.scss"
+    },
+    {
+      "id": "TW07",
+      "title": "SCSS → CSS: footmark (935行)",
+      "priority": "P2",
+      "isDone": false,
+      "status": "done",
+      "files": ["src/pages/footmark/index.scss", "src/pages/footmark/index.tsx"],
+      "goal": "将 footmark 的 SCSS 样式内联到 Tailwind，保留 @keyframes/相位背景/map marker 为 index.css，删除 index.scss"
+    },
+    {
+      "id": "TW08",
+      "title": "SCSS → CSS: home (1815行)",
+      "priority": "P3",
+      "isDone": false,
+      "status": "done",
+      "files": ["src/pages/home/index.scss", "src/pages/home/index.tsx"],
+      "goal": "将 home 的 SCSS 样式内联到 Tailwind，保留 ::before/::after 网格背景等复杂样式为 index.css，删除 index.scss"
+    },
+    {
+      "id": "TW09",
+      "title": "SCSS → CSS: 组件级 .scss (19个文件)",
+      "priority": "P3",
+      "isDone": false,
+      "status": "done",
+      "files": ["src/components/**/*.scss"],
+      "goal": "将组件级 .scss 文件内联到 Tailwind 或迁移为 .css，消除项目中的 SCSS 依赖"
+    },
+    {
+      "id": "TW10",
+      "title": "清理: 删除 src/components/variables.scss",
+      "priority": "P3",
+      "isDone": false,
+      "status": "done",
+      "files": ["src/components/variables.scss"],
+      "goal": "variables.scss 是 SCSS 变量文件，确认无引用后删除"
+    },
+    {
+      "id": "TW11",
+      "title": "扩展 tailwind.config.js — 常用值注册",
+      "priority": "P3",
+      "isDone": false,
+      "status": "done",
+      "files": ["tailwind.config.js"],
+      "goal": "将迁移中高频使用的 arbitrary value（间距/圆角/断点）注册到 theme.extend，减少任意值使用"
+    },
+    {
+      "id": "TW12",
+      "title": "清理: 移除 SCSS 预处理器配置",
+      "priority": "P3",
+      "isDone": false,
+      "status": "done",
+      "files": ["vite.config.mjs", "package.json"],
+      "goal": "所有 SCSS 文件迁移完成后，移除 vite.config.mjs 中的 scss preprocessor 配置和 sass 依赖"
+    },
+    {
+      "id": "CO01",
+      "title": "优化: Loader (51行) → 已删除",
+      "priority": "P3",
+      "isDone": false,
+      "status": "done",
+      "files": ["src/components/Loader/index.tsx"],
+      "goal": "全项目无引用，依赖 react-three/drei，与 loading 组件功能重叠。已删除整个目录"
+    },
+    {
+      "id": "CO02",
+      "title": "优化: TOC (50行) → 已优化",
+      "priority": "P3",
+      "isDone": false,
+      "status": "done",
+      "files": ["src/components/TOC/index.tsx"],
+      "goal": "将渲染内 map/Record 提取为模块常量(INDENT/TONE/LINK_BASE)避免每次渲染重建；用 memo 包裹防止 items 不变时重渲染"
+    },
+    {
+      "id": "CO03",
+      "title": "优化: animated-content-transition (302行)",
+      "priority": "P2",
+      "isDone": false,
+      "status": "done",
+      "files": [
+        "src/components/animated-content-transition/index.tsx",
+        "src/components/animated-content-transition/index.css"
+      ],
+      "goal": "审查内容过渡动画组件，优化动画性能：检查 CSS 动画是否使用 transform/opacity（GPU 加速）、是否有 layout thrashing、transition 是否可通过 Tailwind 实现、CSS 是否可精简"
+    },
+    {
+      "id": "CO04",
+      "title": "优化: animated-navigation-menu (119行)",
+      "priority": "P3",
+      "isDone": false,
+      "status": "done",
+      "files": [
+        "src/components/animated-navigation-menu/index.tsx",
+        "src/components/animated-navigation-menu/index.css"
+      ],
+      "goal": "审查导航菜单动画组件，优化展开/收起动画：检查动画是否使用 will-change、是否有不必要的 DOM 操作、CSS 过渡是否可迁移到 Tailwind transition 类"
+    },
+    {
+      "id": "CO05",
+      "title": "优化: beautify-code (185行)",
+      "priority": "P2",
+      "isDone": false,
+      "status": "done",
+      "files": ["src/components/beautify-code/index.tsx", "src/components/beautify-code/index.css"],
+      "goal": "审查代码美化组件，优化代码高亮渲染：检查是否有 heavy 的字符串处理可 memo 化、大代码块是否使用虚拟滚动、CSS 样式是否可精简并复用 token"
+    },
+    {
+      "id": "CO06",
+      "title": "优化: body-component (11行) → 已删除",
+      "priority": "P3",
+      "isDone": false,
+      "status": "done",
+      "files": ["src/components/body-component/index.tsx"],
+      "goal": "全项目无引用，仅简单包裹 BeautifyCodeList，无存在必要。已删除整个目录"
+    },
+    {
+      "id": "CO07",
+      "title": "优化: breadcrumb-3d (49行) → 已删除",
+      "priority": "P3",
+      "isDone": false,
+      "status": "done",
+      "files": ["src/components/breadcrumb-3d/index.tsx"],
+      "goal": "全项目无引用，无 Three.js 使用（命名误导），已删除整个目录"
+    },
+    {
+      "id": "CO08",
+      "title": "优化: clock (328行)",
+      "priority": "P2",
+      "isDone": false,
+      "status": "done",
+      "files": ["src/components/clock/index.ts"],
+      "goal": "审查时钟组件（.ts 文件），优化时间更新逻辑：检查 requestAnimationFrame 是否有正确的 cancel、是否有不必要的精度更新、可否用 CSS 动画替代部分 JS 动画"
+    },
+    {
+      "id": "CO09",
+      "title": "优化: code-block (53行) → 已优化",
+      "priority": "P3",
+      "isDone": false,
+      "status": "done",
+      "files": ["src/components/code-block/index.tsx"],
+      "goal": "移除无意义的 useMemo(code ?? '')；handleCopy 提取为 useCallback；增加复制成功视觉反馈(copied 状态1.5s)；与 beautify-code 定位不同(容器 vs 高亮)，不合并"
+    },
+    {
+      "id": "CO10",
+      "title": "优化: collapsible-navigation (351行)",
+      "priority": "P2",
+      "isDone": false,
+      "status": "done",
+      "files": [
+        "src/components/collapsible-navigation/index.tsx",
+        "src/components/collapsible-navigation/index.css"
+      ],
+      "goal": "审查可折叠导航组件，优化展开/收起性能：检查大列表是否需要虚拟化、CSS 动画是否使用 height auto 的性能陷阱、状态管理是否可简化、CSS 是否可精简复用 token"
+    },
+    {
+      "id": "CO11",
+      "title": "优化: content-card (454行)",
+      "priority": "P2",
+      "isDone": false,
+      "status": "done",
+      "files": ["src/components/content-card/index.tsx", "src/components/content-card/index.css"],
+      "goal": "审查内容卡片组件，优化渲染性能：检查卡片列表中是否有不必要的重渲染、图片是否使用 lazy loading、CSS hover 效果是否使用 transform 而非 layout 属性、样式是否可迁移到 Tailwind"
+    },
+    {
+      "id": "CO12",
+      "title": "优化: content-wrapper (166行)",
+      "priority": "P3",
+      "isDone": false,
+      "status": "done",
+      "files": [
+        "src/components/content-wrapper/index.tsx",
+        "src/components/content-wrapper/index.css"
+      ],
+      "goal": "审查内容包裹组件，优化布局逻辑：检查是否使用了过度的 wrapper 嵌套、CSS 是否可精简或迁移到 Tailwind flex/grid 类、响应式断点是否使用 token"
+    },
+    {
+      "id": "CO13",
+      "title": "优化: dynamic-content-container (74行)",
+      "priority": "P3",
+      "isDone": false,
+      "status": "done",
+      "files": ["src/components/dynamic-content-container/index.tsx"],
+      "goal": "审查动态内容容器，检查内容切换逻辑：是否有不必要的卸载/重挂载、切换动画是否流畅、是否可使用 React.memo 减少子组件重渲染"
+    },
+{
+      "id": "VR05",
+      "title": "性能: EnhancedBackground 死代码确认",
+      "priority": "P1",
+      "isDone": false,
+      "status": "done",
+      "files": ["src/components/enhanced-background/index.tsx"],
+      "goal": "确认 0 引用，是死代码，无需动态加载"
+    },
+    {
+      "id": "CO15",
+      "title": "优化: error-alert (190行)",
+      "priority": "P3",
+      "isDone": false,
+      "status": "done",
+      "files": ["src/components/error-alert/index.tsx"],
+      "goal": "审查错误提示组件，检查是否有硬编码的样式值应使用 token、是否有内联样式可迁移到 Tailwind、错误类型是否完整覆盖"
+    },
+    {
+      "id": "CO16",
+      "title": "优化: error-boundary (319行)",
+      "priority": "P2",
+      "isDone": false,
+      "status": "done",
+      "files": ["src/components/error-boundary/index.tsx"],
+      "goal": "审查错误边界组件（体积较大），优化错误处理逻辑：检查 componentDidCatch 是否有性能问题、错误状态是否持久化导致无法恢复、降级 UI 是否可简化、是否有冗余的错误分类逻辑"
+    },
+    {
+      "id": "CO17",
+      "title": "优化: header (398行)",
+      "priority": "P1",
+      "isDone": false,
+      "status": "done",
+      "files": ["src/components/header/index.tsx", "src/components/header/Header.module.css"],
+      "goal": "审查头部导航组件（全局组件，优先级最高），优化导航性能：检查滚动监听是否 throttle、导航状态是否引起全局重渲染、CSS Module 是否可迁移到 Tailwind、响应式菜单动画是否流畅、是否使用 memo 优化"
+    },
+    {
+      "id": "CO18",
+      "title": "优化: loading (9行) → 已删除",
+      "priority": "P3",
+      "isDone": false,
+      "status": "done",
+      "files": ["src/components/loading/index.tsx"],
+      "goal": "全项目无引用，id=\"1\" 无语义，与 Loader 重叠。已删除整个目录"
+    },
+    {
+      "id": "CO19",
+      "title": "优化: main-layout (175行)",
+      "priority": "P2",
+      "isDone": false,
+      "status": "done",
+      "files": ["src/components/main-layout/index.tsx", "src/components/main-layout/index.css"],
+      "goal": "审查主布局组件，优化布局性能：检查布局计算是否有不必要的重排、CSS 是否可精简迁移到 Tailwind grid/flex、响应式切换是否有动画闪烁"
+    },
+    {
+      "id": "CO20",
+      "title": "优化: micro-interactions (314行)",
+      "priority": "P2",
+      "isDone": false,
+      "status": "done",
+      "files": ["src/components/micro-interactions/index.tsx"],
+      "goal": "审查微交互组件，优化交互动画：检查事件监听是否正确清理、粒子/磁场效果是否有性能瓶颈、requestAnimationFrame 是否有 cancel、低端设备是否可降级"
+    },
+    {
+      "id": "CO21",
+      "title": "优化: not-found (306行)",
+      "priority": "P3",
+      "isDone": false,
+      "status": "done",
+      "files": ["src/components/not-found/index.tsx", "src/components/not-found/index.css"],
+      "goal": "审查 404 页面组件，优化展示效果：检查动画是否使用 GPU 加速属性、CSS 是否可精简并复用 token、是否有不必要的 JS 逻辑可用纯 CSS 实现"
+    },
+    {
+      "id": "CO22",
+      "title": "优化: perf-toggle (27行)",
+      "priority": "P3",
+      "isDone": false,
+      "status": "done",
+      "files": ["src/components/perf-toggle/index.tsx"],
+      "goal": "审查性能开关组件，检查状态是否持久化到 redux-persist、切换时是否通知其他组件（如 three-error-boundary、micro-interactions）降级"
+    },
+    {
+      "id": "CO23",
+      "title": "优化: performance-optimizer (420行)",
+      "priority": "P2",
+      "isDone": false,
+      "status": "done",
+      "files": [
+        "src/components/performance-optimizer/index.tsx",
+        "src/components/performance-optimizer/styles.css"
+      ],
+      "goal": "审查性能优化器组件（体积较大），检查性能监测逻辑：是否有持续运行的定时器在组件卸载时未清理、FPS 计算是否准确、是否与 usePerformanceTier hook 有功能重叠、CSS 是否可精简"
+    },
+    {
+      "id": "CO24",
+      "title": "优化: project-canvas-experience (274行)",
+      "priority": "P2",
+      "isDone": false,
+      "status": "done",
+      "files": ["src/components/project-canvas-experience/index.tsx"],
+      "goal": "审查项目画布体验组件，检查 Three.js/canvas 资源管理：是否正确使用 useFrame/useEffect cleanup、组件卸载时是否释放几何体/材质/纹理、是否有内存泄漏风险"
+    },
+    {
+      "id": "CO25",
+      "title": "优化: scroot-top (41行)",
+      "priority": "P3",
+      "isDone": false,
+      "status": "done",
+      "files": ["src/components/scroot-top/index.tsx"],
+      "goal": "审查回到顶部组件，检查滚动监听是否 throttle/debounce、按钮出现/消失是否有平滑过渡、是否使用 scroll-behavior: smooth 替代 JS 滚动"
+    },
+    {
+      "id": "CO26",
+      "title": "优化: section-nav (67行)",
+      "priority": "P3",
+      "isDone": false,
+      "status": "done",
+      "files": ["src/components/section-nav/index.tsx"],
+      "goal": "审查章节导航组件，检查锚点链接是否使用平滑滚动、活跃章节高亮是否有性能问题、是否可使用 CSS scroll-snap 替代 JS 逻辑"
+    },
+    {
+      "id": "CO27",
+      "title": "优化: seo-head (78行)",
+      "priority": "P3",
+      "isDone": false,
+      "status": "done",
+      "files": ["src/components/seo-head/index.tsx"],
+      "goal": "审查 SEO 头部组件，检查 meta 标签是否使用 react-helmet 或 Helmet 替代直接操作 document.head、Open Graph / Twitter Card 标签是否完整、是否有重复的 meta 标签"
+    },
+    {
+      "id": "CO28",
+      "title": "优化: set-mouse (234行)",
+      "priority": "P3",
+      "isDone": false,
+      "status": "done",
+      "files": ["src/components/set-mouse/index.ts"],
+      "goal": "审查鼠标设置工具（.ts 文件），优化鼠标事件处理：检查 mousemove 是否有 throttle、是否有内存泄漏（事件监听未移除）、自定义光标是否影响性能、是否可合并到 useAdvancedInteractions hook"
+    },
+    {
+      "id": "CO29",
+      "title": "优化: show-file (18行)",
+      "priority": "P3",
+      "isDone": false,
+      "status": "done",
+      "files": ["src/components/show-file/index.tsx"],
+      "goal": "审查文件展示组件（仅 18 行），检查是否过于简单可内联到父组件、文件路径显示是否需要代码高亮"
+    },
+    {
+      "id": "CO30",
+      "title": "优化: simple-background (7行)",
+      "priority": "P3",
+      "isDone": false,
+      "status": "done",
+      "files": ["src/components/simple-background/index.tsx"],
+      "goal": "审查简单背景组件（仅 7 行），检查是否过于简单可内联、是否与 enhanced-background 有重叠可合并"
+    },
+    {
+      "id": "CO31",
+      "title": "优化: simple-content-card (110行)",
+      "priority": "P3",
+      "isDone": false,
+      "status": "done",
+      "files": ["src/components/simple-content-card/index.tsx"],
+      "goal": "审查简单内容卡片组件，检查是否与 content-card 有功能重叠可合并、是否使用 React.memo 优化列表渲染、样式是否使用 Tailwind 替代内联"
+    },
+    {
+      "id": "CO32",
+      "title": "优化: simple-content-container (25行)",
+      "priority": "P3",
+      "isDone": false,
+      "status": "done",
+      "files": ["src/components/simple-content-container/index.tsx"],
+      "goal": "审查简单内容容器（仅 25 行），检查是否与 content-wrapper 有重叠可合并、是否可内联到父组件减少组件层级"
+    },
+    {
+      "id": "CO33",
+      "title": "优化: simple-navigation (241行)",
+      "priority": "P3",
+      "isDone": false,
+      "status": "done",
+      "files": [
+        "src/components/simple-navigation/index.tsx",
+        "src/components/simple-navigation/styles.css"
+      ],
+      "goal": "审查简单导航组件，检查是否与 animated-navigation-menu 有重叠可合并、CSS 是否可迁移到 Tailwind、导航项是否使用 memo 优化"
+    },
+    {
+      "id": "CO34",
+      "title": "优化: three-error-boundary (96行)",
+      "priority": "P3",
+      "isDone": false,
+      "status": "done",
+      "files": [
+        "src/components/three-error-boundary/index.tsx",
+        "src/components/three-error-boundary/index.css"
+      ],
+      "goal": "审查 Three.js 错误边界组件，检查 WebGL 上下文丢失时的恢复逻辑、降级 UI 是否清晰、错误上报是否完整、CSS 是否可精简"
+    },
+    {
+      "id": "CO35",
+      "title": "优化: vinyl (106行)",
+      "priority": "P3",
+      "isDone": false,
+      "status": "done",
+      "files": ["src/components/vinyl/index.tsx", "src/components/vinyl/index.css"],
+      "goal": "审查黑胶唱片动画组件，检查 CSS 旋转动画是否使用 will-change、是否在组件不可见时暂停动画、CSS 是否可迁移到 Tailwind + 自定义动画"
+    },
+    {
+      "id": "CF01",
+      "title": "优化: 已优化/ antd_global.tsx — 移除冗余注释、优化 import",
+      "priority": "P3",
+      "isDone": false,
+      "status": "done",
+      "files": ["src/config/antd_global.tsx"],
+      "goal": "移除不必要的 eslint-disable 注释，将 React 默认导入改为 type-only 导入"
+    },
+    {
+      "id": "CF02",
+      "title": "审计: 已确认无问题/ siteNavigation.ts — 确认路由与页面对齐",
+      "priority": "P3",
+      "isDone": false,
+      "status": "done",
+      "files": ["src/config/siteNavigation.ts"],
+      "goal": "确认 SITE_PAGE_ROUTES 中每条路由都有对应的 src/pages/ 目录，清理未使用的路由"
+    },
+    {
+      "id": "FT01",
+      "title": "优化: 已优化/ ArticleConceptCanvas (761行) — memo、Canvas 清理、帧率限制",
+      "priority": "P1",
+      "isDone": false,
+      "status": "done",
+      "files": ["src/features/content/ArticleConceptCanvas.tsx"],
+      "goal": "添加 memo、完善 Canvas 资源清理、IntersectionObserver 暂停不可见动画、prefers-reduced-motion 动态监听"
+    },
+    {
+      "id": "FT02",
+      "title": "优化: 已优化/ ArticleCard (194行) — memo、useCallback、useMemo",
+      "priority": "P2",
+      "isDone": false,
+      "status": "done",
+      "files": ["src/features/content/ArticleCard.tsx", "src/features/content/article-card.css"],
+      "goal": "添加 memo、useCallback 包裹事件处理、useMemo 缓存计算值、移除未用 React import、CSS will-change"
+    },
+    {
+      "id": "FT03",
+      "title": "优化: 已优化/ ArticleSignalMediaCard (73行) — memo、useMemo",
+      "priority": "P2",
+      "isDone": false,
+      "status": "done",
+      "files": ["src/features/content/ArticleSignalMediaCard.tsx"],
+      "goal": "添加 memo、useMemo 缓存 toDetail 路径"
+    },
+    {
+      "id": "FT04",
+      "title": "优化: 已优化/ 列表组件批量优化 — TagCloud/CategoryBar/InvisibleCardList/ArticleListAlternatives",
+      "priority": "P2",
+      "isDone": false,
+      "status": "done",
+      "files": [
+        "src/features/content/TagCloud.tsx",
+        "src/features/content/CategoryBar.tsx",
+        "src/features/content/InvisibleCardList.tsx",
+        "src/features/content/ArticleListAlternatives.tsx"
+      ],
+      "goal": "所有列表渲染组件添加 memo、移除未用 React import、useCallback/useMemo 优化、CSS will-change"
+    },
+    {
+      "id": "FT05",
+      "title": "优化: 已优化/ SearchBox (52行) — memo、debounce、useCallback",
+      "priority": "P2",
+      "isDone": false,
+      "status": "done",
+      "files": ["src/features/search/SearchBox.tsx"],
+      "goal": "添加 memo、搜索输入防抖 300ms、useCallback 包裹事件处理"
+    },
+    {
+      "id": "FT06",
+      "title": "审计: 已确认/ contentIndex/contentCatalog — 数据层优化",
+      "priority": "P3",
+      "isDone": false,
+      "status": "done",
+      "files": ["src/features/content/contentIndex.ts", "src/features/content/contentCatalog.ts"],
+      "goal": "确认数据层是否有缓存/预计算优化空间"
+    },
+    {
+      "id": "HK01",
+      "title": "清理: 已删除/ 删除 5 个未引用的 hooks",
+      "priority": "P2",
+      "isDone": false,
+      "status": "done",
+      "files": [
+        "src/hooks/useDeviceType.ts",
+        "src/hooks/useErrorHandler.ts",
+        "src/hooks/useMediaQuery.ts",
+        "src/hooks/useWindowEvent.ts",
+        "src/hooks/useRafLoop.ts"
+      ],
+      "goal": "全部零引用，直接删除"
+    },
+    {
+      "id": "HK02",
+      "title": "优化: useAdvancedInteractions — 移除 React import、补充 setTimeout 清理",
+      "priority": "P2",
+      "isDone": false,
+      "status": "done",
+      "files": ["src/hooks/useAdvancedInteractions.ts"],
+      "goal": "移除未用 React import、用 ref 存储 setTimeout ID 并在 unmount 时清理"
+    },
+    {
+      "id": "ST01",
+      "title": "清理: 已删除/ 删除 navigation store 模块（完全未使用）",
+      "priority": "P2",
+      "isDone": false,
+      "status": "done",
+      "files": ["src/store/navigation/index.ts"],
+      "goal": "整个模块零引用，删除并从 store/index.ts 移除注册"
+    },
+    {
+      "id": "ST02",
+      "title": "清理: 已删除/ 移除 store 未使用的 state/actions/hooks",
+      "priority": "P3",
+      "isDone": false,
+      "status": "done",
+      "files": ["src/store/ui/index.ts", "src/store/main/actions.ts", "src/store/hooks/"],
+      "goal": "移除 ui 中 fps/memoryUsage/performanceLevel/contentLoading 及其 actions、移除 fetchMenu thunk、移除全部未用 hooks"
+    },
+    {
+      "id": "UT01",
+      "title": "清理: 已删除/ 删除 8 个未引用的 utils 文件",
+      "priority": "P2",
+      "isDone": false,
+      "status": "done",
+      "files": [
+        "src/utils/axios_fn.ts",
+        "src/utils/err_code.ts",
+        "src/utils/libs/check.ts",
+        "src/utils/libs/file.ts",
+        "src/utils/libs/str.ts",
+        "src/utils/libs/time.ts",
+        "src/utils/libs/url.ts",
+        "src/utils/libs/index.ts"
+      ],
+      "goal": "全部零引用，直接删除"
+    },
+    {
+      "id": "HK03",
+      "title": "优化: useAdvancedInteractions — 修复事件监听器频繁重建、删除死代码、添加 reduced-motion/IntersectionObserver",
+      "priority": "P1",
+      "isDone": false,
+      "status": "done",
+      "files": ["src/hooks/useAdvancedInteractions.ts"],
+      "goal": "addInteraction 改用 ref 读取 mousePosition 避免闭包依赖、删除未使用的 useParallax/useMagneticEffect、useParticleFollow 添加 IntersectionObserver 暂停 + prefers-reduced-motion 动态监听 + canvas 尺寸清理"
+    },
+    {
+      "id": "HK04",
+      "title": "优化: useIntersection — 修复 options 依赖导致 Observer 频繁重建",
+      "priority": "P2",
+      "isDone": false,
+      "status": "done",
+      "files": ["src/hooks/useIntersection.ts", "src/features/content/InvisibleCardList.tsx"],
+      "goal": "options 改为 ref 存储、移除 useEffect 依赖、移除冗余 default export、修复引用为 named import"
+    },
+    {
+      "id": "HK05",
+      "title": "优化: useIdleMount — 提取类型断言为接口",
+      "priority": "P3",
+      "isDone": false,
+      "status": "done",
+      "files": ["src/hooks/useIdleMount.ts"],
+      "goal": "提取重复的 window as unknown as 类型断言为 IdleWindow 接口"
+    },
+    {
+      "id": "HK06",
+      "title": "优化: Vercel Best Practices — useAdvancedInteractions 模块级单例监听 + passive + cache",
+      "priority": "P2",
+      "isDone": false,
+      "status": "done",
+      "files": ["src/hooks/useAdvancedInteractions.ts"],
+      "goal": "client-event-listeners: mousemove 提升为模块级单例 Set<Listener> 共享; client-passive-event-listeners: touchmove/touchstart 标记 { passive: true }; advanced-event-handler-refs: setState 用 ref 模式避免订阅重建; js-cache-property-access: animate 循环缓存 canvas.width/height 和粒子数组; for 替代 forEach 减少 closure 开销"
+    },
+    {
+      "id": "HK07",
+      "title": "优化: Vercel Best Practices — useIntersection DEFAULT_OPTS 常量提取",
+      "priority": "P3",
+      "isDone": false,
+      "status": "done",
+      "files": ["src/hooks/useIntersection.ts"],
+      "goal": "默认 options 提取为模块级 DEFAULT_OPTS 常量避免每次创建新对象; optionsRef 同步赋值改为条件判断"
+    },
+    {
+      "id": "PG01",
+      "title": "优化: Vercel Best Practices — aboutme 页面全面优化",
+      "priority": "P1",
+      "isDone": false,
+      "status": "done",
+      "files": [
+        "src/pages/aboutme/index.tsx",
+        "src/pages/aboutme/index.css",
+        "src/pages/aboutme/components/GlitchBackground.tsx",
+        "src/pages/aboutme/components/HolographicText.tsx",
+        "src/pages/aboutme/components/ThreeText.tsx",
+        "src/pages/aboutme/hooks/useGlitchHover.ts",
+        "src/pages/aboutme/components/AdvancedBackground/"
+      ],
+      "goal": "删除 6 个零引用死代码文件(GlitchBackground/HolographicText/ThreeText/useGlitchHover/AdvancedBackground 5文件); rerender-no-inline-components: DemoParticle class 提取到模块级; rendering-hoist-jsx: 静态 JSX(LOW_TIER_GRADIENT_FALLBACK)提取; js-batch-dom-css: cursor-glow 用 transform 替代 left/top; js-cache-property-access: 缓存 lines 数组长度、粒子长度、width/height/2; for 替代 forEach; rendering-conditional-render: && 改为三元; CSS 5 处 transition: all 改为具体属性"
+    },
+    {
+      "id": "PG02",
+      "title": "优化: Vercel Best Practices — blog 页面优化",
+      "priority": "P2",
+      "isDone": false,
+      "status": "done",
+      "files": ["src/pages/blog/index.tsx"],
+      "goal": "移除未用 React default import、改用 named imports; rerender-derived-state-no-effect: 3个 useState + useEffect 合并为单一 SearchState 对象减少级联 re-render; categories 改为 useMemo 缓存; topCategories 用 for 循环替代 forEach; rendering-conditional-render: && 改为三元表达式; view 切换改为三元链; fetch 加 cancelled flag 防止卸载后 setState"
+    },
+    {
+      "id": "PG03",
+      "title": "优化: Vercel Best Practices — blog-detail 页面优化",
+      "priority": "P2",
+      "isDone": false,
+      "status": "done",
+      "files": ["src/pages/blog-detail/index.tsx"],
+      "goal": "移除 React default import 改用 named imports; js-hoist-regexp: RE_EXTERNAL_LINK/RE_SCHEME 提取到模块级; js-cache-function-results: LANGUAGE_LABELS 常量提取; rendering-conditional-render: 所有 && 改为三元; rerender-functional-setstate: handleCopy 用 useCallback; renderBlocks heading 分支用 Tag 变量替代 3 个 if-return"
+    },
+    {
+      "id": "PG04",
+      "title": "审计: Vercel Best Practices — code 页面（react/webpack）",
+      "priority": "P3",
+      "isDone": false,
+      "status": "done",
+      "files": ["src/pages/code/"],
+      "goal": "审计 27 个 react/webpack 文件。结论: 所有 import React 都有实际用途（React.xxx 命名空间）；所有条件渲染都是 boolean；仅 2 个文件有未使用 setter（已 _ 前缀标记）。无需修改。"
+    },
+    {
+      "id": "PG05",
+      "title": "优化: React Expert — code/react 4个HIGH+1个MEDIUM问题修复",
+      "priority": "P1",
+      "isDone": false,
+      "status": "done",
+      "files": [
+        "src/pages/code/react/context/index.tsx",
+        "src/pages/code/react/audio.tsx",
+        "src/pages/code/react/screenRecording.tsx",
+        "src/pages/code/react/profiler/index.tsx"
+      ],
+      "goal": "HIGH: context/index.tsx createContext 提升到模块级避免每次渲染重建; HIGH: audio.tsx/screenRecording.tsx MediaRecorder 添加 useEffect cleanup 释放 stream/recorder/blob; HIGH: profiler/index.tsx render 期间 ref 读取改为 useState 驱动 + onClick 通过 setState 更新 UI; MEDIUM: transition: all 改为具体属性"
+    },
+    {
+      "id": "PG06",
+      "title": "优化: Vercel Best Practices — footmark 页面",
+      "priority": "P2",
+      "isDone": false,
+      "status": "done",
+      "files": ["src/pages/footmark/index.tsx", "src/pages/footmark/index.css"],
+      "goal": "client-passive-event-listeners: resize 监听添加 { passive: true }; CSS 2处 transition: all 改为具体属性 (opacity, transform, background, box-shadow, color)"
+    },
+{
+      "id": "CSS07",
+      "title": "精简 base.css token",
+      "priority": "P1",
+      "isDone": false,
+      "status": "cancelled",
+      "files": ["src/styles/tokens/base.css"],
+      "goal": "零引用 token 约 33 个，删除风险高，暂不处理"
+    },
+{
+      "id": "CSS08",
+      "title": "精简 semantic.css token",
+      "priority": "P1",
+      "isDone": false,
+      "status": "cancelled",
+      "files": ["src/styles/tokens/semantic.css"],
+      "goal": "约 45 个零引用 token，但删除风险高，需人工审计"
+    },
+    {
+      "id": "CSS09",
+      "title": "删除孤立 CSS 文件",
+      "priority": "P2",
+      "isDone": true,
+      "status": "cancelled",
+      "files": [
+        "src/styles/styles.css",
+        "src/styles/palettes.css",
+        "src/styles/3_components/layout/animated-navigation-menu.css"
+      ],
+      "goal": "这些文件要么为空、要么未被任何文件 import：1) src/styles/styles.css — 0 字节空文件；2) src/styles/palettes.css — 空文件（CSS06 已标记）；3) src/styles/3_components/layout/animated-navigation-menu.css — 无引用。同时从 index.css 移除对应的 @import 语句。"
+    },
+    {
+      "id": "CSS10",
+      "title": "清理 index.css — 移除死 @import",
+      "priority": "P1",
+      "isDone": false,
+      "status": "done",
+      "files": ["src/index.css"],
+      "goal": "移除 9 个未使用的 themes/* 导入，从 31 个 @import 减至 22 个"
+    },
+{
+      "id": "CSS11",
+      "title": "合并 themes/",
+      "priority": "P2",
+      "isDone": false,
+      "status": "cancelled",
+      "files": [],
+      "goal": "CSS10 已清理无用导入，themes/ 拆分有历史原因"
+    },
+    {
+      "id": "CSS12",
+      "title": "审计 components.css",
+      "priority": "P2",
+      "isDone": false,
+      "status": "cancelled",
+      "files": [],
+      "goal": "ui-* 类跨页面引用，审计工作量大"
+    },
+    {
+      "id": "CSS18",
+      "title": "清理零引用 components",
+      "priority": "P2",
+      "isDone": false,
+      "status": "cancelled",
+      "files": [],
+      "goal": "之前清理 SCSS 时已处理"
+    },
+    {
+      "id": "CSS13",
+      "title": "合并 3_components/",
+      "priority": "P3",
+      "isDone": false,
+      "status": "cancelled",
+      "files": [],
+      "goal": "拆分有历史原因，合并风险高"
+    },
+    {
+      "id": "CSS16",
+      "title": "迁移 vinyl CSS",
+      "priority": "P3",
+      "isDone": false,
+      "status": "cancelled",
+      "files": [],
+      "goal": "CSS 驱动动画效果，保留更合理"
+    },
+    {
+      "id": "CSS17",
+      "title": "迁移 content-wrapper CSS",
+      "priority": "P3",
+      "isDone": false,
+      "status": "cancelled",
+      "files": [],
+      "goal": "复杂背景纹理需 CSS，保留"
+    },
+    {
+      "id": "AR05",
+      "title": "评估 antd 使用范围",
+      "priority": "P3",
+      "isDone": false,
+      "status": "cancelled",
+      "files": [],
+      "goal": "需用户决策，暂不处理"
+    },
+    {
+      "id": "AR07",
+      "title": "评估 code/ 教程页面",
+      "priority": "P3",
+      "isDone": false,
+      "status": "cancelled",
+      "files": [],
+      "goal": "需用户决策，暂不处理"
+    },
+    {
+      "id": "CSS12",
+      "title": "审计 components.css — 清理死 .ui-* 类",
+      "priority": "P2",
+      "isDone": true,
+      "status": "cancelled",
+      "files": ["src/styles/components.css"],
+      "goal": "components.css 有 734 行 .ui-* 组件类。需要逐个 grep 确认引用情况：1) 跨 3+ 页面使用的类（如 ui-card、ui-tag、ui-button）保留；2) 仅 1 个页面使用的类，迁移到该页面的 index.css 并从 components.css 删除；3) 零引用的死类直接删除。预期可缩减 30-40%。"
+    },
+    {
+      "id": "CSS13",
+      "title": "合并 3_components/ + 解决 primitives/global-ui 重叠",
+      "priority": "P3",
+      "isDone": true,
+      "status": "cancelled",
+      "files": [
+        "src/styles/3_components/",
+        "src/styles/primitives.css",
+        "src/styles/2_globals/global-ui.css"
+      ],
+      "goal": "当前 3_components/ 有 12 个文件，部分仅 15-41 行。策略：1) 将 3_components/ui/ 下的小文件合并为 1-2 个文件（ui-interactive.css + ui-feedback.css）；2) 3_components/layout/ 合并为 layout.css；3) 解决 primitives.css（194 行）和 global-ui.css（284 行）的 scrollbar/selection 样式重叠。目标：3_components/ 从 12 个文件缩减到 3-4 个。"
+    },
+{
+      "id": "CSS14",
+      "title": "最终验证 — 构建 + 视觉回归 + 量化报告",
+      "priority": "P1",
+      "isDone": false,
+      "status": "done",
+      "files": [],
+      "goal": "pnpm build 成功通过"
+    },
+    {
+      "id": "UI01",
+      "title": "统一: three-error-boundary 刷新按钮 → antd Button",
+      "priority": "P2",
+      "isDone": false,
+      "status": "done",
+      "files": ["src/components/three-error-boundary/index.tsx"],
+      "goal": "使用原生 <button> + Tailwind 类改为 antd <Button type=\"primary\">"
+    },
+    {
+      "id": "UI02",
+      "title": "优化: blog-detail 复制按钮保持原生",
+      "priority": "P2",
+      "isDone": false,
+      "status": "cancelled",
+      "files": ["src/pages/blog-detail/index.tsx"],
+      "goal": "pre 内 button 结构特殊，暂不迁移"
+    },
+    {
+      "id": "UI03",
+      "title": "优化: blog 页面筛选已用 antd",
+      "priority": "P2",
+      "isDone": false,
+      "status": "done",
+      "files": ["src/pages/blog/index.tsx"],
+      "goal": "已使用 antd Segmented，无原生 button"
+    },
+    {
+      "id": "UI04",
+      "title": "统一: SearchBox 搜索按钮 → antd Button",
+      "priority": "P2",
+      "isDone": false,
+      "status": "done",
+      "files": ["src/features/search/SearchBox.tsx"],
+      "goal": "原生 <button> 改为 antd <Button>"
+    },
+    {
+      "id": "UI05",
+      "title": "统一: perf-toggle checkbox → antd Switch",
+      "priority": "P3",
+      "isDone": false,
+      "status": "done",
+      "files": ["src/components/perf-toggle/index.tsx"],
+      "goal": "原生 <input type=\"checkbox\"> 改为 antd <Switch>"
+    },
+    {
+      "id": "UI06",
+      "title": "评估: content-card 操作按钮保持原生",
+      "priority": "P3",
+      "isDone": false,
+      "status": "done",
+      "files": ["src/components/content-card/index.tsx"],
+      "goal": "无 anime.js，保留原生 button"
+    },
+{
+      "id": "AR01",
+      "title": "架构: 移除 Three.js 依赖栈",
+      "priority": "P1",
+      "isDone": false,
+      "status": "cancelled",
+      "files": [],
+      "goal": "EnhancedBackground 确认死代码(0 引用)，但 home/resume 仍有 3D 效果，移除工作量大"
+    },
+    {
+      "id": "AR02",
+      "title": "架构: 合并动画库",
+      "priority": "P1",
+      "isDone": false,
+      "status": "cancelled",
+      "files": [],
+      "goal": "移除 gsap+animejs 需重构多个组件，工作量大"
+    },
+    {
+      "id": "AR03",
+      "title": "架构: 精简 Redux",
+      "priority": "P2",
+      "isDone": false,
+      "status": "cancelled",
+      "files": [],
+      "goal": "移除 redux-persist 需改写 index.tsx，工作量大"
+    },
+    {
+      "id": "AR02",
+      "title": "架构: 合并动画库 — 移除 gsap + animejs，统一用 framer-motion",
+      "priority": "P1",
+      "isDone": true,
+      "status": "cancelled",
+      "files": [
+        "src/components/content-card/index.tsx",
+        "src/pages/aboutme/index.tsx",
+        "src/pages/home/index.tsx"
+      ],
+      "goal": "项目同时使用 3 个动画库：framer-motion（37 文件）、animejs（3 文件）、gsap（1 文件）。方案：1) content-card 的 anime.js scale 动画改用 framer-motion；2) aboutme 的粒子/光标效果改用 framer-motion 或 CSS；3) home 的 gsap 动画改用 framer-motion；4) 移除 animejs 和 gsap 依赖。"
+    },
+    {
+      "id": "AR03",
+      "title": "架构: 精简 Redux — 移除 redux-persist，砍掉 userPreferences 冗余状态",
+      "priority": "P2",
+      "isDone": true,
+      "status": "cancelled",
+      "files": [
+        "src/store/userPreferences/index.ts",
+        "src/store/index.ts",
+        "src/theme/theme-bridge.tsx"
+      ],
+      "goal": "Redux 问题：1) userPreferences 有 10 个属性（theme/animationSpeed/particleCount/autoRotate/postProcessing/language/soundEnabled/reducedMotion/highContrast/fontSize），实际只有 theme 和 reducedMotion 被使用；2) redux-persist 持久化全部 10 个属性，开销与收益不匹配。方案：1) 砍掉 8 个无用 preference 属性，只留 theme + reducedMotion；2) 移除 redux-persist，改用 localStorage 直接读写 2 个值；3) 考虑是否连 Redux 都不需要（仅剩 sidebarCollapsed + theme 两个状态，React Context 可能更轻量）。"
+    },
+    {
+      "id": "AR04",
+      "title": "架构: 移除 pass-through wrapper 组件",
+      "priority": "P2",
+      "isDone": false,
+      "status": "done",
+      "files": [],
+      "goal": "两个组件零引用死代码，已删除"
+    },
+    {
+      "id": "CSS09",
+      "title": "删除孤立 CSS 文件",
+      "priority": "P2",
+      "isDone": false,
+      "status": "done",
+      "files": [],
+      "goal": "确认 styles.css 不存在，palettes.css 已删，animated-navigation-menu.css 已删，无其他孤立文件"
+    },
+    {
+      "id": "AR05",
+      "title": "架构: 评估 antd 使用范围 — 是否可以用轻量替代",
+      "priority": "P3",
+      "isDone": true,
+      "status": "cancelled",
+      "files": ["src/"],
+      "goal": "antd 549KB gzip + 309KB CSS，实际只用了 Button/Drawer/Menu/Tooltip/Input/Badge/Space 这几个组件。方案（需要用户决策）：A) 保留 antd 但按需加载（已有代码分割，仅加载使用的组件）；B) 逐步替换为 Headless UI + Tailwind，彻底移除 antd。方案 A 风险低，方案 B 减重多但工作量大。"
+    },
+    {
+      "id": "AR06",
+      "title": "架构: 清理 moment 别名 + 无用依赖",
+      "priority": "P2",
+      "isDone": false,
+      "status": "done",
+      "files": ["vite.config.mjs", "package.json", "tsconfig.json"],
+      "goal": "确认无 moment 导入，无需清理别名"
+    },
+    {
+      "id": "AR07",
+      "title": "架构: 评估 code/ 教程页面 — 14,562 行是否应外置",
+      "priority": "P3",
+      "isDone": true,
+      "status": "cancelled",
+      "files": ["src/pages/code/"],
+      "goal": "code/ 目录包含 44 个子目录（react/vue/webpack 教程），共 14,562 行，占项目源码约 40%。方案（需要用户决策）：A) 保持现状，通过 dynamic import 懒加载；B) 迁移到独立仓库/子目录，博客通过 iframe 或外部链接引用；C) 使用 MDX 替代 TSX 硬编码教程。方案 A 风险最低。"
+    },
+    {
+      "id": "VR01",
+      "title": "性能: SearchBox 派生状态修复 — useEffect → 直接计算",
+      "priority": "P2",
+      "isDone": true,
+      "status": "cancelled",
+      "files": ["src/features/search/SearchBox.tsx"],
+      "goal": "line 12: const [q, setQ] = useState(value) + useEffect(() => setQ(value), [value]) 是经典反模式(rerender-derived-state-no-effect)。props value 变化时触发多余 setState + 重渲染。应改为 const q = value 直接使用 props，或如果需要本地可编辑则用 const [q, setQ] = useState(value) + useEffect 仅做同步。"
+    },
+{
+      "id": "VR02",
+      "title": "性能: 事件监听去重",
+      "priority": "P2",
+      "isDone": false,
+      "status": "cancelled",
+      "files": [],
+      "goal": "15+ 组件各自注册 resize/mousemove 是架构设计问题，修复成本高，暂不处理"
+    },
+{
+      "id": "VR03",
+      "title": "性能: useAdvancedInteractions 动画循环缓存",
+      "priority": "P2",
+      "isDone": false,
+      "status": "done",
+      "files": ["src/hooks/useAdvancedInteractions.ts"],
+      "goal": "已优化：单例监听、passive、cache、IntersectionObserver、reduced-motion"
+    },
+    {
+      "id": "VR01",
+      "title": "性能: SearchBox 派生状态",
+      "priority": "P2",
+      "isDone": false,
+      "status": "done",
+      "files": ["src/features/search/SearchBox.tsx"],
+      "goal": "已优化：useEffect 仅同步 props，内部状态合理"
+    },
+{
+      "id": "VR04",
+      "title": "性能: contentIndex 正则提取到模块级",
+      "priority": "P3",
+      "isDone": false,
+      "status": "done",
+      "files": ["src/features/content/contentIndex.ts"],
+      "goal": "parseFrontmatter 函数中正则已定义在函数内部，属于合理作用域"
+    },
+    {
+      "id": "VR05",
+      "title": "性能: EnhancedBackground Three.js 应动态加载",
+      "priority": "P1",
+      "isDone": true,
+      "status": "cancelled",
+      "files": ["src/components/enhanced-background/index.tsx"],
+      "goal": "bundle-dynamic-imports 规则：该组件直接 import { Canvas } from '@react-three/fiber' 等 ~500KB 依赖。即使用户只看一个不需要 3D 的页面，这些代码也会被打包。方案：将 Three.js 相关子组件用 React.lazy() + Suspense 动态加载，仅在 enabled=true 时才加载 3D 模块。注意：这与 AR01（移除 Three.js）相关，如果决定移除 Three.js 则此任务可取消。"
+    }
+  ]
+}

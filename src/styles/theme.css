@@ -1,0 +1,13 @@
+/* Core token + theme entry.
+ * 这里只允许引入真正的全局 token / 主题覆盖文件。
+ * 页面 / feature / legacy palette 统一改由 palettes.css 承接，避免 theme.css 继续承担局部视觉入口。
+ */
+
+/* Core tokens */
+@import url('./tokens/base.css');
+@import url('./tokens/semantic.css');
+
+/* Global themes */
+@import url('./themes/dark.css');
+@import url('./themes/light.css');
+@import url('./themes/accessibility.css');

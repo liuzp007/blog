@@ -1,0 +1,28 @@
+/* 可访问性增强层。
+ * 只允许覆盖高对比度等主题语义，不承载业务 palette。
+ */
+
+/*
+ * 无障碍主题覆盖层。
+ * 这里只允许放跨主题生效的高对比度 token 覆写；
+ * reduced-motion 这类全局行为规则统一放在 global-ui.css。
+ * 不承载页面私有 palette，也不承载组件结构样式。
+ */
+:root[data-high-contrast='true'] {
+  --text-primary-strong: var(--color-white);
+  --text-secondary: var(--white-alpha-90);
+  --border-subtle: var(--white-alpha-30);
+  --border-strong: var(--white-alpha-40);
+  --surface-card: rgb(0 0 0 / 88%);
+  --surface-card-hover: rgb(0 0 0 / 94%);
+  --button-secondary-border: var(--white-alpha-35);
+}
+
+:root[data-theme='light'][data-high-contrast='true'] {
+  --text-primary-strong: #101521;
+  --text-secondary: rgb(16 21 33 / 88%);
+  --border-subtle: rgb(16 21 33 / 22%);
+  --border-strong: rgb(16 21 33 / 36%);
+  --surface-card: rgb(255 255 255 / 98%);
+  --surface-card-hover: rgb(255 255 255 / 100%);
+}

@@ -1,0 +1,159 @@
+/* Blog 列表页私有 palette。
+ * 承载实验室列表页的深海底色、冷暖双强调和控件面板体系。
+ * 页面 SCSS 只消费这些变量，不再在页面文件里保存原始颜色值。
+ */
+
+.blog-lab {
+  /* --- 基础语义 --- */
+  --lab-page-bg: var(--surface-page-secondary);
+  --lab-color-accent: var(--accent-primary);
+  --lab-accent-warm: var(--accent-warm);
+  --lab-accent-alpha-18: color-mix(in srgb, var(--lab-color-accent) 18%, transparent);
+  --lab-accent-warm-alpha-18: color-mix(in srgb, var(--lab-accent-warm) 18%, transparent);
+  --lab-accent-coral-source: #ff7d74;
+  --lab-accent-mint-source: #7effc2;
+  --lab-accent-violet-source: #bf91ff;
+
+  /* --- 面层 --- */
+  --lab-surface-hero: #08192c;
+  --lab-surface-signals: #081523;
+  --lab-surface-series: #071321;
+  --lab-surface-card: #081320;
+  --lab-surface-control: #06121f;
+  --lab-surface-card-strong: rgb(6 15 28 / 80%);
+  --lab-surface-panel: rgb(8 20 34 / 70%);
+  --lab-panel-elevated: rgb(7 22 36 / 80%);
+  --lab-panel-soft: rgb(7 23 40 / 72%);
+  --lab-panel-subtle: rgb(6 19 32 / 72%);
+  --lab-panel-floating: rgb(5 16 28 / 25%);
+  --lab-panel-floating-hover: rgb(3 27 43 / 66%);
+  --lab-input-bg: rgb(2 16 28 / 65%);
+  --lab-input-bg-strong: rgb(2 16 28 / 70%);
+  --lab-input-bg-soft: rgb(2 16 28 / 60%);
+  --lab-button-bg: rgb(5 17 31 / 35%);
+  --lab-button-bg-hover: rgb(5 17 31 / 70%);
+  --lab-pagination-bg: rgb(3 18 31 / 72%);
+
+  /* --- 边线 --- */
+  --lab-accent-border: color-mix(in srgb, var(--lab-color-accent) 28%, transparent);
+  --lab-line-accent: color-mix(in srgb, var(--lab-color-accent) 24%, transparent);
+  --lab-line-strong: rgb(173 227 255 / 45%);
+  --lab-line-medium: rgb(173 227 255 / 25%);
+  --lab-line-soft: rgb(173 227 255 / 20%);
+  --lab-line-subtle: rgb(173 227 255 / 16%);
+  --lab-line-faint: rgb(173 227 255 / 8%);
+  --lab-line-input: rgb(173 227 255 / 32%);
+  --lab-line-pill: rgb(173 227 255 / 30%);
+  --lab-line-active: color-mix(in srgb, var(--lab-color-accent) 60%, transparent);
+  --lab-line-border: var(--lab-line-accent);
+
+  /* --- 文本 --- */
+  --lab-text-primary: #eff8ff;
+  --lab-text-strong: #f8fdff;
+  --lab-text-strong-alt: #f7fdff;
+  --lab-text-strong-soft: #ebf7ff;
+  --lab-text-strong-muted: #e9f8ff;
+  --lab-text-action: #e4f6ff;
+  --lab-text-chip: #e8f7ff;
+  --lab-text-contrast: #032739;
+  --lab-text-contrast-soft: #032335;
+  --lab-text-contrast-muted: #05324a;
+  --lab-text-warm: #ffd6b8;
+  --lab-text-nav: rgb(205 230 249 / 74%);
+  --lab-text-nav-hover: #f3fbff;
+  --lab-text-kicker: rgb(214 243 255 / 95%);
+  --lab-text-caption: rgb(204 232 255 / 72%);
+  --lab-text-meta: rgb(205 230 249 / 80%);
+  --lab-text-subtle: rgb(194 224 247 / 66%);
+  --lab-text-section-kicker: rgb(180 229 255 / 70%);
+  --lab-text-panel: rgb(212 232 247 / 72%);
+  --lab-text-card-meta: rgb(196 226 245 / 76%);
+  --lab-text-card-copy: rgb(220 237 251 / 78%);
+  --lab-text-signal: rgb(190 220 243 / 82%);
+  --lab-text-status: rgb(204 230 250 / 82%);
+  --lab-text-empty: rgb(206 230 248 / 75%);
+  --lab-text-placeholder: rgb(191 220 246 / 60%);
+  --lab-text-control: rgb(217 237 255 / 75%);
+  --lab-text-muted: var(--lab-text-subtle);
+
+  /* --- 芯片与渐变 --- */
+  --lab-chip-bg: var(--white-alpha-08);
+  --lab-chip-bg-strong: var(--lab-accent-warm-alpha-18);
+  --lab-chip-bg-inverse: color-mix(in srgb, var(--raw-white) 42%, transparent);
+  --lab-chip-text-inverse: #05425e;
+  --lab-stripe-highlight: rgb(173 227 255 / 4%);
+  --lab-nav-bg:
+    linear-gradient(180deg, rgb(7 22 38 / 92%), rgb(5 16 29 / 84%)),
+    radial-gradient(circle at left top, var(--lab-accent-alpha-18), transparent 42%);
+  --lab-hero-bg:
+    radial-gradient(
+      circle at 12% 18%,
+      color-mix(in srgb, var(--lab-color-accent) 34%, transparent),
+      transparent 46%
+    ),
+    radial-gradient(
+      circle at 88% 76%,
+      color-mix(in srgb, var(--lab-accent-warm) 28%, transparent),
+      transparent 52%
+    ),
+    linear-gradient(145deg, rgb(4 16 30 / 90%), rgb(6 20 38 / 85%));
+  --lab-series-bg:
+    radial-gradient(
+      circle at top left,
+      color-mix(in srgb, var(--lab-color-accent) 8%, transparent),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at bottom right,
+      color-mix(in srgb, var(--lab-accent-warm) 12%, transparent),
+      transparent 34%
+    ),
+    linear-gradient(155deg, rgb(7 16 30 / 84%), rgb(4 11 22 / 78%));
+  --lab-card-bg:
+    linear-gradient(180deg, var(--white-alpha-05), transparent 28%), rgb(6 15 28 / 72%);
+  --lab-control-bg:
+    radial-gradient(
+      circle at 84% 0%,
+      color-mix(in srgb, var(--lab-accent-warm) 17%, transparent),
+      transparent 45%
+    ),
+    linear-gradient(165deg, rgb(5 17 30 / 70%), rgb(3 13 24 / 58%));
+  --lab-accent-gradient: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--lab-color-accent) 95%, transparent),
+    color-mix(in srgb, var(--color-brand-link) 90%, transparent)
+  );
+  --lab-series-card-bg-cyan:
+    radial-gradient(circle at top right, var(--lab-accent-alpha-18), transparent 34%),
+    var(--lab-surface-card-strong);
+  --lab-series-card-bg-warm:
+    radial-gradient(circle at top right, var(--lab-accent-warm-alpha-18), transparent 34%),
+    var(--lab-surface-card-strong);
+  --lab-series-card-bg-coral:
+    radial-gradient(
+      circle at top right,
+      color-mix(in srgb, var(--lab-accent-coral-source) 18%, transparent),
+      transparent 34%
+    ),
+    var(--lab-surface-card-strong);
+  --lab-series-card-bg-mint:
+    radial-gradient(
+      circle at top right,
+      color-mix(in srgb, var(--lab-accent-mint-source) 18%, transparent),
+      transparent 34%
+    ),
+    var(--lab-surface-card-strong);
+  --lab-series-card-bg-violet:
+    radial-gradient(
+      circle at top right,
+      color-mix(in srgb, var(--lab-accent-violet-source) 18%, transparent),
+      transparent 34%
+    ),
+    var(--lab-surface-card-strong);
+
+  /* --- 阴影 --- */
+  --lab-shadow-base: 0 20px 60px rgb(1 14 32 / 45%);
+  --lab-shadow-soft: 0 16px 38px rgb(1 14 32 / 24%);
+  --lab-shadow-panel: 0 16px 38px rgb(1 14 32 / 28%);
+  --lab-shadow-card: 0 18px 44px rgb(0 8 18 / 32%);
+}

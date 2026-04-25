@@ -1,0 +1,93 @@
+/* Blog 详情页私有 palette。
+ * 承载详情页 hero、正文阅读区、代码块和系列导航的深色阅读语义。
+ * 页面 SCSS 只消费这些变量，不再在页面文件里保存原始颜色值。
+ */
+
+.blog-detail-page {
+  /* --- 文本 --- */
+  --detail-text-primary: #f5f7ff;
+  --detail-text-heading: var(--raw-white);
+  --detail-text-secondary: rgb(229 235 255 / 86%);
+  --detail-text-muted: rgb(220 228 255 / 72%);
+  --detail-text-soft: rgb(224 231 255 / 64%);
+  --detail-text-subtle: rgb(221 229 255 / 82%);
+  --detail-text-dim: rgb(221 229 255 / 78%);
+  --detail-text-tag: #b9c6ff;
+  --detail-text-tag-strong: #ecf1ff;
+  --detail-text-accent: #8ce7ff;
+  --detail-text-summary: rgb(231 237 255 / 84%);
+  --detail-text-series-desc: rgb(219 227 255 / 72%);
+  --detail-text-series-progress: rgb(255 255 255 / 68%);
+  --detail-text-series-chapter: #f7f9ff;
+  --detail-text-series-meta: rgb(224 231 255 / 62%);
+  --detail-text-section-title: #c9d5ff;
+  --detail-text-card: #f4f6ff;
+  --detail-text-related-summary: rgb(229 235 255 / 74%);
+  --detail-text-code: #e9f2ff;
+  --detail-text-code-muted: #93a8c8;
+  --detail-text-code-comment: #6f7f9a;
+  --detail-text-code-warm: #ff8a7b;
+  --detail-text-code-warm-soft: #ffb18f;
+  --detail-text-code-cool: #6cbcff;
+  --detail-text-code-cool-soft: #9fd4ff;
+  --detail-text-code-string: #c7dcff;
+  --detail-text-code-label: #9ecfff;
+  --detail-text-code-button: #d9ebff;
+  --detail-text-code-button-hover: #eff7ff;
+
+  /* --- 面层 --- */
+  --detail-surface-hero:
+    radial-gradient(circle at top right, rgb(76 201 240 / 22%), transparent 34%),
+    radial-gradient(circle at left center, rgb(248 150 30 / 18%), transparent 30%),
+    linear-gradient(145deg, rgb(10 14 26 / 92%), rgb(20 26 45 / 82%));
+  --detail-surface-series: linear-gradient(135deg, var(--white-alpha-06), rgb(7 12 24 / 60%));
+  --detail-surface-series-chapter-active: linear-gradient(
+    145deg,
+    rgb(255 125 73 / 22%),
+    rgb(16 23 39 / 82%)
+  );
+  --detail-surface-card: rgb(10 16 31 / 72%);
+  --detail-surface-body: linear-gradient(180deg, rgb(8 12 24 / 96%), rgb(11 17 34 / 82%));
+  --detail-surface-side: rgb(9 14 26 / 72%);
+  --detail-surface-section: rgb(8 12 24 / 72%);
+  --detail-surface-chip: var(--white-alpha-08);
+  --detail-surface-chip-soft: var(--white-alpha-06);
+  --detail-surface-chip-faint: var(--white-alpha-04);
+  --detail-surface-chip-hover: var(--white-alpha-07);
+  --detail-code-surface:
+    radial-gradient(circle at 0% 0%, rgb(46 84 146 / 24%), transparent 48%),
+    radial-gradient(circle at 100% 0%, rgb(255 122 89 / 12%), transparent 30%),
+    linear-gradient(160deg, #08111d 0%, #0a1725 42%, #09131f 100%);
+  --detail-code-button-bg: linear-gradient(135deg, rgb(14 25 42 / 96%), rgb(9 18 31 / 94%));
+  --detail-code-button-bg-hover: linear-gradient(135deg, rgb(22 39 63 / 98%), rgb(10 22 37 / 96%));
+  --detail-code-window-dots:
+    radial-gradient(circle, rgb(255 118 118 / 95%) 0 40%, transparent 42%) left center / 10px 10px
+      no-repeat,
+    radial-gradient(circle, rgb(255 194 92 / 95%) 0 40%, transparent 42%) center center / 10px 10px
+      no-repeat,
+    radial-gradient(circle, rgb(93 232 169 / 95%) 0 40%, transparent 42%) right center / 10px 10px
+      no-repeat;
+  --detail-surface-code-scrollbar-track: rgb(102 131 170 / 12%);
+  --detail-surface-code-scrollbar-thumb: rgb(142 180 233 / 42%);
+
+  /* --- 边线 --- */
+  --detail-line-strong: var(--white-alpha-12);
+  --detail-line-medium: rgb(255 255 255 / 10%);
+  --detail-line-soft: var(--white-alpha-08);
+  --detail-line-tag: rgb(255 255 255 / 14%);
+  --detail-line-code: rgb(113 152 207 / 28%);
+  --detail-line-code-soft: rgb(125 163 221 / 20%);
+  --detail-line-code-button: rgb(121 157 214 / 28%);
+  --detail-line-code-button-hover: rgb(149 199 255 / 76%);
+  --detail-line-active: rgb(140 231 255 / 56%);
+  --detail-line-active-soft: rgb(140 231 255 / 46%);
+  --detail-line-contrast: rgb(255 255 255 / 40%);
+  --detail-line-success: rgb(95 255 188 / 18%);
+
+  /* --- 代码与阴影 --- */
+  --detail-text-code-tag: color-mix(in srgb, var(--detail-text-accent) 88%, var(--raw-white));
+  --detail-shadow-hero: 0 30px 80px var(--black-alpha-28);
+  --detail-shadow-panel: 0 24px 60px rgb(4 9 22 / 24%);
+  --detail-shadow-body: 0 28px 80px rgb(0 0 0 / 24%);
+  --detail-shadow-code: 0 18px 44px rgb(2 8 18 / 50%);
+}

@@ -1,0 +1,240 @@
+/* Showcase 页面私有 palette。
+ * 这层专门承载单页主视觉与 canvas 配色，避免把实验性风格挤进全站语义 token。
+ * 页面文件只消费这些变量，不再直接保存原始颜色值，方便后续换肤和审计收口。
+ */
+
+.vapor-memory {
+  --arcade-bg-top: #0d0221;
+  --arcade-bg-middle: #2c114c;
+  --arcade-bg-bottom: #ff8d42;
+  --arcade-bg-grid-end: #4d1f50;
+  --arcade-color-neon-cyan: #0ff;
+  --arcade-color-neon-pink: #f7f;
+  --arcade-color-neon-purple: #bd00ff;
+  --arcade-color-sunset-orange: #ff6b35;
+  --arcade-sun-core: #ffd45e;
+  --arcade-button-end: #ffcf5d;
+  --arcade-button-end-strong: #ffd868;
+  --arcade-card-back: rgb(16 8 40 / 76%);
+  --arcade-card-front: var(--white-alpha-12);
+  --arcade-glass-bg: var(--white-alpha-08);
+  --arcade-glass-bg-soft: var(--white-alpha-05);
+  --arcade-glass-bg-strong: var(--white-alpha-06);
+  --arcade-glass-bg-faint: var(--white-alpha-04);
+  --arcade-glass-border: var(--white-alpha-16);
+  --arcade-glass-border-strong: var(--white-alpha-18);
+  --arcade-glass-border-soft: var(--white-alpha-12);
+  --arcade-text-primary: #f7f7ff;
+  --arcade-text-strong: var(--raw-white);
+  --arcade-text-muted: rgb(255 255 255 / 84%);
+  --arcade-text-soft: rgb(255 255 255 / 78%);
+  --arcade-text-dim: rgb(255 255 255 / 68%);
+  --arcade-text-label: rgb(255 255 255 / 74%);
+  --arcade-text-subtle: rgb(255 255 255 / 64%);
+  --arcade-text-inverse: #160725;
+  --arcade-text-inverse-strong: #15071f;
+  --arcade-surface-segmented: rgb(4 4 10 / 26%);
+  --arcade-shadow-panel: 0 24px 80px rgb(0 0 0 / 24%);
+  --arcade-shadow-card: 0 20px 40px rgb(0 0 0 / 22%);
+  --arcade-shadow-card-front: 0 16px 34px rgb(0 0 0 / 18%);
+  --arcade-shadow-modal: 0 30px 90px rgb(0 0 0 / 34%);
+  --arcade-neon-glow: rgb(255 119 255 / 72%);
+  --arcade-neon-glow-soft: rgb(255 107 53 / 42%);
+  --arcade-grid-glow: rgb(255 119 255 / 82%);
+  --arcade-grid-soft: rgb(255 119 255 / 12%);
+  --arcade-black-overlay: rgb(0 0 0 / 28%);
+  --arcade-black-overlay-soft: rgb(0 0 0 / 12%);
+  --arcade-focus-ring: rgb(131 255 241 / 70%);
+  --arcade-flash-match-bg: rgb(0 255 255 / 16%);
+  --arcade-flash-miss-bg: rgb(255 107 107 / 18%);
+  --arcade-flash-miss-text: #ffd3d3;
+  --arcade-flash-scan-bg: rgb(255 214 102 / 16%);
+  --arcade-flash-scan-text: #ffe8a1;
+  --arcade-flash-win-bg: rgb(255 119 255 / 18%);
+  --arcade-flash-win-text: #ffd6ff;
+}
+
+.vapor-memory--lagoon {
+  --arcade-bg-top: #041829;
+  --arcade-bg-middle: #0d3356;
+  --arcade-bg-bottom: #2bbadf;
+  --arcade-color-neon-cyan: #83fff1;
+  --arcade-color-neon-pink: #87b9ff;
+  --arcade-color-neon-purple: #37d4ff;
+  --arcade-color-sunset-orange: #9cf2ff;
+  --arcade-card-back: rgb(4 19 42 / 78%);
+  --arcade-card-front: rgb(184 255 254 / 12%);
+}
+
+.vapor-memory--midnight {
+  --arcade-bg-top: #06040f;
+  --arcade-bg-middle: #1d0a37;
+  --arcade-bg-bottom: #6d2cff;
+  --arcade-color-neon-cyan: #b1caff;
+  --arcade-color-neon-pink: #ff72c7;
+  --arcade-color-neon-purple: #a65bff;
+  --arcade-color-sunset-orange: #ffb65a;
+  --arcade-card-back: rgb(12 5 26 / 82%);
+  --arcade-card-front: rgb(192 173 255 / 13%);
+}
+
+.signal-reactor {
+  --signal-bg-a: #0b0820;
+  --signal-bg-b: #1f0a2f;
+  --signal-color-beam: #7ef8ff;
+  --signal-color-glow: #ff66df;
+  --signal-crystal-a: #8ef5ff;
+  --signal-crystal-b: #ffd77d;
+  --signal-color-accent: #ff86cb;
+  --signal-surface-base: rgb(14 16 30 / 64%);
+  --signal-text-primary: #f7f5ff;
+  --signal-text-strong: var(--raw-white);
+  --signal-text-muted: rgb(239 241 255 / 82%);
+  --signal-text-soft: rgb(236 239 255 / 78%);
+  --signal-text-label: rgb(236 237 255 / 70%);
+  --signal-text-label-soft: rgb(236 237 255 / 66%);
+  --signal-text-panel: rgb(247 249 255 / 84%);
+  --signal-text-inverse: #130d19;
+  --signal-text-inverse-strong: #140f1a;
+  --signal-text-highlight: #fff8d5;
+  --signal-line-strong: var(--white-alpha-12);
+  --signal-line-medium: rgb(255 255 255 / 10%);
+  --signal-line-soft: var(--white-alpha-08);
+  --signal-line-active: rgb(255 255 255 / 36%);
+  --signal-surface-glass: var(--white-alpha-05);
+  --signal-surface-glass-soft: var(--white-alpha-04);
+  --signal-surface-panel: rgb(10 13 24 / 56%);
+  --signal-surface-panel-strong: rgb(10 13 24 / 66%);
+  --signal-canvas-white: var(--raw-white);
+  --signal-canvas-shadow: rgb(0 0 0 / 22%);
+  --signal-canvas-prism-shadow: rgb(26 34 54 / 34%);
+  --signal-stage-bg:
+    linear-gradient(180deg, var(--white-alpha-06), transparent 14%), rgb(8 10 20 / 52%);
+  --signal-modal-bg:
+    radial-gradient(circle at top, var(--white-alpha-08), transparent 42%),
+    linear-gradient(180deg, rgb(20 11 30 / 96%), rgb(10 12 24 / 96%));
+  --signal-shadow-panel: 0 28px 68px rgb(0 0 0 / 28%);
+  --signal-shadow-stage: 0 34px 100px rgb(0 0 0 / 34%);
+  --signal-shadow-modal: 0 34px 100px rgb(0 0 0 / 40%);
+  --signal-noise-mask: linear-gradient(180deg, var(--black-alpha-80), transparent 94%);
+  --signal-text-stat: rgb(236 239 255 / 72%);
+  --signal-pulse-ring: 0 0 0 1px var(--white-alpha-10);
+  --signal-rules-text: rgb(237 240 255 / 80%);
+  --signal-palette-text: rgb(245 247 255 / 84%);
+  --signal-result-copy: rgb(239 241 255 / 80%);
+}
+
+.signal-reactor--sunset {
+  --signal-bg-a: #16070e;
+  --signal-bg-b: #35111f;
+  --signal-color-beam: #ffb44d;
+  --signal-color-glow: #ff5e7e;
+  --signal-crystal-a: #ffd8a8;
+  --signal-crystal-b: #ff8ef0;
+  --signal-color-accent: #fff1ba;
+}
+
+.signal-reactor--lagoon {
+  --signal-bg-a: #031525;
+  --signal-bg-b: #0d2337;
+  --signal-color-beam: #72f9d4;
+  --signal-color-glow: #6fb7ff;
+  --signal-crystal-a: #92ffe9;
+  --signal-crystal-b: #b0d9ff;
+  --signal-color-accent: #f6ff9c;
+}
+
+.orbit-slinger {
+  --orbit-bg-top: #070b18;
+  --orbit-bg-bottom: #1a1030;
+  --orbit-color-nebula: #6a7cff;
+  --orbit-color-ring: #92d8ff;
+  --orbit-color-trail: #f3f7ff;
+  --orbit-color-hud: #8fe4ff;
+  --orbit-planet-a: #8aa2ff;
+  --orbit-planet-b: #4be1d3;
+  --orbit-planet-c: #ffd37d;
+  --orbit-text-primary: #eef6ff;
+  --orbit-text-strong: #fbfdff;
+  --orbit-text-muted: rgb(232 241 255 / 82%);
+  --orbit-text-soft: rgb(233 241 255 / 78%);
+  --orbit-text-label: rgb(224 235 255 / 60%);
+  --orbit-text-label-soft: rgb(227 237 255 / 66%);
+  --orbit-text-panel: rgb(238 246 255 / 90%);
+  --orbit-text-inverse: #08111c;
+  --orbit-line-strong: var(--white-alpha-12);
+  --orbit-line-medium: rgb(255 255 255 / 10%);
+  --orbit-line-soft: var(--white-alpha-08);
+  --orbit-canvas-white: var(--raw-white);
+  --orbit-canvas-planet-shadow: rgb(0 0 0 / 26%);
+  --orbit-canvas-planet-fade: rgb(8 12 24 / 10%);
+  --orbit-canvas-launch-shadow: rgb(2 7 18 / 45%);
+  --orbit-surface-glass:
+    linear-gradient(145deg, var(--white-alpha-08), var(--white-alpha-02)), rgb(7 11 21 / 60%);
+  --orbit-surface-chip: var(--white-alpha-04);
+  --orbit-surface-chip-soft: rgb(255 255 255 / 3%);
+  --orbit-surface-stage:
+    linear-gradient(180deg, var(--white-alpha-04), transparent), rgb(2 6 16 / 72%);
+  --orbit-surface-hint: rgb(6 11 21 / 58%);
+  --orbit-surface-hit: linear-gradient(135deg, rgb(143 233 255 / 12%), rgb(255 239 196 / 8%));
+  --orbit-slider-track: linear-gradient(90deg, #85e4ff 0%, #ffe19c 100%);
+  --orbit-button-bg: linear-gradient(135deg, #9de8ff 0%, #fff3d1 100%);
+  --orbit-shadow-panel: 0 24px 80px rgb(0 0 0 / 28%);
+  --orbit-shadow-stage: 0 32px 100px rgb(0 0 0 / 32%);
+}
+
+.orbit-slinger--teal {
+  --orbit-bg-top: #041019;
+  --orbit-bg-bottom: #042437;
+  --orbit-color-nebula: #2cd5ff;
+  --orbit-color-ring: #89fff2;
+  --orbit-color-trail: #d8fff8;
+  --orbit-color-hud: #7ff0ff;
+  --orbit-planet-a: #70d7ff;
+  --orbit-planet-b: #39f2cb;
+  --orbit-planet-c: #b5ffdd;
+}
+
+.orbit-slinger--ember {
+  --orbit-bg-top: #180a11;
+  --orbit-bg-bottom: #321222;
+  --orbit-color-nebula: #ff7f66;
+  --orbit-color-ring: #ffd27e;
+  --orbit-color-trail: #fff2d7;
+  --orbit-color-hud: #ffcf7d;
+  --orbit-planet-a: #ff8a7a;
+  --orbit-planet-b: #ffb06c;
+  --orbit-planet-c: #ffe29e;
+}
+
+.sonar-depth {
+  --sonar-bg-0: #02070d;
+  --sonar-bg-1: #051624;
+  --sonar-bg-2: #0b2233;
+  --sonar-surface-panel: rgb(5 16 28 / 72%);
+  --sonar-line-base: rgb(112 233 255 / 14%);
+  --sonar-color-cyan: #7ff2ff;
+  --sonar-color-mint: #73ffc8;
+  --sonar-text-soft: rgb(219 244 255 / 74%);
+  --sonar-text-primary: #effbff;
+  --sonar-text-inverse: #01212a;
+  --sonar-target-ruins: #86f7ff;
+  --sonar-target-school: #80b7ff;
+  --sonar-target-beacon: #6ef0c2;
+  --sonar-target-thermal: #6af3ff;
+  --sonar-target-jelly: #9e98ff;
+  --sonar-target-unfound: var(--white-alpha-16);
+  --sonar-canvas-bg-top: #041019;
+  --sonar-canvas-bg-mid: #071d2f;
+  --sonar-canvas-bg-bottom: #02070d;
+  --sonar-canvas-glow-a: #22d8ff;
+  --sonar-canvas-glow-b: #4effc1;
+  --sonar-canvas-backdrop-ring: #6fe7ff;
+  --sonar-canvas-contour: #87e1ff;
+  --sonar-canvas-particle: #b1efff;
+  --sonar-canvas-ripple-primary: #7af1ff;
+  --sonar-canvas-ripple-secondary: #6fffcd;
+  --sonar-canvas-target-outline: var(--raw-white);
+  --sonar-canvas-aim-focus: #a7f5ff;
+  --sonar-canvas-crosshair: #d2f8ff;
+}

@@ -1,0 +1,149 @@
+/* 内容组件私有 palette。
+ * 承载文章卡片、概念画布等内容展示组件的共享视觉变量。
+ * 组件样式和 canvas 逻辑只消费这些变量，不再在组件目录里保存原始颜色值。
+ * 当前通过 src/styles/palettes.css 统一接入；这里只允许挂载到现有 feature 宿主类，不承载全局 token 或结构样式。
+ */
+
+.article-card__media-link,
+.home-article-card__media-link {
+  /* --- Article Concept Canvas 共享层 --- */
+  --article-concept-clear: #fff0;
+  --article-concept-node-fill-strong: rgb(255 255 255 / 5%);
+  --article-concept-node-fill-soft: rgb(255 255 255 / 3%);
+  --article-concept-module-link: #98b9ff;
+
+  /* --- Git Flow --- */
+  --article-concept-git-background: #090d12;
+  --article-concept-git-primary: #ffb974;
+  --article-concept-git-secondary: rgb(255 236 204 / 82%);
+  --article-concept-git-accent: rgb(78 205 196 / 90%);
+  --article-concept-git-grid: rgb(255 210 164 / 8%);
+
+  /* --- Vite Stream --- */
+  --article-concept-vite-background: #07111a;
+  --article-concept-vite-primary: #4ecdc4;
+  --article-concept-vite-secondary: rgb(169 241 236 / 82%);
+  --article-concept-vite-accent: #ffcf69;
+  --article-concept-vite-grid: rgb(112 231 220 / 8%);
+
+  /* --- Module Graph --- */
+  --article-concept-module-background: #0a0d14;
+  --article-concept-module-primary: rgb(123 169 255 / 92%);
+  --article-concept-module-secondary: rgb(216 229 255 / 84%);
+  --article-concept-module-accent: #ffcb63;
+  --article-concept-module-grid: rgb(123 169 255 / 10%);
+
+  /* --- Reactivity Field --- */
+  --article-concept-reactivity-background: #0b1016;
+  --article-concept-reactivity-primary: rgb(92 205 255 / 96%);
+  --article-concept-reactivity-secondary: rgb(224 246 255 / 86%);
+  --article-concept-reactivity-accent: #ffbe57;
+  --article-concept-reactivity-grid: rgb(92 205 255 / 8%);
+
+  /* --- React Lanes --- */
+  --article-concept-react-background: #0a0b12;
+  --article-concept-react-primary: rgb(117 126 255 / 96%);
+  --article-concept-react-secondary: rgb(224 226 255 / 82%);
+  --article-concept-react-accent: #ffc05d;
+  --article-concept-react-grid: rgb(117 126 255 / 8%);
+
+  /* --- Space Orbit --- */
+  --article-concept-space-background: #05070c;
+  --article-concept-space-primary: rgb(78 205 196 / 92%);
+  --article-concept-space-secondary: rgb(228 240 255 / 82%);
+  --article-concept-space-accent: #ffc574;
+  --article-concept-space-grid: rgb(255 255 255 / 6%);
+
+  /* --- Signal Grid --- */
+  --article-concept-signal-background: #0a0d10;
+  --article-concept-signal-primary: rgb(78 205 196 / 92%);
+  --article-concept-signal-secondary: rgb(238 245 255 / 82%);
+  --article-concept-signal-accent: #ffd17a;
+  --article-concept-signal-grid: rgb(255 255 255 / 7%);
+}
+
+/* 这里只挂载文章卡片 palette，不承载真实 card 布局规则。 */
+.article-card-link.media-card {
+  /* --- 主卡片层 --- */
+  --article-card-accent: #14d7ff;
+  --article-card-accent-soft: rgb(20 215 255 / 28%);
+  --article-card-surface: #071321;
+  --article-card-bg:
+    radial-gradient(circle at 85% 10%, var(--article-card-accent-soft), transparent 45%),
+    linear-gradient(160deg, rgb(7 19 32 / 88%), rgb(4 12 23 / 88%));
+  --article-card-border: rgb(151 212 255 / 24%);
+  --article-card-shadow: 0 12px 28px rgb(0 9 21 / 28%);
+  --article-card-shadow-hover: 0 18px 36px rgb(0 9 21 / 34%);
+  --article-card-shadow-focus: 0 0 0 2px rgb(255 255 255 / 12%), 0 18px 36px rgb(0 9 21 / 38%);
+  --article-card-grid-overlay: repeating-linear-gradient(
+    0deg,
+    rgb(255 255 255 / 2%),
+    rgb(255 255 255 / 2%) 1px,
+    transparent 1px,
+    transparent 8px
+  );
+
+  /* --- 封面层 --- */
+  --article-card-media-bg: linear-gradient(160deg, rgb(8 22 38 / 94%), rgb(5 14 24 / 96%));
+  --article-card-media-mask: linear-gradient(
+    180deg,
+    rgb(3 11 20 / 10%) 0%,
+    rgb(4 11 20 / 84%) 100%
+  );
+  --article-card-cover-border: rgb(214 237 255 / 30%);
+  --article-card-cover-bg: rgb(3 12 20 / 58%);
+  --article-card-cover-text: rgb(236 247 255 / 95%);
+
+  /* --- 内容层 --- */
+  --article-card-category-border: rgb(173 227 255 / 22%);
+  --article-card-category-bg: rgb(7 22 38 / 56%);
+  --article-card-category-text: #dff2ff;
+  --article-card-ops-text: rgb(203 232 253 / 78%);
+  --article-card-title: #f4fbff;
+  --article-card-title-hover: #f8fdff;
+  --article-card-meta: rgb(196 222 245 / 70%);
+  --article-card-summary: rgb(222 239 255 / 84%);
+  --article-card-foottext: rgb(194 220 243 / 72%);
+  --article-card-cta-bg: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--article-card-accent) 85%, #fff 8%),
+    color-mix(in srgb, var(--article-card-accent) 68%, #05324c 18%)
+  );
+  --article-card-cta-text: #05263a;
+}
+
+.article-card-link.media-card.is-amber {
+  --article-card-accent: #ffb357;
+  --article-card-accent-soft: rgb(255 179 87 / 28%);
+}
+
+.article-card-link.media-card.is-coral {
+  --article-card-accent: #ff7d74;
+  --article-card-accent-soft: rgb(255 125 116 / 28%);
+}
+
+.article-card.media-card {
+  /* --- 通用媒体卡片层 --- */
+  --media-card-border: var(--white-alpha-08);
+  --media-card-bg:
+    linear-gradient(
+      145deg,
+      color-mix(in srgb, var(--surface-card) 92%, transparent),
+      color-mix(in srgb, var(--surface-card-hover) 72%, transparent)
+    ),
+    color-mix(in srgb, var(--surface-card) 62%, transparent);
+  --media-card-shadow: 0 20px 40px var(--black-alpha-28);
+  --media-card-overlay:
+    linear-gradient(
+      130deg,
+      color-mix(in srgb, var(--accent-gold) 12%, transparent),
+      transparent 44%
+    ),
+    linear-gradient(
+      315deg,
+      color-mix(in srgb, var(--accent-cyan) 11%, transparent),
+      transparent 40%
+    );
+  --media-card-border-hover: color-mix(in srgb, var(--accent-gold) 34%, transparent);
+  --media-card-shadow-hover: 0 26px 52px var(--black-alpha-37);
+}

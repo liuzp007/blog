@@ -1,0 +1,235 @@
+@keyframes shine {
+  0% {
+    left: -100%;
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    left: 200%;
+    opacity: 0;
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  50% {
+    transform: scale(1.05);
+    opacity: 0.8;
+  }
+}
+
+@keyframes glow {
+  0%,
+  100% {
+    box-shadow: 0 0 5px var(--color-accent-cyan);
+  }
+
+  50% {
+    box-shadow:
+      0 0 20px var(--color-accent-cyan),
+      0 0 30px var(--color-accent-cyan);
+  }
+}
+
+@keyframes pageEntrance {
+  0% {
+    opacity: 0;
+    transform: translateY(20px) scale(0.98);
+    filter: blur(10px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+/*
+ * reduced-motion 是全局交互策略，不属于 theme token。
+ * 统一放在 global-ui 层，避免 accessibility.css 同时承载变量和行为规则。
+ */
+html[data-reduced-motion='true'] *,
+html[data-reduced-motion='true'] *::before,
+html[data-reduced-motion='true'] *::after {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+  scroll-behavior: auto !important;
+}
+
+/*
+ * 全局交互基线：
+ * 这里只负责“谁应该显示可点击光标 / 禁用光标”，
+ * 不负责按钮壳的尺寸、圆角、布局与视觉状态。
+ */
+:where(
+  a[href],
+  button:not(:disabled),
+  [type='button']:not(:disabled),
+  [type='submit']:not(:disabled),
+  [type='reset']:not(:disabled),
+  summary,
+  [role='button']:not([aria-disabled='true']),
+  [aria-haspopup]:not([aria-disabled='true']),
+  .vinyl-record,
+  .dog-container,
+  .card-3d,
+  .breadcrumb-item:not(.active),
+  .logo svg
+) {
+  cursor: pointer;
+}
+
+:where(
+  button:disabled,
+  [type='button']:disabled,
+  [type='submit']:disabled,
+  [type='reset']:disabled,
+  [aria-disabled='true']
+) {
+  cursor: not-allowed;
+}
+
+/*
+ * 统一交互光标基线，避免页面/组件里重复写
+ * `button, a, .ant-btn { cursor: pointer }`
+ * 布局、对齐、尺寸等按钮壳样式统一放在 components.css
+ */
+button,
+button *,
+[type='button'],
+[type='button'] *,
+[type='submit'],
+[type='submit'] *,
+[type='reset'],
+[type='reset'] *,
+[role='button'],
+[role='button'] *,
+a[href],
+a[href] * {
+  cursor: inherit;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--black-alpha-10);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--white-alpha-20);
+  border-radius: 3px;
+  transition: background 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--white-alpha-40);
+}
+
+::selection {
+  background: var(--color-accent-cyan);
+  color: var(--color-black);
+}
+
+::selection {
+  background: var(--color-accent-cyan);
+  color: var(--color-black);
+}
+
+a:not([class]) {
+  color: var(--color-accent-cyan);
+  text-decoration: none;
+  background-image: linear-gradient(currentcolor, currentcolor);
+  background-repeat: no-repeat;
+  background-position: 0 calc(100% - 0.06em);
+  background-size: 0 1px;
+  transition:
+    color 0.24s ease,
+    background-size 0.24s ease,
+    opacity 0.24s ease;
+}
+
+a:not([class]):hover {
+  color: var(--color-accent-cyan-bright);
+  background-size: 100% 1px;
+}
+
+a:not([class]):focus-visible {
+  outline: none;
+  color: var(--color-accent-cyan-bright);
+  background-size: 100% 1px;
+}
+
+:where(pre, pre[class*='language-']) {
+  background: var(--black-alpha-30);
+  border: 1px solid var(--color-accent-cyan);
+  border-radius: 8px;
+  padding: 16px;
+  overflow-x: auto;
+  margin: 16px 0;
+  font-family: var(--font-family-mono);
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+:where(pre code, pre[class*='language-'] code) {
+  background: none;
+  border: none;
+  padding: 0;
+  color: var(--text-primary);
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0;
+}
+
+table th,
+table td {
+  border: 1px solid var(--glass-border);
+  padding: 12px;
+  text-align: left;
+}
+
+table th {
+  background: var(--glass-bg);
+  color: var(--color-accent-cyan);
+  font-weight: bold;
+}
+
+table tr:hover {
+  background: var(--white-alpha-05);
+}
+
+blockquote {
+  border-left: 4px solid var(--color-accent-cyan);
+  padding-left: 16px;
+  margin: 16px 0;
+  font-style: italic;
+  color: var(--text-primary);
+}
+
+hr {
+  border: none;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--color-accent-cyan), transparent);
+  margin: 24px 0;
+}

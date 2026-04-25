@@ -1,61 +1,66 @@
+/* ===== 分层样式架构入口 =====
+ *
+ * 本文件是全局样式的唯一入口，所有新增样式必须落入以下某一层级。
+ *
+ * 层级说明：
+ *   1. 设计令牌层  — 原始色板、语义色、排版、组件级 token
+ *      新增 token → src/styles/tokens/
+ *   2. 全局样式层  — reset、基础元素、全局 UI
+ *      全局元素样式 → src/styles/2_globals/
+ *   3. 组件样式层  — 原子组件和布局组件样式
+ *      通用组件样式 → src/styles/3_components/
+ *   4. 组件类 & 调色板
+ *   5. 主题系统层  — 主题变量和页面级主题覆盖
+ *      主题覆盖 → src/styles/themes/
+ *   6. 主题桥接
+ *   7. Ant Design 覆写
+ *   8. Tailwind CSS
+ *
+ * 页面私有样式：
+ *   放在 src/pages/<page>/index.css 中，由页面组件自行导入。
+ *   页面私有视觉变量落在页面根类或 themes/<page>-pages.css。
+ *
+ * DEPRECATED（只读不扩展）：
+ *   src/styles/tokens/ — 设计令牌，保持精简
+ */
 
-/* 清除内外边距 */
-body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, /* structural elements 结构元素 */
-dl, dt, dd, ul, ol, li, /* list elements 列表元素 */
-pre, /* text formatting elements 文本格式元素 */
-fieldset, lengend, button, input, textarea, /* form elements 表单元素 */
-th, td { /* table elements 表格元素 */
-    margin: 0;
-    padding: 0;
-}
+/* 1. 设计令牌层 */
+@import url('./styles/tokens/base.css');
+@import url('./styles/tokens/semantic.css');
 
-/* 设置默认字体 */
-body,
-button, input, select, textarea { /* for ie */
-    /*font: 12px/1 Tahoma, Helvetica, Arial, "宋体", sans-serif;*/
-    font: 12px/1 Tahoma, Helvetica, Arial, "\5b8b\4f53", sans-serif; /* 用 ascii 字符表示，使得在任何编码下都无问题 */
-}
+/* 2. 全局样式层 */
+@import url('./styles/2_globals/reset.css');
+@import url('./styles/2_globals/base.css');
+@import url('./styles/2_globals/global-ui.css');
+@import url('./styles/2_globals/typography.css');
 
-h1 { font-size: 18px; /* 18px / 12px = 1.5 */ }
-h2 { font-size: 16px; }
-h3 { font-size: 14px; }
-h4, h5, h6 { font-size: 100%; }
+/* 3. 组件样式层 */
+@import url('./styles/3_components/ui/code-block.css');
+@import url('./styles/3_components/ui/beautify-code.css');
+@import url('./styles/3_components/ui/media-card.css');
+@import url('./styles/3_components/ui/not-found.css');
+@import url('./styles/3_components/layout/content-wrapper.css');
+@import url('./styles/3_components/layout/main-layout.css');
+@import url('./styles/3_components/layout/collapsible-navigation.css');
+@import url('./styles/3_components/layout/simple-navigation.css');
 
-address, cite, dfn, em, var { font-style: normal; } /* 将斜体扶正 */
-code, kbd, pre, samp, tt { font-family: "Courier New", Courier, monospace; } /* 统一等宽字体 */
-small { font-size: 12px; } /* 小于 12px 的中文很难阅读，让 small 正常化 */
+/* 4. 组件类 */
+@import url('./styles/components.css');
 
-/* 重置列表元素 */
-ul, ol { list-style: none; }
+/* 5. 主题系统层 */
+@import url('./styles/themes/dark.css');
+@import url('./styles/themes/light.css');
+@import url('./styles/themes/accessibility.css');
+/* 页面主题由各页面组件自行导入 */
 
-/* 重置文本格式元素 */
-a { text-decoration: none; }
-a:hover { text-decoration: underline; }
+/* 6. 主题桥接 */
+@import url('./styles/theme.css');
+@import url('./styles/primitives.css');
 
-abbr[title], acronym[title] { /* 注：1.ie6 不支持 abbr; 2.这里用了属性选择符，ie6 下无效果 */
-border-bottom: 1px dotted;
-cursor: help;
-}
+/* 7. Ant Design 覆写 */
+@import url('./styles/antd-overrides.css');
 
-q:before, q:after { content: ''; }
-
-/* 重置表单元素 */
-legend { color: #000; } /* for ie6 */
-fieldset, img { border: none; } /* img 搭车：让链接里的 img 无边框 */
-/* 注：optgroup 无法扶正 */
-button, input, select, textarea {
-    font-size: 100%; /* 使得表单元素在 ie 下能继承字体大小 */
-}
-
-/* 重置表格元素 */
-table {
-border-collapse: collapse;
-border-spacing: 0;
-}
-
-/* 重置 hr */
-hr {
-    border: none;
-    height: 1px;
-}
-
+/* 8. Tailwind CSS */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

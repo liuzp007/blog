@@ -1,0 +1,577 @@
+/* aboutme — 纯 CSS（从 SCSS 转换，去除嵌套语法） */
+
+/* ── 页面变量与根样式 ── */
+
+.aboutHtmlPage {
+  --about-bg-primary: var(--raw-slate-850);
+  --about-bg-secondary: var(--raw-slate-825);
+  --about-text-primary: var(--raw-slate-100);
+  --about-text-secondary: var(--raw-gray-500);
+  --about-accent-warm: var(--color-accent-orange);
+  --about-accent-gold: var(--color-accent-gold);
+  --about-accent-cool: var(--accent-cyan);
+  --about-accent-glow: var(--accent-glow);
+  --about-panel-bg: var(--white-alpha-02);
+  --about-panel-border: var(--white-alpha-05);
+  --about-panel-border-strong: var(--white-alpha-10);
+  --about-panel-border-stronger: var(--white-alpha-08);
+  --about-overlay-strong: var(--black-alpha-70);
+  --about-nav-scrim: var(--black-alpha-95);
+  --about-project-overlay: var(--black-alpha-95);
+  --about-card-shadow: 0 16px 34px var(--black-alpha-20);
+  --about-card-shadow-hover: 0 24px 48px var(--black-alpha-28);
+  --about-accent-border-soft: color-mix(in srgb, var(--about-accent-warm) 30%, transparent);
+  --about-accent-border-strong: color-mix(in srgb, var(--about-accent-warm) 40%, transparent);
+  --about-accent-soft-bg: color-mix(in srgb, var(--about-accent-warm) 10%, transparent);
+  --about-tag-height: 26px;
+  --about-tag-padding-inline: 10px;
+  --about-tag-font-size: 11px;
+  --about-tag-radius: 999px;
+  --about-tag-shadow: inset 0 1px 0 var(--white-alpha-10);
+  --ui-tag-tone-gold-source: var(--about-accent-gold);
+  --ui-tag-tone-coral-source: var(--about-accent-warm);
+  --ui-tag-tone-cyan-source: var(--about-accent-cool);
+  --ui-tag-tone-mint-source: var(--about-accent-cool);
+  --about-demo-canvas-fade: var(--black-alpha-10);
+  --about-demo-canvas-link: var(--orange-500-alpha-10);
+  --about-project-canvas-bg: var(--raw-slate-840);
+  --about-blog-canvas-bg: var(--raw-slate-845);
+  --about-project-canvas-line-soft: var(--orange-500-alpha-30);
+  --about-project-canvas-line: var(--orange-500-alpha-50);
+  --about-project-canvas-line-strong: var(--orange-500-alpha-60);
+
+  position: relative;
+  min-height: 100vh;
+  color: var(--about-text-primary);
+  background: var(--about-bg-primary);
+  overflow-x: hidden;
+  line-height: 1.7;
+  font-family: var(--font-family-heading);
+}
+
+.aboutHtmlPage * {
+  box-sizing: border-box;
+}
+
+/* ── 鼠标光晕 ── */
+
+.cursor-glow {
+  position: fixed;
+  width: 400px;
+  height: 400px;
+  pointer-events: none;
+  z-index: 1;
+  background: radial-gradient(circle, var(--about-accent-glow) 0%, transparent 70%);
+  transform: translate(-50%, -50%);
+  transition: opacity 0.3s ease;
+  opacity: 0.6;
+}
+
+#bg-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  opacity: 0.7;
+}
+
+/* ── Nav ── */
+
+.about-nav {
+  background: linear-gradient(to bottom, var(--about-nav-scrim), transparent);
+  backdrop-filter: blur(10px);
+}
+
+.about-nav .logo {
+  height: auto;
+  padding: 0;
+  border: none;
+  background: transparent;
+  font-size: 1.5rem;
+  font-weight: 700;
+  background-image: linear-gradient(135deg, var(--about-accent-warm), var(--about-accent-gold));
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.about-nav .logo:focus-visible {
+  background: transparent;
+}
+
+.nav-links__button {
+  height: auto;
+  color: var(--about-text-secondary);
+  border: none;
+  background: transparent;
+  font-size: 0.9rem;
+  letter-spacing: 0.5px;
+  transition:
+    color 0.3s ease,
+    background 0.3s ease;
+  position: relative;
+  padding: 0;
+}
+
+.nav-links__button::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: linear-gradient(90deg, var(--about-accent-warm), var(--about-accent-gold));
+  transition: width 0.3s ease;
+}
+
+.nav-links__button:hover,
+.nav-links__button:focus-visible {
+  color: var(--about-text-primary);
+  background: transparent;
+}
+
+.nav-links__button:hover::after,
+.nav-links__button:focus-visible::after {
+  width: 100%;
+}
+
+/* ── 通用 Section ── */
+
+.section-tag,
+.section-tag.ui-eyebrow {
+  color: var(--about-accent-warm);
+  margin-bottom: 1rem;
+}
+
+.section-title,
+.section-title.ui-section-title {
+  margin: 0;
+  color: var(--about-text-primary);
+}
+
+.section-title--hero.ui-display-title {
+  max-width: 14ch;
+}
+
+#about {
+  background: linear-gradient(180deg, var(--about-bg-primary), var(--about-bg-secondary));
+}
+
+/* ── About 文本 ── */
+
+.about-text p,
+.about-text p.ui-muted-text,
+.about-text p.ui-body-text,
+.about-text p.ui-lead-text {
+  color: var(--about-text-secondary);
+  margin-bottom: 1.5rem;
+}
+
+.about-text p:first-of-type::first-letter {
+  font-size: 3.5rem;
+  float: left;
+  line-height: 1;
+  margin-right: 0.5rem;
+  color: var(--about-accent-warm);
+  font-weight: 700;
+}
+
+/* ── Stats ── */
+
+.stat-item {
+  background: var(--about-panel-bg);
+  border: 1px solid var(--about-panel-border);
+  transition:
+    border-color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.stat-item:hover {
+  border-color: var(--about-accent-warm);
+  transform: translateY(-5px);
+}
+
+.stat-number {
+  font-size: 2.5rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--about-accent-warm), var(--about-accent-gold));
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.stat-label {
+  font-size: 0.85rem;
+  color: var(--about-text-secondary);
+  margin-top: 0.5rem;
+}
+
+/* ── Demo Canvas ── */
+
+.demo-canvas-container {
+  background: var(--about-panel-bg);
+  border: 1px solid var(--about-panel-border);
+}
+
+.demo-hint,
+.demo-hint.ui-caption {
+  font-size: 0.75rem;
+  color: var(--about-text-secondary);
+  background: var(--about-overlay-strong);
+}
+
+/* ── Skills ── */
+
+#skills {
+  background: var(--about-bg-secondary);
+}
+
+.skill-category {
+  background: var(--about-panel-bg);
+  border: 1px solid var(--about-panel-border);
+  transition:
+    border-color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.skill-category:hover {
+  border-color: var(--about-accent-border-soft);
+  transform: translateY(-5px);
+}
+
+.skill-category h3 {
+  margin: 0 0 1.5rem;
+  color: var(--about-text-primary);
+}
+
+.skill-name {
+  color: var(--about-text-secondary);
+}
+
+.skill-percent {
+  color: var(--about-accent-warm);
+}
+
+.skill-bar {
+  background: var(--about-panel-border-strong);
+}
+
+.skill-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--about-accent-warm), var(--about-accent-gold));
+  border-radius: 2px;
+  width: 0;
+  transition: width 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* ── Projects ── */
+
+#projects {
+  background: linear-gradient(180deg, var(--about-bg-secondary), var(--about-bg-primary));
+}
+
+.project-card {
+  position: relative;
+  transition:
+    transform 0.18s ease-out,
+    border-color 0.32s ease,
+    box-shadow 0.32s ease;
+  transform-style: preserve-3d;
+  box-shadow: var(--about-card-shadow);
+}
+
+.project-card:hover {
+  border-color: var(--about-accent-border-strong);
+  box-shadow: var(--about-card-shadow-hover);
+}
+
+.project-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent, var(--about-project-overlay));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.project-card:hover .project-overlay {
+  opacity: 1;
+}
+
+.project-tag.ui-tag {
+  --ui-tag-height: var(--about-tag-height);
+  --ui-tag-padding-inline: var(--about-tag-padding-inline);
+  --ui-tag-radius: var(--about-tag-radius);
+  --ui-tag-text-base: var(--about-text-primary);
+  --ui-tag-sheen: var(--white-alpha-08);
+  --ui-tag-tone-bg-strength: 10%;
+  --ui-tag-tone-border-strength: 24%;
+  --ui-tag-tone-text-strength: 62%;
+  --ui-tag-soft-shadow: var(--about-tag-shadow);
+  --ui-tag-soft-letter-spacing: 0.03em;
+
+  font-size: var(--about-tag-font-size);
+  cursor: default;
+  transition:
+    border-color 0.24s ease,
+    background 0.24s ease,
+    color 0.24s ease;
+}
+
+.project-card:hover .project-tag.ui-tag,
+.project-card:focus-within .project-tag.ui-tag {
+  border-color: color-mix(in srgb, var(--ui-tag-tone-source) 30%, transparent);
+}
+
+.project-title {
+  margin: 0;
+  color: var(--about-text-primary);
+}
+
+.project-desc,
+.project-desc.ui-muted-text,
+.project-desc.ui-body-text {
+  color: var(--about-text-secondary);
+  margin-bottom: 0;
+}
+
+.project-link {
+  --ui-button-height: 34px;
+  --ui-button-padding-inline: 10px;
+  --ui-button-radius: var(--button-radius-pill);
+
+  gap: 0.5rem;
+  border: none;
+  background: transparent;
+  color: var(--about-accent-warm);
+  transition: gap 0.3s ease;
+}
+
+.project-link:hover,
+.project-link:focus-visible {
+  gap: 1rem;
+  color: var(--about-accent-warm);
+}
+
+.project-link--secondary {
+  color: var(--about-text-secondary);
+}
+
+.project-link--secondary:hover,
+.project-link--secondary:focus-visible {
+  color: var(--about-text-primary);
+}
+
+/* ── Blog ── */
+
+#blog {
+  background: var(--about-bg-primary);
+}
+
+.blog-card {
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.blog-card:hover {
+  border-color: var(--about-accent-border-soft);
+  transform: translateY(-5px);
+}
+
+.media-badge.ui-tag {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+
+  --ui-tag-radius: var(--about-tag-radius);
+  --ui-tag-bg-base: var(--about-overlay-strong);
+  --ui-tag-text-base: var(--about-text-primary);
+  --ui-tag-sheen: var(--white-alpha-16);
+  --ui-tag-tone-bg-strength: 14%;
+  --ui-tag-tone-border-strength: 34%;
+  --ui-tag-tone-text-strength: 82%;
+  --ui-tag-badge-shadow: inset 0 1px 0 var(--white-alpha-14), 0 6px 18px var(--black-alpha-30);
+
+  cursor: default;
+}
+
+.blog-date,
+.blog-date.ui-caption,
+.blog-date.ui-meta-text {
+  color: var(--about-text-secondary);
+  margin-bottom: 0.5rem;
+}
+
+.blog-title {
+  margin: 0 0 0.5rem;
+  line-height: 1.4;
+  color: var(--about-text-secondary);
+}
+
+.blog-excerpt,
+.blog-excerpt.ui-muted-text,
+.blog-excerpt.ui-body-text {
+  color: var(--about-text-secondary);
+  margin-bottom: 1rem;
+}
+
+/* ── Contact ── */
+
+#contact {
+  background: linear-gradient(180deg, var(--about-bg-primary), var(--about-bg-secondary));
+}
+
+.contact-title,
+.contact-title.ui-section-title,
+.contact-title.ui-display-title {
+  margin: 0 0 1.5rem;
+  color: var(--about-text-primary);
+}
+
+.contact-desc,
+.contact-desc.ui-muted-text,
+.contact-desc.ui-lead-text {
+  color: var(--about-text-secondary);
+  margin-bottom: 3rem;
+}
+
+.contact-link {
+  --ui-button-height: 60px;
+  --ui-button-padding-inline: 0;
+  --ui-button-radius: 50%;
+
+  border: 1px solid var(--about-panel-border-strong);
+  color: var(--about-text-secondary);
+  text-decoration: none;
+  transition:
+    border-color 0.3s ease,
+    color 0.3s ease,
+    transform 0.3s ease;
+  font-size: 1.5rem;
+}
+
+.contact-link:hover,
+.contact-link:focus-visible {
+  border-color: var(--about-accent-warm);
+  color: var(--about-accent-warm);
+  transform: translateY(-5px);
+}
+
+.contact-email {
+  font-size: 1.2rem;
+  color: var(--about-accent-warm);
+  text-decoration: none;
+  position: relative;
+}
+
+.contact-email::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, var(--about-accent-warm), var(--about-accent-gold));
+}
+
+/* ── Footer ── */
+
+.aboutHtmlPage footer {
+  position: relative;
+  z-index: 10;
+  padding: 2rem;
+  text-align: center;
+  color: var(--about-text-secondary);
+  font-size: 0.8rem;
+  border-top: 1px solid var(--about-panel-border);
+}
+
+/* ── Project Detail Modal ── */
+
+.project-detail-modal .ant-modal-content {
+  background: var(--about-bg-secondary);
+  color: var(--about-text-primary);
+  border: 1px solid var(--about-panel-border-stronger);
+}
+
+.project-detail-modal .ant-modal-header {
+  background: transparent;
+  border-bottom-color: var(--about-panel-border-stronger);
+}
+
+.project-detail-modal .ant-modal-title,
+.project-detail-modal .ant-modal-close {
+  color: var(--about-text-primary);
+}
+
+.project-detail__summary,
+.project-detail__summary.ui-muted-text {
+  margin: 0 0 1rem;
+  color: var(--about-text-secondary);
+  line-height: 1.8;
+}
+
+.project-detail__tag.ui-tag {
+  --ui-tag-height: var(--about-tag-height);
+  --ui-tag-padding-inline: 11px;
+  --ui-tag-radius: var(--about-tag-radius);
+  --ui-tag-text-base: var(--about-text-primary);
+  --ui-tag-sheen: var(--white-alpha-12);
+  --ui-tag-tone-bg-strength: 13%;
+  --ui-tag-tone-border-strength: 28%;
+  --ui-tag-tone-text-strength: 68%;
+  --ui-tag-soft-shadow: var(--about-tag-shadow);
+  --ui-tag-soft-letter-spacing: 0.04em;
+
+  font-size: var(--about-tag-font-size);
+  cursor: default;
+}
+
+.project-detail__section h4 {
+  margin: 0 0 0.65rem;
+  color: var(--about-text-primary);
+}
+
+.project-detail__section p,
+.project-detail__section p.ui-muted-text {
+  margin: 0;
+  color: var(--about-text-secondary);
+  line-height: 1.8;
+}
+
+.project-detail__section ul {
+  margin: 0;
+  padding-left: 1.2rem;
+  color: var(--about-text-secondary);
+}
+
+.project-detail__section li + li {
+  margin-top: 0.45rem;
+}
+
+.project-detail__cta {
+  text-decoration: none;
+}
+
+/* ── Reveal 动画 ── */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition:
+    opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── 响应式 ── */
+
+@media (width <= 768px) {
+  .cursor-glow {
+    display: none;
+  }
+}

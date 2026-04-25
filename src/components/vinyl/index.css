@@ -1,0 +1,66 @@
+.vinyl-record {
+  --vinyl-size: 20px;
+
+  inline-size: var(--vinyl-size);
+  block-size: var(--vinyl-size);
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: var(--color-black);
+  box-shadow: 0 0 10px var(--black-alpha-50);
+  border: none;
+  padding: 0;
+}
+
+.vinyl-record.rotate {
+  animation: vinyl-spin 5s linear infinite;
+  will-change: transform;
+}
+
+.center-hole {
+  inline-size: calc(var(--vinyl-size) * 0.38);
+  block-size: calc(var(--vinyl-size) * 0.38);
+  position: absolute;
+  inset: 50% auto auto 50%;
+  border-radius: 50%;
+  background-color: var(--color-black);
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 5px var(--black-alpha-50);
+}
+
+.grooves {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.groove {
+  position: absolute;
+  top: 0;
+  inline-size: max(1px, calc(var(--vinyl-size) * 0.08));
+  block-size: 100%;
+  background-color: var(--color-text-default);
+  transform: rotate(45deg);
+}
+
+.groove:nth-child(odd) {
+  block-size: 70%;
+}
+
+.groove:nth-child(even) {
+  block-size: 80%;
+}
+
+@keyframes vinyl-spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}

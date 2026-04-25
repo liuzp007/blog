@@ -1,0 +1,44 @@
+/* 代码内容页共享 palette。
+ * 承载教程页里反复出现的暗面板、代码块、提示态和生态品牌色。
+ * `src/pages/code/**` 优先消费这里的用途变量，不再在 TSX 里散落黑底 / 提示色 / 品牌色原值。
+ */
+
+.content-wrapper.code-page {
+  /* --- Code Page Surface --- */
+  --code-page-surface-panel: rgb(30 30 30 / 50%);
+  --code-page-surface-panel-strong: rgb(20 20 20 / 66%);
+  --code-page-surface-panel-deep: rgb(20 20 20 / 90%);
+  --code-page-code-block-bg: rgb(10 10 10 / 78%);
+  --code-page-code-block-bg-soft: rgb(20 20 20 / 80%);
+  --code-page-chip-bg: rgb(255 255 255 / 4%);
+  --code-page-chip-bg-strong: rgb(255 255 255 / 5%);
+  --code-page-chip-border: rgb(255 255 255 / 10%);
+
+  /* --- Code Page Text --- */
+  --code-page-text-soft: rgb(255 255 255 / 72%);
+  --code-page-text-muted: rgb(255 255 255 / 74%);
+  --code-page-code-mint: #d1fae5;
+  --code-page-code-ice: #dbeafe;
+  --code-page-code-warm: #fde68a;
+
+  /* --- Code Page Semantic Tones --- */
+  --code-page-tone-info: rgb(99 102 241 / 8%);
+  --code-page-tone-info-soft: rgb(99 102 241 / 6%);
+  --code-page-tone-success: rgb(34 197 94 / 8%);
+  --code-page-tone-success-soft: rgb(34 197 94 / 6%);
+  --code-page-tone-danger: rgb(239 68 68 / 8%);
+  --code-page-tone-danger-soft: rgb(239 68 68 / 6%);
+  --code-page-warning: var(--color-warning-strong);
+  --code-page-warning-soft: var(--warning-alpha-20);
+  --code-page-warning-border: var(--warning-alpha-30);
+  --code-page-pink: var(--color-accent-pink);
+  --code-page-pink-soft: color-mix(in srgb, var(--color-accent-pink) 16%, transparent);
+  --code-page-pink-border: color-mix(in srgb, var(--color-accent-pink) 26%, transparent);
+
+  /* --- Code Page Ecosystem Brands --- */
+  --code-page-lib-element: #409eff;
+  --code-page-lib-antdv: #1890ff;
+  --code-page-lib-vuetify: #1867c0;
+  --code-page-lib-prime: #ff6158;
+  --code-page-lib-naive: #18a058;
+}

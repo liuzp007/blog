@@ -1,0 +1,173 @@
+/* Footmark 页面私有 palette。
+ * 承载宇宙滚动叙事、地图标记、摘要卡片和详情弹层的专属视觉。
+ * 页面 SCSS / TSX 只消费这些变量，不再在页面文件里保存原始颜色值。
+ */
+
+.footmark-cosmos,
+.footmark-detailModal,
+.footmark-detailDrawer {
+  /* --- 文本层 --- */
+  --footmark-text-primary: #f4f7fb;
+  --footmark-text-heading: #f2f7ff;
+  --footmark-text-strong: #eff8ff;
+  --footmark-text-soft: rgb(223 235 249 / 82%);
+  --footmark-text-soft-strong: rgb(223 236 250 / 82%);
+  --footmark-text-muted: rgb(223 236 250 / 80%);
+  --footmark-text-muted-soft: rgb(217 229 246 / 72%);
+  --footmark-text-meta: rgb(210 225 244 / 72%);
+  --footmark-text-label: rgb(194 214 244 / 64%);
+  --footmark-text-dim: rgb(198 220 244 / 54%);
+  --footmark-text-accent: #82d9ff;
+  --footmark-text-accent-soft: #9fd8ff;
+  --footmark-text-accent-strong: #9cdcff;
+  --footmark-accent-growth: #7cf0d5;
+  --footmark-text-link: #d8e7ff;
+  --footmark-text-progress: rgb(209 225 255 / 48%);
+  --footmark-text-progress-active: #ecf7ff;
+  --footmark-text-eyebrow: #a7d8ff;
+  --footmark-text-copy-title: rgb(229 240 255 / 80%);
+  --footmark-text-note: rgb(228 237 248 / 88%);
+  --footmark-text-map-copy: rgb(223 235 249 / 74%);
+  --footmark-text-marker-label: #edf6ff;
+  --footmark-text-summary-copy: rgb(222 234 248 / 74%);
+  --footmark-text-detail-copy: rgb(220 233 249 / 78%);
+  --footmark-text-detail-placeholder: rgb(219 233 249 / 72%);
+  --footmark-text-detail-label: rgb(170 198 233 / 62%);
+  --footmark-text-detail-pager: rgb(223 236 250 / 78%);
+  --footmark-text-detail-shot: #90d6ff;
+  --footmark-text-detail-story: rgb(201 219 239 / 72%);
+
+  /* --- 面层与渐变 --- */
+  --footmark-surface-panel: rgb(8 17 31 / 72%);
+  --footmark-surface-panel-strong: rgb(7 15 28 / 86%);
+  --footmark-surface-panel-solid: rgb(7 15 28 / 88%);
+  --footmark-surface-panel-soft: rgb(7 16 30 / 62%);
+  --footmark-surface-chip: rgb(82 155 255 / 14%);
+  --footmark-surface-chip-hover: rgb(82 155 255 / 20%);
+  --footmark-surface-chip-soft: rgb(83 151 255 / 8%);
+  --footmark-surface-chip-soft-hover: rgb(83 151 255 / 18%);
+  --footmark-surface-note: rgb(8 18 34 / 72%);
+  --footmark-surface-story: rgb(8 17 32 / 52%);
+  --footmark-surface-glass: rgb(10 19 35 / 56%);
+  --footmark-surface-progress: rgb(8 16 28 / 44%);
+  --footmark-surface-progress-active: rgb(80 163 255 / 18%);
+  --footmark-surface-eyebrow: rgb(8 21 40 / 56%);
+  --footmark-surface-story-active: rgb(98 190 255 / 20%);
+  --footmark-surface-map-eyebrow: rgb(86 180 255 / 14%);
+  --footmark-surface-summary-kicker: rgb(85 171 255 / 12%);
+  --footmark-surface-summary-card: rgb(9 18 33 / 58%);
+  --footmark-surface-detail-eyebrow: rgb(104 182 255 / 14%);
+  --footmark-surface-detail-tag: rgb(83 151 255 / 12%);
+  --footmark-page-bg:
+    radial-gradient(circle at 18% 18%, rgb(41 111 218 / 22%), transparent 30%),
+    radial-gradient(circle at 82% 14%, rgb(117 214 255 / 18%), transparent 24%),
+    linear-gradient(180deg, #030813 0%, #08111f 46%, #0f1824 100%);
+  --footmark-copy-bg: linear-gradient(180deg, rgb(6 17 33 / 86%) 0%, rgb(6 17 33 / 68%) 100%);
+  --footmark-map-copy-bg: linear-gradient(180deg, rgb(5 14 27 / 72%) 0%, rgb(5 14 27 / 32%) 100%);
+  --footmark-map-copy-bg-mobile: linear-gradient(
+    180deg,
+    rgb(5 14 27 / 78%) 0%,
+    rgb(5 14 27 / 38%) 100%
+  );
+  --footmark-detail-modal-bg:
+    radial-gradient(circle at top left, rgb(74 162 255 / 18%), transparent 24%),
+    linear-gradient(180deg, #07101d 0%, #0b1627 100%);
+  --footmark-detail-placeholder-bg: linear-gradient(
+    135deg,
+    rgb(67 132 255 / 18%) 0%,
+    rgb(13 28 48 / 78%) 100%
+  );
+  --footmark-detail-card-bg: rgb(9 17 31 / 72%);
+  --footmark-detail-content-bg: rgb(7 15 28 / 72%);
+  --footmark-map-action-bg: linear-gradient(135deg, #78d1ff 0%, #4b82ff 100%);
+  --footmark-map-action-bg-hover: linear-gradient(135deg, #84daff 0%, #5a90ff 100%);
+  --footmark-stage-mask: linear-gradient(
+    180deg,
+    rgb(3 8 19 / 22%) 0%,
+    rgb(3 8 19 / 10%) 24%,
+    rgb(7 13 23 / 44%) 78%,
+    rgb(3 8 19 / 86%) 100%
+  );
+  --footmark-cloud-fade: linear-gradient(180deg, rgb(5 13 24 / 0%) 0%, rgb(5 13 24 / 36%) 100%);
+  --footmark-map-card-mobile-bg: linear-gradient(
+    180deg,
+    rgb(6 14 26 / 92%) 0%,
+    rgb(6 14 26 / 80%) 100%
+  );
+
+  /* --- 线框与阴影 --- */
+  --footmark-line-soft: rgb(167 201 255 / 12%);
+  --footmark-line-faint: rgb(160 196 255 / 8%);
+  --footmark-line-chip: rgb(146 198 255 / 24%);
+  --footmark-line-chip-hover: rgb(146 198 255 / 42%);
+  --footmark-line-tag: rgb(146 198 255 / 18%);
+  --footmark-line-tag-hover: rgb(146 198 255 / 36%);
+  --footmark-line-backlink: rgb(173 212 255 / 14%);
+  --footmark-line-progress-active: rgb(168 221 255 / 28%);
+  --footmark-line-copy: rgb(160 204 255 / 12%);
+  --footmark-line-eyebrow: rgb(135 197 255 / 18%);
+  --footmark-line-stat: rgb(160 196 255 / 12%);
+  --footmark-line-scrollcue: rgb(172 214 255 / 14%);
+  --footmark-line-storychip: rgb(165 206 255 / 8%);
+  --footmark-line-storychip-active: rgb(167 228 255 / 22%);
+  --footmark-line-map-card: rgb(171 214 255 / 12%);
+  --footmark-line-marker-label: rgb(168 208 255 / 14%);
+  --footmark-line-summary-card: rgb(163 197 255 / 8%);
+  --footmark-line-detail-modal: rgb(148 198 255 / 14%);
+  --footmark-line-detail-card: rgb(170 210 255 / 12%);
+  --footmark-line-detail-content: rgb(169 212 255 / 10%);
+  --footmark-line-detail-workchip: rgb(146 198 255 / 14%);
+  --footmark-shadow-panel: 0 16px 36px rgb(1 7 16 / 22%);
+  --footmark-shadow-panel-lg: 0 28px 60px rgb(1 7 16 / 32%);
+  --footmark-shadow-floating: 0 20px 48px var(--black-alpha-28);
+  --footmark-shadow-chip: 0 0 24px rgb(108 198 255 / 16%);
+  --footmark-shadow-action: 0 16px 32px rgb(75 130 255 / 24%);
+  --footmark-shadow-progress-active: 0 0 24px rgb(74 165 255 / 18%);
+
+  /* --- 场景光效 --- */
+  --footmark-orbit-glow: radial-gradient(
+    circle at 32% 34%,
+    rgb(161 226 255 / 95%) 0%,
+    rgb(76 156 255 / 40%) 26%,
+    rgb(13 32 56 / 8%) 50%,
+    transparent 68%
+  );
+  --footmark-orbit-ring-border: rgb(143 196 255 / 22%);
+  --footmark-orbit-ring-shadow: 0 0 0 84px rgb(122 176 255 / 8%), 0 0 0 180px rgb(122 176 255 / 5%);
+  --footmark-cloud-glow: radial-gradient(
+    circle,
+    rgb(244 248 255 / 18%) 0%,
+    rgb(160 193 230 / 8%) 34%,
+    transparent 72%
+  );
+  --footmark-earth-glow: radial-gradient(
+    circle at 34% 34%,
+    rgb(170 228 255 / 94%) 0%,
+    rgb(92 154 255 / 38%) 34%,
+    rgb(14 33 58 / 8%) 62%,
+    transparent 76%
+  );
+  --footmark-earth-ring-border: rgb(155 209 255 / 14%);
+  --footmark-earth-ring-shadow:
+    0 0 0 54px rgb(112 176 255 / 8%), inset 0 0 80px rgb(104 186 255 / 6%);
+
+  /* --- 地图标记与摘要分类 --- */
+  --footmark-marker-default: #7ff8ff;
+  --footmark-marker-default-shadow: rgb(127 248 255 / 72%);
+  --footmark-marker-origin: #ffd682;
+  --footmark-marker-origin-shadow: rgb(255 214 130 / 72%);
+  --footmark-marker-growth: var(--footmark-accent-growth);
+  --footmark-marker-growth-shadow: rgb(124 240 213 / 72%);
+  --footmark-marker-craft: #8cb6ff;
+  --footmark-marker-craft-shadow: rgb(140 182 255 / 72%);
+  --footmark-marker-horizon: #ff9fb8;
+  --footmark-marker-horizon-shadow: rgb(255 159 184 / 72%);
+  --footmark-summary-origin-text: #ffd37d;
+  --footmark-summary-origin-bg: rgb(255 211 125 / 14%);
+  --footmark-summary-growth-text: var(--footmark-accent-growth);
+  --footmark-summary-growth-bg: rgb(124 240 213 / 14%);
+  --footmark-summary-craft-text: #92bbff;
+  --footmark-summary-craft-bg: rgb(146 187 255 / 14%);
+  --footmark-summary-horizon-text: #ffabc0;
+  --footmark-summary-horizon-bg: rgb(255 171 192 / 14%);
+}

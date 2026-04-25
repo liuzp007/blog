@@ -1,0 +1,104 @@
+/* 全局浅色主题。
+ * 这里只定义全站可切换的主题语义，不承载任何页面私有变量。
+ */
+
+/*
+ * 全局浅色主题。
+ * 这里只定义跨页面共享的 surface / text / brand / state 基础值，
+ * 页面私有风格和实验 palette 统一留在 `src/styles/themes/*-pages.css`。
+ */
+:root[data-theme='light'] {
+  --surface-page: #f7f9fc;
+  --surface-page-secondary: #edf2fb;
+  --surface-panel-start: rgb(255 255 255 / 96%);
+  --surface-panel-mid: rgb(248 250 255 / 98%);
+  --surface-panel-end: rgb(242 246 255 / 98%);
+  --surface-base: #fff;
+  --surface-elevated: #fbfcff;
+  --surface-muted: #f3f5f9;
+  --surface-deep: #eef2f9;
+  --surface-deeper: #e5ebf7;
+  --surface-night: #dfe8f5;
+  --surface-sidebar: rgb(255 255 255 / 94%);
+  --surface-sidebar-start: rgb(255 255 255 / 98%);
+  --surface-sidebar-mid: rgb(247 249 253 / 99%);
+  --surface-sidebar-end: rgb(241 245 252 / 98%);
+  --surface-card: rgb(255 255 255 / 88%);
+  --surface-card-hover: rgb(255 255 255 / 96%);
+  --surface-glass: rgb(255 255 255 / 70%);
+  --surface-glass-strong: rgb(255 255 255 / 88%);
+  --surface-glass-panel: rgb(247 249 252 / 90%);
+  --text-heading: #182033;
+  --text-primary-strong: #24304a;
+  --text-secondary: rgb(36 48 74 / 74%);
+  --text-muted: #69748a;
+  --text-soft: #33415c;
+  --brand-primary: #2563eb;
+  --brand-link: #2d5fff;
+  --brand-emphasis: #5468ff;
+  --brand-emphasis-soft: #7687ff;
+  --brand-emphasis-muted: #8d98ff;
+  --accent-primary: #007c91;
+  --accent-primary-bright: #009cb5;
+  --accent-primary-soft: rgb(0 124 145 / 8%);
+  --accent-primary-glow: rgb(0 156 181 / 28%);
+  --accent-secondary: #c12d66;
+  --accent-secondary-glow: rgb(193 45 102 / 22%);
+  --accent-tertiary: #7852f9;
+  --accent-violet: #7852f9;
+  --accent-warning: #c99100;
+  --accent-warning-bright: #e5ab00;
+  --accent-warm: #cc6b2d;
+  --accent-warm-soft: rgb(204 107 45 / 8%);
+  --accent-warm-glow: rgb(204 107 45 / 20%);
+  --accent-gold: #b88d2d;
+  --status-success: #1d9f5a;
+  --status-success-strong: #178347;
+  --status-success-code: #1f9c5c;
+  --status-warning: #d89a0d;
+  --status-warning-strong: #b77a00;
+  --status-danger: #d14358;
+  --status-danger-strong: #bb2440;
+  --status-danger-code: #db3a55;
+  --border-soft: rgb(36 48 74 / 8%);
+  --border-subtle: rgb(36 48 74 / 12%);
+  --border-strong: rgb(36 48 74 / 18%);
+  --shadow-card: 0 10px 30px rgb(50 66 94 / 12%);
+  --state-focus-ring: rgb(84 104 255 / 35%);
+  --state-warning-ring: rgb(217 154 13 / 35%);
+
+  /* Header 组件语义 token */
+  --header-border: rgb(36 48 74 / 10%);
+  --header-bg: rgb(255 255 255 / 82%);
+  --header-shadow: 0 8px 24px rgb(50 66 94 / 10%);
+  --header-brand-color: var(--text-secondary);
+  --header-brand-hover: var(--text-heading);
+  --header-brand-strong: var(--text-heading);
+  --header-brand-subtitle: rgb(36 48 74 / 50%);
+  --header-disc-bg: radial-gradient(circle at 35% 35%, rgb(36 48 74 / 10%), rgb(193 45 102 / 6%));
+  --header-disc-shadow: inset 0 0 0 1px rgb(36 48 74 / 8%);
+  --header-nav-color: rgb(36 48 74 / 65%);
+  --header-nav-hover-color: var(--text-heading);
+  --header-nav-hover-bg: rgb(36 48 74 / 6%);
+  --header-nav-active-bg: linear-gradient(135deg, rgb(84 104 255 / 12%), rgb(0 124 145 / 10%));
+  --header-nav-active-shadow: inset 0 0 0 1px rgb(36 48 74 / 6%);
+  --header-nav-subtitle: rgb(36 48 74 / 45%);
+  --header-nav-active-subtitle: rgb(36 48 74 / 65%);
+  --header-cta-bg: linear-gradient(135deg, #5468ff, #7852f9);
+  --header-cta-color: var(--raw-white);
+  --header-cta-shadow: 0 10px 28px rgb(84 104 255 / 25%);
+  --header-menu-bg: rgb(36 48 74 / 6%);
+  --header-menu-color: var(--text-secondary);
+  --header-drawer-bg: var(--surface-page);
+  --header-drawer-color: var(--text-heading);
+  --header-drawer-item-bg: rgb(36 48 74 / 4%);
+  --header-drawer-item-color: var(--text-primary-strong);
+  --header-drawer-item-active-bg: linear-gradient(
+    135deg,
+    rgb(84 104 255 / 12%),
+    rgb(0 124 145 / 10%)
+  );
+  --header-drawer-item-subtitle: rgb(51 65 92 / 55%);
+
+  color-scheme: light;
+}

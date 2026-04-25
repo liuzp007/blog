@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkappa=self.webpackChunkappa||[]).push([[298],{2298:function(a,e,p){a.exports=p.p+"static/media/earthSpecular.05cbd4ceb0ceb6443a22.jpg"}}]);

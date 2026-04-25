@@ -1,0 +1,118 @@
+.simple-navigation__content::-webkit-scrollbar {
+  width: 4px;
+}
+
+.simple-navigation__content::-webkit-scrollbar-track {
+  background: var(--white-alpha-05);
+}
+
+.simple-navigation__content::-webkit-scrollbar-thumb {
+  background: var(--indigo-alpha-30);
+  border-radius: 2px;
+}
+
+/* 菜单样式治理：通过组件局部高特异性覆盖 Antd，避免页面级 `.ant-menu` 污染。 */
+
+.custom-menu.ant-menu,
+.custom-menu.ant-menu-inline {
+  background: transparent;
+  border: none;
+  border-inline-end: none;
+  color: var(--white-alpha-90);
+  font-size: var(--text-body-size);
+  padding-block: 8px;
+}
+
+.custom-menu.ant-menu-dark,
+.custom-menu.ant-menu-dark .ant-menu-sub {
+  background: transparent;
+}
+
+.custom-menu.ant-menu-dark .ant-menu-item,
+.custom-menu.ant-menu-dark .ant-menu-submenu-title {
+  margin: 4px 0;
+  border-radius: 10px;
+  height: auto;
+  line-height: 1.5;
+  padding: 8px 12px;
+  transition:
+    background-color var(--motion-fast) var(--easing-standard),
+    color var(--motion-fast) var(--easing-standard),
+    transform var(--motion-fast) var(--easing-standard);
+}
+
+.custom-menu.ant-menu-dark .ant-menu-item:hover,
+.custom-menu.ant-menu-dark .ant-menu-submenu-title:hover,
+.custom-menu.ant-menu-dark .ant-menu-submenu-open > .ant-menu-submenu-title {
+  background: var(--indigo-alpha-20);
+  color: var(--color-white);
+  transform: translateX(2px);
+}
+
+.custom-menu.ant-menu-dark .ant-menu-item-selected {
+  background: var(--indigo-alpha-30);
+  color: var(--color-white);
+  font-weight: var(--font-weight-medium);
+}
+
+.custom-menu.ant-menu-dark .ant-menu-item::after,
+.custom-menu.ant-menu-dark .ant-menu-item-selected::after {
+  border-inline-end: none;
+}
+
+.custom-menu.ant-menu-dark .ant-menu-submenu {
+  margin: 4px 0;
+}
+
+.custom-menu.ant-menu-dark .ant-menu-submenu-title {
+  margin: 4px 0;
+  padding: 8px 12px;
+  border-radius: 10px;
+}
+
+.custom-menu.ant-menu-dark .ant-menu-sub.ant-menu-inline {
+  margin: 4px 0;
+  padding: 4px 0;
+  border-radius: 10px;
+  background: var(--black-alpha-20);
+}
+
+.custom-menu.ant-menu-dark .ant-menu-sub.ant-menu-inline .ant-menu-item {
+  margin: 2px 0;
+  padding: 6px 12px;
+  border-radius: 8px;
+}
+
+.custom-menu .anticon {
+  margin-right: 8px;
+  font-size: 14px;
+}
+
+.custom-menu .ant-menu-item-divider {
+  margin: 8px 0;
+  background: var(--white-alpha-10);
+}
+
+.custom-menu .ant-menu-submenu-arrow {
+  color: var(--white-alpha-70);
+  font-size: 12px;
+}
+
+.custom-menu .ant-menu-item-group {
+  margin-bottom: 8px;
+}
+
+.custom-menu .ant-menu-item-group-title {
+  margin-bottom: 4px;
+  padding: 4px 8px;
+  color: var(--white-alpha-60);
+  font-size: var(--text-caption-size);
+}
+
+@media (width <= 768px) {
+  .custom-menu.ant-menu-dark .ant-menu-item,
+  .custom-menu.ant-menu-dark .ant-menu-submenu-title {
+    margin: 2px 0;
+    padding: 6px 8px;
+  }
+}

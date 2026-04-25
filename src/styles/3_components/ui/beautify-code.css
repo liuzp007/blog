@@ -1,0 +1,140 @@
+/**
+ * 保留型视觉 CSS：代码高亮主题层。
+ * 这里承载 Prism 代码块皮肤、滚动条和 token 着色，不做 Tailwind 迁移。
+ * 后续只允许调整"代码主题表现"，不要把普通布局或页面私有样式继续塞进这个文件。
+ */
+
+/* Code block shell */
+div:not(pre) > code[class*='language-'],
+pre[class*='language-'] {
+  background: var(--beautify-code-surface) !important;
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--beautify-code-border);
+  border-radius: 12px;
+  box-shadow: var(--beautify-code-shadow);
+  margin-bottom: 24px !important;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+  /* 3D Transform Origin */
+  transform-origin: center center;
+}
+
+div:not(pre) > code[class*='language-']:hover,
+pre[class*='language-']:hover {
+  transform: translateY(-5px) scale(1.01);
+  box-shadow: var(--beautify-code-shadow-hover);
+  z-index: 10;
+  background: var(--beautify-code-surface-hover) !important;
+}
+
+/* Scrollbar */
+pre[class*='language-']::-webkit-scrollbar {
+  height: 6px;
+  width: 6px;
+}
+
+pre[class*='language-']::-webkit-scrollbar-track {
+  background: var(--beautify-code-scrollbar-track);
+  border-radius: 3px;
+}
+
+pre[class*='language-']::-webkit-scrollbar-thumb {
+  background: var(--beautify-code-scrollbar-thumb);
+  border-radius: 3px;
+}
+
+pre[class*='language-']::-webkit-scrollbar-thumb:hover {
+  background: var(--beautify-code-scrollbar-thumb-hover);
+}
+
+/* Syntax theme */
+code[class*='language-'],
+pre[class*='language-'] {
+  color: var(--beautify-code-text) !important;
+  text-shadow: var(--beautify-code-text-shadow) !important;
+}
+
+/* Token colors */
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+  color: var(--beautify-code-comment);
+  font-style: italic;
+}
+
+.token.punctuation {
+  color: var(--beautify-code-punctuation);
+}
+
+.token.namespace {
+  opacity: 0.7;
+}
+
+.token.property,
+.token.tag,
+.token.constant,
+.token.symbol,
+.token.deleted {
+  color: var(--beautify-code-pink);
+  text-shadow: var(--beautify-code-pink-glow);
+}
+
+.token.boolean,
+.token.number {
+  color: var(--beautify-code-violet);
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+  color: var(--beautify-code-yellow);
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string {
+  color: var(--beautify-code-cyan);
+  background: none !important;
+  text-shadow: var(--beautify-code-cyan-glow);
+}
+
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+  color: var(--beautify-code-cyan);
+}
+
+.token.function,
+.token.class-name {
+  color: var(--beautify-code-green);
+}
+
+.token.regex,
+.token.important,
+.token.variable {
+  color: var(--beautify-code-lime);
+}
+
+.token.important,
+.token.bold {
+  font-weight: bold;
+}
+
+.token.italic {
+  font-style: italic;
+}
+
+.token.entity {
+  cursor: help;
+}
+
+/* Line numbers */
+.line-numbers .line-numbers-rows {
+  border-right: 1px solid var(--beautify-code-line-number-border) !important;
+}

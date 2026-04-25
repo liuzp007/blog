@@ -1,0 +1,188 @@
+/* 首页私有 palette。
+ * 承载首页品牌主视觉、玻璃层和首页专属互动配色。
+ * 页面 CSS / TSX 只消费这些变量，不再在页面文件里保存原始颜色值。
+ */
+
+.HomeWrap {
+  --home-accent-gold: #d4a853;
+  --home-accent-cyan: #4ecdc4;
+  --home-accent-cyan-soft: #7fdad2;
+  --home-accent-coral: #e07a5f;
+  --home-accent-mint: #44a08d;
+  --home-text-primary: #f2f4f7;
+  --home-text-strong: #f8fbff;
+  --home-text-strong-soft: #f6f8ff;
+  --home-text-title: #fbfcff;
+  --home-text-hero: #fef8f1;
+  --home-text-panel: #fefcff;
+  --home-text-body-strong: #f7fbff;
+  --home-text-surface: #f3f7ff;
+  --home-text-panel-soft: #f5f8ff;
+  --home-text-drawer: #f8f9ff;
+  --home-text-inverse: #101217;
+  --home-text-inverse-soft: #12151c;
+  --home-text-secondary: rgb(210 218 232 / 72%);
+  --home-text-tertiary: rgb(198 209 229 / 72%);
+  --home-text-quiet: rgb(188 202 225 / 66%);
+  --home-text-nav: rgb(223 231 244 / 76%);
+  --home-text-nav-label: rgb(222 229 242 / 58%);
+  --home-text-muted-strong: rgb(204 214 232 / 74%);
+  --home-text-muted: rgb(204 215 232 / 70%);
+  --home-text-label: rgb(194 207 227 / 72%);
+  --home-text-label-soft: rgb(198 210 232 / 66%);
+  --home-text-meta: rgb(218 227 242 / 84%);
+  --home-text-accent-cool: rgb(134 233 226 / 90%);
+  --home-text-highlight: rgb(247 223 173 / 94%);
+  --home-text-highlight-strong: #ffe8b8;
+  --home-text-highlight-soft: rgb(248 227 177 / 92%);
+  --home-surface-base: rgb(12 16 25 / 74%);
+  --home-surface-soft: rgb(17 22 33 / 62%);
+  --home-surface-nav: rgb(8 11 18 / 72%);
+  --home-surface-nav-scrolled: rgb(7 10 17 / 86%);
+  --home-surface-hero: rgb(11 15 25 / 40%);
+  --home-surface-section: rgb(11 15 24 / 46%);
+  --home-surface-card: rgb(12 16 24 / 64%);
+  --home-surface-card-strong: rgb(12 15 23 / 60%);
+  --home-surface-canvas: #0a0c11;
+  --home-surface-drawer: #0b0f16;
+  --home-surface-badge: rgb(255 255 255 / 7%);
+  --home-gradient-warm: linear-gradient(135deg, #d4a853 0%, #e07a5f 100%);
+  --home-gradient-cool: linear-gradient(135deg, #4ecdc4 0%, #7fdad2 100%);
+  --home-page-bg:
+    radial-gradient(circle at 16% 14%, rgb(212 168 83 / 20%), transparent 28%),
+    radial-gradient(circle at 82% 16%, rgb(78 205 196 / 20%), transparent 30%),
+    radial-gradient(circle at 62% 68%, rgb(224 122 95 / 10%), transparent 34%),
+    linear-gradient(140deg, #07080d 0%, #0e111a 42%, #131927 100%);
+  --home-grid-line: rgb(255 255 255 / 2.5%);
+  --home-vignette-overlay:
+    radial-gradient(circle at 50% 48%, var(--white-alpha-04), transparent 20%),
+    linear-gradient(180deg, transparent 0%, var(--black-alpha-28) 100%);
+  --home-nav-bg:
+    linear-gradient(135deg, rgb(212 168 83 / 8%), rgb(78 205 196 / 6%)), rgb(8 11 18 / 72%);
+  --home-nav-bg-scrolled:
+    linear-gradient(135deg, rgb(212 168 83 / 12%), rgb(78 205 196 / 8%)), rgb(7 10 17 / 86%);
+  --home-hero-panel-bg:
+    radial-gradient(circle at 14% 16%, rgb(78 205 196 / 9%), transparent 25%),
+    radial-gradient(circle at 84% 20%, rgb(212 168 83 / 11%), transparent 30%),
+    linear-gradient(160deg, rgb(7 11 21 / 78%), rgb(10 16 28 / 56%)), rgb(11 15 25 / 40%);
+  --home-tag-bg:
+    linear-gradient(135deg, rgb(212 168 83 / 14%), rgb(78 205 196 / 8%)), rgb(255 255 255 / 3%);
+  --home-secondary-btn-bg: rgb(78 205 196 / 6%);
+  --home-secondary-btn-bg-hover:
+    linear-gradient(135deg, rgb(78 205 196 / 16%), rgb(212 168 83 / 10%)), rgb(255 255 255 / 3%);
+  --home-metric-bg:
+    linear-gradient(140deg, rgb(212 168 83 / 8%), rgb(78 205 196 / 6%)), rgb(255 255 255 / 3%);
+  --home-card-bg:
+    linear-gradient(152deg, rgb(18 22 32 / 92%), rgb(14 19 28 / 70%)), rgb(12 16 24 / 64%);
+  --home-showcase-bg:
+    linear-gradient(160deg, rgb(15 19 29 / 94%), rgb(10 14 22 / 72%)), rgb(12 16 24 / 64%);
+  --home-demo-bg:
+    linear-gradient(160deg, rgb(14 19 29 / 96%), rgb(11 16 25 / 74%)), rgb(12 15 23 / 60%);
+  --home-timeline-bg:
+    linear-gradient(145deg, rgb(15 20 30 / 90%), rgb(11 16 24 / 68%)), rgb(13 18 28 / 58%);
+  --home-contact-bg:
+    linear-gradient(148deg, rgb(14 19 28 / 92%), rgb(11 16 24 / 70%)), rgb(12 16 24 / 60%);
+  --home-drawer-item-bg:
+    linear-gradient(140deg, rgb(212 168 83 / 10%), rgb(78 205 196 / 8%)), rgb(255 255 255 / 2%);
+  --home-glass-bg-hover: rgb(255 255 255 / 7%);
+  --home-border-soft: 1px solid var(--white-alpha-10);
+  --home-border-subtle: 1px solid var(--white-alpha-08);
+  --home-border-subtle-strong: 1px solid rgb(255 255 255 / 9%);
+  --home-border-faint: 1px solid var(--white-alpha-06);
+  --home-border-strong: rgb(255 255 255 / 14%);
+  --home-border-accent: rgb(78 205 196 / 28%);
+  --home-border-accent-hover: rgb(78 205 196 / 44%);
+  --home-border-gold: rgb(212 168 83 / 34%);
+  --home-card-shadow-hover: 0 28px 62px rgb(0 0 0 / 34%);
+  --home-panel-shadow: 0 20px 46px rgb(0 0 0 / 30%);
+  --home-panel-shadow-strong: 0 24px 54px rgb(0 0 0 / 34%);
+  --home-panel-shadow-heavy: 0 28px 64px rgb(0 0 0 / 32%);
+  --home-button-shadow: 0 12px 30px rgb(212 168 83 / 26%);
+  --home-button-shadow-hover: 0 18px 36px rgb(212 168 83 / 34%);
+  --home-button-shadow-strong: 0 16px 34px rgb(212 168 83 / 28%);
+  --home-button-shadow-strong-hover: 0 22px 42px rgb(212 168 83 / 34%);
+  --home-card-shadow: 0 26px 60px rgb(0 0 0 / 28%);
+  --home-timeline-line: linear-gradient(180deg, rgb(78 205 196 / 50%), rgb(212 168 83 / 42%));
+  --home-linedog-outline: var(--raw-white);
+  --home-linedog-eye-fill: var(--raw-white);
+  --home-linedog-pupil: var(--raw-black);
+  --home-linedog-tongue: #ff8a80;
+  --home-linedog-blush: #ff8a80;
+  --home-signal-wave-primary: rgb(78 205 196 / 24%);
+  --home-signal-wave-secondary: rgb(212 168 83 / 22%);
+  --home-signal-wave-accent: rgb(224 122 95 / 18%);
+  --home-hero-core-emissive: #0f1a28;
+  --home-hero-core-surface: #f4f0e8;
+  --home-demo-backdrop: rgb(10 12 18 / 28%);
+  --home-demo-link: var(--home-accent-cyan);
+  --home-demo-node-idle: #e4ecf8;
+}
+
+/* Timeline 组件样式迁移 */
+.timeline-item,
+.home-timeline__item {
+  --ui-card-timeline-dot-color: var(--home-accent-gold);
+  --ui-card-timeline-dot-shadow: 0 0 0 6px
+    color-mix(in srgb, var(--home-accent-gold) 12%, transparent);
+
+  position: relative;
+  border: var(--home-border-subtle);
+  background: var(--home-timeline-bg);
+  transition:
+    transform 0.3s ease,
+    color 0.3s ease;
+}
+
+.timeline-item::before,
+.home-timeline__item::before {
+  content: '';
+  position: absolute;
+  left: -1.5rem;
+  top: 1.5rem;
+  width: var(--space-3);
+  height: var(--space-3);
+  border-radius: 50%;
+  background: var(--ui-card-timeline-dot-color);
+  box-shadow: var(--ui-card-timeline-dot-shadow);
+  opacity: 0.9;
+}
+
+.timeline-item:hover,
+.timeline-item:focus-within,
+.home-timeline__item:hover,
+.home-timeline__item:focus-within {
+  transform: translateY(-16px);
+}
+
+.timeline-year,
+.home-timeline__year {
+  color: var(--home-text-highlight-soft);
+  margin: 0;
+  font-family: var(--font-family-body);
+  font-size: var(--ui-card-overline-size, var(--text-overline-size));
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-tight);
+  letter-spacing: var(--ui-card-overline-letter-spacing, var(--text-overline-letter-spacing));
+  text-transform: uppercase;
+}
+
+.timeline-title,
+.home-timeline__title {
+  font-family: var(--font-family-heading);
+  font-size: var(--ui-card-title-size, var(--heading-card-size));
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--ui-card-title-line-height, var(--heading-card-line-height));
+  margin: var(--space-2) 0 0;
+  color: var(--home-text-strong);
+}
+
+.timeline-desc,
+.home-timeline__desc {
+  margin: 0;
+  font-family: var(--font-family-body);
+  font-size: var(--ui-card-body-size, var(--text-body-size));
+  line-height: var(--ui-card-body-line-height, var(--text-body-line-height));
+  font-weight: var(--text-body-regular-weight);
+  margin-top: var(--space-2);
+  color: var(--home-text-secondary);
+}

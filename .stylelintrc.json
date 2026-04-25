@@ -1,0 +1,61 @@
+{
+  "extends": ["stylelint-config-standard"],
+  "plugins": ["stylelint-order"],
+  "rules": {
+    "selector-class-pattern": null,
+    "declaration-no-important": null,
+    "no-descending-specificity": null,
+    "no-duplicate-selectors": null,
+    "declaration-block-no-duplicate-custom-properties": null,
+    "no-invalid-position-at-import-rule": null,
+    "selector-pseudo-class-no-unknown": [true, { "ignorePseudoClasses": ["global", "local"] }],
+    "at-rule-no-unknown": [
+      true,
+      { "ignoreAtRules": ["tailwind", "apply", "screen", "layer", "theme", "variants"] }
+    ],
+    "property-no-vendor-prefix": true,
+    "value-no-vendor-prefix": true,
+    "color-hex-length": "short",
+    "color-named": "never",
+    "declaration-block-no-shorthand-property-overrides": true,
+    "selector-id-pattern": null,
+    "custom-property-pattern": null,
+    "keyframes-name-pattern": null,
+    "order/properties-order": [
+      "position",
+      "top",
+      "right",
+      "bottom",
+      "left",
+      "z-index",
+      "display",
+      "flex",
+      "grid",
+      "width",
+      "height",
+      "min-width",
+      "max-width",
+      "min-height",
+      "max-height",
+      "margin",
+      "padding",
+      "font-size",
+      "line-height",
+      "color",
+      "background",
+      "border",
+      "opacity",
+      "transition",
+      "animation"
+    ]
+  },
+  "overrides": [
+    {
+      "files": ["src/styles/tokens/**", "src/styles/1_tokens/**", "src/styles/palettes.css"],
+      "rules": {
+        "color-named": null
+      }
+    }
+  ],
+  "ignoreFiles": ["node_modules/**/*", "build/**/*", "dist/**/*", ".storybook/**/*", "*.story.*"]
+}

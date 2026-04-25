@@ -1,0 +1,42 @@
+.tilt-card {
+  --tilt-card-transform-rotate-x: 0deg;
+  --tilt-card-transform-rotate-y: 0deg;
+  --tilt-card-transform-scale: 1;
+  --tilt-card-transform-lift: 0px;
+  --tilt-card-pointer-x: 50%;
+  --tilt-card-pointer-y: 50%;
+  --tilt-card-glare-opacity: 0;
+  --tilt-card-transform-perspective: 1000px;
+
+  transform: perspective(var(--tilt-card-transform-perspective))
+    translate3d(0, calc(var(--tilt-card-transform-lift) * -1), 0)
+    rotateX(var(--tilt-card-transform-rotate-x)) rotateY(var(--tilt-card-transform-rotate-y))
+    scale(var(--tilt-card-transform-scale));
+  transform-style: preserve-3d;
+  will-change: transform;
+  padding-block: 20px;
+}
+
+.tilt-card__glare {
+  border-radius: inherit;
+  opacity: var(--tilt-card-glare-opacity);
+  background:
+    radial-gradient(
+      circle at var(--tilt-card-pointer-x) var(--tilt-card-pointer-y),
+      var(--white-alpha-18),
+      transparent 30%
+    ),
+    linear-gradient(135deg, var(--white-alpha-08), transparent 45%);
+  mix-blend-mode: screen;
+  transition: opacity 0.22s ease;
+}
+
+@media (prefers-reduced-motion: reduce), (hover: none), (pointer: coarse) {
+  .tilt-card {
+    transform: none !important;
+  }
+
+  .tilt-card__glare {
+    display: none;
+  }
+}

@@ -1,0 +1,58 @@
+/*
+ * CategoryBar 只保留 ant-segmented 内部覆写；
+ * 滚动壳、间距和 segmented 外层容器样式迁到 TSX + Tailwind 风格。
+ */
+.category-bar__scroll::-webkit-scrollbar {
+  height: 6px;
+}
+
+.category-bar__scroll::-webkit-scrollbar-thumb {
+  background: var(--button-secondary-border);
+  border-radius: var(--radius-pill);
+}
+
+.category-bar__scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.category-bar__segmented.ant-segmented .ant-segmented-group {
+  gap: var(--space-1);
+}
+
+.category-bar__segmented.ant-segmented .ant-segmented-thumb {
+  background: var(--button-primary-bg);
+  border-radius: calc(var(--button-radius-pill) - 4px);
+  box-shadow: var(--card-shadow);
+}
+
+.category-bar__segmented.ant-segmented .ant-segmented-item {
+  border-radius: calc(var(--button-radius-pill) - 4px);
+  transition:
+    color var(--motion-base) var(--easing-standard),
+    background-color var(--motion-base) var(--easing-standard);
+}
+
+.category-bar__segmented.ant-segmented .ant-segmented-item:hover {
+  background: var(--button-ghost-bg-hover);
+}
+
+.category-bar__segmented.ant-segmented .ant-segmented-item-label {
+  min-height: var(--button-height-sm);
+  padding-inline: var(--button-padding-inline-sm);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-secondary);
+  font-size: var(--text-caption-size);
+  font-weight: var(--font-weight-medium);
+  white-space: nowrap;
+}
+
+.category-bar__segmented.ant-segmented .ant-segmented-item-selected .ant-segmented-item-label {
+  color: inherit;
+}
+
+.category-bar__segmented.ant-segmented .ant-segmented-item:focus-visible,
+.category-bar__segmented.ant-segmented .ant-segmented-item-selected:focus-visible {
+  outline: none;
+}

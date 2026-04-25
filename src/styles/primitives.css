@@ -1,0 +1,194 @@
+html {
+  font-size: 16px;
+  background-color: var(--color-page-bg);
+  min-height: 100%;
+  overscroll-behavior-y: none;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top, var(--color-accent-cyan-soft), transparent 32%),
+    linear-gradient(180deg, var(--color-page-bg) 0%, var(--color-page-bg-secondary) 100%);
+  color: var(--color-text-primary);
+  font-family: var(--font-family-body);
+  font-size: var(--text-body-size);
+  line-height: var(--text-body-line-height);
+  font-weight: var(--font-weight-regular);
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+hr,
+p,
+blockquote,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+pre,
+fieldset,
+legend,
+button,
+input,
+textarea,
+th,
+td {
+  margin: 0;
+  padding: 0;
+}
+
+#root {
+  min-height: 100vh;
+  background-color: var(--color-page-bg);
+}
+
+body,
+button,
+input,
+select,
+textarea {
+  font-family: var(--font-family-body);
+}
+
+/*
+ * primitives 只负责元素级 reset / base。
+ * 按钮的尺寸、圆角、过渡等组件视觉基线统一放在 components.css。
+ */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--color-text-heading);
+  font-family: var(--font-family-heading);
+  font-weight: var(--heading-font-weight);
+  line-height: var(--heading-line-height);
+  letter-spacing: -0.02em;
+  margin-bottom: var(--space-4);
+}
+
+h1 {
+  font-size: var(--heading-1-size);
+}
+
+h2 {
+  font-size: var(--heading-2-size);
+}
+
+h3 {
+  font-size: var(--heading-3-size);
+}
+
+h4 {
+  font-size: var(--heading-4-size);
+}
+
+h5 {
+  font-size: var(--heading-5-size);
+}
+
+h6 {
+  font-size: var(--heading-6-size);
+}
+
+p,
+li,
+dd,
+dt,
+blockquote,
+label,
+input,
+textarea,
+select {
+  font-size: var(--text-body-size);
+  line-height: var(--text-body-line-height);
+}
+
+small,
+.text-caption {
+  font-size: var(--text-caption-size);
+}
+
+address,
+cite,
+dfn,
+em,
+var {
+  font-style: normal;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+abbr[title],
+acronym[title] {
+  border-bottom: 1px dotted;
+  cursor: help;
+}
+
+q::before,
+q::after {
+  content: '';
+}
+
+legend {
+  color: var(--color-black);
+}
+
+fieldset,
+img {
+  border: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+button,
+input,
+select,
+textarea {
+  font-size: 100%;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+hr {
+  border: none;
+  height: 1px;
+}
+
+code,
+kbd,
+pre,
+samp,
+tt {
+  font-family: var(--font-family-mono);
+}

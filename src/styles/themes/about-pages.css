@@ -1,0 +1,237 @@
+/* About 页面样式 - 基于 aboutme/index.scss 迁移 */
+
+.aboutHtmlPage {
+  /* 页面基础样式 */
+  --about-bg-primary: var(--surface-deep);
+  --about-bg-secondary: var(--surface-deeper);
+  --about-text-primary: var(--raw-slate-100);
+  --about-text-secondary: var(--raw-gray-500);
+  --about-accent-warm: var(--color-accent-orange);
+  --about-accent-gold: var(--color-accent-gold);
+  --about-accent-cool: var(--color-accent-cyan);
+  --about-accent-glow: var(--accent-glow);
+  --about-panel-bg: var(--white-alpha-02);
+  --about-panel-border: var(--white-alpha-05);
+  --about-panel-border-strong: var(--white-alpha-10);
+  --about-panel-border-stronger: var(--white-alpha-08);
+  --about-overlay-strong: var(--black-alpha-70);
+  --about-nav-scrim: var(--black-alpha-95);
+  --about-project-overlay: var(--black-alpha-95);
+  --about-card-shadow: var(--shadow-lg);
+  --about-card-shadow-hover: var(--shadow-xl);
+  --about-tag-height: var(--space-6);
+  --about-tag-padding-inline: var(--space-3);
+  --about-tag-font-size: 11px;
+  --about-tag-radius: 999px;
+  --about-tag-shadow: inset 0 1px 0 var(--white-alpha-10);
+  --about-demo-canvas-fade: var(--black-alpha-10);
+  --about-demo-canvas-link: var(--orange-500-alpha-10);
+  --about-project-canvas-bg: color-mix(in srgb, var(--surface-deep) 80%, #000);
+  --about-blog-canvas-bg: color-mix(in srgb, var(--surface-deep) 85%, #000);
+  --about-project-canvas-line-soft: var(--orange-500-alpha-30);
+  --about-project-canvas-line: var(--orange-500-alpha-50);
+  --about-project-canvas-line-strong: var(--orange-500-alpha-60);
+
+  position: relative;
+  min-height: 100vh;
+  color: var(--about-text-primary);
+  background: var(--about-bg-primary);
+  overflow-x: hidden;
+  line-height: var(--line-height-relaxed);
+  font-family: var(--font-family-heading);
+}
+
+.cursor-glow {
+  position: fixed;
+  width: 64px;
+  height: 64px;
+  pointer-events: none;
+  z-index: 1;
+  background: radial-gradient(circle, var(--about-accent-glow) 0%, transparent 70%);
+  transform: translate(-50%, -50%);
+  transition: all 0.2s ease;
+  opacity: 0.6;
+}
+
+#bg-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  opacity: 0.7;
+}
+
+.about-nav {
+  background: linear-gradient(to bottom, var(--about-nav-scrim), transparent);
+  backdrop-filter: blur(10px);
+}
+
+/* BlogCard 样式迁移 */
+.blog-card {
+  --ui-card-interactive-border-color: var(--about-accent-border-soft);
+  --ui-card-hover-transform: translateY(-20px);
+
+  transition: all 0.2s ease;
+}
+
+.blog-card:hover {
+  transform: var(--ui-card-hover-transform, translateY(-2px));
+}
+
+.media-badge.ui-tag {
+  position: absolute;
+  top: var(--space-2);
+  right: var(--space-2);
+
+  --ui-tag-size: var(--space-5);
+  --ui-tag-radius: var(--about-tag-radius);
+  --ui-tag-bg-base: var(--about-overlay-strong);
+  --ui-tag-text-base: var(--about-text-primary);
+  --ui-tag-sheen: var(--white-alpha-16);
+  --ui-tag-tone-bg-strength: 14%;
+  --ui-tag-tone-border-strength: 34%;
+  --ui-tag-tone-text-strength: 82%;
+  --ui-tag-badge-shadow: inset 0 1px 0 var(--white-alpha-14), var(--shadow-lg);
+
+  cursor: default;
+}
+
+.blog-date {
+  margin: 0;
+  font-family: var(--font-family-body);
+  font-size: var(--text-caption-size);
+  line-height: var(--line-height-normal);
+  margin-bottom: var(--space-1);
+  color: var(--about-text-secondary);
+}
+
+.blog-title {
+  font-family: var(--font-family-heading);
+  font-size: var(--ui-card-title-size, var(--heading-card-size));
+  font-weight: var(--font-weight-semibold);
+  margin: 0 0 var(--space-1);
+  line-height: var(--line-height-snug);
+  color: var(--about-text-secondary);
+}
+
+.blog-excerpt {
+  margin: 0;
+  font-family: var(--font-family-body);
+  font-size: var(--ui-card-body-size, var(--text-body-size));
+  line-height: var(--ui-card-body-line-height, var(--text-body-line-height));
+  font-weight: var(--text-body-regular-weight);
+  color: var(--about-text-secondary);
+  margin-bottom: var(--space-4);
+}
+
+/* ProjectCard 样式迁移 */
+.project-card {
+  --ui-card-shadow: var(--about-card-shadow);
+  --ui-card-hover-shadow: var(--about-card-shadow-hover);
+  --ui-card-hover-transform: translateY(24px);
+  --ui-card-hover-border-color: var(--about-accent-border-strong);
+
+  position: relative;
+  transition: all 0.2s ease;
+  transform-style: preserve-3d;
+}
+
+.project-card:hover {
+  transform: var(--ui-card-hover-transform, translateY(-2px));
+}
+
+.project-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent, var(--about-project-overlay));
+  opacity: 0;
+  transition: all 0.2s ease;
+}
+
+.project-card:hover .project-overlay {
+  opacity: 1;
+}
+
+.project-tag {
+  --ui-tag-height: var(--about-tag-height);
+  --ui-tag-padding-inline: var(--about-tag-padding-inline);
+  --ui-tag-radius: var(--about-tag-radius);
+  --ui-tag-text-base: var(--about-text-primary);
+  --ui-tag-sheen: var(--white-alpha-08);
+  --ui-tag-tone-bg-strength: 10%;
+  --ui-tag-tone-border-strength: 24%;
+  --ui-tag-tone-text-strength: 62%;
+  --ui-tag-soft-shadow: var(--about-tag-shadow);
+  --ui-tag-soft-letter-spacing: 0.03em;
+
+  font-size: var(--about-tag-font-size);
+  cursor: default;
+  transition: all 0.2s ease;
+}
+
+.project-card:hover .project-tag {
+  --ui-tag-tone-border-color: color-mix(in srgb, var(--ui-tag-tone-source) 30%, transparent);
+}
+
+.project-title {
+  font-family: var(--font-family-heading);
+  font-size: var(--ui-card-title-size, var(--heading-card-size));
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--ui-card-title-line-height, var(--heading-card-line-height));
+  margin: 0;
+  color: var(--about-text-primary);
+}
+
+.project-desc {
+  margin: 0;
+  font-family: var(--font-family-body);
+  font-size: var(--ui-card-body-size, var(--text-body-size));
+  line-height: var(--ui-card-body-line-height, var(--text-body-line-height));
+  color: var(--about-text-secondary);
+}
+
+.project-link {
+  --ui-button-height: 34px;
+  --ui-button-padding-inline: 10px;
+  --ui-button-radius: var(--radius-pill);
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  vertical-align: middle;
+  min-height: var(--ui-button-height, 34px);
+  font-size: var(--text-caption-size);
+  font-weight: var(--button-font-weight);
+  padding-inline: var(--ui-button-padding-inline, 10px);
+  border-radius: var(--ui-button-radius, var(--radius-pill));
+  gap: var(--space-2);
+  border: none;
+  background: transparent;
+  color: var(--about-accent-warm);
+  transition: all 0.2s ease;
+}
+
+.project-link:hover,
+.project-link:focus-visible {
+  gap: var(--space-4);
+  color: var(--about-accent-warm);
+}
+
+.project-link--secondary {
+  color: var(--about-text-secondary);
+}
+
+.project-link--secondary:hover,
+.project-link--secondary:focus-visible {
+  color: var(--about-text-primary);
+}
+
+/* 其他样式 */
+@media (width <= 768px) {
+  .cursor-glow {
+    display: none;
+  }
+}

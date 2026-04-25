@@ -1,0 +1,41 @@
+/**
+ * Code Block Component
+ * 带折叠和复制功能的代码展示组件
+ */
+
+.code-block {
+  border: 1px solid var(--glass-border);
+  border-radius: var(--ui-card-radius);
+  overflow: hidden;
+  background: var(--black-alpha-30);
+}
+
+.code-block__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-2) var(--space-3);
+  background: var(--white-alpha-04);
+}
+
+.code-block__header__title {
+  color: var(--color-slate-300);
+  font-size: var(--text-meta-size);
+}
+
+.code-block__header__actions {
+  display: flex;
+  gap: var(--space-2);
+}
+
+.code-block__content {
+  margin: 0;
+  padding: var(--space-3);
+  overflow-x: auto;
+}
+
+.code-block__content code {
+  color: var(--color-text-soft);
+  font-size: var(--ui-code-size);
+  line-height: 1.6;
+}

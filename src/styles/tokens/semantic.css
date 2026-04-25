@@ -1,0 +1,372 @@
+/**
+ * 语义 token 层。
+ * 分层约定：
+ * 1. `--color-*` / `--text-*` / `--button-*` / `--card-*` 等是首选消费层。
+ * 2. `Compatibility Aliases` / `Legacy Aliases` 只做迁移兼容，不再继续扩张。
+ * 3. 页面 palette 如果需要局部特征色，应先落在 `src/styles/themes/*`，不要回写到这里。
+ */
+:root {
+  /**
+   * 基础兼容别名（Compatibility Aliases）
+   * 用于平滑承接旧命名，减少迁移期间的破坏性修改。
+   * 新增样式优先使用下面更清晰的语义 token。
+   * 这一组视为兼容白名单，不再继续新增 alias。
+   */
+  --color-white: var(--raw-white);
+  --color-black: var(--raw-black);
+  --color-text-default: var(--raw-gray-700);
+
+  /**
+   * 页面与容器表面（Surfaces）
+   * 定义页面底色、面板、侧边栏、卡片等大面积载体的视觉层级。
+   * 页面和组件应优先消费这一层，而不是直接依赖主题文件中的 `--surface-*`。
+   */
+  --color-page-bg: var(--surface-page);
+  --color-page-bg-secondary: var(--surface-page-secondary);
+  --color-page-panel-start: var(--surface-panel-start);
+  --color-page-panel-mid: var(--surface-panel-mid);
+  --color-page-panel-end: var(--surface-panel-end);
+  --color-surface-base: var(--surface-base);
+  --color-surface-elevated: var(--surface-elevated);
+  --color-surface-muted: var(--surface-muted);
+  --color-surface-deep: var(--surface-deep);
+  --color-surface-deeper: var(--surface-deeper);
+  --color-surface-night: var(--surface-night);
+  --color-sidebar-surface: var(--surface-sidebar);
+  --color-sidebar-start: var(--surface-sidebar-start);
+  --color-sidebar-mid: var(--surface-sidebar-mid);
+  --color-sidebar-end: var(--surface-sidebar-end);
+
+  /**
+   * 文本语义（Text Semantics）
+   * primary / secondary / muted / soft / heading 分别对应主文案、次文案、弱化文案、辅助文案和标题。
+   */
+  --color-text-primary: var(--text-primary-strong);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
+  --color-text-soft: var(--text-soft);
+  --color-text-heading: var(--text-heading);
+
+  /**
+   * 品牌、强调与状态色（Brand, Accent & Status）
+   * 业务样式需要强调色、链接色、警告色时，应优先使用这一层。
+   * 除 Canvas / Three.js 等图形化场景外，不要直接消费 raw 色值。
+   */
+  --color-brand-link: var(--brand-link);
+  --color-brand-link-legacy: var(--brand-link);
+  --color-accent-cyan: var(--accent-primary);
+  --color-accent-cyan-bright: var(--accent-primary-bright);
+  --color-accent-cyan-soft: var(--accent-primary-soft);
+  --color-accent-pink: var(--accent-secondary);
+  --color-accent-purple: var(--accent-tertiary);
+  --color-accent-yellow: var(--accent-warning);
+  --color-accent-orange: var(--accent-warm);
+  --color-accent-orange-soft: var(--accent-warm-soft);
+  --color-accent-gold: var(--accent-gold);
+  --color-indigo-500: var(--brand-emphasis);
+  --color-indigo-400: var(--brand-emphasis-soft);
+  --color-indigo-300: var(--brand-emphasis-muted);
+  --color-slate-300: var(--raw-slate-300);
+  --color-ambient-cyan: var(--raw-cyan-400);
+  --color-ambient-pink: var(--raw-pink-450);
+  --color-ambient-purple: var(--raw-purple-500);
+  --color-danger-strong: var(--status-danger-strong);
+  --color-warning-strong: var(--status-warning-strong);
+  --color-success-strong: var(--status-success-strong);
+  --color-success: var(--status-success);
+  --color-warning: var(--status-warning);
+  --color-danger: var(--status-danger);
+  --color-code-indigo: var(--brand-emphasis);
+  --color-code-violet: var(--accent-violet);
+  --color-code-green: var(--status-success-code);
+  --color-code-red: var(--status-danger-code);
+
+  /**
+   * 玻璃态、边框与状态环（Effects）
+   * 聚合常见的玻璃背景、边框强弱、卡片阴影和 focus / warning ring。
+   * 业务层应优先拿这里的“用途”变量，而不是重新拼透明值。
+   */
+
+  /* Surface / glass effects */
+  --glass-bg: var(--surface-glass);
+  --glass-bg-strong: var(--surface-glass-strong);
+  --glass-border: var(--border-subtle);
+  --glass-border-soft: var(--border-soft);
+  --glass-border-strong: var(--border-strong);
+
+  /* Shared component elevation */
+  --sidebar-bg: var(--surface-sidebar);
+  --card-shadow: var(--shadow-card);
+
+  /* Interaction / state rings */
+  --focus-ring: var(--state-focus-ring);
+
+  /**
+   * 历史兼容别名（Legacy Aliases）
+   * 主要用于旧页面渐进式迁移；新代码建议直接使用上方的标准命名。
+   * 这一组只减不增，新增样式禁止继续引用这里的旧出口。
+   */
+  --bg-primary: var(--color-surface-base);
+  --text-primary: var(--color-text-primary);
+  --text-secondary: var(--color-text-muted);
+  --accent-cyan: var(--color-accent-cyan);
+  --accent-cyan-glow: var(--accent-primary-glow);
+  --accent-pink: var(--color-accent-pink);
+  --accent-pink-glow: var(--accent-secondary-glow);
+  --accent-yellow: var(--color-accent-yellow);
+  --accent-warm: var(--color-accent-orange);
+  --accent-gold: var(--color-accent-gold);
+  --accent-glow: var(--accent-warm-glow);
+
+  /**
+   * 排版语义（Typography Semantics）
+   * 约束正文、说明文字和标题层级的尺寸与节奏。
+   * 页面标题、卡片标题和模块标题都应优先消费这一层。
+   */
+  --text-body-size: var(--font-size-sm);
+  --text-body-line-height: var(--line-height-normal);
+  --text-body-regular-weight: var(--font-weight-regular);
+  --text-body-strong-weight: var(--font-weight-semibold);
+  --text-body-relaxed-line-height: var(--line-height-relaxed);
+  --text-caption-size: var(--font-size-xs);
+  --text-meta-size: var(--font-size-xs);
+  --text-meta-line-height: var(--line-height-normal);
+  --text-label-size: var(--font-size-xs);
+  --text-eyebrow-size: var(--font-size-xs);
+  --text-eyebrow-letter-spacing: 0.12em;
+  --text-overline-size: var(--font-size-2xs);
+  --text-overline-letter-spacing: 0.18em;
+  --text-lead-size: var(--font-size-md);
+  --text-lead-line-height: var(--line-height-relaxed);
+  --heading-display-size: 56px;
+  --heading-display-line-height: 0.96;
+  --heading-1-size: var(--font-size-4xl);
+  --heading-2-size: var(--font-size-3xl);
+  --heading-3-size: var(--font-size-2xl);
+  --heading-4-size: var(--font-size-xl);
+  --heading-5-size: var(--font-size-lg);
+  --heading-6-size: var(--font-size-md);
+  --heading-section-letter-spacing: -0.02em;
+  --heading-card-size: var(--font-size-xl);
+  --heading-card-line-height: var(--line-height-snug);
+  --heading-line-height: var(--line-height-snug);
+  --heading-font-weight: var(--font-weight-bold);
+
+  /**
+   * 按钮组件 token（Button Tokens）
+   * 统一按钮高度、内边距、圆角、字体和不同按钮变体的视觉语义。
+   * 后续如果改主按钮风格或新增主题，这里是主入口之一。
+   */
+  --button-height-sm: var(--control-height-sm);
+  --button-height-md: var(--control-height-md);
+  --button-height-lg: var(--control-height-lg);
+  --button-height: var(--button-height-md);
+  --button-padding-inline-sm: var(--space-3);
+  --button-padding-inline-md: var(--space-5);
+  --button-padding-inline-lg: var(--space-6);
+  --button-padding-inline: var(--button-padding-inline-md);
+  --button-radius-pill: var(--radius-pill);
+  --button-radius-md: var(--radius-md);
+  --button-radius: var(--button-radius-pill);
+  --button-icon-gap: var(--space-2);
+  --button-font-size: var(--font-size-sm);
+  --button-font-weight: var(--font-weight-semibold);
+  --button-height-cta: 46px;
+  --button-primary-border: transparent;
+  --button-primary-bg: linear-gradient(135deg, var(--brand-emphasis), var(--accent-violet));
+  --button-primary-bg-hover: linear-gradient(
+    135deg,
+    var(--brand-emphasis-soft),
+    var(--accent-violet)
+  );
+  --button-primary-text: var(--color-white);
+  --button-secondary-bg: var(--white-alpha-06);
+  --button-secondary-bg-hover: var(--white-alpha-08);
+  --button-secondary-border: var(--white-alpha-12);
+  --button-secondary-text: var(--text-primary-strong);
+  --button-ghost-bg: transparent;
+  --button-ghost-bg-hover: var(--white-alpha-04);
+  --button-ghost-border: transparent;
+  --button-ghost-text: var(--text-secondary);
+  --button-danger-bg: var(--color-danger-strong);
+  --button-danger-bg-hover: var(--raw-danger-600);
+  --button-danger-border: transparent;
+  --button-danger-text: var(--color-white);
+  --button-disabled-bg: var(--white-alpha-04);
+  --button-disabled-border: var(--white-alpha-08);
+  --button-disabled-text: var(--white-alpha-40);
+
+  /* 工具栏按钮 token（Button Tool Tokens） */
+  --button-tool-height: 32px;
+  --button-tool-padding-inline: var(--space-2);
+  --button-tool-radius: 4px;
+  --button-tool-bg: transparent;
+  --button-tool-bg-hover: var(--white-alpha-08);
+  --button-tool-border: transparent;
+  --button-tool-text: var(--text-secondary);
+  --button-tool-text-hover: var(--text-primary);
+  --button-tool-ring: var(--focus-ring);
+
+  /**
+   * 标签组件 token（Tag Tokens）
+   * 统一轻标签、分类标签和状态徽标的尺寸与语义变体。
+   */
+  --tag-height-sm: 26px;
+  --tag-height-md: var(--control-height-sm);
+  --tag-height: var(--tag-height-md);
+  --tag-padding-inline-sm: 10px;
+  --tag-padding-inline-md: var(--space-3);
+  --tag-padding-inline: var(--tag-padding-inline-md);
+  --tag-radius-pill: var(--radius-pill);
+  --tag-radius: var(--tag-radius-pill);
+  --tag-font-size: var(--text-caption-size);
+  --tag-font-weight: var(--font-weight-medium);
+  --tag-letter-spacing: 0.04em;
+  --tag-uppercase-weight: var(--font-weight-semibold);
+  --tag-bg: var(--white-alpha-06);
+  --tag-border: var(--white-alpha-12);
+  --tag-border-strong: var(--white-alpha-20);
+  --tag-text: var(--color-text-secondary);
+  --tag-accent-bg: var(--indigo-alpha-10);
+  --tag-accent-border: var(--indigo-alpha-20);
+  --tag-accent-text: var(--color-accent-cyan);
+  --tag-success-bg: var(--success-alpha-20);
+  --tag-success-border: var(--success-alpha-30);
+  --tag-success-text: var(--color-success-strong);
+  --tag-warning-bg: var(--warning-alpha-20);
+  --tag-warning-border: var(--warning-alpha-30);
+  --tag-warning-text: var(--color-warning-strong);
+  --tag-danger-bg: var(--danger-soft-alpha-20);
+  --tag-danger-border: var(--danger-soft-alpha-30);
+  --tag-danger-text: var(--color-danger-strong);
+
+  /**
+   * 输入组件 token（Input Tokens）
+   * 统一输入框、文本域和选择器的基础高度、背景、边框和焦点态。
+   */
+  --input-height-sm: var(--control-height-sm);
+  --input-height-md: var(--control-height-md);
+  --input-height-lg: var(--control-height-lg);
+  --input-height: var(--input-height-md);
+  --input-radius: var(--radius-sm);
+  --input-padding-inline-sm: var(--space-3);
+  --input-padding-inline-md: var(--space-4);
+  --input-padding-inline-lg: var(--space-5);
+  --input-padding-inline: var(--input-padding-inline-md);
+  --input-font-size: var(--font-size-sm);
+  --input-bg: var(--white-alpha-06);
+  --input-bg-hover: var(--white-alpha-08);
+  --input-border: var(--glass-border-strong);
+  --input-border-hover: var(--white-alpha-20);
+  --input-border-focus: var(--input-border-hover);
+  --input-shadow-focus: 0 0 0 2px var(--focus-ring);
+  --input-text: var(--color-text-primary);
+  --input-placeholder: var(--color-text-secondary);
+  --input-label-size: var(--text-caption-size);
+  --input-help-size: var(--text-caption-size);
+
+  /**
+   * 卡片组件 token（Card Tokens）
+   * 统一卡片半径、内边距、背景、边框与 hover 态阴影。
+   */
+  --card-radius: var(--radius-lg);
+  --card-padding-sm: var(--space-4);
+  --card-padding-md: var(--space-6);
+  --card-padding-lg: var(--space-8);
+  --card-padding: var(--card-padding-md);
+  --card-gap: var(--space-4);
+  --card-bg: var(--surface-card);
+  --card-bg-hover: var(--surface-card-hover);
+  --card-border: var(--border-subtle);
+  --card-border-interactive: var(--border-strong);
+  --card-border-strong: var(--border-strong);
+  --card-shadow: var(--shadow-sm);
+  --card-shadow-hover: var(--shadow-md);
+  --card-shadow-focus: 0 0 0 2px var(--focus-ring), var(--shadow-md);
+
+  /**
+   * 共享卡片变体 token（Card Variant Tokens）
+   * 用于沉淀页面里重复出现的卡片密度和排版簇，避免业务层继续直接覆写底层排版 token。
+   * 当前属于过渡期 recipe，服务设计系统里的通用卡片簇；不要继续塞入页面私有 recipe。
+   */
+  --card-metric-padding: 12px 14px;
+  --card-metric-gap: 0;
+  --card-metric-title-size: 22px;
+  --card-metric-title-line-height: 1;
+  --card-metric-overline-size: 11px;
+  --card-metric-overline-letter-spacing: 0.18em;
+  --card-dense-padding: 10px;
+  --card-dense-gap: 0;
+  --card-feature-padding: 26px 24px;
+  --card-feature-radius: 18px;
+  --card-feature-gap: 0;
+  --card-feature-title-size: var(--font-size-2xl);
+  --card-feature-title-line-height: 1.28;
+  --card-feature-text-size: var(--font-size-sm);
+  --card-feature-text-line-height: 1.72;
+  --card-showcase-padding: 26px;
+  --card-showcase-radius: var(--radius-xl);
+  --card-showcase-gap: 0;
+  --card-showcase-title-size: var(--font-size-3xl);
+  --card-showcase-title-line-height: 1.04;
+  --card-showcase-text-size: var(--font-size-sm);
+  --card-showcase-text-line-height: var(--line-height-relaxed);
+  --card-media-split-padding: 0;
+  --card-media-split-gap: 0;
+  --card-media-split-body-padding: var(--space-6);
+  --card-timeline-padding: 22px 22px 22px 26px;
+  --card-timeline-radius: var(--radius-lg);
+  --card-timeline-overline-size: 13px;
+  --card-timeline-overline-letter-spacing: 0.24em;
+}
+
+/**
+ * 运行时排版模式覆写（Typography Modes）
+ * 因 `:root` 权限白名单约束，当前暂时与 semantic token 共存；
+ * 这里只允许覆盖字号模式，不承载页面或组件私有变量。
+ */
+:root[data-font-size='small'] {
+  /** 小号字体模式：适合需要更高信息密度的浏览场景。 */
+  --text-body-size: var(--font-size-xs);
+  --text-caption-size: var(--font-size-2xs);
+  --text-meta-size: var(--font-size-2xs);
+  --text-eyebrow-size: var(--font-size-2xs);
+  --text-lead-size: 15px;
+  --heading-display-size: 46px;
+  --heading-1-size: 36px;
+  --heading-2-size: 28px;
+  --heading-3-size: 22px;
+  --heading-4-size: 18px;
+  --heading-card-size: 18px;
+}
+
+:root,
+:root[data-font-size='medium'] {
+  /** 默认字体模式：整站标准排版基线。 */
+  --text-body-size: var(--font-size-sm);
+  --text-caption-size: var(--font-size-xs);
+  --text-meta-size: var(--font-size-xs);
+  --text-eyebrow-size: var(--font-size-xs);
+  --text-lead-size: var(--font-size-md);
+  --heading-display-size: 56px;
+  --heading-1-size: var(--font-size-4xl);
+  --heading-2-size: var(--font-size-3xl);
+  --heading-3-size: var(--font-size-2xl);
+  --heading-4-size: var(--font-size-xl);
+  --heading-card-size: var(--font-size-xl);
+}
+
+:root[data-font-size='large'] {
+  /** 大号字体模式：兼顾无障碍与远距离阅读。 */
+  --text-body-size: var(--font-size-md);
+  --text-caption-size: var(--font-size-sm);
+  --text-meta-size: var(--font-size-sm);
+  --text-eyebrow-size: var(--font-size-sm);
+  --text-lead-size: 18px;
+  --heading-display-size: 64px;
+  --heading-1-size: 44px;
+  --heading-2-size: 34px;
+  --heading-3-size: 26px;
+  --heading-4-size: 22px;
+  --heading-card-size: 22px;
+}
