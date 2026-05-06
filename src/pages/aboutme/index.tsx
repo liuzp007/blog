@@ -9,6 +9,7 @@ import { composeHslAlphaColor } from '@/utils/color-runtime'
 import { useAppSelector } from '@/store'
 import '@/styles/themes/about-pages.css'
 import './index.css'
+import GuestbookSection from '@/features/guestbook/components/GuestbookSection'
 
 type PerformanceTier = 'low' | 'medium' | 'high'
 
@@ -113,7 +114,8 @@ const NAV_ITEMS: NavItem[] = [
   { id: 'about', label: '关于' },
   { id: 'skills', label: '技能' },
   { id: 'projects', label: '作品' },
-  { id: 'blog', label: '文章' }
+  { id: 'blog', label: '文章' },
+  { id: 'guestbook', label: '留言' }
 ]
 
 const SKILL_CATEGORIES: SkillCategory[] = [
@@ -1059,6 +1061,8 @@ export default withRouter(function AboutMe({ history: _history }: AboutMeProps) 
             </a>
           </div>
         </section>
+
+        <GuestbookSection />
       </main>
 
       <footer>

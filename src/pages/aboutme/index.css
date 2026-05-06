@@ -575,3 +575,192 @@
     display: none;
   }
 }
+
+/* ── Guestbook 留言板 ── */
+
+#guestbook {
+  background: linear-gradient(180deg, var(--about-bg-secondary), var(--about-bg-primary));
+}
+
+.guestbook-inner {
+  max-width: 680px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.guestbook-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.guestbook-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 20px;
+  background: var(--about-panel-bg);
+  border: 1px solid var(--about-panel-border);
+  border-radius: 12px;
+  margin-bottom: 32px;
+}
+
+.guestbook-form--reply {
+  padding: 14px;
+  margin-bottom: 0;
+  margin-top: 12px;
+  background: color-mix(in srgb, var(--about-accent-warm) 5%, transparent);
+  border-color: var(--about-accent-border-soft);
+}
+
+.guestbook-form-reply-hint {
+  font-size: 13px;
+  color: var(--about-text-secondary);
+  margin-bottom: 2px;
+}
+
+.guestbook-form-reply-hint span {
+  color: var(--about-accent-warm);
+  font-weight: 600;
+}
+
+.guestbook-form-input .ant-input {
+  background: var(--about-bg-primary) !important;
+  border-color: var(--about-panel-border-strong) !important;
+  color: var(--about-text-primary) !important;
+}
+
+.guestbook-form-textarea.ant-input {
+  background: var(--about-bg-primary) !important;
+  border-color: var(--about-panel-border-strong) !important;
+  color: var(--about-text-primary) !important;
+  resize: none;
+}
+
+.guestbook-form-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.guestbook-form-counter {
+  font-size: 12px;
+  color: var(--about-text-secondary);
+}
+
+.guestbook-form-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.guestbook-loading,
+.guestbook-empty {
+  text-align: center;
+  padding: 48px 20px;
+  color: var(--about-text-secondary);
+}
+
+.guestbook-empty .anticon {
+  font-size: 32px;
+  margin-bottom: 12px;
+  opacity: 0.4;
+}
+
+.guestbook-error {
+  text-align: center;
+  padding: 24px;
+  color: var(--about-accent-warm);
+  font-size: 14px;
+}
+
+.guestbook-message-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.guestbook-message-item {
+  padding: 16px 20px;
+  background: var(--about-panel-bg);
+  border: 1px solid var(--about-panel-border);
+  border-radius: 10px;
+  transition: border-color 0.2s;
+}
+
+.guestbook-message-item:hover {
+  border-color: var(--about-panel-border-strong);
+}
+
+.guestbook-message-item--reply {
+  margin-top: 12px;
+  padding: 12px 16px;
+  border-left: 2px solid var(--about-accent-border-soft);
+  border-radius: 0 10px 10px 0;
+}
+
+.guestbook-message-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.guestbook-message-author {
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--about-text-primary);
+}
+
+.guestbook-message-time {
+  font-size: 12px;
+  color: var(--about-text-secondary);
+}
+
+.guestbook-message-action {
+  background: none;
+  border: none;
+  color: var(--about-text-secondary);
+  cursor: pointer;
+  padding: 2px 4px;
+  font-size: 13px;
+  opacity: 0;
+  transition:
+    opacity 0.2s,
+    color 0.2s;
+  margin-left: auto;
+}
+
+.guestbook-message-item:hover .guestbook-message-action {
+  opacity: 1;
+}
+
+.guestbook-message-action:hover {
+  color: var(--about-accent-warm);
+}
+
+.guestbook-message-content {
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--about-text-primary);
+  margin: 0;
+  word-break: break-word;
+  white-space: pre-wrap;
+}
+
+.guestbook-message-actions {
+  margin-top: 8px;
+}
+
+.guestbook-message-reply-btn {
+  opacity: 1;
+  font-size: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.guestbook-replies {
+  margin-top: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
