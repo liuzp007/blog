@@ -1,1 +1,0 @@
-import{j as t}from"./vendor-react-CC9qU9RZ.js";import{R as o}from"./index-DRcGe4Db.js";import"./vendor-ui-DjErHYBs.js";import"./vendor-3d-C-OBLIFO.js";import"./vendor-utils-B3QcCpKH.js";function s(){return t.jsx(o,{to:"/aboutme"})}export{s as default};

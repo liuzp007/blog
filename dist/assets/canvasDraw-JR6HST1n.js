@@ -1,1 +1,0 @@
-function a(t,e,n){return Math.min(n,Math.max(e,t))}function i(t,e,n="currentColor"){if(typeof window>"u")return n;const r=t??document.documentElement;return window.getComputedStyle(r).getPropertyValue(e).trim()||n}function o(t,e){if(!t.startsWith("#"))return t;const n=Math.round(a(e,0,1)*255).toString(16).padStart(2,"0");return`${t}${n}`}export{a as c,i as r,o as w};
