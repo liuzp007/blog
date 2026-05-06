@@ -39,12 +39,12 @@ export async function onRequest({ request, env }) {
       return new Response(null, { status: 204, headers: corsHeaders })
     }
 
-    if (!env.GUESTBOOK_KV) {
+    if (typeof GUESTBOOK_KV === 'undefined') {
       return json({ error: 'KV 存储未绑定，请在 EdgeOne 控制台绑定 GUESTBOOK_KV' }, 500)
     }
 
     if (request.method === 'GET') {
-      const messages = await getMessages(env.GUESTBOOK_KV)
+      const messages = await getMessages(GUESTBOOK_KV)
       return json({ messages })
     }
 
@@ -63,7 +63,7 @@ export async function onRequest({ request, env }) {
       if (!author) return json({ error: '请输入昵称' }, 400)
       if (!content) return json({ error: '请输入留言内容' }, 400)
 
-      const messages = await getMessages(env.GUESTBOOK_KV)
+      const messages = await getMessages(GUESTBOOK_KV)
       const newMsg = {
         id: generateId(),
         author,
@@ -81,7 +81,7 @@ export async function onRequest({ request, env }) {
         messages.unshift(newMsg)
       }
 
-      await putMessages(env.GUESTBOOK_KV, messages)
+      await putMessages(GUESTBOOK_KV, messages)
       return json({ message: newMsg }, 201)
     }
 
@@ -101,7 +101,7 @@ export async function onRequest({ request, env }) {
 
       if (!body.id) return json({ error: '缺少留言 ID' }, 400)
 
-      const messages = await getMessages(env.GUESTBOOK_KV)
+      const messages = await getMessages(GUESTBOOK_KV)
       let found = false
 
       const filtered = messages.filter(msg => {
@@ -119,7 +119,7 @@ export async function onRequest({ request, env }) {
 
       if (!found) return json({ error: '留言不存在' }, 404)
 
-      await putMessages(env.GUESTBOOK_KV, filtered)
+      await putMessages(GUESTBOOK_KV, filtered)
       return json({ success: true })
     }
 
