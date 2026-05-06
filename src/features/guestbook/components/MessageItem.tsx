@@ -10,6 +10,22 @@ import MessageForm from './MessageForm'
 dayjs.extend(relativeTime)
 dayjs.locale('zh-cn')
 
+const ADMIN_TOKEN_KEY = 'guestbook_admin_token'
+
+function getStoredToken(): string {
+  try {
+    return localStorage.getItem(ADMIN_TOKEN_KEY) || ''
+  } catch {
+    return ''
+  }
+}
+
+function storeToken(token: string) {
+  try {
+    localStorage.setItem(ADMIN_TOKEN_KEY, token)
+  } catch {}
+}
+
 interface Props {
   msg: GuestbookMessage
   isReply?: boolean
@@ -30,22 +46,38 @@ export default function MessageItem({
   const [deleteToken, setDeleteToken] = useState('')
   const [deleting, setDeleting] = useState(false)
 
-  const handleDelete = async () => {
-    if (!deleteToken.trim()) {
-      antMessage.warning('请输入管理密码')
+  const handleDelete = async (token?: string) => {
+    const useToken = token || getStoredToken()
+
+    if (!useToken) {
+      setDeleteModalOpen(true)
       return
     }
+
     setDeleting(true)
     try {
-      await onDelete(msg.id, deleteToken)
+      await onDelete(msg.id, useToken)
+      storeToken(useToken)
       setDeleteModalOpen(false)
       setDeleteToken('')
       antMessage.success('已删除')
     } catch (err: any) {
+      if (err.message?.includes('无权')) {
+        storeToken('')
+        setDeleteModalOpen(true)
+      }
       antMessage.error(err.message || '删除失败')
     } finally {
       setDeleting(false)
     }
+  }
+
+  const handleModalDelete = async () => {
+    if (!deleteToken.trim()) {
+      antMessage.warning('请输入管理密码')
+      return
+    }
+    await handleDelete(deleteToken)
   }
 
   return (
@@ -56,7 +88,8 @@ export default function MessageItem({
         <button
           className="guestbook-message-action"
           title="删除"
-          onClick={() => setDeleteModalOpen(true)}
+          onClick={() => handleDelete()}
+          disabled={deleting}
         >
           <DeleteOutlined />
         </button>
@@ -107,7 +140,7 @@ export default function MessageItem({
       <Modal
         title="管理员验证"
         open={deleteModalOpen}
-        onOk={handleDelete}
+        onOk={handleModalDelete}
         onCancel={() => {
           setDeleteModalOpen(false)
           setDeleteToken('')
