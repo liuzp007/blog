@@ -716,10 +716,7 @@
 }
 
 .guestbook-message-action {
-  background: none;
-  border: none;
   color: var(--about-text-secondary);
-  cursor: pointer;
   padding: 2px 4px;
   font-size: 13px;
   opacity: 0;
@@ -756,6 +753,7 @@
   display: inline-flex;
   align-items: center;
   gap: 4px;
+  color: var(--about-text-secondary);
 }
 
 .guestbook-replies {

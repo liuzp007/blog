@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Modal, Input, message as antMessage } from 'antd'
+import { Modal, Input, Button, message as antMessage } from 'antd'
 import { DeleteOutlined, MessageOutlined, CloseOutlined } from '@ant-design/icons'
 import dayjs from 'dayjs'
 import relativeTime from 'dayjs/plugin/relativeTime'
@@ -85,27 +85,31 @@ export default function MessageItem({
       <div className="guestbook-message-header">
         <span className="guestbook-message-author">{msg.author}</span>
         <span className="guestbook-message-time">{dayjs(msg.createdAt).fromNow()}</span>
-        <button
+        <Button
+          type="text"
+          size="small"
           className="guestbook-message-action"
           title="删除"
           onClick={() => handleDelete()}
           disabled={deleting}
         >
           <DeleteOutlined />
-        </button>
+        </Button>
       </div>
 
       <p className="guestbook-message-content">{msg.content}</p>
 
       {!isReply && (
         <div className="guestbook-message-actions">
-          <button
-            className="guestbook-message-action guestbook-message-reply-btn"
+          <Button
+            type="text"
+            size="small"
+            className="guestbook-message-reply-btn"
             onClick={() => setShowReplyForm(v => !v)}
           >
             {showReplyForm ? <CloseOutlined /> : <MessageOutlined />}
             {showReplyForm ? '取消' : '回复'}
-          </button>
+          </Button>
         </div>
       )}
 
