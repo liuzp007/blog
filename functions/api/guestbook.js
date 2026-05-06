@@ -33,102 +33,98 @@ async function putMessages(kv, messages) {
   await kv.put(KV_KEY, JSON.stringify(messages))
 }
 
-function findMessage(messages, id) {
-  for (const msg of messages) {
-    if (msg.id === id) return msg
-    if (msg.replies) {
-      for (const reply of msg.replies) {
-        if (reply.id === id) return reply
-      }
-    }
-  }
-  return null
-}
-
 export async function onRequest({ request, env }) {
-  if (request.method === 'OPTIONS') {
-    return new Response(null, { status: 204, headers: corsHeaders })
-  }
-
-  if (request.method === 'GET') {
-    const messages = await getMessages(env.GUESTBOOK_KV)
-    return json({ messages })
-  }
-
-  if (request.method === 'POST') {
-    let body
-    try {
-      body = await request.json()
-    } catch {
-      return json({ error: '无效的请求数据' }, 400)
+  try {
+    if (request.method === 'OPTIONS') {
+      return new Response(null, { status: 204, headers: corsHeaders })
     }
 
-    const author = sanitize(body.author, MAX_AUTHOR)
-    const content = sanitize(body.content, MAX_CONTENT)
-    const replyToId = body.replyToId
-
-    if (!author) return json({ error: '请输入昵称' }, 400)
-    if (!content) return json({ error: '请输入留言内容' }, 400)
-
-    const messages = await getMessages(env.GUESTBOOK_KV)
-    const newMsg = {
-      id: generateId(),
-      author,
-      content,
-      createdAt: new Date().toISOString()
+    if (!env.GUESTBOOK_KV) {
+      return json({ error: 'KV 存储未绑定，请在 EdgeOne 控制台绑定 GUESTBOOK_KV' }, 500)
     }
 
-    if (replyToId) {
-      const parent = messages.find(m => m.id === replyToId)
-      if (!parent) return json({ error: '回复的留言不存在' }, 404)
-      newMsg.replyToId = replyToId
-      if (!parent.replies) parent.replies = []
-      parent.replies.push(newMsg)
-    } else {
-      messages.unshift(newMsg)
+    if (request.method === 'GET') {
+      const messages = await getMessages(env.GUESTBOOK_KV)
+      return json({ messages })
     }
 
-    await putMessages(env.GUESTBOOK_KV, messages)
-    return json({ message: newMsg }, 201)
-  }
-
-  if (request.method === 'DELETE') {
-    const authHeader = request.headers.get('Authorization') || ''
-    const token = authHeader.replace('Bearer ', '')
-    if (!token || token !== env.ADMIN_TOKEN) {
-      return json({ error: '无权操作' }, 403)
-    }
-
-    let body
-    try {
-      body = await request.json()
-    } catch {
-      return json({ error: '无效的请求数据' }, 400)
-    }
-
-    if (!body.id) return json({ error: '缺少留言 ID' }, 400)
-
-    const messages = await getMessages(env.GUESTBOOK_KV)
-    let found = false
-
-    const filtered = messages.filter(msg => {
-      if (msg.id === body.id) {
-        found = true
-        return false
+    if (request.method === 'POST') {
+      let body
+      try {
+        body = await request.json()
+      } catch {
+        return json({ error: '无效的请求数据' }, 400)
       }
-      if (msg.replies) {
-        const prevLen = msg.replies.length
-        msg.replies = msg.replies.filter(r => r.id !== body.id)
-        if (msg.replies.length < prevLen) found = true
+
+      const author = sanitize(body.author, MAX_AUTHOR)
+      const content = sanitize(body.content, MAX_CONTENT)
+      const replyToId = body.replyToId
+
+      if (!author) return json({ error: '请输入昵称' }, 400)
+      if (!content) return json({ error: '请输入留言内容' }, 400)
+
+      const messages = await getMessages(env.GUESTBOOK_KV)
+      const newMsg = {
+        id: generateId(),
+        author,
+        content,
+        createdAt: new Date().toISOString()
       }
-      return true
-    })
 
-    if (!found) return json({ error: '留言不存在' }, 404)
+      if (replyToId) {
+        const parent = messages.find(m => m.id === replyToId)
+        if (!parent) return json({ error: '回复的留言不存在' }, 404)
+        newMsg.replyToId = replyToId
+        if (!parent.replies) parent.replies = []
+        parent.replies.push(newMsg)
+      } else {
+        messages.unshift(newMsg)
+      }
 
-    await putMessages(env.GUESTBOOK_KV, filtered)
-    return json({ success: true })
+      await putMessages(env.GUESTBOOK_KV, messages)
+      return json({ message: newMsg }, 201)
+    }
+
+    if (request.method === 'DELETE') {
+      const authHeader = request.headers.get('Authorization') || ''
+      const token = authHeader.replace('Bearer ', '')
+      if (!token || token !== env.ADMIN_TOKEN) {
+        return json({ error: '无权操作' }, 403)
+      }
+
+      let body
+      try {
+        body = await request.json()
+      } catch {
+        return json({ error: '无效的请求数据' }, 400)
+      }
+
+      if (!body.id) return json({ error: '缺少留言 ID' }, 400)
+
+      const messages = await getMessages(env.GUESTBOOK_KV)
+      let found = false
+
+      const filtered = messages.filter(msg => {
+        if (msg.id === body.id) {
+          found = true
+          return false
+        }
+        if (msg.replies) {
+          const prevLen = msg.replies.length
+          msg.replies = msg.replies.filter(r => r.id !== body.id)
+          if (msg.replies.length < prevLen) found = true
+        }
+        return true
+      })
+
+      if (!found) return json({ error: '留言不存在' }, 404)
+
+      await putMessages(env.GUESTBOOK_KV, filtered)
+      return json({ success: true })
+    }
+
+    return json({ error: 'Method not allowed' }, 405)
+  } catch (err) {
+    return json({ error: '服务器错误: ' + (err.message || String(err)) }, 500)
   }
-
-  return json({ error: 'Method not allowed' }, 405)
 }
