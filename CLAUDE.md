@@ -2,6 +2,10 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Commit 规范
+
+- commit message 尽量使用中文描述
+
 ## 项目概况
 
 - 个人博客 / 作品集网站

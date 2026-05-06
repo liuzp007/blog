@@ -30,42 +30,42 @@ export default defineConfig({
   css: {},
   base: '/',
   build: {
-    outDir: 'build',
+    outDir: 'dist',
     chunkSizeWarningLimit: 300,
     rollupOptions: {
       output: {
         manualChunks(id) {
-            if (id.includes('node_modules')) {
-              // React 生态（不细分）
-              if (
-                id.includes('/react-dom/') ||
-                (id.includes('/react/') && !id.includes('@react-three'))
-              ) {
-                return 'vendor-react'
-              }
-              // 三维生态（合并）
-              if (
-                id.includes('/three/') ||
-                id.includes('@react-three/') ||
-                id.includes('/postprocessing/')
-              ) {
-                return 'vendor-3d'
-              }
-              // Ant Design（合并 icons）
-              if (id.includes('antd') || id.includes('@ant-design/icons')) {
-                return 'vendor-ui'
-              }
-              // 其他工具库（合并）
-              if (
-                id.includes('axios') ||
-                id.includes('dayjs') ||
-                id.includes('framer-motion') ||
-                id.includes('prismjs')
-              ) {
-                return 'vendor-utils'
-              }
+          if (id.includes('node_modules')) {
+            // React 生态（不细分）
+            if (
+              id.includes('/react-dom/') ||
+              (id.includes('/react/') && !id.includes('@react-three'))
+            ) {
+              return 'vendor-react'
+            }
+            // 三维生态（合并）
+            if (
+              id.includes('/three/') ||
+              id.includes('@react-three/') ||
+              id.includes('/postprocessing/')
+            ) {
+              return 'vendor-3d'
+            }
+            // Ant Design（合并 icons）
+            if (id.includes('antd') || id.includes('@ant-design/icons')) {
+              return 'vendor-ui'
+            }
+            // 其他工具库（合并）
+            if (
+              id.includes('axios') ||
+              id.includes('dayjs') ||
+              id.includes('framer-motion') ||
+              id.includes('prismjs')
+            ) {
+              return 'vendor-utils'
             }
           }
+        }
       }
     }
   },

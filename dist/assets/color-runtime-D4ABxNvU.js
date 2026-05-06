@@ -1,0 +1,1 @@
+function u(t,e="currentColor",o){if(typeof window>"u")return e;const n=o??document.documentElement;return window.getComputedStyle(n).getPropertyValue(t).trim()||e}function a({hue:t,saturation:e,lightness:o,alpha:n}){const r=Math.max(0,Math.min(n,1));return["hsl","a(",`${t}, ${e}%, ${o}%, ${r}`,")"].join("")}export{a as c,u as r};
