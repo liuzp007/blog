@@ -9,6 +9,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## 项目概况
 
 - 个人博客 / 作品集网站
+- 部署平台：**EdgeOne Pages**（腾讯云），配置文件 `edgeone.json`，构建输出目录 `dist/`
 - React 18 + TypeScript + Vite 5
 - React Router DOM v5，根路由使用 **`HashRouter`**（见 `src/App.tsx`）
 - 状态管理：Redux Toolkit + redux-persist（`src/store/`）
@@ -221,3 +222,21 @@ moment      → dayjs        （兼容性别名）
   - `themes/home-pages.css` 和 `themes/about-pages.css` 只包含 CSS 变量（palette），不包含页面布局样式
   - 页面的实际布局样式仍在 `pages/<page>/index.scss` 中（使用 SCSS 语法），需要由页面组件自行导入
   - 迁移页面时，**不能删除**原有的 `import './index.scss'`，只能追加新的主题变量导入
+
+### EdgeOne Pages 部署踩坑记录
+
+- **问题描述**：将项目从 Vercel/Netlify 迁移到 EdgeOne Pages 后，构建成功但访问 404，构建产物显示为空
+- **根本原因**：三个问题叠加导致：
+  1. **目录大小写敏感**：`src/components/TOC/` 在 git 中是大写，代码中用 `@/components/toc`（小写）导入。macOS 不区分大小写本地构建正常，但 EdgeOne 的 Linux 构建环境区分大小写导致找不到模块
+  2. **构建输出目录不匹配**：Vite 原配置 `outDir: 'build'`，但 EdgeOne Pages 默认找 `dist` 目录
+  3. **edgeone.json 配置字段名错误**：用了 `build.outputDir`（不存在的字段），正确字段名是顶层的 `outputDirectory`
+- **解决方法**：
+  - `git mv src/components/TOC src/components/toc-temp && git mv src/components/toc-temp src/components/toc` 修正大小写
+  - `vite.config.mjs` 中 `outDir` 改为 `'dist'`
+  - `edgeone.json` 使用正确格式：`{ "outputDirectory": "dist", "installCommand": "pnpm install", "buildCommand": "pnpm build" }`
+  - 删除 Vercel/Netlify 相关配置：`vercel.json`、`.vercel/`、`public/_redirects`、`.github/workflows/deploy.yml`
+- **相关文件**：`vite.config.mjs`、`edgeone.json`、`.gitignore`、`src/components/toc/`
+- **注意事项**：
+  - EdgeOne Pages 的 `edgeone.json` 配置字段名是 `outputDirectory`（不是 `outputDir`），且是顶层字段（不是嵌套在 `build` 下）
+  - git 在 macOS 上 rename 时需要通过中间名（如 `toc-temp`）来实现大小写变更
+  - 部署到新平台前应先在本地确认 git 中的文件名大小写与代码中的导入路径一致：`git ls-files <path>`
