@@ -1,8 +1,9 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Input, Button } from 'antd'
 
 const MAX_AUTHOR = 30
 const MAX_CONTENT = 500
+const STORAGE_KEY = 'guestbook_author'
 
 interface Props {
   replyToId?: string
@@ -19,22 +20,29 @@ export default function MessageForm({
   onSubmit,
   onCancel
 }: Props) {
-  const [author, setAuthor] = useState('')
+  const [author, setAuthor] = useState(() => {
+    try {
+      return localStorage.getItem(STORAGE_KEY) || ''
+    } catch {
+      return ''
+    }
+  })
   const [content, setContent] = useState('')
 
   const canSubmit = author.trim() && content.trim() && !submitting
 
   const handleSubmit = () => {
     if (!canSubmit) return
+    const trimmedAuthor = author.trim().slice(0, MAX_AUTHOR)
+    try {
+      localStorage.setItem(STORAGE_KEY, trimmedAuthor)
+    } catch {}
     onSubmit({
-      author: author.trim().slice(0, MAX_AUTHOR),
+      author: trimmedAuthor,
       content: content.trim().slice(0, MAX_CONTENT),
       replyToId
     })
-    if (!replyToId) {
-      setAuthor('')
-      setContent('')
-    }
+    setContent('')
   }
 
   return (
@@ -45,15 +53,13 @@ export default function MessageForm({
         </div>
       )}
 
-      {!replyToId && (
-        <Input
-          placeholder="你的昵称"
-          value={author}
-          onChange={e => setAuthor(e.target.value.slice(0, MAX_AUTHOR))}
-          maxLength={MAX_AUTHOR}
-          className="guestbook-form-input"
-        />
-      )}
+      <Input
+        placeholder="你的昵称"
+        value={author}
+        onChange={e => setAuthor(e.target.value.slice(0, MAX_AUTHOR))}
+        maxLength={MAX_AUTHOR}
+        className="guestbook-form-input"
+      />
 
       <Input.TextArea
         placeholder="写点什么..."
