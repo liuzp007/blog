@@ -25,6 +25,7 @@ import ArticleSignalMediaCard from '@/features/content/ArticleSignalMediaCard'
 import { allMetas, allSeries } from '@/features/content/contentCatalog'
 import { useIdleMount } from '@/hooks/useIdleMount'
 import { usePerformanceTier } from '@/hooks/usePerformanceTier'
+import { useScrollDrivenAnimation } from '@/hooks/useScrollDrivenAnimation'
 import '@/styles/themes/home-pages.css'
 import HomeInteractiveDemo from './components/HomeInteractiveDemo'
 import LineDog from './components/LineDog'
@@ -70,6 +71,18 @@ export default function Home({ history }: HomeProps) {
     return window.innerWidth > 900 && !window.matchMedia('(prefers-reduced-motion: reduce)').matches
   })
   const performanceTier = usePerformanceTier()
+
+  // 滚动驱动翻转动画
+  const articlesTitleRef = useRef<HTMLDivElement>(null)
+  const articlesGridRef = useScrollDrivenAnimation<HTMLDivElement>({
+    effect: 'diagonal',
+    triggerRef: articlesTitleRef
+  })
+  const showcaseTitleRef = useRef<HTMLDivElement>(null)
+  const showcaseGridRef = useScrollDrivenAnimation<HTMLDivElement>({
+    effect: 'rotate3d',
+    triggerRef: showcaseTitleRef
+  })
   const fxReady = useIdleMount(300)
   const heroFxEnabled =
     fxEnabled && activeSection === 'hero' && performanceTier === 'high' && fxReady
@@ -371,14 +384,17 @@ export default function Home({ history }: HomeProps) {
             id="articles"
             className="home-section home-section--deferred home-section--articles home-articles reveal"
           >
-            <div className="section-header home-section__head">
+            <div ref={articlesTitleRef} className="section-header home-section__head">
               <span className="section-tag home-section__tag ui-eyebrow">精选文章</span>
               <h2 className="section-title home-section__title ui-section-title">精选文章信号源</h2>
               <p className="section-desc home-section__desc ui-muted-text">
                 这里会优先展示最近值得一读的内容，点开卡片就能继续往下读。
               </p>
             </div>
-            <div className="articles-grid home-articles__grid grid grid-cols-1 gap-[var(--home-gap-card)] min-[769px]:grid-cols-2 min-[769px]:gap-[22px] min-[1201px]:grid-cols-3">
+            <div
+              ref={articlesGridRef}
+              className="articles-grid home-articles__grid grid grid-cols-1 gap-[var(--home-gap-card)] min-[769px]:grid-cols-2 min-[769px]:gap-[22px] min-[1201px]:grid-cols-3"
+            >
               {featuredArticles.map(item => (
                 <ArticleSignalMediaCard
                   key={item.slug}
@@ -450,14 +466,17 @@ export default function Home({ history }: HomeProps) {
             id="showcase"
             className="home-section home-section--deferred home-section--showcase home-showcase reveal"
           >
-            <div className="section-header home-section__head">
+            <div ref={showcaseTitleRef} className="section-header home-section__head">
               <span className="section-tag home-section__tag ui-eyebrow">作品展</span>
               <h2 className="section-title home-section__title ui-section-title">作品展</h2>
               <p className="section-desc home-section__desc ui-muted-text">
                 四个可以直接上手的小作品，每一页都是不同的玩法和氛围。
               </p>
             </div>
-            <div className="home-showcase__grid grid grid-cols-1 gap-5 min-[1201px]:grid-cols-2">
+            <div
+              ref={showcaseGridRef}
+              className="home-showcase__grid grid grid-cols-1 gap-5 min-[1201px]:grid-cols-2"
+            >
               {HOME_SHOWCASES.map((item, index) => {
                 const Icon = SHOWCASE_ICONS[index % SHOWCASE_ICONS.length]
                 return (

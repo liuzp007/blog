@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { Input, Button } from 'antd'
 
 const MAX_AUTHOR = 30

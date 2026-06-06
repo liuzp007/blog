@@ -6,6 +6,63 @@
  * 3. 页面 palette 如果需要局部特征色，应先落在 `src/styles/themes/*`，不要回写到这里。
  */
 :root {
+  /* === Nexus v2.0 Design Tokens === */
+  /* 背景与表面 */
+  --color-bg: #0a0a0f;
+  --color-surface: #12121a;
+  --color-surface-sub: #1a1a28;
+
+  /* 文本语义 */
+  --color-text-primary: #e8e8f0;
+  --color-text-secondary: #9d9db5;
+
+  /* 强调色（Emphasis） */
+  --color-emphasis-purple: #a78bfa;
+  --color-emphasis-pink: #f472b6;
+  --color-emphasis-blue: #60a5fa;
+  --color-emphasis-green: #34d399;
+
+  /* 渐变色 */
+  --gradient-primary: linear-gradient(135deg, #a78bfa, #f472b6, #fb923c);
+  --gradient-secondary: linear-gradient(135deg, #60a5fa, #a78bfa, #f472b6);
+  --gradient-decorative: linear-gradient(135deg, #34d399, #60a5fa, #a78bfa);
+
+  /* 玻璃态 */
+  --glass-bg-v2: rgba(18, 18, 26, 0.6);
+  --glass-blur-v2: blur(30px) saturate(180%);
+  --glass-border-v2: 1px solid rgba(255, 255, 255, 0.06);
+  --glass-shadow-v2: 0 8px 40px rgba(0, 0, 0, 0.4);
+
+  /* 缓动函数 */
+  --ease-smooth: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* 圆角体系 */
+  --radius-sm: 12px;
+  --radius-md: 18px;
+  --radius-lg: 24px;
+  --radius-xl: 32px;
+  --radius-pill: 50px;
+
+  /* 布局 */
+  --container-max: 1100px;
+  --container-padding: 28px;
+  --grid-min-width: 320px;
+  --grid-gap: 26px;
+  --parallax-height: 85vh;
+  --parallax-min: 550px;
+  --parallax-max: 800px;
+
+  /* 排版 */
+  --font-sans: 'Inter', 'PingFang SC', 'Microsoft YaHei', system-ui;
+  --font-mono: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+  --line-height: 1.7;
+  --letter-spacing-tight: -1.5px;
+
+  /* 滚动条 */
+  --scrollbar-color: #2a2a3a;
+  --scrollbar-hover: var(--color-emphasis-purple);
+
   /**
    * 基础兼容别名（Compatibility Aliases）
    * 用于平滑承接旧命名，减少迁移期间的破坏性修改。
