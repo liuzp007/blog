@@ -46,8 +46,8 @@ export function useGuestbook() {
     }
   }, [])
 
-  const removeMessage = useCallback(async (id: string, token: string) => {
-    await apiDelete(id, token)
+  const removeMessage = useCallback(async (id: string) => {
+    await apiDelete(id)
     setMessages(prev =>
       prev
         .filter(m => m.id !== id)

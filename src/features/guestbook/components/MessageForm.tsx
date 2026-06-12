@@ -54,15 +54,16 @@ export default function MessageForm({
       )}
 
       <Input
-        placeholder="你的昵称"
+        placeholder="怎么称呼你？"
         value={author}
         onChange={e => setAuthor(e.target.value.slice(0, MAX_AUTHOR))}
         maxLength={MAX_AUTHOR}
         className="guestbook-form-input"
+        style={{minHeight: 32}}
       />
 
       <Input.TextArea
-        placeholder="写点什么..."
+        placeholder="说些什么..."
         value={content}
         onChange={e => setContent(e.target.value.slice(0, MAX_CONTENT))}
         maxLength={MAX_CONTENT}
@@ -71,9 +72,9 @@ export default function MessageForm({
       />
 
       <div className="guestbook-form-footer">
-        <span className="guestbook-form-counter">
+        {/* <span className="guestbook-form-counter">
           {content.length}/{MAX_CONTENT}
-        </span>
+        </span> */}
         <div className="guestbook-form-buttons">
           {onCancel && (
             <Button size="small" onClick={onCancel}>

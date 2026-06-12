@@ -243,6 +243,58 @@ moment      → dayjs        （兼容性别名）
   - git 在 macOS 上 rename 时需要通过中间名（如 `toc-temp`）来实现大小写变更
   - 部署到新平台前应先在本地确认 git 中的文件名大小写与代码中的导入路径一致：`git ls-files <path>`
 
+## Supabase — 数据库后端
+
+### 基本信息
+
+- **平台**：Supabase（PostgreSQL）
+- **项目名**：`blog`
+- **项目 Ref**：`roxkmzuaqkbtbmysvibz`
+- **区域**：Northeast Asia (Tokyo)
+- **组织**：`zhipeng`（ID: `bzusjremazccfukvtnra`）
+- **Dashboard**：`https://supabase.com/dashboard/project/roxkmzuaqkbtbmysvibz`
+- **客户端**：`src/lib/supabase.ts`
+
+### 数据库表
+
+| 表名       | 说明                                                               |
+| ---------- | ------------------------------------------------------------------ |
+| `messages` | 留言板（id, author, content, reply_to_id, created_at, is_deleted） |
+
+### 常用操作
+
+```bash
+# 设置 access token（已过期时需重新生成）
+export SUPABASE_ACCESS_TOKEN=<token>
+
+# 执行 SQL
+supabase db query --linked "SELECT * FROM messages;"
+
+# 查看项目列表
+supabase projects list
+
+# 生成新的 access token：https://supabase.com/dashboard/account/tokens
+```
+
+### 前端集成
+
+- Supabase 客户端：`src/lib/supabase.ts`
+- 留言板 API 层：`src/features/guestbook/api.ts`（使用 Supabase SDK）
+- 留言板组件：`src/features/guestbook/components/`
+- 首页集成位置：`src/pages/home/index.tsx` 底部 `#guestbook` 区块
+
+### 注意事项
+
+- 免费版限制：500MB 数据库、1GB 文件存储、50MB 行级安全策略
+- anon key 可以公开使用（前端安全由 RLS 策略保障）
+- service_role key 拥有完全权限，**绝不能暴露到前端**
+- 后续扩展新功能直接在 Supabase 创建新表即可
+
+### 旧版：Cloudflare Workers（已弃用）
+
+- Worker `guestbook-api` 和 KV 存储仍在线，但前端已切换到 Supabase
+- 配置文件 `wrangler.toml` 保留，入口 `functions/api/guestbook.js` 保留
+
 <!-- vnext:start -->
 
 ## vnext deployment

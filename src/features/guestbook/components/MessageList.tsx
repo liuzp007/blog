@@ -9,7 +9,7 @@ interface Props {
   error: string | null
   submitting: boolean
   onReply: (payload: { author: string; content: string; replyToId?: string }) => void
-  onDelete: (id: string, token: string) => Promise<void>
+  onDelete: (id: string) => Promise<void>
 }
 
 export default function MessageList({

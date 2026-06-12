@@ -1,0 +1,134 @@
+/* ============================================================
+   animations.css — 关键帧动画 & 工具类
+   ============================================================ */
+
+/* ---------------------------------------------------------
+   Keyframes
+   --------------------------------------------------------- */
+
+/* blur-reveal 入场动画 */
+@keyframes blur-reveal {
+  0% {
+    filter: blur(14px);
+    opacity: 0;
+  }
+  100% {
+    filter: blur(0);
+    opacity: 1;
+  }
+}
+
+/* grid-bg-drift 背景漂移 */
+@keyframes grid-bg-drift {
+  0% {
+    transform: rotate(-4deg) translate(0);
+  }
+  100% {
+    transform: rotate(-4deg) translate(1%, 0.5%);
+  }
+}
+
+/* marquee 水平滚动 */
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-100% - var(--gap, 1rem)));
+  }
+}
+
+/* marquee-reverse 反向水平滚动 */
+@keyframes marquee-reverse {
+  0% {
+    transform: translateX(calc(-100% - var(--gap, 1rem)));
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+/* fade-up 入场 */
+@keyframes fade-up {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ---------------------------------------------------------
+   Animation utility classes
+   --------------------------------------------------------- */
+
+.animate-blur-reveal {
+  animation: blur-reveal 0.9s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+.animate-marquee {
+  animation: marquee var(--duration, 60s) linear infinite;
+}
+
+.animate-marquee-reverse {
+  animation: marquee-reverse var(--duration, 60s) linear infinite;
+}
+
+.animate-grid-drift {
+  animation: grid-bg-drift 20s ease-in-out infinite alternate;
+}
+
+/* fade-up-section — 配合 IntersectionObserver 使用 */
+.fade-up-section {
+  opacity: 0;
+  transform: translateY(30px);
+  transition:
+    opacity 0.6s,
+    transform 0.6s;
+}
+
+.fade-up-section.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ---------------------------------------------------------
+   Custom scrollbar
+   --------------------------------------------------------- */
+
+/* 自定义滚动条 */
+html.is-scrolling::-webkit-scrollbar {
+  width: 8px;
+}
+
+html::-webkit-scrollbar {
+  width: 6px;
+}
+
+html::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+html::-webkit-scrollbar-thumb {
+  background: rgba(251, 191, 36, 0.3);
+  border-radius: 3px;
+  transition:
+    background 0.2s,
+    width 0.2s;
+}
+
+html.is-scrolling::-webkit-scrollbar-thumb {
+  background: rgba(251, 191, 36, 1);
+}
+
+/* Firefox */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(251, 191, 36, 0.3) transparent;
+}
+
+html.is-scrolling {
+  scrollbar-color: rgba(251, 191, 36, 1) transparent;
+}

@@ -1,0 +1,7 @@
+name = "guestbook-api"
+main = "functions/api/guestbook.js"
+compatibility_date = "2024-12-01"
+
+[[kv_namespaces]]
+binding = "GUESTBOOK_KV"
+id = "270ca604a6214db4a0b67a1fc97d22f1"

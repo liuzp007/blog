@@ -36,3 +36,14 @@ lerna-debug.log*
 # Temporary files
 *.tmp
 .cache
+
+# AI / tool directories
+.codegraph/
+.cursor/
+.gemini/
+.playwright-mcp/
+.visual-audit/
+.vnext/
+
+# Dev screenshots
+*.debug.png

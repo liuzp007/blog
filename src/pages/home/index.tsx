@@ -12,14 +12,13 @@ import {
   ArrowRightOutlined,
   BookOutlined,
   CompassOutlined,
-  EnvironmentOutlined,
-  MailOutlined,
   MenuOutlined,
   RocketOutlined,
-  SendOutlined,
   ThunderboltOutlined
 } from '@ant-design/icons'
-import { Button, Drawer, Form, Input, message } from 'antd'
+import { Button, Drawer, message } from 'antd'
+import DanmakuGuestbook from '@/features/guestbook/components/DanmakuGuestbook'
+import ContactForm from '@/features/guestbook/components/ContactForm'
 import TiltCard from '@/components/ui/tilt-card'
 import ArticleSignalMediaCard from '@/features/content/ArticleSignalMediaCard'
 import { allMetas, allSeries } from '@/features/content/contentCatalog'
@@ -30,12 +29,7 @@ import '@/styles/themes/home-pages.css'
 import HomeInteractiveDemo from './components/HomeInteractiveDemo'
 import LineDog from './components/LineDog'
 import SignalWaveOverlay from './components/SignalWaveOverlay'
-import {
-  HOME_CONTACT_ACTIONS,
-  HOME_EXPERIMENTS,
-  HOME_SHOWCASES,
-  HOME_TIMELINE
-} from './homeContent'
+import { HOME_EXPERIMENTS, HOME_SHOWCASES, HOME_TIMELINE } from './homeContent'
 import './index.css'
 import type { RouteComponentProps } from 'react-router-dom'
 
@@ -59,8 +53,7 @@ const SHOWCASE_ICONS = [ThunderboltOutlined, RocketOutlined]
 
 export default function Home({ history }: HomeProps) {
   const audioRef = useRef<HTMLAudioElement | null>(null)
-  const [contactForm] = Form.useForm()
-  const [messageApi, messageContextHolder] = message.useMessage()
+  const [, messageContextHolder] = message.useMessage()
   const [drawerOpen, setDrawerOpen] = useState(false)
   const [soundOn, setSoundOn] = useState(false)
   const [activeSection, setActiveSection] = useState('hero')
@@ -164,14 +157,6 @@ export default function Home({ history }: HomeProps) {
     if (!player || soundOn) return
     // player.play().then(() => setSoundOn(true)).catch(() => {})
   }, [soundOn])
-
-  const handleContactSubmit = useCallback(
-    (values: { name: string; email: string; message: string }) => {
-      messageApi.success(`已收到 ${values.name} 的留言，我会尽快查看。`)
-      contactForm.resetFields()
-    },
-    [contactForm, messageApi]
-  )
 
   useEffect(() => {
     const sections = navItems
@@ -571,113 +556,22 @@ export default function Home({ history }: HomeProps) {
           </section>
 
           <section
-            id="contact"
+            id="guestbook"
             className="home-section home-section--deferred home-section--contact home-contact reveal"
           >
             <div className="section-header home-section__head">
-              <span className="section-tag home-section__tag ui-eyebrow">联系方式</span>
+              <span className="section-tag home-section__tag ui-eyebrow">留言板</span>
               <h2 className="section-title home-section__title ui-section-title">来聊聊</h2>
               <p className="section-desc home-section__desc ui-muted-text">
-                如果你想继续聊合作、内容、创意项目，或者只是打个招呼，都可以从这里开始。
+                留下你想说的话，或者直接联系我。
               </p>
             </div>
-            <div className="contact-wrapper home-contact__grid grid items-start gap-[52px] min-[1201px]:grid-cols-2">
-              <div className="contact-info home-contact__info pt-[6px]">
-                <h3 className="ui-subsection-title">如果你有想法</h3>
-                <p className="ui-muted-text">
-                  无论是创意前端、内容体验、实验项目，还是单纯想交流灵感，都欢迎从这里发起对话。
-                </p>
-                <div className="home-contact__links grid gap-[var(--home-gap-card)]">
-                  <Button
-                    type="text"
-                    className="home-contact__link flex h-auto items-center justify-start gap-3 text-left"
-                    onClick={() => toRoute('/aboutme')}
-                  >
-                    <MailOutlined />
-                    <span className="grid gap-[2px]">
-                      <strong>经历与合作</strong>
-                      <small>在关于我页面查看我的经历、能力方向与协作方式</small>
-                    </span>
-                  </Button>
-                  <Button
-                    type="text"
-                    className="home-contact__link flex h-auto items-center justify-start gap-3 text-left"
-                    onClick={() => toRoute('/aboutme')}
-                  >
-                    <EnvironmentOutlined />
-                    <span className="grid gap-[2px]">
-                      <strong>关于我</strong>
-                      <small>继续阅读我的背景、表达方式与长期兴趣</small>
-                    </span>
-                  </Button>
-                </div>
-                <div className="home-contact__entry-grid mt-[26px] grid grid-cols-1 gap-3 min-[1201px]:grid-cols-2">
-                  {HOME_CONTACT_ACTIONS.map(item => (
-                    <Button
-                      key={item.label}
-                      type="text"
-                      className="home-contact__entry grid h-auto justify-items-start gap-[6px] text-left"
-                      onClick={() => toRoute(item.path)}
-                    >
-                      <strong>{item.label}</strong>
-                      <small>{item.desc}</small>
-                    </Button>
-                  ))}
-                </div>
-              </div>
-              <Form
-                form={contactForm}
-                layout="vertical"
-                className="contact-form home-contact__panel"
-                onFinish={handleContactSubmit}
-              >
-                <h3 className="home-contact__panel-title ui-subsection-title">给我留言</h3>
-                <p className="home-contact__panel-desc ui-muted-text">
-                  写几句想说的话，我会从这里看到你的留言。
-                </p>
-                <Form.Item
-                  label="姓名"
-                  name="name"
-                  className="home-contact__item"
-                  rules={[{ required: true, message: '请输入姓名' }]}
-                >
-                  <Input autoComplete="name" className="ui-input" placeholder="你的名字" />
-                </Form.Item>
-                <Form.Item
-                  label="邮箱"
-                  name="email"
-                  className="home-contact__item"
-                  rules={[
-                    { required: true, message: '请输入邮箱' },
-                    { type: 'email', message: '邮箱格式不正确' }
-                  ]}
-                >
-                  <Input autoComplete="email" className="ui-input" placeholder="请输入常用邮箱" />
-                </Form.Item>
-                <Form.Item
-                  label="留言"
-                  name="message"
-                  className="home-contact__item"
-                  rules={[{ required: true, message: '请输入留言内容' }]}
-                >
-                  <Input.TextArea
-                    autoComplete="off"
-                    className="ui-input"
-                    placeholder="想说的话..."
-                    rows={5}
-                  />
-                </Form.Item>
-                <Form.Item className="home-contact__item home-contact__item--submit">
-                  <Button
-                    htmlType="submit"
-                    className="home-contact__submit ui-button-primary ui-button-lg ui-button-block"
-                    type="primary"
-                    icon={<SendOutlined />}
-                  >
-                    提交留言
-                  </Button>
-                </Form.Item>
-              </Form>
+            <DanmakuGuestbook />
+            <div style={{ marginTop: 'var(--space-8)' }}>
+              <h3 className="ui-subsection-title" style={{ marginBottom: 'var(--space-4)' }}>
+                联系我
+              </h3>
+              <ContactForm />
             </div>
           </section>
         </main>

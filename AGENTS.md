@@ -585,3 +585,14 @@ pnpm ci:check
 - 解决方法：在当前会话里改用两种稳定方案：1）内容检索优先使用 `Grep` 工具；2）终端过滤用系统自带兼容命令（如 `pnpm lint --quiet`、`grep`、`sed`）替代 `rg`。
 - 相关文件/命令：`pnpm lint --quiet`、`Grep` 工具
 - 注意事项：后续在 `RunCommand` 里写管道筛选时，先确认命令在当前 shell 可用；需要正则检索优先直接用工具层 `Grep`，不要默认依赖本地 `rg` 二进制。
+
+<!-- vnext:start -->
+## Deploy with vnext
+
+This project is linked to vnext.
+
+- Project ID: `p_6kgrxxp32w58`
+- Config: `.vnext/config.json`
+- Deploy: `vnext deploy`
+
+<!-- vnext:end -->

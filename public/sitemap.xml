@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://example.com/blog-detail?slug=ant-design-guidelines</loc><lastmod>2026-03-23</lastmod></url>
+  <url><loc>https://example.com/blog-detail?slug=content-index-search</loc><lastmod>2026-03-23</lastmod></url>
+  <url><loc>https://example.com/blog-detail?slug=git-branch-strategy-at-scale</loc><lastmod>2026-03-24</lastmod></url>
+  <url><loc>https://example.com/blog-detail?slug=git-code-review-history-and-blame</loc><lastmod>2026-03-24</lastmod></url>
+  <url><loc>https://example.com/blog-detail?slug=git-history-as-product-interface</loc><lastmod>2026-03-24</lastmod></url>
+  <url><loc>https://example.com/blog-detail?slug=git-rebase-cherry-pick-merge-mental-model</loc><lastmod>2026-03-24</lastmod></url>
+  <url><loc>https://example.com/blog-detail?slug=git-reflog-bisect-recovery-workflow</loc><lastmod>2026-03-24</lastmod></url>
+  <url><loc>https://example.com/blog-detail?slug=hello-world</loc><lastmod>2026-03-23</lastmod></url>
+  <url><loc>https://example.com/blog-detail?slug=r3f-performance-postprocessing</loc><lastmod>2026-03-23</lastmod></url>
+  <url><loc>https://example.com/blog-detail?slug=r3f-tips</loc><lastmod>2026-03-22</lastmod></url>
+  <url><loc>https://example.com/blog-detail?slug=react18-typescript-vite-conventions</loc><lastmod>2026-03-23</lastmod></url>
+  <url><loc>https://example.com/blog-detail?slug=seo-rss-site-suite</loc><lastmod>2026-03-23</lastmod></url>
+  <url><loc>https://example.com/blog-detail?slug=vite-dev-server-esm-mental-model</loc><lastmod>2026-03-24</lastmod></url>
+  <url><loc>https://example.com/blog-detail?slug=vite-large-scale-governance</loc><lastmod>2026-03-24</lastmod></url>
+  <url><loc>https://example.com/blog-detail?slug=vite-plugin-pipeline-production</loc><lastmod>2026-03-24</lastmod></url>
+  <url><loc>https://example.com/blog-detail?slug=vite-prebundle-dependency-optimization</loc><lastmod>2026-03-24</lastmod></url>
+  <url><loc>https://example.com/blog-detail?slug=vite-ssr-hybrid-architecture</loc><lastmod>2026-03-24</lastmod></url>
+  <url><loc>https://example.com/blog-detail?slug=vite-notes</loc><lastmod>2026-03-21</lastmod></url>
+  <url><loc>https://example.com/blog-detail?slug=vue2-component-communication-anti-patterns</loc><lastmod>2026-03-24</lastmod></url>
+  <url><loc>https://example.com/blog-detail?slug=vue2-large-app-maintenance</loc><lastmod>2026-03-24</lastmod></url>
+  <url><loc>https://example.com/blog-detail?slug=vue2-migration-strategy-to-vue3</loc><lastmod>2026-03-24</lastmod></url>
+  <url><loc>https://example.com/blog-detail?slug=vue2-reactivity-caveats-design</loc><lastmod>2026-03-24</lastmod></url>
+  <url><loc>https://example.com/blog-detail?slug=vue2-watcher-queue-rendering</loc><lastmod>2026-03-24</lastmod></url>
+  <url><loc>https://example.com/blog-detail?slug=vue3-component-design-boundaries</loc><lastmod>2026-03-24</lastmod></url>
+  <url><loc>https://example.com/blog-detail?slug=vue3-composition-api-architecture</loc><lastmod>2026-03-24</lastmod></url>
+  <url><loc>https://example.com/blog-detail?slug=vue3-reactivity-core-mental-model</loc><lastmod>2026-03-24</lastmod></url>
+  <url><loc>https://example.com/blog-detail?slug=vue3-rendering-scheduler-performance</loc><lastmod>2026-03-24</lastmod></url>
+  <url><loc>https://example.com/blog-detail?slug=vue3-script-setup-typing</loc><lastmod>2026-03-24</lastmod></url>
+  <url><loc>https://example.com/blog-detail?slug=webpack-code-splitting-cache-strategy</loc><lastmod>2026-03-24</lastmod></url>
+  <url><loc>https://example.com/blog-detail?slug=webpack-federation-architecture</loc><lastmod>2026-03-24</lastmod></url>
+  <url><loc>https://example.com/blog-detail?slug=webpack-hmr-dev-experience</loc><lastmod>2026-03-24</lastmod></url>
+  <url><loc>https://example.com/blog-detail?slug=webpack-loader-plugin-boundary</loc><lastmod>2026-03-24</lastmod></url>
+  <url><loc>https://example.com/blog-detail?slug=webpack-module-graph-runtime</loc><lastmod>2026-03-24</lastmod></url>
+</urlset>
