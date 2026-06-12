@@ -33,7 +33,7 @@ export default memo(function ContentWrapperComponent({
         'content-wrapper',
         `content-wrapper--surface-${surface}`,
         'relative m-4 min-h-full rounded-xl p-8',
-        allowOverflow ? 'overflow-visible' : 'overflow-hidden',
+        allowOverflow && 'content-wrapper--overflow-visible',
         surface === 'glass'
           ? 'bg-[linear-gradient(135deg,var(--color-sidebar-start)_0%,var(--color-sidebar-mid)_50%,var(--color-sidebar-end)_100%)] [backdrop-filter:blur(20px)]'
           : 'bg-[linear-gradient(180deg,var(--color-page-panel-start)_0%,var(--color-page-panel-mid)_48%,var(--color-page-panel-end)_100%)]',

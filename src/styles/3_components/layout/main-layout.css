@@ -1,3 +1,8 @@
+/* 滚动容器底部留白，确保所有子页面内容都能完整滚出 */
+.main-layout__main {
+  padding-bottom: 48px;
+}
+
 .main-layout__sidebar::-webkit-scrollbar {
   width: 4px;
 }
