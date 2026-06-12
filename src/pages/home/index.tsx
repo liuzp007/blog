@@ -315,19 +315,19 @@ export default function Home({ history }: HomeProps) {
           <section id="hero" className="home-section home-hero reveal visible">
             <div className="hero-content home-hero__content">
               <span className="hero-tag home-hero__tag ui-eyebrow hero-animate hero-animate--tag">
-                Hello world
+                前端开发 · 刘志鹏
               </span>
               <h1 className="hero-title home-hero__title ui-display-title hero-animate hero-animate--title">
-                <span>探索</span>
+                <span>用代码</span>
                 <br />
-                <span className="highlight indent">无限的代码</span>
+                <span className="highlight indent">构建更好的</span>
                 <br />
-                <span>宇宙</span>
+                <span>前端体验</span>
               </h1>
               <p className="hero-subtitle home-hero__subtitle ui-lead-text hero-animate hero-animate--subtitle">
-                记录灵感，构建未来。
+                5 年前端开发，专注微前端架构与跨端性能优化。
                 <br />
-                这里是我的数字花园，欢迎光临。
+                写文章、做实验，偶尔也折腾 3D。
               </p>
               <div className="hero-buttons home-hero__buttons hero-animate hero-animate--buttons flex flex-wrap items-center justify-center gap-[var(--home-gap-compact)] min-[769px]:gap-[var(--home-gap-card)]">
                 <Button
@@ -613,19 +613,19 @@ export default function Home({ history }: HomeProps) {
                   React
                 </span>
                 <span className="inspiration-tag ui-tag ui-tag--sm ui-tag--glass ui-tag--tone-gold">
-                  Three.js
+                  TypeScript
                 </span>
                 <span className="inspiration-tag ui-tag ui-tag--sm ui-tag--glass ui-tag--tone-coral">
-                  创意编程
+                  微前端
                 </span>
                 <span className="inspiration-tag ui-tag ui-tag--sm ui-tag--glass ui-tag--tone-mint">
-                  交互设计
+                  React Native
                 </span>
                 <span className="inspiration-tag ui-tag ui-tag--sm ui-tag--glass ui-tag--tone-cyan">
-                  信号系统
+                  Three.js
                 </span>
                 <span className="inspiration-tag ui-tag ui-tag--sm ui-tag--glass ui-tag--tone-gold">
-                  生成式动态
+                  Vite
                 </span>
               </div>
             </section>

@@ -1,15 +1,32 @@
 import { GithubOutlined, MailOutlined } from '@ant-design/icons'
 
-const SKILLS = [
-  'React',
-  'TypeScript',
-  'Three.js',
-  'GLSL',
-  'Node.js',
-  'Creative Coding',
-  'Figma',
-  'WebGL'
+interface SkillItem {
+  name: string
+  level: '精通' | '熟练' | '了解'
+}
+
+const SKILLS: SkillItem[] = [
+  { name: 'React 全家桶（Hooks/Context/Redux）', level: '精通' },
+  { name: 'TypeScript', level: '精通' },
+  { name: '组件化设计与开发', level: '精通' },
+  { name: 'Webpack / Vite 构建优化', level: '精通' },
+  { name: '首屏加载优化 / 虚拟滚动 / Web Worker', level: '精通' },
+  { name: 'React Native 跨端开发', level: '熟练' },
+  { name: 'Taro 多端适配', level: '熟练' },
+  { name: '微前端（Micro App）', level: '熟练' },
+  { name: 'Three.js / ECharts 可视化', level: '熟练' },
+  { name: 'ESLint / Prettier / GitHub Actions', level: '熟练' },
+  { name: 'Node.js / Express', level: '了解' },
+  { name: '低代码平台 / PWA / GraphQL', level: '了解' },
+  { name: 'AI 辅助研发（Claude Code、Codex）', level: '熟练' },
+  { name: '大模型基础 / LoRA / SFT 微调概念', level: '了解' }
 ]
+
+const levelColor: Record<string, string> = {
+  精通: 'border-amber-500/40 bg-amber-500/10 text-amber-300',
+  熟练: 'border-cyan-500/30 bg-cyan-500/8 text-cyan-300',
+  了解: 'border-zinc-600 bg-zinc-800/50 text-zinc-400'
+}
 
 export default function AboutSection() {
   return (
@@ -27,24 +44,22 @@ export default function AboutSection() {
         <div className="lg:col-span-3">
           <div className="space-y-4 text-base leading-relaxed text-[#888] md:text-lg">
             <p>
-              嗨，我是 ZHOUYI，一名热爱创意编程的前端工程师。白天写业务代码，晚上折腾
-              3D、着色器和交互实验。
+              嗨，我是志鹏，前端开发，坐标太原。写代码之外也喜欢折腾
+              3D、动效和交互实验，这个博客就是我放这些东西的地方。
             </p>
             <p>
-              这个博客是我的数字花园，记录技术探索、设计灵感和一些有趣的想法。我相信好的代码不仅是功能的实现，更是一种表达方式。
+              白天在公司搬砖，晚上和周末会研究一些感兴趣的技术，偶尔也记录一下踩过的坑和解法。如果你正好路过，觉得某篇文章有用，那就值了。
             </p>
-            <p>目前专注于 React 生态、WebGL 可视化和创意交互体验。如果你也对此感兴趣，欢迎交流。</p>
-            <p>生活里喜欢摄影、音乐和散步，偶尔会在足迹页面更新一些有趣的瞬间。</p>
           </div>
 
           {/* 技能标签 */}
           <div className="mt-8 flex flex-wrap gap-2">
             {SKILLS.map(skill => (
               <span
-                key={skill}
-                className="rounded-full border border-zinc-700 bg-zinc-900/50 px-3 py-1 text-sm text-zinc-300"
+                key={skill.name}
+                className={`rounded-full border px-3 py-1 text-xs ${levelColor[skill.level]}`}
               >
-                {skill}
+                {skill.name}
               </span>
             ))}
           </div>
@@ -56,21 +71,21 @@ export default function AboutSection() {
           <div className="space-y-5">
             {/* 邮箱 */}
             <a
-              href="mailto:hello@example.com"
+              href="mailto:roc.liu.sx@gmail.com"
               className="group flex items-start gap-3 rounded-xl border border-zinc-800/80 bg-zinc-900/30 p-4 transition-colors hover:border-amber-500/30 hover:bg-zinc-900/50"
             >
               <MailOutlined className="mt-0.5 text-lg text-amber-400/70" />
               <div>
                 <div className="text-sm font-medium text-[#e8e8e8]">邮箱</div>
                 <div className="mt-1 text-sm text-[#888] group-hover:text-zinc-300">
-                  hello@example.com
+                  roc.liu.sx@gmail.com
                 </div>
               </div>
             </a>
 
             {/* GitHub */}
             <a
-              href="https://github.com"
+              href="https://github.com/Roc-js"
               target="_blank"
               rel="noopener noreferrer"
               className="group flex items-start gap-3 rounded-xl border border-zinc-800/80 bg-zinc-900/30 p-4 transition-colors hover:border-amber-500/30 hover:bg-zinc-900/50"
@@ -79,7 +94,7 @@ export default function AboutSection() {
               <div>
                 <div className="text-sm font-medium text-[#e8e8e8]">GitHub</div>
                 <div className="mt-1 text-sm text-[#888] group-hover:text-zinc-300">
-                  github.com/your-username
+                  github.com/Roc-js
                 </div>
               </div>
             </a>
@@ -93,7 +108,7 @@ export default function AboutSection() {
               </div>
               <div>
                 <div className="text-sm font-medium text-[#e8e8e8]">微信</div>
-                <div className="mt-1 text-sm text-[#888]">your-wechat-id</div>
+                <div className="mt-1 text-sm text-[#888]">LiùZhiPéng</div>
               </div>
             </div>
           </div>

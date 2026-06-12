@@ -1,4 +1,4 @@
-import { BrowserRouter } from 'react-router-dom'
+import { HashRouter } from 'react-router-dom'
 import RouterView from './router/router-view'
 import { message } from 'antd'
 import routers from './router/router_config'
@@ -22,11 +22,11 @@ function App() {
     <ErrorBoundary>
       <ThemeBridge />
       <GlobalMouseParticles />
-      <BrowserRouter>
+      <HashRouter>
         <ScrollToTop>
           <RouterView routes={routers} />
         </ScrollToTop>
-      </BrowserRouter>
+      </HashRouter>
     </ErrorBoundary>
   )
 }

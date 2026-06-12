@@ -120,30 +120,33 @@ const NAV_ITEMS: NavItem[] = [
 
 const SKILL_CATEGORIES: SkillCategory[] = [
   {
-    title: '前端开发',
+    title: '核心技能（精通）',
     items: [
-      { name: 'JavaScript / TypeScript', percent: 95 },
-      { name: 'React', percent: 95 },
+      { name: 'React 全家桶（Hooks/Context/Redux）', percent: 95 },
+      { name: 'TypeScript', percent: 95 },
+      { name: '组件化设计与开发', percent: 90 },
+      { name: 'Webpack / Vite 构建优化', percent: 90 },
+      { name: '首屏加载优化 / 虚拟滚动 / Web Worker', percent: 90 }
+    ]
+  },
+  {
+    title: '拓展技能（熟练）',
+    items: [
+      { name: 'React Native', percent: 85 },
       { name: 'Vue', percent: 85 },
-      { name: 'JQ', percent: 88 }
+      { name: '微前端（Micro App）', percent: 88 },
+      { name: 'Three.js / ECharts 可视化', percent: 82 },
+      { name: 'Taro 多端适配', percent: 80 }
     ]
   },
   {
-    title: '创意设计',
+    title: '工程工具与更多',
     items: [
-      { name: '生成艺术', percent: 92 },
-      { name: '交互设计', percent: 88 },
-      { name: '动态图形', percent: 80 },
-      { name: '数据可视化', percent: 85 }
-    ]
-  },
-  {
-    title: '技术栈',
-    items: [
-      { name: 'Node.js ', percent: 82 },
-      { name: 'GLSL Shaders', percent: 78 },
-      { name: 'AI / ML Basics', percent: 70 },
-      { name: '物理模拟', percent: 75 }
+      { name: 'Node.js / Express', percent: 78 },
+      { name: 'ESLint / Prettier 代码规范', percent: 88 },
+      { name: 'GitHub Actions 自动化部署', percent: 75 },
+      { name: 'AI 辅助研发（Claude Code、Codex）', percent: 85 },
+      { name: '大模型基础 / LoRA / SFT 微调概念', percent: 70 }
     ]
   }
 ]
@@ -864,10 +867,16 @@ export default withRouter(function AboutMe({ history: _history }: AboutMeProps) 
           <div className="about-grid grid grid-cols-2 items-center gap-16 max-md:grid-cols-1">
             <div className="about-text reveal">
               <p className="ui-lead-text">
-                数字与物理的边界正在消融，而我就在那里。从CS（计算机科学）出发，我游走在设计、艺术与代码的边缘。
+                我是 Roc，一名前端开发工程师，坐标太原。5
+                年来从教育科技到金融科技再到互联网大厂，一直在做同一件事：用代码构建更好的前端体验。
               </p>
               <p className="ui-body-text">
-                我不把代码仅仅看作工具，它本身就是一种创作材料。在逻辑与美感的碰撞中，我试图挖掘代码的可能性，去创造那些能让人停顿一下的交互体验。
+                目前专注微前端架构落地与跨端性能优化，工作之外喜欢折腾 Three.js、动效和交互实验。
+              </p>
+              <p className="ui-body-text">
+                AI 实践：深度使用 Claude Code、Codex 等 AI
+                工具参与日常研发，掌握代码生成、单元测试自动生成及 CR
+                提效工作流；了解大模型基础原理，了解 LoRA / SFT 等微调概念及开源模型生态。
               </p>
               <div className="about-stats mt-8 grid grid-cols-2 gap-8">
                 <div className="stat-item rounded-lg p-6">

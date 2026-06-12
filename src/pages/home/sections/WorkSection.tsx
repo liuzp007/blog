@@ -4,46 +4,40 @@ import WorkCard from '../components/WorkCard'
 
 const WORK_ITEMS = [
   {
-    tag: 'Web App',
-    title: '智能仪表盘',
-    desc: '基于实时数据流的监控面板，支持自定义布局和多维筛选。',
-    image: 'https://picsum.photos/seed/work1/600/340',
-    href: '#'
+    tag: '微前端',
+    title: '分销通工作台',
+    desc: '整合 10+ 异构业务系统的统一管理平台，系统集成周期从 3 个月缩短至 1 个月，运营效率提升 60%。',
+    image: 'https://picsum.photos/seed/microapp/600/340'
   },
   {
-    tag: 'Open Source',
-    title: '组件设计系统',
-    desc: '面向中后台场景的 React 组件库，内置主题引擎与无障碍支持。',
-    image: 'https://picsum.photos/seed/work2/600/340',
-    href: '#'
+    tag: 'React Native',
+    title: '分销通 APP',
+    desc: '面向全球 3000+ 分销商的移动管理平台，日活 2000+，相比原生开发成本降低 40%。',
+    image: 'https://picsum.photos/seed/rnapp/600/340'
   },
   {
-    tag: 'Experiment',
-    title: '生成式粒子引擎',
-    desc: '基于 WebGL 的粒子系统，支持力场、碰撞和音频驱动。',
-    image: 'https://picsum.photos/seed/work3/600/340',
-    href: '#'
+    tag: 'Next.js',
+    title: '交易所平台重构',
+    desc: 'SSR 首屏从 3.5s 降至 1.2s，Lighthouse 60→90，页面转化率提升 18%，新用户注册增长 25%。',
+    image: 'https://picsum.photos/seed/gateio/600/340'
   },
   {
-    tag: 'Toolchain',
-    title: '构建性能分析器',
-    desc: '可视化分析 Vite/Webpack 构建产物，定位体积瓶颈。',
-    image: 'https://picsum.photos/seed/work4/600/340',
-    href: '#'
+    tag: 'Three.js',
+    title: '交易数据可视化',
+    desc: '亿级数据秒级渲染，3D 资产分布图加载从 8s 优化到 3s，年度账单打开率提升 40%。',
+    image: 'https://picsum.photos/seed/3dvis/600/340'
   },
   {
-    tag: 'Blog',
-    title: '博客重构计划',
-    desc: '从 Gatsby 迁移到 Vite + React 的全记录，含性能对比。',
-    image: 'https://picsum.photos/seed/work5/600/340',
-    href: '#'
+    tag: '教育平台',
+    title: '宁夏职业教育云',
+    desc: '服务 20+ 职业院校、10 万+ 用户，万人同时在线考试，系统稳定性 99.9%。',
+    image: 'https://picsum.photos/seed/eduplat/600/340'
   },
   {
-    tag: 'CLI',
-    title: '项目脚手架工具',
-    desc: '零配置创建前后端项目模板，集成 lint、test 和 CI。',
-    image: 'https://picsum.photos/seed/work6/600/340',
-    href: '#'
+    tag: '表单引擎',
+    title: '双高计划管理平台',
+    desc: '动态表单引擎减少 80% 重复开发，覆盖全国 20+ 双高院校，数据填报效率提升 60%。',
+    image: 'https://picsum.photos/seed/formeng/600/340'
   }
 ]
 
@@ -63,7 +57,7 @@ export default function WorkSection() {
           </span>
           <h2 className="mt-3 text-3xl font-bold text-white sm:text-4xl">最近在做</h2>
           <p className="mt-3 max-w-lg text-sm text-zinc-500">
-            一些正在进行或近期完成的项目，涵盖工具链、实验和产品方向。
+            近几年主导或深度参与的项目，涵盖微前端、跨端、可视化和教育科技方向。
           </p>
         </div>
 
