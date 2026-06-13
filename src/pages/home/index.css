@@ -1683,6 +1683,10 @@
     padding: 72px 0;
   }
 
+  .HomeWrap #guestbook {
+    padding-bottom: 32px;
+  }
+
   .HomeWrap #hero,
   .HomeWrap .home-hero {
     min-height: auto;
@@ -1733,13 +1737,139 @@
     font-size: 22px;
   }
 
+  /* ── 实验工坊 移动端优化（参考作品展卡片风格）── */
+  .HomeWrap .home-experiments {
+    padding: 64px 0 56px;
+  }
+
+  .HomeWrap #experiments .container,
+  .HomeWrap .home-experiments__container {
+    width: 100%;
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .HomeWrap .home-experiments__grid {
+    gap: 14px;
+  }
+
+  .HomeWrap .experiment-card,
+  .HomeWrap .home-experiment-card {
+    min-height: auto;
+    padding: 22px 20px 18px;
+  }
+
+  .HomeWrap .experiment-icon,
+  .HomeWrap .home-experiment-card__icon {
+    width: 46px;
+    height: 46px;
+    border-radius: 13px;
+    font-size: 19px;
+    margin-bottom: 14px;
+  }
+
+  .HomeWrap .timeline-year,
+  .HomeWrap .home-experiment-card .timeline-year {
+    font-size: 10px;
+    margin-top: 2px;
+  }
+
+  .HomeWrap .experiment-desc,
+  .HomeWrap .home-experiment-card__desc {
+    max-width: none;
+    -webkit-line-clamp: 2;
+    line-height: 1.68;
+    margin-top: 8px;
+  }
+
+  .HomeWrap .experiment-tech,
+  .HomeWrap .home-experiment-card__tech {
+    margin-top: 14px;
+  }
+
+  .HomeWrap .home-experiment-card__bottom {
+    padding-top: var(--home-gap-card);
+    width: 100%;
+  }
+
+  .HomeWrap .home-experiment-card__stat {
+    font-size: 10px;
+  }
+
+  .HomeWrap .home-experiment-card__cta {
+    width: 100%;
+    justify-content: center;
+    min-height: 42px;
+    border-radius: 12px;
+    padding: 0 14px;
+    background: linear-gradient(180deg, var(--white-alpha-08), transparent), var(--white-alpha-04);
+    box-shadow: inset 0 1px 0 var(--white-alpha-10);
+    color: var(--home-text-strong);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+  }
+
+  /* ── 作品展 移动端优化 ── */
+  .HomeWrap #showcase,
+  .HomeWrap .home-showcase {
+    padding-top: 64px;
+  }
+
+  .HomeWrap .home-showcase__grid {
+    gap: 14px;
+  }
+
+  .HomeWrap .showcase-card {
+    padding: 22px 20px 18px !important;
+  }
+
+  .HomeWrap .showcase-card__top {
+    gap: 10px;
+  }
+
+  .HomeWrap .showcase-card__badge {
+    width: 46px;
+    height: 46px;
+    border-radius: 13px;
+    font-size: 18px;
+  }
+
+  .HomeWrap .showcase-card__body {
+    margin-top: 2px;
+  }
+
+  .HomeWrap .showcase-card__desc {
+    margin-top: 8px;
+    max-width: none;
+    line-height: 1.68;
+  }
+
+  .HomeWrap .showcase-card__bottom {
+    gap: 10px;
+  }
+
   .HomeWrap .showcase-card__summary {
     width: 100%;
+  }
+
+  .HomeWrap .showcase-card__mode {
+    font-size: 11px;
+  }
+
+  .HomeWrap .showcase-card__tag.ui-tag {
+    padding: 5px 10px;
   }
 
   .HomeWrap .showcase-card__cta {
     width: 100%;
     justify-content: center;
+    min-height: 42px;
+    border-radius: 12px;
+    font-size: 12px;
+    letter-spacing: 0.1em;
   }
 
   .HomeWrap .demo-header,
@@ -1760,6 +1890,64 @@
   .HomeWrap .footer-bottom,
   .HomeWrap .home-footer__bottom {
     width: calc(100% - 22px);
+  }
+
+  /* ── Footer 移动端紧凑布局 ── */
+  .HomeWrap .home-footer {
+    margin-top: 0;
+    padding: 28px 0 16px;
+  }
+
+  .HomeWrap .footer-content,
+  .HomeWrap .home-footer__content {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 4px 14px !important;
+    margin-bottom: 10px;
+  }
+
+  .HomeWrap .footer-section h4,
+  .HomeWrap .home-footer__column h4 {
+    margin-bottom: 6px;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+  }
+
+  .HomeWrap .footer-section p,
+  .HomeWrap .home-footer__column p {
+    font-size: 12px;
+    line-height: 1.65;
+  }
+
+  .HomeWrap .footer-links,
+  .HomeWrap .home-footer__links {
+    gap: 0 !important;
+  }
+
+  .HomeWrap .home-footer__link {
+    font-size: 12px;
+    line-height: 1.3;
+    padding: 1px 0;
+  }
+
+  .HomeWrap .inspiration-tag.ui-tag,
+  .HomeWrap .home-footer__tags .ui-tag {
+    padding: 2px 8px;
+    font-size: 10px;
+  }
+
+  .HomeWrap .footer-bottom,
+  .HomeWrap .home-footer__bottom {
+    padding-top: 12px;
+  }
+
+  .HomeWrap .footer-bottom p,
+  .HomeWrap .home-footer__bottom p {
+    font-size: 11px;
+  }
+
+  .HomeWrap .home-footer__icon {
+    width: 32px;
+    height: 32px;
   }
 
   .HomeWrap .dog-container {
@@ -1798,6 +1986,82 @@
   .HomeWrap #demoCanvas,
   .HomeWrap .home-demo__canvas {
     height: 280px;
+  }
+
+  /* ── 实验工坊 & 作品展 480px 微调 ── */
+  .HomeWrap .home-experiments {
+    padding: 52px 0 48px;
+  }
+
+  .HomeWrap #experiments .container,
+  .HomeWrap .home-experiments__container {
+    width: 100%;
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .HomeWrap .experiment-card,
+  .HomeWrap .home-experiment-card {
+    padding: 18px 16px 16px;
+  }
+
+  .HomeWrap .experiment-icon,
+  .HomeWrap .home-experiment-card__icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    font-size: 16px;
+    margin-bottom: 12px;
+  }
+
+  .HomeWrap .home-experiments__grid {
+    gap: 12px;
+  }
+
+  .HomeWrap #showcase,
+  .HomeWrap .home-showcase {
+    padding-top: 52px;
+  }
+
+  .HomeWrap .home-showcase__grid {
+    gap: 12px;
+  }
+
+  .HomeWrap .showcase-card {
+    padding: 18px 16px 16px !important;
+  }
+
+  .HomeWrap .showcase-card__badge {
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+    font-size: 16px;
+  }
+
+  .HomeWrap .showcase-card__cta {
+    min-height: 40px;
+    border-radius: 11px;
+  }
+
+  .HomeWrap .experiment-card,
+  .HomeWrap .home-experiment-card {
+    padding: 18px 16px 16px;
+  }
+
+  .HomeWrap .experiment-icon,
+  .HomeWrap .home-experiment-card__icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+    font-size: 17px;
+    margin-bottom: 12px;
+  }
+
+  .HomeWrap .home-experiment-card__cta {
+    min-height: 40px;
+    border-radius: 11px;
   }
 }
 
