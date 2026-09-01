@@ -36,7 +36,9 @@ export default function MessageForm({
     const trimmedAuthor = author.trim().slice(0, MAX_AUTHOR)
     try {
       localStorage.setItem(STORAGE_KEY, trimmedAuthor)
-    } catch {}
+    } catch {
+      // localStorage 不可用时（如隐私模式）忽略写入失败，不影响提交
+    }
     onSubmit({
       author: trimmedAuthor,
       content: content.trim().slice(0, MAX_CONTENT),
@@ -59,7 +61,7 @@ export default function MessageForm({
         onChange={e => setAuthor(e.target.value.slice(0, MAX_AUTHOR))}
         maxLength={MAX_AUTHOR}
         className="guestbook-form-input"
-        style={{minHeight: 32}}
+        style={{ minHeight: 32 }}
       />
 
       <Input.TextArea

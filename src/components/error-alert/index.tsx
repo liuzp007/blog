@@ -20,13 +20,13 @@ export const ErrorAlert = memo(function ErrorAlert({
   type = 'error',
   description
 }: ErrorAlertProps) {
+  const handleRetry = useCallback(() => onRetry?.(), [onRetry])
+  const handleClose = useCallback(() => onClose?.(), [onClose])
+
   if (!error) return null
 
   const errorObj = typeof error === 'string' ? new Error(error) : error
   const errorMessage = errorObj.message || '发生错误'
-
-  const handleRetry = useCallback(() => onRetry?.(), [onRetry])
-  const handleClose = useCallback(() => onClose?.(), [onClose])
 
   const getErrorIcon = () => {
     if (isNetworkError(errorObj)) return '🌐'
