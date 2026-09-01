@@ -12,11 +12,13 @@
   <url><loc>https://example.com/blog-detail?slug=r3f-tips</loc><lastmod>2026-03-22</lastmod></url>
   <url><loc>https://example.com/blog-detail?slug=react18-typescript-vite-conventions</loc><lastmod>2026-03-23</lastmod></url>
   <url><loc>https://example.com/blog-detail?slug=seo-rss-site-suite</loc><lastmod>2026-03-23</lastmod></url>
+  <url><loc>https://example.com/blog-detail?slug=vite-build-output-optimization</loc><lastmod>2026-06-12</lastmod></url>
   <url><loc>https://example.com/blog-detail?slug=vite-dev-server-esm-mental-model</loc><lastmod>2026-03-24</lastmod></url>
   <url><loc>https://example.com/blog-detail?slug=vite-large-scale-governance</loc><lastmod>2026-03-24</lastmod></url>
   <url><loc>https://example.com/blog-detail?slug=vite-plugin-pipeline-production</loc><lastmod>2026-03-24</lastmod></url>
   <url><loc>https://example.com/blog-detail?slug=vite-prebundle-dependency-optimization</loc><lastmod>2026-03-24</lastmod></url>
   <url><loc>https://example.com/blog-detail?slug=vite-ssr-hybrid-architecture</loc><lastmod>2026-03-24</lastmod></url>
+  <url><loc>https://example.com/blog-detail?slug=vite-webpack-migration-guide</loc><lastmod>2026-06-12</lastmod></url>
   <url><loc>https://example.com/blog-detail?slug=vite-notes</loc><lastmod>2026-03-21</lastmod></url>
   <url><loc>https://example.com/blog-detail?slug=vue2-component-communication-anti-patterns</loc><lastmod>2026-03-24</lastmod></url>
   <url><loc>https://example.com/blog-detail?slug=vue2-large-app-maintenance</loc><lastmod>2026-03-24</lastmod></url>

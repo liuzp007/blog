@@ -32,7 +32,7 @@
     "prebuild": "node scripts/generate-content-meta.mjs",
     "dev": "vite",
     "start": "vite",
-    "build": "vite build",
+    "build": "node scripts/generate-sitemap.mjs && node scripts/generate-rss.mjs && node scripts/generate-search-index.mjs && vite build",
     "audit:style": "node scripts/audit-style.js",
     "audit:styles": "node scripts/audit-style.js",
     "build:content-meta": "node scripts/generate-content-meta.mjs",
