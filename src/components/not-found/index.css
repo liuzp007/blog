@@ -5,18 +5,18 @@
  */
 
 .notFoundPage {
-  background: var(--color-black);
   position: fixed;
-  inset: 0;
+  z-index: 999;
+  display: flex;
   width: 100vw;
   height: 100vh;
+  background: var(--color-black);
+  inset: 0;
   overflow: hidden;
-  display: flex;
   font-family: Anton, sans-serif;
   justify-content: center;
   align-items: center;
   perspective: 1000px;
-  z-index: 999;
 }
 
 .notFoundPage div {
@@ -33,9 +33,9 @@
 .rail .stamp {
   width: 200px;
   height: 200px;
-  background: var(--raw-slate-800);
-  color: var(--text-primary);
   font-size: 7rem;
+  color: var(--text-primary);
+  background: var(--raw-slate-800);
 }
 
 .rail .stamp:nth-child(1) {
@@ -154,15 +154,15 @@
 }
 
 .world .box .wall::before {
-  content: '';
   position: absolute;
+  display: flex;
   width: 100%;
   height: 100%;
-  display: flex;
+  font-size: 7rem;
+  color: var(--text-primary);
+  content: '';
   justify-content: center;
   align-items: center;
-  color: var(--text-primary);
-  font-size: 7rem;
 }
 
 .world .box .wall:nth-child(1) {

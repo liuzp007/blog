@@ -60,9 +60,9 @@
 }
 
 .footmark-cosmos.phase-cloud .footmark-cosmos__stage::after {
-  left: 0;
   right: 0;
   bottom: 0;
+  left: 0;
   height: 180px;
   background: var(--footmark-cloud-fade);
 }
@@ -146,12 +146,12 @@
 .footmark-cosmos__progressStop {
   min-width: 78px;
   padding: 10px 14px;
-  border-radius: 999px;
-  color: var(--footmark-text-progress);
   font-size: var(--text-meta-size);
+  color: var(--footmark-text-progress);
+  background: var(--footmark-surface-progress);
+  border-radius: 999px;
   letter-spacing: var(--text-overline-letter-spacing);
   text-transform: uppercase;
-  background: var(--footmark-surface-progress);
   box-shadow: inset 0 0 0 1px var(--footmark-line-faint);
 }
 
@@ -164,9 +164,9 @@
 }
 
 .footmark-cosmos__copy {
-  border-radius: 30px;
-  border: none;
   background: var(--footmark-copy-bg);
+  border: none;
+  border-radius: 30px;
   box-shadow:
     inset 0 0 0 1px var(--footmark-line-copy),
     var(--footmark-shadow-panel-lg);
@@ -176,11 +176,11 @@
 .footmark-cosmos__eyebrow {
   width: fit-content;
   padding: 8px 12px;
-  border-radius: 999px;
+  font-size: var(--text-eyebrow-size);
   color: var(--footmark-text-eyebrow);
   background: var(--footmark-surface-eyebrow);
+  border-radius: 999px;
   box-shadow: inset 0 0 0 1px var(--footmark-line-eyebrow);
-  font-size: var(--text-eyebrow-size);
   letter-spacing: 0.2em;
 }
 
@@ -194,35 +194,35 @@
 
 .footmark-cosmos__heroTitle {
   margin: 0;
-  color: var(--footmark-text-heading);
   font-size: clamp(34px, 5vw, var(--heading-display-size));
   line-height: 1.08;
+  color: var(--footmark-text-heading);
   letter-spacing: -0.04em;
   text-wrap: balance;
   text-shadow: 0 10px 36px var(--black-alpha-28);
 }
 
 .footmark-cosmos__heroDesc {
-  margin: 0;
   max-width: 480px;
-  color: var(--footmark-text-soft);
+  margin: 0;
   font-size: var(--text-lead-size);
   line-height: var(--text-lead-line-height);
+  color: var(--footmark-text-soft);
 }
 
 .footmark-cosmos__statCard {
   padding: 16px 18px;
-  border-radius: 22px;
-  border: none;
   background: var(--footmark-surface-note);
+  border: none;
+  border-radius: 22px;
   box-shadow: inset 0 0 0 1px var(--footmark-line-stat);
   backdrop-filter: blur(16px);
 }
 
 .footmark-cosmos__statLabel {
   display: block;
-  color: var(--footmark-text-label);
   font-size: var(--text-meta-size);
+  color: var(--footmark-text-label);
   letter-spacing: 0.12em;
   text-transform: uppercase;
 }
@@ -239,8 +239,8 @@
 }
 
 .footmark-cosmos__note {
-  border: none;
   background: var(--footmark-surface-panel);
+  border: none;
   box-shadow:
     inset 0 0 0 1px var(--footmark-line-soft),
     var(--footmark-shadow-panel);
@@ -252,8 +252,8 @@
 }
 
 .footmark-cosmos__note .anticon {
-  color: var(--footmark-text-accent);
   font-size: 18px;
+  color: var(--footmark-text-accent);
   margin-top: 2px;
 }
 
@@ -294,16 +294,16 @@
 
 .footmark-cosmos__storyChip {
   padding: 14px 12px;
-  border-radius: 18px;
-  background: var(--footmark-surface-story);
-  box-shadow: inset 0 0 0 1px var(--footmark-line-storychip);
   color: var(--footmark-text-dim);
+  background: var(--footmark-surface-story);
   transition:
     opacity 0.24s ease,
     transform 0.24s ease,
     background 0.24s ease,
     box-shadow 0.24s ease,
     color 0.24s ease;
+  border-radius: 18px;
+  box-shadow: inset 0 0 0 1px var(--footmark-line-storychip);
 }
 
 .footmark-cosmos__storyChip span,
@@ -334,12 +334,12 @@
 /* --- 地图卡片层 --- */
 .footmark-mapScene__card {
   position: absolute;
-  left: 28px;
   bottom: 112px;
+  left: 28px;
   width: min(440px, calc(100% - 56px));
   padding: 22px 24px;
-  border-radius: 24px;
   background: var(--footmark-surface-panel-strong);
+  border-radius: 24px;
   box-shadow:
     inset 0 0 0 1px var(--footmark-line-map-card),
     var(--footmark-shadow-floating);
@@ -350,10 +350,10 @@
 .footmark-mapScene__card .ui-tag {
   display: inline-flex;
   padding: 6px 10px;
-  border-radius: 999px;
+  font-size: var(--text-eyebrow-size);
   color: var(--footmark-text-accent-strong);
   background: var(--footmark-surface-map-eyebrow);
-  font-size: var(--text-eyebrow-size);
+  border-radius: 999px;
   font-weight: var(--tag-uppercase-weight);
   letter-spacing: var(--text-eyebrow-letter-spacing);
   text-transform: uppercase;
@@ -363,24 +363,24 @@
 .footmark-mapScene__card .ui-card-title,
 .footmark-mapScene__card h3 {
   margin: 14px 0 10px;
-  color: var(--footmark-text-heading);
   font-size: clamp(24px, 3vw, var(--heading-card-size));
   line-height: var(--heading-card-line-height);
+  color: var(--footmark-text-heading);
 }
 
 .footmark-mapScene__desc,
 .footmark-mapScene__card .ui-body-text,
 .footmark-mapScene__card p {
   margin: 0;
-  color: var(--footmark-text-map-copy);
   font-size: var(--text-body-size);
   line-height: var(--text-body-relaxed-line-height);
+  color: var(--footmark-text-map-copy);
 }
 
 .footmark-mapScene__meta {
-  color: var(--footmark-text-meta);
   font-size: var(--text-meta-size);
   line-height: var(--text-meta-line-height);
+  color: var(--footmark-text-meta);
 }
 
 .footmark-mapScene__meta .ui-meta-text,
@@ -390,15 +390,15 @@
 
 .footmark-mapScene__action,
 .footmark-mapScene__action.ui-button-primary {
-  margin-top: 18px;
-  min-height: var(--button-height-lg);
   height: var(--button-height-lg);
-  padding-inline: var(--button-padding-inline-md);
-  border: none;
-  border-radius: var(--button-radius-md);
+  min-height: var(--button-height-lg);
   font-size: var(--button-font-size);
-  font-weight: var(--button-font-weight);
   background: var(--footmark-map-action-bg);
+  border: none;
+  margin-top: 18px;
+  padding-inline: var(--button-padding-inline-md);
+  border-radius: var(--button-radius-md);
+  font-weight: var(--button-font-weight);
   box-shadow: var(--footmark-shadow-action);
 }
 
@@ -415,17 +415,17 @@
   --footmark-map-marker-shadow: var(--footmark-marker-default-shadow);
 
   position: relative;
+  display: inline-flex;
   width: 36px;
   height: 36px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 999px;
-  transform: scale(0.92);
   opacity: 0.56;
   transition:
     transform 0.24s ease,
     opacity 0.24s ease;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  transform: scale(0.92);
   cursor: pointer;
 }
 
@@ -455,19 +455,19 @@
   left: calc(100% + 8px);
   z-index: 2;
   padding: 6px 10px;
-  border-radius: 999px;
+  font-size: var(--text-caption-size);
   color: var(--footmark-text-marker-label);
   background: var(--footmark-surface-panel-solid);
-  box-shadow: inset 0 0 0 1px var(--footmark-line-marker-label);
-  font-size: var(--text-caption-size);
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  white-space: nowrap;
   opacity: 0;
-  transform: translate3d(-8px, -50%, 0);
   transition:
     transform 0.24s ease,
     opacity 0.24s ease;
+  border-radius: 999px;
+  box-shadow: inset 0 0 0 1px var(--footmark-line-marker-label);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+  transform: translate3d(-8px, -50%, 0);
   pointer-events: none;
 }
 
@@ -520,8 +520,8 @@
 
 /* --- 地图总结卡层 --- */
 .footmark-cosmos__summaryHead {
-  border: none;
   background: var(--footmark-surface-summary-card);
+  border: none;
   box-shadow: inset 0 0 0 1px var(--footmark-line-summary-card);
 }
 
@@ -546,9 +546,9 @@
 }
 
 .footmark-cosmos__summaryCard {
-  border-radius: 24px;
-  border: none;
   background: var(--footmark-surface-summary-card);
+  border: none;
+  border-radius: 24px;
   box-shadow: inset 0 0 0 1px var(--footmark-line-summary-card);
 }
 
@@ -648,10 +648,10 @@
 .footmark-detail__head .ui-tag {
   width: fit-content;
   padding: 6px 10px;
-  border-radius: 999px;
+  font-size: var(--text-eyebrow-size);
   color: var(--footmark-text-accent-strong);
   background: var(--footmark-surface-detail-eyebrow);
-  font-size: var(--text-eyebrow-size);
+  border-radius: 999px;
   font-weight: var(--tag-uppercase-weight);
   letter-spacing: var(--text-eyebrow-letter-spacing);
   text-transform: uppercase;
@@ -668,11 +668,11 @@
 .footmark-detail__citySummary,
 .footmark-detail__head .ui-lead-text,
 .footmark-detail__head p {
-  margin: 0;
   max-width: 680px;
-  color: var(--footmark-text-detail-copy);
+  margin: 0;
   font-size: var(--text-body-size);
   line-height: var(--text-body-relaxed-line-height);
+  color: var(--footmark-text-detail-copy);
 }
 
 .footmark-detail__mediaCard {
@@ -702,9 +702,9 @@
 }
 
 .footmark-detail__placeholder span {
-  color: var(--footmark-text-detail-placeholder);
   font-size: var(--text-body-size);
   line-height: var(--text-body-relaxed-line-height);
+  color: var(--footmark-text-detail-placeholder);
 }
 
 .footmark-detail__content {
@@ -714,9 +714,9 @@
 
 .footmark-detail__label {
   display: block;
-  margin-bottom: 6px;
-  color: var(--footmark-text-detail-label);
   font-size: var(--text-meta-size);
+  color: var(--footmark-text-detail-label);
+  margin-bottom: 6px;
   letter-spacing: var(--text-eyebrow-letter-spacing);
   text-transform: uppercase;
 }
@@ -735,8 +735,8 @@
 
 .footmark-detail__shotAt {
   margin: 0;
-  color: var(--footmark-text-detail-shot);
   font-size: var(--text-meta-size);
+  color: var(--footmark-text-detail-shot);
   letter-spacing: var(--text-overline-letter-spacing);
   text-transform: uppercase;
 }
@@ -744,9 +744,9 @@
 .footmark-detail__description,
 .footmark-detail__content .ui-body-text {
   margin: 0;
-  color: var(--footmark-text-muted);
   font-size: var(--text-body-size);
   line-height: var(--text-body-relaxed-line-height);
+  color: var(--footmark-text-muted);
 }
 
 .footmark-detail__tags .ant-tag.ui-tag {
@@ -780,18 +780,18 @@
 .footmark-detail__story .ui-body-text,
 .footmark-detail__story p {
   margin: 0;
-  color: var(--footmark-text-detail-story);
   font-size: var(--text-body-size);
   line-height: var(--text-body-relaxed-line-height);
+  color: var(--footmark-text-detail-story);
 }
 
 /* --- 响应式收口 --- */
 @media (width <= 900px) {
   .footmark-mapScene__card {
-    left: 16px;
     right: 16px;
-    width: auto;
     bottom: 210px;
+    left: 16px;
+    width: auto;
   }
 
   .footmark-cosmos.is-map-phase .footmark-cosmos__storyRail {
@@ -864,13 +864,13 @@
   }
 
   .footmark-cosmos.is-map-phase .footmark-mapScene__card {
-    left: 12px;
     right: 12px;
-    width: auto;
     bottom: calc(env(safe-area-inset-bottom, 0px) + 18px);
+    left: 12px;
+    width: auto;
     padding: 16px 16px calc(env(safe-area-inset-bottom, 0px) + 16px);
-    border-radius: 22px;
     background: var(--footmark-map-card-mobile-bg);
+    border-radius: 22px;
   }
 
   .footmark-cosmos.is-map-phase .footmark-mapScene__title,
@@ -896,9 +896,9 @@
 
   .footmark-cosmos.is-map-phase .footmark-mapScene__action {
     width: 100%;
-    margin-top: 14px;
-    min-height: 46px;
     height: 46px;
+    min-height: 46px;
+    margin-top: 14px;
     padding-inline: 14px;
     border-radius: var(--button-radius-md);
   }
@@ -918,10 +918,10 @@
   }
 
   .footmark-cosmos.is-map-phase .footmark-mapMarker__label {
-    left: 50%;
     top: calc(100% + 8px);
-    transform: translate3d(-50%, -4px, 0);
+    left: 50%;
     font-size: 11px;
+    transform: translate3d(-50%, -4px, 0);
   }
 
   .footmark-cosmos.is-map-phase .footmark-mapMarker.is-active .footmark-mapMarker__label {

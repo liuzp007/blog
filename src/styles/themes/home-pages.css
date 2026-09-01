@@ -126,8 +126,8 @@
     color-mix(in srgb, var(--home-accent-gold) 12%, transparent);
 
   position: relative;
-  border: var(--home-border-subtle);
   background: var(--home-timeline-bg);
+  border: var(--home-border-subtle);
   transition:
     transform 0.3s ease,
     color 0.3s ease;
@@ -135,16 +135,16 @@
 
 .timeline-item::before,
 .home-timeline__item::before {
-  content: '';
   position: absolute;
-  left: -1.5rem;
   top: 1.5rem;
+  left: -1.5rem;
   width: var(--space-3);
   height: var(--space-3);
-  border-radius: 50%;
   background: var(--ui-card-timeline-dot-color);
-  box-shadow: var(--ui-card-timeline-dot-shadow);
   opacity: 0.9;
+  content: '';
+  border-radius: 50%;
+  box-shadow: var(--ui-card-timeline-dot-shadow);
 }
 
 .timeline-item:hover,
@@ -156,24 +156,24 @@
 
 .timeline-year,
 .home-timeline__year {
-  color: var(--home-text-highlight-soft);
   margin: 0;
-  font-family: var(--font-family-body);
   font-size: var(--ui-card-overline-size, var(--text-overline-size));
-  font-weight: var(--font-weight-medium);
   line-height: var(--line-height-tight);
+  color: var(--home-text-highlight-soft);
+  font-family: var(--font-family-body);
+  font-weight: var(--font-weight-medium);
   letter-spacing: var(--ui-card-overline-letter-spacing, var(--text-overline-letter-spacing));
   text-transform: uppercase;
 }
 
 .timeline-title,
 .home-timeline__title {
-  font-family: var(--font-family-heading);
-  font-size: var(--ui-card-title-size, var(--heading-card-size));
-  font-weight: var(--font-weight-semibold);
-  line-height: var(--ui-card-title-line-height, var(--heading-card-line-height));
   margin: var(--space-2) 0 0;
+  font-size: var(--ui-card-title-size, var(--heading-card-size));
+  line-height: var(--ui-card-title-line-height, var(--heading-card-line-height));
   color: var(--home-text-strong);
+  font-family: var(--font-family-heading);
+  font-weight: var(--font-weight-semibold);
 }
 
 .timeline-desc,

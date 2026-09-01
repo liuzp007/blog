@@ -3,10 +3,10 @@
  * 列表壳、图片尺寸、meta 对齐与截断布局迁回 TSX。
  */
 .icard__title {
-  background: linear-gradient(90deg, transparent, var(--black-alpha-80));
-  background-clip: text;
   color: transparent;
+  background: linear-gradient(90deg, transparent, var(--black-alpha-80));
   transition: all 0.3s ease;
+  background-clip: text;
 }
 
 .icard__item:hover .icard__title,
@@ -21,9 +21,9 @@
 }
 
 .icard__chip {
-  border: 1px solid color-mix(in srgb, var(--tag-border) 76%, transparent);
-  background: color-mix(in srgb, var(--tag-bg) 90%, transparent);
   color: color-mix(in srgb, var(--tag-text) 88%, var(--color-white) 12%);
+  background: color-mix(in srgb, var(--tag-bg) 90%, transparent);
+  border: 1px solid color-mix(in srgb, var(--tag-border) 76%, transparent);
   transition:
     border-color var(--motion-fast) var(--easing-standard),
     background-color var(--motion-fast) var(--easing-standard),
@@ -32,7 +32,7 @@
 
 .icard__item:hover .icard__chip,
 .icard__item:focus-visible .icard__chip {
-  border-color: color-mix(in srgb, var(--tag-border) 92%, var(--color-white) 8%);
-  background: color-mix(in srgb, var(--tag-bg) 96%, var(--color-white) 4%);
   color: color-mix(in srgb, var(--tag-text) 95%, var(--color-white) 5%);
+  background: color-mix(in srgb, var(--tag-bg) 96%, var(--color-white) 4%);
+  border-color: color-mix(in srgb, var(--tag-border) 92%, var(--color-white) 8%);
 }

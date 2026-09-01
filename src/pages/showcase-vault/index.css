@@ -2,11 +2,9 @@
 
 /* 页面容器：多层渐变背景 */
 .sonar-depth {
-  min-height: 100dvh;
   position: relative;
-  overflow: hidden;
+  min-height: 100dvh;
   color: var(--sonar-text-primary);
-  font-family: var(--font-family-sans-sc);
   background:
     radial-gradient(
       circle at 18% 14%,
@@ -19,6 +17,8 @@
       transparent 26%
     ),
     linear-gradient(180deg, var(--sonar-bg-0) 0%, var(--sonar-bg-1) 44%, var(--sonar-bg-2) 100%);
+  overflow: hidden;
+  font-family: var(--font-family-sans-sc);
 }
 
 /* Ant Design 组件覆写 */

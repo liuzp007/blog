@@ -369,7 +369,7 @@ export default function BlogIndex() {
                 <Segmented
                   value={view}
                   onChange={v => setView(v as ViewMode)}
-                  className='blog-segmented'
+                  className="blog-segmented"
                   options={[
                     { label: '卡片', value: 'cards' },
                     { label: '时间轴', value: 'timeline' },

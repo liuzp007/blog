@@ -1,12 +1,12 @@
 .media-card::before {
-  content: '';
   position: absolute;
-  inset: 0;
   z-index: 1;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.3s ease;
   background: var(--media-card-overlay);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  content: '';
+  inset: 0;
+  pointer-events: none;
 }
 
 .media-card:hover::before,

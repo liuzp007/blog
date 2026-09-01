@@ -39,10 +39,10 @@
 
 .content-wrapper--surface-plain::before {
   z-index: 1;
-  opacity: 0.65;
   background:
     radial-gradient(circle at 16% 0%, var(--color-accent-cyan-soft) 0%, transparent 36%),
     radial-gradient(circle at 84% 12%, var(--color-accent-orange-soft) 0%, transparent 38%);
+  opacity: 0.65;
 }
 
 .content-wrapper__title {

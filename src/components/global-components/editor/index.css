@@ -14,8 +14,8 @@
   --ui-editor-text-padding-bottom: 20px;
   --ui-editor-container-padding-bottom: 30px;
 
-  width: 100%;
   position: relative;
+  width: 100%;
 }
 
 .legacy-editor .w-e-toolbar {
@@ -42,25 +42,25 @@
 }
 
 .legacy-editor__count {
-  width: var(--ui-editor-count-width);
   position: absolute;
   right: var(--ui-editor-count-inline-end);
   bottom: var(--ui-editor-count-block-end);
+  z-index: 2;
   display: flex;
+  width: var(--ui-editor-count-width);
+  padding: var(--ui-editor-count-padding-block) var(--ui-editor-count-padding-inline);
+  font-size: var(--text-caption-size);
+  color: var(--color-text-default);
+  background: var(--color-white);
   align-items: flex-end;
   justify-content: flex-end;
   margin-left: 10px;
-  z-index: 2;
-  padding: var(--ui-editor-count-padding-block) var(--ui-editor-count-padding-inline);
-  background: var(--color-white);
   border-top-left-radius: var(--ui-editor-radius);
-  color: var(--color-text-default);
-  font-size: var(--text-caption-size);
 }
 
 .legacy-editor__count-value {
-  color: var(--color-text-muted);
   font-size: inherit;
+  color: var(--color-text-muted);
 }
 
 .legacy-editor__count-value--danger {

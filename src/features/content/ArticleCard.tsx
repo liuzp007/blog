@@ -186,7 +186,7 @@ export default memo(function ArticleCard({ meta }: ArticleCardProps) {
       footer={
         <div className="article-card__footer-main flex flex-1 items-center justify-between gap-2">
           <span className="article-card__foottext ui-caption inline-flex items-center gap-1 text-[11px] text-[var(--article-card-foottext)]">
-             {meta.date.replace(/-/g, '.')}
+            {meta.date.replace(/-/g, '.')}
           </span>
           <span className="article-card__foottext ui-caption inline-flex items-center gap-1 text-[11px] text-[var(--article-card-foottext)]  min-w-[max-content]">
             <EyeOutlined /> {views} 阅读

@@ -4,10 +4,10 @@
  */
 
 .code-block {
+  background: var(--black-alpha-30);
   border: 1px solid var(--glass-border);
   border-radius: var(--ui-card-radius);
   overflow: hidden;
-  background: var(--black-alpha-30);
 }
 
 .code-block__header {
@@ -19,8 +19,8 @@
 }
 
 .code-block__header__title {
-  color: var(--color-slate-300);
   font-size: var(--text-meta-size);
+  color: var(--color-slate-300);
 }
 
 .code-block__header__actions {
@@ -35,7 +35,7 @@
 }
 
 .code-block__content code {
-  color: var(--color-text-soft);
   font-size: var(--ui-code-size);
   line-height: 1.6;
+  color: var(--color-text-soft);
 }

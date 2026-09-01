@@ -42,10 +42,10 @@
 
   position: relative;
   min-height: 100vh;
+  line-height: 1.7;
   color: var(--about-text-primary);
   background: var(--about-bg-primary);
   overflow-x: hidden;
-  line-height: 1.7;
   font-family: var(--font-family-heading);
 }
 
@@ -57,23 +57,23 @@
 
 .cursor-glow {
   position: fixed;
+  z-index: 1;
   width: 400px;
   height: 400px;
-  pointer-events: none;
-  z-index: 1;
   background: radial-gradient(circle, var(--about-accent-glow) 0%, transparent 70%);
-  transform: translate(-50%, -50%);
-  transition: opacity 0.3s ease;
   opacity: 0.6;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
 }
 
 #bg-canvas {
   position: fixed;
   top: 0;
   left: 0;
+  z-index: 0;
   width: 100%;
   height: 100%;
-  z-index: 0;
   opacity: 0.7;
 }
 
@@ -87,9 +87,9 @@
 .about-nav .logo {
   height: auto;
   padding: 0;
-  border: none;
-  background: transparent;
   font-size: 1.5rem;
+  background: transparent;
+  border: none;
   font-weight: 700;
   background-image: linear-gradient(135deg, var(--about-accent-warm), var(--about-accent-gold));
   background-clip: text;
@@ -101,17 +101,17 @@
 }
 
 .nav-links__button {
+  position: relative;
   height: auto;
-  color: var(--about-text-secondary);
-  border: none;
-  background: transparent;
+  padding: 0;
   font-size: 0.9rem;
-  letter-spacing: 0.5px;
+  color: var(--about-text-secondary);
+  background: transparent;
+  border: none;
   transition:
     color 0.3s ease,
     background 0.3s ease;
-  position: relative;
-  padding: 0;
+  letter-spacing: 0.5px;
 }
 
 .nav-links__button::after {
@@ -257,11 +257,11 @@
 }
 
 .skill-fill {
+  width: 0;
   height: 100%;
   background: linear-gradient(90deg, var(--about-accent-warm), var(--about-accent-gold));
-  border-radius: 2px;
-  width: 0;
   transition: width 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  border-radius: 2px;
 }
 
 /* ── Projects ── */
@@ -339,11 +339,11 @@
   --ui-button-padding-inline: 10px;
   --ui-button-radius: var(--button-radius-pill);
 
-  gap: 0.5rem;
-  border: none;
-  background: transparent;
   color: var(--about-accent-warm);
+  background: transparent;
+  border: none;
   transition: gap 0.3s ease;
+  gap: 0.5rem;
 }
 
 .project-link:hover,
@@ -440,14 +440,14 @@
   --ui-button-padding-inline: 0;
   --ui-button-radius: 50%;
 
-  border: 1px solid var(--about-panel-border-strong);
+  font-size: 1.5rem;
   color: var(--about-text-secondary);
-  text-decoration: none;
+  border: 1px solid var(--about-panel-border-strong);
   transition:
     border-color 0.3s ease,
     color 0.3s ease,
     transform 0.3s ease;
-  font-size: 1.5rem;
+  text-decoration: none;
 }
 
 .contact-link:hover,
@@ -458,10 +458,10 @@
 }
 
 .contact-email {
+  position: relative;
   font-size: 1.2rem;
   color: var(--about-accent-warm);
   text-decoration: none;
-  position: relative;
 }
 
 .contact-email::after {
@@ -480,17 +480,17 @@
   position: relative;
   z-index: 10;
   padding: 2rem;
-  text-align: center;
-  color: var(--about-text-secondary);
   font-size: 0.8rem;
+  color: var(--about-text-secondary);
+  text-align: center;
   border-top: 1px solid var(--about-panel-border);
 }
 
 /* ── Project Detail Modal ── */
 
 .project-detail-modal .ant-modal-content {
-  background: var(--about-bg-secondary);
   color: var(--about-text-primary);
+  background: var(--about-bg-secondary);
   border: 1px solid var(--about-panel-border-stronger);
 }
 
@@ -507,8 +507,8 @@
 .project-detail__summary,
 .project-detail__summary.ui-muted-text {
   margin: 0 0 1rem;
-  color: var(--about-text-secondary);
   line-height: 1.8;
+  color: var(--about-text-secondary);
 }
 
 .project-detail__tag.ui-tag {
@@ -535,8 +535,8 @@
 .project-detail__section p,
 .project-detail__section p.ui-muted-text {
   margin: 0;
-  color: var(--about-text-secondary);
   line-height: 1.8;
+  color: var(--about-text-secondary);
 }
 
 .project-detail__section ul {
@@ -583,9 +583,9 @@
 }
 
 .guestbook-inner {
+  width: 100%;
   max-width: 680px;
   margin: 0 auto;
-  width: 100%;
 }
 
 .guestbook-header {
@@ -624,15 +624,15 @@
 }
 
 .guestbook-form-input .ant-input {
+  color: var(--about-text-primary) !important;
   background: var(--about-bg-primary) !important;
   border-color: var(--about-panel-border-strong) !important;
-  color: var(--about-text-primary) !important;
 }
 
 .guestbook-form-textarea.ant-input {
+  color: var(--about-text-primary) !important;
   background: var(--about-bg-primary) !important;
   border-color: var(--about-panel-border-strong) !important;
-  color: var(--about-text-primary) !important;
   resize: none;
 }
 
@@ -666,10 +666,10 @@
 }
 
 .guestbook-error {
-  text-align: center;
   padding: 24px;
-  color: var(--about-accent-warm);
   font-size: 14px;
+  color: var(--about-accent-warm);
+  text-align: center;
 }
 
 .guestbook-message-list {
@@ -716,9 +716,9 @@
 }
 
 .guestbook-message-action {
-  color: var(--about-text-secondary);
   padding: 2px 4px;
   font-size: 13px;
+  color: var(--about-text-secondary);
   opacity: 0;
   transition:
     opacity 0.2s,
@@ -735,11 +735,11 @@
 }
 
 .guestbook-message-content {
+  margin: 0;
   font-size: 14px;
   line-height: 1.7;
   color: var(--about-text-primary);
-  margin: 0;
-  word-break: break-word;
+  overflow-wrap: anywhere;
   white-space: pre-wrap;
 }
 
@@ -748,12 +748,12 @@
 }
 
 .guestbook-message-reply-btn {
-  opacity: 1;
-  font-size: 12px;
   display: inline-flex;
+  font-size: 12px;
+  color: var(--about-text-secondary);
+  opacity: 1;
   align-items: center;
   gap: 4px;
-  color: var(--about-text-secondary);
 }
 
 .guestbook-replies {

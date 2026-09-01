@@ -33,12 +33,13 @@ pnpm ci:check     # 完整质量门禁（type-check → lint → format:check �
 
 ```bash
 pnpm type-check       # tsc --noEmit
-pnpm lint             # ESLint（仅覆盖 src/features/content/** 和 src/pages/blog-detail/**）
-pnpm format:check     # Prettier（同上，仅覆盖基线范围）
-pnpm audit:style      # 自定义样式审计脚本
+pnpm lint             # ESLint（覆盖整个 src/**/*.{ts,tsx}）
+pnpm format:check     # Prettier（src/**/*.{ts,tsx,scss,css} + package.json 等）
+pnpm lint:style       # stylelint（src/**/*.css、src/**/*.scss）
+pnpm audit:style      # 自定义样式审计脚本（硬编码颜色 / token 治理）
 ```
 
-**重要**：`lint` 和 `format` 当前仅覆盖 `src/features/content/**` 和 `src/pages/blog-detail/**`，不是全仓库。`pre{dev,start,build}` 会自动运行 `scripts/generate-content-meta.mjs` 生成内容元数据。
+**重要**：`lint` 和 `format` 覆盖整个 `src/**`（旧文档写的"仅基线范围"已过时）。`ci:check` 链为 type-check → lint → format:check → lint:style → audit:style → build。`pre{dev,start,build}` 会自动运行 `scripts/generate-content-meta.mjs` 生成内容元数据。
 
 补充说明：
 

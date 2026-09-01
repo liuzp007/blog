@@ -11,14 +11,14 @@
   --home-gap-compact: 10px;
   --home-gap-tag: 6px;
 
+  position: relative;
   width: 100%;
   height: auto;
   min-height: 100dvh;
-  position: relative;
-  overflow: hidden visible;
   color: var(--home-text-primary);
-  font-family: var(--font-family-brand);
   background: var(--home-page-bg);
+  overflow: hidden visible;
+  font-family: var(--font-family-brand);
   scroll-behavior: smooth;
   touch-action: pan-y;
   -webkit-overflow-scrolling: touch;
@@ -70,15 +70,15 @@
 
 .HomeWrap .dog-container {
   position: fixed;
-  left: 16px;
   bottom: 16px;
+  left: 16px;
+  z-index: 88;
   width: 116px;
   height: 116px;
-  z-index: 88;
-  opacity: 0.88;
   padding: 0;
-  border: none;
   background: transparent;
+  border: none;
+  opacity: 0.88;
   cursor: pointer;
 }
 
@@ -101,23 +101,23 @@
 .HomeWrap .hero-nav {
   position: fixed;
   top: 16px;
-  left: 24px;
   right: 24px;
+  left: 24px;
   z-index: 96;
-  border-radius: 24px;
-  border: var(--home-border-soft);
-  background: var(--home-nav-bg);
-  backdrop-filter: blur(18px);
-  box-shadow: var(--home-panel-shadow);
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 18px;
   padding: 14px 18px;
+  background: var(--home-nav-bg);
+  border: var(--home-border-soft);
   transition:
     background 0.3s ease,
     box-shadow 0.3s ease,
     border-color 0.3s ease;
+  border-radius: 24px;
+  backdrop-filter: blur(18px);
+  box-shadow: var(--home-panel-shadow);
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
 }
 
 .HomeWrap .hero-nav--scrolled {
@@ -128,22 +128,22 @@
 
 .HomeWrap .hero-nav__brand,
 .HomeWrap .home-nav__brand {
-  min-width: 0;
   display: flex;
+  min-width: 0;
   align-items: center;
   gap: 10px;
 }
 
 .HomeWrap .hero-nav__brand-button,
 .HomeWrap .home-nav__brand-button {
+  display: flex;
   height: auto;
   padding: 0;
+  line-height: 1.2;
   color: var(--home-text-strong-soft);
   text-align: left;
-  display: flex;
   flex-direction: column;
   align-items: flex-start;
-  line-height: 1.2;
   cursor: pointer;
 }
 
@@ -170,11 +170,11 @@
 .HomeWrap .home-nav__sound {
   height: 40px;
   padding: 0 15px;
-  border-radius: 999px;
-  border: var(--home-border-subtle);
   color: var(--home-text-secondary);
   background: var(--white-alpha-04);
+  border: var(--home-border-subtle);
   transition: all 0.28s ease;
+  border-radius: 999px;
   cursor: pointer;
 }
 
@@ -192,12 +192,12 @@
 .HomeWrap .home-nav__cta {
   height: 40px;
   padding: 0 18px;
-  border: none;
-  border-radius: 999px;
   color: var(--home-text-inverse);
   background: var(--home-gradient-warm);
-  box-shadow: var(--home-button-shadow);
+  border: none;
   transition: all 0.28s ease;
+  border-radius: 999px;
+  box-shadow: var(--home-button-shadow);
   cursor: pointer;
 }
 
@@ -215,10 +215,10 @@
   display: none;
   width: 40px;
   height: 40px;
-  border-radius: 50%;
   color: var(--home-text-secondary);
-  border: var(--home-border-subtle);
   background: var(--white-alpha-05);
+  border: var(--home-border-subtle);
+  border-radius: 50%;
   cursor: pointer;
 }
 
@@ -234,31 +234,31 @@
 }
 
 .HomeWrap .nav-links__button {
+  position: relative;
   height: auto;
   padding: 0;
-  position: relative;
-  color: var(--home-text-nav);
   font-size: 13px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
+  color: var(--home-text-nav);
   background: transparent;
   border: none;
-  box-shadow: none;
   transition:
     color 0.24s ease,
     transform 0.24s ease;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  box-shadow: none;
   cursor: pointer;
 }
 
 .HomeWrap .nav-links__button::after {
-  content: '';
   position: absolute;
-  left: 0;
   bottom: -5px;
+  left: 0;
   width: 0;
   height: 2px;
   background: var(--home-gradient-warm);
   transition: width 0.26s ease;
+  content: '';
 }
 
 .HomeWrap .nav-links__button:hover,
@@ -282,11 +282,11 @@
 
 .HomeWrap section,
 .HomeWrap .home-section {
+  position: relative;
+  z-index: 4;
   width: min(1280px, 100%);
   margin: 0 auto;
   padding: 104px 0;
-  position: relative;
-  z-index: 4;
 }
 
 @supports (content-visibility: auto) {
@@ -326,9 +326,9 @@
 
 .HomeWrap #hero,
 .HomeWrap .home-hero {
+  display: grid;
   min-height: max(92vh, 760px);
   padding-top: clamp(132px, 16vh, 160px);
-  display: grid;
   align-items: center;
   overflow: visible;
 }
@@ -339,11 +339,11 @@
   z-index: 3;
   width: min(780px, 100%);
   margin: 0 auto;
-  text-align: center;
   padding: 42px 48px 38px;
-  border-radius: 34px;
-  border: var(--home-border-soft);
   background: var(--home-hero-panel-bg);
+  border: var(--home-border-soft);
+  text-align: center;
+  border-radius: 34px;
   box-shadow:
     0 28px 68px var(--black-alpha-28),
     inset 0 0 0 1px var(--white-alpha-03);
@@ -356,14 +356,14 @@
   --ui-eyebrow-letter-spacing: 0.24em;
 
   display: inline-flex;
+  padding: 9px 16px;
+  color: var(--home-text-highlight-soft);
+  background: var(--home-tag-bg);
+  border: 1px solid var(--home-border-gold);
   align-items: center;
   gap: 8px;
   margin-bottom: 24px;
-  padding: 9px 16px;
   border-radius: 999px;
-  border: 1px solid var(--home-border-gold);
-  background: var(--home-tag-bg);
-  color: var(--home-text-highlight-soft);
   font-weight: 700;
 }
 
@@ -391,10 +391,10 @@
 }
 
 .HomeWrap .hero-title .highlight {
+  display: inline-block;
   background: var(--home-gradient-warm);
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  display: inline-block;
 }
 
 .HomeWrap .hero-subtitle,
@@ -402,8 +402,8 @@
   --ui-lead-size: 17px;
   --ui-lead-line-height: 1.78;
 
-  margin: 22px auto 0;
   max-width: 720px;
+  margin: 22px auto 0;
   color: var(--home-text-secondary);
 }
 
@@ -413,12 +413,12 @@
 }
 
 .HomeWrap .home-hero__primary {
-  border: none;
-  letter-spacing: 0.02em;
-  background: var(--home-gradient-warm);
   color: var(--home-text-inverse-soft);
-  box-shadow: var(--home-button-shadow-strong);
+  background: var(--home-gradient-warm);
+  border: none;
   transition: all 0.28s ease;
+  letter-spacing: 0.02em;
+  box-shadow: var(--home-button-shadow-strong);
   cursor: pointer;
 }
 
@@ -429,11 +429,11 @@
 }
 
 .HomeWrap .home-hero__secondary {
-  border: 1px solid var(--home-border-accent);
   color: var(--home-text-secondary);
   background: var(--home-secondary-btn-bg);
-  box-shadow: none;
+  border: 1px solid var(--home-border-accent);
   transition: all 0.28s ease;
+  box-shadow: none;
   cursor: pointer;
 }
 
@@ -452,8 +452,8 @@
 
 .HomeWrap .hero-metrics__card,
 .HomeWrap .home-hero__metric {
-  border: var(--home-border-subtle-strong);
   background: var(--home-metric-bg);
+  border: var(--home-border-subtle-strong);
   backdrop-filter: blur(10px);
   text-align: left;
 }
@@ -542,8 +542,8 @@
 
 .HomeWrap .home-section__desc,
 .HomeWrap .home-section__desc.ui-muted-text {
-  margin: 14px auto 0;
   max-width: 760px;
+  margin: 14px auto 0;
   font-size: 15px;
   line-height: 1.76;
   color: var(--home-text-secondary);
@@ -561,28 +561,28 @@
 .HomeWrap .article-media,
 .HomeWrap .home-article-card__media,
 .HomeWrap .media-card__media.home-article-card__media {
-  height: 210px;
-  overflow: hidden;
   position: relative;
+  height: 210px;
   background: linear-gradient(
     160deg,
     color-mix(in srgb, var(--home-accent-cyan) 12%, transparent),
     color-mix(in srgb, var(--home-accent-gold) 8%, transparent)
   );
+  overflow: hidden;
 }
 
 .HomeWrap .home-article-card__signal-canvas {
   position: absolute;
-  inset: 0;
+  display: block;
   width: 100%;
   height: 100%;
-  display: block;
+  inset: 0;
 }
 
 .HomeWrap .home-article-card__media canvas {
+  display: block;
   width: 100%;
   height: 100%;
-  display: block;
 }
 
 .HomeWrap .home-article-card__media::after {
@@ -603,10 +603,10 @@
 .HomeWrap .home-article-card__tag,
 .HomeWrap .media-card__meta .home-article-card__tag {
   padding: 4px 10px;
-  border-radius: 999px;
-  background: color-mix(in srgb, var(--home-accent-gold) 16%, transparent);
-  color: var(--home-text-highlight);
   font-size: 11px;
+  color: var(--home-text-highlight);
+  background: color-mix(in srgb, var(--home-accent-gold) 16%, transparent);
+  border-radius: 999px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
 }
@@ -614,8 +614,8 @@
 .HomeWrap .article-date,
 .HomeWrap .home-article-card__date,
 .HomeWrap .media-card__meta .home-article-card__date {
-  color: var(--home-text-quiet);
   font-size: 12px;
+  color: var(--home-text-quiet);
 }
 
 .HomeWrap .article-title,
@@ -636,27 +636,27 @@
 .HomeWrap .article-excerpt,
 .HomeWrap .home-article-card__excerpt,
 .HomeWrap .media-card__description.home-article-card__excerpt {
-  margin-top: 10px;
-  color: var(--home-text-secondary);
   font-size: 14px;
   line-height: 1.7;
+  color: var(--home-text-secondary);
+  margin-top: 10px;
 }
 
 .HomeWrap .home-article-card__readtime {
-  color: var(--home-text-quiet);
   font-size: 12px;
+  color: var(--home-text-quiet);
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 
 .HomeWrap .home-article-card__cta {
-  color: var(--home-text-highlight);
   font-size: 12px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
+  color: var(--home-text-highlight);
   transition:
     transform 0.24s ease,
     color 0.24s ease;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
 }
 
 .HomeWrap .home-article-card:hover .home-article-card__cta,
@@ -688,8 +688,8 @@
   --ui-tag-letter-spacing: 0.03em;
 
   position: relative;
-  border: var(--home-border-subtle);
   background: var(--home-card-bg);
+  border: var(--home-border-subtle);
   transition:
     transform 0.3s ease,
     border-color 0.3s ease,
@@ -736,18 +736,18 @@
 
 .HomeWrap .experiment-icon,
 .HomeWrap .home-experiment-card__icon {
+  display: inline-flex;
   width: 50px;
   height: 50px;
-  border-radius: 12px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 12px;
   background: linear-gradient(
     135deg,
     color-mix(in srgb, var(--home-accent-gold) 20%, transparent),
     color-mix(in srgb, var(--home-accent-cyan) 18%, transparent)
   );
+  border-radius: 12px;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 12px;
 }
 
 .HomeWrap .home-experiment-card--1 .home-experiment-card__icon {
@@ -790,10 +790,10 @@
 
 .HomeWrap .experiment-desc,
 .HomeWrap .home-experiment-card__desc {
-  margin-top: 8px;
+  display: -webkit-box;
   max-width: 38ch;
   color: var(--home-text-secondary);
-  display: -webkit-box;
+  margin-top: 8px;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
@@ -812,17 +812,17 @@
 
 .HomeWrap .home-experiment-card__cta {
   display: inline-flex;
-  align-items: center;
-  gap: 8px;
   padding: 0;
-  color: var(--home-text-highlight-soft);
   font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
+  color: var(--home-text-highlight-soft);
   transition:
     color 0.24s ease,
     transform 0.24s ease;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
 }
 
 .HomeWrap .home-experiment-card:hover .home-experiment-card__cta,
@@ -899,13 +899,13 @@
 
 .HomeWrap .showcase-card {
   position: relative;
-  border: var(--home-border-soft);
   background: var(--home-showcase-bg);
-  cursor: pointer;
+  border: var(--home-border-soft);
   transition:
     transform 0.34s ease,
     border-color 0.34s ease,
     box-shadow 0.34s ease;
+  cursor: pointer;
 }
 
 .HomeWrap .showcase-card::before {
@@ -1003,13 +1003,9 @@
 }
 
 .HomeWrap .showcase-card__badge {
+  display: inline-flex;
   width: 54px;
   height: 54px;
-  border-radius: 16px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
   font-size: 21px;
   color: color-mix(in srgb, var(--home-text-strong-soft) 98%, #fff);
   background:
@@ -1019,6 +1015,10 @@
       color-mix(in srgb, var(--home-text-strong) 4%, transparent)
     ),
     var(--white-alpha-05);
+  border-radius: 16px;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
   box-shadow: inset 0 1px 0 var(--white-alpha-08);
 }
 
@@ -1028,22 +1028,22 @@
   --ui-overline-letter-spacing: 0.1em;
 
   display: inline-flex;
-  align-items: center;
   min-height: 32px;
   padding: 0 12px;
-  border-radius: 999px;
-  background: var(--white-alpha-05);
   color: var(--home-text-meta);
+  background: var(--white-alpha-05);
+  align-items: center;
+  border-radius: 999px;
 }
 
 .HomeWrap .showcase-card__mode {
   width: fit-content;
   min-height: auto;
   padding: 0;
-  border-radius: 0;
-  background: transparent;
-  color: var(--home-text-highlight-soft);
   font-size: 12px;
+  color: var(--home-text-highlight-soft);
+  background: transparent;
+  border-radius: 0;
   font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -1055,8 +1055,8 @@
 }
 
 .HomeWrap .showcase-card__desc {
-  margin: 10px 0 0;
   max-width: 42ch;
+  margin: 10px 0 0;
   color: var(--home-text-nav);
 }
 
@@ -1117,39 +1117,39 @@
 }
 
 .HomeWrap .showcase-card__tag--more.ui-tag {
-  border-color: var(--home-border-faint);
-  background: var(--white-alpha-04);
   color: var(--home-text-quiet);
+  background: var(--white-alpha-04);
+  border-color: var(--home-border-faint);
 }
 
 .HomeWrap .showcase-card__cta {
   display: inline-flex;
-  align-items: center;
-  gap: 8px;
   min-height: 38px;
   padding: 0 14px;
-  border-radius: 999px;
-  background: linear-gradient(180deg, var(--white-alpha-08), transparent), var(--white-alpha-04);
-  box-shadow: inset 0 1px 0 var(--white-alpha-10);
-  color: var(--home-text-strong);
   font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  white-space: nowrap;
+  color: var(--home-text-strong);
+  background: linear-gradient(180deg, var(--white-alpha-08), transparent), var(--white-alpha-04);
   transition:
     transform 0.24s ease,
     border-color 0.24s ease,
     background 0.24s ease,
     color 0.24s ease;
+  align-items: center;
+  gap: 8px;
+  border-radius: 999px;
+  box-shadow: inset 0 1px 0 var(--white-alpha-10);
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  white-space: nowrap;
 }
 
 .HomeWrap .showcase-card:hover .showcase-card__cta,
 .HomeWrap .showcase-card:focus-within .showcase-card__cta {
+  color: var(--home-text-surface);
+  background: linear-gradient(180deg, var(--white-alpha-12), transparent), var(--white-alpha-06);
   transform: translateX(2px);
   border-color: var(--home-border-accent-hover);
-  background: linear-gradient(180deg, var(--white-alpha-12), transparent), var(--white-alpha-06);
-  color: var(--home-text-surface);
 }
 
 .HomeWrap #interactive-demo,
@@ -1159,9 +1159,9 @@
 
 .HomeWrap .demo-container,
 .HomeWrap .home-demo {
-  border-radius: 22px;
-  border: var(--home-border-soft);
   background: var(--home-demo-bg);
+  border: var(--home-border-soft);
+  border-radius: 22px;
   overflow: hidden;
   box-shadow: var(--home-panel-shadow-heavy);
 }
@@ -1214,9 +1214,9 @@
 .HomeWrap .demo-footer,
 .HomeWrap .home-demo__footer {
   padding: 12px 20px;
-  border-top: var(--home-border-faint);
-  color: var(--home-text-tertiary);
   font-size: 12px;
+  color: var(--home-text-tertiary);
+  border-top: var(--home-border-faint);
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
@@ -1233,21 +1233,21 @@
 
 .HomeWrap .timeline-wrapper::before,
 .HomeWrap .home-timeline__list::before {
-  content: '';
   position: absolute;
-  left: 8px;
   top: 8px;
   bottom: 8px;
+  left: 8px;
   width: 2px;
   background: var(--home-timeline-line);
   opacity: 0.9;
+  content: '';
 }
 
 .HomeWrap .timeline-item,
 .HomeWrap .home-timeline__item {
   position: relative;
-  border: var(--home-border-subtle);
   background: var(--home-timeline-bg);
+  border: var(--home-border-subtle);
   transition:
     transform 0.26s ease,
     border-color 0.26s ease;
@@ -1255,16 +1255,16 @@
 
 .HomeWrap .timeline-item::before,
 .HomeWrap .home-timeline__item::before {
-  content: '';
   position: absolute;
-  left: -24px;
   top: 26px;
+  left: -24px;
   width: 14px;
   height: 14px;
-  border-radius: 50%;
   background: var(--home-accent-gold);
-  box-shadow: 0 0 0 6px color-mix(in srgb, var(--home-accent-gold) 12%, transparent);
   opacity: 0.9;
+  content: '';
+  border-radius: 50%;
+  box-shadow: 0 0 0 6px color-mix(in srgb, var(--home-accent-gold) 12%, transparent);
 }
 
 .HomeWrap .timeline-item:hover,
@@ -1299,10 +1299,10 @@
 
 .HomeWrap .contact-form,
 .HomeWrap .home-contact__panel {
-  border-radius: 20px;
-  border: var(--home-border-subtle);
-  background: var(--home-contact-bg);
   padding: 24px;
+  background: var(--home-contact-bg);
+  border: var(--home-border-subtle);
+  border-radius: 20px;
   box-shadow: var(--home-panel-shadow);
 }
 
@@ -1328,13 +1328,13 @@
 
 .HomeWrap .home-contact__link {
   padding: 0;
-  border: none;
-  text-decoration: none;
   color: var(--home-text-meta);
   background: transparent;
+  border: none;
   transition:
     color 0.24s ease,
     transform 0.24s ease;
+  text-decoration: none;
   cursor: pointer;
   box-shadow: none;
 }
@@ -1352,24 +1352,24 @@
 }
 
 .HomeWrap .home-contact__link strong {
-  color: var(--home-text-panel-soft);
   font-size: 14px;
+  color: var(--home-text-panel-soft);
   font-weight: 600;
 }
 
 .HomeWrap .home-contact__link small {
-  color: var(--home-text-muted);
   font-size: 12px;
   line-height: 1.6;
+  color: var(--home-text-muted);
 }
 
 .HomeWrap .home-contact__entry {
   padding: 14px 16px;
-  border-radius: 14px;
-  border: var(--home-border-subtle);
-  background: var(--white-alpha-03);
   color: var(--home-text-nav);
+  background: var(--white-alpha-03);
+  border: var(--home-border-subtle);
   transition: all 0.24s ease;
+  border-radius: 14px;
 }
 
 .HomeWrap .home-contact__entry:hover,
@@ -1381,15 +1381,15 @@
 }
 
 .HomeWrap .home-contact__entry strong {
-  color: color-mix(in srgb, var(--home-text-strong-soft) 96%, #fff);
   font-size: 14px;
+  color: color-mix(in srgb, var(--home-text-strong-soft) 96%, #fff);
   font-weight: 600;
 }
 
 .HomeWrap .home-contact__entry small {
-  color: var(--home-text-muted);
   font-size: 12px;
   line-height: 1.6;
+  color: var(--home-text-muted);
 }
 
 .HomeWrap .home-contact__panel-title {
@@ -1401,9 +1401,9 @@
 
 .HomeWrap .home-contact__panel-desc {
   margin: 12px 0 22px;
-  color: var(--home-text-muted-strong);
   font-size: 14px;
   line-height: 1.72;
+  color: var(--home-text-muted-strong);
 }
 
 .HomeWrap .home-contact__item {
@@ -1427,14 +1427,14 @@
 .HomeWrap .home-contact__item .ant-input-affix-wrapper.ui-input,
 .HomeWrap .home-contact__item .ant-input-textarea textarea.ui-input {
   width: 100%;
-  border: var(--home-border-subtle);
-  background: var(--white-alpha-03);
   color: var(--home-text-panel-soft);
-  font-family: inherit;
-  outline: none;
+  background: var(--white-alpha-03);
+  border: var(--home-border-subtle);
   transition:
     border-color 0.24s ease,
     box-shadow 0.24s ease;
+  font-family: inherit;
+  outline: none;
 }
 
 .HomeWrap .home-contact__item textarea.ui-input,
@@ -1456,15 +1456,15 @@
 }
 
 .HomeWrap .home-contact__submit {
-  margin-top: 6px;
-  border: none;
-  background: var(--home-gradient-warm);
   color: var(--home-text-inverse);
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  background: var(--home-gradient-warm);
+  border: none;
   transition:
     transform 0.24s ease,
     box-shadow 0.24s ease;
+  margin-top: 6px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
   cursor: pointer;
 }
 
@@ -1507,8 +1507,8 @@
 .HomeWrap .footer-section p,
 .HomeWrap .home-footer__column p {
   margin: 0;
-  line-height: 1.8;
   font-size: 13px;
+  line-height: 1.8;
   color: var(--home-text-tertiary);
 }
 
@@ -1558,22 +1558,22 @@
 .HomeWrap .footer-bottom p,
 .HomeWrap .home-footer__bottom p {
   margin: 0;
-  color: var(--home-text-quiet);
   font-size: 13px;
+  color: var(--home-text-quiet);
 }
 
 .HomeWrap .home-footer__icon {
+  display: inline-flex;
   width: 38px;
   height: 38px;
   padding: 0;
-  border-radius: 50%;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
   color: var(--home-text-nav);
   background: var(--white-alpha-06);
   border: var(--home-border-subtle);
   transition: all 0.24s ease;
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
 }
 
@@ -1606,9 +1606,9 @@
 
 @media (width <= 979px) {
   .HomeWrap .hero-nav {
-    left: 16px;
-    right: 16px;
     top: 12px;
+    right: 16px;
+    left: 16px;
     border-radius: 20px;
   }
 
@@ -1649,9 +1649,9 @@
   }
 
   .HomeWrap .hero-nav {
-    left: 10px;
-    right: 10px;
     top: 10px;
+    right: 10px;
+    left: 10px;
     padding: 11px 12px;
     border-radius: 16px;
     gap: 8px;
@@ -1800,14 +1800,14 @@
 
   .HomeWrap .home-experiment-card__cta {
     width: 100%;
-    justify-content: center;
     min-height: 42px;
-    border-radius: 12px;
     padding: 0 14px;
-    background: linear-gradient(180deg, var(--white-alpha-08), transparent), var(--white-alpha-04);
-    box-shadow: inset 0 1px 0 var(--white-alpha-10);
-    color: var(--home-text-strong);
     font-size: 12px;
+    color: var(--home-text-strong);
+    background: linear-gradient(180deg, var(--white-alpha-08), transparent), var(--white-alpha-04);
+    justify-content: center;
+    border-radius: 12px;
+    box-shadow: inset 0 1px 0 var(--white-alpha-10);
     font-weight: 600;
     letter-spacing: 0.1em;
   }
@@ -1924,9 +1924,9 @@
   }
 
   .HomeWrap .home-footer__link {
+    padding: 1px 0;
     font-size: 12px;
     line-height: 1.3;
-    padding: 1px 0;
   }
 
   .HomeWrap .inspiration-tag.ui-tag,
@@ -1951,10 +1951,10 @@
   }
 
   .HomeWrap .dog-container {
+    bottom: -8px;
+    left: -2px;
     width: 64px;
     height: 64px;
-    left: -2px;
-    bottom: -8px;
     opacity: 0.78;
   }
 
@@ -2067,8 +2067,8 @@
 
 .home-drawer .ant-drawer-content,
 .home-drawer .ant-drawer-header {
-  background: var(--home-surface-drawer);
   color: var(--home-text-drawer);
+  background: var(--home-surface-drawer);
 }
 
 .home-drawer .ant-drawer-title,
@@ -2079,10 +2079,10 @@
 .home-drawer__item {
   height: auto;
   padding: 14px;
-  border-radius: 14px;
-  border: var(--home-border-subtle);
-  background: var(--home-drawer-item-bg);
   color: color-mix(in srgb, var(--home-text-primary) 94%, #fff);
+  background: var(--home-drawer-item-bg);
+  border: var(--home-border-subtle);
+  border-radius: 14px;
   cursor: pointer;
 }
 
@@ -2099,10 +2099,10 @@
 }
 
 .home-drawer__item small {
-  color: var(--home-text-secondary);
-  white-space: normal;
   font-size: 12px;
   line-height: 1.66;
+  color: var(--home-text-secondary);
+  white-space: normal;
 }
 
 .line-dog__tongue {

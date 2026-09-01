@@ -29,8 +29,8 @@ pre[class*='language-']:hover {
 
 /* Scrollbar */
 pre[class*='language-']::-webkit-scrollbar {
-  height: 6px;
   width: 6px;
+  height: 6px;
 }
 
 pre[class*='language-']::-webkit-scrollbar-track {

@@ -38,52 +38,52 @@
 }
 
 .ant-btn-primary {
-  border: 1px solid var(--ui-button-primary-border, var(--button-primary-border));
-  background: var(--ui-button-primary-bg, var(--button-primary-bg));
   color: var(--ui-button-primary-text, var(--button-primary-text));
+  background: var(--ui-button-primary-bg, var(--button-primary-bg));
+  border: 1px solid var(--ui-button-primary-border, var(--button-primary-border));
   box-shadow: var(--shadow-xs);
 }
 
 .ant-btn-primary:hover,
 .ant-btn-primary:focus {
+  color: var(--ui-button-primary-text, var(--button-primary-text));
   background: var(--ui-button-primary-bg-hover, var(--button-primary-bg-hover));
   border-color: transparent;
-  color: var(--ui-button-primary-text, var(--button-primary-text));
 }
 
 .ant-btn-default {
-  border: 1px solid var(--button-secondary-border);
-  background: var(--button-secondary-bg);
   color: var(--button-secondary-text);
+  background: var(--button-secondary-bg);
+  border: 1px solid var(--button-secondary-border);
 }
 
 .ant-btn-default:hover,
 .ant-btn-default:focus {
-  border-color: var(--button-secondary-border);
-  background: var(--button-secondary-bg-hover);
   color: var(--button-secondary-text);
+  background: var(--button-secondary-bg-hover);
+  border-color: var(--button-secondary-border);
 }
 
 .ant-btn-text,
 .ant-btn-link {
-  border: 1px solid var(--ui-button-ghost-border, var(--button-ghost-border));
-  background: var(--ui-button-ghost-bg, var(--button-ghost-bg));
   color: var(--ui-button-ghost-text, var(--button-ghost-text));
+  background: var(--ui-button-ghost-bg, var(--button-ghost-bg));
+  border: 1px solid var(--ui-button-ghost-border, var(--button-ghost-border));
 }
 
 .ant-btn-text:hover,
 .ant-btn-text:focus,
 .ant-btn-link:hover,
 .ant-btn-link:focus {
-  background: var(--ui-button-ghost-bg-hover, var(--button-ghost-bg-hover));
   color: var(--ui-button-ghost-text, var(--button-ghost-text));
+  background: var(--ui-button-ghost-bg-hover, var(--button-ghost-bg-hover));
 }
 
 .ant-btn[disabled],
 .ant-btn-disabled {
+  color: var(--button-disabled-text);
   background: var(--button-disabled-bg);
   border-color: var(--button-disabled-border);
-  color: var(--button-disabled-text);
   box-shadow: none;
 }
 
@@ -110,8 +110,8 @@
 }
 
 .ant-select-selector {
-  background: var(--white-alpha-06);
   color: var(--color-text-soft);
+  background: var(--white-alpha-06);
   border-color: var(--glass-border-strong);
 }
 
@@ -153,8 +153,8 @@
 
 .ant-select-single .ant-select-selector .ant-select-selection-item {
   font-size: 12px;
-  color: var(--color-text-default);
   line-height: var(--antd-pagination-control-size);
+  color: var(--color-text-default);
 }
 
 .ant-select-item-option-content {
@@ -168,8 +168,8 @@
 }
 
 .ant-pagination-item-active a {
-  color: var(--color-white);
   font-size: 14px;
+  color: var(--color-white);
 }
 
 .ant-pagination-item:focus,

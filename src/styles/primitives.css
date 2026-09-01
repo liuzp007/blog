@@ -1,7 +1,7 @@
 html {
+  min-height: 100%;
   font-size: 16px;
   background-color: var(--color-page-bg);
-  min-height: 100%;
   overscroll-behavior-y: none;
 }
 
@@ -13,13 +13,13 @@ html {
 
 body {
   min-height: 100vh;
+  font-size: var(--text-body-size);
+  line-height: var(--text-body-line-height);
+  color: var(--color-text-primary);
   background:
     radial-gradient(circle at top, var(--color-accent-cyan-soft), transparent 32%),
     linear-gradient(180deg, var(--color-page-bg) 0%, var(--color-page-bg-secondary) 100%);
-  color: var(--color-text-primary);
   font-family: var(--font-family-body);
-  font-size: var(--text-body-size);
-  line-height: var(--text-body-line-height);
   font-weight: var(--font-weight-regular);
 }
 
@@ -75,10 +75,10 @@ h3,
 h4,
 h5,
 h6 {
+  line-height: var(--heading-line-height);
   color: var(--color-text-heading);
   font-family: var(--font-family-heading);
   font-weight: var(--heading-font-weight);
-  line-height: var(--heading-line-height);
   letter-spacing: -0.02em;
   margin-bottom: var(--space-4);
 }
@@ -163,8 +163,8 @@ img {
 }
 
 img {
-  max-width: 100%;
   height: auto;
+  max-width: 100%;
   border-radius: 8px;
 }
 
@@ -181,8 +181,8 @@ table {
 }
 
 hr {
-  border: none;
   height: 1px;
+  border: none;
 }
 
 code,

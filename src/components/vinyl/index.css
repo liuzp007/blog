@@ -1,17 +1,17 @@
 .vinyl-record {
   --vinyl-size: 20px;
 
-  inline-size: var(--vinyl-size);
-  block-size: var(--vinyl-size);
   position: relative;
   display: inline-flex;
+  padding: 0;
+  border: none;
+  inline-size: var(--vinyl-size);
+  block-size: var(--vinyl-size);
   align-items: center;
   justify-content: center;
   border-radius: 50%;
   background-color: var(--color-black);
   box-shadow: 0 0 10px var(--black-alpha-50);
-  border: none;
-  padding: 0;
 }
 
 .vinyl-record.rotate {

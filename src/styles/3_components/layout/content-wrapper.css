@@ -12,6 +12,7 @@
   position: absolute;
   inset: 0;
   pointer-events: none;
+
   /* 伪元素自身继承圆角，让装饰背景不溢出卡片 */
   border-radius: inherit;
 }
@@ -45,10 +46,10 @@
 
 .content-wrapper--surface-plain::before {
   z-index: 1;
-  opacity: 0.65;
   background:
     radial-gradient(circle at 16% 0%, var(--color-accent-cyan-soft) 0%, transparent 36%),
     radial-gradient(circle at 84% 12%, var(--color-accent-orange-soft) 0%, transparent 38%);
+  opacity: 0.65;
 }
 
 /* body 底部留白 — 当内容溢出 wrapper 时，padding 仍在内容实际底部 */

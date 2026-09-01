@@ -17,15 +17,15 @@
 }
 
 .collapsible-navigation__menu .ant-menu-item {
-  margin: 4px 0;
-  display: flex;
-  align-items: center;
   position: relative;
-  border-radius: 8px;
+  display: flex;
+  margin: 4px 0;
   transition:
     transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
     color 0.3s ease,
     background-color 0.3s ease;
+  align-items: center;
+  border-radius: 8px;
 }
 
 .collapsible-navigation__menu .ant-menu-item:hover {
@@ -41,15 +41,15 @@
 }
 
 .collapsible-navigation__menu .ant-menu-item.ant-menu-item-selected::after {
-  content: '';
   position: absolute;
-  left: -8px;
   top: 50%;
+  left: -8px;
   width: 6px;
   height: 6px;
+  background: var(--color-indigo-500);
+  content: '';
   transform: translateY(-50%);
   border-radius: 50%;
-  background: var(--color-indigo-500);
   box-shadow: 0 0 8px var(--indigo-alpha-50);
 }
 

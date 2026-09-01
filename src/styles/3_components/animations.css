@@ -12,6 +12,7 @@
     filter: blur(14px);
     opacity: 0;
   }
+
   100% {
     filter: blur(0);
     opacity: 1;
@@ -23,6 +24,7 @@
   0% {
     transform: rotate(-4deg) translate(0);
   }
+
   100% {
     transform: rotate(-4deg) translate(1%, 0.5%);
   }
@@ -33,6 +35,7 @@
   0% {
     transform: translateX(0);
   }
+
   100% {
     transform: translateX(calc(-100% - var(--gap, 1rem)));
   }
@@ -43,6 +46,7 @@
   0% {
     transform: translateX(calc(-100% - var(--gap, 1rem)));
   }
+
   100% {
     transform: translateX(0);
   }
@@ -54,6 +58,7 @@
     opacity: 0;
     transform: translateY(30px);
   }
+
   100% {
     opacity: 1;
     transform: translateY(0);
@@ -112,7 +117,7 @@ html::-webkit-scrollbar-track {
 }
 
 html::-webkit-scrollbar-thumb {
-  background: rgba(251, 191, 36, 0.3);
+  background: rgb(251 191 36 / 30%);
   border-radius: 3px;
   transition:
     background 0.2s,
@@ -120,15 +125,15 @@ html::-webkit-scrollbar-thumb {
 }
 
 html.is-scrolling::-webkit-scrollbar-thumb {
-  background: rgba(251, 191, 36, 1);
+  background: rgb(251 191 36 / 100%);
 }
 
 /* Firefox */
 html {
   scrollbar-width: thin;
-  scrollbar-color: rgba(251, 191, 36, 0.3) transparent;
+  scrollbar-color: rgb(251 191 36 / 30%) transparent;
 }
 
 html.is-scrolling {
-  scrollbar-color: rgba(251, 191, 36, 1) transparent;
+  scrollbar-color: rgb(251 191 36 / 100%) transparent;
 }

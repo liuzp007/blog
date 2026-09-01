@@ -33,12 +33,12 @@
 }
 
 .main-layout__main code:not([class*='language-']) {
+  padding: 2px 6px;
+  font-size: 0.9em;
+  color: var(--accent-pink, var(--color-accent-pink));
   background: var(--danger-alpha-10);
   border: 1px solid var(--danger-alpha-60);
-  padding: 2px 6px;
   border-radius: 4px;
-  color: var(--accent-pink, var(--color-accent-pink));
   font-family: var(--font-family-mono);
   box-shadow: 0 0 5px var(--danger-alpha-10);
-  font-size: 0.9em;
 }

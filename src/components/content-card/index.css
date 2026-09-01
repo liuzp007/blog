@@ -1,7 +1,7 @@
 .content-card__skeleton {
-  animation: content-card-shimmer 1.5s infinite;
   opacity: 1;
   transition: opacity 0.3s ease;
+  animation: content-card-shimmer 1.5s infinite;
 }
 
 .content-card__progressive-image[data-loaded='true'] .content-card__skeleton {

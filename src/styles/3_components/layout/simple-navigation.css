@@ -15,11 +15,11 @@
 
 .custom-menu.ant-menu,
 .custom-menu.ant-menu-inline {
+  font-size: var(--text-body-size);
+  color: var(--white-alpha-90);
   background: transparent;
   border: none;
   border-inline-end: none;
-  color: var(--white-alpha-90);
-  font-size: var(--text-body-size);
   padding-block: 8px;
 }
 
@@ -30,28 +30,28 @@
 
 .custom-menu.ant-menu-dark .ant-menu-item,
 .custom-menu.ant-menu-dark .ant-menu-submenu-title {
-  margin: 4px 0;
-  border-radius: 10px;
   height: auto;
-  line-height: 1.5;
+  margin: 4px 0;
   padding: 8px 12px;
+  line-height: 1.5;
   transition:
     background-color var(--motion-fast) var(--easing-standard),
     color var(--motion-fast) var(--easing-standard),
     transform var(--motion-fast) var(--easing-standard);
+  border-radius: 10px;
 }
 
 .custom-menu.ant-menu-dark .ant-menu-item:hover,
 .custom-menu.ant-menu-dark .ant-menu-submenu-title:hover,
 .custom-menu.ant-menu-dark .ant-menu-submenu-open > .ant-menu-submenu-title {
-  background: var(--indigo-alpha-20);
   color: var(--color-white);
+  background: var(--indigo-alpha-20);
   transform: translateX(2px);
 }
 
 .custom-menu.ant-menu-dark .ant-menu-item-selected {
-  background: var(--indigo-alpha-30);
   color: var(--color-white);
+  background: var(--indigo-alpha-30);
   font-weight: var(--font-weight-medium);
 }
 
@@ -94,8 +94,8 @@
 }
 
 .custom-menu .ant-menu-submenu-arrow {
-  color: var(--white-alpha-70);
   font-size: 12px;
+  color: var(--white-alpha-70);
 }
 
 .custom-menu .ant-menu-item-group {
@@ -103,10 +103,10 @@
 }
 
 .custom-menu .ant-menu-item-group-title {
-  margin-bottom: 4px;
   padding: 4px 8px;
-  color: var(--white-alpha-60);
   font-size: var(--text-caption-size);
+  color: var(--white-alpha-60);
+  margin-bottom: 4px;
 }
 
 @media (width <= 768px) {

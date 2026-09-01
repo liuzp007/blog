@@ -20,33 +20,33 @@
 }
 
 .confirm-dialog {
+  position: absolute;
+  top: 50%;
+  left: 50%;
   width: min(calc(100vw - 32px), var(--ui-confirm-dialog-width));
   min-height: var(--ui-confirm-dialog-min-height);
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
   background: var(--color-white);
+  transform: translate(-50%, -50%);
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-lg);
 }
 
 .confirm-dialog__title {
-  min-height: var(--ui-confirm-dialog-header-height);
-  padding-inline: var(--ui-confirm-dialog-padding-inline);
   display: flex;
-  align-items: center;
+  min-height: var(--ui-confirm-dialog-header-height);
   font-size: 16px;
   color: var(--color-text-default);
   background: var(--color-surface-muted);
+  padding-inline: var(--ui-confirm-dialog-padding-inline);
+  align-items: center;
   border-top-left-radius: var(--radius-md);
   border-top-right-radius: var(--radius-md);
 }
 
 .confirm-dialog__body-inner {
+  display: flex;
   padding: 30px var(--ui-confirm-dialog-body-inline-end) var(--ui-confirm-dialog-body-block-end)
     var(--ui-confirm-dialog-padding-inline);
-  display: flex;
   align-items: flex-start;
   gap: var(--ui-confirm-dialog-icon-gap);
 }
@@ -60,13 +60,13 @@
 .confirm-dialog__text {
   margin: 0;
   font-size: 14px;
-  color: var(--color-text-default);
   line-height: var(--line-height-relaxed);
+  color: var(--color-text-default);
 }
 
 .confirm-dialog__footer {
-  padding: 0 var(--ui-confirm-dialog-padding-inline) 12px;
   display: flex;
+  padding: 0 var(--ui-confirm-dialog-padding-inline) 12px;
   justify-content: flex-end;
   gap: var(--ui-confirm-dialog-action-gap);
 }
@@ -82,19 +82,19 @@
   --ui-confirm-toast-gap: 12px;
 
   position: fixed;
-  left: 50%;
   top: 50%;
-  transform: translate(-50%, -50%);
+  left: 50%;
   z-index: 200000;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: var(--ui-confirm-toast-gap);
   min-width: var(--ui-confirm-toast-min-width);
   min-height: var(--ui-confirm-toast-height);
   padding: 10px var(--ui-confirm-toast-padding-inline);
-  box-sizing: border-box;
   background: var(--black-alpha-70);
+  transform: translate(-50%, -50%);
+  align-items: center;
+  justify-content: center;
+  gap: var(--ui-confirm-toast-gap);
+  box-sizing: border-box;
   border-radius: var(--radius-sm);
 }
 

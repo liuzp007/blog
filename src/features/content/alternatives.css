@@ -3,23 +3,23 @@
  * 其余布局、间距、排版与多列壳体统一迁回 TSX，用 Tailwind 风格类名表达。
  */
 .timeline::before {
-  content: '';
   position: absolute;
-  left: 8px;
   top: 0;
   bottom: 0;
+  left: 8px;
   width: 2px;
   background: linear-gradient(180deg, var(--white-alpha-08), var(--white-alpha-02));
+  content: '';
 }
 
 .timeline__dot {
   position: absolute;
-  left: -21px;
   top: 2px;
+  left: -21px;
   width: 12px;
   height: 12px;
-  border-radius: 50%;
   background: var(--color-indigo-400);
+  border-radius: 50%;
   box-shadow: 0 0 0 2px var(--indigo-400-alpha-40);
 }
 
@@ -42,13 +42,13 @@
 }
 
 .timeline__title::after {
-  content: ' /';
-  opacity: 0;
   color: color-mix(in srgb, var(--color-indigo-300) 78%, var(--color-white) 22%);
-  transform: translateX(-4px);
+  opacity: 0;
   transition:
     opacity 0.2s ease,
     transform 0.2s ease;
+  content: ' /';
+  transform: translateX(-4px);
 }
 
 .timeline__title:hover,
