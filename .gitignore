@@ -47,3 +47,7 @@ lerna-debug.log*
 
 # Dev screenshots
 *.debug.png
+
+# 本地页面快照 / 审计产物
+*-snapshot.txt
+*-snapshot.md

@@ -54,7 +54,22 @@
       "Bash(sort -t: -k2 -rn)",
       "Bash(npm run *)",
       "Bash(sort -k3 -nr)",
-      "Bash(grep -E '\\\\.\\(js|ts|jsx|tsx\\)$')"
+      "Bash(grep -E '\\\\.\\(js|ts|jsx|tsx\\)$')",
+      "Bash(git add *)",
+      "Bash(git commit *)",
+      "Bash(git push *)",
+      "Bash(awk 'NR>14' src/content/git/git-branch-strategy-at-scale.md)",
+      "Bash(grep -v '```')",
+      "Bash(awk 'NR>14 && !/^```/' /Users/mac/Desktop/project/blog/src/content/git/git-branch-strategy-at-scale.md)",
+      "Bash(awk 'NR>14' /Users/mac/Desktop/project/blog/src/content/git/git-branch-strategy-at-scale.md)",
+      "Bash(grep -c '```' vite-large-scale-governance.md)",
+      "Bash(grep -n '```' vite-large-scale-governance.md)",
+      "Bash(grep -rE \"SUPABASE_ACCESS_TOKEN\\\\s*=\\\\s*[A-Za-z0-9_\\\\-]{20,}\" --include=\"*.md\" --include=\"*.json\" --include=\"*.toml\" --include=\"*.yml\" --include=\"*.sh\" --include=\"*.ts\" --include=\"*.js\" .)",
+      "Bash(grep -zE '\\\\.\\(png|jpe?g|gif|webp|svg|ico|bmp\\)$')",
+      "Bash(xargs -0 rm -v)"
     ]
-  }
+  },
+  "disabledMcpjsonServers": [
+    "codegraph"
+  ]
 }
