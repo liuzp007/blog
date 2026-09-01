@@ -144,6 +144,17 @@ moment      → dayjs        （兼容性别名）
 
 ## 错误经验记录
 
+### 新增文章未出现在 sitemap/RSS/搜索索引
+
+- **问题描述**：新增 2 篇文章并部署后，线上 `sitemap.xml` 仍为 33 条，新文章不在 sitemap、RSS、搜索索引中
+- **根本原因**：`"build": "vite build"` 不会运行 `build:seo` 和 `build:search`，`public/` 下的 `sitemap.xml`、`rss.xml`、`search-index.json` 是旧构建遗留的陈旧文件，vite build 只是把它们原样复制进 dist
+- **解决方法**：将生成脚本并入 build 链：`"build": "node scripts/generate-sitemap.mjs && node scripts/generate-rss.mjs && node scripts/generate-search-index.mjs && vite build"`
+- **相关文件**：`package.json`、`scripts/generate-sitemap.mjs`、`scripts/generate-rss.mjs`、`scripts/generate-search-index.mjs`
+- **注意事项**：
+  - `prebuild` 只生成 `contentMeta.json`（站点列表页数据），SEO/搜索文件是独立脚本，改动文章后必须重新生成
+  - `public/` 下的 SEO 文件被 git 跟踪，内容变更后需重新生成并提交
+  - 部署后验证方式：`curl -sL <线上地址>/sitemap.xml | grep -c '<url>'` 对比文章总数
+
 ### 启用 noUnusedLocals / noUnusedParameters 后修复 121 个错误
 
 - **问题描述**：启用 `noUnusedLocals: true` 和 `noUnusedParameters: true` 后，type-check 报出 121 个错误
