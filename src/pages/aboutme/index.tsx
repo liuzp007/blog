@@ -5,6 +5,7 @@ import { Link, RouteComponentProps, withRouter } from 'react-router-dom'
 import * as THREE from 'three'
 import TiltCard from '@/components/ui/tilt-card'
 import SectionNav from '@/components/section-nav'
+import { allMetas, type ContentMeta } from '@/features/content/contentCatalog'
 import { composeHslAlphaColor } from '@/utils/color-runtime'
 import { useAppSelector } from '@/store'
 import '@/styles/themes/about-pages.css'
@@ -100,15 +101,7 @@ interface ProjectCard {
   highlights: string[]
 }
 
-interface BlogCard {
-  date: string
-  title: string
-  excerpt: string
-  badge: string
-  path: string
-}
-
-const CONTACT_EMAIL = 'roc.liu.sx.work@gmail.com'
+const CONTACT_EMAIL = 'roc.liu.sx@gmail.com'
 
 const NAV_ITEMS: NavItem[] = [
   { id: 'about', label: '关于' },
@@ -122,30 +115,30 @@ const SKILL_CATEGORIES: SkillCategory[] = [
   {
     title: '核心技能（精通）',
     items: [
-      { name: 'React 全家桶（Hooks/Context/Redux）', percent: 95 },
-      { name: 'TypeScript', percent: 95 },
-      { name: '组件化设计与开发', percent: 90 },
-      { name: 'Webpack / Vite 构建优化', percent: 90 },
-      { name: '首屏加载优化 / 虚拟滚动 / Web Worker', percent: 90 }
+      { name: 'React 全家桶（Hooks / Redux / Recoil）', percent: 95 },
+      { name: 'TypeScript / 设计模式与 SOLID', percent: 95 },
+      { name: '微前端架构（qiankun / wujie / Micro App）', percent: 90 },
+      { name: 'Webpack / Vite 构建优化与自研插件', percent: 90 },
+      { name: '首屏性能优化（SSR / FCP / LCP 治理）', percent: 90 }
     ]
   },
   {
     title: '拓展技能（熟练）',
     items: [
-      { name: 'React Native', percent: 85 },
-      { name: 'Vue', percent: 85 },
-      { name: '微前端（Micro App）', percent: 88 },
+      { name: 'React Native（原生模块 / FlashList）', percent: 85 },
+      { name: 'Vue2 / Vue3（Pinia / Vue Router）', percent: 85 },
+      { name: 'Next.js SSR 架构', percent: 80 },
       { name: 'Three.js / ECharts 可视化', percent: 82 },
-      { name: 'Taro 多端适配', percent: 80 }
+      { name: 'Taro / UniApp 跨端小程序', percent: 80 }
     ]
   },
   {
     title: '工程工具与更多',
     items: [
-      { name: 'Node.js / Express', percent: 78 },
-      { name: 'ESLint / Prettier 代码规范', percent: 88 },
-      { name: 'GitHub Actions 自动化部署', percent: 75 },
-      { name: 'AI 辅助研发（Claude Code、Codex）', percent: 85 },
+      { name: '前端工程化（Multirepo / Monorepo 脚手架）', percent: 88 },
+      { name: 'GraphQL / PWA / 低代码引擎', percent: 80 },
+      { name: 'Node.js BFF（Express / Koa2）', percent: 78 },
+      { name: 'AI 辅助研发（Cursor / Claude Code / Codex）', percent: 90 },
       { name: '大模型基础 / LoRA / SFT 微调概念', percent: 70 }
     ]
   }
@@ -210,29 +203,13 @@ const PROJECTS: ProjectCard[] = [
   }
 ]
 
-const BLOGS: BlogCard[] = [
-  {
-    date: '2024年12月',
-    title: '用 Canvas 创建粒子系统：从入门到精通',
-    excerpt: '深入探讨 Canvas 粒子系统的优化技巧与创意应用。',
-    badge: 'CANVAS',
-    path: '/blog'
-  },
-  {
-    date: '2024年11月',
-    title: 'WebGL 着色器艺术：光的舞蹈',
-    excerpt: '探索 GLSL 着色器的更多可能，创造更具有氛围感的视觉效果。',
-    badge: 'WEBGL',
-    path: '/blog'
-  },
-  {
-    date: '2024年10月',
-    title: '生成艺术中的随机性与秩序',
-    excerpt: '如何在算法中平衡控制与偶然，让结果既有结构也有惊喜。',
-    badge: 'VIDEO',
-    path: '/blog'
-  }
-]
+// 最新文章取自内容目录（构建时从 src/content 自动生成的元数据，已过滤草稿、按日期倒序）
+const LATEST_BLOGS: ContentMeta[] = allMetas.slice(0, 3)
+
+const formatBlogDate = (date: string) => {
+  const [year, month] = date.split('-')
+  return month ? `${year}年${Number(month)}月` : date
+}
 
 const CONTACT_LINKS = [
   { label: 'G', href: `mailto:${CONTACT_EMAIL}`, title: '发邮件联系' },
@@ -244,13 +221,6 @@ const CONTACT_LINKS = [
 // rerender-hoist-jsx: 静态数据映射函数提取到模块级
 const TAG_TONES = ['ui-tag--tone-coral', 'ui-tag--tone-gold', 'ui-tag--tone-mint'] as const
 const getTagToneClass = (index: number) => TAG_TONES[index % TAG_TONES.length]
-
-const getBlogBadgeTone = (badge: string) => {
-  const key = badge.trim().toLowerCase()
-  if (key.includes('canvas')) return 'ui-tag--tone-coral'
-  if (key.includes('webgl')) return 'ui-tag--tone-gold'
-  return 'ui-tag--tone-mint'
-}
 
 // rendering-hoist-jsx: 静态 JSX 提取到模块级
 const LOW_TIER_GRADIENT_FALLBACK = (
@@ -867,16 +837,17 @@ export default withRouter(function AboutMe({ history: _history }: AboutMeProps) 
           <div className="about-grid grid grid-cols-2 items-center gap-16 max-md:grid-cols-1">
             <div className="about-text reveal">
               <p className="ui-lead-text">
-                我是 Roc，一名前端开发工程师，坐标太原。5
-                年来从教育科技到金融科技再到互联网大厂，一直在做同一件事：用代码构建更好的前端体验。
+                我是 Roc，一名前端开发工程师，坐标太原。6
+                年来从教育科技、全球头部数字资产交易平台到小米，一直在做同一件事：用代码构建更好的前端体验。
               </p>
               <p className="ui-body-text">
-                目前专注微前端架构落地与跨端性能优化，工作之外喜欢折腾 Three.js、动效和交互实验。
+                目前专注微前端架构与跨端研发，主导过 5 人以上前端团队，先后支撑 1200
+                万用户量级的交易平台与小米国际化生态；工作之外喜欢折腾 Three.js、动效和交互实验。
               </p>
               <p className="ui-body-text">
-                AI 实践：深度使用 Claude Code、Codex 等 AI
-                工具参与日常研发，掌握代码生成、单元测试自动生成及 CR
-                提效工作流；了解大模型基础原理，了解 LoRA / SFT 等微调概念及开源模型生态。
+                AI 实践：熟练运用 Vibe Coding 工作流（Cursor、Claude Code、Codex
+                等），根据项目特点定制 SKILL 与 Agent（代码生成、单测生成、Code Review
+                提效），整体研发效率提升约 30%；了解大模型基础原理与 LoRA / SFT 等微调概念。
               </p>
               <div className="about-stats mt-8 grid grid-cols-2 gap-8">
                 <div className="stat-item rounded-lg p-6">
@@ -888,8 +859,8 @@ export default withRouter(function AboutMe({ history: _history }: AboutMeProps) 
                   <div className="stat-label">项目级组件开发</div>
                 </div>
                 <div className="stat-item rounded-lg p-6">
-                  <div className="stat-number">2+</div>
-                  <div className="stat-label">年团队管理经验</div>
+                  <div className="stat-number">10+</div>
+                  <div className="stat-label">微前端子系统接入</div>
                 </div>
                 <div className="stat-item rounded-lg p-6">
                   <div className="stat-number">∞</div>
@@ -1010,9 +981,9 @@ export default withRouter(function AboutMe({ history: _history }: AboutMeProps) 
             <h2 className="section-title ui-section-title">最新文章</h2>
           </div>
           <div className="blog-grid grid grid-cols-3 gap-8 max-[1024px]:grid-cols-2 max-md:grid-cols-1">
-            {BLOGS.map((blog, index) => (
+            {LATEST_BLOGS.map((blog, index) => (
               <div
-                key={blog.title}
+                key={blog.slug}
                 className="blog-card ui-card ui-card--media-split ui-card--interactive reveal"
               >
                 <div className="blog-media ui-card__media relative h-40 w-full overflow-hidden">
@@ -1023,17 +994,20 @@ export default withRouter(function AboutMe({ history: _history }: AboutMeProps) 
                       blogCanvasRefs.current[index] = node
                     }}
                   ></canvas>
-                  <span
-                    className={`media-badge ui-tag ui-tag--badge ${getBlogBadgeTone(blog.badge)}`}
-                  >
-                    {blog.badge}
+                  <span className={`media-badge ui-tag ui-tag--badge ${getTagToneClass(index)}`}>
+                    {(blog.category || 'blog').toUpperCase()}
                   </span>
                 </div>
                 <div className="blog-content ui-card__body">
-                  <div className="blog-date ui-meta-text">{blog.date}</div>
+                  <div className="blog-date ui-meta-text">{formatBlogDate(blog.date)}</div>
                   <h3 className="blog-title ui-card-title">{blog.title}</h3>
-                  <p className="blog-excerpt ui-body-text">{blog.excerpt}</p>
-                  <Link to={blog.path} className="project-link ui-button-ghost ui-button-sm">
+                  <p className="blog-excerpt ui-body-text">
+                    {blog.summary.length > 52 ? `${blog.summary.slice(0, 52)}…` : blog.summary}
+                  </p>
+                  <Link
+                    to={`/blog-detail?slug=${encodeURIComponent(blog.slug)}`}
+                    className="project-link ui-button-ghost ui-button-sm"
+                  >
                     进入博客 <ArrowRightOutlined />
                   </Link>
                 </div>
