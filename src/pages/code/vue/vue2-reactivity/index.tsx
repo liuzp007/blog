@@ -357,8 +357,8 @@ export default function Vue2ReactivityPage() {
         style={{
           marginTop: '2rem',
           padding: '1.5rem',
-          background: 'var(--code-indigo-alpha-10)',
-          border: '1px solid var(--code-indigo-alpha-30)',
+          background: 'color-mix(in srgb, var(--color-indigo-500) 10%, transparent)',
+          border: '1px solid color-mix(in srgb, var(--color-indigo-500) 30%, transparent)',
           borderRadius: '12px',
           position: 'relative',
           zIndex: 3
@@ -376,13 +376,18 @@ export default function Vue2ReactivityPage() {
           <div
             style={{
               padding: '1rem',
-              background: 'var(--code-indigo-alpha-05)',
+              background: 'color-mix(in srgb, var(--color-indigo-500) 5%, transparent)',
               borderRadius: '8px',
               textAlign: 'center'
             }}
           >
             <div style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>🎯 数据劫持</div>
-            <div style={{ fontSize: '0.875rem', color: 'var(--white-alpha-70)' }}>
+            <div
+              style={{
+                fontSize: '0.875rem',
+                color: 'color-mix(in srgb, var(--color-white) 70%, transparent)'
+              }}
+            >
               Object.defineProperty
             </div>
           </div>
@@ -390,13 +395,18 @@ export default function Vue2ReactivityPage() {
           <div
             style={{
               padding: '1rem',
-              background: 'var(--code-green-alpha-05)',
+              background: 'color-mix(in srgb, var(--color-code-green) 5%, transparent)',
               borderRadius: '8px',
               textAlign: 'center'
             }}
           >
             <div style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>📦 依赖收集</div>
-            <div style={{ fontSize: '0.875rem', color: 'var(--white-alpha-70)' }}>
+            <div
+              style={{
+                fontSize: '0.875rem',
+                color: 'color-mix(in srgb, var(--color-white) 70%, transparent)'
+              }}
+            >
               Dep + Watcher
             </div>
           </div>
@@ -404,13 +414,18 @@ export default function Vue2ReactivityPage() {
           <div
             style={{
               padding: '1rem',
-              background: 'var(--code-red-alpha-05)',
+              background: 'color-mix(in srgb, var(--color-danger-strong) 5%, transparent)',
               borderRadius: '8px',
               textAlign: 'center'
             }}
           >
             <div style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>📢 派发更新</div>
-            <div style={{ fontSize: '0.875rem', color: 'var(--white-alpha-70)' }}>
+            <div
+              style={{
+                fontSize: '0.875rem',
+                color: 'color-mix(in srgb, var(--color-white) 70%, transparent)'
+              }}
+            >
               notify 所有依赖
             </div>
           </div>
@@ -471,8 +486,8 @@ data.count++ // 触发 get 和 set`}</code>
         style={{
           marginTop: '2rem',
           padding: '1.5rem',
-          background: 'var(--code-green-alpha-10)',
-          border: '1px solid var(--code-green-alpha-30)',
+          background: 'color-mix(in srgb, var(--color-code-green) 10%, transparent)',
+          border: '1px solid color-mix(in srgb, var(--color-code-green) 30%, transparent)',
           borderRadius: '12px',
           position: 'relative',
           zIndex: 3
@@ -481,7 +496,12 @@ data.count++ // 触发 get 和 set`}</code>
         <h3 style={{ color: 'var(--color-code-green)', marginBottom: '1rem' }}>
           🎮 数组响应式演示
         </h3>
-        <p style={{ color: 'var(--white-alpha-70)', marginBottom: '1rem' }}>
+        <p
+          style={{
+            color: 'color-mix(in srgb, var(--color-white) 70%, transparent)',
+            marginBottom: '1rem'
+          }}
+        >
           Vue 2 中数组索引赋值不是响应式的
         </p>
 
@@ -495,14 +515,14 @@ data.count++ // 触发 get 和 set`}</code>
           <div
             style={{
               padding: '1rem',
-              background: 'var(--code-indigo-alpha-05)',
+              background: 'color-mix(in srgb, var(--color-indigo-500) 5%, transparent)',
               borderRadius: '8px'
             }}
           >
             <div
               style={{
                 fontSize: '0.875rem',
-                color: 'var(--white-alpha-60)',
+                color: 'color-mix(in srgb, var(--color-white) 60%, transparent)',
                 marginBottom: '0.5rem'
               }}
             >
@@ -544,14 +564,14 @@ data.count++ // 触发 get 和 set`}</code>
           <div
             style={{
               padding: '1rem',
-              background: 'var(--code-green-alpha-05)',
+              background: 'color-mix(in srgb, var(--color-code-green) 5%, transparent)',
               borderRadius: '8px'
             }}
           >
             <div
               style={{
                 fontSize: '0.875rem',
-                color: 'var(--white-alpha-60)',
+                color: 'color-mix(in srgb, var(--color-white) 60%, transparent)',
                 marginBottom: '0.5rem'
               }}
             >
@@ -564,7 +584,7 @@ data.count++ // 触发 get 和 set`}</code>
               }}
               style={{
                 padding: '0.5rem 1rem',
-                background: 'var(--code-green-alpha-20)',
+                background: 'color-mix(in srgb, var(--color-code-green) 20%, transparent)',
                 border: 'none',
                 borderRadius: '6px',
                 color: 'var(--color-white)',
@@ -575,7 +595,11 @@ data.count++ // 触发 get 和 set`}</code>
               Vue.set(items, 0, '葡萄')
             </button>
             <div
-              style={{ marginTop: '0.5rem', fontSize: '0.875rem', color: 'var(--white-alpha-60)' }}
+              style={{
+                marginTop: '0.5rem',
+                fontSize: '0.875rem',
+                color: 'color-mix(in srgb, var(--color-white) 60%, transparent)'
+              }}
             >
               或使用 push/splice 等变异方法
             </div>
@@ -601,7 +625,7 @@ data.count++ // 触发 get 和 set`}</code>
               key={i}
               style={{
                 fontSize: '0.75rem',
-                color: 'var(--white-alpha-60)',
+                color: 'color-mix(in srgb, var(--color-white) 60%, transparent)',
                 marginBottom: '0.25rem'
               }}
             >
@@ -616,8 +640,8 @@ data.count++ // 触发 get 和 set`}</code>
         style={{
           marginTop: '2rem',
           padding: '1.5rem',
-          background: 'var(--code-red-alpha-10)',
-          border: '1px solid var(--code-red-alpha-30)',
+          background: 'color-mix(in srgb, var(--color-danger-strong) 10%, transparent)',
+          border: '1px solid color-mix(in srgb, var(--color-danger-strong) 30%, transparent)',
           borderRadius: '12px',
           position: 'relative',
           zIndex: 3
@@ -625,7 +649,12 @@ data.count++ // 触发 get 和 set`}</code>
       >
         <h3 style={{ color: 'var(--color-code-red)', marginBottom: '1rem' }}>⚠️ 响应式限制</h3>
         <ul
-          style={{ color: 'var(--white-alpha-80)', lineHeight: 1.8, listStyle: 'none', padding: 0 }}
+          style={{
+            color: 'color-mix(in srgb, var(--color-white) 80%, transparent)',
+            lineHeight: 1.8,
+            listStyle: 'none',
+            padding: 0
+          }}
         >
           <li style={{ marginBottom: '0.5rem' }}>
             • <strong>对象属性动态添加</strong>：需要使用 Vue.set

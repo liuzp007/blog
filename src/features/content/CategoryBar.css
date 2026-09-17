@@ -1,13 +1,13 @@
 /*
- * CategoryBar 只保留 ant-segmented 内部覆写；
- * 滚动壳、间距和 segmented 外层容器样式迁到 TSX + Tailwind 风格。
- */
+   * CategoryBar 只保留 ant-segmented 内部覆写；
+   * 滚动壳、间距和 segmented 外层容器样式迁到 TSX + Tailwind 风格。
+   */
 .category-bar__scroll::-webkit-scrollbar {
   height: 6px;
 }
 
 .category-bar__scroll::-webkit-scrollbar-thumb {
-  background: var(--button-secondary-border);
+  background: color-mix(in srgb, var(--color-white) 12%, transparent);
   border-radius: var(--radius-pill);
 }
 
@@ -20,28 +20,28 @@
 }
 
 .category-bar__segmented.ant-segmented .ant-segmented-thumb {
-  background: var(--button-primary-bg);
-  border-radius: calc(var(--button-radius-pill) - 4px);
-  box-shadow: var(--card-shadow);
+  background: linear-gradient(135deg, var(--brand-emphasis), var(--accent-violet));
+  border-radius: calc(var(--radius-pill) - 4px);
+  box-shadow: var(--shadow-sm);
 }
 
 .category-bar__segmented.ant-segmented .ant-segmented-item {
-  border-radius: calc(var(--button-radius-pill) - 4px);
+  border-radius: calc(var(--radius-pill) - 4px);
   transition:
     color var(--motion-base) var(--easing-standard),
     background-color var(--motion-base) var(--easing-standard);
 }
 
 .category-bar__segmented.ant-segmented .ant-segmented-item:hover {
-  background: var(--button-ghost-bg-hover);
+  background: color-mix(in srgb, var(--color-white) 4%, transparent);
 }
 
 .category-bar__segmented.ant-segmented .ant-segmented-item-label {
   display: inline-flex;
-  min-height: var(--button-height-sm);
+  min-height: var(--control-height-sm);
   font-size: var(--text-caption-size);
   color: var(--color-text-secondary);
-  padding-inline: var(--button-padding-inline-sm);
+  padding-inline: var(--space-3);
   align-items: center;
   justify-content: center;
   font-weight: var(--font-weight-medium);

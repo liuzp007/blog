@@ -1,0 +1,34 @@
+.projectCanvasExperience {
+  --project-canvas-page-bg:
+    radial-gradient(circle at top, var(--accent-warm-glow), transparent 28%),
+    linear-gradient(180deg, var(--surface-page) 0%, var(--surface-base) 100%);
+  --project-canvas-nav-bg: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--surface-page) 92%, transparent),
+    color-mix(in srgb, var(--surface-page) 65%, transparent)
+  );
+  --project-canvas-nav-border: color-mix(in srgb, var(--color-white) 8%, transparent);
+  --project-canvas-nav-text: color-mix(in srgb, var(--text-primary) 86%, transparent);
+  --project-canvas-copy-text: color-mix(in srgb, var(--text-primary) 72%, transparent);
+  --project-canvas-eyebrow-bg: color-mix(in srgb, var(--accent-warm) 12%, transparent);
+  --project-canvas-eyebrow-text: var(--accent-warm);
+  --project-canvas-tag-bg: color-mix(in srgb, var(--color-white) 5%, transparent);
+  --project-canvas-tag-text: color-mix(in srgb, var(--text-primary) 86%, transparent);
+  --project-canvas-primary-bg: linear-gradient(135deg, var(--accent-warm), var(--accent-gold));
+  --project-canvas-primary-text: var(--color-black);
+  --project-canvas-ghost-bg: color-mix(in srgb, var(--color-white) 6%, transparent);
+  --project-canvas-ghost-text: color-mix(in srgb, var(--text-primary) 88%, transparent);
+  --project-canvas-ghost-ring: inset 0 0 0 1px
+    color-mix(in srgb, var(--color-white) 8%, transparent);
+  --project-canvas-panel-bg: color-mix(in srgb, var(--color-white) 3%, transparent);
+  --project-canvas-panel-border: color-mix(in srgb, var(--color-white) 8%, transparent);
+  --project-canvas-panel-shadow: 0 28px 100px
+    color-mix(in srgb, var(--color-black) 40%, transparent);
+  --project-canvas-hint-bg: color-mix(in srgb, var(--color-black) 56%, transparent);
+  --project-canvas-hint-text: color-mix(in srgb, var(--text-primary) 72%, transparent);
+  --project-canvas-card-bg: color-mix(in srgb, var(--color-white) 4%, transparent);
+  --project-canvas-card-border: color-mix(in srgb, var(--color-white) 6%, transparent);
+  --project-canvas-canvas-bg: color-mix(in srgb, var(--surface-page) 92%, var(--color-black) 8%);
+  --project-canvas-canvas-warm-line: color-mix(in srgb, var(--accent-warm) 50%, transparent);
+  --project-canvas-canvas-warm-line-strong: color-mix(in srgb, var(--accent-warm) 60%, transparent);
+}

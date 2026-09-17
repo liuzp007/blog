@@ -1,12 +1,12 @@
 /*
- * 这里只放“全局允许存在”的 Ant Design 组件覆写。
- * 组件/页面私有的 `.ant-*` 深层样式必须留在各自局部样式文件中。
- */
+   * 这里只放“全局允许存在”的 Ant Design 组件覆写。
+   * 组件/页面私有的 `.ant-*` 深层样式必须留在各自局部样式文件中。
+   */
 
 /*
- * Ant 组件全局交互基线统一放在这里，避免 global-ui.css 与 components.css
- * 同时持有 `.ant-*` 的 cursor / focus 权限。
- */
+   * Ant 组件全局交互基线统一放在这里，避免 global-ui.css 与 components.css
+   * 同时持有 `.ant-*` 的 cursor / focus 权限。
+   */
 :where(
   .ant-btn:not([disabled], .ant-btn-disabled),
   .ant-switch,
@@ -38,52 +38,61 @@
 }
 
 .ant-btn-primary {
-  color: var(--ui-button-primary-text, var(--button-primary-text));
-  background: var(--ui-button-primary-bg, var(--button-primary-bg));
-  border: 1px solid var(--ui-button-primary-border, var(--button-primary-border));
+  color: var(--ui-button-primary-text, var(--color-white));
+  background: var(
+    --ui-button-primary-bg,
+    linear-gradient(135deg, var(--brand-emphasis), var(--accent-violet))
+  );
+  border: 1px solid var(--ui-button-primary-border, transparent);
   box-shadow: var(--shadow-xs);
 }
 
 .ant-btn-primary:hover,
 .ant-btn-primary:focus {
-  color: var(--ui-button-primary-text, var(--button-primary-text));
-  background: var(--ui-button-primary-bg-hover, var(--button-primary-bg-hover));
+  color: var(--ui-button-primary-text, var(--color-white));
+  background: var(
+    --ui-button-primary-bg-hover,
+    linear-gradient(135deg, var(--brand-emphasis-soft), var(--accent-violet))
+  );
   border-color: transparent;
 }
 
 .ant-btn-default {
-  color: var(--button-secondary-text);
-  background: var(--button-secondary-bg);
-  border: 1px solid var(--button-secondary-border);
+  color: var(--text-primary-strong);
+  background: color-mix(in srgb, var(--color-white) 6%, transparent);
+  border: 1px solid color-mix(in srgb, var(--color-white) 12%, transparent);
 }
 
 .ant-btn-default:hover,
 .ant-btn-default:focus {
-  color: var(--button-secondary-text);
-  background: var(--button-secondary-bg-hover);
-  border-color: var(--button-secondary-border);
+  color: var(--text-primary-strong);
+  background: color-mix(in srgb, var(--color-white) 8%, transparent);
+  border-color: color-mix(in srgb, var(--color-white) 12%, transparent);
 }
 
 .ant-btn-text,
 .ant-btn-link {
-  color: var(--ui-button-ghost-text, var(--button-ghost-text));
-  background: var(--ui-button-ghost-bg, var(--button-ghost-bg));
-  border: 1px solid var(--ui-button-ghost-border, var(--button-ghost-border));
+  color: var(--ui-button-ghost-text, var(--text-secondary));
+  background: var(--ui-button-ghost-bg, transparent);
+  border: 1px solid var(--ui-button-ghost-border, transparent);
 }
 
 .ant-btn-text:hover,
 .ant-btn-text:focus,
 .ant-btn-link:hover,
 .ant-btn-link:focus {
-  color: var(--ui-button-ghost-text, var(--button-ghost-text));
-  background: var(--ui-button-ghost-bg-hover, var(--button-ghost-bg-hover));
+  color: var(--ui-button-ghost-text, var(--text-secondary));
+  background: var(
+    --ui-button-ghost-bg-hover,
+    color-mix(in srgb, var(--color-white) 4%, transparent)
+  );
 }
 
 .ant-btn[disabled],
 .ant-btn-disabled {
-  color: var(--button-disabled-text);
-  background: var(--button-disabled-bg);
-  border-color: var(--button-disabled-border);
+  color: color-mix(in srgb, var(--color-white) 40%, transparent);
+  background: color-mix(in srgb, var(--color-white) 4%, transparent);
+  border-color: color-mix(in srgb, var(--color-white) 8%, transparent);
   box-shadow: none;
 }
 
@@ -97,10 +106,10 @@
 }
 
 .ant-card {
-  background: var(--card-bg);
-  border-color: var(--card-border);
-  box-shadow: var(--card-shadow);
-  border-radius: var(--card-radius);
+  background: var(--surface-card);
+  border-color: var(--border-subtle);
+  box-shadow: var(--shadow-sm);
+  border-radius: var(--radius-lg);
 }
 
 /* Global Ant select / pagination theming */
@@ -111,7 +120,7 @@
 
 .ant-select-selector {
   color: var(--color-text-soft);
-  background: var(--white-alpha-06);
+  background: color-mix(in srgb, var(--color-white) 6%, transparent);
   border-color: var(--glass-border-strong);
 }
 
@@ -120,7 +129,7 @@
 }
 
 .ant-pagination .ant-pagination-item-active {
-  border-color: var(--white-alpha-35);
+  border-color: color-mix(in srgb, var(--color-white) 35%, transparent);
 }
 
 .ant-pagination > li {

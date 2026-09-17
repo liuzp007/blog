@@ -1,7 +1,7 @@
 import { useMemo, memo } from 'react'
 import Prism from 'prismjs'
-import 'prismjs/themes/prism.css'
-import '../../styles/3_components/ui/beautify-code.css'
+import '@/styles/code-theme.css'
+import './index.css'
 
 /** Sanitize highlighted HTML: remove <script> tags and on* event handlers */
 function sanitizeHighlightedHtml(html: string): string {

@@ -181,7 +181,7 @@ function ComputedDemo() {
         style={{
           marginLeft: '1rem',
           padding: '0.5rem 1rem',
-          background: 'var(--code-green-alpha-20)',
+          background: 'color-mix(in srgb, var(--color-code-green) 20%, transparent)',
           border: 'none',
           borderRadius: '6px',
           color: 'white',
@@ -209,13 +209,17 @@ function ComputedDemo() {
         style={{
           marginTop: '1rem',
           padding: '1rem',
-          background: 'var(--code-indigo-alpha-05)',
+          background: 'color-mix(in srgb, var(--color-indigo-500) 5%, transparent)',
           borderRadius: '8px',
           textAlign: 'center'
         }}
       >
         <div
-          style={{ fontSize: '0.875rem', color: 'var(--white-alpha-60)', marginBottom: '0.5rem' }}
+          style={{
+            fontSize: '0.875rem',
+            color: 'color-mix(in srgb, var(--color-white) 60%, transparent)',
+            marginBottom: '0.5rem'
+          }}
         >
           计算属性 (2x)
         </div>
@@ -239,8 +243,8 @@ export default function ComputedPage() {
         style={{
           marginTop: '2rem',
           padding: '1.5rem',
-          background: 'var(--code-indigo-alpha-10)',
-          border: '1px solid var(--code-indigo-alpha-30)',
+          background: 'color-mix(in srgb, var(--color-indigo-500) 10%, transparent)',
+          border: '1px solid color-mix(in srgb, var(--color-indigo-500) 30%, transparent)',
           borderRadius: '12px',
           position: 'relative',
           zIndex: 3
@@ -258,7 +262,7 @@ export default function ComputedPage() {
           <div
             style={{
               padding: '1rem',
-              background: 'var(--code-indigo-alpha-05)',
+              background: 'color-mix(in srgb, var(--color-indigo-500) 5%, transparent)',
               borderRadius: '8px',
               textAlign: 'center'
             }}
@@ -266,7 +270,7 @@ export default function ComputedPage() {
             <div
               style={{
                 fontSize: '0.875rem',
-                color: 'var(--white-alpha-60)',
+                color: 'color-mix(in srgb, var(--color-white) 60%, transparent)',
                 marginBottom: '0.5rem'
               }}
             >
@@ -282,7 +286,7 @@ export default function ComputedPage() {
           <div
             style={{
               padding: '1rem',
-              background: 'var(--code-green-alpha-05)',
+              background: 'color-mix(in srgb, var(--color-code-green) 5%, transparent)',
               borderRadius: '8px',
               textAlign: 'center'
             }}
@@ -290,7 +294,7 @@ export default function ComputedPage() {
             <div
               style={{
                 fontSize: '0.875rem',
-                color: 'var(--white-alpha-60)',
+                color: 'color-mix(in srgb, var(--color-white) 60%, transparent)',
                 marginBottom: '0.5rem'
               }}
             >
@@ -306,7 +310,7 @@ export default function ComputedPage() {
           <div
             style={{
               padding: '1rem',
-              background: 'var(--code-violet-alpha-05)',
+              background: 'color-mix(in srgb, var(--color-code-violet) 5%, transparent)',
               borderRadius: '8px',
               textAlign: 'center'
             }}
@@ -314,7 +318,7 @@ export default function ComputedPage() {
             <div
               style={{
                 fontSize: '0.875rem',
-                color: 'var(--white-alpha-60)',
+                color: 'color-mix(in srgb, var(--color-white) 60%, transparent)',
                 marginBottom: '0.5rem'
               }}
             >
@@ -347,15 +351,20 @@ export default function ComputedPage() {
           style={{
             marginTop: '1.5rem',
             padding: '1.5rem',
-            background: 'var(--code-green-alpha-10)',
-            border: '1px solid var(--code-green-alpha-30)',
+            background: 'color-mix(in srgb, var(--color-code-green) 10%, transparent)',
+            border: '1px solid color-mix(in srgb, var(--color-code-green) 30%, transparent)',
             borderRadius: '12px',
             position: 'relative',
             zIndex: 3
           }}
         >
           <h4 style={{ color: 'var(--color-white)', marginBottom: '1rem' }}>缓存演示</h4>
-          <p style={{ color: 'var(--white-alpha-80)', marginBottom: '1rem' }}>
+          <p
+            style={{
+              color: 'color-mix(in srgb, var(--color-white) 80%, transparent)',
+              marginBottom: '1rem'
+            }}
+          >
             点击 +1 后观察&quot;计算属性(2x)&quot;的变化
           </p>
           <ComputedDemo />
@@ -367,8 +376,8 @@ export default function ComputedPage() {
         style={{
           marginTop: '1.5rem',
           padding: '1.5rem',
-          background: 'var(--code-red-alpha-10)',
-          border: '1px solid var(--code-red-alpha-30)',
+          background: 'color-mix(in srgb, var(--color-danger-strong) 10%, transparent)',
+          border: '1px solid color-mix(in srgb, var(--color-danger-strong) 30%, transparent)',
           borderRadius: '12px',
           position: 'relative',
           zIndex: 3
@@ -376,7 +385,12 @@ export default function ComputedPage() {
       >
         <h3 style={{ color: 'var(--color-code-red)', marginBottom: '1rem' }}>⚠️ 使用陷阱</h3>
         <ul
-          style={{ color: 'var(--white-alpha-80)', lineHeight: 1.8, listStyle: 'none', padding: 0 }}
+          style={{
+            color: 'color-mix(in srgb, var(--color-white) 80%, transparent)',
+            lineHeight: 1.8,
+            listStyle: 'none',
+            padding: 0
+          }}
         >
           <li style={{ marginBottom: '0.5rem' }}>
             • <strong>避免在计算属性中修改其他数据</strong>

@@ -5,12 +5,11 @@
 本项目采用分层样式架构，从底层到上层分为：
 
 ```
-1_tokens/     # 设计令牌（不变层）
-2_globals/     # 全局样式（基础层）
-3_components/  # 组件样式（组件层）
-4_pages/       # 页面样式（页面层）
-5_themes/      # 主题系统（主题层）
-6_utilities/   # 工具函数
+tokens.css           # 设计令牌
+base.css             # reset、基础元素、排版与全局行为
+components.css       # 共享组件与语义组件类
+themes/              # 核心主题与按需加载的页面 palette
+antd-overrides.css   # Ant Design 覆写
 ```
 
 ## 使用优先级
@@ -18,7 +17,7 @@
 1. **Tailwind 实用类** - 快速布局和样式
 2. **设计令牌** - 使用 CSS 变量
 3. **组件类** - 使用 `.ui-*` 类
-4. **模块化样式** - CSS Modules 或 styled-components
+4. **模块化样式** - 页面/组件私有 CSS
 5. **行内样式** - 最后手段（谨慎使用）
 
 ## 设计令牌使用

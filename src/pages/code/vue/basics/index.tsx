@@ -165,7 +165,7 @@ function DemoChild() {
         style={{
           marginLeft: '1rem',
           padding: '0.5rem',
-          background: 'var(--code-green-alpha-20)',
+          background: 'color-mix(in srgb, var(--color-code-green) 20%, transparent)',
           border: 'none',
           borderRadius: '6px',
           color: 'white',
@@ -188,8 +188,8 @@ export default function VueBasics() {
         style={{
           marginTop: '2rem',
           padding: '1.5rem',
-          background: 'var(--code-indigo-alpha-10)',
-          border: '1px solid var(--code-indigo-alpha-30)',
+          background: 'color-mix(in srgb, var(--color-indigo-500) 10%, transparent)',
+          border: '1px solid color-mix(in srgb, var(--color-indigo-500) 30%, transparent)',
           borderRadius: '12px',
           position: 'relative',
           zIndex: 3
@@ -207,50 +207,85 @@ export default function VueBasics() {
           <div
             style={{
               padding: '1rem',
-              background: 'var(--code-indigo-alpha-05)',
+              background: 'color-mix(in srgb, var(--color-indigo-500) 5%, transparent)',
               borderRadius: '8px',
               textAlign: 'center'
             }}
           >
             <div style={{ fontSize: '2.5rem', marginBottom: '0.5rem' }}>⚡</div>
-            <div style={{ fontSize: '0.875rem', color: 'var(--white-alpha-70)' }}>响应式系统</div>
-            <div style={{ fontSize: '0.75rem', color: 'var(--white-alpha-60)' }}>数据驱动视图</div>
+            <div
+              style={{
+                fontSize: '0.875rem',
+                color: 'color-mix(in srgb, var(--color-white) 70%, transparent)'
+              }}
+            >
+              响应式系统
+            </div>
+            <div
+              style={{
+                fontSize: '0.75rem',
+                color: 'color-mix(in srgb, var(--color-white) 60%, transparent)'
+              }}
+            >
+              数据驱动视图
+            </div>
           </div>
 
           <div
             style={{
               padding: '1rem',
-              background: 'var(--code-green-alpha-05)',
+              background: 'color-mix(in srgb, var(--color-code-green) 5%, transparent)',
               borderRadius: '8px',
               textAlign: 'center'
             }}
           >
             <div style={{ fontSize: '2.5rem', marginBottom: '0.5rem' }}>📝</div>
-            <div style={{ fontSize: '0.875rem', color: 'var(--white-alpha-70)' }}>模板语法</div>
+            <div
+              style={{
+                fontSize: '0.875rem',
+                color: 'color-mix(in srgb, var(--color-white) 70%, transparent)'
+              }}
+            >
+              模板语法
+            </div>
           </div>
 
           <div
             style={{
               padding: '1rem',
-              background: 'var(--code-red-alpha-05)',
+              background: 'color-mix(in srgb, var(--color-danger-strong) 5%, transparent)',
               borderRadius: '8px',
               textAlign: 'center'
             }}
           >
             <div style={{ fontSize: '2.5rem', marginBottom: '0.5rem' }}>🎯</div>
-            <div style={{ fontSize: '0.875rem', color: 'var(--white-alpha-70)' }}>指令系统</div>
+            <div
+              style={{
+                fontSize: '0.875rem',
+                color: 'color-mix(in srgb, var(--color-white) 70%, transparent)'
+              }}
+            >
+              指令系统
+            </div>
           </div>
 
           <div
             style={{
               padding: '1rem',
-              background: 'var(--code-green-alpha-05)',
+              background: 'color-mix(in srgb, var(--color-code-green) 5%, transparent)',
               borderRadius: '8px',
               textAlign: 'center'
             }}
           >
             <div style={{ fontSize: '2.5rem', marginBottom: '0.5rem' }}>🔄</div>
-            <div style={{ fontSize: '0.875rem', color: 'var(--white-alpha-70)' }}>双向绑定</div>
+            <div
+              style={{
+                fontSize: '0.875rem',
+                color: 'color-mix(in srgb, var(--color-white) 70%, transparent)'
+              }}
+            >
+              双向绑定
+            </div>
           </div>
         </div>
       </div>
@@ -268,7 +303,12 @@ export default function VueBasics() {
       >
         <h3 style={{ color: 'var(--color-code-green)', marginBottom: '1rem' }}>📝 代码示例</h3>
         <ul
-          style={{ color: 'var(--white-alpha-80)', lineHeight: 1.8, listStyle: 'none', padding: 0 }}
+          style={{
+            color: 'color-mix(in srgb, var(--color-white) 80%, transparent)',
+            lineHeight: 1.8,
+            listStyle: 'none',
+            padding: 0
+          }}
         >
           <li style={{ marginBottom: '0.5rem' }}>
             • <strong>响应式数据</strong>：修改 data 自动更新视图
@@ -290,15 +330,20 @@ export default function VueBasics() {
         style={{
           marginTop: '2rem',
           padding: '1.5rem',
-          background: 'var(--code-green-alpha-10)',
-          border: '1px solid var(--code-green-alpha-30)',
+          background: 'color-mix(in srgb, var(--color-code-green) 10%, transparent)',
+          border: '1px solid color-mix(in srgb, var(--color-code-green) 30%, transparent)',
           borderRadius: '12px',
           position: 'relative',
           zIndex: 3
         }}
       >
         <h3 style={{ color: 'var(--color-code-green)', marginBottom: '1rem' }}>🎮 简单交互演示</h3>
-        <p style={{ color: 'var(--white-alpha-70)', marginBottom: '1rem' }}>
+        <p
+          style={{
+            color: 'color-mix(in srgb, var(--color-white) 70%, transparent)',
+            marginBottom: '1rem'
+          }}
+        >
           点击按钮模拟 Vue 的响应式更新
         </p>
 
@@ -331,7 +376,7 @@ export default function VueBasics() {
             <div
               style={{
                 fontSize: '0.875rem',
-                color: 'var(--white-alpha-70)',
+                color: 'color-mix(in srgb, var(--color-white) 70%, transparent)',
                 marginBottom: '0.5rem'
               }}
             >

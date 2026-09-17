@@ -442,8 +442,8 @@ export default function Vue2LifecyclePage() {
         style={{
           marginTop: '2rem',
           padding: '1.5rem',
-          background: 'var(--code-indigo-alpha-10)',
-          border: '1px solid var(--code-indigo-alpha-30)',
+          background: 'color-mix(in srgb, var(--color-indigo-500) 10%, transparent)',
+          border: '1px solid color-mix(in srgb, var(--color-indigo-500) 30%, transparent)',
           borderRadius: '12px',
           position: 'relative',
           zIndex: 3
@@ -460,10 +460,10 @@ export default function Vue2LifecyclePage() {
                 padding: '1rem',
                 background:
                   activeStep === index
-                    ? 'var(--code-indigo-alpha-20)'
-                    : 'var(--code-indigo-alpha-05)',
+                    ? 'color-mix(in srgb, var(--color-indigo-500) 20%, transparent)'
+                    : 'color-mix(in srgb, var(--color-indigo-500) 5%, transparent)',
                 borderRadius: '8px',
-                border: '1px solid var(--code-indigo-alpha-30)',
+                border: '1px solid color-mix(in srgb, var(--color-indigo-500) 30%, transparent)',
                 cursor: 'pointer',
                 transition: 'all 0.3s ease',
                 display: 'flex',
@@ -502,13 +502,18 @@ export default function Vue2LifecyclePage() {
                 >
                   {stage.name}
                 </div>
-                <div style={{ fontSize: '0.75rem', color: 'var(--white-alpha-60)' }}>
+                <div
+                  style={{
+                    fontSize: '0.75rem',
+                    color: 'color-mix(in srgb, var(--color-white) 60%, transparent)'
+                  }}
+                >
                   {stage.desc}
                 </div>
                 <div
                   style={{
                     fontSize: '0.75rem',
-                    color: 'var(--white-alpha-40)',
+                    color: 'color-mix(in srgb, var(--color-white) 40%, transparent)',
                     marginTop: '0.25rem'
                   }}
                 >
@@ -535,7 +540,12 @@ export default function Vue2LifecyclePage() {
           <h4 style={{ color: 'var(--color-white)', marginBottom: '1rem' }}>
             {lifecycleFlow[activeStep].name} 详解
           </h4>
-          <p style={{ color: 'var(--white-alpha-70)', lineHeight: 1.8 }}>
+          <p
+            style={{
+              color: 'color-mix(in srgb, var(--color-white) 70%, transparent)',
+              lineHeight: 1.8
+            }}
+          >
             {lifecycleFlow[activeStep].desc}。在此阶段：
             {activeStep <= 2 && ' DOM 还未挂载，无法访问 this.$el'}
             {activeStep === 3 && ' DOM 已挂载，可以操作 DOM 元素，初始化第三方库'}
@@ -550,8 +560,8 @@ export default function Vue2LifecyclePage() {
         style={{
           marginTop: '2rem',
           padding: '1.5rem',
-          background: 'var(--code-green-alpha-10)',
-          border: '1px solid var(--code-green-alpha-30)',
+          background: 'color-mix(in srgb, var(--color-code-green) 10%, transparent)',
+          border: '1px solid color-mix(in srgb, var(--color-code-green) 30%, transparent)',
           borderRadius: '12px',
           position: 'relative',
           zIndex: 3
@@ -569,7 +579,7 @@ export default function Vue2LifecyclePage() {
           <div
             style={{
               padding: '1rem',
-              background: 'var(--code-indigo-alpha-05)',
+              background: 'color-mix(in srgb, var(--color-indigo-500) 5%, transparent)',
               borderRadius: '8px',
               textAlign: 'center'
             }}
@@ -577,7 +587,7 @@ export default function Vue2LifecyclePage() {
             <div
               style={{
                 fontSize: '0.875rem',
-                color: 'var(--white-alpha-60)',
+                color: 'color-mix(in srgb, var(--color-white) 60%, transparent)',
                 marginBottom: '0.5rem'
               }}
             >
@@ -599,7 +609,11 @@ export default function Vue2LifecyclePage() {
               +1 (模拟更新)
             </button>
             <div
-              style={{ marginTop: '0.5rem', fontSize: '0.75rem', color: 'var(--white-alpha-50)' }}
+              style={{
+                marginTop: '0.5rem',
+                fontSize: '0.75rem',
+                color: 'color-mix(in srgb, var(--color-white) 50%, transparent)'
+              }}
             >
               {count > 0 ? '触发 beforeUpdate/updated' : '初始状态'}
             </div>
@@ -621,7 +635,13 @@ export default function Vue2LifecyclePage() {
         >
           <h4 style={{ color: 'var(--color-white)', marginBottom: '0.5rem' }}>生命周期日志</h4>
           {logs.map((log, i) => (
-            <div key={i} style={{ color: 'var(--white-alpha-60)', marginBottom: '0.25rem' }}>
+            <div
+              key={i}
+              style={{
+                color: 'color-mix(in srgb, var(--color-white) 60%, transparent)',
+                marginBottom: '0.25rem'
+              }}
+            >
               {log}
             </div>
           ))}
@@ -633,8 +653,8 @@ export default function Vue2LifecyclePage() {
         style={{
           marginTop: '2rem',
           padding: '1.5rem',
-          background: 'var(--code-red-alpha-10)',
-          border: '1px solid var(--code-red-alpha-30)',
+          background: 'color-mix(in srgb, var(--color-danger-strong) 10%, transparent)',
+          border: '1px solid color-mix(in srgb, var(--color-danger-strong) 30%, transparent)',
           borderRadius: '12px',
           position: 'relative',
           zIndex: 3
@@ -642,7 +662,12 @@ export default function Vue2LifecyclePage() {
       >
         <h3 style={{ color: 'var(--color-code-red)', marginBottom: '1rem' }}>⚠️ 最佳实践</h3>
         <ul
-          style={{ color: 'var(--white-alpha-80)', lineHeight: 1.8, listStyle: 'none', padding: 0 }}
+          style={{
+            color: 'color-mix(in srgb, var(--color-white) 80%, transparent)',
+            lineHeight: 1.8,
+            listStyle: 'none',
+            padding: 0
+          }}
         >
           <li style={{ marginBottom: '0.5rem' }}>
             • <strong>在 created 中请求数据</strong>，避免页面闪烁

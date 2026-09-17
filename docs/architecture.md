@@ -20,9 +20,8 @@
 
 ### 状态管理
 
-- **主状态**: `src/store/`（RTK 风格 + redux-persist）
-- **历史遗留**: `src/redux/OBS/`（仅作示例，非运行时主入口）
-- **持久化**: `userPreferences` 模块通过 redux-persist 持久化
+- **主状态**: 布局状态由组件本地 Hooks 维护
+- **持久化**: `useUserPreferences` 使用 `localStorage`，并兼容旧 redux-persist 数据
 
 ### UI 框架
 
@@ -49,14 +48,7 @@ src/
 ├── data.ts               # 菜单数据结构
 ├── hooks/                # 自定义 Hooks
 ├── pages/                # 页面组件
-├── redux/                # 遗留 Redux OBS 示例
-├── store/                # 主状态管理
-│   ├── index.ts          # Store / persist 配置
-│   ├── hooks/            # Typed hooks
-│   ├── main/             # 主内容状态
-│   ├── navigation/       # 导航状态
-│   ├── ui/               # UI 状态
-│   └── userPreferences/  # 用户偏好
+├── redux/                # 已移除
 ├── router/               # 路由配置
 ├── styles/               # 全局样式
 │   ├── tokens/           # 基础 token
@@ -88,12 +80,11 @@ const modules = import.meta.glob('../pages/**/index.{js,jsx,tsx}')
 ### 3. 状态管理
 
 ```typescript
-// 主状态收口
-src/store/index.ts -> rootReducer
-- main: 主布局与主内容状态
-- ui: 全局 UI 状态
-- navigation: 导航状态
-- userPreferences: 主题/动效/偏好（持久化）
+// 布局状态
+src/components/main-layout/index.tsx -> 菜单选中态与展开态
+
+// 持久化偏好
+src/hooks/useUserPreferences.ts -> 主题、动效与可访问性偏好
 ```
 
 ### 4. 样式分层策略
@@ -108,7 +99,6 @@ src/store/index.ts -> rootReducer
 
 ```typescript
 @/*         → src/*
-@store/*    → src/store/*
 @router/*   → src/router/*
 @page/*     → src/pages/*
 moment      → dayjs

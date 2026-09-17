@@ -167,7 +167,7 @@
       "files": [],
       "goal": "4 个目录之前清理 SCSS 时已删除，本次确认"
     },
-{
+    {
       "id": "CSS16",
       "title": "迁移 vinyl CSS",
       "priority": "P3",
@@ -535,7 +535,7 @@
       "files": ["src/components/dynamic-content-container/index.tsx"],
       "goal": "审查动态内容容器，检查内容切换逻辑：是否有不必要的卸载/重挂载、切换动画是否流畅、是否可使用 React.memo 减少子组件重渲染"
     },
-{
+    {
       "id": "VR05",
       "title": "性能: EnhancedBackground 死代码确认",
       "priority": "P1",
@@ -991,7 +991,7 @@
       "files": ["src/pages/footmark/index.tsx", "src/pages/footmark/index.css"],
       "goal": "client-passive-event-listeners: resize 监听添加 { passive: true }; CSS 2处 transition: all 改为具体属性 (opacity, transform, background, box-shadow, color)"
     },
-{
+    {
       "id": "CSS07",
       "title": "精简 base.css token",
       "priority": "P1",
@@ -1000,7 +1000,7 @@
       "files": ["src/styles/tokens/base.css"],
       "goal": "零引用 token 约 33 个，删除风险高，暂不处理"
     },
-{
+    {
       "id": "CSS08",
       "title": "精简 semantic.css token",
       "priority": "P1",
@@ -1015,9 +1015,7 @@
       "priority": "P2",
       "isDone": false,
       "status": "done",
-      "files": [
-        "src/styles/palettes.css"
-      ],
+      "files": ["src/styles/palettes.css"],
       "goal": "已完成：styles.css 与 animated-navigation-menu.css 已不存在；palettes.css 已按 style-governance 恢复为非空页面 / feature palette 聚合入口并被 index.css 引用，保留是当前正确行为。"
     },
     {
@@ -1029,7 +1027,7 @@
       "files": ["src/index.css"],
       "goal": "移除 9 个未使用的 themes/* 导入，从 31 个 @import 减至 22 个"
     },
-{
+    {
       "id": "CSS11",
       "title": "合并 themes/",
       "priority": "P2",
@@ -1114,7 +1112,7 @@
       "id": "CSS13",
       "title": "合并 3_components/ + 解决 primitives/global-ui 重叠",
       "priority": "P3",
-      "isDone": true,
+      "isDone": false,
       "status": "cancelled",
       "files": [
         "src/styles/3_components/",
@@ -1123,7 +1121,7 @@
       ],
       "goal": "当前 3_components/ 有 12 个文件，部分仅 15-41 行。策略：1) 将 3_components/ui/ 下的小文件合并为 1-2 个文件（ui-interactive.css + ui-feedback.css）；2) 3_components/layout/ 合并为 layout.css；3) 解决 primitives.css（194 行）和 global-ui.css（284 行）的 scrollbar/selection 样式重叠。目标：3_components/ 从 12 个文件缩减到 3-4 个。"
     },
-{
+    {
       "id": "CSS14",
       "title": "最终验证 — 构建 + 视觉回归 + 量化报告",
       "priority": "P1",
@@ -1186,7 +1184,7 @@
       "files": ["src/components/content-card/index.tsx"],
       "goal": "无 anime.js，保留原生 button"
     },
-{
+    {
       "id": "AR01",
       "title": "架构: 移除 Three.js 依赖栈",
       "priority": "P1",
@@ -1234,8 +1232,8 @@
       "id": "AR03",
       "title": "架构: 精简 Redux — 移除 redux-persist，砍掉 userPreferences 冗余状态",
       "priority": "P2",
-      "isDone": true,
-      "status": "cancelled",
+      "isDone": false,
+      "status": "done",
       "files": [
         "src/store/userPreferences/index.ts",
         "src/store/index.ts",
@@ -1265,8 +1263,8 @@
       "id": "AR05",
       "title": "架构: 评估 antd 使用范围 — 是否可以用轻量替代",
       "priority": "P3",
-      "isDone": true,
-      "status": "cancelled",
+      "isDone": false,
+      "status": "done",
       "files": ["src/"],
       "goal": "antd 549KB gzip + 309KB CSS，实际只用了 Button/Drawer/Menu/Tooltip/Input/Badge/Space 这几个组件。方案（需要用户决策）：A) 保留 antd 但按需加载（已有代码分割，仅加载使用的组件）；B) 逐步替换为 Headless UI + Tailwind，彻底移除 antd。方案 A 风险低，方案 B 减重多但工作量大。"
     },
@@ -1283,10 +1281,10 @@
       "id": "AR07",
       "title": "架构: 评估 code/ 教程页面 — 14,562 行是否应外置",
       "priority": "P3",
-      "isDone": true,
-      "status": "cancelled",
-      "files": ["src/pages/code/"],
-      "goal": "code/ 目录包含 44 个子目录（react/vue/webpack 教程），共 14,562 行，占项目源码约 40%。方案（需要用户决策）：A) 保持现状，通过 dynamic import 懒加载；B) 迁移到独立仓库/子目录，博客通过 iframe 或外部链接引用；C) 使用 MDX 替代 TSX 硬编码教程。方案 A 风险最低。"
+      "isDone": false,
+      "status": "done",
+      "files": ["src/content/", "src/components/markdown-tutorial/", "src/pages/code/"],
+      "goal": "已决策：纯静态教程迁移 Markdown，真实交互 demo 与强视觉页面保留 TSX。新增受控 Markdown 解析、表格/图片渲染与本地资产解析；第一批 12 篇、表格 3 篇、图片 1 篇已迁移并验证。"
     },
     {
       "id": "VR01",
@@ -1297,7 +1295,7 @@
       "files": ["src/features/search/SearchBox.tsx"],
       "goal": "已完成：SearchBox 移除 props 同步 useEffect，受控模式直接消费 value，非受控模式保留内部状态。"
     },
-{
+    {
       "id": "VR02",
       "title": "性能: 事件监听去重",
       "priority": "P2",
@@ -1306,7 +1304,7 @@
       "files": [],
       "goal": "15+ 组件各自注册 resize/mousemove 是架构设计问题，修复成本高，暂不处理"
     },
-{
+    {
       "id": "VR03",
       "title": "性能: useAdvancedInteractions 动画循环缓存",
       "priority": "P2",
@@ -1324,7 +1322,7 @@
       "files": ["src/features/search/SearchBox.tsx"],
       "goal": "已优化：useEffect 仅同步 props，内部状态合理"
     },
-{
+    {
       "id": "VR04",
       "title": "性能: contentIndex 正则提取到模块级",
       "priority": "P3",
@@ -1341,6 +1339,265 @@
       "status": "done",
       "files": ["src/pages/home/index.tsx"],
       "goal": "已完成：当前首页 HomeHeroFx 保持 lazy import，并且仅在 heroFxEnabled 为 true 时挂载，低性能 / 减少动效场景不再下载 3D chunk。"
+    },
+    {
+      "id": "CSS-BACKLOG-01",
+      "title": "CSS 延后: 收敛 base.css 重复选择器",
+      "priority": "P2",
+      "isDone": false,
+      "status": "deferred",
+      "files": ["src/styles/base.css"],
+      "goal": "base.css 约 777 行、19 个重复顶层 selector。延后原因：主要收益是源码可维护性，不影响当前正确性；后续按 reset / typography / interaction / scrollbar 分层合并，避免与本轮低风险优化混在一起。"
+    },
+    {
+      "id": "CSS-BACKLOG-02",
+      "title": "CSS 延后: 高频维护大页面按需拆分",
+      "priority": "P3",
+      "isDone": false,
+      "status": "deferred",
+      "files": [
+        "src/pages/showcase-arcade/index.css",
+        "src/pages/blog/index.css",
+        "src/pages/aboutme/index.css",
+        "src/features/guestbook/guestbook.css",
+        "src/pages/blog-detail/index.css"
+      ],
+      "goal": "仅在对应页面进入高频维护时拆分，优先按 section / feature / responsive 职责拆；不做全局机械重构，避免为拆而拆。"
+    },
+    {
+      "id": "CSS-BACKLOG-03",
+      "title": "CSS 延后: 动效 duration / easing 语义 token 化",
+      "priority": "P3",
+      "isDone": false,
+      "status": "deferred",
+      "files": [
+        "src/pages/aboutme/index.css",
+        "src/pages/blog/index.css",
+        "src/pages/blog-detail/index.css"
+      ],
+      "goal": "约 96 处硬编码 duration/easing 集中在 AboutMe、Blog、Blog Detail。先补少量语义 motion token，再随页面维护增量迁移，不专项大面积替换。"
+    },
+    {
+      "id": "CSS-BACKLOG-04",
+      "title": "CSS 不建议现在做: 删除疑似未用 token",
+      "priority": "P3",
+      "isDone": false,
+      "status": "not-recommended",
+      "files": ["src/styles/tokens.css"],
+      "goal": "raw-slate-300、shadow-xl、motion-slow、radius-xs/3xl/4xl/5xl、color-surface-elevated 仅文本层面疑似未用。删除收益小，且可能误伤 Canvas 通过 getPropertyValue 运行时读取，暂不处理。"
+    },
+    {
+      "id": "CSS-BACKLOG-05",
+      "title": "CSS 不建议现在做: 全量迁移 inline style",
+      "priority": "P3",
+      "isDone": false,
+      "status": "not-recommended",
+      "files": ["src/pages/code/"],
+      "goal": "style={{...}} 约 901 处，教程页最多。静态视觉可随内容维护迁到语义类或 Markdown；真实交互 demo 保留 TSX，不做全量一次性迁移。"
+    },
+    {
+      "id": "CSS-BACKLOG-06",
+      "title": "CSS 不建议现在做: 全量替换 Tailwind arbitrary value",
+      "priority": "P3",
+      "isDone": false,
+      "status": "not-recommended",
+      "files": ["src/pages/showcase-*"],
+      "goal": "text-[...] / bg-[...] / border-[...] 约 302 处。全量替换回归成本高；只在修改具体页面或组件时按约定增量收敛，优先 Showcase，再处理 shared components。"
+    },
+    {
+      "id": "CSS-BACKLOG-07",
+      "title": "CSS 不建议现在做: 机械拆分所有大 CSS 文件",
+      "priority": "P3",
+      "isDone": false,
+      "status": "not-recommended",
+      "files": [],
+      "goal": "大文件本身不是问题，只有职责混杂、互相加载私有样式或影响加载边界才值得拆。避免为了行数指标机械拆文件。"
+    },
+    {
+      "id": "CSS-NOW-01",
+      "title": "CSS 立即执行: 拆分 Showcase 私有 palette",
+      "priority": "P1",
+      "isDone": false,
+      "status": "done",
+      "files": [
+        "src/styles/themes/showcase-pages.css",
+        "src/pages/showcase-arcade/index.tsx",
+        "src/pages/showcase-signal/index.tsx",
+        "src/pages/showcase-orbit/index.tsx",
+        "src/pages/showcase-vault/index.tsx"
+      ],
+      "goal": "已完成：Arcade / Signal / Orbit / Vault 四套 palette 已拆成 route 专属文件，旧 showcase-pages.css 聚合文件已删除；构建、样式审计、测试与内容校验通过。"
+    },
+    {
+      "id": "CSS-NOW-02",
+      "title": "CSS 立即执行: 字体加载减负",
+      "priority": "P1",
+      "isDone": false,
+      "status": "done",
+      "files": ["index.html"],
+      "goal": "已完成：移除 Noto Serif SC 与 Space Mono，收敛未使用权重，补齐 Google Fonts preconnect，并改为非阻塞加载 + noscript 兜底；完整 CI 通过。"
+    },
+    {
+      "id": "CSS-NOW-03",
+      "title": "CSS 立即执行: components.css 低风险拆分",
+      "priority": "P1",
+      "isDone": false,
+      "status": "done",
+      "files": ["src/styles/components.css"],
+      "goal": "已完成：CodeBlock、BeautifyCode、MediaCard、NotFound、ContentWrapper、MainLayout、SimpleNavigation 样式迁回组件 chunk；components.css 只保留 .ui-* 等全局语义组件层，完整 CI 通过。"
+    },
+    {
+      "id": "CSS-NOW-04",
+      "title": "CSS 立即执行: 修复 Home content-visibility 预估尺寸",
+      "priority": "P2",
+      "isDone": false,
+      "status": "done",
+      "files": ["src/pages/home/styles/base.css"],
+      "goal": "已完成：Home 七个延迟渲染区块全部改为 contain-intrinsic-size: auto <fallback>；构建与完整 CI 通过，浏览器视觉验收因 Chrome MCP 审批链路失败暂未执行。"
+    },
+    {
+      "id": "REVIEW-DONE-01",
+      "title": "审查修复: showcase 4 页 Tailwind 任意值含未转义空格",
+      "priority": "P1",
+      "isDone": false,
+      "status": "done",
+      "files": [
+        "src/pages/showcase-arcade/index.tsx",
+        "src/pages/showcase-orbit/index.tsx",
+        "src/pages/showcase-signal/index.tsx",
+        "src/pages/showcase-vault/index.tsx"
+      ],
+      "goal": "已完成：14 处 className 中 color-mix(in srgb, → color-mix(in_srgb,（含参数空格转下划线），类名恢复生成；vault 3 处 trailColor React prop 为合法用法未动。"
+    },
+    {
+      "id": "REVIEW-DONE-02",
+      "title": "审查修复: 首页 footer「联系」锚点失效",
+      "priority": "P1",
+      "isDone": false,
+      "status": "done",
+      "files": ["src/pages/home/index.tsx"],
+      "goal": "已完成：footerNavLinks 的 scrollToSection('contact') 改为 'guestbook'（页面实际锚点 id）。"
+    },
+    {
+      "id": "REVIEW-DONE-03",
+      "title": "审查修复: 未迁移 code 页面模板字符串被批量重缩进",
+      "priority": "P1",
+      "isDone": false,
+      "status": "done",
+      "files": [
+        "src/pages/code/react/concurrency/index.tsx",
+        "src/pages/code/react/context/index.tsx",
+        "src/pages/code/react/errorBoundary/index.tsx",
+        "src/pages/code/react/portals/index.tsx",
+        "src/pages/code/react/profiler/index.tsx",
+        "src/pages/code/react/suspense/index.tsx",
+        "src/pages/code/react/use/index.tsx",
+        "src/pages/code/react/useActionState/index.tsx",
+        "src/pages/code/react/useReducer/index.tsx",
+        "src/pages/code/vue/（15 个页面）"
+      ],
+      "goal": "已完成：行级对齐恢复 26 个未迁移页面共 2919 行模板字符串原缩进（BeautifyCode 原样渲染，重缩进会导致代码片段多 3 空格）；token 替换（--white-alpha-* → color-mix）等实质修改全部保留；残留纯缩进差异 0，type-check 通过。"
+    },
+    {
+      "id": "REVIEW-DONE-04",
+      "title": "审查修复: 16 篇迁移文章日期为迁移当日",
+      "priority": "P2",
+      "isDone": false,
+      "status": "done",
+      "files": [
+        "src/content/react/*.md",
+        "src/content/webpack/webpack-module-bundler.md",
+        "src/features/content/contentMeta.json"
+      ],
+      "goal": "已完成：date: 2026-09-17 → 2026-04-26（git 中原页面首次提交日期，反映真实创作时间）；contentMeta.json / sitemap / RSS / 搜索索引已重新生成（51 篇）。"
+    },
+    {
+      "id": "REVIEW-01",
+      "title": "修复: tailwind.config.js 断点重复（sm=md=768px、xl=2xl=1280px）",
+      "priority": "P1",
+      "isDone": false,
+      "status": "done",
+      "files": ["tailwind.config.js"],
+      "goal": "已完成：确认为笔误。screens 修正为 xs 480 / sm 640 / md 768 / lg 1024 / xl 1280 / 2xl 1536（lg/md/xl 的迁移是有意对齐 Tailwind 默认，sm 与 2xl 为笔误写重；2xl: 变体全站零使用，1536 无行为影响）；max-sm 恢复 640px。build 验证通过。"
+    },
+    {
+      "id": "REVIEW-02",
+      "title": "确认: project-canvas-experience 断点语义变更 max-[900px] → max-lg:",
+      "priority": "P2",
+      "isDone": false,
+      "status": "done",
+      "files": ["src/components/project-canvas-experience/index.tsx"],
+      "goal": "已完成：确认为笔误，4 处 max-lg: 已恢复 max-[900px:]（212/251/256/264 行），保持 900px 双栏切换原行为；max-sm 替换为等价（sm 已修正回 640px）。"
+    },
+    {
+      "id": "REVIEW-03",
+      "title": "修复: error-boundary 错误报告模板字符串被格式化污染",
+      "priority": "P2",
+      "isDone": true,
+      "status": "pending",
+      "files": ["src/components/error-boundary/index.tsx"],
+      "goal": "126-134 行复制到剪贴板的错误报告每行被加了缩进，.trim() 只去首尾；恢复模板字符串原缩进（或用字符串数组 join），保证复制的堆栈可读。"
+    },
+    {
+      "id": "REVIEW-04",
+      "title": "清理: vitest.config.ts 残留 @store 别名",
+      "priority": "P2",
+      "isDone": true,
+      "status": "pending",
+      "files": ["vitest.config.ts", "tsconfig.json", "vite.config.mjs"],
+      "goal": "第 13 行 '@store' 仍指向已删除的 src/store/（tsconfig/vite 已同步删除，唯此处遗漏）；删除该条目保持三处别名注册点一致。"
+    },
+    {
+      "id": "REVIEW-05",
+      "title": "文档同步: 架构文档与迁移后实际结构一致",
+      "priority": "P1",
+      "isDone": true,
+      "status": "pending",
+      "files": [
+        "CLAUDE.md",
+        "src/index.css",
+        "src/styles/tokens.css",
+        "docs/architecture.md",
+        "docs/style-management.md",
+        "docs/style-governance.md",
+        "docs/style-governance-strict.md",
+        "scripts/audit-style.js"
+      ],
+      "goal": "9+ 处路径级陈旧引用：CLAUDE.md 仍写 Redux Toolkit/redux-persist/@store 别名/tests/store（且 HashRouter 描述与实际 BrowserRouter 不符）；src/index.css:5-24 头注释仍指已删除的 tokens/、2_globals/、3_components/ 目录；tokens.css:7 注释指向已并入的 semantic.css 且 190-219 行残留空注释段；docs/architecture.md:92-93、docs/style-management.md:22-32、docs/style-governance.md:78/145/150/545、docs/style-governance-strict.md:93/139-140（:root 白名单载体已变为 tokens.css，strict 门禁依据不同步会导致规则无法执行）；scripts/audit-style.js:12-14 白名单含 3 个不存在路径。"
+    },
+    {
+      "id": "REVIEW-06",
+      "title": "补全: useUserPreferences 缺少写入 API",
+      "priority": "P2",
+      "isDone": true,
+      "status": "pending",
+      "files": ["src/hooks/useUserPreferences.ts", "tests/hooks/use-user-preferences.test.ts"],
+      "goal": "当前只读 localStorage（偏好被永久锁定），effect 里的 storage 事件监听因无写入方成为死代码；补充 updatePreferences(partial)（写 localStorage + 通知本 tab setStoredPreferences），或明确设置 UI 另行跟进并暂删死监听。"
+    },
+    {
+      "id": "REVIEW-07",
+      "title": "改进: markdown-tutorial 站内链接改用 Router Link",
+      "priority": "P3",
+      "isDone": true,
+      "status": "pending",
+      "files": ["src/components/markdown-tutorial/index.tsx"],
+      "goal": "44-50 行 md 站内链接渲染为原生 <a> 会整页刷新（项目用 HashRouter）；站内路径改用 react-router-dom 的 Link，外链保持 target=_blank + rel=noreferrer（当前 21 篇 md 暂无站内相对链接，属前瞻修复）。"
+    },
+    {
+      "id": "REVIEW-08",
+      "title": "清理: 孤儿文件与死代码（审查建议项汇总）",
+      "priority": "P3",
+      "isDone": true,
+      "status": "pending",
+      "files": [
+        "src/pages/home/components/JellyfishCursor.tsx",
+        "src/pages/home/components/svg.tsx",
+        "src/pages/home/homeContent.ts",
+        "src/features/content/TagCloud.tsx",
+        "src/features/content/contentIndex.ts",
+        "src/components/content-wrapper/index.tsx"
+      ],
+      "goal": "JellyfishCursor.tsx 全仓无引用且内部引用已删除的 .work-card 类（删除或恢复挂载）；svg.tsx 无 importer；homeContent.ts HOME_CONTACT_ACTIONS 死导出；TagCloud.tsx:94 ui-tag--tone-accent/soft 无 CSS 定义（历史遗留，选中态失效，补定义或改现有 tone 类）；contentIndex.ts:399 无意义 export default {}；content-wrapper/index.tsx:37,41 clsx 中 modifier 重复两次且基础类 overflow:visible 后 modifier 冗余。"
     }
   ]
 }

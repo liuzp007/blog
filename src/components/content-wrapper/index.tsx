@@ -2,7 +2,8 @@ import { memo, useMemo } from 'react'
 import clsx from 'clsx'
 import { Button } from 'antd'
 import { LoadingOutlined, ReloadOutlined, WarningOutlined } from '@ant-design/icons'
-import '../../styles/3_components/layout/content-wrapper.css'
+import '@/styles/themes/code-pages.css'
+import './index.css'
 
 interface ContentWrapperProps {
   title?: string
@@ -37,7 +38,6 @@ export default memo(function ContentWrapperComponent({
         surface === 'glass'
           ? 'bg-[linear-gradient(135deg,var(--color-sidebar-start)_0%,var(--color-sidebar-mid)_50%,var(--color-sidebar-end)_100%)] [backdrop-filter:blur(20px)]'
           : 'bg-[linear-gradient(180deg,var(--color-page-panel-start)_0%,var(--color-page-panel-mid)_48%,var(--color-page-panel-end)_100%)]',
-        allowOverflow && 'content-wrapper--overflow-visible',
         className
       ),
     [surface, allowOverflow, className]
@@ -46,7 +46,7 @@ export default memo(function ContentWrapperComponent({
   if (loading) {
     return (
       <div className={wrapperClassName}>
-        <div className="content-wrapper__loading relative z-[3] flex min-h-[60vh] flex-col items-center justify-center text-center text-[var(--white-alpha-80)]">
+        <div className="content-wrapper__loading relative z-[3] flex min-h-[60vh] flex-col items-center justify-center text-center text-[color-mix(in srgb, var(--color-white) 80%, transparent)]">
           <LoadingOutlined
             className="content-wrapper__loading-icon mb-4 text-[3rem] text-[var(--color-code-indigo)]"
             aria-hidden="true"
@@ -70,7 +70,7 @@ export default memo(function ContentWrapperComponent({
             <Button
               type="primary"
               icon={<ReloadOutlined />}
-              className="content-wrapper__retry ui-button-md min-w-[140px] transition-[transform,box-shadow] hover:-translate-y-0.5 hover:shadow-[0_10px_25px_var(--indigo-alpha-30)] focus:-translate-y-0.5 focus:shadow-[0_10px_25px_var(--indigo-alpha-30)]"
+              className="content-wrapper__retry ui-button-md min-w-[140px] transition-[transform,box-shadow] hover:-translate-y-0.5 hover:shadow-[0_10px_25px_color-mix(in srgb, var(--color-indigo-500) 30%, transparent)] focus:-translate-y-0.5 focus:shadow-[0_10px_25px_color-mix(in srgb, var(--color-indigo-500) 30%, transparent)]"
               onClick={onRetry}
             >
               重试
@@ -84,10 +84,10 @@ export default memo(function ContentWrapperComponent({
   return (
     <div className={wrapperClassName}>
       {(title || subtitle) && (
-        <header className="content-wrapper__header relative z-[3] mb-8 border-b-2 border-b-[var(--indigo-alpha-30)] pb-4">
+        <header className="content-wrapper__header relative z-[3] mb-8 border-b-2 border-b-[color-mix(in srgb, var(--color-indigo-500) 30%, transparent)] pb-4">
           {title && <h1 className="content-wrapper__title ui-page-title m-0">{title}</h1>}
           {subtitle && (
-            <div className="content-wrapper__subtitle ui-lead-text mt-2 font-light text-[var(--white-alpha-70)]">
+            <div className="content-wrapper__subtitle ui-lead-text mt-2 font-light text-[color-mix(in srgb, var(--color-white) 70%, transparent)]">
               {subtitle}
             </div>
           )}

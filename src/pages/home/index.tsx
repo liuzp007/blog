@@ -16,7 +16,7 @@ import {
   RocketOutlined,
   ThunderboltOutlined
 } from '@ant-design/icons'
-import { Button, Drawer, message } from 'antd'
+import { Button, Drawer } from 'antd'
 import TiltCard from '@/components/ui/tilt-card'
 import ArticleSignalMediaCard from '@/features/content/ArticleSignalMediaCard'
 import { allMetas, allSeries } from '@/features/content/contentCatalog'
@@ -25,19 +25,16 @@ import DanmakuGuestbook from '@/features/guestbook/components/DanmakuGuestbook'
 import { useIdleMount } from '@/hooks/useIdleMount'
 import { usePerformanceTier } from '@/hooks/usePerformanceTier'
 import { useScrollDrivenAnimation } from '@/hooks/useScrollDrivenAnimation'
+import useUserPreferences from '@/hooks/useUserPreferences'
 import '@/styles/themes/home-pages.css'
 import HomeInteractiveDemo from './components/HomeInteractiveDemo'
 import LineDog from './components/LineDog'
 import SignalWaveOverlay from './components/SignalWaveOverlay'
 import { HOME_EXPERIMENTS, HOME_SHOWCASES, HOME_TIMELINE } from './homeContent'
 import './index.css'
-import type { RouteComponentProps } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 
 const HomeHeroFx = lazy(() => import('./components/HomeHeroFx'))
-
-interface HomeProps {
-  history: RouteComponentProps['history']
-}
 
 interface NavItem {
   id: string
@@ -51,9 +48,9 @@ interface FooterLink {
 
 const SHOWCASE_ICONS = [ThunderboltOutlined, RocketOutlined]
 
-export default function Home({ history }: HomeProps) {
+export default function Home() {
+  const history = useHistory()
   const audioRef = useRef<HTMLAudioElement | null>(null)
-  const [, messageContextHolder] = message.useMessage()
   const [drawerOpen, setDrawerOpen] = useState(false)
   const [soundOn, setSoundOn] = useState(false)
   const [activeSection, setActiveSection] = useState('hero')
@@ -61,9 +58,12 @@ export default function Home({ history }: HomeProps) {
   const navScrolledRef = useRef(false)
   const [fxEnabled, setFxEnabled] = useState(() => {
     if (typeof window === 'undefined') return true
-    return window.innerWidth > 900 && !window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    return (
+      window.innerWidth >= 1024 && !window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    )
   })
   const performanceTier = usePerformanceTier()
+  const { reducedMotion } = useUserPreferences()
 
   // 滚动驱动翻转动画
   const articlesTitleRef = useRef<HTMLDivElement>(null)
@@ -98,14 +98,17 @@ export default function Home({ history }: HomeProps) {
     return (base.length ? base : allMetas).slice(0, 3)
   }, [])
 
-  const scrollToSection = useCallback((id: string) => {
-    const element = document.getElementById(id)
-    if (!element) return
-    const headerOffset = window.innerWidth <= 768 ? 88 : 112
-    const top = element.getBoundingClientRect().top + window.scrollY - headerOffset
-    window.scrollTo({ top, behavior: 'smooth' })
-    setDrawerOpen(false)
-  }, [])
+  const scrollToSection = useCallback(
+    (id: string) => {
+      const element = document.getElementById(id)
+      if (!element) return
+      const headerOffset = window.innerWidth <= 768 ? 88 : 112
+      const top = element.getBoundingClientRect().top + window.scrollY - headerOffset
+      window.scrollTo({ top, behavior: reducedMotion ? 'auto' : 'smooth' })
+      setDrawerOpen(false)
+    },
+    [reducedMotion]
+  )
 
   const toRoute = useCallback(
     (path: string) => {
@@ -121,7 +124,7 @@ export default function Home({ history }: HomeProps) {
       { label: '实验项目', action: () => scrollToSection('experiments') },
       { label: '作品展', action: () => scrollToSection('showcase') },
       { label: '成长轨迹', action: () => scrollToSection('timeline') },
-      { label: '联系', action: () => scrollToSection('contact') }
+      { label: '联系', action: () => scrollToSection('guestbook') }
     ],
     [scrollToSection]
   )
@@ -150,12 +153,6 @@ export default function Home({ history }: HomeProps) {
       .play()
       .then(() => setSoundOn(true))
       .catch(() => setSoundOn(false))
-  }, [soundOn])
-
-  const handleAutoPlay = useCallback(() => {
-    const player = audioRef.current
-    if (!player || soundOn) return
-    // player.play().then(() => setSoundOn(true)).catch(() => {})
   }, [soundOn])
 
   useEffect(() => {
@@ -205,7 +202,7 @@ export default function Home({ history }: HomeProps) {
   useEffect(() => {
     const media = window.matchMedia('(prefers-reduced-motion: reduce)')
     const updateFx = () => {
-      setFxEnabled(window.innerWidth > 900 && !media.matches)
+      setFxEnabled(window.innerWidth >= 1024 && !media.matches)
     }
 
     updateFx()
@@ -216,24 +213,6 @@ export default function Home({ history }: HomeProps) {
       media.removeEventListener('change', updateFx)
     }
   }, [])
-
-  useEffect(() => {
-    let attempted = false
-    const tryAutoPlay = () => {
-      if (attempted) return
-      attempted = true
-      handleAutoPlay()
-      window.removeEventListener('pointerdown', tryAutoPlay)
-      window.removeEventListener('keydown', tryAutoPlay)
-    }
-
-    window.addEventListener('pointerdown', tryAutoPlay, { passive: true })
-    window.addEventListener('keydown', tryAutoPlay)
-    return () => {
-      window.removeEventListener('pointerdown', tryAutoPlay)
-      window.removeEventListener('keydown', tryAutoPlay)
-    }
-  }, [handleAutoPlay])
 
   useEffect(() => {
     const nodes = document.querySelectorAll('.reveal')
@@ -254,7 +233,6 @@ export default function Home({ history }: HomeProps) {
 
   return (
     <div className="HomeWrap">
-      {messageContextHolder}
       <audio id="myMusic" ref={audioRef} loop preload="none">
         <source src="/music/suddenly.mp3" type="audio/mp3" />
       </audio>
@@ -308,6 +286,8 @@ export default function Home({ history }: HomeProps) {
             <Button
               className="hero-nav__menu"
               icon={<MenuOutlined />}
+              aria-label={drawerOpen ? '关闭导航菜单' : '打开导航菜单'}
+              aria-expanded={drawerOpen}
               onClick={() => setDrawerOpen(true)}
             />
           </div>
@@ -331,22 +311,22 @@ export default function Home({ history }: HomeProps) {
                 <br />
                 写文章、做实验，偶尔也折腾 3D。
               </p>
-              <div className="hero-buttons home-hero__buttons hero-animate hero-animate--buttons flex flex-wrap items-center justify-center gap-[var(--home-gap-compact)] min-[769px]:gap-[var(--home-gap-card)]">
+              <div className="hero-buttons home-hero__buttons hero-animate hero-animate--buttons flex flex-wrap items-center justify-center gap-[var(--home-gap-compact)] md:gap-[var(--home-gap-card)]">
                 <Button
-                  className="home-hero__primary ui-button-primary ui-button-lg w-full justify-center min-[769px]:w-auto"
+                  className="home-hero__primary ui-button-primary ui-button-lg w-full justify-center md:w-auto"
                   onClick={() => toRoute('/blog')}
                   icon={<ArrowRightOutlined />}
                 >
                   阅读最新文章
                 </Button>
                 <Button
-                  className="home-hero__secondary ui-button-secondary ui-button-lg w-full justify-center min-[769px]:w-auto"
+                  className="home-hero__secondary ui-button-secondary ui-button-lg w-full justify-center md:w-auto"
                   onClick={() => scrollToSection('showcase')}
                 >
                   进入作品展
                 </Button>
               </div>
-              <div className="hero-metrics home-hero__metrics hero-animate hero-animate--metrics grid grid-cols-1 gap-2 min-[769px]:grid-cols-2 min-[980px]:gap-3 min-[980px]:grid-cols-4">
+              <div className="hero-metrics home-hero__metrics hero-animate hero-animate--metrics grid grid-cols-1 gap-2 md:grid-cols-2 lg:gap-3 lg:grid-cols-4">
                 <div className="hero-metrics__card home-hero__metric ui-card ui-card--metric">
                   <span className="ui-overline">文章</span>
                   <strong className="ui-card-title">{allMetas.length}</strong>
@@ -380,7 +360,7 @@ export default function Home({ history }: HomeProps) {
             </div>
             <div
               ref={articlesGridRef}
-              className="articles-grid home-articles__grid grid grid-cols-1 gap-[var(--home-gap-card)] min-[769px]:grid-cols-2 min-[769px]:gap-[22px] min-[1201px]:grid-cols-3"
+              className="articles-grid home-articles__grid grid grid-cols-1 gap-[var(--home-gap-card)] md:grid-cols-2 md:gap-[22px] xl:grid-cols-3"
             >
               {featuredArticles.map(item => (
                 <ArticleSignalMediaCard
@@ -405,7 +385,7 @@ export default function Home({ history }: HomeProps) {
                   这里收着一些我常做的空间实验、内容结构和个人展示入口，适合随手逛一逛。
                 </p>
               </div>
-              <div className="experiments-grid home-experiments__grid grid grid-cols-1 gap-5 min-[1201px]:grid-cols-2">
+              <div className="experiments-grid home-experiments__grid grid grid-cols-1 gap-5 xl:grid-cols-2">
                 {HOME_EXPERIMENTS.map((item, index) => (
                   <TiltCard
                     key={item.title}
@@ -436,7 +416,7 @@ export default function Home({ history }: HomeProps) {
                         </span>
                       ))}
                     </div>
-                    <div className="home-experiment-card__bottom mt-auto flex flex-col items-start gap-[var(--home-gap-card)] pt-[var(--home-gap-card)] min-[769px]:flex-row min-[769px]:items-center min-[769px]:justify-between">
+                    <div className="home-experiment-card__bottom mt-auto flex flex-col items-start gap-[var(--home-gap-card)] pt-[var(--home-gap-card)] md:flex-row md:items-center md:justify-between">
                       <span className="home-experiment-card__stat ui-meta-text">{item.stat}</span>
                       <span className="home-experiment-card__cta">
                         进入入口
@@ -462,7 +442,7 @@ export default function Home({ history }: HomeProps) {
             </div>
             <div
               ref={showcaseGridRef}
-              className="home-showcase__grid grid grid-cols-1 gap-5 min-[1201px]:grid-cols-2"
+              className="home-showcase__grid grid grid-cols-1 gap-5 xl:grid-cols-2"
             >
               {HOME_SHOWCASES.map((item, index) => {
                 const Icon = SHOWCASE_ICONS[index % SHOWCASE_ICONS.length]
@@ -470,13 +450,13 @@ export default function Home({ history }: HomeProps) {
                   <TiltCard
                     key={item.title}
                     as="button"
-                    className={`showcase-card ui-card ui-card--showcase ui-card--interactive ui-card--elevated relative flex min-h-0 flex-col gap-[18px] overflow-hidden max-md:px-[18px] max-md:py-[22px] min-[769px]:min-h-[284px] showcase-card--${item.accent}`}
+                    className={`showcase-card ui-card ui-card--showcase ui-card--interactive ui-card--elevated relative flex min-h-0 flex-col gap-[18px] overflow-hidden max-md:px-[18px] max-md:py-[22px] md:min-h-[284px] showcase-card--${item.accent}`}
                     maxTilt={9}
                     scale={1.02}
                     lift={10}
                     onClick={() => toRoute(item.path)}
                   >
-                    <div className="showcase-card__top relative z-[1] flex flex-col items-start gap-[var(--home-gap-card)] min-[769px]:flex-row min-[769px]:items-center min-[769px]:justify-between">
+                    <div className="showcase-card__top relative z-[1] flex flex-col items-start gap-[var(--home-gap-card)] md:flex-row md:items-center md:justify-between">
                       <div className="showcase-card__badge">
                         <Icon />
                       </div>
@@ -486,8 +466,8 @@ export default function Home({ history }: HomeProps) {
                       <h3 className="showcase-card__title ui-card-title">{item.title}</h3>
                       <p className="showcase-card__desc ui-body-text">{item.desc}</p>
                     </div>
-                    <div className="showcase-card__bottom relative z-[1] mt-auto flex flex-col items-start gap-[var(--home-gap-card)] min-[769px]:flex-row min-[769px]:items-end min-[769px]:justify-between">
-                      <div className="showcase-card__summary grid w-full justify-items-start gap-[var(--home-gap-compact)] min-[769px]:w-auto">
+                    <div className="showcase-card__bottom relative z-[1] mt-auto flex flex-col items-start gap-[var(--home-gap-card)] md:flex-row md:items-end md:justify-between">
+                      <div className="showcase-card__summary grid w-full justify-items-start gap-[var(--home-gap-compact)] md:w-auto">
                         <span className="showcase-card__mode ui-meta-text">{item.mode}</span>
                         <div className="showcase-card__tech flex flex-wrap gap-[var(--home-gap-tag)]">
                           {item.tech.slice(0, 2).map(tech => (
@@ -579,7 +559,7 @@ export default function Home({ history }: HomeProps) {
         </main>
 
         <footer className="home-footer">
-          <div className="footer-content home-footer__content grid gap-[var(--home-gap-card)] min-[769px]:gap-7 [grid-template-columns:repeat(auto-fit,minmax(220px,1fr))]">
+          <div className="footer-content home-footer__content grid gap-[var(--home-gap-card)] md:gap-7 [grid-template-columns:repeat(auto-fit,minmax(220px,1fr))]">
             <section className="footer-section home-footer__column">
               <h4>信号站</h4>
               <p>这里收着我的文章、实验、作品和一些持续更新中的想法，欢迎随时回来看看。</p>

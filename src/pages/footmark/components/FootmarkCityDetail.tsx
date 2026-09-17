@@ -1,6 +1,7 @@
 import { useMemo, useState } from 'react'
 import { LeftOutlined, RightOutlined } from '@ant-design/icons'
 import { Button, Drawer, Image, Modal, Tag } from 'antd'
+import '@/styles/themes/footmark-pages.css'
 import { getFootmarkMediaByIds, type FootmarkCity, type FootmarkWork } from '../footmarkContent'
 
 interface FootmarkCityDetailProps {
@@ -25,22 +26,20 @@ function DetailBody({ city, works }: { city: FootmarkCity; works: FootmarkWork[]
   const activeMedia = useMemo(() => getFootmarkMediaByIds(activeWork?.mediaIds || []), [activeWork])
 
   return (
-    <div className="footmark-detail grid gap-6 max-[768px]:gap-[18px]">
+    <div className="footmark-detail grid gap-6 max-md:gap-[18px]">
       <div className="footmark-detail__head grid gap-2.5">
         <span className="footmark-detail__eyebrow ui-tag">{city.eyebrow}</span>
         <h2 className="footmark-detail__cityTitle ui-display-title">{city.name}</h2>
         <p className="footmark-detail__citySummary ui-lead-text">{city.summary}</p>
       </div>
 
-      <div className="footmark-detail__body grid gap-6 min-[901px]:grid-cols-[minmax(0,1.2fr)_minmax(300px,0.8fr)]">
+      <div className="footmark-detail__body grid gap-6 lg:grid-cols-[minmax(0,1.2fr)_minmax(300px,0.8fr)]">
         <div className="footmark-detail__media">
           {activeMedia.length > 0 ? (
             <Image.PreviewGroup>
               <div
                 className={`footmark-detail__mediaGrid grid gap-3 ${
-                  activeMedia.length > 1
-                    ? 'min-[769px]:grid-cols-2 max-[768px]:grid-cols-1'
-                    : 'grid-cols-1'
+                  activeMedia.length > 1 ? 'md:grid-cols-2 max-md:grid-cols-1' : 'grid-cols-1'
                 }`}
               >
                 {activeMedia.map(media => (
@@ -63,8 +62,8 @@ function DetailBody({ city, works }: { city: FootmarkCity; works: FootmarkWork[]
           )}
         </div>
 
-        <div className="footmark-detail__content grid content-start gap-4 px-5 py-[18px] max-[768px]:p-4">
-          <div className="footmark-detail__workTop flex items-start justify-between gap-3 max-[768px]:flex-col">
+        <div className="footmark-detail__content grid content-start gap-4 px-5 py-[18px] max-md:p-4">
+          <div className="footmark-detail__workTop flex items-start justify-between gap-3 max-md:flex-col">
             <div>
               <span className="footmark-detail__label ui-meta-text">当前作品</span>
               <h3 className="footmark-detail__workTitle ui-card-title">

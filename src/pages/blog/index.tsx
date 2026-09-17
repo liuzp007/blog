@@ -13,6 +13,7 @@ import TagCloud from '@/features/content/TagCloud'
 import SearchBox from '@/features/search/SearchBox'
 import { search, type SearchDoc } from '@/features/search/searchClient'
 import { parseQuery, stringifyQuery, type QueryState, type SortKey } from '@/utils/query'
+import '@/styles/themes/blog-pages.css'
 import '@/features/content/alternatives.css'
 import './index.css'
 
@@ -162,9 +163,9 @@ export default function BlogIndex() {
     <ContentWrapper allowOverflow surface="plain">
       <div className="blog-lab">
         <SectionNav
-          className="blog-nav fixed left-[clamp(16px,3vw,48px)] right-[clamp(16px,3vw,48px)] top-4 z-[120] mb-[18px] flex items-center justify-between gap-4 rounded-[18px] px-[18px] py-[14px] max-[1024px]:top-3 max-[1024px]:px-[14px] max-[1024px]:py-3 max-[640px]:top-[10px] max-[640px]:flex-col max-[640px]:items-start max-[640px]:rounded-[14px]"
+          className="blog-nav fixed left-[clamp(16px,3vw,48px)] right-[clamp(16px,3vw,48px)] top-4 z-[120] mb-[18px] flex items-center justify-between gap-4 rounded-[18px] px-[18px] py-[14px] max-lg:top-3 max-lg:px-[14px] max-lg:py-3 max-sm:top-[10px] max-sm:flex-col max-sm:items-start max-sm:rounded-[14px]"
           homeButtonClassName="blog-nav__logo"
-          linksClassName="blog-nav__links flex flex-wrap justify-end gap-3 max-[640px]:w-full max-[640px]:justify-between max-[640px]:gap-x-[14px] max-[640px]:gap-y-[10px]"
+          linksClassName="blog-nav__links flex flex-wrap justify-end gap-3 max-sm:w-full max-sm:justify-between max-sm:gap-x-[14px] max-sm:gap-y-[10px]"
           linkButtonClassName="blog-nav__button"
           homeTo="/"
           items={navItems}
@@ -183,7 +184,7 @@ export default function BlogIndex() {
           )}
           <section
             id="overview"
-            className="blog-lab__hero mb-[18px] overflow-hidden rounded-[18px] p-7 [scroll-margin-top:calc(var(--blog-nav-space)+24px)] max-[640px]:rounded-[14px] max-[640px]:px-4 max-[640px]:py-5"
+            className="blog-lab__hero mb-[18px] overflow-hidden rounded-[18px] p-7 [scroll-margin-top:calc(var(--blog-nav-space)+24px)] max-sm:rounded-[14px] max-sm:px-4 max-sm:py-5"
           >
             <div className="blog-lab__hero-grid relative z-[2] grid items-stretch gap-[18px] lg:grid-cols-[minmax(0,1.35fr)_minmax(0,0.95fr)]">
               <div className="blog-lab__hero-main min-w-0">
@@ -193,7 +194,7 @@ export default function BlogIndex() {
                   把技术文章做成数字杂志，不只是"按时间倒序"的内容堆叠。
                   你可以在这里按主题信号筛选、切换阅读视图，并追踪前端工程实践的趋势波动。
                 </p>
-                <div className="blog-lab__metrics mt-[18px] grid gap-[10px] min-[641px]:grid-cols-2 lg:grid-cols-4 max-[640px]:grid-cols-1 max-[640px]:gap-2">
+                <div className="blog-lab__metrics mt-[18px] grid gap-[10px] sm:grid-cols-2 lg:grid-cols-4 max-sm:grid-cols-1 max-sm:gap-2">
                   <div className="blog-lab__metric ui-card ui-card--metric">
                     <span className="blog-lab__metric-label ui-meta-text">总文章</span>
                     <strong className="ui-card-title">{metas.length}</strong>
@@ -277,11 +278,11 @@ export default function BlogIndex() {
                   把 25 篇深度长文组织成 5 条知识路径，按主题顺序阅读，而不是只在时间线上漂流。
                 </p>
               </div>
-              <div className="blog-lab__series-grid grid gap-4 [grid-template-columns:repeat(auto-fit,minmax(260px,1fr))] max-[640px]:grid-cols-1">
+              <div className="blog-lab__series-grid grid gap-4 [grid-template-columns:repeat(auto-fit,minmax(260px,1fr))] max-sm:grid-cols-1">
                 {seriesSpotlights.map((series, index) => (
                   <article
                     key={series.key}
-                    className={`blog-lab__series-card ui-card ui-card--feature blog-lab__series-card--${index % 5} flex min-h-[250px] flex-col gap-3 max-[640px]:min-h-[220px] max-[640px]:[--ui-card-padding:16px]`}
+                    className={`blog-lab__series-card ui-card ui-card--feature blog-lab__series-card--${index % 5} flex min-h-[250px] flex-col gap-3 max-sm:min-h-[220px] max-sm:[--ui-card-padding:16px]`}
                   >
                     <div className="blog-lab__series-topline ui-meta-text flex flex-wrap justify-between gap-[10px]">
                       <span>{series.category}</span>
@@ -305,7 +306,7 @@ export default function BlogIndex() {
                         </span>
                         <span>起篇：#{series.articles[0]?.seriesOrder || 1}</span>
                       </div>
-                      <div className="blog-lab__series-actions flex flex-wrap items-center gap-[10px] max-[640px]:flex-col max-[640px]:items-stretch">
+                      <div className="blog-lab__series-actions flex flex-wrap items-center gap-[10px] max-sm:flex-col max-sm:items-stretch">
                         <Link
                           to={{
                             pathname: '/blog',
@@ -332,7 +333,7 @@ export default function BlogIndex() {
 
           <section
             id="articles"
-            className="blog-lab__control-surface ui-card ui-card--compact mb-5 [scroll-margin-top:calc(var(--blog-nav-space)+24px)] max-[640px]:p-3"
+            className="blog-lab__control-surface ui-card ui-card--compact mb-5 [scroll-margin-top:calc(var(--blog-nav-space)+24px)] max-sm:p-3"
           >
             <div className="blog-lab__search mb-3">
               <SearchBox
@@ -361,7 +362,7 @@ export default function BlogIndex() {
               <div className="blog-lab__status ui-meta-text">
                 共 {total} 篇 · 第 {state.page}/{totalPages} 页
               </div>
-              <div className="blog-lab__toolbar-right flex flex-wrap items-center gap-[10px] max-[640px]:w-full">
+              <div className="blog-lab__toolbar-right flex flex-wrap items-center gap-[10px] max-sm:w-full">
                 <Select
                   className="ui-input blog-lab__sort-select"
                   value={state.sort}
@@ -391,7 +392,7 @@ export default function BlogIndex() {
           </section>
 
           {view === 'cards' ? (
-            <div className="blog-lab__cards grid gap-[18px] [grid-template-columns:repeat(auto-fit,minmax(290px,1fr))] max-[640px]:grid-cols-1">
+            <div className="blog-lab__cards grid gap-[18px] [grid-template-columns:repeat(auto-fit,minmax(290px,1fr))] max-sm:grid-cols-1">
               {pageList.map(m => (
                 <ArticleCard key={m.slug} meta={m} />
               ))}

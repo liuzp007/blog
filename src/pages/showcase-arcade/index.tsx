@@ -2,6 +2,7 @@ import { useCallback, useEffect, useMemo, useState } from 'react'
 import { ArrowLeftOutlined, ReloadOutlined, ThunderboltOutlined } from '@ant-design/icons'
 import { Button, Modal, Segmented, Tag } from 'antd'
 import { Link } from 'react-router-dom'
+import '@/styles/themes/showcase-arcade.css'
 import './index.css'
 
 /**
@@ -465,7 +466,7 @@ export default function ShowcaseArcade() {
       </div>
 
       <div className="relative z-[1] w-[min(1320px,calc(100%-28px))] min-h-[100dvh] m-0 auto p-[34px_0_36px]">
-        <header className="grid items-start gap-[22px] min-[1081px]:grid-cols-[minmax(0,1.4fr)_minmax(280px,0.74fr)]">
+        <header className="grid items-start gap-[22px] xl:grid-cols-[minmax(0,1.4fr)_minmax(280px,0.74fr)]">
           <div className="border border-solid border-[var(--arcade-glass-border)] bg-[var(--arcade-glass-bg)] shadow-[var(--arcade-shadow-panel)] backdrop-blur-[16px] rounded-[28px] p-6">
             <p className="inline-flex items-center min-h-[34px] m-0 px-3.5 rounded-[999px] border border-solid border-[var(--arcade-glass-border)] bg-[var(--arcade-glass-bg-soft)] text-[color-mix(in_srgb,var(--arcade-color-neon-cyan)_92%,white)] text-[12px]">
               作品展 / 02
@@ -487,9 +488,9 @@ export default function ShowcaseArcade() {
                 扫频预览
               </Tag>
             </div>
-            <div className="mt-[22px] flex flex-wrap gap-2.5 max-[720px]:gap-3">
+            <div className="mt-[22px] flex flex-wrap gap-2.5 max-md:gap-3">
               <Button
-                className="border-none text-[var(--arcade-text-inverse)] bg-[linear-gradient(90deg,var(--arcade-color-neon-cyan),var(--arcade-color-neon-pink),var(--arcade-button-end))] ui-button-cta max-[720px]:w-full"
+                className="border-none text-[var(--arcade-text-inverse)] bg-[linear-gradient(90deg,var(--arcade-color-neon-cyan),var(--arcade-color-neon-pink),var(--arcade-button-end))] ui-button-cta max-md:w-full"
                 type="primary"
                 icon={<ReloadOutlined />}
                 onClick={() => resetGame()}
@@ -497,7 +498,7 @@ export default function ShowcaseArcade() {
                 开始这一局
               </Button>
               <Button
-                className="border border-solid border-[var(--arcade-glass-border)] bg-[var(--arcade-glass-bg-strong)] text-[var(--arcade-text-strong)] ui-button-cta max-[720px]:w-full"
+                className="border border-solid border-[var(--arcade-glass-border)] bg-[var(--arcade-glass-bg-strong)] text-[var(--arcade-text-strong)] ui-button-cta max-md:w-full"
                 icon={<ThunderboltOutlined />}
                 onClick={triggerScan}
                 disabled={previewActive || scanCharges <= 0 || matchedPairs === totalPairs}
@@ -506,7 +507,7 @@ export default function ShowcaseArcade() {
               </Button>
               <Link
                 to="/"
-                className="border border-solid border-[var(--arcade-glass-border)] bg-[var(--arcade-glass-bg-strong)] text-[var(--arcade-text-strong)] ui-button-secondary ui-button-cta max-[720px]:w-full"
+                className="border border-solid border-[var(--arcade-glass-border)] bg-[var(--arcade-glass-bg-strong)] text-[var(--arcade-text-strong)] ui-button-secondary ui-button-cta max-md:w-full"
               >
                 <ArrowLeftOutlined aria-hidden="true" />
                 返回首页
@@ -542,9 +543,9 @@ export default function ShowcaseArcade() {
                 {theme.hint}
               </p>
             </div>
-            <div className="mt-[18px] grid grid-cols-2 gap-2.5 max-[720px]:grid-cols-1">
+            <div className="mt-[18px] grid grid-cols-2 gap-2.5 max-md:grid-cols-1">
               <article className="border border-solid border-[var(--arcade-glass-border)] bg-[var(--arcade-glass-bg-soft)] rounded-[20px] p-4">
-                <span className="block text-[color-mix(in_srgb,var(--white-alpha-60))] text-[12px]">
+                <span className="block text-[color-mix(in_srgb,color-mix(in_srgb,var(--color-white)_60%,transparent))] text-[12px]">
                   扫频次数
                 </span>
                 <strong className="block mt-2 font-[var(--font-family-tech)] text-[clamp(22px,3vw,30px)] text-[var(--arcade-text-strong)]">
@@ -552,7 +553,7 @@ export default function ShowcaseArcade() {
                 </strong>
               </article>
               <article className="border border-solid border-[var(--arcade-glass-border)] bg-[var(--arcade-glass-bg-soft)] rounded-[20px] p-4">
-                <span className="block text-[color-mix(in_srgb,var(--white-alpha-60))] text-[12px]">
+                <span className="block text-[color-mix(in_srgb,color-mix(in_srgb,var(--color-white)_60%,transparent))] text-[12px]">
                   最佳连击
                 </span>
                 <strong className="block mt-2 font-[var(--font-family-tech)] text-[clamp(22px,3vw,30px)] text-[var(--arcade-text-strong)]">
@@ -563,7 +564,7 @@ export default function ShowcaseArcade() {
           </aside>
         </header>
 
-        <section className="mt-[18px] grid gap-3 min-[1081px]:grid-cols-4 max-[1080px]:grid-cols-2 max-[720px]:grid-cols-1">
+        <section className="mt-[18px] grid gap-3 xl:grid-cols-4 max-lg:grid-cols-2 max-md:grid-cols-1">
           <article className="border border-solid border-[var(--arcade-glass-border)] bg-[var(--arcade-glass-bg)] shadow-[var(--arcade-shadow-panel)] backdrop-blur-[16px] rounded-[20px] p-[18px] text-center">
             <span className="block text-[11px] text-[var(--arcade-color-neon-pink)] font-[var(--font-family-tech)] tracking-[0.16em] uppercase">
               步数
@@ -599,7 +600,7 @@ export default function ShowcaseArcade() {
         </section>
 
         <section className="mt-[18px]">
-          <div className="grid gap-2.5 rounded-[24px] p-[14px] min-[1201px]:grid-cols-4 min-[721px]:grid-cols-2 max-[720px]:grid-cols-1">
+          <div className="grid gap-2.5 rounded-[24px] p-[14px] xl:grid-cols-4 md:grid-cols-2 max-md:grid-cols-1">
             <div>
               <span className="block text-[10px] text-[var(--arcade-text-subtle)] font-[var(--font-family-tech)] tracking-[0.16em] uppercase">
                 当前成对数
@@ -635,7 +636,7 @@ export default function ShowcaseArcade() {
           </div>
 
           <main
-            className={`vapor-memory__board-shell relative mt-[14px] min-h-[520px] overflow-hidden rounded-[32px] p-[30px] max-[720px]:min-h-0 max-[720px]:rounded-[22px] max-[720px]:px-[14px] max-[720px]:pb-[22px] max-[720px]:pt-[18px] ${previewActive ? 'is-previewing' : ''}`}
+            className={`vapor-memory__board-shell relative mt-[14px] min-h-[520px] overflow-hidden rounded-[32px] p-[30px] max-md:min-h-0 max-md:rounded-[22px] max-md:px-[14px] max-md:pb-[22px] max-md:pt-[18px] ${previewActive ? 'is-previewing' : ''}`}
           >
             {flashMessage ? (
               <div
@@ -664,7 +665,7 @@ export default function ShowcaseArcade() {
             ) : null}
 
             <div
-              className="vapor-memory__grid relative z-[2] mx-auto grid w-full max-w-[860px] gap-2.5 max-[720px]:gap-2"
+              className="vapor-memory__grid relative z-[2] mx-auto grid w-full max-w-[860px] gap-2.5 max-md:gap-2"
               style={{ gridTemplateColumns: `repeat(${difficulty}, minmax(0, 1fr))` }}
             >
               {cards.map(card => {
@@ -721,12 +722,12 @@ export default function ShowcaseArcade() {
             </strong>
             。
           </p>
-          <div className="m-[22px_0_0] grid gap-3 min-[721px]:grid-cols-3 max-[720px]:grid-cols-1">
+          <div className="m-[22px_0_0] grid gap-3 md:grid-cols-3 max-md:grid-cols-1">
             <div className="rounded-[18px] p-4 bg-[var(--arcade-glass-bg-soft)]">
               <span className="block font-[var(--font-family-tech)] text-[clamp(22px,4vw,30px)] text-[var(--arcade-color-neon-pink)]">
                 {score}
               </span>
-              <span className="block mt-2 text-[color-mix(in_srgb,var(--white-alpha-60))] text-[11px]">
+              <span className="block mt-2 text-[color-mix(in_srgb,color-mix(in_srgb,var(--color-white)_60%,transparent))] text-[11px]">
                 总得分
               </span>
             </div>
@@ -734,7 +735,7 @@ export default function ShowcaseArcade() {
               <span className="block font-[var(--font-family-tech)] text-[clamp(22px,4vw,30px)] text-[var(--arcade-color-neon-pink)]">
                 {bestStreak}
               </span>
-              <span className="block mt-2 text-[color-mix(in_srgb,var(--white-alpha-60))] text-[11px]">
+              <span className="block mt-2 text-[color-mix(in_srgb,color-mix(in_srgb,var(--color-white)_60%,transparent))] text-[11px]">
                 最佳连击
               </span>
             </div>
@@ -742,7 +743,7 @@ export default function ShowcaseArcade() {
               <span className="block font-[var(--font-family-tech)] text-[clamp(22px,4vw,30px)] text-[var(--arcade-color-neon-pink)]">
                 {timerText}
               </span>
-              <span className="block mt-2 text-[color-mix(in_srgb,var(--white-alpha-60))] text-[11px]">
+              <span className="block mt-2 text-[color-mix(in_srgb,color-mix(in_srgb,var(--color-white)_60%,transparent))] text-[11px]">
                 完成时间
               </span>
             </div>

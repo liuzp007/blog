@@ -1,8 +1,7 @@
 import { render, screen, fireEvent, waitFor } from '@testing-library/react'
 import { describe, it, expect, vi, beforeEach } from 'vitest'
-import { MemoryRouter } from 'react-router-dom'
-import { Provider } from 'react-redux'
-import { configureStore } from '@reduxjs/toolkit'
+import { Router } from 'react-router-dom'
+import { createMemoryHistory } from 'history'
 import Home from '@/pages/home'
 
 // Mock dependencies
@@ -71,7 +70,6 @@ vi.mock('@/features/content/ArticleSignalMediaCard', () => ({
 }))
 
 vi.mock('@/pages/home/homeContent', () => ({
-  HOME_CONTACT_ACTIONS: [{ label: 'Github', desc: '查看我的开源项目', path: '/github' }],
   HOME_EXPERIMENTS: [
     {
       title: '实验1',
@@ -97,30 +95,16 @@ vi.mock('@/pages/home/homeContent', () => ({
   HOME_TIMELINE: [{ year: '2024', title: '开始', desc: '开始写代码' }]
 }))
 
-const mockStore = configureStore({
-  reducer: {
-    main: (state = { menu: [], selectedKeys: [], openKeys: [], loading: false, error: null }) =>
-      state,
-    ui: (state = {}) => state,
-    navigation: (state = {}) => state,
-    userPreferences: (state = {}) => state
-  }
-})
+const renderHome = (initialEntries: string[] = ['/']) => {
+  const history = createMemoryHistory({ initialEntries })
 
-const mockHistory = {
-  push: vi.fn(),
-  goBack: vi.fn(),
-  location: { pathname: '/' }
-}
-
-const renderHome = () => {
-  return render(
-    <Provider store={mockStore}>
-      <MemoryRouter>
-        <Home history={mockHistory as any} />
-      </MemoryRouter>
-    </Provider>
+  render(
+    <Router history={history}>
+      <Home />
+    </Router>
   )
+
+  return history
 }
 
 describe('Home 首页组件测试', () => {
@@ -197,13 +181,13 @@ describe('Home 首页组件测试', () => {
   })
 
   it('应该点击导航按钮调用history.push', async () => {
-    renderHome()
+    const history = renderHome()
 
     const blogButton = screen.getByText('阅读最新文章')
     fireEvent.click(blogButton)
 
     await waitFor(() => {
-      expect(mockHistory.push).toHaveBeenCalledWith('/blog')
+      expect(history.location.pathname).toBe('/blog')
     })
   })
 

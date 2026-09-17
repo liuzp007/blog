@@ -9,7 +9,7 @@
 - **构建工具**: Vite 5.0
 - **语言**: TypeScript 5.x
 - **路由**: React Router DOM v5 (`BrowserRouter`)
-- **状态管理**: `src/store`（RTK 风格组织 + `redux-persist`）
+- **状态管理**: 页面局部状态使用 React Hooks；用户偏好使用 `useUserPreferences` + `localStorage`
 - **UI 库**: Ant Design v4 + Tailwind CSS v3
 - **3D/动画**: Three.js 0.182 + React Three Fiber + React Three Drei + Postprocessing
 - **样式**: SCSS + Tailwind CSS
@@ -18,7 +18,6 @@
 ### 路径别名配置
 ```
 @/*         → src/*       (根路径)
-@store/*    → src/store/*
 @router/*   → src/router/*
 @page/*     → src/pages/*
 moment      → dayjs       (兼容性别名)
@@ -77,29 +76,10 @@ const modules = import.meta.glob('../pages/**/index.{js,jsx,tsx}');
 
 ### 3. 状态管理规范
 
-**主状态管理使用 `src/store`**
-```
-src/store/
-├── index.ts                  # store / persist 配置
-├── hooks/                    # typed hooks
-├── main/                     # 主布局与主内容状态
-├── navigation/               # 导航状态
-├── ui/                       # 全局 UI 状态
-└── userPreferences/          # 主题 / 动效 / 偏好
-```
-
-**组织规则**
-```typescript
-const rootReducer = combineReducers({
-  main: mainReducer,
-  ui: uiReducer,
-  navigation: navigationReducer,
-  userPreferences: persistedUserPreferencesReducer
-})
-```
-
-- `src/redux/OBS/**` 仍作为历史遗留示例存在，但当前应用主状态统一收口在 `src/store/**`
-- `userPreferences` 通过 `redux-persist` 持久化
+- 菜单、侧栏等布局状态优先放在 `MainLayout` 本地状态中派生
+- 跨刷新保留的用户偏好统一使用 `src/hooks/useUserPreferences.ts`
+- `useUserPreferences` 兼容旧 `persist:blog-user-preferences` 存储，并支持跨标签页同步
+- 不新增 Redux、Context Store 或全局状态模块；确有跨页面状态时先评估页面参数与路由状态
 
 ---
 
@@ -248,7 +228,7 @@ export default function Header() {
 1. 页面布局、栅格、间距、对齐、响应式：优先使用 Tailwind 风格
 2. 标题、正文、按钮、卡片等高频 UI：优先复用 `src/styles/components.css` 中的 `.ui-*` 通用类
    标签、输入框等也优先复用设计系统中的 `.ui-tag`、`.ui-input`
-3. 颜色、字号、圆角、阴影、边框：必须优先使用 `src/styles/tokens/semantic.css` 和主题变量
+3. 颜色、字号、圆角、阴影、边框：必须优先使用 `src/styles/tokens.css` 和主题变量
 4. Ant Design 组件：优先沿用组件本身并通过 token / className 做轻量定制
 5. 只有 Tailwind 无法覆盖、且确实属于页面私有视觉时，才新增 SCSS 文件
 
@@ -320,16 +300,7 @@ src/
 │   ├── aboutme/          # 关于我
 │   └── code/             # 技术文章
 │       └── react/        # React 系列
-├── redux/                # 遗留 Redux OBS 示例（非当前主状态入口）
-│   └── OBS/
-│       └── main/
-├── store/                # 主状态管理
-│   ├── index.ts          # Store / persist 配置
-│   ├── hooks/            # Typed hooks
-│   ├── main/             # 主内容状态
-│   ├── navigation/       # 导航状态
-│   ├── ui/               # UI 状态
-│   └── userPreferences/  # 用户偏好
+├── redux/                # 已移除
 ├── router/               # 路由配置
 │   ├── router_config.ts  # 路由定义
 │   └── router-view.tsx   # 路由视图
@@ -386,11 +357,10 @@ pnpm ci:check
 - [ ] 如需样式补充，新增 `index.scss`，且样式只能消费语义 token / 页面主题变量
 - [ ] 路由注册路径与导航入口保持一致
 
-### 添加 Store 模块
-- [ ] 在 `src/store/{module}/` 创建目录
-- [ ] 统一导出 reducer / actions
-- [ ] 在 `src/store/index.ts` 接入 root reducer
-- [ ] 如需持久化，显式配置 `redux-persist`
+### 添加持久化偏好
+- [ ] 优先扩展 `src/hooks/useUserPreferences.ts`
+- [ ] 明确默认值、非法存储回退与跨标签页同步行为
+- [ ] 补充 Hook 单元测试
 
 ### 添加工具函数
 - [ ] 在 `src/utils/libs/` 添加文件
@@ -408,7 +378,7 @@ pnpm ci:check
 
 1. **TypeScript**: 当前配置为 `strict: false`，但 `noImplicitAny: true`；禁止新增隐式 `any`，显式 `any` 仅在确有必要时使用并控制范围。
 2. **混合组件架构**: 接受类组件与函数组件并存，不强制统一
-3. **自动发现机制**: 页面组件通过 `import.meta.glob` 动态发现；主状态模块不做自动发现，统一手工收口在 `src/store/index.ts`
+3. **自动发现机制**: 页面组件通过 `import.meta.glob` 动态发现；用户偏好统一由 `useUserPreferences` 收口
 4. **注释简洁原则**: 只在必要时添加注释，避免冗余
 5. **样式分层策略**: 页面布局优先使用 Tailwind 风格，标题/正文/按钮/卡片等高频 UI 优先复用设计系统语义类，SCSS 仅用于复杂样式补充，内联样式仅用于必要的动态效果
 6. **路径别名**: 必须使用 `@/` 等路径别名，禁止相对路径滥用
@@ -416,10 +386,9 @@ pnpm ci:check
 
 8. **沟通语言约定**：所有对用户的回复须使用中文，包含代码评审、问题说明、变更摘要与后续建议等内容。
 
-9. **状态管理真相**：当前应用主状态管理使用 `src/store`；`src/redux/OBS/**` 仍作为历史遗留示例存在，但不是运行时主入口。
-   - 不在新功能里继续扩展 OBS。
-   - 文档、任务和代码评审都应以 `src/store/**` 为唯一主状态入口。
-   - `userPreferences` 当前只做部分持久化，不要在文档中默认宣称“所有用户偏好都会跨刷新保留”。
+9. **状态管理真相**：当前应用不使用 Redux；菜单与侧栏状态在 `MainLayout` 内维护，用户偏好由 `useUserPreferences` 持久化。
+   - 不在新功能里重新引入 Redux / redux-persist。
+   - 只有确实需要跨刷新保留的偏好才进入 Hook，避免扩大持久化状态面。
 
 10. **UI 组件规范（Ant Design 优先）**：涉及可交互控件（选择器、分页、下拉、输入框、按钮等）时，禁止使用原生标签自行实现交互，必须优先使用 Ant Design v4 对应组件，确保一致的交互行为与可访问性。
    - 例如：排序选择使用 `Select`，分页使用 `Pagination`，表单控件使用 `Form`/`Input`/`Button` 等。
@@ -427,7 +396,7 @@ pnpm ci:check
    - 代码评审将据此规范进行校验。
 11. **页面开发规范**：新增页面或改版页面必须遵循 `docs/style-governance.md`。页面布局、栅格、间距、响应式优先使用 Tailwind 风格；标题、正文、按钮、卡片等高频 UI 优先复用 `src/styles/components.css` 中的 `.ui-*` 类；颜色、字号、圆角、阴影、边框必须使用语义 token 或页面主题变量。只有 Tailwind 无法覆盖且确属页面私有视觉时，才新增对应的 SCSS 文件；非必须不要写行内样式以及使用 `styled-components`。
 12. **设计系统优先规范**：生成新页面、新组件或调整现有页面样式时，默认必须遵循现有设计系统，禁止绕开 token / 语义类单独定义一套视觉规则。
-   - 颜色、字号、圆角、阴影、间距、动效等视觉属性，优先使用 `src/styles/theme.css` 已接入的 token，不得在页面或组件中直接写硬编码值。
+   - 颜色、字号、圆角、阴影、间距、动效等视觉属性，优先使用 `src/styles/tokens.css` 已接入的 token，不得在页面或组件中直接写硬编码值。
    - 标题、正文、说明文案、按钮、卡片、标签、输入框等常见 UI，优先复用现有语义类与组件样式，例如 `ui-page-title`、`ui-section-title`、`ui-body-text`、`ui-muted-text`、`ui-button-primary`、`ui-button-secondary`、`ui-card`、`ui-tag`、`ui-input` 等。
    - 页面私有视觉仅在确有必要时新增模块私有变量，并挂在页面根类或组件根类上；不得把实验色或局部 palette 直接散落在 TSX / SCSS 中。
    - 具体使用规则与对照关系以 `docs/style-governance.md` 为准；生成页面时默认视为必须遵守。
@@ -437,8 +406,8 @@ pnpm ci:check
    - 仅在 `8081` 未启动时，才执行 `pnpm dev` 拉起本地服务。
    - 当前默认质量门禁链为 `pnpm type-check`、`pnpm lint`、`pnpm format:check`、`pnpm audit:style`、`pnpm build`；页面人工验收默认走 Chrome MCP，不把 Playwright 作为当前仓库的默认前置依赖。
 14. **CSS 变量权限红线**：后续新增或修改样式时，默认按严格权限模型执行。
-   - `:root` 只允许出现在 `src/styles/tokens/base.css`、`src/styles/tokens/semantic.css`、`src/styles/themes/dark.css`、`src/styles/themes/light.css`、`src/styles/themes/accessibility.css`。
-   - `src/pages/**`、`src/components/**`、`src/styles/components.css`、`src/styles/global-ui.css`、`src/styles/primitives.css`、`src/styles/theme.css`、`src/styles/themes/*-pages.css`、`src/styles/themes/content-features.css`、`src/styles/themes/code-pages.css`、`src/styles/themes/legacy-code.css`、`src/styles/themes/legacy-shell.css` 禁止使用 `:root`。
+   - `:root` 只允许出现在 `src/styles/tokens.css`、`src/styles/themes/dark.css`、`src/styles/themes/light.css`、`src/styles/themes/accessibility.css`。
+   - `src/pages/**`、`src/components/**`、`src/styles/base.css`、`src/styles/components.css`、`src/styles/themes/*-pages.css`、`src/styles/themes/content-features.css`、`src/styles/themes/code-pages.css`、`src/styles/themes/legacy-code.css` 禁止使用 `:root`。
    - 除 token / 核心主题入口外，禁止定义或覆写 `--raw-*`、`--white-alpha-*`、`--black-alpha-*`、`--font-*`、`--space-*`、`--radius-*`、`--control-*`、`--motion-*`、`--easing-*`、`--color-*`、`--text-*`、`--heading-*`、`--button-*`、`--card-*`、`--tag-*`、`--input-*`、`--bg-*`、`--accent-*`、`--surface-*`、`--brand-*`、`--border-*`、`--status-*`、`--state-*`、`--glass-*`、`--sidebar-*`、`--shadow-*`、`--focus-*`、`--warning-*`。
    - 页面、组件和局部 palette 文件只能定义模块前缀变量或 `--ui-*` 局部适配变量，且变量必须挂在模块根类上，不得挂在全局选择器上。
 ---
@@ -675,6 +644,90 @@ pnpm ci:check
 - 解决方法：同步删除回调签名、初始化调用、响应式调用里的 `quality` 参数，并清理 effect 依赖，再重跑聚焦测试、类型检查、格式检查和构建。
 - 相关文件/命令：`src/pages/footmark/components/FootmarkMapScene.tsx`、`pnpm exec tsc --noEmit`
 - 注意事项：删除实现细节时先沿调用链搜索参数和依赖；不要只改函数体导致类型检查中断。
+
+#### 37. 私有 registry 不可达时优先手工 prune lockfile
+- 问题描述：移除 Redux 相关依赖后执行 `pnpm install --lockfile-only --ignore-scripts`，持续报 `registry.npmmirror.com ENOTFOUND` 并长时间重试，阻塞重构验证。
+- 解决方法：停止等待 registry，手工删除 `package.json` 依赖与 `pnpm-lock.yaml` 中对应 importer、package、snapshot 条目，再用本地 `pnpm exec vitest`、`pnpm type-check`、`pnpm build` 验证。
+- 相关文件/命令：`package.json`、`pnpm-lock.yaml`、`pnpm install --lockfile-only --ignore-scripts`
+- 注意事项：只有依赖删除范围清晰且本地 node_modules 可继续支撑验证时才手工 prune；新增或升级依赖仍应等待可用 registry 后由包管理器维护。
+
+#### 38. 页面 palette 不再允许通过全局聚合入口加载
+- 问题描述：`src/styles/palettes.css` 会把 Blog、Footmark、Showcase 等页面私有变量全部并入首页 CSS，造成首页加载大量无关样式。
+- 解决方法：删除全局 palette 聚合入口和 `theme.css` 重复导入，把对应 `themes/*-pages.css`、`content-features.css`、`code-pages.css`、`legacy-code.css` 移到实际页面或组件使用点导入。
+- 相关文件/命令：`src/index.css`、`src/pages/blog/index.tsx`、`src/pages/footmark/components/FootmarkCityDetail.tsx`、`src/pages/showcase-*/index.tsx`
+- 注意事项：新增页面私有变量必须挂页面/组件根类，并由该路由的使用点导入；不要重新创建全局 palette 聚合文件。
+
+#### 39. 派发 agent 前不要假设当前模型支持 reasoning effort 覆盖
+- 问题描述：并行审计时给 `spawn_agent` 传了 `reasoning_effort: "medium"`，但当前默认模型是 `glm-5.3`，返回 “Supported reasoning efforts” 空列表，两个 agent 均未启动。
+- 解决方法：去掉 `reasoning_effort` 参数继承当前配置后重新派发，两个只读审计 agent 正常启动。
+- 相关文件/命令：`multi_agent_v1.spawn_agent`
+- 注意事项：模型能力存在会话差异；除非用户明确要求模型/推理覆盖，默认省略模型与 reasoning 参数，失败后先降级为继承配置重试。
+
+#### 40. `Task.json` 存在重复 ID 时不能用裸状态行打补丁
+- 问题描述：想把 AR03 / AR05 标记为完成时，只按 `"isDone": true` / `"status": "cancelled"` 生成无上下文补丁，结果命中文件中第一处待办 CSS13，造成任务状态误改。
+- 解决方法：立即回读目标区域，带 `id`、`title`、`priority` 的完整上下文分别修正 CSS13、AR03、AR05，再重新检查待办队列。
+- 相关文件/命令：`Task.json`、`apply_patch`
+- 注意事项：任务板历史队列里同一 ID 可能出现多次；更新状态时必须以 title + 相邻字段确认唯一目标，不能只匹配状态行。
+
+#### 41. 删除 multiline CSS custom property 不能只删首行
+- 问题描述：token 减肥脚本按行匹配 `--name:` 删除 multiline gradient token 时，只删除了首行，留下 `135deg, var(...)` 续行，导致 `tokens.css` 语法解析失败。
+- 解决方法：格式检查暴露后续行后，删除整个残留声明和已空的组件 token 注释块，再重跑 Prettier、Stylelint、样式审计和构建。
+- 相关文件/命令：`src/styles/tokens.css`、`pnpm format:check`
+- 注意事项：自动删 custom property 前先判断值是否跨行；要么按完整声明区间删除，要么删除后立即用 CSS parser / Prettier 验证。
+
+#### 42. `prettier --list-different` 找到差异时退出码是 1
+- 问题描述：用 Node `spawnSync` 调 `prettier --list-different` 时把退出码 1 当作命令失败，导致格式化补丁没有生成。
+- 解决方法：按 Prettier CLI 语义把 `0` 视为无差异、`1` 视为存在差异，解析 stdout 文件列表后继续生成格式化补丁。
+- 相关文件/命令：`prettier --list-different`、`apply_patch`
+- 注意事项：包装 CLI 时先确认“非零退出码”是错误还是有效结果，不能统一按命令崩溃处理。
+
+#### 43. Markdown 内容 slug 必须全小写并使用连字符
+- 问题描述：第一批 React 教程迁移后，`pnpm check:content` 报出 `react-customHooks`、`react-useEffect` 等 9 个 slug 不符合小写字母/数字/连字符规则。
+- 解决方法：统一转换为 `react-custom-hooks`、`react-use-effect` 等形式，并同步页面 wrapper、内容元数据，再重新执行 `build:content-meta` 与 `check:content`。
+- 相关文件/命令：`src/content/react/*.md`、`src/pages/code/react/*/index.tsx`、`pnpm check:content`
+- 注意事项：新增 Markdown 时 frontmatter slug 不要沿用目录 camelCase 命名；路由 wrapper 与生成元数据必须一起核对。
+
+#### 44. 同一个文件不能在一个 `apply_patch` 里先 Delete 再 Add
+- 问题描述：迁移教程页面时把“删除旧 TSX、新增薄 wrapper”写在同一个补丁里，`apply_patch` 报 “multiple operations target ...”，整组补丁未落地。
+- 解决方法：拆成“新增 Markdown → 删除旧入口 → 新增 wrapper”多次补丁；每次失败后先确认没有半落地状态再重试。
+- 相关文件/命令：`src/pages/code/react/*/index.tsx`、`apply_patch`
+- 注意事项：替换整文件时不要在同一补丁中对同一路径做互斥操作；必要时用删除和新增两个独立补丁。
+
+#### 45. 扩展 Markdown block 类型时必须同步所有渲染分支
+- 问题描述：新增 table block 后，测试期望与 TypeScript 类型一度少了单元格层级；`MarkdownTutorial` 也因外层容器缺 key 触发 ESLint error。
+- 解决方法：将 table 类型定义为 `header: InlineNode[][]`、`rows: InlineNode[][][]`，同步教程渲染器与 Blog 详情渲染器，并给迭代根节点补 key。
+- 相关文件/命令：`src/features/content/contentIndex.ts`、`src/components/markdown-tutorial/index.tsx`、`src/pages/blog-detail/index.tsx`
+- 注意事项：共享 parser 新增 block 后，先枚举所有 `ContentBlock` 消费者；类型层级和渲染分支要一起更新，并补聚焦测试。
+
+#### 46. 统一响应式断点时 JS 边界要和 CSS 包含语义对齐
+- 问题描述：把 Home 特效阈值从 `>900` 改为 `>1024` 后，jsdom 默认宽度正好是 1024，`hero-fx` 不渲染导致单测失败。
+- 解决方法：与 Tailwind `min-width: 1024px` 的包含语义对齐，改为 `window.innerWidth >= 1024`，同时把 CSS/JS 里的 640、720、979、1100、1200 收敛到 480/768/1024/1280。
+- 相关文件/命令：`tailwind.config.js`、`src/pages/home/index.tsx`、`src/hooks/usePerformanceTier.ts`
+- 注意事项：统一断点不能只替换数字；`min-width/max-width` 与 JS `>=/>` 的边界包含关系必须一致，并跑响应相关测试。
+
+#### 47. 拆分巨石 CSS 必须按完整规则块迁移
+- 问题描述：继续拆分 Home 样式时，如果按行号或简单字符串切块，容易把跨行选择器、multiline gradient 和 `@media` 嵌套规则切断，导致样式解析失败或响应式规则丢失。
+- 解决方法：用括号深度解析完整 top-level rule；遇到 `@media` 先拆出嵌套规则，再按 section 归属迁移，最后用 Prettier、Stylelint、样式审计和构建验证。
+- 相关文件/命令：`src/pages/home/styles/experiments.css`、`src/pages/home/styles/showcase.css`、`pnpm lint:style`
+- 注意事项：拆分后要确认原文件删除、入口 import 更新、每个媒体查询内的规则仍归属正确；不要用固定行号作为 CSS 边界。
+
+#### 48. 本机脚本清空白要显式使用 C locale 并过滤已删除路径
+- 问题描述：用 Perl 清理尾随空白时继承 `C.UTF-8` 触发 locale panic；同时脏工作区里 `git diff --name-only` 包含大量已删除文件，直接遍历会报 “No such file or directory”。
+- 解决方法：对 Perl 显式设置 `LC_ALL=C LANG=C`，并先用 `test -f` 或 `Path#is_file` 过滤；清理后必须重跑 `git diff --check`。
+- 相关文件/命令：`git diff --name-only`、`LC_ALL=C perl -pi -e 's/[ \t]+$//'`、`git diff --check`
+- 注意事项：不要假设 diff 列表里的路径都存在；macOS 本机没有对应 locale 时，批量文本命令要显式降级到 C locale。
+
+#### 49. 拆 CSS 时逗号选择器首行不能被当作完整规则
+- 问题描述：按“每行括号深度是否回到 0”切分 CSS 时，`.selector-a,` 这类逗号首行没有 `{`，被误判为完整规则，拆分后留下悬空选择器并吞掉后续 `@media`，导致移动端规则整体失效。
+- 解决方法：解析规则必须等到遇到闭合 `}` 才 flush；逗号选择器跨行时以完整 `{...}` 为单位迁移。发现 selector 中出现 `@media` 立即停止并回读源文件。
+- 相关文件/命令：`src/pages/home/styles/experiments.css`、PostCSS 解析检查、`pnpm build`
+- 注意事项：Stylelint 当前不一定捕获该形态，拆分后要用 PostCSS 遍历普通 rule selector，禁止包含 `@` at-rule 片段。
+
+#### 50. GitHub TLS 失败时可用官方离线安装器兜底安装 UI/UX Pro Max
+- 问题描述：执行 `npx skills add https://github.com/nextlevelbuilder/ui-ux-pro-max-skill --skill ui-ux-pro-max` 时，GitHub clone 在 TLS 握手阶段报 `LibreSSL SSL_connect: SSL_ERROR_SYSCALL`，直接重试与 codeload 下载均不可用。
+- 解决方法：改用官方 `npx -y uipro-cli init --ai codex --offline --force` 从 npm 包内置模板安装；随后用 `npx -y skills list --json` 确认项目级 `.agents/skills/ui-ux-pro-max` 已被识别，并运行 skill 自带 `scripts/search.py --design-system` 验证数据和 Python 依赖。
+- 相关文件/命令：`.agents/skills/ui-ux-pro-max/SKILL.md`、`.codex/skills/ui-ux-pro-max/SKILL.md`、`skills-lock.json`、`npx -y uipro-cli init --ai codex --offline --force`
+- 注意事项：`uipro-cli` 生成的 `.codex` 模板与 GitHub 源码版 `.agents` / `.claude` 内容不同；验收以 `skills list` 识别的 `.agents` 源码版为准，不要把两套目录互相覆盖。
 
 <!-- vnext:start -->
 ## Deploy with vnext

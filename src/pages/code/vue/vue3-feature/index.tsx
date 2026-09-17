@@ -505,33 +505,33 @@ const featureCategories = [
     name: 'Composition API',
     desc: '函数式 API，更好的逻辑复用',
     color: 'var(--color-code-indigo)',
-    surface: 'var(--code-indigo-alpha-10)',
-    surfaceActive: 'var(--code-indigo-alpha-30)',
-    border: 'var(--code-indigo-alpha-40)'
+    surface: 'color-mix(in srgb, var(--color-indigo-500) 10%, transparent)',
+    surfaceActive: 'color-mix(in srgb, var(--color-indigo-500) 30%, transparent)',
+    border: 'color-mix(in srgb, var(--color-indigo-500) 40%, transparent)'
   },
   {
     name: 'Teleport',
     desc: '将内容渲染到 DOM 其他位置',
     color: 'var(--color-code-green)',
-    surface: 'var(--code-green-alpha-10)',
-    surfaceActive: 'var(--code-green-alpha-30)',
-    border: 'var(--code-green-alpha-50)'
+    surface: 'color-mix(in srgb, var(--color-code-green) 10%, transparent)',
+    surfaceActive: 'color-mix(in srgb, var(--color-code-green) 30%, transparent)',
+    border: 'color-mix(in srgb, var(--color-code-green) 50%, transparent)'
   },
   {
     name: 'Fragments',
     desc: '支持多个根节点',
     color: 'var(--color-code-red)',
-    surface: 'var(--code-red-alpha-10)',
-    surfaceActive: 'var(--code-red-alpha-30)',
-    border: 'var(--code-red-alpha-30)'
+    surface: 'color-mix(in srgb, var(--color-danger-strong) 10%, transparent)',
+    surfaceActive: 'color-mix(in srgb, var(--color-danger-strong) 30%, transparent)',
+    border: 'color-mix(in srgb, var(--color-danger-strong) 30%, transparent)'
   },
   {
     name: 'Suspense',
     desc: '异步组件的加载状态',
     color: 'var(--color-code-violet)',
-    surface: 'var(--code-violet-alpha-10)',
-    surfaceActive: 'var(--code-violet-alpha-30)',
-    border: 'var(--code-violet-alpha-40)'
+    surface: 'color-mix(in srgb, var(--color-code-violet) 10%, transparent)',
+    surfaceActive: 'color-mix(in srgb, var(--color-code-violet) 30%, transparent)',
+    border: 'color-mix(in srgb, var(--color-code-violet) 40%, transparent)'
   },
   {
     name: 'v-model 改进',
@@ -561,8 +561,8 @@ export default function Vue3FeaturePage() {
         style={{
           marginTop: '2rem',
           padding: '1.5rem',
-          background: 'var(--code-indigo-alpha-10)',
-          border: '1px solid var(--code-indigo-alpha-30)',
+          background: 'color-mix(in srgb, var(--color-indigo-500) 10%, transparent)',
+          border: '1px solid color-mix(in srgb, var(--color-indigo-500) 30%, transparent)',
           borderRadius: '12px',
           position: 'relative',
           zIndex: 3
@@ -591,7 +591,14 @@ export default function Vue3FeaturePage() {
               }}
             >
               <h4 style={{ color: feature.color, marginBottom: '0.5rem' }}>{feature.name}</h4>
-              <p style={{ color: 'var(--white-alpha-70)', fontSize: '0.875rem' }}>{feature.desc}</p>
+              <p
+                style={{
+                  color: 'color-mix(in srgb, var(--color-white) 70%, transparent)',
+                  fontSize: '0.875rem'
+                }}
+              >
+                {feature.desc}
+              </p>
             </div>
           ))}
         </div>
@@ -661,7 +668,12 @@ watch(count, (newVal) => {
           <h3 style={{ color: 'var(--color-code-green)', marginBottom: '1rem' }}>
             🌀 Teleport 传送门
           </h3>
-          <p style={{ color: 'var(--white-alpha-70)', marginBottom: '1rem' }}>
+          <p
+            style={{
+              color: 'color-mix(in srgb, var(--color-white) 70%, transparent)',
+              marginBottom: '1rem'
+            }}
+          >
             将组件内容渲染到 DOM 的其他位置
           </p>
           <div
@@ -674,12 +686,18 @@ watch(count, (newVal) => {
             <div
               style={{
                 padding: '1rem',
-                background: 'var(--code-indigo-alpha-10)',
+                background: 'color-mix(in srgb, var(--color-indigo-500) 10%, transparent)',
                 borderRadius: '8px'
               }}
             >
               <h5 style={{ color: 'var(--color-white)', marginBottom: '0.5rem' }}>使用场景</h5>
-              <ul style={{ color: 'var(--white-alpha-60)', fontSize: '0.875rem', lineHeight: 1.6 }}>
+              <ul
+                style={{
+                  color: 'color-mix(in srgb, var(--color-white) 60%, transparent)',
+                  fontSize: '0.875rem',
+                  lineHeight: 1.6
+                }}
+              >
                 <li>模态框、对话框</li>
                 <li>下拉菜单</li>
                 <li>Toast 通知</li>
@@ -689,7 +707,7 @@ watch(count, (newVal) => {
             <div
               style={{
                 padding: '1rem',
-                background: 'var(--code-green-alpha-10)',
+                background: 'color-mix(in srgb, var(--color-code-green) 10%, transparent)',
                 borderRadius: '8px'
               }}
             >
@@ -717,8 +735,8 @@ watch(count, (newVal) => {
         style={{
           marginTop: '2rem',
           padding: '1.5rem',
-          background: 'var(--code-red-alpha-10)',
-          border: '1px solid var(--code-red-alpha-30)',
+          background: 'color-mix(in srgb, var(--color-danger-strong) 10%, transparent)',
+          border: '1px solid color-mix(in srgb, var(--color-danger-strong) 30%, transparent)',
           borderRadius: '12px',
           position: 'relative',
           zIndex: 3
@@ -736,19 +754,34 @@ watch(count, (newVal) => {
             <h5 style={{ color: 'var(--color-white)', marginBottom: '0.5rem' }}>
               $on / $off / $once
             </h5>
-            <p style={{ color: 'var(--white-alpha-60)', fontSize: '0.875rem' }}>
+            <p
+              style={{
+                color: 'color-mix(in srgb, var(--color-white) 60%, transparent)',
+                fontSize: '0.875rem'
+              }}
+            >
               事件总线 API 移除，使用 mitt 或事件库替代
             </p>
           </div>
           <div>
             <h5 style={{ color: 'var(--color-white)', marginBottom: '0.5rem' }}>filters</h5>
-            <p style={{ color: 'var(--white-alpha-60)', fontSize: '0.875rem' }}>
+            <p
+              style={{
+                color: 'color-mix(in srgb, var(--color-white) 60%, transparent)',
+                fontSize: '0.875rem'
+              }}
+            >
               过滤器移除，使用方法或计算属性替代
             </p>
           </div>
           <div>
             <h5 style={{ color: 'var(--color-white)', marginBottom: '0.5rem' }}>$children</h5>
-            <p style={{ color: 'var(--white-alpha-60)', fontSize: '0.875rem' }}>
+            <p
+              style={{
+                color: 'color-mix(in srgb, var(--color-white) 60%, transparent)',
+                fontSize: '0.875rem'
+              }}
+            >
               不再保证顺序，使用模板引用替代
             </p>
           </div>
@@ -768,7 +801,12 @@ watch(count, (newVal) => {
       >
         <h3 style={{ color: 'var(--color-white)', marginBottom: '1rem' }}>🚀 迁移建议</h3>
         <ul
-          style={{ color: 'var(--white-alpha-80)', lineHeight: 1.8, listStyle: 'none', padding: 0 }}
+          style={{
+            color: 'color-mix(in srgb, var(--color-white) 80%, transparent)',
+            lineHeight: 1.8,
+            listStyle: 'none',
+            padding: 0
+          }}
         >
           <li style={{ marginBottom: '0.5rem' }}>
             • <strong>使用 @vue/compat</strong>：提供兼容模式，逐步迁移

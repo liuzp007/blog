@@ -5,10 +5,12 @@
 
 .beautify-code {
   --beautify-code-surface: var(--glass-bg-strong);
-  --beautify-code-border: var(--white-alpha-10);
-  --beautify-code-shadow: 0 4px 6px var(--black-alpha-20), inset 0 1px 0 var(--white-alpha-10);
+  --beautify-code-border: color-mix(in srgb, var(--raw-white) 10%, transparent);
+  --beautify-code-shadow:
+    0 4px 6px color-mix(in srgb, var(--raw-black) 20%, transparent),
+    inset 0 1px 0 color-mix(in srgb, var(--raw-white) 10%, transparent);
   --beautify-code-shadow-hover:
-    0 15px 30px var(--black-alpha-50),
+    0 15px 30px color-mix(in srgb, var(--raw-black) 50%, transparent),
     0 0 0 1px color-mix(in srgb, var(--accent-cyan) 30%, transparent),
     0 0 20px color-mix(in srgb, var(--accent-cyan) 10%, transparent);
   --beautify-code-surface-hover: color-mix(
@@ -16,11 +18,11 @@
     var(--surface-glass-strong) 72%,
     var(--surface-base) 28%
   );
-  --beautify-code-scrollbar-track: var(--black-alpha-10);
-  --beautify-code-scrollbar-thumb: var(--white-alpha-20);
-  --beautify-code-scrollbar-thumb-hover: var(--white-alpha-40);
+  --beautify-code-scrollbar-track: color-mix(in srgb, var(--raw-black) 10%, transparent);
+  --beautify-code-scrollbar-thumb: color-mix(in srgb, var(--raw-white) 20%, transparent);
+  --beautify-code-scrollbar-thumb-hover: color-mix(in srgb, var(--raw-white) 40%, transparent);
   --beautify-code-text: color-mix(in srgb, var(--color-white) 96%, transparent);
-  --beautify-code-text-shadow: 0 1px var(--black-alpha-30);
+  --beautify-code-text-shadow: 0 1px color-mix(in srgb, var(--raw-black) 30%, transparent);
   --beautify-code-comment: color-mix(in srgb, var(--color-code-indigo) 70%, var(--color-white) 18%);
   --beautify-code-punctuation: color-mix(in srgb, var(--color-white) 96%, transparent);
   --beautify-code-pink: var(--accent-pink);
@@ -31,5 +33,5 @@
   --beautify-code-cyan-glow: 0 0 2px var(--accent-cyan-glow);
   --beautify-code-green: var(--color-code-green);
   --beautify-code-lime: color-mix(in srgb, var(--accent-yellow) 78%, var(--color-white) 22%);
-  --beautify-code-line-number-border: var(--white-alpha-10);
+  --beautify-code-line-number-border: color-mix(in srgb, var(--raw-white) 10%, transparent);
 }

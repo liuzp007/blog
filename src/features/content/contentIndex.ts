@@ -31,6 +31,8 @@ export type ContentBlock =
   | { type: 'paragraph'; children: InlineNode[] }
   | { type: 'code'; language: string; code: string }
   | { type: 'list'; ordered: boolean; items: InlineNode[][] }
+  | { type: 'table'; header: InlineNode[][]; rows: InlineNode[][][] }
+  | { type: 'image'; alt: string; src: string; title?: string }
 
 export interface ParsedMarkdown {
   toc: TocItem[]
@@ -41,6 +43,18 @@ const modules = import.meta.glob('../../content/**/*.md', {
   query: '?raw',
   import: 'default'
 }) as Record<string, () => Promise<string>>
+
+const imageModules = import.meta.glob('../assets/img/*.{png,jpg,jpeg,webp,svg}', {
+  eager: true,
+  import: 'default'
+}) as Record<string, string>
+
+export function resolveContentAsset(src: string): string {
+  const normalized = src.trim()
+  const candidates = [normalized.replace(/^@\//, '../'), normalized.replace(/^\/src\//, '../')]
+
+  return candidates.map(candidate => imageModules[candidate]).find(Boolean) || normalized
+}
 
 function parseFrontmatter(md: string): { meta: Partial<ContentMeta>; body: string } {
   const fmMatch = md.match(/^---\n([\s\S]*?)\n---\n?/)
@@ -218,6 +232,34 @@ function flushList(
   return null
 }
 
+function parseTableRow(line: string): string[] {
+  return line
+    .trim()
+    .replace(/^\|/, '')
+    .replace(/\|$/, '')
+    .split('|')
+    .map(cell => cell.trim())
+}
+
+function isTableDivider(line: string): boolean {
+  return /^\s*\|?\s*:?-{3,}\s*(\|\s*:?-{3,}\s*)+\|?\s*$/.test(line)
+}
+
+function flushTable(
+  tableState: { header: string[]; rows: string[][] } | null,
+  blocks: ContentBlock[]
+): { header: string[]; rows: string[][] } | null {
+  if (!tableState) return null
+
+  blocks.push({
+    type: 'table',
+    header: tableState.header.map(cell => parseInline(cell)),
+    rows: tableState.rows.map(row => row.map(cell => parseInline(cell)))
+  })
+
+  return null
+}
+
 // 极简 markdown → 受控块结构，避免直接拼接 HTML 注入 DOM。
 export function parseMarkdown(md: string): ParsedMarkdown {
   const lines = md.split(/\r?\n/)
@@ -228,12 +270,15 @@ export function parseMarkdown(md: string): ParsedMarkdown {
   let codeLanguage = 'typescript'
   const paragraphLines: string[] = []
   let listState: { ordered: boolean; items: string[] } | null = null
+  let tableState: { header: string[]; rows: string[][] } | null = null
 
-  for (const line of lines) {
+  for (let index = 0; index < lines.length; index += 1) {
+    const line = lines[index]
     const fenceMatch = line.match(/^```([A-Za-z0-9_-]+)?\s*$/)
     if (fenceMatch) {
       flushParagraph(paragraphLines, blocks)
       listState = flushList(listState, blocks)
+      tableState = flushTable(tableState, blocks)
 
       if (inCode) {
         blocks.push({
@@ -258,13 +303,31 @@ export function parseMarkdown(md: string): ParsedMarkdown {
     if (!line.trim()) {
       flushParagraph(paragraphLines, blocks)
       listState = flushList(listState, blocks)
+      tableState = flushTable(tableState, blocks)
       continue
+    }
+
+    if (!tableState && line.includes('|') && isTableDivider(lines[index + 1] || '')) {
+      flushParagraph(paragraphLines, blocks)
+      listState = flushList(listState, blocks)
+      tableState = { header: parseTableRow(line), rows: [] }
+      continue
+    }
+
+    if (tableState) {
+      if (isTableDivider(line)) continue
+      if (line.includes('|')) {
+        tableState.rows.push(parseTableRow(line))
+        continue
+      }
+      tableState = flushTable(tableState, blocks)
     }
 
     const headingMatch = line.match(/^(#{1,3})\s+(.*)$/)
     if (headingMatch) {
       flushParagraph(paragraphLines, blocks)
       listState = flushList(listState, blocks)
+      tableState = flushTable(tableState, blocks)
 
       const level = headingMatch[1].length as 1 | 2 | 3
       const children = parseInline(headingMatch[2].trim())
@@ -276,6 +339,20 @@ export function parseMarkdown(md: string): ParsedMarkdown {
         id,
         level,
         children
+      })
+      continue
+    }
+
+    const imageMatch = line.match(/^!\[([^\]]*)\]\(([^)\s]+)(?:\s+["']([^"']+)["'])?\)$/)
+    if (imageMatch) {
+      flushParagraph(paragraphLines, blocks)
+      listState = flushList(listState, blocks)
+      tableState = flushTable(tableState, blocks)
+      blocks.push({
+        type: 'image',
+        alt: imageMatch[1],
+        src: imageMatch[2],
+        title: imageMatch[3]
       })
       continue
     }
@@ -314,8 +391,7 @@ export function parseMarkdown(md: string): ParsedMarkdown {
 
   flushParagraph(paragraphLines, blocks)
   flushList(listState, blocks)
+  flushTable(tableState, blocks)
 
   return { toc, blocks }
 }
-
-export default {}

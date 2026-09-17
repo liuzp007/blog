@@ -81,8 +81,8 @@ export default function ContextPage() {
         style={{
           marginTop: '2rem',
           padding: '1.5rem',
-          background: 'var(--code-indigo-alpha-10)',
-          border: '1px solid var(--code-indigo-alpha-30)',
+          background: 'color-mix(in srgb, var(--color-indigo-500) 10%, transparent)',
+          border: '1px solid color-mix(in srgb, var(--color-indigo-500) 30%, transparent)',
           borderRadius: '12px',
           position: 'relative',
           zIndex: 3
@@ -100,7 +100,12 @@ export default function ContextPage() {
                 textAlign: 'center'
               }}
             >
-              <p style={{ color: 'var(--white-alpha-70)', marginBottom: '1rem' }}>
+              <p
+                style={{
+                  color: 'color-mix(in srgb, var(--color-white) 70%, transparent)',
+                  marginBottom: '1rem'
+                }}
+              >
                 当前主题:{' '}
                 <strong
                   style={{
@@ -111,7 +116,12 @@ export default function ContextPage() {
                   {theme}
                 </strong>
               </p>
-              <p style={{ color: 'var(--white-alpha-70)', marginBottom: '1rem' }}>
+              <p
+                style={{
+                  color: 'color-mix(in srgb, var(--color-white) 70%, transparent)',
+                  marginBottom: '1rem'
+                }}
+              >
                 当前计数:{' '}
                 <strong style={{ color: 'var(--color-code-indigo)', fontSize: '2rem' }}>
                   {count}
@@ -142,8 +152,9 @@ export default function ContextPage() {
                   onClick={() => setCount(c => c + 1)}
                   style={{
                     padding: '0.5rem 1rem',
-                    background: 'var(--code-green-alpha-20)',
-                    border: '1px solid var(--code-green-alpha-50)',
+                    background: 'color-mix(in srgb, var(--color-code-green) 20%, transparent)',
+                    border:
+                      '1px solid color-mix(in srgb, var(--color-code-green) 50%, transparent)',
                     borderRadius: '6px',
                     color: 'white',
                     cursor: 'pointer'
@@ -178,8 +189,8 @@ export default function ContextPage() {
         style={{
           marginTop: '1.5rem',
           padding: '1.5rem',
-          background: 'var(--code-red-alpha-10)',
-          border: '1px solid var(--code-red-alpha-30)',
+          background: 'color-mix(in srgb, var(--color-danger-strong) 10%, transparent)',
+          border: '1px solid color-mix(in srgb, var(--color-danger-strong) 30%, transparent)',
           borderRadius: '12px',
           position: 'relative',
           zIndex: 3
@@ -187,7 +198,12 @@ export default function ContextPage() {
       >
         <h3 style={{ color: 'var(--color-code-red)', marginBottom: '1rem' }}>⚠️ 性能陷阱</h3>
         <ul
-          style={{ color: 'var(--white-alpha-80)', lineHeight: 1.8, listStyle: 'none', padding: 0 }}
+          style={{
+            color: 'color-mix(in srgb, var(--color-white) 80%, transparent)',
+            lineHeight: 1.8,
+            listStyle: 'none',
+            padding: 0
+          }}
         >
           <li style={{ marginBottom: '0.5rem' }}>
             • <strong>单一 Context 问题</strong>：Context 值变化时，所有消费者都会重新渲染
@@ -258,8 +274,8 @@ const Child = memo(function Child() {
         style={{
           marginTop: '1.5rem',
           padding: '1.5rem',
-          background: 'var(--code-violet-alpha-10)',
-          border: '1px solid var(--code-violet-alpha-30)',
+          background: 'color-mix(in srgb, var(--color-code-violet) 10%, transparent)',
+          border: '1px solid color-mix(in srgb, var(--color-code-violet) 30%, transparent)',
           borderRadius: '12px',
           position: 'relative',
           zIndex: 3
@@ -267,7 +283,12 @@ const Child = memo(function Child() {
       >
         <h3 style={{ color: 'var(--color-code-violet)', marginBottom: '1rem' }}>🔗 高级用法</h3>
         <ul
-          style={{ color: 'var(--white-alpha-80)', lineHeight: 1.8, listStyle: 'none', padding: 0 }}
+          style={{
+            color: 'color-mix(in srgb, var(--color-white) 80%, transparent)',
+            lineHeight: 1.8,
+            listStyle: 'none',
+            padding: 0
+          }}
         >
           <li style={{ marginBottom: '0.5rem' }}>
             • <strong>Context.displayName</strong>：设置调试名称，便于 React DevTools 调试
@@ -288,12 +309,12 @@ ThemeContext.displayName = 'ThemeContext'
 function useTheme() {
   const theme = useContext(ThemeContext)
 
-  return {
-    theme,
-    isDark: theme === 'dark',
-    toggleTheme: () => {}
+    return {
+      theme,
+      isDark: theme === 'dark',
+      toggleTheme: () => {}
+    }
   }
-}
 
 // 使用
 function Button() {

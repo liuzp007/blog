@@ -12,7 +12,7 @@ export function usePerformanceTier(): PerformanceTier {
     const memory = (navigator as unknown as { deviceMemory?: number }).deviceMemory ?? 4
     const score = cores * 2 + memory
 
-    if (score >= 14 && window.innerWidth > 1200) return 'high'
+    if (score >= 14 && window.innerWidth > 1280) return 'high'
     if (score >= 6) return 'medium'
     return 'low'
   }, [])

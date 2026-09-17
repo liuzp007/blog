@@ -95,8 +95,8 @@ function ExpensiveChild() {
         style={{
           marginLeft: '1rem',
           padding: '0.25rem 0.5rem',
-          background: 'var(--code-indigo-alpha-20)',
-          border: '1px solid var(--code-indigo-alpha-30)',
+          background: 'color-mix(in srgb, var(--color-indigo-500) 20%, transparent)',
+          border: '1px solid color-mix(in srgb, var(--color-indigo-500) 30%, transparent)',
           borderRadius: '4px',
           color: 'var(--color-code-indigo)',
           cursor: 'pointer'
@@ -143,13 +143,17 @@ function StatsDisplay({
       <div
         style={{
           padding: '1rem',
-          background: 'var(--code-indigo-alpha-05)',
+          background: 'color-mix(in srgb, var(--color-indigo-500) 5%, transparent)',
           borderRadius: '8px',
           textAlign: 'center'
         }}
       >
         <div
-          style={{ fontSize: '0.875rem', color: 'var(--white-alpha-60)', marginBottom: '0.5rem' }}
+          style={{
+            fontSize: '0.875rem',
+            color: 'color-mix(in srgb, var(--color-white) 60%, transparent)',
+            marginBottom: '0.5rem'
+          }}
         >
           总渲染次数
         </div>
@@ -164,13 +168,17 @@ function StatsDisplay({
       <div
         style={{
           padding: '1rem',
-          background: 'var(--code-indigo-alpha-05)',
+          background: 'color-mix(in srgb, var(--color-indigo-500) 5%, transparent)',
           borderRadius: '8px',
           textAlign: 'center'
         }}
       >
         <div
-          style={{ fontSize: '0.875rem', color: 'var(--white-alpha-60)', marginBottom: '0.5rem' }}
+          style={{
+            fontSize: '0.875rem',
+            color: 'color-mix(in srgb, var(--color-white) 60%, transparent)',
+            marginBottom: '0.5rem'
+          }}
         >
           上次渲染耗时
         </div>
@@ -190,13 +198,17 @@ function StatsDisplay({
       <div
         style={{
           padding: '1rem',
-          background: 'var(--code-indigo-alpha-05)',
+          background: 'color-mix(in srgb, var(--color-indigo-500) 5%, transparent)',
           borderRadius: '8px',
           textAlign: 'center'
         }}
       >
         <div
-          style={{ fontSize: '0.875rem', color: 'var(--white-alpha-60)', marginBottom: '0.5rem' }}
+          style={{
+            fontSize: '0.875rem',
+            color: 'color-mix(in srgb, var(--color-white) 60%, transparent)',
+            marginBottom: '0.5rem'
+          }}
         >
           总耗时
         </div>
@@ -209,13 +221,17 @@ function StatsDisplay({
       <div
         style={{
           padding: '1rem',
-          background: 'var(--code-indigo-alpha-05)',
+          background: 'color-mix(in srgb, var(--color-indigo-500) 5%, transparent)',
           borderRadius: '8px',
           textAlign: 'center'
         }}
       >
         <div
-          style={{ fontSize: '0.875rem', color: 'var(--white-alpha-60)', marginBottom: '0.5rem' }}
+          style={{
+            fontSize: '0.875rem',
+            color: 'color-mix(in srgb, var(--color-white) 60%, transparent)',
+            marginBottom: '0.5rem'
+          }}
         >
           平均耗时
         </div>
@@ -258,8 +274,8 @@ export default function ProfilerPage() {
         style={{
           marginTop: '2rem',
           padding: '1.5rem',
-          background: 'var(--code-indigo-alpha-10)',
-          border: '1px solid var(--code-indigo-alpha-30)',
+          background: 'color-mix(in srgb, var(--color-indigo-500) 10%, transparent)',
+          border: '1px solid color-mix(in srgb, var(--color-indigo-500) 30%, transparent)',
           borderRadius: '12px',
           position: 'relative',
           zIndex: 3
@@ -300,7 +316,7 @@ export default function ProfilerPage() {
                       : 'var(--color-code-red)'
               }}
             ></div>
-            <span style={{ color: 'var(--white-alpha-80)' }}>
+            <span style={{ color: 'color-mix(in srgb, var(--color-white) 80%, transparent)' }}>
               性能评级:{' '}
               <strong
                 style={{
@@ -324,15 +340,20 @@ export default function ProfilerPage() {
         style={{
           marginTop: '1.5rem',
           padding: '1.5rem',
-          background: 'var(--code-green-alpha-10)',
-          border: '1px solid var(--code-green-alpha-30)',
+          background: 'color-mix(in srgb, var(--color-code-green) 10%, transparent)',
+          border: '1px solid color-mix(in srgb, var(--color-code-green) 30%, transparent)',
           borderRadius: '12px',
           position: 'relative',
           zIndex: 3
         }}
       >
         <h3 style={{ color: 'var(--color-code-green)', marginBottom: '1rem' }}>🎮 性能测试区域</h3>
-        <p style={{ color: 'var(--white-alpha-70)', marginBottom: '1rem' }}>
+        <p
+          style={{
+            color: 'color-mix(in srgb, var(--color-white) 70%, transparent)',
+            marginBottom: '1rem'
+          }}
+        >
           点击按钮触发渲染，观察上方性能指标的变化
         </p>
 
@@ -369,7 +390,8 @@ export default function ProfilerPage() {
           }}
           onMouseOver={e => {
             e.currentTarget.style.transform = 'translateY(-2px)'
-            e.currentTarget.style.boxShadow = '0 10px 25px var(--code-indigo-alpha-30)'
+            e.currentTarget.style.boxShadow =
+              '0 10px 25px color-mix(in srgb, var(--color-indigo-500) 30%, transparent)'
           }}
           onMouseOut={e => {
             e.currentTarget.style.transform = 'translateY(0)'
@@ -394,7 +416,12 @@ export default function ProfilerPage() {
       >
         <h3 style={{ color: 'var(--color-code-red)', marginBottom: '1rem' }}>⚠️ 性能优化建议</h3>
         <ul
-          style={{ color: 'var(--white-alpha-80)', lineHeight: 1.8, listStyle: 'none', padding: 0 }}
+          style={{
+            color: 'color-mix(in srgb, var(--color-white) 80%, transparent)',
+            lineHeight: 1.8,
+            listStyle: 'none',
+            padding: 0
+          }}
         >
           <li style={{ marginBottom: '0.5rem' }}>
             • <strong>减少渲染次数</strong>：使用 React.memo、useMemo、useCallback
@@ -418,8 +445,8 @@ export default function ProfilerPage() {
         style={{
           marginTop: '1.5rem',
           padding: '1.5rem',
-          background: 'var(--code-violet-alpha-10)',
-          border: '1px solid var(--code-violet-alpha-30)',
+          background: 'color-mix(in srgb, var(--color-code-violet) 10%, transparent)',
+          border: '1px solid color-mix(in srgb, var(--color-code-violet) 30%, transparent)',
           borderRadius: '12px',
           position: 'relative',
           zIndex: 3
@@ -442,13 +469,16 @@ export default function ProfilerPage() {
                 key={index}
                 style={{
                   padding: '0.5rem',
-                  borderBottom: '1px solid var(--code-indigo-alpha-10)',
+                  borderBottom:
+                    '1px solid color-mix(in srgb, var(--color-indigo-500) 10%, transparent)',
                   fontSize: '0.8rem',
                   display: 'flex',
                   justifyContent: 'space-between'
                 }}
               >
-                <span style={{ color: 'var(--white-alpha-70)' }}>#{index + 1}</span>
+                <span style={{ color: 'color-mix(in srgb, var(--color-white) 70%, transparent)' }}>
+                  #{index + 1}
+                </span>
                 <span
                   style={{
                     color:
@@ -465,7 +495,14 @@ export default function ProfilerPage() {
               </div>
             ))
           ) : (
-            <div style={{ color: 'var(--white-alpha-50)', textAlign: 'center' }}>暂无渲染数据</div>
+            <div
+              style={{
+                color: 'color-mix(in srgb, var(--color-white) 50%, transparent)',
+                textAlign: 'center'
+              }}
+            >
+              暂无渲染数据
+            </div>
           )}
         </div>
       </div>

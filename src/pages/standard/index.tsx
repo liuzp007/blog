@@ -8,7 +8,7 @@ import {
   ThunderboltOutlined
 } from '@ant-design/icons'
 import { Button } from 'antd'
-import type { RouteComponentProps } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 import './index.css'
 
 const STANDARD_CONTENT = [
@@ -47,25 +47,23 @@ const STANDARD_CONTENT = [
   }
 ]
 
-interface StandardProps {
-  history: RouteComponentProps['history']
-}
+export default function Standard() {
+  const history = useHistory()
 
-export default function Standard({ history }: StandardProps) {
   const toRoute = (path: string) => {
     history.push(path)
   }
 
   return (
     <div className="StandardWrap">
-      <main className="container pt-[52px] pb-[82px] min-[1201px]:pt-[72px] min-[1201px]:pb-[102px]">
-        <section className="section-header mb-[52px] min-[1201px]:mb-[72px]">
+      <main className="container pt-[52px] pb-[82px] xl:pt-[72px] xl:pb-[102px]">
+        <section className="section-header mb-[52px] xl:mb-[72px]">
           <span className="section-tag ui-eyebrow">规范与方法</span>
           <h1 className="ui-page-title mt-3 mb-4">规范与方法</h1>
           <p className="ui-lead-text">这里是代码规范、个人方法论与审美判断的集合，持续更新中。</p>
         </section>
 
-        <section className="standard-grid grid grid-cols-1 gap-5 min-[1201px]:grid-cols-2 min-[1201px]:gap-7">
+        <section className="standard-grid grid grid-cols-1 gap-5 xl:grid-cols-2 xl:gap-7">
           {STANDARD_CONTENT.map(item => {
             const Icon = item.icon
             return (
@@ -97,9 +95,9 @@ export default function Standard({ history }: StandardProps) {
           })}
         </section>
 
-        <section className="standard-nav mt-7 min-[1201px]:mt-[102px]">
+        <section className="standard-nav mt-7 xl:mt-[102px]">
           <h3 className="ui-subsection-title mb-5">快速入口</h3>
-          <div className="grid grid-cols-2 gap-4 min-[1201px]:grid-cols-4">
+          <div className="grid grid-cols-2 gap-4 xl:grid-cols-4">
             <Button
               className="standard-nav__link h-auto"
               type="text"

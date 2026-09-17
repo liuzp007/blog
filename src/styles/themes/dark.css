@@ -29,13 +29,11 @@
   --surface-card-hover: rgb(18 24 36 / 84%);
   --surface-glass: rgb(30 30 30 / 40%);
   --surface-glass-strong: rgb(30 30 30 / 60%);
-  --surface-glass-panel: rgb(20 20 20 / 60%);
   --text-heading: var(--raw-white);
   --text-primary-strong: var(--raw-slate-100);
-  --text-secondary: var(--white-alpha-72, rgb(255 255 255 / 72%));
+  --text-secondary: color-mix(in srgb, var(--raw-white) 72%, transparent);
   --text-muted: var(--raw-gray-500);
   --text-soft: var(--raw-slate-200);
-  --brand-primary: var(--raw-brand-blue);
   --brand-link: var(--raw-brand-link);
   --brand-emphasis: var(--raw-indigo-500);
   --brand-emphasis-soft: var(--raw-indigo-400);
@@ -49,7 +47,6 @@
   --accent-tertiary: var(--raw-purple-500);
   --accent-violet: var(--raw-code-violet);
   --accent-warning: var(--raw-yellow-400);
-  --accent-warning-bright: var(--raw-yellow-500);
   --accent-warm: var(--raw-orange-500);
   --accent-warm-soft: rgb(255 147 71 / 6%);
   --accent-warm-glow: rgb(232 122 61 / 30%);
@@ -62,12 +59,10 @@
   --status-danger: var(--raw-danger-500);
   --status-danger-strong: var(--raw-danger-700);
   --status-danger-code: var(--raw-danger-600);
-  --border-soft: var(--white-alpha-05);
-  --border-subtle: var(--white-alpha-10);
-  --border-strong: var(--white-alpha-20);
-  --shadow-card: 0 8px 32px 0 var(--black-alpha-37);
+  --border-soft: color-mix(in srgb, var(--raw-white) 5%, transparent);
+  --border-subtle: color-mix(in srgb, var(--raw-white) 10%, transparent);
+  --border-strong: color-mix(in srgb, var(--raw-white) 20%, transparent);
   --state-focus-ring: rgb(99 102 241 / 60%);
-  --state-warning-ring: rgb(255 215 0 / 60%);
 
   /* Header 组件语义 token */
   --header-border: var(--border-subtle);
@@ -76,24 +71,28 @@
   --header-brand-color: var(--text-secondary);
   --header-brand-hover: var(--text-heading);
   --header-brand-strong: var(--text-heading);
-  --header-brand-subtitle: var(--white-alpha-50);
-  --header-disc-bg: radial-gradient(circle at 35% 35%, var(--white-alpha-18), rgb(255 34 102 / 8%));
-  --header-disc-shadow: inset 0 0 0 1px var(--white-alpha-08);
-  --header-nav-color: var(--white-alpha-72);
+  --header-brand-subtitle: color-mix(in srgb, var(--raw-white) 50%, transparent);
+  --header-disc-bg: radial-gradient(
+    circle at 35% 35%,
+    color-mix(in srgb, var(--raw-white) 18%, transparent),
+    rgb(255 34 102 / 8%)
+  );
+  --header-disc-shadow: inset 0 0 0 1px color-mix(in srgb, var(--raw-white) 8%, transparent);
+  --header-nav-color: color-mix(in srgb, var(--raw-white) 72%, transparent);
   --header-nav-hover-color: var(--raw-white);
-  --header-nav-hover-bg: var(--white-alpha-06);
+  --header-nav-hover-bg: color-mix(in srgb, var(--raw-white) 6%, transparent);
   --header-nav-active-bg: linear-gradient(135deg, rgb(255 34 102 / 20%), rgb(64 255 255 / 16%));
-  --header-nav-active-shadow: inset 0 0 0 1px var(--white-alpha-08);
+  --header-nav-active-shadow: inset 0 0 0 1px color-mix(in srgb, var(--raw-white) 8%, transparent);
   --header-nav-subtitle: rgb(255 255 255 / 48%);
-  --header-nav-active-subtitle: var(--white-alpha-72);
+  --header-nav-active-subtitle: color-mix(in srgb, var(--raw-white) 72%, transparent);
   --header-cta-bg: linear-gradient(135deg, rgb(255 34 102 / 82%), rgb(232 122 61 / 88%));
   --header-cta-color: var(--raw-white);
   --header-cta-shadow: 0 14px 40px rgb(255 34 102 / 28%);
-  --header-menu-bg: var(--white-alpha-06);
+  --header-menu-bg: color-mix(in srgb, var(--raw-white) 6%, transparent);
   --header-menu-color: var(--text-secondary);
   --header-drawer-bg: var(--surface-page);
   --header-drawer-color: var(--text-heading);
-  --header-drawer-item-bg: var(--white-alpha-04);
+  --header-drawer-item-bg: color-mix(in srgb, var(--raw-white) 4%, transparent);
   --header-drawer-item-color: var(--text-primary-strong);
   --header-drawer-item-active-bg: linear-gradient(
     135deg,

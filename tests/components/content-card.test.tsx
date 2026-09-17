@@ -1,17 +1,6 @@
 import { render, screen } from '@testing-library/react'
 import { describe, it, expect } from 'vitest'
-import { Provider } from 'react-redux'
-import { configureStore } from '@reduxjs/toolkit'
 import ContentCard from '@/components/content-card'
-
-const mockStore = configureStore({
-  reducer: {
-    main: (state = { activeMenuItem: null }) => state,
-    ui: (state = {}) => state,
-    navigation: (state = {}) => state,
-    userPreferences: (state = {}) => state
-  }
-})
 
 describe('ContentCard 组件测试', () => {
   it('应该正确渲染 ContentCard 组件', () => {
@@ -31,11 +20,7 @@ describe('ContentCard 组件测试', () => {
       }
     }
 
-    render(
-      <Provider store={mockStore}>
-        <ContentCard item={mockItem} />
-      </Provider>
-    )
+    render(<ContentCard item={mockItem} />)
 
     expect(screen.getByText('测试标题')).toBeInTheDocument()
   })
@@ -57,11 +42,7 @@ describe('ContentCard 组件测试', () => {
       }
     }
 
-    render(
-      <Provider store={mockStore}>
-        <ContentCard item={mockItem} />
-      </Provider>
-    )
+    render(<ContentCard item={mockItem} />)
 
     expect(screen.getByText('React')).toBeInTheDocument()
     expect(screen.getByText('TypeScript')).toBeInTheDocument()

@@ -105,15 +105,20 @@ export default function SuspensePage() {
         style={{
           marginTop: '2rem',
           padding: '1.5rem',
-          background: 'var(--code-indigo-alpha-10)',
-          border: '1px solid var(--code-indigo-alpha-30)',
+          background: 'color-mix(in srgb, var(--color-indigo-500) 10%, transparent)',
+          border: '1px solid color-mix(in srgb, var(--color-indigo-500) 30%, transparent)',
           borderRadius: '12px',
           position: 'relative',
           zIndex: 3
         }}
       >
         <h3 style={{ color: 'var(--color-code-indigo)', marginBottom: '1rem' }}>🎮 交互演示</h3>
-        <p style={{ color: 'var(--white-alpha-70)', marginBottom: '1rem' }}>
+        <p
+          style={{
+            color: 'color-mix(in srgb, var(--color-white) 70%, transparent)',
+            marginBottom: '1rem'
+          }}
+        >
           点击按钮查看 Suspense 的加载效果
         </p>
         <button
@@ -132,7 +137,8 @@ export default function SuspensePage() {
           }}
           onMouseOver={e => {
             e.currentTarget.style.transform = 'translateY(-2px)'
-            e.currentTarget.style.boxShadow = '0 10px 25px var(--code-indigo-alpha-30)'
+            e.currentTarget.style.boxShadow =
+              '0 10px 25px color-mix(in srgb, var(--color-indigo-500) 30%, transparent)'
           }}
           onMouseOut={e => {
             e.currentTarget.style.transform = 'translateY(0)'
@@ -169,8 +175,8 @@ export default function Demo() {
         style={{
           marginTop: '1.5rem',
           padding: '1.5rem',
-          background: 'var(--code-green-alpha-10)',
-          border: '1px solid var(--code-green-alpha-30)',
+          background: 'color-mix(in srgb, var(--color-code-green) 10%, transparent)',
+          border: '1px solid color-mix(in srgb, var(--color-code-green) 30%, transparent)',
           borderRadius: '12px',
           position: 'relative',
           zIndex: 3
@@ -178,7 +184,12 @@ export default function Demo() {
       >
         <h3 style={{ color: 'var(--color-code-green)', marginBottom: '1rem' }}>💡 使用场景</h3>
         <ul
-          style={{ color: 'var(--white-alpha-80)', lineHeight: 1.8, listStyle: 'none', padding: 0 }}
+          style={{
+            color: 'color-mix(in srgb, var(--color-white) 80%, transparent)',
+            lineHeight: 1.8,
+            listStyle: 'none',
+            padding: 0
+          }}
         >
           <li style={{ marginBottom: '0.5rem' }}>
             • <strong>代码分割</strong>：使用 React.lazy 按需加载大型组件
@@ -199,8 +210,8 @@ export default function Demo() {
         style={{
           marginTop: '1.5rem',
           padding: '1.5rem',
-          background: 'var(--code-red-alpha-10)',
-          border: '1px solid var(--code-red-alpha-30)',
+          background: 'color-mix(in srgb, var(--color-danger-strong) 10%, transparent)',
+          border: '1px solid color-mix(in srgb, var(--color-danger-strong) 30%, transparent)',
           borderRadius: '12px',
           position: 'relative',
           zIndex: 3
@@ -208,7 +219,12 @@ export default function Demo() {
       >
         <h3 style={{ color: 'var(--color-code-red)', marginBottom: '1rem' }}>⚠️ 注意事项</h3>
         <ul
-          style={{ color: 'var(--white-alpha-80)', lineHeight: 1.8, listStyle: 'none', padding: 0 }}
+          style={{
+            color: 'color-mix(in srgb, var(--color-white) 80%, transparent)',
+            lineHeight: 1.8,
+            listStyle: 'none',
+            padding: 0
+          }}
         >
           <li style={{ marginBottom: '0.5rem' }}>
             • Suspense boundary 中的所有组件都必须被 Suspense 包裹
@@ -227,8 +243,8 @@ export default function Demo() {
         style={{
           marginTop: '1.5rem',
           padding: '1.5rem',
-          background: 'var(--code-violet-alpha-10)',
-          border: '1px solid var(--code-violet-alpha-30)',
+          background: 'color-mix(in srgb, var(--color-code-violet) 10%, transparent)',
+          border: '1px solid color-mix(in srgb, var(--color-code-violet) 30%, transparent)',
           borderRadius: '12px',
           position: 'relative',
           zIndex: 3

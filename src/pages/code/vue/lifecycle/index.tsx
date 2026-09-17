@@ -103,8 +103,8 @@ export default function LifecyclePage() {
         style={{
           marginTop: '2rem',
           padding: '1.5rem',
-          background: 'var(--code-indigo-alpha-10)',
-          border: '1px solid var(--code-indigo-alpha-30)',
+          background: 'color-mix(in srgb, var(--color-indigo-500) 10%, transparent)',
+          border: '1px solid color-mix(in srgb, var(--color-indigo-500) 30%, transparent)',
           borderRadius: '12px',
           position: 'relative',
           zIndex: 3
@@ -213,8 +213,8 @@ export default function LifecyclePage() {
         style={{
           marginTop: '2rem',
           padding: '1.5rem',
-          background: 'var(--code-green-alpha-10)',
-          border: '1px solid var(--code-green-alpha-30)',
+          background: 'color-mix(in srgb, var(--color-code-green) 10%, transparent)',
+          border: '1px solid color-mix(in srgb, var(--color-code-green) 30%, transparent)',
           borderRadius: '12px',
           position: 'relative',
           zIndex: 3
@@ -259,8 +259,8 @@ export default function LifecyclePage() {
         style={{
           marginTop: '2rem',
           padding: '1.5rem',
-          background: 'var(--code-red-alpha-10)',
-          border: '1px solid var(--code-red-alpha-30)',
+          background: 'color-mix(in srgb, var(--color-danger-strong) 10%, transparent)',
+          border: '1px solid color-mix(in srgb, var(--color-danger-strong) 30%, transparent)',
           borderRadius: '12px',
           position: 'relative',
           zIndex: 3
@@ -269,7 +269,7 @@ export default function LifecyclePage() {
         <h3 style={{ color: 'var(--color-code-red)', marginBottom: '1rem' }}>⚠️ 最佳实践</h3>
         <ul
           style={{
-            color: 'var(--white-alpha-80)',
+            color: 'color-mix(in srgb, var(--color-white) 80%, transparent)',
             lineHeight: 1.8,
             paddingLeft: '1.25rem',
             margin: 0

@@ -3,6 +3,7 @@ import { Button } from 'antd'
 import { ArrowLeftOutlined, ArrowRightOutlined, HomeOutlined } from '@ant-design/icons'
 import { Link } from 'react-router-dom'
 import { composeHslAlphaColor, readRuntimeColorVar } from '@/utils/color-runtime'
+import './index.css'
 
 export type ProjectCanvasVariant = 'fluid' | 'garden' | 'audio' | 'fractal'
 
@@ -190,7 +191,7 @@ export default memo(function ProjectCanvasExperience({
       ref={rootRef}
       className={`projectCanvasExperience projectCanvasExperience--${variant} min-h-screen bg-[var(--project-canvas-page-bg)] text-[var(--text-primary)] [font-family:Segoe_UI,PingFang_SC,Microsoft_YaHei,sans-serif] [&_*]:box-border`}
     >
-      <header className="projectCanvasExperience__nav sticky top-0 z-20 flex items-center justify-between border-b border-b-[var(--project-canvas-nav-border)] bg-[var(--project-canvas-nav-bg)] px-6 py-[18px] [backdrop-filter:blur(10px)] max-[640px]:px-3 max-[640px]:py-[14px]">
+      <header className="projectCanvasExperience__nav sticky top-0 z-20 flex items-center justify-between border-b border-b-[var(--project-canvas-nav-border)] bg-[var(--project-canvas-nav-bg)] px-6 py-[18px] [backdrop-filter:blur(10px)] max-sm:px-3 max-sm:py-[14px]">
         <Link
           to="/aboutme"
           className="projectCanvasExperience__nav-btn ui-button-ghost inline-flex h-auto items-center justify-center gap-[var(--space-2)] border-none bg-transparent p-0 text-[var(--project-canvas-nav-text)] no-underline"
@@ -207,7 +208,7 @@ export default memo(function ProjectCanvasExperience({
         </Link>
       </header>
 
-      <main className="projectCanvasExperience__main mx-auto w-[min(1220px,calc(100%-40px))] py-10 pb-20 max-[640px]:w-[min(100%-24px,1220px)] max-[640px]:py-6 max-[640px]:pb-14">
+      <main className="projectCanvasExperience__main mx-auto w-[min(1220px,calc(100%-40px))] py-10 pb-20 max-sm:w-[min(100%-24px,1220px)] max-sm:py-6 max-sm:pb-14">
         <section className="projectCanvasExperience__hero grid items-center gap-8 [grid-template-columns:minmax(320px,420px)_minmax(0,1fr)] max-[900px]:grid-cols-1">
           <div className="projectCanvasExperience__copy grid gap-[18px]">
             <span className="projectCanvasExperience__eyebrow inline-flex w-fit rounded-full bg-[var(--project-canvas-eyebrow-bg)] px-3 py-2 text-[12px] uppercase tracking-[0.18em] text-[var(--project-canvas-eyebrow-text)]">
@@ -216,7 +217,7 @@ export default memo(function ProjectCanvasExperience({
             <h1 className="m-0 text-[clamp(40px,5vw,72px)] leading-[1.02] tracking-[-0.04em] text-[var(--text-primary)]">
               {title}
             </h1>
-            <p className="m-0 text-[16px] leading-[1.9] text-[var(--project-canvas-copy-text)] max-[640px]:text-[15px]">
+            <p className="m-0 text-[16px] leading-[1.9] text-[var(--project-canvas-copy-text)] max-sm:text-[15px]">
               {summary}
             </p>
             <div className="projectCanvasExperience__tags flex flex-wrap gap-[10px]">
@@ -247,14 +248,14 @@ export default memo(function ProjectCanvasExperience({
           </div>
 
           <div
-            className="projectCanvasExperience__panel relative min-h-[560px] overflow-hidden rounded-[28px] border border-[var(--project-canvas-panel-border)] bg-[var(--project-canvas-panel-bg)] shadow-[var(--project-canvas-panel-shadow)] max-[900px]:min-h-[420px] max-[640px]:min-h-[320px]"
+            className="projectCanvasExperience__panel relative min-h-[560px] overflow-hidden rounded-[28px] border border-[var(--project-canvas-panel-border)] bg-[var(--project-canvas-panel-bg)] shadow-[var(--project-canvas-panel-shadow)] max-[900px]:min-h-[420px] max-sm:min-h-[320px]"
             id="project-canvas-stage"
           >
             <canvas
               ref={canvasRef}
-              className="projectCanvasExperience__canvas block min-h-[560px] h-full w-full max-[900px]:min-h-[420px] max-[640px]:min-h-[320px]"
+              className="projectCanvasExperience__canvas block min-h-[560px] h-full w-full max-[900px]:min-h-[420px] max-sm:min-h-[320px]"
             />
-            <div className="projectCanvasExperience__hint absolute bottom-6 left-6 rounded-full bg-[var(--project-canvas-hint-bg)] px-[14px] py-[10px] text-[12px] text-[var(--project-canvas-hint-text)] max-[640px]:inset-x-3 max-[640px]:bottom-3 max-[640px]:left-auto max-[640px]:rounded-2xl">
+            <div className="projectCanvasExperience__hint absolute bottom-6 left-6 rounded-full bg-[var(--project-canvas-hint-bg)] px-[14px] py-[10px] text-[12px] text-[var(--project-canvas-hint-text)] max-sm:inset-x-3 max-sm:bottom-3 max-sm:left-auto max-sm:rounded-2xl">
               这是该作品的独立展示页，画面会持续自动演化。
             </div>
           </div>

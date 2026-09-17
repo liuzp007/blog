@@ -104,12 +104,12 @@ export default function FootmarkMapScene({
         const node = FOOTMARK_STORY_NODES[i]
         const isActive = nextActiveCityId ? i === activeIndex : i <= activeIndex
         currentMarkers[i].setContent(`
-        <div class="footmark-mapMarker ${isActive ? 'is-active' : ''} footmark-mapMarker--${node.tone}" data-index="${i}">
-          <span class="footmark-mapMarker__pulse"></span>
-          <span class="footmark-mapMarker__dot"></span>
-          <span class="footmark-mapMarker__label">${node.city}</span>
-        </div>
-      `)
+          <div class="footmark-mapMarker ${isActive ? 'is-active' : ''} footmark-mapMarker--${node.tone}" data-index="${i}">
+            <span class="footmark-mapMarker__pulse"></span>
+            <span class="footmark-mapMarker__dot"></span>
+            <span class="footmark-mapMarker__label">${node.city}</span>
+          </div>
+        `)
       }
     },
     [routePath]
@@ -189,12 +189,12 @@ export default function FootmarkMapScene({
             position: [node.lng, node.lat],
             offset: new AMap.Pixel(-18, -18),
             content: `
-              <div class="footmark-mapMarker footmark-mapMarker--${node.tone}" data-index="${index}">
-                <span class="footmark-mapMarker__pulse"></span>
-                <span class="footmark-mapMarker__dot"></span>
-                <span class="footmark-mapMarker__label">${node.city}</span>
-              </div>
-            `,
+                <div class="footmark-mapMarker footmark-mapMarker--${node.tone}" data-index="${index}">
+                  <span class="footmark-mapMarker__pulse"></span>
+                  <span class="footmark-mapMarker__dot"></span>
+                  <span class="footmark-mapMarker__label">${node.city}</span>
+                </div>
+              `,
             zIndex: 20 + index
           })
           marker.setMap(map)
@@ -281,7 +281,7 @@ export default function FootmarkMapScene({
       <div className="footmark-mapScene__canvas" ref={containerRef}>
         {mapStatus !== 'ready' ? (
           <div
-            className="footmark-mapScene__status absolute inset-6 z-[1] grid content-center gap-3 rounded-[24px] px-6 py-5 text-center backdrop-blur-md max-[768px]:inset-4 max-[768px]:px-4"
+            className="footmark-mapScene__status absolute inset-6 z-[1] grid content-center gap-3 rounded-[24px] px-6 py-5 text-center backdrop-blur-md max-md:inset-4 max-md:px-4"
             role={mapStatus === 'error' ? 'alert' : 'status'}
             aria-live="polite"
           >
@@ -307,7 +307,7 @@ export default function FootmarkMapScene({
               : focusedCity?.summary || focusedNode.detail}
           </p>
 
-          <div className="footmark-mapScene__meta mt-4 grid gap-2 max-[768px]:mt-3 max-[768px]:grid-cols-2 max-[768px]:gap-x-[10px] max-[768px]:gap-y-1.5">
+          <div className="footmark-mapScene__meta mt-4 grid gap-2 max-md:mt-3 max-md:grid-cols-2 max-md:gap-x-[10px] max-md:gap-y-1.5">
             <span>{focusedWorks.length} 组作品</span>
             <span>{focusedNode.title}</span>
           </div>

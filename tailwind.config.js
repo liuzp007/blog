@@ -65,16 +65,12 @@ export default {
         },
         /** 阴影 - 引用 token 系统 */
         shadow: {
-          card: 'var(--card-shadow)'
+          card: 'var(--shadow-sm)'
         },
         /** Focus - 引用 token 系统 */
         focus: {
           ring: 'var(--focus-ring)'
         }
-      },
-      spacing: {
-        /** 间距 - 引用 token 系统 */
-        token: 'var(--space-1)'
       },
       fontSize: {
         /** 字号 - 引用 token 系统 */
@@ -86,26 +82,28 @@ export default {
         h4: 'var(--heading-4-size)'
       },
       borderRadius: {
-        xs: '6px',
-        sm: '10px',
-        md: '14px',
-        lg: '18px',
-        xl: '20px',
-        '2xl': '22px',
-        '3xl': '24px',
-        '4xl': '26px',
-        '5xl': '28px',
-        pill: '999px'
+        xs: 'var(--radius-xs)',
+        sm: 'var(--radius-sm)',
+        md: 'var(--radius-md)',
+        lg: 'var(--radius-lg)',
+        xl: 'var(--radius-xl)',
+        '2xl': 'var(--radius-2xl)',
+        '3xl': 'var(--radius-3xl)',
+        '4xl': 'var(--radius-4xl)',
+        '5xl': 'var(--radius-5xl)',
+        pill: 'var(--radius-pill)'
       },
       screens: {
         xs: '480px',
         sm: '640px',
-        md: '720px',
-        lg: '900px',
-        xl: '1024px',
-        '2xl': '1100px'
+        md: '768px',
+        lg: '1024px',
+        xl: '1280px',
+        '2xl': '1536px'
       },
       spacing: {
+        /** 间距 - 引用 token 系统 */
+        token: 'var(--space-1)',
         0.5: '6px',
         1: '10px',
         1.5: '12px',

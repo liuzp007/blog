@@ -1,8 +1,10 @@
+/* --- not-found.css --- */
+
 /**
- * 保留型视觉 SCSS：404 场景动画层。
- * 这里是完整的 3D 透视、翻滚立方体和 404 轨道动画，不做 Tailwind 迁移。
- * 后续只允许整理命名、注释和 token 消费边界，不要把普通页面布局样式混入这里。
- */
+   * 保留型视觉 CSS：404 场景动画层。
+   * 这里是完整的 3D 透视、翻滚立方体和 404 轨道动画，不做 Tailwind 迁移。
+   * 后续只允许整理命名、注释和 token 消费边界，不要把普通页面布局样式混入这里。
+   */
 
 .notFoundPage {
   position: fixed;
@@ -35,7 +37,7 @@
   height: 200px;
   font-size: 7rem;
   color: var(--text-primary);
-  background: var(--raw-slate-800);
+  background: var(--color-surface-base);
 }
 
 .rail .stamp:nth-child(1) {
@@ -148,8 +150,8 @@
   position: absolute;
   width: 200px;
   height: 200px;
-  background: var(--black-alpha-80);
-  border: 1px solid var(--white-alpha-90);
+  background: color-mix(in srgb, var(--color-black) 80%, transparent);
+  border: 1px solid color-mix(in srgb, var(--color-white) 90%, transparent);
   box-sizing: border-box;
 }
 

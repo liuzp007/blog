@@ -77,7 +77,7 @@ const LoadingSkeleton: React.FC<LoadingSkeletonProps> = ({
       )}
 
       {showFooter && (
-        <div className="error-boundary__loading-footer flex flex-col gap-3 border-t border-t-[var(--white-alpha-10)] pt-4 md:flex-row md:items-center md:justify-between md:gap-0">
+        <div className="error-boundary__loading-footer flex flex-col gap-3 border-t border-t-[color-mix(in srgb, var(--color-white) 10%, transparent)] pt-4 md:flex-row md:items-center md:justify-between md:gap-0">
           <AntSkeleton.Button className="loading-action h-8 w-20 rounded-md" active />
           <div className="error-boundary__loading-stats flex gap-4">
             <AntSkeleton.Button className="loading-stat h-4 w-[60px] rounded" active />
@@ -123,14 +123,14 @@ const ErrorDisplay: React.FC<ErrorDisplayProps> = ({
       message.success('错误报告已生成，您可以复制到剪贴板')
 
       const reportText = `
-错误时间: ${new Date().toISOString()}
-错误信息: ${errorInfo.message}
-组件: ${errorInfo.component}
-堆栈跟踪:
-${errorInfo.stack}
-用户代理: ${typeof window !== 'undefined' ? window.navigator.userAgent : 'N/A'}
-页面 URL: ${typeof window !== 'undefined' ? window.location.href : 'N/A'}
-`.trim()
+  错误时间: ${new Date().toISOString()}
+  错误信息: ${errorInfo.message}
+  组件: ${errorInfo.component}
+  堆栈跟踪:
+  ${errorInfo.stack}
+  用户代理: ${typeof window !== 'undefined' ? window.navigator.userAgent : 'N/A'}
+  页面 URL: ${typeof window !== 'undefined' ? window.location.href : 'N/A'}
+  `.trim()
 
       if (typeof window !== 'undefined' && navigator.clipboard) {
         await navigator.clipboard.writeText(reportText)
@@ -185,7 +185,7 @@ ${errorInfo.stack}
     typeof parsedInfo === 'string' ? error.stack || '' : parsedInfo.stack || error.stack || ''
 
   return (
-    <div className="error-boundary flex min-h-[400px] flex-col items-center justify-center rounded-xl border border-[var(--danger-alpha-soft)] bg-[var(--black-alpha-05)] px-6 py-10 text-center [backdrop-filter:blur(20px)] md:p-10">
+    <div className="error-boundary flex min-h-[400px] flex-col items-center justify-center rounded-xl border border-[var(--danger-alpha-soft)] bg-[color-mix(in srgb, var(--color-black) 5%, transparent)] px-6 py-10 text-center [backdrop-filter:blur(20px)] md:p-10">
       <div className="error-boundary__icon mb-4 text-[64px]" aria-hidden="true">
         {getErrorIcon()}
       </div>
@@ -202,16 +202,16 @@ ${errorInfo.stack}
         }
       />
 
-      <div className="error-boundary__message mb-6 text-[16px] text-[var(--white-alpha-60)]">
+      <div className="error-boundary__message mb-6 text-[16px] text-[color-mix(in srgb, var(--color-white) 60%, transparent)]">
         抱歉，页面遇到了一些问题
       </div>
 
-      <div className="error-boundary__details mb-2 text-[14px] leading-[1.6] text-[var(--white-alpha-40)]">
+      <div className="error-boundary__details mb-2 text-[14px] leading-[1.6] text-[color-mix(in srgb, var(--color-white) 40%, transparent)]">
         <div>错误信息: {errorMsg}</div>
         <div>组件: {component}</div>
       </div>
 
-      <div className="error-boundary__hint mt-2 rounded-md border-l-[3px] border-l-[var(--color-danger)] bg-[var(--white-alpha-05)] p-3 text-[12px] text-[var(--white-alpha-30)]">
+      <div className="error-boundary__hint mt-2 rounded-md border-l-[3px] border-l-[var(--color-danger)] bg-[color-mix(in srgb, var(--color-white) 5%, transparent)] p-3 text-[12px] text-[color-mix(in srgb, var(--color-white) 30%, transparent)]">
         {getErrorHint()}
       </div>
 

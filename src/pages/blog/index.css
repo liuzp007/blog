@@ -276,7 +276,11 @@
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background: linear-gradient(140deg, var(--white-alpha-06), transparent 36%);
+  background: linear-gradient(
+    140deg,
+    color-mix(in srgb, var(--color-white) 6%, transparent),
+    transparent 36%
+  );
 }
 
 .blog-lab__series-card--0 {
@@ -327,7 +331,7 @@
   --ui-tag-border: color-mix(in srgb, var(--lab-line-medium) 76%, transparent);
   --ui-tag-text: var(--lab-text-chip);
 
-  box-shadow: inset 0 1px 0 var(--white-alpha-06);
+  box-shadow: inset 0 1px 0 color-mix(in srgb, var(--color-white) 6%, transparent);
   border-radius: 12px;
   padding-inline: 8px;
   min-width: 32px;
@@ -365,8 +369,8 @@
 }
 
 .blog-lab__action--browse {
-  --ui-button-height: var(--button-height-sm);
-  --ui-button-padding-inline: var(--button-padding-inline-sm);
+  --ui-button-height: var(--control-height-sm);
+  --ui-button-padding-inline: var(--space-3);
   --ui-button-ghost-border: color-mix(in srgb, var(--lab-line-faint) 92%, transparent);
   --ui-button-ghost-bg: var(--lab-panel-floating);
   --ui-button-ghost-bg-hover: color-mix(in srgb, var(--lab-panel-floating-hover) 72%, transparent);
@@ -382,7 +386,7 @@
 }
 
 .blog-lab__action--feature {
-  --ui-button-padding-inline: var(--button-padding-inline-md);
+  --ui-button-padding-inline: var(--space-5);
   --ui-button-primary-border: color-mix(in srgb, var(--lab-accent-warm) 18%, transparent);
   --ui-button-primary-bg: linear-gradient(
     135deg,
@@ -403,7 +407,11 @@
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(120deg, var(--white-alpha-20), transparent 55%);
+  background: linear-gradient(
+    120deg,
+    color-mix(in srgb, var(--color-white) 20%, transparent),
+    transparent 55%
+  );
   opacity: 0;
   transition: opacity 0.2s ease;
   pointer-events: none;
@@ -440,7 +448,7 @@
 .blog-lab__signal-btn {
   display: inline-flex;
   min-width: 0;
-  color: color-mix(in srgb, var(--lab-text-chip) 92%, #fff);
+  color: color-mix(in srgb, var(--lab-text-chip) 92%, var(--color-white));
   background: var(--lab-button-bg);
   transition:
     transform 0.2s ease,
@@ -570,14 +578,14 @@
   color: var(--lab-text-strong);
   background: linear-gradient(135deg, var(--lab-surface-panel), var(--lab-panel-elevated));
   border-color: color-mix(in srgb, var(--lab-line-active) 82%, transparent);
-  box-shadow: inset 0 0 0 1px var(--white-alpha-04);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--color-white) 4%, transparent);
 }
 
 .blog-searchbox__button--submit:hover,
 .blog-searchbox__button--submit:focus-visible {
   border-color: var(--lab-line-active);
   box-shadow:
-    inset 0 0 0 1px var(--white-alpha-06),
+    inset 0 0 0 1px color-mix(in srgb, var(--color-white) 6%, transparent),
     var(--shadow-sm);
 }
 
@@ -594,7 +602,7 @@
 }
 
 .blog-lab .ant-input.ui-input {
-  color: color-mix(in srgb, var(--lab-text-primary) 96%, #fff);
+  color: color-mix(in srgb, var(--lab-text-primary) 96%, var(--color-white));
   background: var(--lab-input-bg);
   border-color: var(--lab-line-input);
 }
@@ -609,18 +617,18 @@
 }
 
 .blog-lab .ant-input-affix-wrapper.ui-input input {
-  color: color-mix(in srgb, var(--lab-text-primary) 96%, #fff);
+  color: color-mix(in srgb, var(--lab-text-primary) 96%, var(--color-white));
   background: transparent;
 }
 
 .blog-lab .ant-select.ui-input:not(.ant-select-customize-input) .ant-select-selector {
-  color: color-mix(in srgb, var(--lab-text-chip) 92%, #fff);
+  color: color-mix(in srgb, var(--lab-text-chip) 92%, var(--color-white));
   background: var(--lab-input-bg-strong);
   border-color: var(--lab-line-input);
 }
 
 .blog-lab .ant-select.ui-input .ant-select-selection-item {
-  color: color-mix(in srgb, var(--lab-text-chip) 92%, #fff);
+  color: color-mix(in srgb, var(--lab-text-chip) 92%, var(--color-white));
 }
 
 .blog-lab .ant-segmented {
@@ -687,7 +695,7 @@
   }
 }
 
-@media (width <= 640px) {
+@media (width <= 768px) {
   .blog-lab {
     --blog-nav-space: 138px;
   }
@@ -735,5 +743,5 @@
 }
 
 .blog-segmented {
-  color: var(--raw-slate-200);
+  color: var(--color-text-soft);
 }

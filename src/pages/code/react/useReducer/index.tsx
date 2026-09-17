@@ -66,8 +66,8 @@ export default function UseReducer() {
         style={{
           marginTop: '2rem',
           padding: '1.5rem',
-          background: 'var(--code-indigo-alpha-10)',
-          border: '1px solid var(--code-indigo-alpha-30)',
+          background: 'color-mix(in srgb, var(--color-indigo-500) 10%, transparent)',
+          border: '1px solid color-mix(in srgb, var(--color-indigo-500) 30%, transparent)',
           borderRadius: '12px',
           position: 'relative',
           zIndex: 3,
@@ -103,7 +103,8 @@ export default function UseReducer() {
             }}
             onMouseOver={e => {
               e.currentTarget.style.transform = 'translateY(-2px)'
-              e.currentTarget.style.boxShadow = '0 10px 25px var(--code-indigo-alpha-30)'
+              e.currentTarget.style.boxShadow =
+                '0 10px 25px color-mix(in srgb, var(--color-indigo-500) 30%, transparent)'
             }}
             onMouseOut={e => {
               e.currentTarget.style.transform = 'translateY(0)'
@@ -128,7 +129,8 @@ export default function UseReducer() {
             }}
             onMouseOver={e => {
               e.currentTarget.style.transform = 'translateY(-2px)'
-              e.currentTarget.style.boxShadow = '0 10px 25px var(--code-green-alpha-30)'
+              e.currentTarget.style.boxShadow =
+                '0 10px 25px color-mix(in srgb, var(--color-code-green) 30%, transparent)'
             }}
             onMouseOut={e => {
               e.currentTarget.style.transform = 'translateY(0)'
@@ -144,8 +146,8 @@ export default function UseReducer() {
         style={{
           marginTop: '1.5rem',
           padding: '1.5rem',
-          background: 'var(--code-green-alpha-10)',
-          border: '1px solid var(--code-green-alpha-30)',
+          background: 'color-mix(in srgb, var(--color-code-green) 10%, transparent)',
+          border: '1px solid color-mix(in srgb, var(--color-code-green) 30%, transparent)',
           borderRadius: '12px',
           position: 'relative',
           zIndex: 3
@@ -153,7 +155,12 @@ export default function UseReducer() {
       >
         <h3 style={{ color: 'var(--color-code-green)', marginBottom: '1rem' }}>💡 适用场景</h3>
         <ul
-          style={{ color: 'var(--white-alpha-80)', lineHeight: 1.8, listStyle: 'none', padding: 0 }}
+          style={{
+            color: 'color-mix(in srgb, var(--color-white) 80%, transparent)',
+            lineHeight: 1.8,
+            listStyle: 'none',
+            padding: 0
+          }}
         >
           <li style={{ marginBottom: '0.5rem' }}>• state 逻辑复杂且包含多个子值</li>
           <li style={{ marginBottom: '0.5rem' }}>• 下一个 state 依赖于之前的 state</li>
@@ -167,8 +174,8 @@ export default function UseReducer() {
         style={{
           marginTop: '1.5rem',
           padding: '1.5rem',
-          background: 'var(--code-red-alpha-10)',
-          border: '1px solid var(--code-red-alpha-30)',
+          background: 'color-mix(in srgb, var(--color-danger-strong) 10%, transparent)',
+          border: '1px solid color-mix(in srgb, var(--color-danger-strong) 30%, transparent)',
           borderRadius: '12px',
           position: 'relative',
           zIndex: 3
@@ -176,7 +183,12 @@ export default function UseReducer() {
       >
         <h3 style={{ color: 'var(--color-code-red)', marginBottom: '1rem' }}>⚠️ 注意事项</h3>
         <ul
-          style={{ color: 'var(--white-alpha-80)', lineHeight: 1.8, listStyle: 'none', padding: 0 }}
+          style={{
+            color: 'color-mix(in srgb, var(--color-white) 80%, transparent)',
+            lineHeight: 1.8,
+            listStyle: 'none',
+            padding: 0
+          }}
         >
           <li style={{ marginBottom: '0.5rem' }}>• Reducer 必须是纯函数，不能有副作用</li>
           <li style={{ marginBottom: '0.5rem' }}>• 总是返回新的 state 对象，不要修改原 state</li>
@@ -188,8 +200,8 @@ export default function UseReducer() {
         style={{
           marginTop: '1.5rem',
           padding: '1.5rem',
-          background: 'var(--code-violet-alpha-10)',
-          border: '1px solid var(--code-violet-alpha-30)',
+          background: 'color-mix(in srgb, var(--color-code-violet) 10%, transparent)',
+          border: '1px solid color-mix(in srgb, var(--color-code-violet) 30%, transparent)',
           borderRadius: '12px',
           position: 'relative',
           zIndex: 3

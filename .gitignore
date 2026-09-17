@@ -51,3 +51,4 @@ lerna-debug.log*
 # 本地页面快照 / 审计产物
 *-snapshot.txt
 *-snapshot.md
+__pycache__/

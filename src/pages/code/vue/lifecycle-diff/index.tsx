@@ -440,8 +440,8 @@ export default function LifecycleDiffPage() {
         style={{
           marginTop: '2rem',
           padding: '1.5rem',
-          background: 'var(--code-indigo-alpha-10)',
-          border: '1px solid var(--code-indigo-alpha-30)',
+          background: 'color-mix(in srgb, var(--color-indigo-500) 10%, transparent)',
+          border: '1px solid color-mix(in srgb, var(--color-indigo-500) 30%, transparent)',
           borderRadius: '12px',
           position: 'relative',
           zIndex: 3
@@ -454,8 +454,8 @@ export default function LifecycleDiffPage() {
               padding: '0.5rem 1.5rem',
               background:
                 activeTab === 'comparison'
-                  ? 'var(--code-indigo-alpha-20)'
-                  : 'var(--code-indigo-alpha-05)',
+                  ? 'color-mix(in srgb, var(--color-indigo-500) 20%, transparent)'
+                  : 'color-mix(in srgb, var(--color-indigo-500) 5%, transparent)',
               border: 'none',
               borderRadius: '8px',
               color: 'var(--color-white)',
@@ -471,8 +471,8 @@ export default function LifecycleDiffPage() {
               padding: '0.5rem 1.5rem',
               background:
                 activeTab === 'order'
-                  ? 'var(--code-indigo-alpha-20)'
-                  : 'var(--code-indigo-alpha-05)',
+                  ? 'color-mix(in srgb, var(--color-indigo-500) 20%, transparent)'
+                  : 'color-mix(in srgb, var(--color-indigo-500) 5%, transparent)',
               border: 'none',
               borderRadius: '8px',
               color: 'var(--color-white)',
@@ -487,7 +487,9 @@ export default function LifecycleDiffPage() {
             style={{
               padding: '0.5rem 1.5rem',
               background:
-                activeTab === 'new' ? 'var(--code-indigo-alpha-20)' : 'var(--code-indigo-alpha-05)',
+                activeTab === 'new'
+                  ? 'color-mix(in srgb, var(--color-indigo-500) 20%, transparent)'
+                  : 'color-mix(in srgb, var(--color-indigo-500) 5%, transparent)',
               border: 'none',
               borderRadius: '8px',
               color: 'var(--color-white)',
@@ -517,7 +519,12 @@ export default function LifecycleDiffPage() {
               }}
             >
               <thead>
-                <tr style={{ borderBottom: '1px solid var(--code-indigo-alpha-30)' }}>
+                <tr
+                  style={{
+                    borderBottom:
+                      '1px solid color-mix(in srgb, var(--color-indigo-500) 30%, transparent)'
+                  }}
+                >
                   <th
                     style={{
                       padding: '0.75rem',
@@ -566,10 +573,17 @@ export default function LifecycleDiffPage() {
                           ? 'none'
                           : '1px solid var(--code-page-chip-border)',
                       background:
-                        item.vue2 !== item.vue3 ? 'var(--code-red-alpha-10)' : 'transparent'
+                        item.vue2 !== item.vue3
+                          ? 'color-mix(in srgb, var(--color-danger-strong) 10%, transparent)'
+                          : 'transparent'
                     }}
                   >
-                    <td style={{ padding: '0.75rem', color: 'var(--white-alpha-80)' }}>
+                    <td
+                      style={{
+                        padding: '0.75rem',
+                        color: 'color-mix(in srgb, var(--color-white) 80%, transparent)'
+                      }}
+                    >
                       {item.phase}
                     </td>
                     <td
@@ -637,7 +651,11 @@ export default function LifecycleDiffPage() {
                   挂载阶段
                 </h5>
                 <ul
-                  style={{ color: 'var(--white-alpha-80)', fontSize: '0.875rem', lineHeight: 1.8 }}
+                  style={{
+                    color: 'color-mix(in srgb, var(--color-white) 80%, transparent)',
+                    fontSize: '0.875rem',
+                    lineHeight: 1.8
+                  }}
                 >
                   <li>1. Parent beforeCreate</li>
                   <li>2. Parent created</li>
@@ -653,7 +671,11 @@ export default function LifecycleDiffPage() {
               <div>
                 <h5 style={{ color: 'var(--color-code-red)', marginBottom: '0.5rem' }}>更新阶段</h5>
                 <ul
-                  style={{ color: 'var(--white-alpha-80)', fontSize: '0.875rem', lineHeight: 1.8 }}
+                  style={{
+                    color: 'color-mix(in srgb, var(--color-white) 80%, transparent)',
+                    fontSize: '0.875rem',
+                    lineHeight: 1.8
+                  }}
                 >
                   <li>1. Parent beforeUpdate</li>
                   <li>2. Child beforeUpdate</li>
@@ -667,7 +689,11 @@ export default function LifecycleDiffPage() {
                   卸载阶段
                 </h5>
                 <ul
-                  style={{ color: 'var(--white-alpha-80)', fontSize: '0.875rem', lineHeight: 1.8 }}
+                  style={{
+                    color: 'color-mix(in srgb, var(--color-white) 80%, transparent)',
+                    fontSize: '0.875rem',
+                    lineHeight: 1.8
+                  }}
                 >
                   <li>1. Parent beforeUnmount</li>
                   <li>2. Child beforeUnmount</li>
@@ -700,9 +726,9 @@ export default function LifecycleDiffPage() {
               <div
                 style={{
                   padding: '1rem',
-                  background: 'var(--code-indigo-alpha-10)',
+                  background: 'color-mix(in srgb, var(--color-indigo-500) 10%, transparent)',
                   borderRadius: '8px',
-                  border: '1px solid var(--code-indigo-alpha-30)'
+                  border: '1px solid color-mix(in srgb, var(--color-indigo-500) 30%, transparent)'
                 }}
               >
                 <h5
@@ -714,7 +740,12 @@ export default function LifecycleDiffPage() {
                 >
                   renderTracked
                 </h5>
-                <p style={{ color: 'var(--white-alpha-70)', fontSize: '0.875rem' }}>
+                <p
+                  style={{
+                    color: 'color-mix(in srgb, var(--color-white) 70%, transparent)',
+                    fontSize: '0.875rem'
+                  }}
+                >
                   首次渲染时跟踪虚拟 DOM，用于性能调试
                 </p>
               </div>
@@ -722,9 +753,9 @@ export default function LifecycleDiffPage() {
               <div
                 style={{
                   padding: '1rem',
-                  background: 'var(--code-green-alpha-10)',
+                  background: 'color-mix(in srgb, var(--color-code-green) 10%, transparent)',
                   borderRadius: '8px',
-                  border: '1px solid var(--code-green-alpha-30)'
+                  border: '1px solid color-mix(in srgb, var(--color-code-green) 30%, transparent)'
                 }}
               >
                 <h5
@@ -736,7 +767,12 @@ export default function LifecycleDiffPage() {
                 >
                   renderTriggered
                 </h5>
-                <p style={{ color: 'var(--white-alpha-70)', fontSize: '0.875rem' }}>
+                <p
+                  style={{
+                    color: 'color-mix(in srgb, var(--color-white) 70%, transparent)',
+                    fontSize: '0.875rem'
+                  }}
+                >
                   虚拟 DOM 重新渲染时触发，找出频繁渲染原因
                 </p>
               </div>
@@ -744,9 +780,10 @@ export default function LifecycleDiffPage() {
               <div
                 style={{
                   padding: '1rem',
-                  background: 'var(--code-red-alpha-10)',
+                  background: 'color-mix(in srgb, var(--color-danger-strong) 10%, transparent)',
                   borderRadius: '8px',
-                  border: '1px solid var(--code-red-alpha-30)'
+                  border:
+                    '1px solid color-mix(in srgb, var(--color-danger-strong) 30%, transparent)'
                 }}
               >
                 <h5
@@ -758,7 +795,12 @@ export default function LifecycleDiffPage() {
                 >
                   钩子重命名
                 </h5>
-                <p style={{ color: 'var(--white-alpha-70)', fontSize: '0.875rem' }}>
+                <p
+                  style={{
+                    color: 'color-mix(in srgb, var(--color-white) 70%, transparent)',
+                    fontSize: '0.875rem'
+                  }}
+                >
                   beforeDestroy → beforeUnmount
                   <br />
                   destroyed → unmounted
@@ -774,8 +816,8 @@ export default function LifecycleDiffPage() {
         style={{
           marginTop: '2rem',
           padding: '1.5rem',
-          background: 'var(--code-red-alpha-10)',
-          border: '1px solid var(--code-red-alpha-30)',
+          background: 'color-mix(in srgb, var(--color-danger-strong) 10%, transparent)',
+          border: '1px solid color-mix(in srgb, var(--color-danger-strong) 30%, transparent)',
           borderRadius: '12px',
           position: 'relative',
           zIndex: 3
@@ -783,7 +825,12 @@ export default function LifecycleDiffPage() {
       >
         <h3 style={{ color: 'var(--color-code-red)', marginBottom: '1rem' }}>⚠️ 重要变更</h3>
         <ul
-          style={{ color: 'var(--white-alpha-80)', lineHeight: 1.8, listStyle: 'none', padding: 0 }}
+          style={{
+            color: 'color-mix(in srgb, var(--color-white) 80%, transparent)',
+            lineHeight: 1.8,
+            listStyle: 'none',
+            padding: 0
+          }}
         >
           <li style={{ marginBottom: '0.5rem' }}>
             • <strong>destroy → unmount</strong>：unmount 更准确地描述了组件从 DOM 移除的行为

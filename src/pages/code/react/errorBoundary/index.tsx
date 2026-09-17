@@ -126,8 +126,8 @@ export default function ErrorBoundaryPage() {
         style={{
           marginTop: '2rem',
           padding: '1.5rem',
-          background: 'var(--code-indigo-alpha-10)',
-          border: '1px solid var(--code-indigo-alpha-30)',
+          background: 'color-mix(in srgb, var(--color-indigo-500) 10%, transparent)',
+          border: '1px solid color-mix(in srgb, var(--color-indigo-500) 30%, transparent)',
           borderRadius: '12px',
           position: 'relative',
           zIndex: 3
@@ -137,7 +137,12 @@ export default function ErrorBoundaryPage() {
 
         {!hasError ? (
           <>
-            <p style={{ color: 'var(--white-alpha-70)', marginBottom: '1rem' }}>
+            <p
+              style={{
+                color: 'color-mix(in srgb, var(--color-white) 70%, transparent)',
+                marginBottom: '1rem'
+              }}
+            >
               点击下方按钮触发错误，查看 Error Boundary 的效果
             </p>
             <button
@@ -156,7 +161,8 @@ export default function ErrorBoundaryPage() {
               }}
               onMouseOver={e => {
                 e.currentTarget.style.transform = 'translateY(-2px)'
-                e.currentTarget.style.boxShadow = '0 10px 25px var(--code-indigo-alpha-30)'
+                e.currentTarget.style.boxShadow =
+                  '0 10px 25px color-mix(in srgb, var(--color-indigo-500) 30%, transparent)'
               }}
               onMouseOut={e => {
                 e.currentTarget.style.transform = 'translateY(0)'
@@ -171,8 +177,8 @@ export default function ErrorBoundaryPage() {
             <div
               style={{
                 padding: '2rem',
-                background: 'var(--code-red-alpha-10)',
-                border: '1px solid var(--code-red-alpha-30)',
+                background: 'color-mix(in srgb, var(--color-danger-strong) 10%, transparent)',
+                border: '1px solid color-mix(in srgb, var(--color-danger-strong) 30%, transparent)',
                 borderRadius: '12px',
                 textAlign: 'center',
                 marginBottom: '1.5rem'
@@ -182,15 +188,20 @@ export default function ErrorBoundaryPage() {
               <h3 style={{ color: 'var(--color-code-red)', marginBottom: '0.5rem' }}>
                 哎呀，出错了！
               </h3>
-              <p style={{ color: 'var(--white-alpha-70)', marginBottom: '1rem' }}>
+              <p
+                style={{
+                  color: 'color-mix(in srgb, var(--color-white) 70%, transparent)',
+                  marginBottom: '1rem'
+                }}
+              >
                 Error Boundary 捕获了组件树中的错误
               </p>
               <button
                 onClick={resetError}
                 style={{
                   padding: '0.75rem 2rem',
-                  background: 'var(--code-green-alpha-20)',
-                  border: '1px solid var(--code-green-alpha-50)',
+                  background: 'color-mix(in srgb, var(--color-code-green) 20%, transparent)',
+                  border: '1px solid color-mix(in srgb, var(--color-code-green) 50%, transparent)',
                   borderRadius: '8px',
                   color: 'var(--color-code-green)',
                   fontSize: '1rem',
@@ -225,8 +236,8 @@ export default function ErrorBoundaryPage() {
         style={{
           marginTop: '1.5rem',
           padding: '1.5rem',
-          background: 'var(--code-green-alpha-10)',
-          border: '1px solid var(--code-green-alpha-30)',
+          background: 'color-mix(in srgb, var(--color-code-green) 10%, transparent)',
+          border: '1px solid color-mix(in srgb, var(--color-code-green) 30%, transparent)',
           borderRadius: '12px',
           position: 'relative',
           zIndex: 3
@@ -234,7 +245,12 @@ export default function ErrorBoundaryPage() {
       >
         <h3 style={{ color: 'var(--color-code-green)', marginBottom: '1rem' }}>💡 最佳实践</h3>
         <ul
-          style={{ color: 'var(--white-alpha-80)', lineHeight: 1.8, listStyle: 'none', padding: 0 }}
+          style={{
+            color: 'color-mix(in srgb, var(--color-white) 80%, transparent)',
+            lineHeight: 1.8,
+            listStyle: 'none',
+            padding: 0
+          }}
         >
           <li style={{ marginBottom: '0.5rem' }}>
             • <strong>分层使用</strong>：不同模块使用独立的 Error Boundary
@@ -255,8 +271,8 @@ export default function ErrorBoundaryPage() {
         style={{
           marginTop: '1.5rem',
           padding: '1.5rem',
-          background: 'var(--code-red-alpha-10)',
-          border: '1px solid var(--code-red-alpha-30)',
+          background: 'color-mix(in srgb, var(--color-danger-strong) 10%, transparent)',
+          border: '1px solid color-mix(in srgb, var(--color-danger-strong) 30%, transparent)',
           borderRadius: '12px',
           position: 'relative',
           zIndex: 3
@@ -264,7 +280,12 @@ export default function ErrorBoundaryPage() {
       >
         <h3 style={{ color: 'var(--color-code-red)', marginBottom: '1rem' }}>⚠️ 注意事项</h3>
         <ul
-          style={{ color: 'var(--white-alpha-80)', lineHeight: 1.8, listStyle: 'none', padding: 0 }}
+          style={{
+            color: 'color-mix(in srgb, var(--color-white) 80%, transparent)',
+            lineHeight: 1.8,
+            listStyle: 'none',
+            padding: 0
+          }}
         >
           <li style={{ marginBottom: '0.5rem' }}>
             • Error Boundary 无法捕获事件处理器和异步代码中的错误
@@ -280,8 +301,8 @@ export default function ErrorBoundaryPage() {
         style={{
           marginTop: '1.5rem',
           padding: '1.5rem',
-          background: 'var(--code-violet-alpha-10)',
-          border: '1px solid var(--code-violet-alpha-30)',
+          background: 'color-mix(in srgb, var(--color-code-violet) 10%, transparent)',
+          border: '1px solid color-mix(in srgb, var(--color-code-violet) 30%, transparent)',
           borderRadius: '12px',
           position: 'relative',
           zIndex: 3

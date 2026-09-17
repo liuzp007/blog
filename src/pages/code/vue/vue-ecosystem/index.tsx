@@ -386,29 +386,29 @@ const ecosystemCategories = [
     name: '核心工具',
     items: ['Vue Router', 'Vuex', 'Pinia', 'DevTools'],
     color: 'var(--color-code-indigo)',
-    surface: 'var(--code-indigo-alpha-10)',
-    border: 'var(--code-indigo-alpha-40)'
+    surface: 'color-mix(in srgb, var(--color-indigo-500) 10%, transparent)',
+    border: 'color-mix(in srgb, var(--color-indigo-500) 40%, transparent)'
   },
   {
     name: '构建工具',
     items: ['Vite', 'Vue CLI', 'Nuxt.js', 'Quasar'],
     color: 'var(--color-code-green)',
-    surface: 'var(--code-green-alpha-10)',
-    border: 'var(--code-green-alpha-50)'
+    surface: 'color-mix(in srgb, var(--color-code-green) 10%, transparent)',
+    border: 'color-mix(in srgb, var(--color-code-green) 50%, transparent)'
   },
   {
     name: 'UI 组件库',
     items: ['Element UI', 'Ant Design Vue', 'Vuetify', 'iView'],
     color: 'var(--color-code-red)',
-    surface: 'var(--code-red-alpha-10)',
-    border: 'var(--code-red-alpha-30)'
+    surface: 'color-mix(in srgb, var(--color-danger-strong) 10%, transparent)',
+    border: 'color-mix(in srgb, var(--color-danger-strong) 30%, transparent)'
   },
   {
     name: '测试框架',
     items: ['Vue Test Utils', 'Jest', 'Cypress', 'Vitest'],
     color: 'var(--color-code-violet)',
-    surface: 'var(--code-violet-alpha-10)',
-    border: 'var(--code-violet-alpha-40)'
+    surface: 'color-mix(in srgb, var(--color-code-violet) 10%, transparent)',
+    border: 'color-mix(in srgb, var(--color-code-violet) 40%, transparent)'
   },
   {
     name: '工具库',
@@ -427,8 +427,8 @@ export default function VueEcosystemPage() {
         style={{
           marginTop: '2rem',
           padding: '1.5rem',
-          background: 'var(--code-indigo-alpha-10)',
-          border: '1px solid var(--code-indigo-alpha-30)',
+          background: 'color-mix(in srgb, var(--color-indigo-500) 10%, transparent)',
+          border: '1px solid color-mix(in srgb, var(--color-indigo-500) 30%, transparent)',
           borderRadius: '12px',
           position: 'relative',
           zIndex: 3
@@ -463,7 +463,7 @@ export default function VueEcosystemPage() {
                       background: 'var(--code-page-surface-panel)',
                       borderRadius: '4px',
                       fontSize: '0.75rem',
-                      color: 'var(--white-alpha-70)'
+                      color: 'color-mix(in srgb, var(--color-white) 70%, transparent)'
                     }}
                   >
                     {item}
@@ -480,8 +480,8 @@ export default function VueEcosystemPage() {
         style={{
           marginTop: '2rem',
           padding: '1.5rem',
-          background: 'var(--code-green-alpha-10)',
-          border: '1px solid var(--code-green-alpha-30)',
+          background: 'color-mix(in srgb, var(--color-code-green) 10%, transparent)',
+          border: '1px solid color-mix(in srgb, var(--color-code-green) 30%, transparent)',
           borderRadius: '12px',
           position: 'relative',
           zIndex: 3
@@ -499,14 +499,19 @@ export default function VueEcosystemPage() {
           <div
             style={{
               padding: '1rem',
-              background: 'var(--code-indigo-alpha-05)',
+              background: 'color-mix(in srgb, var(--color-indigo-500) 5%, transparent)',
               borderRadius: '8px'
             }}
           >
             <h4 style={{ color: 'var(--color-code-indigo)', marginBottom: '0.5rem' }}>
               Vue Router
             </h4>
-            <p style={{ color: 'var(--white-alpha-70)', fontSize: '0.875rem' }}>
+            <p
+              style={{
+                color: 'color-mix(in srgb, var(--color-white) 70%, transparent)',
+                fontSize: '0.875rem'
+              }}
+            >
               官方路由管理器，支持路由守卫、动态路由、嵌套路由
             </p>
           </div>
@@ -514,12 +519,17 @@ export default function VueEcosystemPage() {
           <div
             style={{
               padding: '1rem',
-              background: 'var(--code-red-alpha-05)',
+              background: 'color-mix(in srgb, var(--color-danger-strong) 5%, transparent)',
               borderRadius: '8px'
             }}
           >
             <h4 style={{ color: 'var(--color-code-red)', marginBottom: '0.5rem' }}>Vuex / Pinia</h4>
-            <p style={{ color: 'var(--white-alpha-70)', fontSize: '0.875rem' }}>
+            <p
+              style={{
+                color: 'color-mix(in srgb, var(--color-white) 70%, transparent)',
+                fontSize: '0.875rem'
+              }}
+            >
               状态管理模式，Pinia 是 Vue 3 推荐的方案
             </p>
           </div>
@@ -527,14 +537,19 @@ export default function VueEcosystemPage() {
           <div
             style={{
               padding: '1rem',
-              background: 'var(--code-violet-alpha-05)',
+              background: 'color-mix(in srgb, var(--color-code-violet) 5%, transparent)',
               borderRadius: '8px'
             }}
           >
             <h4 style={{ color: 'var(--color-code-violet)', marginBottom: '0.5rem' }}>
               Vue CLI / Vite
             </h4>
-            <p style={{ color: 'var(--white-alpha-70)', fontSize: '0.875rem' }}>
+            <p
+              style={{
+                color: 'color-mix(in srgb, var(--color-white) 70%, transparent)',
+                fontSize: '0.875rem'
+              }}
+            >
               项目脚手架，Vite 是新一代构建工具，速度更快
             </p>
           </div>
@@ -546,8 +561,8 @@ export default function VueEcosystemPage() {
         style={{
           marginTop: '2rem',
           padding: '1.5rem',
-          background: 'var(--code-violet-alpha-10)',
-          border: '1px solid var(--code-violet-alpha-30)',
+          background: 'color-mix(in srgb, var(--color-code-violet) 10%, transparent)',
+          border: '1px solid color-mix(in srgb, var(--color-code-violet) 30%, transparent)',
           borderRadius: '12px',
           position: 'relative',
           zIndex: 3
@@ -608,7 +623,13 @@ export default function VueEcosystemPage() {
                 />
                 <h5 style={{ color: 'var(--color-white)', margin: 0 }}>{lib.name}</h5>
               </div>
-              <p style={{ color: 'var(--white-alpha-60)', fontSize: '0.875rem', margin: 0 }}>
+              <p
+                style={{
+                  color: 'color-mix(in srgb, var(--color-white) 60%, transparent)',
+                  fontSize: '0.875rem',
+                  margin: 0
+                }}
+              >
                 {lib.desc}
               </p>
             </div>
@@ -640,7 +661,7 @@ export default function VueEcosystemPage() {
             <h5 style={{ color: 'var(--color-code-indigo)', marginBottom: '0.5rem' }}>官方文档</h5>
             <ul
               style={{
-                color: 'var(--white-alpha-70)',
+                color: 'color-mix(in srgb, var(--color-white) 70%, transparent)',
                 fontSize: '0.875rem',
                 lineHeight: 1.8,
                 margin: 0,
@@ -657,7 +678,7 @@ export default function VueEcosystemPage() {
             <h5 style={{ color: 'var(--color-code-green)', marginBottom: '0.5rem' }}>社区资源</h5>
             <ul
               style={{
-                color: 'var(--white-alpha-70)',
+                color: 'color-mix(in srgb, var(--color-white) 70%, transparent)',
                 fontSize: '0.875rem',
                 lineHeight: 1.8,
                 margin: 0,
@@ -674,7 +695,7 @@ export default function VueEcosystemPage() {
             <h5 style={{ color: 'var(--color-code-violet)', marginBottom: '0.5rem' }}>实战项目</h5>
             <ul
               style={{
-                color: 'var(--white-alpha-70)',
+                color: 'color-mix(in srgb, var(--color-white) 70%, transparent)',
                 fontSize: '0.875rem',
                 lineHeight: 1.8,
                 margin: 0,

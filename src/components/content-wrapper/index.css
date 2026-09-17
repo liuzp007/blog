@@ -1,3 +1,8 @@
+/* --- content-wrapper.css --- */
+.content-wrapper {
+  overflow: visible;
+}
+
 .content-wrapper--overflow-visible {
   overflow: visible;
 }
@@ -8,14 +13,29 @@
   position: absolute;
   inset: 0;
   pointer-events: none;
+
+  /* 伪元素自身继承圆角，让装饰背景不溢出卡片 */
+  border-radius: inherit;
 }
 
 .content-wrapper--surface-glass::before {
   z-index: 1;
   background:
-    radial-gradient(circle at 20% 80%, var(--indigo-alpha-10) 0%, transparent 50%),
-    radial-gradient(circle at 80% 20%, var(--code-violet-alpha-10) 0%, transparent 50%),
-    radial-gradient(circle at 40% 40%, var(--code-indigo-alpha-05) 0%, transparent 50%);
+    radial-gradient(
+      circle at 20% 80%,
+      color-mix(in srgb, var(--color-indigo-500) 10%, transparent) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 80% 20%,
+      color-mix(in srgb, var(--color-code-violet) 10%, transparent) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 40% 40%,
+      color-mix(in srgb, var(--color-indigo-500) 5%, transparent) 0%,
+      transparent 50%
+    );
 }
 
 .content-wrapper--surface-glass::after {
@@ -25,15 +45,15 @@
       45deg,
       transparent,
       transparent 35px,
-      var(--white-alpha-01) 35px,
-      var(--white-alpha-01) 70px
+      color-mix(in srgb, var(--color-white) 1%, transparent) 35px,
+      color-mix(in srgb, var(--color-white) 1%, transparent) 70px
     ),
     repeating-linear-gradient(
       -45deg,
       transparent,
       transparent 35px,
-      var(--white-alpha-01) 35px,
-      var(--white-alpha-01) 70px
+      color-mix(in srgb, var(--color-white) 1%, transparent) 35px,
+      color-mix(in srgb, var(--color-white) 1%, transparent) 70px
     );
 }
 
@@ -41,15 +61,20 @@
   z-index: 1;
   background:
     radial-gradient(circle at 16% 0%, var(--color-accent-cyan-soft) 0%, transparent 36%),
-    radial-gradient(circle at 84% 12%, var(--color-accent-orange-soft) 0%, transparent 38%);
+    radial-gradient(circle at 84% 12%, var(--accent-warm-soft) 0%, transparent 38%);
   opacity: 0.65;
+}
+
+/* body 底部留白 — 当内容溢出 wrapper 时，padding 仍在内容实际底部 */
+.content-wrapper__body {
+  padding-bottom: var(--space-6, 1.5rem);
 }
 
 .content-wrapper__title {
   background: linear-gradient(90deg, var(--color-code-indigo) 0%, var(--color-code-violet) 100%);
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  text-shadow: 0 0 30px var(--indigo-alpha-50);
+  text-shadow: 0 0 30px color-mix(in srgb, var(--color-code-indigo) 50%, transparent);
 }
 
 .content-wrapper__loading-icon {

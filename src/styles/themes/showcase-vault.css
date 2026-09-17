@@ -1,0 +1,33 @@
+/* Sonar Depth 页面私有 palette。 */
+
+.sonar-depth {
+  --sonar-bg-0: #02070d;
+  --sonar-bg-1: #051624;
+  --sonar-bg-2: #0b2233;
+  --sonar-surface-panel: rgb(5 16 28 / 72%);
+  --sonar-line-base: rgb(112 233 255 / 14%);
+  --sonar-color-cyan: #7ff2ff;
+  --sonar-color-mint: #73ffc8;
+  --sonar-text-soft: rgb(219 244 255 / 74%);
+  --sonar-text-primary: #effbff;
+  --sonar-text-inverse: #01212a;
+  --sonar-target-ruins: #86f7ff;
+  --sonar-target-school: #80b7ff;
+  --sonar-target-beacon: #6ef0c2;
+  --sonar-target-thermal: #6af3ff;
+  --sonar-target-jelly: #9e98ff;
+  --sonar-target-unfound: color-mix(in srgb, var(--raw-white) 16%, transparent);
+  --sonar-canvas-bg-top: #041019;
+  --sonar-canvas-bg-mid: #071d2f;
+  --sonar-canvas-bg-bottom: #02070d;
+  --sonar-canvas-glow-a: #22d8ff;
+  --sonar-canvas-glow-b: #4effc1;
+  --sonar-canvas-backdrop-ring: #6fe7ff;
+  --sonar-canvas-contour: #87e1ff;
+  --sonar-canvas-particle: #b1efff;
+  --sonar-canvas-ripple-primary: #7af1ff;
+  --sonar-canvas-ripple-secondary: #6fffcd;
+  --sonar-canvas-target-outline: var(--raw-white);
+  --sonar-canvas-aim-focus: #a7f5ff;
+  --sonar-canvas-crosshair: #d2f8ff;
+}

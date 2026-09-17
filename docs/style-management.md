@@ -13,9 +13,8 @@
 ```
 src/
 ├── styles/                          # 全局样式
-│   ├── tokens/                     # 设计 token
-│   │   ├── base.css               # 基础 token
-│   │   └── semantic.css           # 语义 token
+│   ├── tokens.css                  # 设计 token
+│   ├── base.css                    # reset、基础元素、排版与全局行为
 │   ├── themes/                     # 主题
 │   │   ├── dark.css               # 暗色主题
 │   │   ├── light.css              # 亮色主题
@@ -29,13 +28,8 @@ src/
 │   │   ├── blog-detail-pages.css # 博客详情页样式
 │   │   ├── home-pages.css        # 首页样式
 │   │   └── footmark-pages.css    # 足迹页样式
-│   ├── primitives.css             # 基础样式重置
-│   ├── theme.css                  # 主题配置
 │   ├── components.css            # 通用组件样式
-│   ├── global-ui.css             # 全局 UI 样式
 │   ├── antd-overrides.css        # Ant Design 覆盖
-│   ├── palettes.css              # 调色板
-│   └── global-ui.css             # 全局 UI
 ├── pages/                         # 页面级样式
 │   ├── home/index.scss
 │   ├── blog/index.scss
@@ -73,11 +67,11 @@ src/
    - 通用组件样式
    - 应优先复用 `.ui-*` 类
 
-5. **语义 token** (`src/styles/tokens/semantic.css`)
+5. **语义 token** (`src/styles/tokens.css`)
    - 语义化颜色、间距等
    - 优先使用而非直接写值
 
-6. **基础 token** (`src/styles/tokens/base.css`)
+6. **基础 token** (`src/styles/tokens.css`)
    - 设计系统基础 token
    - 核心配置文件
 
@@ -142,8 +136,7 @@ src/
 
 **允许使用 `:root` 的文件**:
 
-- `src/styles/tokens/base.css`
-- `src/styles/tokens/semantic.css`
+- `src/styles/tokens.css`
 - `src/styles/themes/dark.css`
 - `src/styles/themes/light.css`
 - `src/styles/themes/accessibility.css`
@@ -153,7 +146,6 @@ src/
 - 所有页面样式
 - 所有组件样式
 - `src/styles/components.css`
-- `src/styles/global-ui.css`
 
 ### 4. 样式隔离
 
@@ -191,7 +183,7 @@ src/
 2. **推荐做法**:
    - 优先使用 Tailwind 处理布局和响应式
    - 优先复用 `src/styles/components.css` 中的 `.ui-*` 类
-   - 必须使用 `src/styles/tokens/semantic.css` 中的 token
+   - 必须使用 `src/styles/tokens.css` 中的 token
 
 3. **特殊情况**:
    - 仅在 Tailwind 无法覆盖且确属页面私有视觉时，才新增 SCSS 文件

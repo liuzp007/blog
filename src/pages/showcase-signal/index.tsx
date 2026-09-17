@@ -8,6 +8,7 @@ import {
 import { Button, Modal, Progress, Slider, Switch, Tag } from 'antd'
 import { Link } from 'react-router-dom'
 import { clamp, readCssVar, withOpacity } from '@/utils/canvasDraw'
+import '@/styles/themes/showcase-signal.css'
 import './index.css'
 
 type PaletteKey = 'prism' | 'sunset' | 'lagoon'
@@ -723,8 +724,8 @@ export default function ShowcaseSignal() {
       <div className="signal-reactor__aurora signal-reactor__aurora--left" />
       <div className="signal-reactor__aurora signal-reactor__aurora--right" />
 
-      <main className="relative z-[1] mx-auto w-[min(1320px,calc(100%-48px))] min-h-[100dvh] pt-10 pb-[34px] max-[1100px]:w-[calc(100%-28px)] max-[1100px]:min-h-auto max-[1100px]:pt-6">
-        <section className="grid items-center gap-[30px] min-[1101px]:grid-cols-[minmax(320px,430px)_minmax(0,1fr)] max-[768px]:gap-[18px]">
+      <main className="relative z-[1] mx-auto w-[min(1320px,calc(100%-48px))] min-h-[100dvh] pt-10 pb-[34px] max-lg:w-[calc(100%-28px)] max-lg:min-h-auto max-lg:pt-6">
+        <section className="grid items-center gap-[30px] xl:grid-cols-[minmax(320px,430px)_minmax(0,1fr)] max-md:gap-[18px]">
           <div className="relative z-[2]">
             <p className="inline-flex items-center min-h-[34px] m-0 px-3.5 rounded-[999px] border border-solid border-[var(--signal-line-strong)] bg-[var(--signal-surface-glass)] text-[12px] tracking-[0.18em] uppercase font-[var(--font-family-tech)] text-[var(--signal-text-label)]">
               作品展 / 01
@@ -747,9 +748,9 @@ export default function ShowcaseSignal() {
                 限时点亮
               </Tag>
             </div>
-            <div className="mt-[26px] flex flex-wrap gap-2.5 max-[768px]:grid max-[768px]:gap-3">
+            <div className="mt-[26px] flex flex-wrap gap-2.5 max-md:grid max-md:gap-3">
               <Button
-                className="border-none text-[var(--signal-text-inverse)] bg-[linear-gradient(135deg,var(--signal-color-beam),color-mix(in_srgb,var(--signal-color-accent)_52%,white))] shadow-[0_14px_28px_var(--black-alpha-20)] ui-button-cta max-[768px]:w-full"
+                className="border-none text-[var(--signal-text-inverse)] bg-[linear-gradient(135deg,var(--signal-color-beam),color-mix(in_srgb,var(--signal-color-accent)_52%,white))] shadow-[0_14px_28px_color-mix(in_srgb,var(--color-black)_20%,transparent)] ui-button-cta max-md:w-full"
                 type="primary"
                 icon={<ThunderboltOutlined />}
                 onClick={() => {
@@ -764,7 +765,7 @@ export default function ShowcaseSignal() {
                 {roundStarted ? '触发过载' : '开始挑战'}
               </Button>
               <Button
-                className="border border-solid border-[var(--signal-line-medium)] text-[var(--signal-text-panel)] bg-[var(--signal-surface-glass-soft)] ui-button-cta max-[768px]:w-full"
+                className="border border-solid border-[var(--signal-line-medium)] text-[var(--signal-text-panel)] bg-[var(--signal-surface-glass-soft)] ui-button-cta max-md:w-full"
                 icon={<ReloadOutlined />}
                 onClick={shuffleRound}
               >
@@ -772,7 +773,7 @@ export default function ShowcaseSignal() {
               </Button>
               <Link
                 to="/"
-                className="border border-solid border-[var(--signal-line-medium)] text-[var(--signal-text-panel)] bg-[var(--signal-surface-glass-soft)] ui-button-secondary ui-button-cta max-[768px]:w-full"
+                className="border border-solid border-[var(--signal-line-medium)] text-[var(--signal-text-panel)] bg-[var(--signal-surface-glass-soft)] ui-button-secondary ui-button-cta max-md:w-full"
               >
                 <ArrowLeftOutlined aria-hidden="true" />
                 返回首页
@@ -781,7 +782,7 @@ export default function ShowcaseSignal() {
           </div>
 
           <div className="grid gap-[14px]">
-            <div className="grid gap-[14px] min-[769px]:grid-cols-[minmax(0,1.15fr)_minmax(260px,0.85fr)] max-[768px]:grid-cols-1">
+            <div className="grid gap-[14px] md:grid-cols-[minmax(0,1.15fr)_minmax(260px,0.85fr)] max-md:grid-cols-1">
               <div className="p-[18px_20px] rounded-[24px] border border-solid border-[var(--signal-line-medium)] bg-[var(--signal-surface-base)] backdrop-blur-[18px] shadow-[var(--signal-shadow-panel)]">
                 <span className="inline-flex items-center gap-2 mb-2.5 text-[var(--signal-text-soft)] text-[12px] tracking-[0.16em] uppercase">
                   玩法提示
@@ -808,7 +809,7 @@ export default function ShowcaseSignal() {
               </div>
             </div>
 
-            <div className="grid gap-3 min-[769px]:grid-cols-3 max-[768px]:grid-cols-1">
+            <div className="grid gap-3 md:grid-cols-3 max-md:grid-cols-1">
               <article className="p-[16px_18px] rounded-[20px] border border-solid border-[var(--signal-line-soft)] bg-[var(--signal-surface-panel)]">
                 <span className="block m-0 text-[var(--signal-text-stat)] text-[11px] tracking-[0.14em] uppercase">
                   已点亮
@@ -852,7 +853,7 @@ export default function ShowcaseSignal() {
           </div>
         </section>
 
-        <section className="grid gap-6 px-0 pb-10 min-[1101px]:grid-cols-[300px_minmax(0,1fr)] max-[1100px]:grid-cols-1">
+        <section className="grid gap-6 px-0 pb-10 xl:grid-cols-[300px_minmax(0,1fr)] max-lg:grid-cols-1">
           <div>
             <p className="inline-flex items-center m-0 text-[12px] tracking-[0.22em] font-[var(--font-family-tech)] uppercase text-[var(--signal-text-label-soft)]">
               这局怎么赢
@@ -864,7 +865,7 @@ export default function ShowcaseSignal() {
             </ul>
           </div>
 
-          <div className="grid gap-[18px] min-[769px]:grid-cols-2 max-[768px]:grid-cols-1">
+          <div className="grid gap-[18px] md:grid-cols-2 max-md:grid-cols-1">
             <div>
               <span className="inline-flex items-center gap-2 mb-2 text-[var(--signal-text-soft)] text-[12px] tracking-[0.16em] uppercase">
                 分光范围
@@ -913,7 +914,7 @@ export default function ShowcaseSignal() {
               </span>
               <Switch checked={assistMode} onChange={setAssistMode} />
             </div>
-            <div className="grid gap-3 min-[769px]:grid-cols-2 max-[768px]:grid-cols-1">
+            <div className="grid gap-3 md:grid-cols-2 max-md:grid-cols-1">
               <article className="p-[16px_18px] rounded-[20px] border border-solid border-[var(--signal-line-soft)] bg-[var(--signal-surface-panel)]">
                 <span className="block m-0 text-[var(--signal-text-stat)] text-[11px] tracking-[0.14em] uppercase">
                   当前连击
@@ -955,7 +956,7 @@ export default function ShowcaseSignal() {
           <p className="m-[14px_auto_0] max-w-[26ch] leading-[1.8] text-[var(--signal-result-copy)]">
             {modalDesc}
           </p>
-          <div className="mt-[22px] grid gap-3 min-[769px]:grid-cols-2 max-[768px]:grid-cols-1">
+          <div className="mt-[22px] grid gap-3 md:grid-cols-2 max-md:grid-cols-1">
             <article className="p-[16px_18px] rounded-[20px] border border-solid border-[var(--signal-line-soft)] bg-[var(--signal-surface-panel)]">
               <span className="block m-0 text-[var(--signal-text-stat)] text-[11px] tracking-[0.14em] uppercase">
                 本轮分数

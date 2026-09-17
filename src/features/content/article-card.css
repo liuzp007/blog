@@ -1,7 +1,7 @@
 /*
- * article-card 只保留媒体遮罩、标题链接装饰与局部 chip 细节；
- * 卡片骨架、间距、排版和 CTA 统一迁回 TSX + 语义类。
- */
+   * article-card 只保留媒体遮罩、标题链接装饰与局部 chip 细节；
+   * 卡片骨架、间距、排版和 CTA 统一迁回 TSX + 语义类。
+   */
 .article-card-link.media-card::after {
   content: '';
   position: absolute;
@@ -54,9 +54,9 @@
   min-height: 28px;
   padding: 0 12px;
   font-size: 11px;
-  color: var(--tag-text);
-  background: var(--tag-bg);
-  border: 1px solid var(--tag-border);
+  color: var(--color-text-secondary);
+  background: color-mix(in srgb, var(--color-white) 6%, transparent);
+  border: 1px solid color-mix(in srgb, var(--color-white) 12%, transparent);
   transition:
     border-color 0.15s ease,
     background 0.15s ease,
@@ -70,9 +70,17 @@
 
 .article-card__category-link:hover .article-card__category-chip,
 .article-card__category-link:focus-visible .article-card__category-chip {
-  color: color-mix(in srgb, var(--tag-text) 90%, var(--color-white) 10%);
-  background: color-mix(in srgb, var(--tag-bg) 85%, var(--color-white) 15%);
-  border-color: color-mix(in srgb, var(--tag-border) 80%, var(--color-white) 20%);
+  color: color-mix(in srgb, var(--color-text-secondary) 90%, var(--color-white) 10%);
+  background: color-mix(
+    in srgb,
+    color-mix(in srgb, var(--color-white) 6%, transparent) 85%,
+    var(--color-white) 15%
+  );
+  border-color: color-mix(
+    in srgb,
+    color-mix(in srgb, var(--color-white) 12%, transparent) 80%,
+    var(--color-white) 20%
+  );
 }
 
 .article-card__title-link {

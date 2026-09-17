@@ -14,6 +14,7 @@ import { Link, useHistory } from 'react-router-dom'
 import MediaCard from '@/components/ui/media-card'
 import ArticleConceptCanvas from '@/features/content/ArticleConceptCanvas'
 import type { ContentMeta } from '@/features/content/contentIndex'
+import '@/styles/themes/content-features.css'
 import './article-card.css'
 
 interface ArticleCardProps {
@@ -73,10 +74,10 @@ export default memo(function ArticleCard({ meta }: ArticleCardProps) {
     <MediaCard
       as="article"
       className={`article-card-link article-card ${theme} block !rounded-[14px] no-underline [--media-card-bg:var(--article-card-bg)] [--media-card-border:var(--article-card-border)] [--media-card-shadow:var(--article-card-shadow)] [--media-card-shadow-hover:var(--article-card-shadow-hover)] [--media-card-border-hover:color-mix(in_srgb,var(--article-card-accent)_55%,var(--color-white)_25%)]`}
-      mediaClassName="article-card__media relative h-[150px] overflow-hidden bg-[var(--article-card-media-bg)] max-[480px]:h-[136px]"
-      bodyClassName="article-card__body p-3.5 pb-3 max-[480px]:p-3"
+      mediaClassName="article-card__media relative h-[150px] overflow-hidden bg-[var(--article-card-media-bg)] max-xs:h-[136px]"
+      bodyClassName="article-card__body p-3.5 pb-3 max-xs:p-3"
       metaClassName="article-card__head mb-2 flex items-center justify-between gap-2"
-      titleClassName="article-card__title ui-card-title overflow-hidden text-[18px] leading-[1.35] text-[var(--article-card-title)] [display:-webkit-box] [-webkit-box-orient:vertical] [-webkit-line-clamp:2] max-[480px]:text-base"
+      titleClassName="article-card__title ui-card-title overflow-hidden text-[18px] leading-[1.35] text-[var(--article-card-title)] [display:-webkit-box] [-webkit-box-orient:vertical] [-webkit-line-clamp:2] max-xs:text-base"
       descriptionClassName="article-card__description"
       ctaClassName="justify-end"
       role="link"
@@ -171,7 +172,7 @@ export default memo(function ArticleCard({ meta }: ArticleCardProps) {
             {meta.date} · {meta.words} 字 · TECH DISPATCH
           </div>
           {meta.summary ? (
-            <div className="article-card__summary ui-body-text mt-2 min-h-[44px] overflow-hidden text-[13px] leading-[1.65] text-[var(--article-card-summary)] [display:-webkit-box] [-webkit-box-orient:vertical] [-webkit-line-clamp:2] max-[480px]:min-h-10 max-[480px]:text-xs">
+            <div className="article-card__summary ui-body-text mt-2 min-h-[44px] overflow-hidden text-[13px] leading-[1.65] text-[var(--article-card-summary)] [display:-webkit-box] [-webkit-box-orient:vertical] [-webkit-line-clamp:2] max-xs:min-h-10 max-xs:text-xs">
               {meta.summary}
             </div>
           ) : null}

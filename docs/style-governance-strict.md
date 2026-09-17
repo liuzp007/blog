@@ -14,7 +14,7 @@
 
 文件：
 
-- `src/styles/tokens/base.css`
+- `src/styles/tokens.css`
 
 职责：
 
@@ -38,7 +38,7 @@
 
 文件：
 
-- `src/styles/tokens/semantic.css`
+- `src/styles/tokens.css`
 
 职责：
 
@@ -97,12 +97,9 @@
 
 文件：
 
+- `src/styles/base.css`
 - `src/styles/components.css`
-- `src/styles/global-ui.css`
-- `src/styles/primitives.css`
 - `src/styles/antd-overrides.css`
-- `src/styles/theme.css`
-- `src/styles/palettes.css`
 
 职责：
 
@@ -114,8 +111,7 @@
 - 禁止出现 `:root`
 - 禁止定义新的全局 token
 - 允许在类选择器内部使用局部适配变量，例如 `--ui-card-padding`
-- `theme.css` 只允许聚合 token / 真正的 theme 文件
-- `palettes.css` 只允许聚合页面 / feature / legacy palette 文件
+- 页面 palette 由实际页面或组件导入，禁止重新增加全局聚合入口
 
 ### 五级：页面 / 组件局部层
 

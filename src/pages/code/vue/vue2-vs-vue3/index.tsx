@@ -441,8 +441,8 @@ export default function Vue2VsVue3Page() {
         style={{
           marginTop: '2rem',
           padding: '1.5rem',
-          background: 'var(--code-indigo-alpha-10)',
-          border: '1px solid var(--code-indigo-alpha-30)',
+          background: 'color-mix(in srgb, var(--color-indigo-500) 10%, transparent)',
+          border: '1px solid color-mix(in srgb, var(--color-indigo-500) 30%, transparent)',
           borderRadius: '12px',
           position: 'relative',
           zIndex: 3
@@ -462,9 +462,9 @@ export default function Vue2VsVue3Page() {
               key={index}
               style={{
                 padding: '1rem',
-                background: 'var(--code-indigo-alpha-05)',
+                background: 'color-mix(in srgb, var(--color-indigo-500) 5%, transparent)',
                 borderRadius: '8px',
-                border: '1px solid var(--code-indigo-alpha-20)',
+                border: '1px solid color-mix(in srgb, var(--color-indigo-500) 20%, transparent)',
                 transition: 'all 0.3s ease',
                 cursor: 'pointer'
               }}
@@ -476,7 +476,7 @@ export default function Vue2VsVue3Page() {
               <div
                 style={{
                   fontSize: '0.875rem',
-                  color: 'var(--white-alpha-60)',
+                  color: 'color-mix(in srgb, var(--color-white) 60%, transparent)',
                   marginBottom: '0.25rem'
                 }}
               >
@@ -485,7 +485,7 @@ export default function Vue2VsVue3Page() {
               <div
                 style={{
                   fontSize: '0.875rem',
-                  color: 'var(--white-alpha-60)',
+                  color: 'color-mix(in srgb, var(--color-white) 60%, transparent)',
                   marginBottom: '0.5rem'
                 }}
               >
@@ -504,8 +504,8 @@ export default function Vue2VsVue3Page() {
         style={{
           marginTop: '2rem',
           padding: '1.5rem',
-          background: 'var(--code-green-alpha-10)',
-          border: '1px solid var(--code-green-alpha-30)',
+          background: 'color-mix(in srgb, var(--color-code-green) 10%, transparent)',
+          border: '1px solid color-mix(in srgb, var(--color-code-green) 30%, transparent)',
           borderRadius: '12px',
           position: 'relative',
           zIndex: 3
@@ -525,12 +525,17 @@ export default function Vue2VsVue3Page() {
           <div
             style={{
               padding: '1rem',
-              background: 'var(--code-indigo-alpha-05)',
+              background: 'color-mix(in srgb, var(--color-indigo-500) 5%, transparent)',
               borderRadius: '8px'
             }}
           >
             <h4 style={{ color: 'var(--color-code-indigo)', marginBottom: '0.5rem' }}>Teleport</h4>
-            <p style={{ color: 'var(--white-alpha-70)', fontSize: '0.875rem' }}>
+            <p
+              style={{
+                color: 'color-mix(in srgb, var(--color-white) 70%, transparent)',
+                fontSize: '0.875rem'
+              }}
+            >
               将组件内容传送到 DOM 的任意位置
             </p>
           </div>
@@ -538,12 +543,17 @@ export default function Vue2VsVue3Page() {
           <div
             style={{
               padding: '1rem',
-              background: 'var(--code-violet-alpha-05)',
+              background: 'color-mix(in srgb, var(--color-code-violet) 5%, transparent)',
               borderRadius: '8px'
             }}
           >
             <h4 style={{ color: 'var(--color-code-violet)', marginBottom: '0.5rem' }}>Fragments</h4>
-            <p style={{ color: 'var(--white-alpha-70)', fontSize: '0.875rem' }}>
+            <p
+              style={{
+                color: 'color-mix(in srgb, var(--color-white) 70%, transparent)',
+                fontSize: '0.875rem'
+              }}
+            >
               支持多个根元素，减少无意义的包裹
             </p>
           </div>
@@ -551,12 +561,17 @@ export default function Vue2VsVue3Page() {
           <div
             style={{
               padding: '1rem',
-              background: 'var(--code-red-alpha-05)',
+              background: 'color-mix(in srgb, var(--color-danger-strong) 5%, transparent)',
               borderRadius: '8px'
             }}
           >
             <h4 style={{ color: 'var(--color-code-red)', marginBottom: '0.5rem' }}>Suspense</h4>
-            <p style={{ color: 'var(--white-alpha-70)', fontSize: '0.875rem' }}>
+            <p
+              style={{
+                color: 'color-mix(in srgb, var(--color-white) 70%, transparent)',
+                fontSize: '0.875rem'
+              }}
+            >
               异步组件的加载状态管理
             </p>
           </div>
@@ -564,14 +579,19 @@ export default function Vue2VsVue3Page() {
           <div
             style={{
               padding: '1rem',
-              background: 'var(--code-green-alpha-05)',
+              background: 'color-mix(in srgb, var(--color-code-green) 5%, transparent)',
               borderRadius: '8px'
             }}
           >
             <h4 style={{ color: 'var(--color-code-green)', marginBottom: '0.5rem' }}>
               Composition API
             </h4>
-            <p style={{ color: 'var(--white-alpha-70)', fontSize: '0.875rem' }}>
+            <p
+              style={{
+                color: 'color-mix(in srgb, var(--color-white) 70%, transparent)',
+                fontSize: '0.875rem'
+              }}
+            >
               函数式 API，更好的逻辑复用
             </p>
           </div>
@@ -583,8 +603,8 @@ export default function Vue2VsVue3Page() {
         style={{
           marginTop: '2rem',
           padding: '1.5rem',
-          background: 'var(--code-red-alpha-10)',
-          border: '1px solid var(--code-red-alpha-30)',
+          background: 'color-mix(in srgb, var(--color-danger-strong) 10%, transparent)',
+          border: '1px solid color-mix(in srgb, var(--color-danger-strong) 30%, transparent)',
           borderRadius: '12px',
           position: 'relative',
           zIndex: 3
@@ -600,25 +620,45 @@ export default function Vue2VsVue3Page() {
         >
           <div>
             <h5 style={{ color: 'var(--color-white)', marginBottom: '0.5rem' }}>$on/$off/$once</h5>
-            <p style={{ color: 'var(--white-alpha-60)', fontSize: '0.875rem' }}>
+            <p
+              style={{
+                color: 'color-mix(in srgb, var(--color-white) 60%, transparent)',
+                fontSize: '0.875rem'
+              }}
+            >
               事件总线移除，使用 mitt 或第三方库
             </p>
           </div>
           <div>
             <h5 style={{ color: 'var(--color-white)', marginBottom: '0.5rem' }}>filters</h5>
-            <p style={{ color: 'var(--white-alpha-60)', fontSize: '0.875rem' }}>
+            <p
+              style={{
+                color: 'color-mix(in srgb, var(--color-white) 60%, transparent)',
+                fontSize: '0.875rem'
+              }}
+            >
               过滤器移除，使用方法或计算属性
             </p>
           </div>
           <div>
             <h5 style={{ color: 'var(--color-white)', marginBottom: '0.5rem' }}>$children</h5>
-            <p style={{ color: 'var(--white-alpha-60)', fontSize: '0.875rem' }}>
+            <p
+              style={{
+                color: 'color-mix(in srgb, var(--color-white) 60%, transparent)',
+                fontSize: '0.875rem'
+              }}
+            >
               不再保证顺序，使用模板引用
             </p>
           </div>
           <div>
             <h5 style={{ color: 'var(--color-white)', marginBottom: '0.5rem' }}>plugin 选项</h5>
-            <p style={{ color: 'var(--white-alpha-60)', fontSize: '0.875rem' }}>
+            <p
+              style={{
+                color: 'color-mix(in srgb, var(--color-white) 60%, transparent)',
+                fontSize: '0.875rem'
+              }}
+            >
               使用 app.use() 代替
             </p>
           </div>
@@ -638,7 +678,12 @@ export default function Vue2VsVue3Page() {
       >
         <h3 style={{ color: 'var(--color-white)', marginBottom: '1rem' }}>🚀 迁移建议</h3>
         <ul
-          style={{ color: 'var(--white-alpha-80)', lineHeight: 1.8, listStyle: 'none', padding: 0 }}
+          style={{
+            color: 'color-mix(in srgb, var(--color-white) 80%, transparent)',
+            lineHeight: 1.8,
+            listStyle: 'none',
+            padding: 0
+          }}
         >
           <li style={{ marginBottom: '0.5rem' }}>
             • <strong>使用迁移构建版本</strong>：@vue/compat 提供兼容模式

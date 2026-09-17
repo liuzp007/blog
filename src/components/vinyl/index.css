@@ -1,17 +1,17 @@
 .vinyl-record {
-  --vinyl-size: 20px;
+  --vinyl-record-size: 20px;
 
   position: relative;
   display: inline-flex;
   padding: 0;
   border: none;
-  inline-size: var(--vinyl-size);
-  block-size: var(--vinyl-size);
+  inline-size: var(--vinyl-record-size);
+  block-size: var(--vinyl-record-size);
   align-items: center;
   justify-content: center;
   border-radius: 50%;
   background-color: var(--color-black);
-  box-shadow: 0 0 10px var(--black-alpha-50);
+  box-shadow: 0 0 10px color-mix(in srgb, var(--color-black) 50%, transparent);
 }
 
 .vinyl-record.rotate {
@@ -20,14 +20,14 @@
 }
 
 .center-hole {
-  inline-size: calc(var(--vinyl-size) * 0.38);
-  block-size: calc(var(--vinyl-size) * 0.38);
+  inline-size: calc(var(--vinyl-record-size) * 0.38);
+  block-size: calc(var(--vinyl-record-size) * 0.38);
   position: absolute;
   inset: 50% auto auto 50%;
   border-radius: 50%;
   background-color: var(--color-black);
   transform: translate(-50%, -50%);
-  box-shadow: 0 0 5px var(--black-alpha-50);
+  box-shadow: 0 0 5px color-mix(in srgb, var(--color-black) 50%, transparent);
 }
 
 .grooves {
@@ -41,7 +41,7 @@
 .groove {
   position: absolute;
   top: 0;
-  inline-size: max(1px, calc(var(--vinyl-size) * 0.08));
+  inline-size: max(1px, calc(var(--vinyl-record-size) * 0.08));
   block-size: 100%;
   background-color: var(--color-text-default);
   transform: rotate(45deg);

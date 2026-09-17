@@ -1,0 +1,62 @@
+.home-drawer .ant-drawer-content,
+.home-drawer .ant-drawer-header {
+  color: var(--home-text-drawer);
+  background: var(--home-surface-drawer);
+}
+
+.home-drawer .ant-drawer-title,
+.home-drawer .ant-drawer-close {
+  color: var(--home-text-drawer);
+}
+
+.home-drawer__item {
+  height: auto;
+  padding: 14px;
+  color: color-mix(in srgb, var(--home-text-primary) 94%, var(--color-white));
+  background: var(--home-drawer-item-bg);
+  border: var(--home-border-subtle);
+  border-radius: 14px;
+  cursor: pointer;
+}
+
+.home-drawer__item span,
+.home-drawer__item small {
+  display: block;
+}
+
+.home-drawer__item span {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  margin-bottom: 6px;
+}
+
+.home-drawer__item small {
+  font-size: 12px;
+  line-height: 1.66;
+  color: var(--home-text-secondary);
+  white-space: normal;
+}
+
+.line-dog__tongue {
+  transform-origin: 50% 70%;
+  transition: transform var(--motion-fast) var(--easing-entrance);
+}
+
+@media (width <= 768px) {
+  .HomeWrap .dog-container {
+    bottom: -8px;
+    left: -2px;
+    width: 64px;
+    height: 64px;
+    opacity: 0.78;
+  }
+
+  .HomeWrap .canvas-container {
+    opacity: 0.22;
+  }
+
+  .HomeWrap .signal-wave-overlay {
+    display: none;
+  }
+}

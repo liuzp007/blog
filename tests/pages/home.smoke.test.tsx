@@ -1,8 +1,6 @@
 import { render, screen } from '@testing-library/react'
 import { describe, it, expect, vi, beforeEach } from 'vitest'
 import { MemoryRouter } from 'react-router-dom'
-import { Provider } from 'react-redux'
-import { configureStore } from '@reduxjs/toolkit'
 import Home from '@/pages/home'
 import { usePerformanceTier } from '@/hooks/usePerformanceTier'
 
@@ -64,7 +62,6 @@ vi.mock('@/features/content/ArticleSignalMediaCard', () => ({
 }))
 
 vi.mock('@/pages/home/homeContent', () => ({
-  HOME_CONTACT_ACTIONS: [{ label: 'Github', desc: '查看我的开源项目', path: '/github' }],
   HOME_EXPERIMENTS: [
     {
       title: '实验1',
@@ -90,18 +87,6 @@ vi.mock('@/pages/home/homeContent', () => ({
   HOME_TIMELINE: [{ year: '2024', title: '开始', desc: '开始写代码' }]
 }))
 
-const mockStore = configureStore({
-  reducer: {
-    main: (state = { menu: [], selectedKeys: [], openKeys: [], loading: false, error: null }) =>
-      state,
-    ui: (state = {}) => state,
-    navigation: (state = {}) => state,
-    userPreferences: (state = {}) => state
-  }
-})
-
-const mockHistory = { push: vi.fn(), goBack: vi.fn(), location: { pathname: '/' } }
-
 describe('Home Smoke Test', () => {
   beforeEach(() => {
     vi.clearAllMocks()
@@ -110,11 +95,9 @@ describe('Home Smoke Test', () => {
 
   it('首屏关键内容可见', () => {
     render(
-      <Provider store={mockStore}>
-        <MemoryRouter>
-          <Home history={mockHistory as any} />
-        </MemoryRouter>
-      </Provider>
+      <MemoryRouter>
+          <Home />
+      </MemoryRouter>
     )
 
     expect(screen.getByText('前端开发 · 刘志鹏')).toBeInTheDocument()
@@ -125,11 +108,9 @@ describe('Home Smoke Test', () => {
 
   it('所有主要 section 可渲染', () => {
     render(
-      <Provider store={mockStore}>
-        <MemoryRouter>
-          <Home history={mockHistory as any} />
-        </MemoryRouter>
-      </Provider>
+      <MemoryRouter>
+          <Home />
+      </MemoryRouter>
     )
 
     expect(screen.getAllByText('实验工坊').length).toBeGreaterThan(0)
@@ -142,11 +123,9 @@ describe('Home Smoke Test', () => {
     mockTier = 'low'
 
     const { unmount } = render(
-      <Provider store={mockStore}>
-        <MemoryRouter>
-          <Home history={mockHistory as any} />
-        </MemoryRouter>
-      </Provider>
+      <MemoryRouter>
+          <Home />
+      </MemoryRouter>
     )
 
     expect(screen.queryByTestId('hero-fx')).not.toBeInTheDocument()

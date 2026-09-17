@@ -3,7 +3,8 @@ import { Menu } from 'antd'
 import type { MenuProps } from 'antd'
 import { FolderOutlined, FileOutlined } from '@ant-design/icons'
 import { MenuItem, ChildrenItem } from '@/data'
-import '../../styles/3_components/layout/simple-navigation.css'
+
+import './index.css'
 
 interface SimpleNavigationProps {
   menuData: MenuItem[]
@@ -91,8 +92,8 @@ function SimpleNavigation({
   )
 
   return (
-    <div className="simple-navigation flex h-full flex-col border-r border-[var(--white-alpha-10)] bg-[var(--color-sidebar-surface)] backdrop-blur-[10px] max-md:h-auto max-md:max-h-[200px] max-md:border-b max-md:border-r-0">
-      <div className="simple-navigation__header border-b border-[var(--white-alpha-10)] px-4 py-5 max-md:p-3">
+    <div className="simple-navigation flex h-full flex-col border-r border-[color-mix(in srgb, var(--color-white) 10%, transparent)] bg-[var(--color-sidebar-surface)] backdrop-blur-[10px] max-md:h-auto max-md:max-h-[200px] max-md:border-b max-md:border-r-0">
+      <div className="simple-navigation__header border-b border-[color-mix(in srgb, var(--color-white) 10%, transparent)] px-4 py-5 max-md:p-3">
         <h3 className="ui-body-text-strong m-0 text-[16px] text-[var(--color-white)] max-md:text-[13px]">
           导航菜单
         </h3>

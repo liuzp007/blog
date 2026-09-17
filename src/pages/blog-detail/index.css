@@ -13,7 +13,8 @@
   line-height: 1;
   color: var(--detail-text-tag-strong);
   background:
-    linear-gradient(180deg, var(--white-alpha-08), transparent), var(--detail-surface-chip-soft);
+    linear-gradient(180deg, color-mix(in srgb, var(--color-white) 8%, transparent), transparent),
+    var(--detail-surface-chip-soft);
   border: 1px solid var(--detail-line-tag);
   align-items: center;
   padding-inline: 10px;
@@ -27,7 +28,8 @@
   color: var(--detail-text-accent);
   border-color: color-mix(in srgb, var(--detail-line-active) 56%, transparent);
   background:
-    linear-gradient(180deg, var(--white-alpha-08), transparent), var(--detail-surface-chip-faint);
+    linear-gradient(180deg, color-mix(in srgb, var(--color-white) 8%, transparent), transparent),
+    var(--detail-surface-chip-faint);
   transition:
     border-color 0.24s ease,
     color 0.24s ease,
@@ -37,10 +39,11 @@
 
 .blog-detail-chip--link:hover,
 .blog-detail-chip--link:focus-visible {
-  color: color-mix(in srgb, var(--detail-text-accent) 88%, var(--raw-white));
+  color: color-mix(in srgb, var(--detail-text-accent) 88%, var(--color-white));
   border-color: var(--detail-line-active);
   background:
-    linear-gradient(180deg, var(--white-alpha-10), transparent), var(--detail-surface-chip-hover);
+    linear-gradient(180deg, color-mix(in srgb, var(--color-white) 10%, transparent), transparent),
+    var(--detail-surface-chip-hover);
   transform: translateY(-1px);
 }
 
@@ -54,14 +57,16 @@
   color: var(--detail-text-muted);
   border-color: var(--detail-line-soft);
   background:
-    linear-gradient(180deg, var(--white-alpha-08), transparent), var(--detail-surface-chip-faint);
+    linear-gradient(180deg, color-mix(in srgb, var(--color-white) 8%, transparent), transparent),
+    var(--detail-surface-chip-faint);
   font-weight: 500;
 }
 
 .blog-detail-chip--tag {
   color: var(--detail-text-tag-strong);
   background:
-    linear-gradient(180deg, var(--white-alpha-08), transparent), var(--detail-surface-chip-soft);
+    linear-gradient(180deg, color-mix(in srgb, var(--color-white) 8%, transparent), transparent),
+    var(--detail-surface-chip-soft);
   border-color: var(--detail-line-tag);
 }
 
@@ -69,7 +74,8 @@
   color: var(--detail-text-accent);
   border-color: color-mix(in srgb, var(--detail-line-active-soft) 52%, transparent);
   background:
-    linear-gradient(180deg, var(--white-alpha-08), transparent), var(--detail-surface-chip-faint);
+    linear-gradient(180deg, color-mix(in srgb, var(--color-white) 8%, transparent), transparent),
+    var(--detail-surface-chip-faint);
 }
 
 /* ── Hero ── */
@@ -85,8 +91,12 @@
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(var(--white-alpha-03) 1px, transparent 1px),
-    linear-gradient(90deg, var(--white-alpha-03) 1px, transparent 1px);
+    linear-gradient(color-mix(in srgb, var(--color-white) 3%, transparent) 1px, transparent 1px),
+    linear-gradient(
+      90deg,
+      color-mix(in srgb, var(--color-white) 3%, transparent) 1px,
+      transparent 1px
+    );
   background-size: 28px 28px;
   opacity: 0.32;
   pointer-events: none;
@@ -258,6 +268,38 @@
   margin-top: 0.52rem;
 }
 
+.blog-detail-body .blog-detail-table-wrap {
+  margin: 1.25rem 0;
+  overflow-x: auto;
+}
+
+.blog-detail-body .blog-detail-table-wrap table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.blog-detail-body .blog-detail-table-wrap th,
+.blog-detail-body .blog-detail-table-wrap td {
+  padding: 0.72rem 0.75rem;
+  text-align: left;
+  color: var(--detail-text-secondary);
+  border-bottom: 1px solid var(--detail-line-soft);
+}
+
+.blog-detail-body .blog-detail-table-wrap th {
+  color: var(--detail-text-heading);
+  background: var(--detail-surface-chip-faint);
+}
+
+.blog-detail-body .blog-detail-image {
+  display: block;
+  height: auto;
+  max-width: 100%;
+  margin: 1.4rem auto;
+  border-radius: 16px;
+  box-shadow: var(--detail-shadow-body);
+}
+
 .blog-detail-body a {
   color: var(--detail-text-accent);
   text-decoration: underline;
@@ -270,7 +312,7 @@
 
 .blog-detail-body a:hover,
 .blog-detail-body a:focus-visible {
-  color: color-mix(in srgb, var(--detail-text-accent) 80%, var(--raw-white));
+  color: color-mix(in srgb, var(--detail-text-accent) 80%, var(--color-white));
   text-decoration-color: var(--detail-line-active);
 }
 
@@ -291,7 +333,7 @@
   border: 1px solid var(--detail-line-code);
   border-radius: 18px;
   box-shadow:
-    inset 0 1px 0 var(--white-alpha-06),
+    inset 0 1px 0 color-mix(in srgb, var(--color-white) 6%, transparent),
     var(--detail-shadow-code);
 }
 
@@ -422,7 +464,7 @@
   border-radius: 999px;
   letter-spacing: 0.04em;
   cursor: pointer;
-  box-shadow: inset 0 1px 0 var(--white-alpha-06);
+  box-shadow: inset 0 1px 0 color-mix(in srgb, var(--color-white) 6%, transparent);
 }
 
 .blog-detail-copy-button:hover {

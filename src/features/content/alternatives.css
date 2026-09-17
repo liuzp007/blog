@@ -1,14 +1,18 @@
 /*
- * alternatives 只保留时间线伪元素与标题链接装饰。
- * 其余布局、间距、排版与多列壳体统一迁回 TSX，用 Tailwind 风格类名表达。
- */
+   * alternatives 只保留时间线伪元素与标题链接装饰。
+   * 其余布局、间距、排版与多列壳体统一迁回 TSX，用 Tailwind 风格类名表达。
+   */
 .timeline::before {
   position: absolute;
   top: 0;
   bottom: 0;
   left: 8px;
   width: 2px;
-  background: linear-gradient(180deg, var(--white-alpha-08), var(--white-alpha-02));
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--color-white) 8%, transparent),
+    color-mix(in srgb, var(--color-white) 2%, transparent)
+  );
   content: '';
 }
 
@@ -20,7 +24,7 @@
   height: 12px;
   background: var(--color-indigo-400);
   border-radius: 50%;
-  box-shadow: 0 0 0 2px var(--indigo-400-alpha-40);
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--color-indigo-400) 40%, transparent);
 }
 
 .timeline__title {

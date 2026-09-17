@@ -12,9 +12,9 @@
  *   4. 组件类 & 调色板
  *   5. 主题系统层  — 主题变量和页面级主题覆盖
  *      主题覆盖 → src/styles/themes/
- *   6. 主题桥接
- *   7. Ant Design 覆写
- *   8. Tailwind CSS
+ *   6. Ant Design 覆写
+ *   7. Tailwind 组件与工具类
+ *      Tailwind Preflight 保持关闭，元素 reset 以 base.css 为唯一来源。
  *
  * 页面私有样式：
  *   放在 src/pages/<page>/index.css 中，由页面组件自行导入。
@@ -25,44 +25,22 @@
  */
 
 /* 1. 设计令牌层 */
-@import url('./styles/tokens/base.css');
-@import url('./styles/tokens/semantic.css');
+@import url('./styles/tokens.css');
 
 /* 2. 全局样式层 */
-@import url('./styles/2_globals/reset.css');
-@import url('./styles/2_globals/base.css');
-@import url('./styles/2_globals/global-ui.css');
-@import url('./styles/2_globals/typography.css');
+@import url('./styles/base.css');
 
 /* 3. 组件样式层 */
-@import url('./styles/3_components/ui/code-block.css');
-@import url('./styles/3_components/ui/beautify-code.css');
-@import url('./styles/3_components/ui/media-card.css');
-@import url('./styles/3_components/ui/not-found.css');
-@import url('./styles/3_components/layout/content-wrapper.css');
-@import url('./styles/3_components/layout/main-layout.css');
-@import url('./styles/3_components/layout/collapsible-navigation.css');
-@import url('./styles/3_components/layout/simple-navigation.css');
-
-/* 4. 组件类 */
 @import url('./styles/components.css');
 
-/* 5. 主题系统层 */
+/* 4. 主题系统层 */
 @import url('./styles/themes/dark.css');
 @import url('./styles/themes/light.css');
 @import url('./styles/themes/accessibility.css');
 
-/* 页面与内容 palette */
-@import url('./styles/palettes.css');
-
-/* 6. 主题桥接 */
-@import url('./styles/theme.css');
-@import url('./styles/primitives.css');
-
-/* 7. Ant Design 覆写 */
+/* 5. Ant Design 覆写 */
 @import url('./styles/antd-overrides.css');
 
-/* 8. Tailwind CSS */
-@tailwind base;
+/* 6. Tailwind CSS */
 @tailwind components;
 @tailwind utilities;

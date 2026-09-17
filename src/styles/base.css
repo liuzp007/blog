@@ -1,0 +1,777 @@
+/* --- 全局 reset --- */
+
+/*
+   * 全局重置样式
+   * 基于 normalize.css 的优化版本
+   */
+
+/* 确保一致的盒模型 */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  border-width: 0;
+  border-style: solid;
+  border-color: var(--border-strong);
+}
+
+/* 移除默认边距 */
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+/* 移除默认列表样式 */
+ol,
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* 移除默认表格样式 */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* HTML5 元素显示 */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+menu,
+nav,
+section,
+summary {
+  display: block;
+}
+
+/* 链接样式重置 */
+a {
+  color: inherit;
+  text-decoration: inherit;
+  background-color: transparent;
+}
+
+/* 按钮重置 */
+button {
+  margin: 0;
+  padding: 0;
+  color: inherit;
+  background: none;
+  border: none;
+  font: inherit;
+  cursor: pointer;
+}
+
+/* 按钮和输入框的对齐 */
+button,
+input,
+optgroup,
+select,
+textarea {
+  margin: 0;
+  font-size: 100%;
+  line-height: 1.15;
+  font-family: inherit;
+}
+
+/* 移除按钮的默认轮廓 */
+button:focus,
+input:focus {
+  outline: none;
+}
+
+/* 图片最大宽度 */
+img {
+  display: block;
+  height: auto;
+  max-width: 100%;
+}
+
+/* 代码和预格式化文本 */
+code,
+kbd,
+pre,
+samp {
+  font-family: var(--font-family-mono);
+  font-size: 1em;
+}
+
+/* 图标垂直居中 */
+svg {
+  display: block;
+  vertical-align: middle;
+}
+
+/* 禁用文本选择 */
+select {
+  user-select: none;
+}
+
+/* 滚动条平滑滚动 */
+html {
+  scroll-behavior: smooth;
+}
+
+/* 移除移动端点击高亮 */
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* --- 全局基础行为 --- */
+@keyframes shine {
+  0% {
+    left: -100%;
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    left: 200%;
+    opacity: 0;
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  50% {
+    transform: scale(1.05);
+    opacity: 0.8;
+  }
+}
+
+@keyframes glow {
+  0%,
+  100% {
+    box-shadow: 0 0 5px var(--color-accent-cyan);
+  }
+
+  50% {
+    box-shadow:
+      0 0 20px var(--color-accent-cyan),
+      0 0 30px var(--color-accent-cyan);
+  }
+}
+
+@keyframes pageEntrance {
+  0% {
+    opacity: 0;
+    transform: translateY(20px) scale(0.98);
+    filter: blur(10px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+/*
+   * reduced-motion 是全局交互策略，不属于 theme token。
+   * 统一放在 global-ui 层，避免 accessibility.css 同时承载变量和行为规则。
+   */
+html[data-reduced-motion='true'] *,
+html[data-reduced-motion='true'] *::before,
+html[data-reduced-motion='true'] *::after {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+  scroll-behavior: auto !important;
+}
+
+/*
+   * 全局交互基线：
+   * 这里只负责“谁应该显示可点击光标 / 禁用光标”，
+   * 不负责按钮壳的尺寸、圆角、布局与视觉状态。
+   */
+:where(
+  a[href],
+  button:not(:disabled),
+  [type='button']:not(:disabled),
+  [type='submit']:not(:disabled),
+  [type='reset']:not(:disabled),
+  summary,
+  [role='button']:not([aria-disabled='true']),
+  [aria-haspopup]:not([aria-disabled='true']),
+  .vinyl-record,
+  .dog-container,
+  .card-3d,
+  .breadcrumb-item:not(.active),
+  .logo svg
+) {
+  cursor: pointer;
+}
+
+:where(
+  button:disabled,
+  [type='button']:disabled,
+  [type='submit']:disabled,
+  [type='reset']:disabled,
+  [aria-disabled='true']
+) {
+  cursor: not-allowed;
+}
+
+/*
+   * 统一交互光标基线，避免页面/组件里重复写
+   * `button, a, .ant-btn { cursor: pointer }`
+   * 布局、对齐、尺寸等按钮壳样式统一放在 components.css
+   */
+button,
+button *,
+[type='button'],
+[type='button'] *,
+[type='submit'],
+[type='submit'] *,
+[type='reset'],
+[type='reset'] *,
+[role='button'],
+[role='button'] *,
+a[href],
+a[href] * {
+  cursor: inherit;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: color-mix(in srgb, var(--color-black) 10%, transparent);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: color-mix(in srgb, var(--color-white) 20%, transparent);
+  border-radius: 3px;
+  transition: background 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: color-mix(in srgb, var(--color-white) 40%, transparent);
+}
+
+::selection {
+  color: var(--color-black);
+  background: var(--color-accent-cyan);
+}
+
+a:not([class]) {
+  color: var(--color-accent-cyan);
+  text-decoration: none;
+  background-image: linear-gradient(currentcolor, currentcolor);
+  background-repeat: no-repeat;
+  background-position: 0 calc(100% - 0.06em);
+  background-size: 0 1px;
+  transition:
+    color 0.24s ease,
+    background-size 0.24s ease,
+    opacity 0.24s ease;
+}
+
+a:not([class]):hover {
+  color: var(--color-accent-cyan-bright);
+  background-size: 100% 1px;
+}
+
+a:not([class]):focus-visible {
+  outline: none;
+  color: var(--color-accent-cyan-bright);
+  background-size: 100% 1px;
+}
+
+:where(pre, pre[class*='language-']) {
+  margin: 16px 0;
+  padding: 16px;
+  font-size: 14px;
+  line-height: 1.8;
+  background: color-mix(in srgb, var(--color-black) 30%, transparent);
+  border: 1px solid var(--color-accent-cyan);
+  border-radius: 8px;
+  overflow-x: auto;
+  font-family: var(--font-family-mono);
+}
+
+:where(pre code, pre[class*='language-'] code) {
+  padding: 0;
+  font-size: inherit;
+  line-height: inherit;
+  color: var(--text-primary);
+  background: none;
+  border: none;
+  font-family: inherit;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0;
+}
+
+table th,
+table td {
+  padding: 12px;
+  border: 1px solid var(--glass-border);
+  text-align: left;
+}
+
+table th {
+  color: var(--color-accent-cyan);
+  background: var(--glass-bg);
+  font-weight: bold;
+}
+
+table tr:hover {
+  background: color-mix(in srgb, var(--color-white) 5%, transparent);
+}
+
+blockquote {
+  border-left: 4px solid var(--color-accent-cyan);
+  padding-left: 16px;
+  margin: 16px 0;
+  font-style: italic;
+  color: var(--text-primary);
+}
+
+hr {
+  height: 2px;
+  margin: 24px 0;
+  background: linear-gradient(90deg, transparent, var(--color-accent-cyan), transparent);
+  border: none;
+}
+
+/* --- 全局排版 --- */
+
+/*
+   * 全局排版样式
+   * 定义基础排版元素和文本格式
+   */
+
+/* 基础文本样式 */
+html {
+  font-family: var(--font-family-system);
+  line-height: var(--line-height-normal);
+  text-size-adjust: 100%;
+}
+
+/* 段落样式 */
+p {
+  margin-bottom: 1em;
+  color: var(--color-text-primary);
+}
+
+/* 标题样式 */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-family-heading);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-snug);
+  color: var(--color-text-heading);
+  margin-top: 0;
+  margin-bottom: 1em;
+}
+
+h1 {
+  font-size: var(--heading-1-size);
+}
+
+h2 {
+  font-size: var(--heading-2-size);
+}
+
+h3 {
+  font-size: var(--heading-3-size);
+}
+
+h4 {
+  font-size: var(--heading-4-size);
+}
+
+h5 {
+  font-size: var(--heading-5-size);
+}
+
+h6 {
+  font-size: var(--heading-6-size);
+}
+
+/* 链接样式 */
+a {
+  color: var(--color-accent-cyan);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--color-accent-cyan-bright);
+}
+
+a:focus {
+  outline: 2px solid var(--color-accent-cyan);
+  outline-offset: 2px;
+}
+
+/* 代码块样式 */
+pre {
+  margin: var(--space-4) 0;
+  padding: var(--space-4);
+  font-size: 13px;
+  line-height: 1.8;
+  background: color-mix(in srgb, var(--color-black) 30%, transparent);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-md);
+  overflow-x: auto;
+  font-family: var(--font-family-mono);
+}
+
+code {
+  padding: 0.2em 0.4em;
+  font-size: 0.85em;
+  color: var(--color-text-soft);
+  background: color-mix(in srgb, var(--color-black) 10%, transparent);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-family-mono);
+}
+
+pre code {
+  padding: 0;
+  color: var(--color-text-primary);
+  background: none;
+}
+
+/* 引用样式 */
+blockquote {
+  border-left: 4px solid var(--color-accent-cyan);
+  padding-left: var(--space-4);
+  margin: var(--space-4) 0;
+  font-style: italic;
+  color: var(--color-text-secondary);
+}
+
+/* 列表样式 */
+ol,
+ul {
+  padding-left: var(--space-6);
+  margin-bottom: var(--space-4);
+}
+
+li {
+  margin-bottom: 0.5em;
+}
+
+/* 表格样式 */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: var(--space-4) 0;
+}
+
+th,
+td {
+  padding: var(--space-3);
+  text-align: left;
+  border-bottom: 1px solid var(--glass-border);
+}
+
+th {
+  color: var(--color-text-secondary);
+  background: var(--glass-bg);
+  font-weight: var(--font-weight-semibold);
+}
+
+tr:hover {
+  background: color-mix(in srgb, var(--color-white) 5%, transparent);
+}
+
+/* 分割线 */
+hr {
+  height: 1px;
+  margin: var(--space-6) 0;
+  background: linear-gradient(90deg, transparent, var(--glass-border), transparent);
+  border: none;
+}
+
+/* 强调和斜体 */
+strong {
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+}
+
+em {
+  font-style: italic;
+  color: var(--color-text-primary);
+}
+
+/* 小文本 */
+small {
+  font-size: var(--text-xs);
+  color: var(--color-text-secondary);
+}
+
+/* 居中文本 */
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-left {
+  text-align: left;
+}
+
+/* 文本颜色 */
+.text-primary {
+  color: var(--color-text-primary);
+}
+
+.text-secondary {
+  color: var(--color-text-secondary);
+}
+
+.text-muted {
+  color: var(--color-text-muted);
+}
+
+.text-soft {
+  color: var(--color-text-soft);
+}
+
+/* --- 全局焦点基线 --- */
+
+/* 焦点样式 */
+:focus {
+  outline: 2px solid var(--color-accent-cyan);
+  outline-offset: 2px;
+}
+
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-accent-cyan);
+  outline-offset: 2px;
+}
+
+/* --- 基础元素补充 --- */
+html {
+  min-height: 100%;
+  font-size: 16px;
+  background-color: var(--color-page-bg);
+  overscroll-behavior-y: none;
+}
+
+body {
+  min-height: 100vh;
+  font-size: var(--text-body-size);
+  line-height: var(--text-body-line-height);
+  color: var(--color-text-primary);
+  background:
+    radial-gradient(circle at top, var(--color-accent-cyan-soft), transparent 32%),
+    linear-gradient(180deg, var(--color-page-bg) 0%, var(--color-page-bg-secondary) 100%);
+  font-family: var(--font-family-body);
+  font-weight: var(--font-weight-regular);
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+hr,
+p,
+blockquote,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+pre,
+fieldset,
+legend,
+button,
+input,
+textarea,
+th,
+td {
+  margin: 0;
+  padding: 0;
+}
+
+#root {
+  min-height: 100vh;
+  background-color: var(--color-page-bg);
+}
+
+body,
+button,
+input,
+select,
+textarea {
+  font-family: var(--font-family-body);
+}
+
+/*
+   * primitives 只负责元素级 reset / base。
+   * 按钮的尺寸、圆角、过渡等组件视觉基线统一放在 components.css。
+   */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  line-height: var(--heading-line-height);
+  color: var(--color-text-heading);
+  font-family: var(--font-family-heading);
+  font-weight: var(--heading-font-weight);
+  letter-spacing: -0.02em;
+  margin-bottom: var(--space-4);
+}
+
+h1 {
+  font-size: var(--heading-1-size);
+}
+
+h2 {
+  font-size: var(--heading-2-size);
+}
+
+h3 {
+  font-size: var(--heading-3-size);
+}
+
+h4 {
+  font-size: var(--heading-4-size);
+}
+
+h5 {
+  font-size: var(--heading-5-size);
+}
+
+h6 {
+  font-size: var(--heading-6-size);
+}
+
+p,
+li,
+dd,
+dt,
+blockquote,
+label,
+input,
+textarea,
+select {
+  font-size: var(--text-body-size);
+  line-height: var(--text-body-line-height);
+}
+
+small,
+.text-caption {
+  font-size: var(--text-caption-size);
+}
+
+address,
+cite,
+dfn,
+em,
+var {
+  font-style: normal;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+abbr[title],
+acronym[title] {
+  border-bottom: 1px dotted;
+  cursor: help;
+}
+
+q::before,
+q::after {
+  content: '';
+}
+
+legend {
+  color: var(--color-black);
+}
+
+fieldset,
+img {
+  border: none;
+}
+
+img {
+  height: auto;
+  max-width: 100%;
+  border-radius: 8px;
+}
+
+button,
+input,
+select,
+textarea {
+  font-size: 100%;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+hr {
+  height: 1px;
+  border: none;
+}
+
+code,
+kbd,
+pre,
+samp,
+tt {
+  font-family: var(--font-family-mono);
+}

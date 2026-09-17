@@ -118,8 +118,8 @@ function SearchResults({ queryPromise }) {
         style={{
           marginTop: '2rem',
           padding: '1.5rem',
-          background: 'var(--code-indigo-alpha-10)',
-          border: '1px solid var(--code-indigo-alpha-30)',
+          background: 'color-mix(in srgb, var(--color-indigo-500) 10%, transparent)',
+          border: '1px solid color-mix(in srgb, var(--color-indigo-500) 30%, transparent)',
           borderRadius: '12px',
           position: 'relative',
           zIndex: 3
@@ -148,19 +148,23 @@ function SearchResults({ queryPromise }) {
               onClick={() => setCodeExample(examples[item.name as keyof typeof examples] || '')}
               style={{
                 padding: '1rem',
-                background: 'var(--code-indigo-alpha-05)',
-                border: '1px solid var(--code-indigo-alpha-20)',
+                background: 'color-mix(in srgb, var(--color-indigo-500) 5%, transparent)',
+                border: '1px solid color-mix(in srgb, var(--color-indigo-500) 20%, transparent)',
                 borderRadius: '8px',
                 cursor: 'pointer',
                 transition: 'all 0.2s ease'
               }}
               onMouseOver={e => {
-                e.currentTarget.style.background = 'var(--indigo-alpha-15)'
-                e.currentTarget.style.borderColor = 'var(--code-indigo-alpha-40)'
+                e.currentTarget.style.background =
+                  'color-mix(in srgb, var(--color-indigo-500) 15%, transparent)'
+                e.currentTarget.style.borderColor =
+                  'color-mix(in srgb, var(--color-indigo-500) 40%, transparent)'
               }}
               onMouseOut={e => {
-                e.currentTarget.style.background = 'var(--code-indigo-alpha-05)'
-                e.currentTarget.style.borderColor = 'var(--code-indigo-alpha-20)'
+                e.currentTarget.style.background =
+                  'color-mix(in srgb, var(--color-indigo-500) 5%, transparent)'
+                e.currentTarget.style.borderColor =
+                  'color-mix(in srgb, var(--color-indigo-500) 20%, transparent)'
               }}
             >
               <code
@@ -175,7 +179,7 @@ function SearchResults({ queryPromise }) {
               <div
                 style={{
                   fontSize: '0.8rem',
-                  color: 'var(--white-alpha-60)',
+                  color: 'color-mix(in srgb, var(--color-white) 60%, transparent)',
                   marginTop: '0.25rem'
                 }}
               >
@@ -192,8 +196,8 @@ function SearchResults({ queryPromise }) {
           style={{
             marginTop: '1.5rem',
             padding: '1.5rem',
-            background: 'var(--code-green-alpha-10)',
-            border: '1px solid var(--code-green-alpha-30)',
+            background: 'color-mix(in srgb, var(--color-code-green) 10%, transparent)',
+            border: '1px solid color-mix(in srgb, var(--color-code-green) 30%, transparent)',
             borderRadius: '12px',
             position: 'relative',
             zIndex: 3
@@ -208,8 +212,8 @@ function SearchResults({ queryPromise }) {
         style={{
           marginTop: '1.5rem',
           padding: '1.5rem',
-          background: 'var(--code-red-alpha-10)',
-          border: '1px solid var(--code-red-alpha-30)',
+          background: 'color-mix(in srgb, var(--color-danger-strong) 10%, transparent)',
+          border: '1px solid color-mix(in srgb, var(--color-danger-strong) 30%, transparent)',
           borderRadius: '12px',
           position: 'relative',
           zIndex: 3
@@ -217,7 +221,12 @@ function SearchResults({ queryPromise }) {
       >
         <h3 style={{ color: 'var(--color-code-red)', marginBottom: '1rem' }}>⚠️ 使用注意事项</h3>
         <ul
-          style={{ color: 'var(--white-alpha-80)', lineHeight: 1.8, listStyle: 'none', padding: 0 }}
+          style={{
+            color: 'color-mix(in srgb, var(--color-white) 80%, transparent)',
+            lineHeight: 1.8,
+            listStyle: 'none',
+            padding: 0
+          }}
         >
           <li style={{ marginBottom: '0.5rem' }}>• use 只能在组件顶层调用，不能在条件语句中使用</li>
           <li style={{ marginBottom: '0.5rem' }}>
@@ -236,8 +245,8 @@ function SearchResults({ queryPromise }) {
         style={{
           marginTop: '1.5rem',
           padding: '1.5rem',
-          background: 'var(--code-violet-alpha-10)',
-          border: '1px solid var(--code-violet-alpha-30)',
+          background: 'color-mix(in srgb, var(--color-code-violet) 10%, transparent)',
+          border: '1px solid color-mix(in srgb, var(--color-code-violet) 30%, transparent)',
           borderRadius: '12px',
           position: 'relative',
           zIndex: 3
@@ -250,11 +259,16 @@ function SearchResults({ queryPromise }) {
           style={{
             width: '100%',
             borderCollapse: 'collapse',
-            color: 'var(--white-alpha-80)'
+            color: 'color-mix(in srgb, var(--color-white) 80%, transparent)'
           }}
         >
           <thead>
-            <tr style={{ borderBottom: '1px solid var(--code-violet-alpha-30)' }}>
+            <tr
+              style={{
+                borderBottom:
+                  '1px solid color-mix(in srgb, var(--color-code-violet) 30%, transparent)'
+              }}
+            >
               <th
                 style={{ padding: '0.75rem', textAlign: 'left', color: 'var(--color-code-violet)' }}
               >

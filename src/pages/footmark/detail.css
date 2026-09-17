@@ -30,7 +30,7 @@
   color: var(--footmark-text-accent-strong);
   background: var(--footmark-surface-detail-eyebrow);
   border-radius: var(--radius-pill);
-  font-weight: var(--tag-uppercase-weight);
+  font-weight: var(--font-weight-semibold);
   letter-spacing: var(--text-eyebrow-letter-spacing);
   text-transform: uppercase;
 }

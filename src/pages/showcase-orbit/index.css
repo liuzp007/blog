@@ -30,7 +30,11 @@
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(180deg, var(--white-alpha-04), transparent 18%),
+    linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--color-white) 4%, transparent),
+      transparent 18%
+    ),
     radial-gradient(circle at center, transparent 0%, var(--orbit-canvas-launch-shadow) 84%);
   pointer-events: none;
 }
@@ -41,11 +45,11 @@
 }
 
 .orbit-slinger .ant-progress-inner {
-  background: var(--white-alpha-08);
+  background: color-mix(in srgb, var(--color-white) 8%, transparent);
 }
 
 .orbit-slinger .ant-slider-rail {
-  background: var(--white-alpha-08);
+  background: color-mix(in srgb, var(--color-white) 8%, transparent);
 }
 
 .orbit-slinger .ant-slider-track {
@@ -53,7 +57,7 @@
 }
 
 .orbit-slinger .ant-slider-handle {
-  border-color: color-mix(in srgb, var(--orbit-color-ring) 70%, #fff);
+  border-color: color-mix(in srgb, var(--orbit-color-ring) 70%, var(--color-white));
   box-shadow: 0 0 0 4px color-mix(in srgb, var(--orbit-color-ring) 12%, transparent);
 }
 

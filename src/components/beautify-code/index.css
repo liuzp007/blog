@@ -1,8 +1,10 @@
+/* --- beautify-code.css --- */
+
 /**
- * 保留型视觉 SCSS：代码高亮主题层。
- * 这里承载 Prism 代码块皮肤、滚动条和 token 着色，不做 Tailwind 迁移。
- * 后续只允许调整“代码主题表现”，不要把普通布局或页面私有样式继续塞进这个文件。
- */
+   * 保留型视觉 CSS：代码高亮主题层。
+   * 这里承载 Prism 代码块皮肤、滚动条和 token 着色，不做 Tailwind 迁移。
+   * 后续只允许调整"代码主题表现"，不要把普通布局或页面私有样式继续塞进这个文件。
+   */
 
 /* Code block shell */
 div:not(pre) > code[class*='language-'],
@@ -13,10 +15,7 @@ pre[class*='language-'] {
   border-radius: 12px;
   box-shadow: var(--beautify-code-shadow);
   margin-bottom: 24px !important;
-  transition:
-    transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275),
-    box-shadow 0.4s ease,
-    background-color 0.4s ease;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 
   /* 3D Transform Origin */
   transform-origin: center center;

@@ -16,12 +16,15 @@ import {
   getRelatedArticles,
   getSeriesArticles,
   parseMarkdown,
+  resolveContentAsset,
   type ContentBlock,
   type ContentMeta,
   type InlineNode
 } from '@/features/content/contentIndex'
 import { getQueryParam } from '@/utils/query'
 import Prism from 'prismjs'
+import '@/styles/themes/blog-detail-pages.css'
+import '@/styles/code-theme.css'
 import 'prismjs/components/prism-bash'
 import 'prismjs/components/prism-json'
 import 'prismjs/components/prism-markup'
@@ -30,7 +33,6 @@ import 'prismjs/components/prism-jsx'
 import 'prismjs/components/prism-nginx'
 import 'prismjs/components/prism-typescript'
 import 'prismjs/components/prism-tsx'
-import 'prismjs/themes/prism.css'
 import './index.css'
 
 // js-hoist-regexp: 正则提取到模块级
@@ -158,6 +160,47 @@ function renderBlocks(blocks: ContentBlock[]): React.ReactNode {
 
     if (block.type === 'code')
       return <ArticleCodeBlock key={key} code={block.code} language={block.language} />
+
+    if (block.type === 'table') {
+      return (
+        <div className="blog-detail-table-wrap" key={key}>
+          <table>
+            <thead>
+              <tr>
+                {block.header.map((cell, cellIndex) => (
+                  <th key={`${key}-head-${cellIndex}`}>
+                    {renderInline(cell, `${key}-head-${cellIndex}`)}
+                  </th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {block.rows.map((row, rowIndex) => (
+                <tr key={`${key}-row-${rowIndex}`}>
+                  {row.map((cell, cellIndex) => (
+                    <td key={`${key}-row-${rowIndex}-${cellIndex}`}>
+                      {renderInline(cell, `${key}-row-${rowIndex}-${cellIndex}`)}
+                    </td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )
+    }
+
+    if (block.type === 'image') {
+      return (
+        <img
+          key={key}
+          src={resolveContentAsset(block.src)}
+          alt={block.alt}
+          title={block.title}
+          className="blog-detail-image"
+        />
+      )
+    }
 
     const ListTag = block.ordered ? 'ol' : 'ul'
     return (

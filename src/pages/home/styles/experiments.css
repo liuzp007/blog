@@ -1,0 +1,324 @@
+.HomeWrap #experiments,
+.HomeWrap .home-experiments {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 92px 0;
+  background: var(--home-surface-section);
+  border-top: var(--home-border-faint);
+  border-bottom: var(--home-border-faint);
+}
+
+.HomeWrap #experiments .container,
+.HomeWrap .home-experiments__container {
+  width: min(1280px, 100% - 48px);
+  margin: 0 auto;
+}
+
+.HomeWrap .experiment-card,
+.HomeWrap .home-experiment-card {
+  --ui-tag-font-weight: 600;
+  --ui-tag-letter-spacing: 0.03em;
+
+  position: relative;
+  background: var(--home-card-bg);
+  border: var(--home-border-subtle);
+  transition:
+    transform var(--motion-medium) var(--easing-standard),
+    border-color var(--motion-medium) var(--easing-standard),
+    box-shadow var(--motion-medium) var(--easing-standard);
+  cursor: pointer;
+}
+
+.HomeWrap .experiment-card::after,
+.HomeWrap .home-experiment-card::after {
+  content: '';
+  position: absolute;
+  top: -42%;
+  left: -32%;
+  width: 180%;
+  height: 180%;
+  background: radial-gradient(
+    circle,
+    color-mix(in srgb, var(--home-accent-cyan) 15%, transparent),
+    transparent 66%
+  );
+  opacity: 0;
+  transition: opacity var(--motion-medium) var(--easing-standard);
+  pointer-events: none;
+}
+
+.HomeWrap .experiment-card:hover,
+.HomeWrap .experiment-card:focus-within,
+.HomeWrap .home-experiment-card:hover,
+.HomeWrap .home-experiment-card:focus-within {
+  border-color: color-mix(
+    in srgb,
+    var(--home-border-accent) 50%,
+    var(--home-border-accent-hover) 50%
+  );
+  box-shadow: var(--home-card-shadow);
+}
+
+.HomeWrap .experiment-card:hover::after,
+.HomeWrap .experiment-card:focus-within::after,
+.HomeWrap .home-experiment-card:hover::after,
+.HomeWrap .home-experiment-card:focus-within::after {
+  opacity: 1;
+}
+
+.HomeWrap .experiment-icon,
+.HomeWrap .home-experiment-card__icon {
+  display: inline-flex;
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--home-accent-gold) 20%, transparent),
+    color-mix(in srgb, var(--home-accent-cyan) 18%, transparent)
+  );
+  border-radius: 12px;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 12px;
+}
+
+.HomeWrap .home-experiment-card--1 .home-experiment-card__icon {
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--home-accent-gold) 22%, transparent),
+    color-mix(in srgb, var(--home-accent-gold) 8%, transparent)
+  );
+}
+
+.HomeWrap .home-experiment-card--2 .home-experiment-card__icon {
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--home-accent-cyan) 22%, transparent),
+    color-mix(in srgb, var(--home-accent-cyan) 8%, transparent)
+  );
+}
+
+.HomeWrap .home-experiment-card--3 .home-experiment-card__icon {
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--home-accent-coral) 24%, transparent),
+    color-mix(in srgb, var(--home-accent-coral) 8%, transparent)
+  );
+}
+
+.HomeWrap .home-experiment-card--4 .home-experiment-card__icon {
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--home-accent-mint) 22%, transparent),
+    color-mix(in srgb, var(--home-accent-mint) 8%, transparent)
+  );
+}
+
+.HomeWrap .experiment-title,
+.HomeWrap .home-experiment-card__title {
+  margin: 0;
+  color: var(--home-text-panel-soft);
+}
+
+.HomeWrap .experiment-desc,
+.HomeWrap .home-experiment-card__desc {
+  display: -webkit-box;
+  max-width: 38ch;
+  color: var(--home-text-secondary);
+  margin-top: 8px;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.HomeWrap .experiment-tech,
+.HomeWrap .home-experiment-card__tech {
+  margin-top: 14px;
+}
+
+.HomeWrap .home-experiment-card__stat {
+  color: var(--home-text-quiet);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.HomeWrap .home-experiment-card__cta {
+  display: inline-flex;
+  padding: 0;
+  font-size: 12px;
+  color: var(--home-text-highlight-soft);
+  transition:
+    color var(--motion-base) var(--easing-standard),
+    transform var(--motion-base) var(--easing-standard);
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.HomeWrap .home-experiment-card:hover .home-experiment-card__cta,
+.HomeWrap .home-experiment-card:focus-within .home-experiment-card__cta {
+  transform: translateX(2px);
+  color: var(--home-text-strong);
+}
+
+.HomeWrap {
+  /* 首页实验卡标签：更偏 glass-chip，语气比作品展更安静。 */
+}
+
+.HomeWrap .tech-badge.ui-tag,
+.HomeWrap .home-experiment-card__tech .ui-tag {
+  --ui-tag-padding-inline: 12px;
+  --ui-tag-sheen: color-mix(in srgb, var(--color-white) 8%, transparent);
+  --ui-tag-tone-bg-strength: 14%;
+  --ui-tag-tone-border-strength: 24%;
+  --ui-tag-tone-text-strength: 22%;
+
+  padding: 4px 12px;
+  text-transform: none;
+  box-shadow: inset 0 1px 0 color-mix(in srgb, var(--color-white) 10%, transparent);
+  transition:
+    border-color var(--motion-base) var(--easing-standard),
+    background var(--motion-base) var(--easing-standard),
+    color var(--motion-base) var(--easing-standard);
+}
+
+.HomeWrap .tech-badge.ui-tag--tone-gold {
+  --ui-tag-tone-text-strength: 24%;
+}
+
+.HomeWrap .tech-badge.ui-tag--tone-coral {
+  --ui-tag-tone-bg-strength: 15%;
+  --ui-tag-tone-border-strength: 26%;
+  --ui-tag-tone-text-strength: 24%;
+}
+
+.HomeWrap .tech-badge.ui-tag--tone-mint {
+  --ui-tag-tone-bg-strength: 15%;
+  --ui-tag-tone-border-strength: 26%;
+}
+
+.HomeWrap .home-experiment-card:hover .tech-badge.ui-tag,
+.HomeWrap .home-experiment-card:focus-within .tech-badge.ui-tag {
+  --ui-tag-tone-bg-strength: 20%;
+  --ui-tag-tone-border-strength: 34%;
+  --ui-tag-tone-text-strength: 30%;
+}
+
+.HomeWrap .home-experiment-card:hover .tech-badge.ui-tag--tone-gold,
+.HomeWrap .home-experiment-card:focus-within .tech-badge.ui-tag--tone-gold {
+  --ui-tag-tone-text-strength: 32%;
+}
+
+.HomeWrap .home-experiment-card:hover .tech-badge.ui-tag--tone-coral,
+.HomeWrap .home-experiment-card:focus-within .tech-badge.ui-tag--tone-coral {
+  --ui-tag-tone-bg-strength: 22%;
+  --ui-tag-tone-border-strength: 36%;
+  --ui-tag-tone-text-strength: 32%;
+}
+
+.HomeWrap .home-experiment-card:hover .tech-badge.ui-tag--tone-mint,
+.HomeWrap .home-experiment-card:focus-within .tech-badge.ui-tag--tone-mint {
+  --ui-tag-tone-bg-strength: 22%;
+  --ui-tag-tone-border-strength: 36%;
+}
+
+@media (width <= 768px) {
+  .HomeWrap .home-experiments {
+    padding: 64px 0 56px;
+  }
+
+  .HomeWrap .home-experiments__container {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  .HomeWrap .home-experiments__grid {
+    gap: 14px;
+  }
+
+  .HomeWrap .home-experiment-card {
+    min-height: auto;
+    padding: 22px 20px 18px;
+  }
+
+  .HomeWrap .home-experiment-card__icon {
+    width: 46px;
+    height: 46px;
+    margin-bottom: 14px;
+    border-radius: var(--radius-md);
+    font-size: 19px;
+  }
+
+  .HomeWrap .home-experiment-card__desc {
+    max-width: none;
+    margin-top: var(--space-2);
+    line-height: 1.68;
+    -webkit-line-clamp: 2;
+  }
+
+  .HomeWrap .home-experiment-card__tech {
+    margin-top: 14px;
+  }
+
+  .HomeWrap .home-experiment-card__bottom {
+    width: 100%;
+    padding-top: var(--home-gap-card);
+  }
+
+  .HomeWrap .home-experiment-card__stat {
+    font-size: 10px;
+  }
+
+  .HomeWrap .home-experiment-card__cta {
+    width: 100%;
+    min-height: 42px;
+    justify-content: center;
+    padding: 0 14px;
+    font-size: 12px;
+    color: var(--home-text-strong);
+    background:
+      linear-gradient(180deg, color-mix(in srgb, var(--color-white) 8%, transparent), transparent),
+      color-mix(in srgb, var(--color-white) 4%, transparent);
+    border-radius: var(--radius-md);
+    box-shadow: inset 0 1px 0 color-mix(in srgb, var(--color-white) 10%, transparent);
+    font-weight: 600;
+    letter-spacing: 0.1em;
+  }
+}
+
+@media (width <= 480px) {
+  .HomeWrap .home-experiments {
+    padding: 52px 0 48px;
+  }
+
+  .HomeWrap .home-experiments__container {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  .HomeWrap .home-experiment-card {
+    padding: 18px 16px 16px;
+  }
+
+  .HomeWrap .home-experiment-card__icon {
+    width: 42px;
+    height: 42px;
+    margin-bottom: 12px;
+    border-radius: var(--radius-sm);
+    font-size: 17px;
+  }
+
+  .HomeWrap .home-experiments__grid {
+    gap: 12px;
+  }
+
+  .HomeWrap .home-experiment-card__cta {
+    min-height: 40px;
+    border-radius: var(--radius-sm);
+  }
+}

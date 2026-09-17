@@ -1,12 +1,12 @@
 /**
- * Guestbook — Danmaku (弹幕) style + Contact card
- * Messages scroll horizontally like bullet comments.
- * Contact form sits in a separate card below.
- */
+    * Guestbook — Danmaku (弹幕) style + Contact card
+    * Messages scroll horizontally like bullet comments.
+    * Contact form sits in a separate card below.
+    */
 
 /* ========================================
-   Danmaku Section
-   ======================================== */
+      Danmaku Section
+      ======================================== */
 
 .danmaku-section {
   display: flex;
@@ -15,8 +15,8 @@
 }
 
 /* ========================================
-   Danmaku Track
-   ======================================== */
+      Danmaku Track
+      ======================================== */
 
 .danmaku-track {
   position: relative;
@@ -68,8 +68,8 @@
 }
 
 /* ========================================
-   Danmaku Item (scrolling pill)
-   ======================================== */
+      Danmaku Item (scrolling pill)
+      ======================================== */
 
 .danmaku-item {
   position: absolute;
@@ -79,9 +79,9 @@
   background: color-mix(in srgb, var(--home-accent-cyan) 8%, transparent);
   border: 1px solid color-mix(in srgb, var(--home-accent-cyan) 12%, transparent);
   transition:
-    background 0.22s ease,
-    border-color 0.22s ease,
-    box-shadow 0.22s ease;
+    background var(--motion-base) var(--easing-standard),
+    border-color var(--motion-base) var(--easing-standard),
+    box-shadow var(--motion-base) var(--easing-standard);
   animation: danmaku-scroll linear infinite backwards;
   align-items: center;
   gap: var(--space-2);
@@ -90,6 +90,12 @@
   will-change: transform;
   backdrop-filter: blur(4px);
   cursor: pointer;
+}
+
+.danmaku-item.ant-btn {
+  height: auto;
+  line-height: 1.4;
+  box-shadow: none;
 }
 
 .danmaku-item__author {
@@ -116,8 +122,8 @@
   background: color-mix(in srgb, var(--home-accent-cyan) 14%, transparent);
   opacity: 0;
   transition:
-    opacity 0.2s ease,
-    transform 0.2s ease;
+    opacity var(--motion-fast) var(--easing-standard),
+    transform var(--motion-fast) var(--easing-standard);
   align-items: center;
   justify-content: center;
   border-radius: 50%;
@@ -138,11 +144,22 @@
   transform: scale(1);
 }
 
+.danmaku-item:focus,
+.danmaku-item:focus-visible {
+  animation-play-state: paused;
+}
+
+.danmaku-item:focus .danmaku-item__reply,
+.danmaku-item:focus-visible .danmaku-item__reply {
+  opacity: 1;
+  transform: scale(1);
+}
+
 /* Active / selected state */
 .danmaku-item--active {
   z-index: 5;
   background: color-mix(in srgb, var(--home-accent-cyan) 20%, transparent);
-  animation-play-state: paused !important;
+  animation-play-state: paused;
   border-color: color-mix(in srgb, var(--home-accent-cyan) 34%, transparent);
   box-shadow: 0 0 16px color-mix(in srgb, var(--home-accent-cyan) 16%, transparent);
 }
@@ -165,8 +182,8 @@
 }
 
 /* ========================================
-   Reply Indicator (below track)
-   ======================================== */
+      Reply Indicator (below track)
+      ======================================== */
 
 .danmaku-reply-indicator {
   display: flex;
@@ -175,7 +192,7 @@
   color: var(--home-text-secondary);
   background: color-mix(in srgb, var(--home-accent-cyan) 10%, transparent);
   border: 1px solid color-mix(in srgb, var(--home-accent-cyan) 18%, transparent);
-  animation: reply-slide-in 0.24s ease-out;
+  animation: reply-slide-in var(--motion-base) var(--easing-standard)-out;
   align-items: center;
   gap: var(--space-2);
   border-radius: 20px;
@@ -200,8 +217,8 @@
   background: color-mix(in srgb, var(--home-accent-cyan) 14%, transparent);
   border: none;
   transition:
-    background 0.18s ease,
-    color 0.18s ease;
+    background var(--motion-fast) var(--easing-standard),
+    color var(--motion-fast) var(--easing-standard);
   align-items: center;
   justify-content: center;
   border-radius: 50%;
@@ -228,8 +245,8 @@
 }
 
 /* ========================================
-   Guestbook Form (below track)
-   ======================================== */
+      Guestbook Form (below track)
+      ======================================== */
 
 .guestbook-form {
   display: flex;
@@ -249,18 +266,18 @@
 
 .guestbook-form .guestbook-form-input {
   flex: none;
-  height: 32px !important;
+  height: 32px;
   max-width: 200px;
-  padding: 4px 14px !important;
-  font-size: var(--font-size-sm) !important;
-  color: var(--home-text-panel-soft) !important;
-  background: var(--white-alpha-03) !important;
-  border: 1px solid var(--white-alpha-08) !important;
+  padding: 4px 14px;
+  font-size: var(--font-size-sm);
+  color: var(--home-text-panel-soft);
+  background: color-mix(in srgb, var(--color-white) 3%, transparent);
+  border: 1px solid color-mix(in srgb, var(--color-white) 8%, transparent);
   transition:
-    border-color 0.24s ease,
-    box-shadow 0.24s ease;
-  margin-bottom: 0 !important;
-  border-radius: var(--radius-pill) !important;
+    border-color var(--motion-base) var(--easing-standard),
+    box-shadow var(--motion-base) var(--easing-standard);
+  margin-bottom: 0;
+  border-radius: var(--radius-pill);
 }
 
 .guestbook-form .guestbook-form-input::placeholder {
@@ -268,23 +285,23 @@
 }
 
 .guestbook-form .guestbook-form-input:focus {
-  border-color: var(--home-border-accent-hover) !important;
-  box-shadow: 0 0 0 2px color-mix(in srgb, var(--home-accent-cyan) 12%, transparent) !important;
+  border-color: var(--home-border-accent-hover);
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--home-accent-cyan) 12%, transparent);
   outline: none;
 }
 
 .guestbook-form textarea.guestbook-form-textarea {
-  min-height: 56px !important;
-  padding: 8px 14px !important;
-  font-size: var(--font-size-sm) !important;
-  color: var(--home-text-panel-soft) !important;
-  background: var(--white-alpha-03) !important;
-  border: 1px solid var(--white-alpha-08) !important;
+  min-height: 56px;
+  padding: 8px 14px;
+  font-size: var(--font-size-sm);
+  color: var(--home-text-panel-soft);
+  background: color-mix(in srgb, var(--color-white) 3%, transparent);
+  border: 1px solid color-mix(in srgb, var(--color-white) 8%, transparent);
   transition:
-    border-color 0.24s ease,
-    box-shadow 0.24s ease;
-  margin-bottom: 0 !important;
-  border-radius: var(--radius-md) !important;
+    border-color var(--motion-base) var(--easing-standard),
+    box-shadow var(--motion-base) var(--easing-standard);
+  margin-bottom: 0;
+  border-radius: var(--radius-md);
   resize: none;
 }
 
@@ -293,8 +310,8 @@
 }
 
 .guestbook-form textarea.guestbook-form-textarea:focus {
-  border-color: var(--home-border-accent-hover) !important;
-  box-shadow: 0 0 0 2px color-mix(in srgb, var(--home-accent-cyan) 12%, transparent) !important;
+  border-color: var(--home-border-accent-hover);
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--home-accent-cyan) 12%, transparent);
   outline: none;
 }
 
@@ -317,16 +334,16 @@
 }
 
 .guestbook-form-buttons .ant-btn-primary {
-  height: 32px !important;
-  padding: 4px 20px !important;
+  height: 32px;
+  padding: 4px 20px;
   font-size: var(--font-size-xs);
   color: var(--home-text-inverse);
   background: var(--home-gradient-warm);
   border: none;
   transition:
-    transform 0.24s ease,
-    box-shadow 0.24s ease;
-  border-radius: var(--radius-pill) !important;
+    transform var(--motion-base) var(--easing-standard),
+    box-shadow var(--motion-base) var(--easing-standard);
+  border-radius: var(--radius-pill);
   font-weight: var(--font-weight-semibold);
   letter-spacing: 0.04em;
   box-shadow: var(--home-button-shadow);
@@ -343,8 +360,8 @@
 }
 
 /* ========================================
-   Reply Form
-   ======================================== */
+      Reply Form
+      ======================================== */
 
 .guestbook-form--reply {
   margin-top: var(--space-2);
@@ -356,7 +373,7 @@
   backdrop-filter: none;
   flex-direction: column;
   align-items: stretch;
-  animation: reply-form-expand 0.28s ease-out;
+  animation: reply-form-expand var(--motion-base) var(--easing-standard);
 }
 
 .guestbook-form--reply::before,
@@ -365,7 +382,7 @@
 }
 
 .guestbook-form--reply .guestbook-form-input {
-  flex: 0 0 auto !important;
+  flex: 0 0 auto;
   max-width: 200px;
 }
 
@@ -399,8 +416,8 @@
 }
 
 /* ========================================
-   Contact Form — Signal Transmission Card
-   ======================================== */
+      Contact Form — Signal Transmission Card
+      ======================================== */
 
 .contact-form-card {
   position: relative;
@@ -507,35 +524,35 @@
   justify-content: space-between;
 }
 
-.contact-form-input,
-.contact-form-textarea {
-  font-size: var(--font-size-sm) !important;
-  color: var(--home-text-primary) !important;
-  background: var(--white-alpha-03) !important;
-  border: 1px solid var(--white-alpha-08) !important;
+.contact-form-card .contact-form-input,
+.contact-form-card .contact-form-textarea {
+  font-size: var(--font-size-sm);
+  color: var(--home-text-primary);
+  background: color-mix(in srgb, var(--color-white) 3%, transparent);
+  border: 1px solid color-mix(in srgb, var(--color-white) 8%, transparent);
   transition:
-    border-color 0.24s ease,
-    box-shadow 0.24s ease,
-    background 0.24s ease !important;
-  border-radius: var(--radius-md) !important;
+    border-color var(--motion-base) var(--easing-standard),
+    box-shadow var(--motion-base) var(--easing-standard),
+    background var(--motion-base) var(--easing-standard);
+  border-radius: var(--radius-md);
 }
 
-.contact-form-input::placeholder,
-.contact-form-textarea::placeholder {
-  color: var(--home-text-muted) !important;
+.contact-form-card .contact-form-input::placeholder,
+.contact-form-card .contact-form-textarea::placeholder {
+  color: var(--home-text-muted);
 }
 
-.contact-form-input:hover,
-.contact-form-textarea:hover {
-  border-color: var(--white-alpha-14) !important;
-  background: var(--white-alpha-05) !important;
+.contact-form-card .contact-form-input:hover,
+.contact-form-card .contact-form-textarea:hover {
+  border-color: color-mix(in srgb, var(--color-white) 14%, transparent);
+  background: color-mix(in srgb, var(--color-white) 5%, transparent);
 }
 
-.contact-form-input:focus,
-.contact-form-textarea:focus {
-  border-color: color-mix(in srgb, var(--home-accent-gold) 40%, transparent) !important;
-  box-shadow: 0 0 0 3px color-mix(in srgb, var(--home-accent-gold) 10%, transparent) !important;
-  background: var(--white-alpha-05) !important;
+.contact-form-card .contact-form-input:focus,
+.contact-form-card .contact-form-textarea:focus {
+  border-color: color-mix(in srgb, var(--home-accent-gold) 40%, transparent);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--home-accent-gold) 10%, transparent);
+  background: color-mix(in srgb, var(--color-white) 5%, transparent);
 }
 
 .contact-form-counter {
@@ -552,9 +569,9 @@
   background: var(--home-gradient-warm);
   border: none;
   transition:
-    transform 0.24s ease,
-    box-shadow 0.24s ease;
-  border-radius: var(--radius-pill) !important;
+    transform var(--motion-base) var(--easing-standard),
+    box-shadow var(--motion-base) var(--easing-standard);
+  border-radius: var(--radius-pill);
   font-weight: var(--font-weight-semibold);
   letter-spacing: 0.04em;
   box-shadow: var(--home-button-shadow);
@@ -572,8 +589,8 @@
 }
 
 /* ========================================
-   Ant Design Overrides
-   ======================================== */
+      Ant Design Overrides
+      ======================================== */
 
 .guestbook-inner .ant-popover-inner {
   color: var(--home-text-primary);
@@ -590,17 +607,17 @@
 }
 
 /* Email validation error */
-.contact-form-input--error {
-  border-color: color-mix(in srgb, var(--home-accent-coral) 50%, transparent) !important;
+.contact-form-card .contact-form-input--error {
+  border-color: color-mix(in srgb, var(--home-accent-coral) 50%, transparent);
 }
 
-.contact-form-input--error:focus {
-  box-shadow: 0 0 0 3px color-mix(in srgb, var(--home-accent-coral) 10%, transparent) !important;
+.contact-form-card .contact-form-input--error:focus {
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--home-accent-coral) 10%, transparent);
 }
 
 /* ========================================
-   Responsive
-   ======================================== */
+      Responsive
+      ======================================== */
 
 @media (width <= 768px) {
   .danmaku-track {

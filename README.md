@@ -31,7 +31,7 @@ pnpm preview
 - Tailwind CSS v3
 - SCSS
 - Three.js / React Three Fiber / Drei
-- `src/store`（RTK 风格组织）+ `redux-persist`
+- `useUserPreferences` Hook + `localStorage`；页面状态使用 React Hooks
 
 ## 路由与内容
 

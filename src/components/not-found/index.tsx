@@ -1,9 +1,11 @@
 import { useEffect } from 'react'
-import '../../styles/3_components/ui/not-found.css'
-interface NotFoundProps {
-  history: { push: (path: string) => void }
-}
-export default function NotFound({ history }: NotFoundProps) {
+import { useHistory } from 'react-router-dom'
+
+import './index.css'
+
+export default function NotFound() {
+  const history = useHistory()
+
   useEffect(() => {
     const timer = setTimeout(() => {
       history.push('/')
@@ -11,7 +13,7 @@ export default function NotFound({ history }: NotFoundProps) {
     return () => {
       clearTimeout(timer)
     }
-  }, [])
+  }, [history])
   return (
     <div className="notFoundPage">
       {/* <h2 className='timeOutBlack'>三秒后将返回首页</h2> */}

@@ -9,6 +9,7 @@ import { Alert, Button, Progress, Slider, Tag } from 'antd'
 import { Link } from 'react-router-dom'
 import { clamp, readCssVar, withOpacity } from '@/utils/canvasDraw'
 import thrDeb from '@/utils/thrDeb'
+import '@/styles/themes/showcase-vault.css'
 import './index.css'
 
 type MissionPhase = 'idle' | 'hunting' | 'clear' | 'depleted'
@@ -612,10 +613,10 @@ export default function ShowcaseVaultBreaker() {
       <div className="sonar-depth__noise" />
       <div className="sonar-depth__beams" />
 
-      <main className="relative z-[1] mx-auto w-[min(1240px,calc(100%-32px))] pb-[42px] pt-[34px] max-[720px]:w-[min(100%-20px,100%)] max-[720px]:pb-7 max-[720px]:pt-[22px]">
-        <header className="sonar-depth__hero flex items-start justify-between gap-5 rounded-[28px] px-[26px] py-6 max-[1024px]:flex-col max-[720px]:rounded-[24px] max-[720px]:px-[18px] max-[720px]:py-5 border border-solid border-[color-mix(in_srgb,var(--sonar-line-base)_100%,transparent)] bg-[linear-gradient(145deg,color-mix(in_srgb,var(--sonar-color-cyan)_8%,transparent),color-mix(in_srgb,var(--color-white)_2%,transparent)),var(--sonar-surface-panel)] shadow-[0_22px_48px_color-mix(in_srgb,var(--color-black)_28%,transparent),inset_0_0_0_1px_color-mix(in_srgb,var(--color-white)_3%,transparent)] backdrop-blur-[18px]">
+      <main className="relative z-[1] mx-auto w-[min(1240px,calc(100%-32px))] pb-[42px] pt-[34px] max-md:w-[min(100%-20px,100%)] max-md:pb-7 max-md:pt-[22px]">
+        <header className="sonar-depth__hero flex items-start justify-between gap-5 rounded-[28px] px-[26px] py-6 max-lg:flex-col max-md:rounded-[24px] max-md:px-[18px] max-md:py-5 border border-solid border-[color-mix(in_srgb,var(--sonar-line-base)_100%,transparent)] bg-[linear-gradient(145deg,color-mix(in_srgb,var(--sonar-color-cyan)_8%,transparent),color-mix(in_srgb,var(--color-white)_2%,transparent)),var(--sonar-surface-panel)] shadow-[0_22px_48px_color-mix(in_srgb,var(--color-black)_28%,transparent),inset_0_0_0_1px_color-mix(in_srgb,var(--color-white)_3%,transparent)] backdrop-blur-[18px]">
           <div>
-            <p className="inline-flex items-center min-h-[34px] m-0 px-3.5 rounded-[999px] border border-solid border-[color-mix(in_srgb,var(--sonar-color-cyan)_16%,transparent)] bg-[var(--white-alpha-04)] text-[var(--sonar-color-cyan)] text-[12px] tracking-[0.18em] uppercase font-[var(--font-family-tech)]">
+            <p className="inline-flex items-center min-h-[34px] m-0 px-3.5 rounded-[999px] border border-solid border-[color-mix(in_srgb,var(--sonar-color-cyan)_16%,transparent)] bg-[color-mix(in_srgb,var(--color-white)_4%,transparent)] text-[var(--sonar-color-cyan)] text-[12px] tracking-[0.18em] uppercase font-[var(--font-family-tech)]">
               作品展 / 04
             </p>
             <h1 className="m-[10px_0_0] font-[var(--font-family-tech)] text-[clamp(38px,5vw,72px)] leading-[0.94] tracking-[0.06em] text-transparent bg-[linear-gradient(90deg,color-mix(in_srgb,var(--sonar-color-cyan)_76%,white),var(--sonar-color-cyan)_40%,var(--sonar-color-mint)_100%)] bg-clip-text [-webkit-background-clip:text] [filter:drop-shadow(0_0_18px_color-mix(in_srgb,var(--sonar-color-cyan)_18%,transparent))]">
@@ -637,9 +638,9 @@ export default function ShowcaseVaultBreaker() {
             </div>
           </div>
 
-          <div className="flex max-w-[480px] flex-wrap justify-end gap-2.5 max-[1024px]:max-w-none max-[1024px]:justify-start max-[720px]:w-full">
+          <div className="flex max-w-[480px] flex-wrap justify-end gap-2.5 max-lg:max-w-none max-lg:justify-start max-md:w-full">
             <Button
-              className="border-none text-[var(--sonar-text-inverse)] bg-[linear-gradient(120deg,var(--sonar-color-cyan),var(--sonar-color-mint))] ui-button-cta max-[720px]:basis-full"
+              className="border-none text-[var(--sonar-text-inverse)] bg-[linear-gradient(120deg,var(--sonar-color-cyan),var(--sonar-color-mint))] ui-button-cta max-md:basis-full"
               type="primary"
               icon={<ThunderboltOutlined />}
               onClick={launchIntroPing}
@@ -648,7 +649,7 @@ export default function ShowcaseVaultBreaker() {
               发出第一道声呐
             </Button>
             <Button
-              className="border border-solid border-[color-mix(in_srgb,var(--sonar-color-cyan)_22%,transparent)] bg-[var(--white-alpha-04)] text-[var(--sonar-text-primary)] ui-button-cta max-[720px]:basis-full"
+              className="border border-solid border-[color-mix(in_srgb,var(--sonar-color-cyan)_22%,transparent)] bg-[color-mix(in_srgb,var(--color-white)_4%,transparent)] text-[var(--sonar-text-primary)] ui-button-cta max-md:basis-full"
               icon={<ReloadOutlined />}
               onClick={resetMission}
             >
@@ -656,7 +657,7 @@ export default function ShowcaseVaultBreaker() {
             </Button>
             <Link
               to="/"
-              className="border border-solid border-[color-mix(in_srgb,var(--sonar-color-cyan)_22%,transparent)] bg-[var(--white-alpha-04)] text-[var(--sonar-text-primary)] ui-button-secondary ui-button-cta max-[720px]:basis-full"
+              className="border border-solid border-[color-mix(in_srgb,var(--sonar-color-cyan)_22%,transparent)] bg-[color-mix(in_srgb,var(--color-white)_4%,transparent)] text-[var(--sonar-text-primary)] ui-button-secondary ui-button-cta max-md:basis-full"
             >
               <ArrowLeftOutlined aria-hidden="true" />
               返回首页
@@ -664,7 +665,7 @@ export default function ShowcaseVaultBreaker() {
           </div>
         </header>
 
-        <section className="mt-4 grid grid-cols-3 gap-[14px] max-[720px]:grid-cols-1">
+        <section className="mt-4 grid grid-cols-3 gap-[14px] max-md:grid-cols-1">
           <article className="rounded-[22px] px-[18px] pb-4 pt-[18px] border border-solid border-[color-mix(in_srgb,var(--sonar-line-base)_100%,transparent)] bg-[linear-gradient(145deg,color-mix(in_srgb,var(--sonar-color-cyan)_8%,transparent),color-mix(in_srgb,var(--color-white)_2%,transparent)),var(--sonar-surface-panel)] shadow-[0_22px_48px_color-mix(in_srgb,var(--color-black)_28%,transparent),inset_0_0_0_1px_color-mix(in_srgb,var(--color-white)_3%,transparent)] backdrop-blur-[18px]">
             <span className="m-0 text-[color-mix(in_srgb,var(--sonar-text-soft)_92%,transparent)] text-[12px] tracking-[0.16em] uppercase font-[var(--font-family-tech)]">
               已发现目标
@@ -676,7 +677,7 @@ export default function ShowcaseVaultBreaker() {
               percent={missionPercent}
               showInfo={false}
               strokeColor="var(--sonar-color-cyan)"
-              trailColor="var(--white-alpha-10)"
+              trailColor="color-mix(in srgb, var(--color-white) 10%, transparent)"
             />
           </article>
           <article className="rounded-[22px] px-[18px] pb-4 pt-[18px] border border-solid border-[color-mix(in_srgb,var(--sonar-line-base)_100%,transparent)] bg-[linear-gradient(145deg,color-mix(in_srgb,var(--sonar-color-cyan)_8%,transparent),color-mix(in_srgb,var(--color-white)_2%,transparent)),var(--sonar-surface-panel)] shadow-[0_22px_48px_color-mix(in_srgb,var(--color-black)_28%,transparent),inset_0_0_0_1px_color-mix(in_srgb,var(--color-white)_3%,transparent)] backdrop-blur-[18px]">
@@ -690,7 +691,7 @@ export default function ShowcaseVaultBreaker() {
               percent={energy}
               showInfo={false}
               strokeColor="var(--sonar-color-mint)"
-              trailColor="var(--white-alpha-10)"
+              trailColor="color-mix(in srgb, var(--color-white) 10%, transparent)"
             />
           </article>
           <article className="rounded-[22px] px-[18px] pb-4 pt-[18px] border border-solid border-[color-mix(in_srgb,var(--sonar-line-base)_100%,transparent)] bg-[linear-gradient(145deg,color-mix(in_srgb,var(--sonar-color-cyan)_8%,transparent),color-mix(in_srgb,var(--color-white)_2%,transparent)),var(--sonar-surface-panel)] shadow-[0_22px_48px_color-mix(in_srgb,var(--color-black)_28%,transparent),inset_0_0_0_1px_color-mix(in_srgb,var(--color-white)_3%,transparent)] backdrop-blur-[18px]">
@@ -706,9 +707,9 @@ export default function ShowcaseVaultBreaker() {
           </article>
         </section>
 
-        <section className="mt-4 grid items-start gap-[14px] min-[1025px]:grid-cols-[minmax(0,1.08fr)_minmax(320px,0.92fr)]">
-          <div className="rounded-[26px] p-[18px] max-[720px]:rounded-[20px] max-[720px]:p-[14px] border border-solid border-[color-mix(in_srgb,var(--sonar-line-base)_100%,transparent)] bg-[linear-gradient(145deg,color-mix(in_srgb,var(--sonar-color-cyan)_8%,transparent),color-mix(in_srgb,var(--color-white)_2%,transparent)),var(--sonar-surface-panel)] shadow-[0_22px_48px_color-mix(in_srgb,var(--color-black)_28%,transparent),inset_0_0_0_1px_color-mix(in_srgb,var(--color-white)_3%,transparent)] backdrop-blur-[18px]">
-            <div className="mb-[14px] flex items-start justify-between gap-4 max-[1024px]:flex-col">
+        <section className="mt-4 grid items-start gap-[14px] lg:grid-cols-[minmax(0,1.08fr)_minmax(320px,0.92fr)]">
+          <div className="rounded-[26px] p-[18px] max-md:rounded-[20px] max-md:p-[14px] border border-solid border-[color-mix(in_srgb,var(--sonar-line-base)_100%,transparent)] bg-[linear-gradient(145deg,color-mix(in_srgb,var(--sonar-color-cyan)_8%,transparent),color-mix(in_srgb,var(--color-white)_2%,transparent)),var(--sonar-surface-panel)] shadow-[0_22px_48px_color-mix(in_srgb,var(--color-black)_28%,transparent),inset_0_0_0_1px_color-mix(in_srgb,var(--color-white)_3%,transparent)] backdrop-blur-[18px]">
+            <div className="mb-[14px] flex items-start justify-between gap-4 max-lg:flex-col">
               <div>
                 <h2 className="m-0 flex items-center gap-2.5 text-[22px]">
                   <CompassOutlined /> 海域扫描台
@@ -729,7 +730,7 @@ export default function ShowcaseVaultBreaker() {
               onPointerCancel={cancelCharge}
             >
               <canvas ref={canvasRef} className="w-full h-full block" />
-              <div className="absolute left-4 right-4 top-4 flex flex-wrap justify-between gap-2.5 pointer-events-none max-[720px]:left-2.5 max-[720px]:right-2.5">
+              <div className="absolute left-4 right-4 top-4 flex flex-wrap justify-between gap-2.5 pointer-events-none max-md:left-2.5 max-md:right-2.5">
                 <div className="p-2_3 rounded-[999px] border border-solid border-[color-mix(in_srgb,var(--sonar-color-cyan)_20%,transparent)] bg-[color-mix(in_srgb,var(--sonar-bg-0)_72%,transparent)] text-[var(--sonar-text-primary)] text-[12px] tracking-[0.08em] backdrop-blur-[10px]">
                   声呐 {pings} 次
                 </div>
@@ -743,7 +744,7 @@ export default function ShowcaseVaultBreaker() {
                   剩余 {TARGET_COUNT - foundTargets.length} 个
                 </div>
               </div>
-              <div className="absolute bottom-4 left-4 right-4 flex justify-between gap-2.5 pointer-events-none max-[720px]:left-2.5 max-[720px]:right-2.5 max-[720px]:flex-col max-[720px]:items-start">
+              <div className="absolute bottom-4 left-4 right-4 flex justify-between gap-2.5 pointer-events-none max-md:left-2.5 max-md:right-2.5 max-md:flex-col max-md:items-start">
                 <span className="text-[color-mix(in_srgb,var(--sonar-text-primary)_82%,transparent)] text-[13px]">
                   点击即发射
                 </span>
@@ -755,7 +756,7 @@ export default function ShowcaseVaultBreaker() {
           </div>
 
           <aside className="grid gap-[14px]">
-            <div className="rounded-[20px] p-[18px] max-[720px]:p-[14px] border border-solid border-[color-mix(in_srgb,var(--sonar-line-base)_100%,transparent)] bg-[linear-gradient(145deg,color-mix(in_srgb,var(--sonar-color-cyan)_8%,transparent),color-mix(in_srgb,var(--color-white)_2%,transparent)),var(--sonar-surface-panel)] shadow-[0_22px_48px_color-mix(in_srgb,var(--color-black)_28%,transparent),inset_0_0_0_1px_color-mix(in_srgb,var(--color-white)_3%,transparent)] backdrop-blur-[18px]">
+            <div className="rounded-[20px] p-[18px] max-md:p-[14px] border border-solid border-[color-mix(in_srgb,var(--sonar-line-base)_100%,transparent)] bg-[linear-gradient(145deg,color-mix(in_srgb,var(--sonar-color-cyan)_8%,transparent),color-mix(in_srgb,var(--color-white)_2%,transparent)),var(--sonar-surface-panel)] shadow-[0_22px_48px_color-mix(in_srgb,var(--color-black)_28%,transparent),inset_0_0_0_1px_color-mix(in_srgb,var(--color-white)_3%,transparent)] backdrop-blur-[18px]">
               <div className="mb-[14px] grid gap-1.5">
                 <h3 className="m-0 text-[18px]">扫描设置</h3>
                 <span className="text-[color-mix(in_srgb,var(--sonar-text-soft)_86%,transparent)] text-[13px] leading-[1.7]">
@@ -788,12 +789,12 @@ export default function ShowcaseVaultBreaker() {
                     '0%': 'var(--sonar-color-cyan)',
                     '100%': 'var(--sonar-color-mint)'
                   }}
-                  trailColor="var(--white-alpha-08)"
+                  trailColor="color-mix(in srgb, var(--color-white) 8%, transparent)"
                 />
               </div>
             </div>
 
-            <div className="rounded-[20px] p-[18px] max-[720px]:p-[14px] border border-solid border-[color-mix(in_srgb,var(--sonar-line-base)_100%,transparent)] bg-[linear-gradient(145deg,color-mix(in_srgb,var(--sonar-color-cyan)_8%,transparent),color-mix(in_srgb,var(--color-white)_2%,transparent)),var(--sonar-surface-panel)] shadow-[0_22px_48px_color-mix(in_srgb,var(--color-black)_28%,transparent),inset_0_0_0_1px_color-mix(in_srgb,var(--color-white)_3%,transparent)] backdrop-blur-[18px]">
+            <div className="rounded-[20px] p-[18px] max-md:p-[14px] border border-solid border-[color-mix(in_srgb,var(--sonar-line-base)_100%,transparent)] bg-[linear-gradient(145deg,color-mix(in_srgb,var(--sonar-color-cyan)_8%,transparent),color-mix(in_srgb,var(--color-white)_2%,transparent)),var(--sonar-surface-panel)] shadow-[0_22px_48px_color-mix(in_srgb,var(--color-black)_28%,transparent),inset_0_0_0_1px_color-mix(in_srgb,var(--color-white)_3%,transparent)] backdrop-blur-[18px]">
               <div className="mb-[14px] grid gap-1.5">
                 <h3 className="m-0 text-[18px]">搜索回报</h3>
                 <span className="text-[color-mix(in_srgb,var(--sonar-text-soft)_86%,transparent)] text-[13px] leading-[1.7]">
@@ -808,7 +809,7 @@ export default function ShowcaseVaultBreaker() {
               />
             </div>
 
-            <div className="rounded-[20px] p-[18px] max-[720px]:p-[14px] border border-solid border-[color-mix(in_srgb,var(--sonar-line-base)_100%,transparent)] bg-[linear-gradient(145deg,color-mix(in_srgb,var(--sonar-color-cyan)_8%,transparent),color-mix(in_srgb,var(--color-white)_2%,transparent)),var(--sonar-surface-panel)] shadow-[0_22px_48px_color-mix(in_srgb,var(--color-black)_28%,transparent),inset_0_0_0_1px_color-mix(in_srgb,var(--color-white)_3%,transparent)] backdrop-blur-[18px]">
+            <div className="rounded-[20px] p-[18px] max-md:p-[14px] border border-solid border-[color-mix(in_srgb,var(--sonar-line-base)_100%,transparent)] bg-[linear-gradient(145deg,color-mix(in_srgb,var(--sonar-color-cyan)_8%,transparent),color-mix(in_srgb,var(--color-white)_2%,transparent)),var(--sonar-surface-panel)] shadow-[0_22px_48px_color-mix(in_srgb,var(--color-black)_28%,transparent),inset_0_0_0_1px_color-mix(in_srgb,var(--color-white)_3%,transparent)] backdrop-blur-[18px]">
               <div className="mb-[14px] grid gap-1.5">
                 <h3 className="m-0 text-[18px]">目标清单</h3>
                 <span className="text-[color-mix(in_srgb,var(--sonar-text-soft)_86%,transparent)] text-[13px] leading-[1.7]">
@@ -844,7 +845,7 @@ export default function ShowcaseVaultBreaker() {
               </div>
             </div>
 
-            <div className="rounded-[20px] p-[18px] max-[720px]:p-[14px] border border-solid border-[color-mix(in_srgb,var(--sonar-line-base)_100%,transparent)] bg-[linear-gradient(145deg,color-mix(in_srgb,var(--sonar-color-cyan)_8%,transparent),color-mix(in_srgb,var(--color-white)_2%,transparent)),var(--sonar-surface-panel)] shadow-[0_22px_48px_color-mix(in_srgb,var(--color-black)_28%,transparent),inset_0_0_0_1px_color-mix(in_srgb,var(--color-white)_3%,transparent)] backdrop-blur-[18px]">
+            <div className="rounded-[20px] p-[18px] max-md:p-[14px] border border-solid border-[color-mix(in_srgb,var(--sonar-line-base)_100%,transparent)] bg-[linear-gradient(145deg,color-mix(in_srgb,var(--sonar-color-cyan)_8%,transparent),color-mix(in_srgb,var(--color-white)_2%,transparent)),var(--sonar-surface-panel)] shadow-[0_22px_48px_color-mix(in_srgb,var(--color-black)_28%,transparent),inset_0_0_0_1px_color-mix(in_srgb,var(--color-white)_3%,transparent)] backdrop-blur-[18px]">
               <div className="mb-[14px] grid gap-1.5">
                 <h3 className="m-0 text-[18px]">脉冲记录</h3>
                 <span className="text-[color-mix(in_srgb,var(--sonar-text-soft)_86%,transparent)] text-[13px] leading-[1.7]">
@@ -855,7 +856,7 @@ export default function ShowcaseVaultBreaker() {
                 {logs.map((line, index) => (
                   <p
                     key={`${line}-${index}`}
-                    className="m-0 p-3_3.5 rounded-[14px] border border-solid border-[color-mix(in_srgb,var(--sonar-color-cyan)_10%,transparent)] bg-[var(--white-alpha-03)] text-[color-mix(in_srgb,var(--sonar-text-soft)_88%,transparent)] text-[13px] leading-[1.7]"
+                    className="m-0 p-3_3.5 rounded-[14px] border border-solid border-[color-mix(in_srgb,var(--sonar-color-cyan)_10%,transparent)] bg-[color-mix(in_srgb,var(--color-white)_3%,transparent)] text-[color-mix(in_srgb,var(--sonar-text-soft)_88%,transparent)] text-[13px] leading-[1.7]"
                   >
                     {line}
                   </p>

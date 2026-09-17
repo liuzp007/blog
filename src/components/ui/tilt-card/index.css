@@ -21,10 +21,10 @@
   background:
     radial-gradient(
       circle at var(--tilt-card-pointer-x) var(--tilt-card-pointer-y),
-      var(--white-alpha-18),
+      color-mix(in srgb, var(--color-white) 18%, transparent),
       transparent 30%
     ),
-    linear-gradient(135deg, var(--white-alpha-08), transparent 45%);
+    linear-gradient(135deg, color-mix(in srgb, var(--color-white) 8%, transparent), transparent 45%);
   opacity: var(--tilt-card-glare-opacity);
   transition: opacity 0.22s ease;
   border-radius: inherit;

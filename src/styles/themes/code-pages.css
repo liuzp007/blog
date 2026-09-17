@@ -42,3 +42,38 @@
   --code-page-lib-prime: #ff6158;
   --code-page-lib-naive: #18a058;
 }
+
+.content-wrapper.code-page .markdown-tutorial {
+  max-width: 100%;
+}
+
+.content-wrapper.code-page .markdown-table-wrap {
+  margin: 1.5rem 0;
+  overflow-x: auto;
+}
+
+.content-wrapper.code-page .markdown-table-wrap table {
+  width: 100%;
+  border-collapse: collapse;
+  color: var(--code-page-text-soft);
+}
+
+.content-wrapper.code-page .markdown-table-wrap th,
+.content-wrapper.code-page .markdown-table-wrap td {
+  padding: 0.75rem;
+  text-align: left;
+  border-bottom: 1px solid var(--code-page-chip-border);
+}
+
+.content-wrapper.code-page .markdown-table-wrap th {
+  color: var(--color-code-indigo);
+}
+
+.content-wrapper.code-page .markdown-image {
+  display: block;
+  height: auto;
+  max-width: 100%;
+  margin: 1.5rem auto;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+}

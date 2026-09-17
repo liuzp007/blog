@@ -140,8 +140,8 @@ export default function PortalsPage() {
         style={{
           marginTop: '2rem',
           padding: '1.5rem',
-          background: 'var(--code-indigo-alpha-10)',
-          border: '1px solid var(--code-indigo-alpha-30)',
+          background: 'color-mix(in srgb, var(--color-indigo-500) 10%, transparent)',
+          border: '1px solid color-mix(in srgb, var(--color-indigo-500) 30%, transparent)',
           borderRadius: '12px',
           position: 'relative',
           zIndex: 3
@@ -152,7 +152,14 @@ export default function PortalsPage() {
         <div style={{ display: 'flex', gap: '2rem', flexWrap: 'wrap' }}>
           {/* 模态框演示 */}
           <div style={{ flex: 1, minWidth: '200px' }}>
-            <h4 style={{ color: 'var(--white-alpha-80)', marginBottom: '1rem' }}>模态框</h4>
+            <h4
+              style={{
+                color: 'color-mix(in srgb, var(--color-white) 80%, transparent)',
+                marginBottom: '1rem'
+              }}
+            >
+              模态框
+            </h4>
             <button
               onClick={() => setIsModalOpen(!isModalOpen)}
               style={{
@@ -168,7 +175,8 @@ export default function PortalsPage() {
               }}
               onMouseOver={e => {
                 e.currentTarget.style.transform = 'translateY(-2px)'
-                e.currentTarget.style.boxShadow = '0 10px 25px var(--code-indigo-alpha-30)'
+                e.currentTarget.style.boxShadow =
+                  '0 10px 25px color-mix(in srgb, var(--color-indigo-500) 30%, transparent)'
               }}
               onMouseOut={e => {
                 e.currentTarget.style.transform = 'translateY(0)'
@@ -181,7 +189,14 @@ export default function PortalsPage() {
 
           {/* Tooltip 演示 */}
           <div style={{ flex: 1, minWidth: '200px' }}>
-            <h4 style={{ color: 'var(--white-alpha-80)', marginBottom: '1rem' }}>Tooltip</h4>
+            <h4
+              style={{
+                color: 'color-mix(in srgb, var(--color-white) 80%, transparent)',
+                marginBottom: '1rem'
+              }}
+            >
+              Tooltip
+            </h4>
             <div
               onMouseMove={handleMouseMove}
               onMouseEnter={() => setTooltipVisible(true)}
@@ -213,7 +228,7 @@ export default function PortalsPage() {
                 left: 0,
                 right: 0,
                 bottom: 0,
-                background: 'var(--black-alpha-70)',
+                background: 'color-mix(in srgb, var(--color-black) 70%, transparent)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
@@ -238,11 +253,16 @@ export default function PortalsPage() {
                 <h2 style={{ color: 'var(--color-code-indigo)', marginBottom: '1rem' }}>
                   这是一个 Portal 模态框
                 </h2>
-                <p style={{ color: 'var(--white-alpha-70)', lineHeight: '1.6' }}>
+                <p
+                  style={{
+                    color: 'color-mix(in srgb, var(--color-white) 70%, transparent)',
+                    lineHeight: '1.6'
+                  }}
+                >
                   模态框通过{' '}
                   <code
                     style={{
-                      background: 'var(--code-indigo-alpha-10)',
+                      background: 'color-mix(in srgb, var(--color-indigo-500) 10%, transparent)',
                       color: 'var(--color-code-indigo)',
                       padding: '2px 6px',
                       borderRadius: '4px'
@@ -253,7 +273,7 @@ export default function PortalsPage() {
                   渲染到{' '}
                   <code
                     style={{
-                      background: 'var(--code-indigo-alpha-10)',
+                      background: 'color-mix(in srgb, var(--color-indigo-500) 10%, transparent)',
                       color: 'var(--color-code-indigo)',
                       padding: '2px 6px',
                       borderRadius: '4px'
@@ -265,7 +285,7 @@ export default function PortalsPage() {
                 </p>
                 <p
                   style={{
-                    color: 'var(--white-alpha-70)',
+                    color: 'color-mix(in srgb, var(--color-white) 70%, transparent)',
                     lineHeight: '1.6',
                     marginBottom: '1.5rem'
                   }}
@@ -304,7 +324,7 @@ export default function PortalsPage() {
                 position: 'fixed',
                 left: tooltipPosition.x + 15,
                 top: tooltipPosition.y + 15,
-                background: 'var(--black-alpha-90)',
+                background: 'color-mix(in srgb, var(--color-black) 90%, transparent)',
                 color: 'var(--color-white)',
                 padding: '0.5rem 1rem',
                 borderRadius: '6px',
@@ -327,8 +347,8 @@ export default function PortalsPage() {
         style={{
           marginTop: '1.5rem',
           padding: '1.5rem',
-          background: 'var(--code-red-alpha-10)',
-          border: '1px solid var(--code-red-alpha-30)',
+          background: 'color-mix(in srgb, var(--color-danger-strong) 10%, transparent)',
+          border: '1px solid color-mix(in srgb, var(--color-danger-strong) 30%, transparent)',
           borderRadius: '12px',
           position: 'relative',
           zIndex: 3
@@ -336,7 +356,12 @@ export default function PortalsPage() {
       >
         <h3 style={{ color: 'var(--color-code-red)', marginBottom: '1rem' }}>⚠️ 注意事项</h3>
         <ul
-          style={{ color: 'var(--white-alpha-80)', lineHeight: 1.8, listStyle: 'none', padding: 0 }}
+          style={{
+            color: 'color-mix(in srgb, var(--color-white) 80%, transparent)',
+            lineHeight: 1.8,
+            listStyle: 'none',
+            padding: 0
+          }}
         >
           <li style={{ marginBottom: '0.5rem' }}>
             • Portal 只改变 DOM 结构，不影响 React 事件冒泡
@@ -355,8 +380,8 @@ export default function PortalsPage() {
         style={{
           marginTop: '1.5rem',
           padding: '1.5rem',
-          background: 'var(--code-green-alpha-10)',
-          border: '1px solid var(--code-green-alpha-30)',
+          background: 'color-mix(in srgb, var(--color-code-green) 10%, transparent)',
+          border: '1px solid color-mix(in srgb, var(--color-code-green) 30%, transparent)',
           borderRadius: '12px',
           position: 'relative',
           zIndex: 3
@@ -382,8 +407,8 @@ export default function PortalsPage() {
               key={index}
               style={{
                 padding: '1rem',
-                background: 'var(--code-green-alpha-05)',
-                border: '1px solid var(--code-green-alpha-20)',
+                background: 'color-mix(in srgb, var(--color-code-green) 5%, transparent)',
+                border: '1px solid color-mix(in srgb, var(--color-code-green) 20%, transparent)',
                 borderRadius: '8px',
                 textAlign: 'center'
               }}
@@ -398,7 +423,14 @@ export default function PortalsPage() {
               >
                 {item.name}
               </div>
-              <div style={{ fontSize: '0.8rem', color: 'var(--white-alpha-60)' }}>{item.desc}</div>
+              <div
+                style={{
+                  fontSize: '0.8rem',
+                  color: 'color-mix(in srgb, var(--color-white) 60%, transparent)'
+                }}
+              >
+                {item.desc}
+              </div>
             </div>
           ))}
         </div>

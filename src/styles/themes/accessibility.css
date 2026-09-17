@@ -10,12 +10,11 @@
  */
 :root[data-high-contrast='true'] {
   --text-primary-strong: var(--color-white);
-  --text-secondary: var(--white-alpha-90);
-  --border-subtle: var(--white-alpha-30);
-  --border-strong: var(--white-alpha-40);
+  --text-secondary: color-mix(in srgb, var(--raw-white) 90%, transparent);
+  --border-subtle: color-mix(in srgb, var(--raw-white) 30%, transparent);
+  --border-strong: color-mix(in srgb, var(--raw-white) 40%, transparent);
   --surface-card: rgb(0 0 0 / 88%);
   --surface-card-hover: rgb(0 0 0 / 94%);
-  --button-secondary-border: var(--white-alpha-35);
 }
 
 :root[data-theme='light'][data-high-contrast='true'] {

@@ -1,8 +1,5 @@
 import { createRoot } from 'react-dom/client'
-import { Provider } from 'react-redux'
-import { PersistGate } from 'redux-persist/integration/react'
 import App from './App'
-import { persistor, store } from './store'
 import { setupGlobalErrorHandlers } from './utils/errorHandlers'
 import performanceMonitor from './utils/performanceMonitor'
 import './index.css'
@@ -18,13 +15,7 @@ if (!container) {
 }
 
 const root = createRoot(container)
-root.render(
-  <Provider store={store}>
-    <PersistGate loading={null} persistor={persistor}>
-      <App />
-    </PersistGate>
-  </Provider>
-)
+root.render(<App />)
 
 // 延迟初始化性能监控，避免阻塞首屏渲染
 if ('requestIdleCallback' in window) {

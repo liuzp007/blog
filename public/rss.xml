@@ -14,6 +14,21 @@
 <item><title>你好，世界</title><link>https://example.com/blog-detail?slug=hello-world</link><pubDate>2026-03-23</pubDate><description>一篇用于验证内容系统的示例文章。</description></item>
 <item><title>R3F 性能与后处理手册</title><link>https://example.com/blog-detail?slug=r3f-performance-postprocessing</link><pubDate>2026-03-23</pubDate><description>聚焦移动端降级、动画帧优化与后处理链路的取舍，给出 R3F 场景的实战配置与复用 Hook。</description></item>
 <item><title>React Three Fiber 小技巧</title><link>https://example.com/blog-detail?slug=r3f-tips</link><pubDate>2026-03-22</pubDate><description>在项目中使用 R3F 的一些实践与建议。</description></item>
+<item><title>自定义 Hooks</title><link>https://example.com/blog-detail?slug=react-custom-hooks</link><pubDate>2026-04-26</pubDate><description>复用逻辑，提高代码可维护性</description></item>
+<item><title>componentDidMount & componentWillUnmount</title><link>https://example.com/blog-detail?slug=react-did-mount</link><pubDate>2026-04-26</pubDate><description>类组件生命周期方法</description></item>
+<item><title>React Diff 算法</title><link>https://example.com/blog-detail?slug=react-diff</link><pubDate>2026-04-26</pubDate><description>理解虚拟DOM的差异化更新机制</description></item>
+<item><title>React.memo</title><link>https://example.com/blog-detail?slug=react-memo</link><pubDate>2026-04-26</pubDate><description>组件渲染性能优化利器</description></item>
+<item><title>render 方法</title><link>https://example.com/blog-detail?slug=react-render</link><pubDate>2026-04-26</pubDate><description>类组件的核心渲染函数</description></item>
+<item><title>React 渲染原理</title><link>https://example.com/blog-detail?slug=react-rendering</link><pubDate>2026-04-26</pubDate><description>深入理解 JSX 到 Virtual DOM 的转换过程</description></item>
+<item><title>setState 原理与最佳实践</title><link>https://example.com/blog-detail?slug=react-set-state</link><pubDate>2026-04-26</pubDate><description>深入理解 React 状态更新机制</description></item>
+<item><title>React.StrictMode</title><link>https://example.com/blog-detail?slug=react-strict-mode</link><pubDate>2026-04-26</pubDate><description>开发时检测潜在问题</description></item>
+<item><title>useLayoutEffect Hook</title><link>https://example.com/blog-detail?slug=react-use-layout-effect</link><pubDate>2026-04-26</pubDate><description>同步读取 DOM 布局</description></item>
+<item><title>useCallback Hook</title><link>https://example.com/blog-detail?slug=react-use-callback</link><pubDate>2026-04-26</pubDate><description>缓存函数引用，优化子组件渲染</description></item>
+<item><title>useEffect Hook</title><link>https://example.com/blog-detail?slug=react-use-effect</link><pubDate>2026-04-26</pubDate><description>深入理解 React 函数组件中的副作用处理</description></item>
+<item><title>useImperativeHandle Hook</title><link>https://example.com/blog-detail?slug=react-use-imperative-handle</link><pubDate>2026-04-26</pubDate><description>自定义 ref 暴露给父组件的实例</description></item>
+<item><title>useMemo Hook</title><link>https://example.com/blog-detail?slug=react-use-memo</link><pubDate>2026-04-26</pubDate><description>缓存计算结果，优化性能</description></item>
+<item><title>useRef Hook</title><link>https://example.com/blog-detail?slug=react-use-ref</link><pubDate>2026-04-26</pubDate><description>访问 DOM 和持久化数据</description></item>
+<item><title>componentWillMount (已废弃)</title><link>https://example.com/blog-detail?slug=react-will-mount</link><pubDate>2026-04-26</pubDate><description>了解历史，拥抱未来</description></item>
 <item><title>React 18 + TS + Vite 约定实践</title><link>https://example.com/blog-detail?slug=react18-typescript-vite-conventions</link><pubDate>2026-03-23</pubDate><description>用最小约定构建稳定的页面与数据层，围绕动态路由、别名与 RTK，给出可直接落地的项目实践清单与代码片段。</description></item>
 <item><title>SEO/RSS 三件套落地指南</title><link>https://example.com/blog-detail?slug=seo-rss-site-suite</link><pubDate>2026-03-23</pubDate><description>以最小脚本生成 sitemap 与 RSS，页面注入 OG 与 JSON‑LD，保证分享与收录的基础可用与可验证。</description></item>
 <item><title>Vite 构建产物优化实战：从「能跑」到「能上线」</title><link>https://example.com/blog-detail?slug=vite-build-output-optimization</link><pubDate>2026-06-12</pubDate><description>Vite 开发体验很爽，但构建产物如果不做优化，首屏体积可能比 Webpack 还大。这篇文章从 chunk 拆分、tree-shaking、动态导入、产物分析四个维度，用可验证的方式讲清楚如何把 Vite 构建产物从「能跑」优化到「能上线」。</description></item>
@@ -38,6 +53,7 @@
 <item><title>Module Federation 的正确打开方式：微前端不是共享依赖那么简单</title><link>https://example.com/blog-detail?slug=webpack-federation-architecture</link><pubDate>2026-03-24</pubDate><description>Module Federation 解决的核心不是"共享 node_modules"，而是跨构建边界的装配与版本协商。本文从运行时 share scope、发布模型、故障域与治理成本出发，给出可落地的架构边界与反模式清单。</description></item>
 <item><title>HMR 的代价与收益：Webpack 开发体验背后的机制</title><link>https://example.com/blog-detail?slug=webpack-hmr-dev-experience</link><pubDate>2026-03-24</pubDate><description>HMR 不只是"改代码不刷新页面"，它是 Webpack 运行时、模块图与 dev server 协同的一套增量更新协议。本文从机制出发解释 HMR 为什么能快、为什么会不稳定，以及如何用工程化边界把收益变成可持续的开发体验。</description></item>
 <item><title>Loader 与 Plugin 的边界：Webpack 可扩展架构的深层规律</title><link>https://example.com/blog-detail?slug=webpack-loader-plugin-boundary</link><pubDate>2026-03-24</pubDate><description>Loader 与 Plugin 的区别不是"一个处理文件，一个做别的"，而是职责边界：Loader 更像可缓存的纯函数变换，Plugin 则是编译生命周期的调度器。理解边界，才能写出稳定、可诊断、可迁移的工程扩展。</description></item>
+<item><title>Webpack 模块打包器</title><link>https://example.com/blog-detail?slug=webpack-module-bundler</link><pubDate>2026-04-26</pubDate><description>现代前端工程的基石</description></item>
 <item><title>Webpack 模块图与运行时：打包器真正组织代码的方式</title><link>https://example.com/blog-detail?slug=webpack-module-graph-runtime</link><pubDate>2026-03-24</pubDate><description>很多人把 Webpack 当成"把文件拼起来的工具"，但真正决定性能、可维护性和可演进性的，是模块图与运行时这两层抽象。本文用工程视角解释它们如何塑造 chunk、缓存与部署策略。</description></item>
 </channel>
 </rss>

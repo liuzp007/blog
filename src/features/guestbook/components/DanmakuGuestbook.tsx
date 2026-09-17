@@ -1,4 +1,5 @@
 import { useState, useMemo, useEffect } from 'react'
+import { Button } from 'antd'
 import { useGuestbook } from '../hooks/useGuestbook'
 import MessageForm from './MessageForm'
 import type { GuestbookMessage } from '../types'
@@ -35,8 +36,10 @@ function DanmakuItem({
   const delay = positionInRow * ROW_GAP + (seed % 3)
 
   return (
-    <div
+    <Button
+      type="text"
       className={`danmaku-item ${isReplyTarget ? 'danmaku-item--active' : ''}`}
+      aria-label={`回复 ${msg.author} 的留言`}
       style={{
         top: `${row * 40 + 8 + jitterTop}px`,
         animationDuration: `${duration}s`,
@@ -64,7 +67,7 @@ function DanmakuItem({
           <path d="M20 18v-2a4 4 0 0 0-4-4H4" />
         </svg>
       </span>
-    </div>
+    </Button>
   )
 }
 

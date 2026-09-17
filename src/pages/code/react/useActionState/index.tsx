@@ -156,8 +156,8 @@ export default function UseActionStatePage() {
         style={{
           marginTop: '2rem',
           padding: '1.5rem',
-          background: 'var(--code-indigo-alpha-10)',
-          border: '1px solid var(--code-indigo-alpha-30)',
+          background: 'color-mix(in srgb, var(--color-indigo-500) 10%, transparent)',
+          border: '1px solid color-mix(in srgb, var(--color-indigo-500) 30%, transparent)',
           borderRadius: '12px',
           position: 'relative',
           zIndex: 3
@@ -186,7 +186,7 @@ export default function UseActionStatePage() {
                 width: '100%',
                 padding: '0.75rem',
                 background: 'var(--code-page-surface-panel)',
-                border: '1px solid var(--code-indigo-alpha-30)',
+                border: '1px solid color-mix(in srgb, var(--color-indigo-500) 30%, transparent)',
                 borderRadius: '8px',
                 color: 'var(--color-white)',
                 fontSize: '1rem'
@@ -200,7 +200,7 @@ export default function UseActionStatePage() {
               width: '100%',
               padding: '0.75rem',
               background: isPending
-                ? 'var(--code-indigo-alpha-50)'
+                ? 'color-mix(in srgb, var(--color-indigo-500) 50%, transparent)'
                 : 'linear-gradient(135deg, var(--color-code-indigo) 0%, var(--color-code-violet) 100%)',
               border: 'none',
               borderRadius: '8px',
@@ -225,7 +225,9 @@ export default function UseActionStatePage() {
           }}
         >
           <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.5rem' }}>
-            <span style={{ color: 'var(--white-alpha-60)' }}>状态:</span>
+            <span style={{ color: 'color-mix(in srgb, var(--color-white) 60%, transparent)' }}>
+              状态:
+            </span>
             <span
               style={{
                 color: serverState.success ? 'var(--color-code-green)' : 'var(--code-page-warning)',
@@ -262,7 +264,8 @@ export default function UseActionStatePage() {
                   key={index}
                   style={{
                     padding: '0.5rem',
-                    borderBottom: '1px solid var(--code-indigo-alpha-10)',
+                    borderBottom:
+                      '1px solid color-mix(in srgb, var(--color-indigo-500) 10%, transparent)',
                     fontSize: '0.875rem'
                   }}
                 >
@@ -278,8 +281,8 @@ export default function UseActionStatePage() {
         style={{
           marginTop: '1.5rem',
           padding: '1.5rem',
-          background: 'var(--code-green-alpha-10)',
-          border: '1px solid var(--code-green-alpha-30)',
+          background: 'color-mix(in srgb, var(--color-code-green) 10%, transparent)',
+          border: '1px solid color-mix(in srgb, var(--color-code-green) 30%, transparent)',
           borderRadius: '12px',
           position: 'relative',
           zIndex: 3
@@ -290,11 +293,16 @@ export default function UseActionStatePage() {
           style={{
             width: '100%',
             borderCollapse: 'collapse',
-            color: 'var(--white-alpha-80)'
+            color: 'color-mix(in srgb, var(--color-white) 80%, transparent)'
           }}
         >
           <thead>
-            <tr style={{ borderBottom: '1px solid var(--code-green-alpha-30)' }}>
+            <tr
+              style={{
+                borderBottom:
+                  '1px solid color-mix(in srgb, var(--color-code-green) 30%, transparent)'
+              }}
+            >
               <th
                 style={{ padding: '0.75rem', textAlign: 'left', color: 'var(--color-code-green)' }}
               >
@@ -332,8 +340,8 @@ export default function UseActionStatePage() {
         style={{
           marginTop: '1.5rem',
           padding: '1.5rem',
-          background: 'var(--code-violet-alpha-10)',
-          border: '1px solid var(--code-violet-alpha-30)',
+          background: 'color-mix(in srgb, var(--color-code-violet) 10%, transparent)',
+          border: '1px solid color-mix(in srgb, var(--color-code-violet) 30%, transparent)',
           borderRadius: '12px',
           position: 'relative',
           zIndex: 3
@@ -360,33 +368,33 @@ export default function UseActionStatePage() {
   // 上次成功返回的结果
   result: { success: boolean, name: string },
 
-  // 重置函数（将状态重置为 initialState）
-  reset: () => void
-}
-
-// 使用示例
-function MyForm() {
-  const [state, formAction, isPending] = useActionState(submitForm)
-
-  if (state.error) {
-    return <ErrorMessage error={state.error} />
+    // 重置函数（将状态重置为 initialState）
+    reset: () => void
   }
 
-  return (
-    <form action={formAction}>
-      <input name="email" disabled={isPending} />
-      <button disabled={isPending}>
-        {isPending ? '提交中...' : '提交'}
-      </button>
-    </form>
-  )
-}
+  // 使用示例
+  function MyForm() {
+    const [state, formAction, isPending] = useActionState(submitForm)
 
-// 处理完成后的重置
-if (state.result?.success) {
-  // 显示成功消息
-  // 稍后调用 state.reset() 重置表单
-}`}
+    if (state.error) {
+      return <ErrorMessage error={state.error} />
+    }
+
+    return (
+      <form action={formAction}>
+        <input name="email" disabled={isPending} />
+        <button disabled={isPending}>
+          {isPending ? '提交中...' : '提交'}
+        </button>
+      </form>
+    )
+  }
+
+  // 处理完成后的重置
+  if (state.result?.success) {
+    // 显示成功消息
+    // 稍后调用 state.reset() 重置表单
+  }`}
         />
       </div>
 
@@ -394,8 +402,8 @@ if (state.result?.success) {
         style={{
           marginTop: '1.5rem',
           padding: '1.5rem',
-          background: 'var(--code-red-alpha-10)',
-          border: '1px solid var(--code-red-alpha-30)',
+          background: 'color-mix(in srgb, var(--color-danger-strong) 10%, transparent)',
+          border: '1px solid color-mix(in srgb, var(--color-danger-strong) 30%, transparent)',
           borderRadius: '12px',
           position: 'relative',
           zIndex: 3
@@ -403,7 +411,12 @@ if (state.result?.success) {
       >
         <h3 style={{ color: 'var(--color-code-red)', marginBottom: '1rem' }}>⚠️ 注意事项</h3>
         <ul
-          style={{ color: 'var(--white-alpha-80)', lineHeight: 1.8, listStyle: 'none', padding: 0 }}
+          style={{
+            color: 'color-mix(in srgb, var(--color-white) 80%, transparent)',
+            lineHeight: 1.8,
+            listStyle: 'none',
+            padding: 0
+          }}
         >
           <li style={{ marginBottom: '0.5rem' }}>
             • 需要配合 Server Action 或返回 Promise 的函数使用
@@ -424,7 +437,12 @@ if (state.result?.success) {
           zIndex: 3
         }}
       >
-        <h3 style={{ color: 'var(--white-alpha-90)', marginBottom: '1rem' }}>
+        <h3
+          style={{
+            color: 'color-mix(in srgb, var(--color-white) 90%, transparent)',
+            marginBottom: '1rem'
+          }}
+        >
           🔗 与其他 Hook 配合
         </h3>
         <div
@@ -453,7 +471,11 @@ if (state.result?.success) {
                 {item.name}
               </code>
               <div
-                style={{ fontSize: '0.8rem', color: 'var(--white-alpha-60)', marginTop: '0.5rem' }}
+                style={{
+                  fontSize: '0.8rem',
+                  color: 'color-mix(in srgb, var(--color-white) 60%, transparent)',
+                  marginTop: '0.5rem'
+                }}
               >
                 {item.desc}
               </div>

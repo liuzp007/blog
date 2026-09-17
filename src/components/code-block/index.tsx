@@ -1,5 +1,6 @@
 import { useState, useCallback } from 'react'
-import '../../styles/3_components/ui/code-block.css'
+
+import './index.css'
 
 interface CodeBlockProps {
   code?: string

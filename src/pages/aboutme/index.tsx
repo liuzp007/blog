@@ -1,13 +1,13 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { Button, Modal } from 'antd'
 import { ArrowRightOutlined } from '@ant-design/icons'
-import { Link, RouteComponentProps, withRouter } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import * as THREE from 'three'
 import TiltCard from '@/components/ui/tilt-card'
 import SectionNav from '@/components/section-nav'
 import { allMetas, type ContentMeta } from '@/features/content/contentCatalog'
 import { composeHslAlphaColor } from '@/utils/color-runtime'
-import { useAppSelector } from '@/store'
+import useUserPreferences from '@/hooks/useUserPreferences'
 import '@/styles/themes/about-pages.css'
 import './index.css'
 import GuestbookSection from '@/features/guestbook/components/GuestbookSection'
@@ -16,7 +16,7 @@ type PerformanceTier = 'low' | 'medium' | 'high'
 
 function usePerformanceTier(): PerformanceTier {
   const [tier, setTier] = useState<PerformanceTier>('high')
-  const reducedMotion = useAppSelector(s => s.userPreferences.reducedMotion)
+  const { reducedMotion } = useUserPreferences()
 
   useEffect(() => {
     const check = () => {
@@ -73,8 +73,6 @@ function usePerformanceTier(): PerformanceTier {
 
   return tier
 }
-
-interface AboutMeProps extends RouteComponentProps {}
 
 interface NavItem {
   id: string
@@ -227,7 +225,8 @@ const LOW_TIER_GRADIENT_FALLBACK = (
   <div
     className="fixed inset-0 -z-10"
     style={{
-      background: 'linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 40%, #16213e 70%, #0f3460 100%)'
+      background:
+        'linear-gradient(135deg, var(--about-bg-primary) 0%, var(--about-bg-secondary) 40%, var(--surface-night) 70%, var(--about-accent-cool) 100%)'
     }}
   />
 )
@@ -305,7 +304,7 @@ class DemoParticle {
   }
 }
 
-export default withRouter(function AboutMe({ history: _history }: AboutMeProps) {
+export default function AboutMe() {
   const perfTier = usePerformanceTier()
   const pageRef = useRef<HTMLDivElement>(null)
   const cursorGlowRef = useRef<HTMLDivElement>(null)
@@ -887,7 +886,7 @@ export default withRouter(function AboutMe({ history: _history }: AboutMeProps) 
             <div className="section-tag ui-eyebrow">Skills</div>
             <h2 className="section-title ui-section-title">专业技能</h2>
           </div>
-          <div className="skills-grid grid grid-cols-3 gap-8 max-[1024px]:grid-cols-2 max-md:grid-cols-1">
+          <div className="skills-grid grid grid-cols-3 gap-8 max-lg:grid-cols-2 max-md:grid-cols-1">
             {SKILL_CATEGORIES.map(category => (
               <div key={category.title} className="skill-category reveal rounded-xl p-8">
                 <h3 className="ui-card-title">{category.title}</h3>
@@ -980,7 +979,7 @@ export default withRouter(function AboutMe({ history: _history }: AboutMeProps) 
             <div className="section-tag ui-eyebrow">Blog</div>
             <h2 className="section-title ui-section-title">最新文章</h2>
           </div>
-          <div className="blog-grid grid grid-cols-3 gap-8 max-[1024px]:grid-cols-2 max-md:grid-cols-1">
+          <div className="blog-grid grid grid-cols-3 gap-8 max-lg:grid-cols-2 max-md:grid-cols-1">
             {LATEST_BLOGS.map((blog, index) => (
               <div
                 key={blog.slug}
@@ -1101,4 +1100,4 @@ export default withRouter(function AboutMe({ history: _history }: AboutMeProps) 
       </Modal>
     </div>
   )
-})
+}

@@ -4,7 +4,7 @@
  * 不承担通用输入框或全局编辑器视觉职责。
  */
 .legacy-editor {
-  --ui-editor-radius: var(--input-radius);
+  --ui-editor-radius: var(--radius-sm);
   --ui-editor-count-width: 80px;
   --ui-editor-count-inline-end: 2.5%;
   --ui-editor-count-block-end: 1px;

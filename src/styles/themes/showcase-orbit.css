@@ -1,0 +1,70 @@
+/* Orbit Slinger 页面私有 palette。 */
+
+.orbit-slinger {
+  --orbit-bg-top: #070b18;
+  --orbit-bg-bottom: #1a1030;
+  --orbit-color-nebula: #6a7cff;
+  --orbit-color-ring: #92d8ff;
+  --orbit-color-trail: #f3f7ff;
+  --orbit-color-hud: #8fe4ff;
+  --orbit-planet-a: #8aa2ff;
+  --orbit-planet-b: #4be1d3;
+  --orbit-planet-c: #ffd37d;
+  --orbit-text-primary: #eef6ff;
+  --orbit-text-strong: #fbfdff;
+  --orbit-text-muted: rgb(232 241 255 / 82%);
+  --orbit-text-soft: rgb(233 241 255 / 78%);
+  --orbit-text-label: rgb(224 235 255 / 60%);
+  --orbit-text-label-soft: rgb(227 237 255 / 66%);
+  --orbit-text-panel: rgb(238 246 255 / 90%);
+  --orbit-text-inverse: #08111c;
+  --orbit-line-strong: color-mix(in srgb, var(--raw-white) 12%, transparent);
+  --orbit-line-medium: rgb(255 255 255 / 10%);
+  --orbit-line-soft: color-mix(in srgb, var(--raw-white) 8%, transparent);
+  --orbit-canvas-white: var(--raw-white);
+  --orbit-canvas-planet-shadow: rgb(0 0 0 / 26%);
+  --orbit-canvas-planet-fade: rgb(8 12 24 / 10%);
+  --orbit-canvas-launch-shadow: rgb(2 7 18 / 45%);
+  --orbit-surface-glass:
+    linear-gradient(
+      145deg,
+      color-mix(in srgb, var(--raw-white) 8%, transparent),
+      color-mix(in srgb, var(--raw-white) 2%, transparent)
+    ),
+    rgb(7 11 21 / 60%);
+  --orbit-surface-chip: color-mix(in srgb, var(--raw-white) 4%, transparent);
+  --orbit-surface-chip-soft: rgb(255 255 255 / 3%);
+  --orbit-surface-stage:
+    linear-gradient(180deg, color-mix(in srgb, var(--raw-white) 4%, transparent), transparent),
+    rgb(2 6 16 / 72%);
+  --orbit-surface-hint: rgb(6 11 21 / 58%);
+  --orbit-surface-hit: linear-gradient(135deg, rgb(143 233 255 / 12%), rgb(255 239 196 / 8%));
+  --orbit-slider-track: linear-gradient(90deg, #85e4ff 0%, #ffe19c 100%);
+  --orbit-button-bg: linear-gradient(135deg, #9de8ff 0%, #fff3d1 100%);
+  --orbit-shadow-panel: 0 24px 80px rgb(0 0 0 / 28%);
+  --orbit-shadow-stage: 0 32px 100px rgb(0 0 0 / 32%);
+}
+
+.orbit-slinger--teal {
+  --orbit-bg-top: #041019;
+  --orbit-bg-bottom: #042437;
+  --orbit-color-nebula: #2cd5ff;
+  --orbit-color-ring: #89fff2;
+  --orbit-color-trail: #d8fff8;
+  --orbit-color-hud: #7ff0ff;
+  --orbit-planet-a: #70d7ff;
+  --orbit-planet-b: #39f2cb;
+  --orbit-planet-c: #b5ffdd;
+}
+
+.orbit-slinger--ember {
+  --orbit-bg-top: #180a11;
+  --orbit-bg-bottom: #321222;
+  --orbit-color-nebula: #ff7f66;
+  --orbit-color-ring: #ffd27e;
+  --orbit-color-trail: #fff2d7;
+  --orbit-color-hud: #ffcf7d;
+  --orbit-planet-a: #ff8a7a;
+  --orbit-planet-b: #ffb06c;
+  --orbit-planet-c: #ffe29e;
+}

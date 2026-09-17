@@ -129,19 +129,24 @@ export default function ConcurrencyPage() {
         style={{
           marginTop: '2rem',
           padding: '1.5rem',
-          background: 'var(--code-indigo-alpha-10)',
-          border: '1px solid var(--code-indigo-alpha-30)',
+          background: 'color-mix(in srgb, var(--color-indigo-500) 10%, transparent)',
+          border: '1px solid color-mix(in srgb, var(--color-indigo-500) 30%, transparent)',
           borderRadius: '12px',
           position: 'relative',
           zIndex: 3
         }}
       >
         <h3 style={{ color: 'var(--color-code-indigo)', marginBottom: '1rem' }}>🎮 并发特性演示</h3>
-        <p style={{ color: 'var(--white-alpha-70)', marginBottom: '1rem' }}>
+        <p
+          style={{
+            color: 'color-mix(in srgb, var(--color-white) 70%, transparent)',
+            marginBottom: '1rem'
+          }}
+        >
           输入搜索关键词，体验{' '}
           <code
             style={{
-              background: 'var(--code-indigo-alpha-10)',
+              background: 'color-mix(in srgb, var(--color-indigo-500) 10%, transparent)',
               color: 'var(--color-code-indigo)',
               padding: '2px 6px',
               borderRadius: '4px'
@@ -165,7 +170,7 @@ export default function ConcurrencyPage() {
                 flex: 1,
                 padding: '0.75rem 1rem',
                 background: 'var(--code-page-surface-panel)',
-                border: '1px solid var(--code-indigo-alpha-30)',
+                border: '1px solid color-mix(in srgb, var(--color-indigo-500) 30%, transparent)',
                 borderRadius: '8px',
                 color: 'var(--color-white)',
                 fontSize: '1rem'
@@ -175,7 +180,7 @@ export default function ConcurrencyPage() {
               <div
                 style={{
                   padding: '0.5rem 1rem',
-                  background: 'var(--code-indigo-alpha-20)',
+                  background: 'color-mix(in srgb, var(--color-indigo-500) 20%, transparent)',
                   borderRadius: '8px',
                   animation: 'pulse 1s infinite'
                 }}
@@ -200,7 +205,7 @@ export default function ConcurrencyPage() {
                   alignItems: 'center',
                   justifyContent: 'center',
                   height: '100%',
-                  color: 'var(--white-alpha-50)'
+                  color: 'color-mix(in srgb, var(--color-white) 50%, transparent)'
                 }}
               >
                 输入关键词查看搜索结果
@@ -212,9 +217,10 @@ export default function ConcurrencyPage() {
                     key={index}
                     style={{
                       padding: '0.5rem',
-                      borderBottom: '1px solid var(--code-indigo-alpha-10)',
+                      borderBottom:
+                        '1px solid color-mix(in srgb, var(--color-indigo-500) 10%, transparent)',
                       fontSize: '0.875rem',
-                      color: 'var(--white-alpha-80)',
+                      color: 'color-mix(in srgb, var(--color-white) 80%, transparent)',
                       animation: `fadeIn 0.2s ease ${index * 0.05}s forwards`,
                       opacity: 0
                     }}
@@ -239,12 +245,19 @@ export default function ConcurrencyPage() {
           <div
             style={{
               padding: '0.75rem',
-              background: 'var(--code-indigo-alpha-05)',
+              background: 'color-mix(in srgb, var(--color-indigo-500) 5%, transparent)',
               borderRadius: '6px',
               textAlign: 'center'
             }}
           >
-            <div style={{ fontSize: '0.75rem', color: 'var(--white-alpha-60)' }}>搜索次数</div>
+            <div
+              style={{
+                fontSize: '0.75rem',
+                color: 'color-mix(in srgb, var(--color-white) 60%, transparent)'
+              }}
+            >
+              搜索次数
+            </div>
             <div
               style={{ fontSize: '1.25rem', fontWeight: 'bold', color: 'var(--color-code-indigo)' }}
             >
@@ -254,12 +267,19 @@ export default function ConcurrencyPage() {
           <div
             style={{
               padding: '0.75rem',
-              background: 'var(--code-indigo-alpha-05)',
+              background: 'color-mix(in srgb, var(--color-indigo-500) 5%, transparent)',
               borderRadius: '6px',
               textAlign: 'center'
             }}
           >
-            <div style={{ fontSize: '0.75rem', color: 'var(--white-alpha-60)' }}>结果数量</div>
+            <div
+              style={{
+                fontSize: '0.75rem',
+                color: 'color-mix(in srgb, var(--color-white) 60%, transparent)'
+              }}
+            >
+              结果数量
+            </div>
             <div
               style={{ fontSize: '1.25rem', fontWeight: 'bold', color: 'var(--color-code-green)' }}
             >
@@ -269,12 +289,19 @@ export default function ConcurrencyPage() {
           <div
             style={{
               padding: '0.75rem',
-              background: 'var(--code-indigo-alpha-05)',
+              background: 'color-mix(in srgb, var(--color-indigo-500) 5%, transparent)',
               borderRadius: '6px',
               textAlign: 'center'
             }}
           >
-            <div style={{ fontSize: '0.75rem', color: 'var(--white-alpha-60)' }}>状态</div>
+            <div
+              style={{
+                fontSize: '0.75rem',
+                color: 'color-mix(in srgb, var(--color-white) 60%, transparent)'
+              }}
+            >
+              状态
+            </div>
             <div
               style={{
                 fontSize: '1rem',
@@ -292,8 +319,8 @@ export default function ConcurrencyPage() {
         style={{
           marginTop: '1.5rem',
           padding: '1.5rem',
-          background: 'var(--code-red-alpha-10)',
-          border: '1px solid var(--code-red-alpha-30)',
+          background: 'color-mix(in srgb, var(--color-danger-strong) 10%, transparent)',
+          border: '1px solid color-mix(in srgb, var(--color-danger-strong) 30%, transparent)',
           borderRadius: '12px',
           position: 'relative',
           zIndex: 3
@@ -301,7 +328,12 @@ export default function ConcurrencyPage() {
       >
         <h3 style={{ color: 'var(--color-code-red)', marginBottom: '1rem' }}>⚠️ 使用注意事项</h3>
         <ul
-          style={{ color: 'var(--white-alpha-80)', lineHeight: 1.8, listStyle: 'none', padding: 0 }}
+          style={{
+            color: 'color-mix(in srgb, var(--color-white) 80%, transparent)',
+            lineHeight: 1.8,
+            listStyle: 'none',
+            padding: 0
+          }}
         >
           <li style={{ marginBottom: '0.5rem' }}>
             • <strong>Transition 是可中断的</strong>：高优先级更新会中断正在进行的 transition
@@ -322,8 +354,8 @@ export default function ConcurrencyPage() {
         style={{
           marginTop: '1.5rem',
           padding: '1.5rem',
-          background: 'var(--code-green-alpha-10)',
-          border: '1px solid var(--code-green-alpha-30)',
+          background: 'color-mix(in srgb, var(--color-code-green) 10%, transparent)',
+          border: '1px solid color-mix(in srgb, var(--color-code-green) 30%, transparent)',
           borderRadius: '12px',
           position: 'relative',
           zIndex: 3
@@ -349,8 +381,8 @@ export default function ConcurrencyPage() {
               key={index}
               style={{
                 padding: '1rem',
-                background: 'var(--code-green-alpha-05)',
-                border: '1px solid var(--code-green-alpha-20)',
+                background: 'color-mix(in srgb, var(--color-code-green) 5%, transparent)',
+                border: '1px solid color-mix(in srgb, var(--color-code-green) 20%, transparent)',
                 borderRadius: '8px'
               }}
             >
@@ -364,7 +396,14 @@ export default function ConcurrencyPage() {
               >
                 {item.title}
               </div>
-              <div style={{ fontSize: '0.8rem', color: 'var(--white-alpha-60)' }}>{item.desc}</div>
+              <div
+                style={{
+                  fontSize: '0.8rem',
+                  color: 'color-mix(in srgb, var(--color-white) 60%, transparent)'
+                }}
+              >
+                {item.desc}
+              </div>
             </div>
           ))}
         </div>
@@ -374,8 +413,8 @@ export default function ConcurrencyPage() {
         style={{
           marginTop: '1.5rem',
           padding: '1.5rem',
-          background: 'var(--code-violet-alpha-10)',
-          border: '1px solid var(--code-violet-alpha-30)',
+          background: 'color-mix(in srgb, var(--color-code-violet) 10%, transparent)',
+          border: '1px solid color-mix(in srgb, var(--color-code-violet) 30%, transparent)',
           borderRadius: '12px',
           position: 'relative',
           zIndex: 3
@@ -386,11 +425,16 @@ export default function ConcurrencyPage() {
           style={{
             width: '100%',
             borderCollapse: 'collapse',
-            color: 'var(--white-alpha-80)'
+            color: 'color-mix(in srgb, var(--color-white) 80%, transparent)'
           }}
         >
           <thead>
-            <tr style={{ borderBottom: '1px solid var(--code-violet-alpha-30)' }}>
+            <tr
+              style={{
+                borderBottom:
+                  '1px solid color-mix(in srgb, var(--color-code-violet) 30%, transparent)'
+              }}
+            >
               <th
                 style={{ padding: '0.75rem', textAlign: 'left', color: 'var(--color-code-violet)' }}
               >

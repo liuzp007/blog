@@ -70,8 +70,8 @@ export default function VueIndex() {
         style={{
           marginTop: '2rem',
           padding: '1.5rem',
-          background: 'var(--code-indigo-alpha-10)',
-          border: '1px solid var(--code-indigo-alpha-30)',
+          background: 'color-mix(in srgb, var(--color-indigo-500) 10%, transparent)',
+          border: '1px solid color-mix(in srgb, var(--color-indigo-500) 30%, transparent)',
           borderRadius: '12px',
           position: 'relative',
           zIndex: 3
@@ -90,15 +90,16 @@ export default function VueIndex() {
               key={index}
               style={{
                 padding: '1.5rem',
-                background: 'var(--code-indigo-alpha-05)',
-                border: '1px solid var(--code-indigo-alpha-20)',
+                background: 'color-mix(in srgb, var(--color-indigo-500) 5%, transparent)',
+                border: '1px solid color-mix(in srgb, var(--color-indigo-500) 20%, transparent)',
                 borderRadius: '8px',
                 transition: 'all 0.3s ease',
                 cursor: 'pointer'
               }}
               onMouseOver={e => {
                 e.currentTarget.style.transform = 'translateY(-5px)'
-                e.currentTarget.style.boxShadow = '0 10px 25px var(--code-indigo-alpha-20)'
+                e.currentTarget.style.boxShadow =
+                  '0 10px 25px color-mix(in srgb, var(--color-indigo-500) 20%, transparent)'
               }}
               onMouseOut={e => {
                 e.currentTarget.style.transform = 'translateY(0)'
@@ -125,7 +126,11 @@ export default function VueIndex() {
                 {concept.title}
               </div>
               <div
-                style={{ fontSize: '0.875rem', color: 'var(--white-alpha-70)', lineHeight: 1.5 }}
+                style={{
+                  fontSize: '0.875rem',
+                  color: 'color-mix(in srgb, var(--color-white) 70%, transparent)',
+                  lineHeight: 1.5
+                }}
               >
                 {concept.description}
               </div>
@@ -139,8 +144,8 @@ export default function VueIndex() {
         style={{
           marginTop: '2rem',
           padding: '1.5rem',
-          background: 'var(--code-red-alpha-10)',
-          border: '1px solid var(--code-red-alpha-30)',
+          background: 'color-mix(in srgb, var(--color-danger-strong) 10%, transparent)',
+          border: '1px solid color-mix(in srgb, var(--color-danger-strong) 30%, transparent)',
           borderRadius: '12px',
           position: 'relative',
           zIndex: 3
@@ -151,7 +156,7 @@ export default function VueIndex() {
           <div
             style={{
               padding: '1.5rem',
-              background: 'var(--code-red-alpha-05)',
+              background: 'color-mix(in srgb, var(--color-danger-strong) 5%, transparent)',
               borderRadius: '8px'
             }}
           >
@@ -160,7 +165,7 @@ export default function VueIndex() {
             </h4>
             <ul
               style={{
-                color: 'var(--white-alpha-80)',
+                color: 'color-mix(in srgb, var(--color-white) 80%, transparent)',
                 lineHeight: 1.8,
                 listStyle: 'none',
                 padding: 0
@@ -175,7 +180,7 @@ export default function VueIndex() {
           <div
             style={{
               padding: '1.5rem',
-              background: 'var(--code-green-alpha-05)',
+              background: 'color-mix(in srgb, var(--color-code-green) 5%, transparent)',
               borderRadius: '8px'
             }}
           >
@@ -184,7 +189,7 @@ export default function VueIndex() {
             </h4>
             <ul
               style={{
-                color: 'var(--white-alpha-80)',
+                color: 'color-mix(in srgb, var(--color-white) 80%, transparent)',
                 lineHeight: 1.8,
                 listStyle: 'none',
                 padding: 0
@@ -204,8 +209,8 @@ export default function VueIndex() {
         style={{
           marginTop: '2rem',
           padding: '1.5rem',
-          background: 'var(--code-green-alpha-10)',
-          border: '1px solid var(--code-green-alpha-30)',
+          background: 'color-mix(in srgb, var(--color-code-green) 10%, transparent)',
+          border: '1px solid color-mix(in srgb, var(--color-code-green) 30%, transparent)',
           borderRadius: '12px',
           position: 'relative',
           zIndex: 3
@@ -224,15 +229,16 @@ export default function VueIndex() {
               key={index}
               style={{
                 padding: '1rem',
-                background: 'var(--code-green-alpha-05)',
-                border: '1px solid var(--code-green-alpha-20)',
+                background: 'color-mix(in srgb, var(--color-code-green) 5%, transparent)',
+                border: '1px solid color-mix(in srgb, var(--color-code-green) 20%, transparent)',
                 borderRadius: '8px',
                 transition: 'all 0.3s ease',
                 cursor: 'pointer'
               }}
               onMouseOver={e => {
                 e.currentTarget.style.transform = 'translateY(-3px)'
-                e.currentTarget.style.boxShadow = '0 8px 16px var(--code-green-alpha-20)'
+                e.currentTarget.style.boxShadow =
+                  '0 8px 16px color-mix(in srgb, var(--color-code-green) 20%, transparent)'
               }}
               onMouseOut={e => {
                 e.currentTarget.style.transform = 'translateY(0)'
@@ -248,7 +254,12 @@ export default function VueIndex() {
               >
                 {hook.name}
               </div>
-              <div style={{ fontSize: '0.875rem', color: 'var(--white-alpha-70)' }}>
+              <div
+                style={{
+                  fontSize: '0.875rem',
+                  color: 'color-mix(in srgb, var(--color-white) 70%, transparent)'
+                }}
+              >
                 {hook.description}
               </div>
             </div>
@@ -270,7 +281,12 @@ export default function VueIndex() {
       >
         <h3 style={{ color: 'var(--color-white)', marginBottom: '1rem' }}>📚 学习建议</h3>
         <ul
-          style={{ color: 'var(--white-alpha-80)', lineHeight: 1.8, listStyle: 'none', padding: 0 }}
+          style={{
+            color: 'color-mix(in srgb, var(--color-white) 80%, transparent)',
+            lineHeight: 1.8,
+            listStyle: 'none',
+            padding: 0
+          }}
         >
           <li style={{ marginBottom: '0.5rem' }}>• 先掌握 JavaScript 基础（ES6+）</li>
           <li style={{ marginBottom: '0.5rem' }}>• 了解 React 基础有助于理解 Vue 的设计思想</li>

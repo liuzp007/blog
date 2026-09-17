@@ -174,8 +174,8 @@ export default function Components() {
         style={{
           marginTop: '2rem',
           padding: '1.5rem',
-          background: 'var(--code-indigo-alpha-10)',
-          border: '1px solid var(--code-indigo-alpha-30)',
+          background: 'color-mix(in srgb, var(--color-indigo-500) 10%, transparent)',
+          border: '1px solid color-mix(in srgb, var(--color-indigo-500) 30%, transparent)',
           borderRadius: '12px',
           position: 'relative',
           zIndex: 3
@@ -193,13 +193,18 @@ export default function Components() {
           <div
             style={{
               padding: '1rem',
-              background: 'var(--code-indigo-alpha-05)',
+              background: 'color-mix(in srgb, var(--color-indigo-500) 5%, transparent)',
               borderRadius: '8px',
               textAlign: 'center'
             }}
           >
             <div style={{ fontSize: '2.5rem', marginBottom: '0.5rem' }}>📝 组件定义</div>
-            <div style={{ fontSize: '0.875rem', color: 'var(--white-alpha-60)' }}>
+            <div
+              style={{
+                fontSize: '0.875rem',
+                color: 'color-mix(in srgb, var(--color-white) 60%, transparent)'
+              }}
+            >
               通过 template + props + methods 定义
             </div>
           </div>
@@ -207,13 +212,18 @@ export default function Components() {
           <div
             style={{
               padding: '1rem',
-              background: 'var(--code-indigo-alpha-05)',
+              background: 'color-mix(in srgb, var(--color-indigo-500) 5%, transparent)',
               borderRadius: '8px',
               textAlign: 'center'
             }}
           >
             <div style={{ fontSize: '2.5rem', marginBottom: '0.5rem' }}>🔄 数据通信</div>
-            <div style={{ fontSize: '0.875rem', color: 'var(--white-alpha-60)' }}>
+            <div
+              style={{
+                fontSize: '0.875rem',
+                color: 'color-mix(in srgb, var(--color-white) 60%, transparent)'
+              }}
+            >
               props down、$emit up、provide/inject
             </div>
           </div>
@@ -221,13 +231,18 @@ export default function Components() {
           <div
             style={{
               padding: '1rem',
-              background: 'var(--code-indigo-alpha-05)',
+              background: 'color-mix(in srgb, var(--color-indigo-500) 5%, transparent)',
               borderRadius: '8px',
               textAlign: 'center'
             }}
           >
             <div style={{ fontSize: '2.5rem', marginBottom: '0.5rem' }}>🎨 插槽 Slots</div>
-            <div style={{ fontSize: '0.875rem', color: 'var(--white-alpha-60)' }}>
+            <div
+              style={{
+                fontSize: '0.875rem',
+                color: 'color-mix(in srgb, var(--color-white) 60%, transparent)'
+              }}
+            >
               分发内容、具名/作用域插槽
             </div>
           </div>
@@ -239,8 +254,8 @@ export default function Components() {
         style={{
           marginTop: '2rem',
           padding: '1.5rem',
-          background: 'var(--code-green-alpha-10)',
-          border: '1px solid var(--code-green-alpha-30)',
+          background: 'color-mix(in srgb, var(--color-code-green) 10%, transparent)',
+          border: '1px solid color-mix(in srgb, var(--color-code-green) 30%, transparent)',
           borderRadius: '12px',
           position: 'relative',
           zIndex: 3
@@ -248,7 +263,12 @@ export default function Components() {
       >
         <h3 style={{ color: 'var(--color-code-green)', marginBottom: '1rem' }}>🔧 动态组件</h3>
         <ul
-          style={{ color: 'var(--white-alpha-80)', lineHeight: 1.8, listStyle: 'none', padding: 0 }}
+          style={{
+            color: 'color-mix(in srgb, var(--color-white) 80%, transparent)',
+            lineHeight: 1.8,
+            listStyle: 'none',
+            padding: 0
+          }}
         >
           <li style={{ marginBottom: '0.5rem' }}>
             • <strong>动态加载</strong>：import() 动态导入组件
@@ -270,8 +290,8 @@ export default function Components() {
         style={{
           marginTop: '2rem',
           padding: '1.5rem',
-          background: 'var(--code-red-alpha-10)',
-          border: '1px solid var(--code-red-alpha-30)',
+          background: 'color-mix(in srgb, var(--color-danger-strong) 10%, transparent)',
+          border: '1px solid color-mix(in srgb, var(--color-danger-strong) 30%, transparent)',
           borderRadius: '12px',
           position: 'relative',
           zIndex: 3
@@ -288,13 +308,20 @@ export default function Components() {
           <div
             style={{
               padding: '1rem',
-              background: 'var(--code-indigo-alpha-05)',
+              background: 'color-mix(in srgb, var(--color-indigo-500) 5%, transparent)',
               borderRadius: '8px',
               textAlign: 'center'
             }}
           >
             <div style={{ fontSize: '0.875rem', marginBottom: '0.5rem' }}>父 → 子</div>
-            <div style={{ fontSize: '0.875rem', color: 'var(--white-alpha-60)' }}>Props 传递</div>
+            <div
+              style={{
+                fontSize: '0.875rem',
+                color: 'color-mix(in srgb, var(--color-white) 60%, transparent)'
+              }}
+            >
+              Props 传递
+            </div>
             <div
               style={{ fontSize: '2.5rem', fontWeight: 'bold', color: 'var(--color-code-green)' }}
             >
@@ -305,13 +332,18 @@ export default function Components() {
           <div
             style={{
               padding: '1rem',
-              background: 'var(--code-indigo-alpha-05)',
+              background: 'color-mix(in srgb, var(--color-indigo-500) 5%, transparent)',
               borderRadius: '8px',
               textAlign: 'center'
             }}
           >
             <div style={{ fontSize: '0.875rem', marginBottom: '0.5rem' }}>子 → 父</div>
-            <div style={{ fontSize: '0.875rem', color: 'var(--white-alpha-60)' }}>
+            <div
+              style={{
+                fontSize: '0.875rem',
+                color: 'color-mix(in srgb, var(--color-white) 60%, transparent)'
+              }}
+            >
               事件触发 $emit
             </div>
             <div
@@ -324,7 +356,7 @@ export default function Components() {
           <div
             style={{
               padding: '1rem',
-              background: 'var(--code-indigo-alpha-05)',
+              background: 'color-mix(in srgb, var(--color-indigo-500) 5%, transparent)',
               borderRadius: '8px',
               textAlign: 'center'
             }}
@@ -349,19 +381,29 @@ export default function Components() {
         style={{
           marginTop: '2rem',
           padding: '1.5rem',
-          background: 'var(--code-violet-alpha-10)',
-          border: '1px solid var(--code-violet-alpha-30)',
+          background: 'color-mix(in srgb, var(--color-code-violet) 10%, transparent)',
+          border: '1px solid color-mix(in srgb, var(--color-code-violet) 30%, transparent)',
           borderRadius: '12px',
           position: 'relative',
           zIndex: 3
         }}
       >
         <h3 style={{ color: 'var(--color-code-violet)', marginBottom: '1rem' }}>🎨 插槽示例</h3>
-        <p style={{ color: 'var(--white-alpha-70)', marginBottom: '1rem' }}>
+        <p
+          style={{
+            color: 'color-mix(in srgb, var(--color-white) 70%, transparent)',
+            marginBottom: '1rem'
+          }}
+        >
           父组件使用 <code>&lt;slot name="xxx"&gt;</code> 预留位置，子组件可以填充具体内容
         </p>
         <ul
-          style={{ color: 'var(--white-alpha-80)', lineHeight: 1.8, listStyle: 'none', padding: 0 }}
+          style={{
+            color: 'color-mix(in srgb, var(--color-white) 80%, transparent)',
+            lineHeight: 1.8,
+            listStyle: 'none',
+            padding: 0
+          }}
         >
           <li style={{ marginBottom: '0.5rem' }}>
             • <strong>默认插槽</strong>：没有 name 时作为默认内容

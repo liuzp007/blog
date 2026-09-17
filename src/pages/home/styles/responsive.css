@@ -1,0 +1,92 @@
+/* 全局容器、导航与通用 section 响应式；区块私有规则在对应样式文件内。 */
+@media (width <= 1280px) {
+  .HomeWrap .home-landing {
+    width: min(100%, 100% - 36px);
+  }
+}
+
+@media (width <= 1024px) {
+  .HomeWrap .hero-nav {
+    top: 12px;
+    right: var(--space-4);
+    left: var(--space-4);
+    border-radius: var(--radius-xl);
+  }
+
+  .HomeWrap .hero-nav__menu {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .HomeWrap .hero-nav__sound,
+  .HomeWrap .nav-links {
+    display: none;
+  }
+
+  .HomeWrap .home-section {
+    padding: 86px 0;
+  }
+}
+
+@media (width <= 768px) {
+  .HomeWrap .home-landing {
+    width: calc(100% - 22px);
+    padding-bottom: 92px;
+  }
+
+  .HomeWrap .hero-nav {
+    top: 10px;
+    right: 10px;
+    left: 10px;
+    gap: var(--space-1);
+    padding: 11px 12px;
+    border-radius: var(--radius-lg);
+  }
+
+  .HomeWrap .hero-nav__brand-title {
+    font-size: 11px;
+    letter-spacing: 0.26em;
+  }
+
+  .HomeWrap .hero-nav__actions {
+    gap: 7px;
+  }
+
+  .HomeWrap .hero-nav__cta {
+    height: 36px;
+    padding: 0 13px;
+    font-size: 12px;
+  }
+
+  .HomeWrap .hero-nav__menu {
+    width: 36px;
+    height: 36px;
+  }
+
+  .HomeWrap .home-section {
+    padding: 72px 0;
+  }
+
+  .HomeWrap #guestbook {
+    padding-bottom: 32px;
+  }
+
+  .HomeWrap .home-article-card__title,
+  .HomeWrap .home-experiment-card__title,
+  .HomeWrap .showcase-card__title,
+  .HomeWrap .home-timeline__title {
+    font-size: 22px;
+  }
+}
+
+@media (width <= 480px) {
+  .HomeWrap .hero-nav__brand-title {
+    letter-spacing: 0.2em;
+  }
+
+  .HomeWrap .hero-nav__cta {
+    padding: 0 11px;
+    font-size: 11px;
+  }
+}

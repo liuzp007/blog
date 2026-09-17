@@ -322,29 +322,29 @@ const directiveCategories = [
     name: '文本渲染',
     directives: ['v-text', 'v-html', '{{ }}'],
     color: 'var(--color-code-indigo)',
-    surface: 'var(--code-indigo-alpha-10)',
-    border: 'var(--code-indigo-alpha-40)'
+    surface: 'color-mix(in srgb, var(--color-indigo-500) 10%, transparent)',
+    border: 'color-mix(in srgb, var(--color-indigo-500) 40%, transparent)'
   },
   {
     name: '条件渲染',
     directives: ['v-if', 'v-else-if', 'v-else', 'v-show'],
     color: 'var(--color-code-green)',
-    surface: 'var(--code-green-alpha-10)',
-    border: 'var(--code-green-alpha-50)'
+    surface: 'color-mix(in srgb, var(--color-code-green) 10%, transparent)',
+    border: 'color-mix(in srgb, var(--color-code-green) 50%, transparent)'
   },
   {
     name: '列表渲染',
     directives: ['v-for', ':key'],
     color: 'var(--color-code-red)',
-    surface: 'var(--code-red-alpha-10)',
-    border: 'var(--code-red-alpha-30)'
+    surface: 'color-mix(in srgb, var(--color-danger-strong) 10%, transparent)',
+    border: 'color-mix(in srgb, var(--color-danger-strong) 30%, transparent)'
   },
   {
     name: '属性绑定',
     directives: ['v-bind', ':class', ':style', ':href'],
     color: 'var(--color-code-violet)',
-    surface: 'var(--code-violet-alpha-10)',
-    border: 'var(--code-violet-alpha-40)'
+    surface: 'color-mix(in srgb, var(--color-code-violet) 10%, transparent)',
+    border: 'color-mix(in srgb, var(--color-code-violet) 40%, transparent)'
   },
   {
     name: '事件绑定',
@@ -379,8 +379,8 @@ export default function Vue2DirectivePage() {
         style={{
           marginTop: '2rem',
           padding: '1.5rem',
-          background: 'var(--code-indigo-alpha-10)',
-          border: '1px solid var(--code-indigo-alpha-30)',
+          background: 'color-mix(in srgb, var(--color-indigo-500) 10%, transparent)',
+          border: '1px solid color-mix(in srgb, var(--color-indigo-500) 30%, transparent)',
           borderRadius: '12px',
           position: 'relative',
           zIndex: 3
@@ -408,7 +408,12 @@ export default function Vue2DirectivePage() {
               <h4 style={{ color: cat.color, marginBottom: '0.5rem', fontSize: '1rem' }}>
                 {cat.name}
               </h4>
-              <div style={{ fontSize: '0.75rem', color: 'var(--white-alpha-70)' }}>
+              <div
+                style={{
+                  fontSize: '0.75rem',
+                  color: 'color-mix(in srgb, var(--color-white) 70%, transparent)'
+                }}
+              >
                 {cat.directives.join(', ')}
               </div>
             </div>
@@ -421,8 +426,8 @@ export default function Vue2DirectivePage() {
         style={{
           marginTop: '2rem',
           padding: '1.5rem',
-          background: 'var(--code-green-alpha-10)',
-          border: '1px solid var(--code-green-alpha-30)',
+          background: 'color-mix(in srgb, var(--color-code-green) 10%, transparent)',
+          border: '1px solid color-mix(in srgb, var(--color-code-green) 30%, transparent)',
           borderRadius: '12px',
           position: 'relative',
           zIndex: 3
@@ -448,7 +453,7 @@ export default function Vue2DirectivePage() {
               onClick={() => setShowElement(!showElement)}
               style={{
                 padding: '0.5rem 1rem',
-                background: 'var(--code-indigo-alpha-20)',
+                background: 'color-mix(in srgb, var(--color-indigo-500) 20%, transparent)',
                 border: 'none',
                 borderRadius: '6px',
                 color: 'var(--color-white)',
@@ -461,7 +466,7 @@ export default function Vue2DirectivePage() {
             <div
               style={{
                 padding: '1rem',
-                background: 'var(--code-indigo-alpha-10)',
+                background: 'color-mix(in srgb, var(--color-indigo-500) 10%, transparent)',
                 borderRadius: '8px',
                 minHeight: '60px',
                 display: 'flex',
@@ -472,7 +477,9 @@ export default function Vue2DirectivePage() {
               {showElement ? (
                 <span style={{ color: 'var(--color-code-green)' }}>元素已显示 (v-if)</span>
               ) : (
-                <span style={{ color: 'var(--white-alpha-30)' }}>元素已隐藏</span>
+                <span style={{ color: 'color-mix(in srgb, var(--color-white) 30%, transparent)' }}>
+                  元素已隐藏
+                </span>
               )}
             </div>
           </div>
@@ -493,7 +500,7 @@ export default function Vue2DirectivePage() {
                 width: '100%',
                 padding: '0.5rem',
                 background: 'var(--code-page-surface-panel)',
-                border: '1px solid var(--code-indigo-alpha-30)',
+                border: '1px solid color-mix(in srgb, var(--color-indigo-500) 30%, transparent)',
                 borderRadius: '6px',
                 color: 'var(--color-white)',
                 marginBottom: '0.75rem'
@@ -502,7 +509,7 @@ export default function Vue2DirectivePage() {
             <div
               style={{
                 padding: '0.5rem',
-                background: 'var(--code-indigo-alpha-10)',
+                background: 'color-mix(in srgb, var(--color-indigo-500) 10%, transparent)',
                 borderRadius: '6px',
                 fontSize: '0.875rem'
               }}
@@ -528,8 +535,8 @@ export default function Vue2DirectivePage() {
                     padding: '0.5rem',
                     background:
                       hoverCount === item.id
-                        ? 'var(--code-green-alpha-20)'
-                        : 'var(--code-indigo-alpha-10)',
+                        ? 'color-mix(in srgb, var(--color-code-green) 20%, transparent)'
+                        : 'color-mix(in srgb, var(--color-indigo-500) 10%, transparent)',
                     borderRadius: '6px',
                     marginBottom: '0.5rem',
                     cursor: 'pointer',
@@ -549,8 +556,8 @@ export default function Vue2DirectivePage() {
         style={{
           marginTop: '2rem',
           padding: '1.5rem',
-          background: 'var(--code-violet-alpha-10)',
-          border: '1px solid var(--code-violet-alpha-30)',
+          background: 'color-mix(in srgb, var(--color-code-violet) 10%, transparent)',
+          border: '1px solid color-mix(in srgb, var(--color-code-violet) 30%, transparent)',
           borderRadius: '12px',
           position: 'relative',
           zIndex: 3
@@ -578,9 +585,9 @@ export default function Vue2DirectivePage() {
               key={i}
               style={{
                 padding: '0.75rem',
-                background: 'var(--code-violet-alpha-05)',
+                background: 'color-mix(in srgb, var(--color-code-violet) 5%, transparent)',
                 borderRadius: '6px',
-                border: '1px solid var(--code-violet-alpha-20)'
+                border: '1px solid color-mix(in srgb, var(--color-code-violet) 20%, transparent)'
               }}
             >
               <code style={{ color: 'var(--color-code-violet)', fontSize: '0.875rem' }}>
@@ -589,7 +596,7 @@ export default function Vue2DirectivePage() {
               <div
                 style={{
                   fontSize: '0.75rem',
-                  color: 'var(--white-alpha-60)',
+                  color: 'color-mix(in srgb, var(--color-white) 60%, transparent)',
                   marginTop: '0.25rem'
                 }}
               >
@@ -605,8 +612,8 @@ export default function Vue2DirectivePage() {
         style={{
           marginTop: '2rem',
           padding: '1.5rem',
-          background: 'var(--code-red-alpha-10)',
-          border: '1px solid var(--code-red-alpha-30)',
+          background: 'color-mix(in srgb, var(--color-danger-strong) 10%, transparent)',
+          border: '1px solid color-mix(in srgb, var(--color-danger-strong) 30%, transparent)',
           borderRadius: '12px',
           position: 'relative',
           zIndex: 3
@@ -614,7 +621,12 @@ export default function Vue2DirectivePage() {
       >
         <h3 style={{ color: 'var(--color-code-red)', marginBottom: '1rem' }}>⚠️ 最佳实践</h3>
         <ul
-          style={{ color: 'var(--white-alpha-80)', lineHeight: 1.8, listStyle: 'none', padding: 0 }}
+          style={{
+            color: 'color-mix(in srgb, var(--color-white) 80%, transparent)',
+            lineHeight: 1.8,
+            listStyle: 'none',
+            padding: 0
+          }}
         >
           <li style={{ marginBottom: '0.5rem' }}>
             • <strong>v-for 必须配合 key</strong>，使用稳定的唯一标识

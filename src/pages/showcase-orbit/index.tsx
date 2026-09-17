@@ -7,6 +7,7 @@ import {
 } from '@ant-design/icons'
 import { Alert, Button, Progress, Segmented, Slider, Tag } from 'antd'
 import { Link } from 'react-router-dom'
+import '@/styles/themes/showcase-orbit.css'
 import './index.css'
 
 type FieldKey = 'midnight' | 'teal' | 'ember'
@@ -1012,9 +1013,9 @@ export default function ShowcaseOrbit() {
 
   return (
     <div ref={rootRef} className={`orbit-slinger orbit-slinger--${fieldKey}`}>
-      <div className="mx-auto w-[min(1320px,calc(100%-40px))] pt-[34px] pb-[42px] max-[1120px]:w-[calc(100%-28px)] max-[1120px]:pt-6 max-[768px]:pt-[22px] max-[768px]:pb-[30px]">
+      <div className="mx-auto w-[min(1320px,calc(100%-40px))] pt-[34px] pb-[42px] max-lg:w-[calc(100%-28px)] max-lg:pt-6 max-md:pt-[22px] max-md:pb-[30px]">
         <main>
-          <section className="grid items-start gap-6 min-[1121px]:grid-cols-[minmax(320px,390px)_minmax(0,1fr)] max-[768px]:gap-[18px]">
+          <section className="grid items-start gap-6 xl:grid-cols-[minmax(320px,390px)_minmax(0,1fr)] max-md:gap-[18px]">
             <div className="border border-solid border-[var(--orbit-line-medium)] bg-[var(--orbit-surface-glass)] backdrop-blur-[14px] shadow-[var(--orbit-shadow-panel)] rounded-[28px] p-[28px_26px] sticky top-6">
               <p className="inline-flex items-center min-h-[34px] m-0 px-3.5 rounded-[999px] border border-solid border-[var(--orbit-line-strong)] bg-[var(--orbit-surface-chip)] text-[12px] tracking-[0.18em] uppercase font-[var(--font-family-tech)] text-[var(--orbit-text-label)]">
                 作品展 / 03
@@ -1036,9 +1037,9 @@ export default function ShowcaseOrbit() {
                   伪 3D 空间
                 </Tag>
               </div>
-              <div className="mt-[18px] flex flex-wrap gap-2.5 max-[768px]:grid max-[768px]:gap-3">
+              <div className="mt-[18px] flex flex-wrap gap-2.5 max-md:grid max-md:gap-3">
                 <Button
-                  className="border-transparent text-[var(--orbit-text-inverse)] bg-[var(--orbit-button-bg)] ui-button-cta max-[768px]:w-full"
+                  className="border-transparent text-[var(--orbit-text-inverse)] bg-[var(--orbit-button-bg)] ui-button-cta max-md:w-full"
                   type="primary"
                   icon={<ReloadOutlined />}
                   onClick={handleResetClick}
@@ -1046,7 +1047,7 @@ export default function ShowcaseOrbit() {
                   开始试玩
                 </Button>
                 <Button
-                  className="border-[var(--orbit-line-strong)] bg-[var(--orbit-surface-chip)] text-[var(--orbit-text-panel)] ui-button-cta max-[768px]:w-full"
+                  className="border-[var(--orbit-line-strong)] bg-[var(--orbit-surface-chip)] text-[var(--orbit-text-panel)] ui-button-cta max-md:w-full"
                   icon={<ThunderboltOutlined />}
                   onClick={reshuffleMission}
                 >
@@ -1054,7 +1055,7 @@ export default function ShowcaseOrbit() {
                 </Button>
                 <Link
                   to="/"
-                  className="border-[var(--orbit-line-strong)] bg-[var(--orbit-surface-chip)] text-[var(--orbit-text-panel)] ui-button-secondary ui-button-cta max-[768px]:w-full"
+                  className="border-[var(--orbit-line-strong)] bg-[var(--orbit-surface-chip)] text-[var(--orbit-text-panel)] ui-button-secondary ui-button-cta max-md:w-full"
                 >
                   <ArrowLeftOutlined aria-hidden="true" />
                   返回首页
@@ -1063,7 +1064,7 @@ export default function ShowcaseOrbit() {
             </div>
 
             <div className="grid gap-4">
-              <div className="grid gap-3 min-[769px]:grid-cols-3 max-[768px]:grid-cols-1">
+              <div className="grid gap-3 md:grid-cols-3 max-md:grid-cols-1">
                 <article className="border border-solid border-[var(--orbit-line-medium)] bg-[var(--orbit-surface-glass)] backdrop-blur-[14px] shadow-[var(--orbit-shadow-panel)] rounded-[20px] p-[18px]">
                   <span className="inline-flex items-center gap-2 text-[12px] tracking-[0.16em] uppercase text-[var(--orbit-text-label-soft)]">
                     当前星图
@@ -1091,7 +1092,7 @@ export default function ShowcaseOrbit() {
               </div>
 
               <div
-                className="orbit-slinger__stage relative min-h-[690px] overflow-hidden rounded-[34px] border border-solid border-[var(--orbit-line-strong)] bg-[var(--orbit-surface-stage)] [box-shadow:inset_0_1px_0_var(--white-alpha-06),var(--orbit-shadow-stage)] max-[768px]:min-h-[480px] max-[768px]:rounded-3xl"
+                className="orbit-slinger__stage relative min-h-[690px] overflow-hidden rounded-[34px] border border-solid border-[var(--orbit-line-strong)] bg-[var(--orbit-surface-stage)] [box-shadow:inset_0_1px_0_color-mix(in_srgb,var(--color-white)_6%,transparent),var(--orbit-shadow-stage)] max-md:min-h-[480px] max-md:rounded-3xl"
                 ref={stageRef}
                 tabIndex={0}
                 aria-label="引力弹弓互动舞台，可使用拖拽或键盘完成发射"
@@ -1099,7 +1100,7 @@ export default function ShowcaseOrbit() {
               >
                 <canvas ref={canvasRef} className="block h-full w-full" />
                 <div
-                  className="absolute bottom-[18px] right-[18px] w-[min(280px,calc(100%-36px))] rounded-[20px] border border-solid border-[var(--orbit-line-strong)] bg-[var(--orbit-surface-hint)] backdrop-blur-[14px] p-[14px_16px] pointer-events-none max-[768px]:static max-[768px]:w-auto max-[768px]:m-3.5"
+                  className="absolute bottom-[18px] right-[18px] w-[min(280px,calc(100%-36px))] rounded-[20px] border border-solid border-[var(--orbit-line-strong)] bg-[var(--orbit-surface-hint)] backdrop-blur-[14px] p-[14px_16px] pointer-events-none max-md:static max-md:w-auto max-md:m-3.5"
                   id="orbit-slinger-stage-hint"
                 >
                   <span className="inline-block text-[11px] tracking-[0.24em] uppercase text-[color-mix(in_srgb,var(--orbit-color-ring)_88%,white)]">
@@ -1113,7 +1114,7 @@ export default function ShowcaseOrbit() {
             </div>
           </section>
 
-          <section className="mt-5 grid gap-[18px] min-[1121px]:grid-cols-3 max-[1120px]:grid-cols-1">
+          <section className="mt-5 grid gap-[18px] xl:grid-cols-3 max-lg:grid-cols-1">
             <div className="border border-solid border-[var(--orbit-line-medium)] bg-[var(--orbit-surface-glass)] backdrop-blur-[14px] shadow-[var(--orbit-shadow-panel)] rounded-[26px] p-5">
               <span className="inline-flex items-center gap-2 m-0 text-[12px] tracking-[0.16em] uppercase font-[var(--font-family-tech)] text-[var(--orbit-text-label-soft)]">
                 <CompassOutlined /> 任务状态

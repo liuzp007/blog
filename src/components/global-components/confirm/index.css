@@ -1,8 +1,8 @@
 /*
- * Confirm / Message 遗留弹层隔离层：
- * 这里只服务 confirm 与 toast 的独立挂载容器，
- * 不作为通用弹窗、按钮或全局消息样式入口。
- */
+   * Confirm / Message 遗留弹层隔离层：
+   * 这里只服务 confirm 与 toast 的独立挂载容器，
+   * 不作为通用弹窗、按钮或全局消息样式入口。
+   */
 .confirm-mask {
   --ui-confirm-dialog-width: 430px;
   --ui-confirm-dialog-min-height: 230px;
@@ -16,7 +16,7 @@
 
   position: fixed;
   inset: 0;
-  background: var(--black-alpha-60);
+  background: color-mix(in srgb, var(--color-black) 60%, transparent);
 }
 
 .confirm-dialog {
@@ -89,7 +89,7 @@
   min-width: var(--ui-confirm-toast-min-width);
   min-height: var(--ui-confirm-toast-height);
   padding: 10px var(--ui-confirm-toast-padding-inline);
-  background: var(--black-alpha-70);
+  background: color-mix(in srgb, var(--color-black) 70%, transparent);
   transform: translate(-50%, -50%);
   align-items: center;
   justify-content: center;

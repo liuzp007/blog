@@ -12,8 +12,8 @@ export default function CompositionPage() {
         style={{
           marginTop: '2rem',
           padding: '1.5rem',
-          background: 'var(--code-indigo-alpha-10)',
-          border: '1px solid var(--code-indigo-alpha-30)',
+          background: 'color-mix(in srgb, var(--color-indigo-500) 10%, transparent)',
+          border: '1px solid color-mix(in srgb, var(--color-indigo-500) 30%, transparent)',
           borderRadius: '12px',
           position: 'relative',
           zIndex: 3
@@ -31,26 +31,45 @@ export default function CompositionPage() {
           <div
             style={{
               padding: '1rem',
-              background: 'var(--code-indigo-alpha-05)',
+              background: 'color-mix(in srgb, var(--color-indigo-500) 5%, transparent)',
               borderRadius: '8px',
               textAlign: 'center'
             }}
           >
             <div style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>📦 ref</div>
-            <div style={{ fontSize: '0.875rem', color: 'var(--white-alpha-70)' }}>响应式引用</div>
-            <div style={{ fontSize: '0.875rem', color: 'var(--white-alpha-70)' }}>生命周期钩子</div>
+            <div
+              style={{
+                fontSize: '0.875rem',
+                color: 'color-mix(in srgb, var(--color-white) 70%, transparent)'
+              }}
+            >
+              响应式引用
+            </div>
+            <div
+              style={{
+                fontSize: '0.875rem',
+                color: 'color-mix(in srgb, var(--color-white) 70%, transparent)'
+              }}
+            >
+              生命周期钩子
+            </div>
           </div>
 
           <div
             style={{
               padding: '1rem',
-              background: 'var(--code-green-alpha-05)',
+              background: 'color-mix(in srgb, var(--color-code-green) 5%, transparent)',
               borderRadius: '8px',
               textAlign: 'center'
             }}
           >
             <div style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>🔧 computed</div>
-            <div style={{ fontSize: '0.875rem', color: 'var(--white-alpha-70)' }}>
+            <div
+              style={{
+                fontSize: '0.875rem',
+                color: 'color-mix(in srgb, var(--color-white) 70%, transparent)'
+              }}
+            >
               watch & watchEffect
             </div>
           </div>
@@ -58,13 +77,20 @@ export default function CompositionPage() {
           <div
             style={{
               padding: '1rem',
-              background: 'var(--code-red-alpha-05)',
+              background: 'color-mix(in srgb, var(--color-danger-strong) 5%, transparent)',
               borderRadius: '8px',
               textAlign: 'center'
             }}
           >
             <div style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>📦 provide</div>
-            <div style={{ fontSize: '0.875rem', color: 'var(--white-alpha-70)' }}>inject</div>
+            <div
+              style={{
+                fontSize: '0.875rem',
+                color: 'color-mix(in srgb, var(--color-white) 70%, transparent)'
+              }}
+            >
+              inject
+            </div>
           </div>
         </div>
       </div>
@@ -113,8 +139,8 @@ export default {
         style={{
           marginTop: '2rem',
           padding: '1.5rem',
-          background: 'var(--code-green-alpha-10)',
-          border: '1px solid var(--code-green-alpha-30)',
+          background: 'color-mix(in srgb, var(--color-code-green) 10%, transparent)',
+          border: '1px solid color-mix(in srgb, var(--color-code-green) 30%, transparent)',
           borderRadius: '12px',
           position: 'relative',
           zIndex: 3
@@ -123,7 +149,12 @@ export default {
         <h3 style={{ color: 'var(--color-code-green)', marginBottom: '1rem' }}>
           🎮 响应式状态演示
         </h3>
-        <p style={{ color: 'var(--white-alpha-70)', marginBottom: '1rem' }}>
+        <p
+          style={{
+            color: 'color-mix(in srgb, var(--color-white) 70%, transparent)',
+            marginBottom: '1rem'
+          }}
+        >
           点击按钮观察计数和双倍值的变化
         </p>
 
@@ -154,12 +185,19 @@ export default {
             <div
               style={{
                 padding: '1rem',
-                background: 'var(--code-indigo-alpha-05)',
+                background: 'color-mix(in srgb, var(--color-indigo-500) 5%, transparent)',
                 borderRadius: '8px',
                 textAlign: 'center'
               }}
             >
-              <div style={{ fontSize: '0.875rem', color: 'var(--white-alpha-60)' }}>计数</div>
+              <div
+                style={{
+                  fontSize: '0.875rem',
+                  color: 'color-mix(in srgb, var(--color-white) 60%, transparent)'
+                }}
+              >
+                计数
+              </div>
               <div
                 style={{ fontSize: '2rem', fontWeight: 'bold', color: 'var(--color-code-indigo)' }}
               >
@@ -170,12 +208,19 @@ export default {
             <div
               style={{
                 padding: '1rem',
-                background: 'var(--code-red-alpha-05)',
+                background: 'color-mix(in srgb, var(--color-danger-strong) 5%, transparent)',
                 borderRadius: '8px',
                 textAlign: 'center'
               }}
             >
-              <div style={{ fontSize: '0.875rem', color: 'var(--white-alpha-60)' }}>双倍 (2x)</div>
+              <div
+                style={{
+                  fontSize: '0.875rem',
+                  color: 'color-mix(in srgb, var(--color-white) 60%, transparent)'
+                }}
+              >
+                双倍 (2x)
+              </div>
               <div
                 style={{ fontSize: '2rem', fontWeight: 'bold', color: 'var(--color-code-violet)' }}
               >

@@ -1,0 +1,353 @@
+.HomeWrap .home-showcase {
+  padding-top: 98px;
+}
+
+.HomeWrap .showcase-card {
+  position: relative;
+  background: var(--home-showcase-bg);
+  border: var(--home-border-soft);
+  transition:
+    transform var(--motion-medium) var(--easing-standard),
+    border-color var(--motion-medium) var(--easing-standard),
+    box-shadow var(--motion-medium) var(--easing-standard);
+  cursor: pointer;
+}
+
+.HomeWrap .showcase-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(
+      circle at 18% 22%,
+      color-mix(in srgb, var(--home-text-strong) 12%, transparent),
+      transparent 24%
+    ),
+    linear-gradient(
+      125deg,
+      color-mix(in srgb, var(--color-white) 2%, transparent),
+      transparent 48%,
+      color-mix(in srgb, var(--color-white) 8%, transparent) 120%
+    );
+  opacity: 0.72;
+  pointer-events: none;
+}
+
+.HomeWrap .showcase-card::after {
+  content: '';
+  position: absolute;
+  right: -12%;
+  bottom: -24%;
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  filter: blur(12px);
+  opacity: 0.36;
+  transition:
+    transform var(--motion-medium) var(--easing-standard),
+    opacity var(--motion-medium) var(--easing-standard);
+  pointer-events: none;
+}
+
+.HomeWrap .showcase-card:hover,
+.HomeWrap .showcase-card:focus-within {
+  box-shadow: var(--home-card-shadow-hover);
+}
+
+.HomeWrap .showcase-card:hover::after,
+.HomeWrap .showcase-card:focus-within::after {
+  transform: scale(1.08);
+  opacity: 0.52;
+}
+
+.HomeWrap .showcase-card--gold::after {
+  background: radial-gradient(
+    circle,
+    color-mix(in srgb, var(--home-accent-gold) 42%, transparent),
+    transparent 68%
+  );
+}
+
+.HomeWrap .showcase-card--cyan::after {
+  background: radial-gradient(
+    circle,
+    color-mix(in srgb, var(--home-accent-cyan) 42%, transparent),
+    transparent 68%
+  );
+}
+
+.HomeWrap .showcase-card--coral::after {
+  background: radial-gradient(
+    circle,
+    color-mix(in srgb, var(--home-accent-coral) 42%, transparent),
+    transparent 68%
+  );
+}
+
+.HomeWrap .showcase-card--mint::after {
+  background: radial-gradient(
+    circle,
+    color-mix(in srgb, var(--home-accent-mint) 42%, transparent),
+    transparent 68%
+  );
+}
+
+.HomeWrap .showcase-card--gold:hover,
+.HomeWrap .showcase-card--gold:focus-within {
+  border-color: var(--home-border-gold);
+}
+
+.HomeWrap .showcase-card--cyan:hover,
+.HomeWrap .showcase-card--cyan:focus-within {
+  border-color: color-mix(in srgb, var(--home-accent-cyan) 34%, transparent);
+}
+
+.HomeWrap .showcase-card--coral:hover,
+.HomeWrap .showcase-card--coral:focus-within {
+  border-color: color-mix(in srgb, var(--home-accent-coral) 34%, transparent);
+}
+
+.HomeWrap .showcase-card--mint:hover,
+.HomeWrap .showcase-card--mint:focus-within {
+  border-color: color-mix(in srgb, var(--home-accent-mint) 34%, transparent);
+}
+
+.HomeWrap .showcase-card__badge {
+  display: inline-flex;
+  width: 54px;
+  height: 54px;
+  font-size: 21px;
+  color: color-mix(in srgb, var(--home-text-strong-soft) 98%, var(--color-white));
+  background:
+    linear-gradient(
+      135deg,
+      color-mix(in srgb, var(--home-text-strong) 12%, transparent),
+      color-mix(in srgb, var(--home-text-strong) 4%, transparent)
+    ),
+    color-mix(in srgb, var(--color-white) 5%, transparent);
+  border-radius: 16px;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: inset 0 1px 0 color-mix(in srgb, var(--color-white) 8%, transparent);
+}
+
+.HomeWrap .showcase-card__eyebrow,
+.HomeWrap .showcase-card__mode {
+  --ui-overline-size: 11px;
+  --ui-overline-letter-spacing: 0.1em;
+
+  display: inline-flex;
+  min-height: 32px;
+  padding: 0 12px;
+  color: var(--home-text-meta);
+  background: color-mix(in srgb, var(--color-white) 5%, transparent);
+  align-items: center;
+  border-radius: 999px;
+}
+
+.HomeWrap .showcase-card__mode {
+  width: fit-content;
+  min-height: auto;
+  padding: 0;
+  font-size: 12px;
+  color: var(--home-text-highlight-soft);
+  background: transparent;
+  border-radius: 0;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.HomeWrap .showcase-card__title {
+  margin: 0;
+  color: var(--home-text-strong);
+}
+
+.HomeWrap .showcase-card__desc {
+  max-width: 42ch;
+  margin: 10px 0 0;
+  color: var(--home-text-nav);
+}
+
+.HomeWrap .showcase-card__tag.ui-tag {
+  --ui-tag-sheen: color-mix(in srgb, var(--color-white) 12%, transparent);
+  --ui-tag-tone-bg-strength: 14%;
+  --ui-tag-tone-border-strength: 28%;
+  --ui-tag-tone-text-strength: 24%;
+
+  text-transform: none;
+  font-weight: 600;
+  box-shadow:
+    inset 0 1px 0 color-mix(in srgb, var(--color-white) 10%, transparent),
+    0 0 0 1px color-mix(in srgb, var(--color-black) 8%, transparent);
+  padding: 8px 12px;
+}
+
+.HomeWrap .showcase-card__tag.ui-tag--tone-gold {
+  --ui-tag-tone-text-strength: 30%;
+}
+
+.HomeWrap .showcase-card__tag.ui-tag--tone-coral {
+  --ui-tag-tone-bg-strength: 16%;
+  --ui-tag-tone-border-strength: 30%;
+  --ui-tag-tone-text-strength: 28%;
+}
+
+.HomeWrap .showcase-card__tag.ui-tag--tone-mint {
+  --ui-tag-tone-bg-strength: 16%;
+  --ui-tag-tone-border-strength: 30%;
+  --ui-tag-tone-text-strength: 26%;
+}
+
+.HomeWrap .showcase-card:hover .showcase-card__tag.ui-tag,
+.HomeWrap .showcase-card:focus-within .showcase-card__tag.ui-tag {
+  --ui-tag-tone-bg-strength: 22%;
+  --ui-tag-tone-border-strength: 38%;
+  --ui-tag-tone-text-strength: 34%;
+}
+
+.HomeWrap .showcase-card--gold:hover .showcase-card__tag.ui-tag,
+.HomeWrap .showcase-card--gold:focus-within .showcase-card__tag.ui-tag {
+  --ui-tag-tone-text-strength: 42%;
+}
+
+.HomeWrap .showcase-card--coral:hover .showcase-card__tag.ui-tag,
+.HomeWrap .showcase-card--coral:focus-within .showcase-card__tag.ui-tag {
+  --ui-tag-tone-bg-strength: 24%;
+  --ui-tag-tone-border-strength: 40%;
+  --ui-tag-tone-text-strength: 38%;
+}
+
+.HomeWrap .showcase-card--mint:hover .showcase-card__tag.ui-tag,
+.HomeWrap .showcase-card--mint:focus-within .showcase-card__tag.ui-tag {
+  --ui-tag-tone-bg-strength: 24%;
+  --ui-tag-tone-border-strength: 40%;
+  --ui-tag-tone-text-strength: 36%;
+}
+
+.HomeWrap .showcase-card__tag--more.ui-tag {
+  color: var(--home-text-quiet);
+  background: color-mix(in srgb, var(--color-white) 4%, transparent);
+  border-color: var(--home-border-faint);
+}
+
+.HomeWrap .showcase-card__cta {
+  display: inline-flex;
+  min-height: 38px;
+  padding: 0 14px;
+  font-size: 12px;
+  color: var(--home-text-strong);
+  background:
+    linear-gradient(180deg, color-mix(in srgb, var(--color-white) 8%, transparent), transparent),
+    color-mix(in srgb, var(--color-white) 4%, transparent);
+  transition:
+    transform var(--motion-base) var(--easing-standard),
+    border-color var(--motion-base) var(--easing-standard),
+    background var(--motion-base) var(--easing-standard),
+    color var(--motion-base) var(--easing-standard);
+  align-items: center;
+  gap: 8px;
+  border-radius: 999px;
+  box-shadow: inset 0 1px 0 color-mix(in srgb, var(--color-white) 10%, transparent);
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.HomeWrap .showcase-card:hover .showcase-card__cta,
+.HomeWrap .showcase-card:focus-within .showcase-card__cta {
+  color: var(--home-text-surface);
+  background:
+    linear-gradient(180deg, color-mix(in srgb, var(--color-white) 12%, transparent), transparent),
+    color-mix(in srgb, var(--color-white) 6%, transparent);
+  transform: translateX(2px);
+  border-color: var(--home-border-accent-hover);
+}
+
+@media (width <= 768px) {
+  .HomeWrap .home-showcase {
+    padding-top: 64px;
+  }
+
+  .HomeWrap .home-showcase__grid {
+    gap: 14px;
+  }
+
+  .HomeWrap .showcase-card {
+    padding: 22px 20px 18px;
+  }
+
+  .HomeWrap .showcase-card__top {
+    gap: 10px;
+  }
+
+  .HomeWrap .showcase-card__badge {
+    width: 46px;
+    height: 46px;
+    border-radius: var(--radius-md);
+    font-size: 18px;
+  }
+
+  .HomeWrap .showcase-card__body {
+    margin-top: 2px;
+  }
+
+  .HomeWrap .showcase-card__desc {
+    max-width: none;
+    margin-top: var(--space-2);
+    line-height: 1.68;
+  }
+
+  .HomeWrap .showcase-card__bottom {
+    gap: 10px;
+  }
+
+  .HomeWrap .showcase-card__summary {
+    width: 100%;
+  }
+
+  .HomeWrap .showcase-card__mode {
+    font-size: 11px;
+  }
+
+  .HomeWrap .showcase-card__tag.ui-tag {
+    padding: 5px 10px;
+  }
+
+  .HomeWrap .showcase-card__cta {
+    width: 100%;
+    min-height: 42px;
+    justify-content: center;
+    border-radius: var(--radius-md);
+    font-size: 12px;
+    letter-spacing: 0.1em;
+  }
+}
+
+@media (width <= 480px) {
+  .HomeWrap .home-showcase {
+    padding-top: 52px;
+  }
+
+  .HomeWrap .home-showcase__grid {
+    gap: 12px;
+  }
+
+  .HomeWrap .showcase-card {
+    padding: 18px 16px 16px;
+  }
+
+  .HomeWrap .showcase-card__badge {
+    width: 42px;
+    height: 42px;
+    border-radius: var(--radius-sm);
+    font-size: 16px;
+  }
+
+  .HomeWrap .showcase-card__cta {
+    min-height: 40px;
+    border-radius: var(--radius-sm);
+  }
+}

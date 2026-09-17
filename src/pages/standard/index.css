@@ -48,7 +48,7 @@
 
 .standard-card__item:hover {
   color: var(--home-text-strong);
-  background: var(--white-alpha-06);
+  background: color-mix(in srgb, var(--color-white) 6%, transparent);
 }
 
 .standard-card__stat {

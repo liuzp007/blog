@@ -481,7 +481,7 @@ const communicationMethods = [
     direction: '↓',
     color: 'var(--color-code-indigo)',
     background: 'var(--code-page-tone-info)',
-    border: 'var(--code-indigo-alpha-40)'
+    border: 'color-mix(in srgb, var(--color-indigo-500) 40%, transparent)'
   },
   {
     name: '$emit',
@@ -489,15 +489,15 @@ const communicationMethods = [
     direction: '↑',
     color: 'var(--color-code-green)',
     background: 'var(--code-page-tone-success)',
-    border: 'var(--code-green-alpha-50)'
+    border: 'color-mix(in srgb, var(--color-code-green) 50%, transparent)'
   },
   {
     name: 'v-model',
     desc: '双向数据绑定',
     direction: '⇅',
     color: 'var(--color-code-violet)',
-    background: 'var(--code-violet-alpha-10)',
-    border: 'var(--code-violet-alpha-40)'
+    background: 'color-mix(in srgb, var(--color-code-violet) 10%, transparent)',
+    border: 'color-mix(in srgb, var(--color-code-violet) 40%, transparent)'
   },
   {
     name: '$refs',
@@ -537,8 +537,8 @@ export default function Vue2CommunicationPage() {
         style={{
           marginTop: '2rem',
           padding: '1.5rem',
-          background: 'var(--code-indigo-alpha-10)',
-          border: '1px solid var(--code-indigo-alpha-30)',
+          background: 'color-mix(in srgb, var(--color-indigo-500) 10%, transparent)',
+          border: '1px solid color-mix(in srgb, var(--color-indigo-500) 30%, transparent)',
           borderRadius: '12px',
           position: 'relative',
           zIndex: 3
@@ -566,7 +566,12 @@ export default function Vue2CommunicationPage() {
             >
               <div style={{ fontSize: '1.5rem', marginBottom: '0.25rem' }}>{method.direction}</div>
               <h4 style={{ color: method.color, marginBottom: '0.25rem' }}>{method.name}</h4>
-              <div style={{ fontSize: '0.75rem', color: 'var(--white-alpha-70)' }}>
+              <div
+                style={{
+                  fontSize: '0.75rem',
+                  color: 'color-mix(in srgb, var(--color-white) 70%, transparent)'
+                }}
+              >
                 {method.desc}
               </div>
             </div>
@@ -579,8 +584,8 @@ export default function Vue2CommunicationPage() {
         style={{
           marginTop: '2rem',
           padding: '1.5rem',
-          background: 'var(--code-green-alpha-10)',
-          border: '1px solid var(--code-green-alpha-30)',
+          background: 'color-mix(in srgb, var(--color-code-green) 10%, transparent)',
+          border: '1px solid color-mix(in srgb, var(--color-code-green) 30%, transparent)',
           borderRadius: '12px',
           position: 'relative',
           zIndex: 3
@@ -601,16 +606,16 @@ export default function Vue2CommunicationPage() {
           <div
             style={{
               padding: '1rem',
-              background: 'var(--code-indigo-alpha-10)',
+              background: 'color-mix(in srgb, var(--color-indigo-500) 10%, transparent)',
               borderRadius: '8px',
-              border: '2px solid var(--code-indigo-alpha-30)'
+              border: '2px solid color-mix(in srgb, var(--color-indigo-500) 30%, transparent)'
             }}
           >
             <h4 style={{ color: 'var(--color-code-indigo)', marginBottom: '0.75rem' }}>父组件</h4>
             <div
               style={{
                 fontSize: '0.875rem',
-                color: 'var(--white-alpha-60)',
+                color: 'color-mix(in srgb, var(--color-white) 60%, transparent)',
                 marginBottom: '0.5rem'
               }}
             >
@@ -625,7 +630,7 @@ export default function Vue2CommunicationPage() {
                 width: '100%',
                 padding: '0.5rem',
                 background: 'var(--code-page-surface-panel)',
-                border: '1px solid var(--code-indigo-alpha-30)',
+                border: '1px solid color-mix(in srgb, var(--color-indigo-500) 30%, transparent)',
                 borderRadius: '6px',
                 color: 'white',
                 marginBottom: '0.5rem',
@@ -643,16 +648,16 @@ export default function Vue2CommunicationPage() {
           <div
             style={{
               padding: '1rem',
-              background: 'var(--code-red-alpha-10)',
+              background: 'color-mix(in srgb, var(--color-danger-strong) 10%, transparent)',
               borderRadius: '8px',
-              border: '2px solid var(--code-red-alpha-30)'
+              border: '2px solid color-mix(in srgb, var(--color-danger-strong) 30%, transparent)'
             }}
           >
             <h4 style={{ color: 'var(--color-code-red)', marginBottom: '0.75rem' }}>子组件</h4>
             <div
               style={{
                 fontSize: '0.875rem',
-                color: 'var(--white-alpha-60)',
+                color: 'color-mix(in srgb, var(--color-white) 60%, transparent)',
                 marginBottom: '0.5rem'
               }}
             >
@@ -663,7 +668,7 @@ export default function Vue2CommunicationPage() {
               style={{
                 padding: '0.5rem 1rem',
                 background:
-                  'linear-gradient(135deg, var(--color-code-red) 0%, var(--button-danger-bg-hover) 100%)',
+                  'linear-gradient(135deg, var(--color-code-red) 0%, var(--color-danger-strong) 100%)',
                 border: 'none',
                 borderRadius: '6px',
                 color: 'white',
@@ -682,8 +687,8 @@ export default function Vue2CommunicationPage() {
         style={{
           marginTop: '2rem',
           padding: '1.5rem',
-          background: 'var(--code-violet-alpha-10)',
-          border: '1px solid var(--code-violet-alpha-30)',
+          background: 'color-mix(in srgb, var(--color-code-violet) 10%, transparent)',
+          border: '1px solid color-mix(in srgb, var(--color-code-violet) 30%, transparent)',
           borderRadius: '12px',
           position: 'relative',
           zIndex: 3
@@ -692,7 +697,12 @@ export default function Vue2CommunicationPage() {
         <h3 style={{ color: 'var(--color-code-violet)', marginBottom: '1rem' }}>
           🌳 provide / inject 跨级通信
         </h3>
-        <p style={{ color: 'var(--white-alpha-70)', marginBottom: '1rem' }}>
+        <p
+          style={{
+            color: 'color-mix(in srgb, var(--color-white) 70%, transparent)',
+            marginBottom: '1rem'
+          }}
+        >
           祖先组件提供数据，所有后代组件都可以注入使用
         </p>
 
@@ -706,7 +716,7 @@ export default function Vue2CommunicationPage() {
           <div
             style={{
               padding: '1rem',
-              background: 'var(--code-indigo-alpha-05)',
+              background: 'color-mix(in srgb, var(--color-indigo-500) 5%, transparent)',
               borderRadius: '8px'
             }}
           >
@@ -717,7 +727,7 @@ export default function Vue2CommunicationPage() {
               onClick={() => setSharedData('共享数据: ' + Date.now().toLocaleTimeString())}
               style={{
                 padding: '0.5rem 1rem',
-                background: 'var(--code-indigo-alpha-20)',
+                background: 'color-mix(in srgb, var(--color-indigo-500) 20%, transparent)',
                 border: 'none',
                 borderRadius: '6px',
                 color: 'white',
@@ -731,7 +741,7 @@ export default function Vue2CommunicationPage() {
           <div
             style={{
               padding: '1rem',
-              background: 'var(--code-green-alpha-05)',
+              background: 'color-mix(in srgb, var(--color-code-green) 5%, transparent)',
               borderRadius: '8px'
             }}
           >
@@ -757,8 +767,8 @@ export default function Vue2CommunicationPage() {
         style={{
           marginTop: '2rem',
           padding: '1.5rem',
-          background: 'var(--code-red-alpha-10)',
-          border: '1px solid var(--code-red-alpha-30)',
+          background: 'color-mix(in srgb, var(--color-danger-strong) 10%, transparent)',
+          border: '1px solid color-mix(in srgb, var(--color-danger-strong) 30%, transparent)',
           borderRadius: '12px',
           position: 'relative',
           zIndex: 3
@@ -768,7 +778,12 @@ export default function Vue2CommunicationPage() {
           ⚠️ 通信方式选择指南
         </h3>
         <ul
-          style={{ color: 'var(--white-alpha-80)', lineHeight: 1.8, listStyle: 'none', padding: 0 }}
+          style={{
+            color: 'color-mix(in srgb, var(--color-white) 80%, transparent)',
+            lineHeight: 1.8,
+            listStyle: 'none',
+            padding: 0
+          }}
         >
           <li style={{ marginBottom: '0.5rem' }}>
             • <strong>父子通信</strong>：优先使用 Props / Events

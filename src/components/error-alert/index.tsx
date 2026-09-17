@@ -91,13 +91,15 @@ export const LoadingErrorHandler = memo(function LoadingErrorHandler({
           {Array.from({ length: skeletonLines }).map((_, index) => (
             <Skeleton key={index} active paragraph={{ rows: 1 }} className="mb-4" />
           ))}
-          <div className="text-center text-[var(--white-alpha-40)]">{loadingText}</div>
+          <div className="text-center text-[color-mix(in srgb, var(--color-white) 40%, transparent)]">
+            {loadingText}
+          </div>
         </div>
       )
     }
     return (
       <div className="flex items-center justify-center p-8">
-        <div className="flex items-center gap-2 text-[var(--white-alpha-60)]">
+        <div className="flex items-center gap-2 text-[color-mix(in srgb, var(--color-white) 60%, transparent)]">
           <div className="h-4 w-4 animate-spin rounded-full border-2 border-[var(--color-accent-cyan)] border-t-transparent" />
           {loadingText}
         </div>

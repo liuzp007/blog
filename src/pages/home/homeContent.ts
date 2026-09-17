@@ -24,12 +24,6 @@ export interface HomeTimelineItem {
   desc: string
 }
 
-export interface HomeActionLink {
-  label: string
-  desc: string
-  path: string
-}
-
 export const HOME_EXPERIMENTS: HomeExperimentCard[] = [
   {
     eyebrow: '空间',
@@ -133,28 +127,5 @@ export const HOME_SHOWCASES: HomeShowcaseCard[] = [
     mode: '深海探索',
     path: '/showcase-vault',
     accent: 'mint'
-  }
-]
-
-export const HOME_CONTACT_ACTIONS: HomeActionLink[] = [
-  {
-    label: '进入博客',
-    desc: '看最新长文与专题内容',
-    path: '/blog'
-  },
-  {
-    label: '浏览代码',
-    desc: '查看技术目录与知识索引',
-    path: '/main'
-  },
-  {
-    label: '关于我',
-    desc: '了解经历、能力与合作方式',
-    path: '/aboutme'
-  },
-  {
-    label: '探索足迹',
-    desc: '体验空间实验与 3D 场景',
-    path: '/footmark'
   }
 ]

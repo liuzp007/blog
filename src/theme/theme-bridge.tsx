@@ -1,12 +1,8 @@
 import { useEffect } from 'react'
-import { useAppSelector } from '@/store'
-import { USER_PREFERENCE_THEME_DATASET } from '@/store/userPreferences'
+import useUserPreferences, { USER_PREFERENCE_THEME_DATASET } from '@/hooks/useUserPreferences'
 
 export default function ThemeBridge(): null {
-  const theme = useAppSelector(state => state.userPreferences.theme)
-  const fontSize = useAppSelector(state => state.userPreferences.fontSize)
-  const reducedMotion = useAppSelector(state => state.userPreferences.reducedMotion)
-  const highContrast = useAppSelector(state => state.userPreferences.highContrast)
+  const { theme, fontSize, reducedMotion, highContrast } = useUserPreferences()
 
   useEffect(() => {
     const root = document.documentElement

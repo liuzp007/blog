@@ -124,7 +124,7 @@
 
 .article-card.media-card {
   /* --- 通用媒体卡片层 --- */
-  --media-card-border: var(--white-alpha-08);
+  --media-card-border: color-mix(in srgb, var(--raw-white) 8%, transparent);
   --media-card-bg:
     linear-gradient(
       145deg,
@@ -132,7 +132,7 @@
       color-mix(in srgb, var(--surface-card-hover) 72%, transparent)
     ),
     color-mix(in srgb, var(--surface-card) 62%, transparent);
-  --media-card-shadow: 0 20px 40px var(--black-alpha-28);
+  --media-card-shadow: 0 20px 40px color-mix(in srgb, var(--raw-black) 28%, transparent);
   --media-card-overlay:
     linear-gradient(
       130deg,
@@ -145,5 +145,5 @@
       transparent 40%
     );
   --media-card-border-hover: color-mix(in srgb, var(--accent-gold) 34%, transparent);
-  --media-card-shadow-hover: 0 26px 52px var(--black-alpha-37);
+  --media-card-shadow-hover: 0 26px 52px color-mix(in srgb, var(--raw-black) 37%, transparent);
 }

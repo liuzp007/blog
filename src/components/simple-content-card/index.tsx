@@ -23,11 +23,11 @@ interface SimpleContentCardProps {
 
 const DIFFICULTY_CLASSES = {
   beginner:
-    'simple-content-card__tag simple-content-card__difficulty simple-content-card__difficulty--beginner inline-flex min-h-[var(--tag-height)] items-center justify-center gap-[var(--space-1)] rounded-[var(--tag-radius)] border border-[var(--tag-success-border)] bg-[var(--tag-success-bg)] px-[var(--tag-padding-inline)] text-[var(--tag-font-size)] font-[var(--tag-font-weight)] leading-none whitespace-nowrap text-[var(--tag-success-text)]',
+    'simple-content-card__tag simple-content-card__difficulty simple-content-card__difficulty--beginner inline-flex min-h-[var(--control-height-md)] items-center justify-center gap-[var(--space-1)] rounded-[var(--radius-pill)] border border-[var(--success-alpha-30)] bg-[var(--success-alpha-20)] px-[var(--space-4)] text-[var(--text-caption-size)] font-[var(--font-weight-medium)] leading-none whitespace-nowrap text-[var(--color-success-strong)]',
   intermediate:
-    'simple-content-card__tag simple-content-card__difficulty simple-content-card__difficulty--intermediate inline-flex min-h-[var(--tag-height)] items-center justify-center gap-[var(--space-1)] rounded-[var(--tag-radius)] border border-[var(--tag-warning-border)] bg-[var(--tag-warning-bg)] px-[var(--tag-padding-inline)] text-[var(--tag-font-size)] font-[var(--tag-font-weight)] leading-none whitespace-nowrap text-[var(--tag-warning-text)]',
+    'simple-content-card__tag simple-content-card__difficulty simple-content-card__difficulty--intermediate inline-flex min-h-[var(--control-height-md)] items-center justify-center gap-[var(--space-1)] rounded-[var(--radius-pill)] border border-[var(--warning-alpha-30)] bg-[var(--warning-alpha-20)] px-[var(--space-4)] text-[var(--text-caption-size)] font-[var(--font-weight-medium)] leading-none whitespace-nowrap text-[var(--color-warning-strong)]',
   advanced:
-    'simple-content-card__tag simple-content-card__difficulty simple-content-card__difficulty--advanced inline-flex min-h-[var(--tag-height)] items-center justify-center gap-[var(--space-1)] rounded-[var(--tag-radius)] border border-[var(--tag-danger-border)] bg-[var(--tag-danger-bg)] px-[var(--tag-padding-inline)] text-[var(--tag-font-size)] font-[var(--tag-font-weight)] leading-none whitespace-nowrap text-[var(--tag-danger-text)]'
+    'simple-content-card__tag simple-content-card__difficulty simple-content-card__difficulty--advanced inline-flex min-h-[var(--control-height-md)] items-center justify-center gap-[var(--space-1)] rounded-[var(--radius-pill)] border border-[var(--danger-soft-alpha-30)] bg-[var(--danger-soft-alpha-20)] px-[var(--space-4)] text-[var(--text-caption-size)] font-[var(--font-weight-medium)] leading-none whitespace-nowrap text-[var(--color-danger-strong)]'
 } as const
 
 const DIFFICULTY_TEXT = { beginner: '初级', intermediate: '中级', advanced: '高级' } as const
@@ -36,9 +36,9 @@ export default memo(function SimpleContentCard({ item, onClick }: SimpleContentC
   const handleClick = useCallback(() => onClick?.(item), [item, onClick])
 
   const cardClassName = clsx(
-    'simple-content-card mb-[var(--space-5)] overflow-hidden rounded-[var(--card-radius)] border border-[var(--card-border)] bg-[var(--card-bg)] transition-[background-color,border-color,transform,box-shadow] duration-200',
+    'simple-content-card mb-[var(--space-5)] overflow-hidden rounded-[var(--radius-lg)] border border-[var(--border-subtle)] bg-[var(--surface-card)] transition-[background-color,border-color,transform,box-shadow] duration-200',
     onClick &&
-      'simple-content-card--clickable cursor-pointer hover:-translate-y-0.5 hover:border-[var(--card-border-strong)] hover:bg-[var(--card-bg-hover)] hover:shadow-[var(--card-shadow-hover)]'
+      'simple-content-card--clickable cursor-pointer hover:-translate-y-0.5 hover:border-[var(--border-strong)] hover:bg-[var(--surface-card-hover)] hover:shadow-[var(--shadow-md)]'
   )
 
   return (
@@ -71,7 +71,7 @@ export default memo(function SimpleContentCard({ item, onClick }: SimpleContentC
             {item.tags.map(tag => (
               <span
                 key={tag}
-                className="simple-content-card__tag inline-flex min-h-[var(--tag-height)] items-center justify-center rounded-[var(--tag-radius)] border border-[var(--tag-border)] bg-[var(--tag-bg)] px-[var(--tag-padding-inline)] text-[var(--tag-font-size)] font-[var(--tag-font-weight)] leading-none whitespace-nowrap text-[var(--tag-text)]"
+                className="simple-content-card__tag inline-flex min-h-[var(--control-height-md)] items-center justify-center rounded-[var(--radius-pill)] border border-[color-mix(in srgb, var(--color-white) 12%, transparent)] bg-[color-mix(in srgb, var(--color-white) 6%, transparent)] px-[var(--space-4)] text-[var(--text-caption-size)] font-[var(--font-weight-medium)] leading-none whitespace-nowrap text-[var(--color-text-secondary)]"
               >
                 {tag}
               </span>

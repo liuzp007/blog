@@ -281,8 +281,8 @@ export default function ReactivityPage() {
         style={{
           marginTop: '2rem',
           padding: '1.5rem',
-          background: 'var(--code-indigo-alpha-10)',
-          border: '1px solid var(--code-indigo-alpha-30)',
+          background: 'color-mix(in srgb, var(--color-indigo-500) 10%, transparent)',
+          border: '1px solid color-mix(in srgb, var(--color-indigo-500) 30%, transparent)',
           borderRadius: '12px',
           position: 'relative',
           zIndex: 3
@@ -300,13 +300,18 @@ export default function ReactivityPage() {
           <div
             style={{
               padding: '1rem',
-              background: 'var(--code-indigo-alpha-05)',
+              background: 'color-mix(in srgb, var(--color-indigo-500) 5%, transparent)',
               borderRadius: '8px',
               textAlign: 'center'
             }}
           >
             <div style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>📡 依赖收集</div>
-            <div style={{ fontSize: '0.875rem', color: 'var(--white-alpha-70)' }}>
+            <div
+              style={{
+                fontSize: '0.875rem',
+                color: 'color-mix(in srgb, var(--color-white) 70%, transparent)'
+              }}
+            >
               Getter 收集 Watcher
             </div>
           </div>
@@ -314,13 +319,18 @@ export default function ReactivityPage() {
           <div
             style={{
               padding: '1rem',
-              background: 'var(--code-green-alpha-05)',
+              background: 'color-mix(in srgb, var(--color-code-green) 5%, transparent)',
               borderRadius: '8px',
               textAlign: 'center'
             }}
           >
             <div style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>📢 派发更新</div>
-            <div style={{ fontSize: '0.875rem', color: 'var(--white-alpha-70)' }}>
+            <div
+              style={{
+                fontSize: '0.875rem',
+                color: 'color-mix(in srgb, var(--color-white) 70%, transparent)'
+              }}
+            >
               Setter 通知依赖
             </div>
           </div>
@@ -328,13 +338,18 @@ export default function ReactivityPage() {
           <div
             style={{
               padding: '1rem',
-              background: 'var(--code-red-alpha-05)',
+              background: 'color-mix(in srgb, var(--color-danger-strong) 5%, transparent)',
               borderRadius: '8px',
               textAlign: 'center'
             }}
           >
             <div style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>👀 观察者</div>
-            <div style={{ fontSize: '0.875rem', color: 'var(--white-alpha-70)' }}>
+            <div
+              style={{
+                fontSize: '0.875rem',
+                color: 'color-mix(in srgb, var(--color-white) 70%, transparent)'
+              }}
+            >
               Watcher 监听变化
             </div>
           </div>
@@ -346,8 +361,8 @@ export default function ReactivityPage() {
         style={{
           marginTop: '2rem',
           padding: '1.5rem',
-          background: 'var(--code-violet-alpha-10)',
-          border: '1px solid var(--code-violet-alpha-30)',
+          background: 'color-mix(in srgb, var(--color-code-violet) 10%, transparent)',
+          border: '1px solid color-mix(in srgb, var(--color-code-violet) 30%, transparent)',
           borderRadius: '12px',
           position: 'relative',
           zIndex: 3
@@ -367,13 +382,19 @@ export default function ReactivityPage() {
           <div
             style={{
               padding: '1rem',
-              background: 'var(--code-indigo-alpha-05)',
+              background: 'color-mix(in srgb, var(--color-indigo-500) 5%, transparent)',
               borderRadius: '8px',
-              border: '1px solid var(--code-indigo-alpha-20)'
+              border: '1px solid color-mix(in srgb, var(--color-indigo-500) 20%, transparent)'
             }}
           >
             <h4 style={{ color: 'var(--color-code-indigo)', marginBottom: '0.75rem' }}>Vue 2</h4>
-            <ul style={{ color: 'var(--white-alpha-80)', fontSize: '0.875rem', lineHeight: 1.8 }}>
+            <ul
+              style={{
+                color: 'color-mix(in srgb, var(--color-white) 80%, transparent)',
+                fontSize: '0.875rem',
+                lineHeight: 1.8
+              }}
+            >
               <li>Object.defineProperty</li>
               <li>初始化时遍历所有属性</li>
               <li>无法检测属性添加/删除</li>
@@ -385,13 +406,19 @@ export default function ReactivityPage() {
           <div
             style={{
               padding: '1rem',
-              background: 'var(--code-green-alpha-05)',
+              background: 'color-mix(in srgb, var(--color-code-green) 5%, transparent)',
               borderRadius: '8px',
-              border: '1px solid var(--code-green-alpha-20)'
+              border: '1px solid color-mix(in srgb, var(--color-code-green) 20%, transparent)'
             }}
           >
             <h4 style={{ color: 'var(--color-code-green)', marginBottom: '0.75rem' }}>Vue 3</h4>
-            <ul style={{ color: 'var(--white-alpha-80)', fontSize: '0.875rem', lineHeight: 1.8 }}>
+            <ul
+              style={{
+                color: 'color-mix(in srgb, var(--color-white) 80%, transparent)',
+                fontSize: '0.875rem',
+                lineHeight: 1.8
+              }}
+            >
               <li>ES6 Proxy</li>
               <li>懒代理，访问时才劫持</li>
               <li>支持所有数据类型</li>
@@ -407,15 +434,20 @@ export default function ReactivityPage() {
         style={{
           marginTop: '2rem',
           padding: '1.5rem',
-          background: 'var(--code-green-alpha-10)',
-          border: '1px solid var(--code-green-alpha-30)',
+          background: 'color-mix(in srgb, var(--color-code-green) 10%, transparent)',
+          border: '1px solid color-mix(in srgb, var(--color-code-green) 30%, transparent)',
           borderRadius: '12px',
           position: 'relative',
           zIndex: 3
         }}
       >
         <h3 style={{ color: 'var(--color-code-green)', marginBottom: '1rem' }}>🎮 响应式演示</h3>
-        <p style={{ color: 'var(--white-alpha-70)', marginBottom: '1rem' }}>
+        <p
+          style={{
+            color: 'color-mix(in srgb, var(--color-white) 70%, transparent)',
+            marginBottom: '1rem'
+          }}
+        >
           模拟 Vue 的响应式更新机制
         </p>
 
@@ -429,7 +461,7 @@ export default function ReactivityPage() {
           <div
             style={{
               padding: '1rem',
-              background: 'var(--code-indigo-alpha-05)',
+              background: 'color-mix(in srgb, var(--color-indigo-500) 5%, transparent)',
               borderRadius: '8px',
               textAlign: 'center'
             }}
@@ -437,7 +469,7 @@ export default function ReactivityPage() {
             <div
               style={{
                 fontSize: '0.875rem',
-                color: 'var(--white-alpha-60)',
+                color: 'color-mix(in srgb, var(--color-white) 60%, transparent)',
                 marginBottom: '0.5rem'
               }}
             >
@@ -469,7 +501,7 @@ export default function ReactivityPage() {
           <div
             style={{
               padding: '1rem',
-              background: 'var(--code-red-alpha-05)',
+              background: 'color-mix(in srgb, var(--color-danger-strong) 5%, transparent)',
               borderRadius: '8px',
               textAlign: 'center'
             }}
@@ -477,7 +509,7 @@ export default function ReactivityPage() {
             <div
               style={{
                 fontSize: '0.875rem',
-                color: 'var(--white-alpha-60)',
+                color: 'color-mix(in srgb, var(--color-white) 60%, transparent)',
                 marginBottom: '0.5rem'
               }}
             >
@@ -513,7 +545,7 @@ export default function ReactivityPage() {
             <div
               style={{
                 fontSize: '0.875rem',
-                color: 'var(--white-alpha-60)',
+                color: 'color-mix(in srgb, var(--color-white) 60%, transparent)',
                 marginBottom: '0.5rem'
               }}
             >
@@ -525,8 +557,8 @@ export default function ReactivityPage() {
                 padding: '0.5rem 1rem',
                 background:
                   dependencyTree.length > 0
-                    ? 'var(--code-green-alpha-30)'
-                    : 'var(--code-violet-alpha-30)',
+                    ? 'color-mix(in srgb, var(--color-code-green) 30%, transparent)'
+                    : 'color-mix(in srgb, var(--color-code-violet) 30%, transparent)',
                 border: 'none',
                 borderRadius: '6px',
                 color: 'white',
@@ -595,8 +627,8 @@ state.count++  // 触发 get 和 set`}</code>
         style={{
           marginTop: '2rem',
           padding: '1.5rem',
-          background: 'var(--code-red-alpha-10)',
-          border: '1px solid var(--code-red-alpha-30)',
+          background: 'color-mix(in srgb, var(--color-danger-strong) 10%, transparent)',
+          border: '1px solid color-mix(in srgb, var(--color-danger-strong) 30%, transparent)',
           borderRadius: '12px',
           position: 'relative',
           zIndex: 3
@@ -604,7 +636,12 @@ state.count++  // 触发 get 和 set`}</code>
       >
         <h3 style={{ color: 'var(--color-code-red)', marginBottom: '1rem' }}>⚠️ 注意事项</h3>
         <ul
-          style={{ color: 'var(--white-alpha-80)', lineHeight: 1.8, listStyle: 'none', padding: 0 }}
+          style={{
+            color: 'color-mix(in srgb, var(--color-white) 80%, transparent)',
+            lineHeight: 1.8,
+            listStyle: 'none',
+            padding: 0
+          }}
         >
           <li style={{ marginBottom: '0.5rem' }}>
             • <strong>ref 需要 .value</strong>访问，模板中自动解包

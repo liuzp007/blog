@@ -10,6 +10,21 @@
   <url><loc>https://example.com/blog-detail?slug=hello-world</loc><lastmod>2026-03-23</lastmod></url>
   <url><loc>https://example.com/blog-detail?slug=r3f-performance-postprocessing</loc><lastmod>2026-03-23</lastmod></url>
   <url><loc>https://example.com/blog-detail?slug=r3f-tips</loc><lastmod>2026-03-22</lastmod></url>
+  <url><loc>https://example.com/blog-detail?slug=react-custom-hooks</loc><lastmod>2026-04-26</lastmod></url>
+  <url><loc>https://example.com/blog-detail?slug=react-did-mount</loc><lastmod>2026-04-26</lastmod></url>
+  <url><loc>https://example.com/blog-detail?slug=react-diff</loc><lastmod>2026-04-26</lastmod></url>
+  <url><loc>https://example.com/blog-detail?slug=react-memo</loc><lastmod>2026-04-26</lastmod></url>
+  <url><loc>https://example.com/blog-detail?slug=react-render</loc><lastmod>2026-04-26</lastmod></url>
+  <url><loc>https://example.com/blog-detail?slug=react-rendering</loc><lastmod>2026-04-26</lastmod></url>
+  <url><loc>https://example.com/blog-detail?slug=react-set-state</loc><lastmod>2026-04-26</lastmod></url>
+  <url><loc>https://example.com/blog-detail?slug=react-strict-mode</loc><lastmod>2026-04-26</lastmod></url>
+  <url><loc>https://example.com/blog-detail?slug=react-use-layout-effect</loc><lastmod>2026-04-26</lastmod></url>
+  <url><loc>https://example.com/blog-detail?slug=react-use-callback</loc><lastmod>2026-04-26</lastmod></url>
+  <url><loc>https://example.com/blog-detail?slug=react-use-effect</loc><lastmod>2026-04-26</lastmod></url>
+  <url><loc>https://example.com/blog-detail?slug=react-use-imperative-handle</loc><lastmod>2026-04-26</lastmod></url>
+  <url><loc>https://example.com/blog-detail?slug=react-use-memo</loc><lastmod>2026-04-26</lastmod></url>
+  <url><loc>https://example.com/blog-detail?slug=react-use-ref</loc><lastmod>2026-04-26</lastmod></url>
+  <url><loc>https://example.com/blog-detail?slug=react-will-mount</loc><lastmod>2026-04-26</lastmod></url>
   <url><loc>https://example.com/blog-detail?slug=react18-typescript-vite-conventions</loc><lastmod>2026-03-23</lastmod></url>
   <url><loc>https://example.com/blog-detail?slug=seo-rss-site-suite</loc><lastmod>2026-03-23</lastmod></url>
   <url><loc>https://example.com/blog-detail?slug=vite-build-output-optimization</loc><lastmod>2026-06-12</lastmod></url>
@@ -34,5 +49,6 @@
   <url><loc>https://example.com/blog-detail?slug=webpack-federation-architecture</loc><lastmod>2026-03-24</lastmod></url>
   <url><loc>https://example.com/blog-detail?slug=webpack-hmr-dev-experience</loc><lastmod>2026-03-24</lastmod></url>
   <url><loc>https://example.com/blog-detail?slug=webpack-loader-plugin-boundary</loc><lastmod>2026-03-24</lastmod></url>
+  <url><loc>https://example.com/blog-detail?slug=webpack-module-bundler</loc><lastmod>2026-04-26</lastmod></url>
   <url><loc>https://example.com/blog-detail?slug=webpack-module-graph-runtime</loc><lastmod>2026-03-24</lastmod></url>
 </urlset>

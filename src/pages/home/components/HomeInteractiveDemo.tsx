@@ -1,4 +1,5 @@
 import React, { startTransition, useEffect, useRef, useState } from 'react'
+import { Button } from 'antd'
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
@@ -128,8 +129,10 @@ export default function HomeInteractiveDemo() {
     }
 
     const onClick = (event: MouseEvent) => {
-      const x = event.clientX - rect.left
-      const y = event.clientY - rect.top
+      perturb(event.clientX - rect.left, event.clientY - rect.top)
+    }
+
+    const perturb = (x: number, y: number) => {
       nodes.forEach(n => {
         const dx = n.x - x
         const dy = n.y - y
@@ -138,6 +141,11 @@ export default function HomeInteractiveDemo() {
         n.vx += (dx / distance) * force
         n.vy += (dy / distance) * force
       })
+    }
+
+    const onAccessiblePerturb = () => {
+      resize()
+      perturb(width / 2, height / 2)
     }
 
     const draw = () => {
@@ -219,6 +227,7 @@ export default function HomeInteractiveDemo() {
     canvas.addEventListener('mouseleave', onLeave)
     canvas.addEventListener('mouseenter', resize, { passive: true })
     canvas.addEventListener('click', onClick, { passive: true })
+    canvas.addEventListener('home-demo:perturb', onAccessiblePerturb)
     window.addEventListener('resize', resize)
     window.addEventListener('scroll', resize, { passive: true })
     draw()
@@ -229,6 +238,7 @@ export default function HomeInteractiveDemo() {
       canvas.removeEventListener('mouseleave', onLeave)
       canvas.removeEventListener('mouseenter', resize)
       canvas.removeEventListener('click', onClick)
+      canvas.removeEventListener('home-demo:perturb', onAccessiblePerturb)
       window.removeEventListener('resize', resize)
       window.removeEventListener('scroll', resize)
     }
@@ -244,9 +254,18 @@ export default function HomeInteractiveDemo() {
           <span className="demo-btn maximize home-demo__dot home-demo__dot--maximize" />
         </div>
       </div>
-      <canvas ref={canvasRef} className="home-demo__canvas" />
+      <canvas ref={canvasRef} className="home-demo__canvas" aria-hidden="true" />
       <div className="demo-footer home-demo__footer flex flex-wrap justify-between gap-[10px]">
-        <span>粒子数量: {stats.nodes}</span>
+        <div className="flex flex-wrap items-center gap-[10px]">
+          <span>粒子数量: {stats.nodes}</span>
+          <Button
+            className="home-demo__perturb"
+            size="small"
+            onClick={() => canvasRef.current?.dispatchEvent(new CustomEvent('home-demo:perturb'))}
+          >
+            扰动场域
+          </Button>
+        </div>
         <span>
           {stats.links} 条连线 · {stats.fps} 帧
         </span>

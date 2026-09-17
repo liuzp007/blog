@@ -13,31 +13,31 @@
 
 ## 当前结构
 
-主题层已经拆成 5 层：
+样式层收敛为 5 层：
 
-1. `src/styles/tokens/base.css`
-原始设计 token，只放基础色板、透明度、字号、字重、圆角、阴影、间距、动效。
-
-2. `src/styles/tokens/semantic.css`
-语义 token 和组件 token。
+1. `src/styles/tokens.css`
+设计 token，包含基础值、语义 token 与组件 token。
 例如：`--color-page-bg`、`--button-primary-bg`、`--card-radius`、`--heading-1-size`。
 
-3. `src/styles/themes/dark.css`
+2. `src/styles/base.css`
+reset、基础元素、排版、滚动条、焦点与全局行为基线。
+
+3. `src/styles/components.css`
+共享组件样式与 `.ui-*` 语义组件类。
+
+4. `src/styles/themes/dark.css`
 默认暗色主题和 `cyberpunk / dark / minimal / vibrant` 主题覆盖。
 
-4. `src/styles/themes/light.css`
+5. `src/styles/themes/light.css`
 浅色主题覆盖。
 
-5. `src/styles/themes/accessibility.css`
-高对比和减少动效覆盖。
+`src/styles/themes/accessibility.css` 负责高对比和减少动效覆盖；页面 palette 由实际页面或组件按需导入。
 
 全局入口文件：
 
-- `src/styles/theme.css`
-- `src/styles/palettes.css`
-- `src/styles/primitives.css`
+- `src/styles/tokens.css`
+- `src/styles/base.css`
 - `src/styles/components.css`
-- `src/styles/global-ui.css`
 - `src/styles/antd-overrides.css`
 
 主题桥接文件：
@@ -52,8 +52,7 @@
 
 只有下面这些核心入口文件允许出现 `:root`：
 
-- `src/styles/tokens/base.css`
-- `src/styles/tokens/semantic.css`
+- `src/styles/tokens.css`
 - `src/styles/themes/dark.css`
 - `src/styles/themes/light.css`
 - `src/styles/themes/accessibility.css`
@@ -62,23 +61,19 @@
 
 - `src/pages/**/*.scss`
 - `src/components/**/*.scss`
+- `src/styles/base.css`
 - `src/styles/components.css`
-- `src/styles/global-ui.css`
-- `src/styles/primitives.css`
-- `src/styles/theme.css`
-- `src/styles/palettes.css`
 - `src/styles/themes/*-pages.css`
 - `src/styles/themes/content-features.css`
 - `src/styles/themes/code-pages.css`
 - `src/styles/themes/legacy-code.css`
-- `src/styles/themes/legacy-shell.css`
 
 ### 全局 token 权限
 
 全局 token 只能在 token 层和 theme 层定义，不得散落到页面和组件里。
 
-- `base.css` 只允许定义原始值层，例如 `--raw-*`
-- `semantic.css` 只允许定义语义 token、组件 token 与兼容别名
+- `tokens.css` 只允许定义原始值层，例如 `--raw-*`
+- `tokens.css` 只允许定义语义 token、组件 token 与兼容别名
 - `dark.css` / `light.css` / `accessibility.css` 只允许覆盖 token 的值，不允许发明新的业务结构类
 - `src/styles/themes/*-pages.css`、`content-features.css`、`code-pages.css`、`legacy-code.css`、`legacy-shell.css` 不属于全局主题入口，只能当作模块局部 palette 文件使用
 
@@ -161,12 +156,12 @@
 3. 禁止定义或覆写全局语义 token
 4. 只允许使用模块前缀变量或 `--ui-*` 局部适配变量
 
-`src/styles/palettes.css` 的职责是：
+页面 palette 的职责是：
 
-1. 只聚合这些局部 palette 文件
+1. 由实际页面或组件导入，不进入首页全局 CSS
 2. 自身不得定义 `:root`
 3. 自身不得定义新的全局 token
-4. 不得承载任何真实布局或结构样式
+4. 不得承载与宿主页面无关的真实布局或结构样式
 
 ### 严禁的页面层覆写
 
@@ -239,10 +234,8 @@
 
 执行口径统一为：
 
-- `base.css` 负责“值”
-- `semantic.css` 负责“用途”
-- `theme.css` 负责“核心主题入口”
-- `palettes.css` 负责“局部 palette 聚合”
+- `tokens.css` 负责“值”和“用途”
+- `base.css` 负责“基础元素与全局行为”
 - `components.css` 负责“可复用表现”
 - `dark.css` / `light.css` / `accessibility.css` 负责“主题覆盖”
 - `*-pages.css` / palette 文件负责“模块局部视觉变量”
@@ -271,7 +264,7 @@
 
 只能出现在：
 
-- `src/styles/tokens/base.css`
+- `src/styles/tokens.css`
 
 示例：
 

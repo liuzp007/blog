@@ -22,7 +22,6 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': path.resolve(rootDir, 'src'),
-      '@store': path.resolve(rootDir, 'src/store'),
       '@router': path.resolve(rootDir, 'src/router'),
       '@page': path.resolve(rootDir, 'src/pages')
     }

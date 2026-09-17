@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import MediaCard from '@/components/ui/media-card'
 import type { ContentMeta } from './contentCatalog'
 import ArticleConceptCanvas from './ArticleConceptCanvas'
+import '@/styles/themes/content-features.css'
 
 interface ArticleSignalMediaCardProps {
   item: ContentMeta

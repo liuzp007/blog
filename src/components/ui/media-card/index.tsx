@@ -1,7 +1,8 @@
 import React from 'react'
 import clsx from 'clsx'
 import TiltCard from '@/components/ui/tilt-card'
-import '../../../styles/3_components/ui/media-card.css'
+
+import './index.css'
 
 interface MediaCardProps extends Omit<React.HTMLAttributes<HTMLElement>, 'title'> {
   as?: React.ElementType

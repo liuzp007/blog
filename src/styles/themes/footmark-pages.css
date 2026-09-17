@@ -124,7 +124,7 @@
   --footmark-line-detail-workchip: rgb(146 198 255 / 14%);
   --footmark-shadow-panel: 0 16px 36px rgb(1 7 16 / 22%);
   --footmark-shadow-panel-lg: 0 28px 60px rgb(1 7 16 / 32%);
-  --footmark-shadow-floating: 0 20px 48px var(--black-alpha-28);
+  --footmark-shadow-floating: 0 20px 48px color-mix(in srgb, var(--raw-black) 28%, transparent);
   --footmark-shadow-chip: 0 0 24px rgb(108 198 255 / 16%);
   --footmark-shadow-action: 0 16px 32px rgb(75 130 255 / 24%);
   --footmark-shadow-progress-active: 0 0 24px rgb(74 165 255 / 18%);

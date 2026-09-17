@@ -1,9 +1,16 @@
+/* --- main-layout.css --- */
+
+/* 滚动容器底部留白，确保所有子页面内容都能完整滚出 */
+.main-layout__main {
+  padding-bottom: 48px;
+}
+
 .main-layout__sidebar::-webkit-scrollbar {
   width: 4px;
 }
 
 .main-layout__sidebar::-webkit-scrollbar-thumb {
-  background: var(--white-alpha-20);
+  background: color-mix(in srgb, var(--color-white) 20%, transparent);
   border-radius: 2px;
 }
 
@@ -12,17 +19,17 @@
 }
 
 .main-layout__main::-webkit-scrollbar-track {
-  background: var(--black-alpha-10);
+  background: color-mix(in srgb, var(--color-black) 10%, transparent);
   border-radius: 3px;
 }
 
 .main-layout__main::-webkit-scrollbar-thumb {
-  background: var(--white-alpha-20);
+  background: color-mix(in srgb, var(--color-white) 20%, transparent);
   border-radius: 3px;
 }
 
 .main-layout__main::-webkit-scrollbar-thumb:hover {
-  background: var(--white-alpha-40);
+  background: color-mix(in srgb, var(--color-white) 40%, transparent);
 }
 
 .main-layout__main :is(h1, h2, h3, h4, h5) {
@@ -37,7 +44,7 @@
   font-size: 0.9em;
   color: var(--accent-pink, var(--color-accent-pink));
   background: var(--danger-alpha-10);
-  border: 1px solid var(--danger-alpha-60);
+  border: 1px solid color-mix(in srgb, var(--color-danger) 60%, transparent);
   border-radius: 4px;
   font-family: var(--font-family-mono);
   box-shadow: 0 0 5px var(--danger-alpha-10);

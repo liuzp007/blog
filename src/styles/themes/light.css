@@ -27,13 +27,11 @@
   --surface-card-hover: rgb(255 255 255 / 96%);
   --surface-glass: rgb(255 255 255 / 70%);
   --surface-glass-strong: rgb(255 255 255 / 88%);
-  --surface-glass-panel: rgb(247 249 252 / 90%);
   --text-heading: #182033;
   --text-primary-strong: #24304a;
   --text-secondary: rgb(36 48 74 / 74%);
   --text-muted: #69748a;
   --text-soft: #33415c;
-  --brand-primary: #2563eb;
   --brand-link: #2d5fff;
   --brand-emphasis: #5468ff;
   --brand-emphasis-soft: #7687ff;
@@ -47,7 +45,6 @@
   --accent-tertiary: #7852f9;
   --accent-violet: #7852f9;
   --accent-warning: #c99100;
-  --accent-warning-bright: #e5ab00;
   --accent-warm: #cc6b2d;
   --accent-warm-soft: rgb(204 107 45 / 8%);
   --accent-warm-glow: rgb(204 107 45 / 20%);
@@ -63,9 +60,7 @@
   --border-soft: rgb(36 48 74 / 8%);
   --border-subtle: rgb(36 48 74 / 12%);
   --border-strong: rgb(36 48 74 / 18%);
-  --shadow-card: 0 10px 30px rgb(50 66 94 / 12%);
   --state-focus-ring: rgb(84 104 255 / 35%);
-  --state-warning-ring: rgb(217 154 13 / 35%);
 
   /* Header 组件语义 token */
   --header-border: rgb(36 48 74 / 10%);

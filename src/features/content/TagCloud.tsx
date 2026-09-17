@@ -45,7 +45,7 @@ export default memo(function TagCloud({ metas, activeTag, onSelect, max = 30 }: 
 
   return (
     <div
-      className="tag-cloud flex flex-wrap gap-[var(--space-2)] text-[var(--color-text-muted)] max-[600px]:gap-[var(--space-1)]"
+      className="tag-cloud flex flex-wrap gap-[var(--space-2)] text-[var(--color-text-muted)] max-xs:gap-[var(--space-1)]"
       role="list"
       aria-label="标签云"
     >
@@ -91,7 +91,7 @@ const TagButton = memo(function TagButton({
   const itemClassName = clsx(
     'tag-cloud__item ui-tag ui-tag--interactive',
     WEIGHT_CLASS_MAP[weight],
-    isActive ? 'ui-tag--tone-accent tag-cloud__item--active -translate-y-px' : 'ui-tag--tone-soft'
+    isActive ? 'ui-tag--tone-cyan tag-cloud__item--active -translate-y-px' : 'ui-tag--soft'
   )
 
   return (
@@ -99,7 +99,7 @@ const TagButton = memo(function TagButton({
       <button type="button" className={itemClassName} aria-pressed={isActive} onClick={onClick}>
         <span className="tag-cloud__label inline-flex items-center">{label}</span>
         {typeof count === 'number' && (
-          <span className="tag-cloud__count inline-flex items-center justify-center rounded-full bg-[var(--tag-border-strong)] px-1.5 text-[var(--text-label-size)] font-[var(--font-weight-semibold)] text-[var(--color-white)]">
+          <span className="tag-cloud__count inline-flex items-center justify-center rounded-full bg-[color-mix(in srgb, var(--color-white) 20%, transparent)] px-1.5 text-[var(--text-label-size)] font-[var(--font-weight-semibold)] text-[var(--color-white)]">
             {count}
           </span>
         )}

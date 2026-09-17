@@ -14,13 +14,6 @@ declare module 'prismjs/components/prism-tsx' {
   export default v
 }
 
-// redux-logger 类型声明
-declare module 'redux-logger' {
-  import { Middleware } from '@reduxjs/toolkit'
-  const createLogger: () => Middleware
-  export default createLogger
-}
-
 declare module '*.scss' {
   const content: { [className: string]: string }
   export default content

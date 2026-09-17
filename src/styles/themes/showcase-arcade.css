@@ -1,0 +1,76 @@
+/* Vapor Memory 页面私有 palette。 */
+
+.vapor-memory {
+  --arcade-bg-top: #0d0221;
+  --arcade-bg-middle: #2c114c;
+  --arcade-bg-bottom: #ff8d42;
+  --arcade-bg-grid-end: #4d1f50;
+  --arcade-color-neon-cyan: #0ff;
+  --arcade-color-neon-pink: #f7f;
+  --arcade-color-neon-purple: #bd00ff;
+  --arcade-color-sunset-orange: #ff6b35;
+  --arcade-sun-core: #ffd45e;
+  --arcade-button-end: #ffcf5d;
+  --arcade-button-end-strong: #ffd868;
+  --arcade-card-back: rgb(16 8 40 / 76%);
+  --arcade-card-front: color-mix(in srgb, var(--raw-white) 12%, transparent);
+  --arcade-glass-bg: color-mix(in srgb, var(--raw-white) 8%, transparent);
+  --arcade-glass-bg-soft: color-mix(in srgb, var(--raw-white) 5%, transparent);
+  --arcade-glass-bg-strong: color-mix(in srgb, var(--raw-white) 6%, transparent);
+  --arcade-glass-bg-faint: color-mix(in srgb, var(--raw-white) 4%, transparent);
+  --arcade-glass-border: color-mix(in srgb, var(--raw-white) 16%, transparent);
+  --arcade-glass-border-strong: color-mix(in srgb, var(--raw-white) 18%, transparent);
+  --arcade-glass-border-soft: color-mix(in srgb, var(--raw-white) 12%, transparent);
+  --arcade-text-primary: #f7f7ff;
+  --arcade-text-strong: var(--raw-white);
+  --arcade-text-muted: rgb(255 255 255 / 84%);
+  --arcade-text-soft: rgb(255 255 255 / 78%);
+  --arcade-text-dim: rgb(255 255 255 / 68%);
+  --arcade-text-label: rgb(255 255 255 / 74%);
+  --arcade-text-subtle: rgb(255 255 255 / 64%);
+  --arcade-text-inverse: #160725;
+  --arcade-text-inverse-strong: #15071f;
+  --arcade-surface-segmented: rgb(4 4 10 / 26%);
+  --arcade-shadow-panel: 0 24px 80px rgb(0 0 0 / 24%);
+  --arcade-shadow-card: 0 20px 40px rgb(0 0 0 / 22%);
+  --arcade-shadow-card-front: 0 16px 34px rgb(0 0 0 / 18%);
+  --arcade-shadow-modal: 0 30px 90px rgb(0 0 0 / 34%);
+  --arcade-neon-glow: rgb(255 119 255 / 72%);
+  --arcade-neon-glow-soft: rgb(255 107 53 / 42%);
+  --arcade-grid-glow: rgb(255 119 255 / 82%);
+  --arcade-grid-soft: rgb(255 119 255 / 12%);
+  --arcade-black-overlay: rgb(0 0 0 / 28%);
+  --arcade-black-overlay-soft: rgb(0 0 0 / 12%);
+  --arcade-focus-ring: rgb(131 255 241 / 70%);
+  --arcade-flash-match-bg: rgb(0 255 255 / 16%);
+  --arcade-flash-miss-bg: rgb(255 107 107 / 18%);
+  --arcade-flash-miss-text: #ffd3d3;
+  --arcade-flash-scan-bg: rgb(255 214 102 / 16%);
+  --arcade-flash-scan-text: #ffe8a1;
+  --arcade-flash-win-bg: rgb(255 119 255 / 18%);
+  --arcade-flash-win-text: #ffd6ff;
+}
+
+.vapor-memory--lagoon {
+  --arcade-bg-top: #041829;
+  --arcade-bg-middle: #0d3356;
+  --arcade-bg-bottom: #2bbadf;
+  --arcade-color-neon-cyan: #83fff1;
+  --arcade-color-neon-pink: #87b9ff;
+  --arcade-color-neon-purple: #37d4ff;
+  --arcade-color-sunset-orange: #9cf2ff;
+  --arcade-card-back: rgb(4 19 42 / 78%);
+  --arcade-card-front: rgb(184 255 254 / 12%);
+}
+
+.vapor-memory--midnight {
+  --arcade-bg-top: #06040f;
+  --arcade-bg-middle: #1d0a37;
+  --arcade-bg-bottom: #6d2cff;
+  --arcade-color-neon-cyan: #b1caff;
+  --arcade-color-neon-pink: #ff72c7;
+  --arcade-color-neon-purple: #a65bff;
+  --arcade-color-sunset-orange: #ffb65a;
+  --arcade-card-back: rgb(12 5 26 / 82%);
+  --arcade-card-front: rgb(192 173 255 / 13%);
+}

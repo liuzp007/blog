@@ -24,7 +24,7 @@ export const TimelineList = memo(function TimelineList({ items }: Props) {
             约 {m.readTime} 分钟 · {m.words} 字
           </div>
           {m.summary && (
-            <div className="timeline__summary ui-body-text mt-2 text-[var(--white-alpha-90)]">
+            <div className="timeline__summary ui-body-text mt-2 text-[color-mix(in srgb, var(--color-white) 90%, transparent)]">
               {m.summary}
             </div>
           )}

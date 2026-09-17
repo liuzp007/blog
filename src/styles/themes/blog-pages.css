@@ -77,7 +77,7 @@
   --lab-text-muted: var(--lab-text-subtle);
 
   /* --- 芯片与渐变 --- */
-  --lab-chip-bg: var(--white-alpha-08);
+  --lab-chip-bg: color-mix(in srgb, var(--raw-white) 8%, transparent);
   --lab-chip-bg-strong: var(--lab-accent-warm-alpha-18);
   --lab-chip-bg-inverse: color-mix(in srgb, var(--raw-white) 42%, transparent);
   --lab-chip-text-inverse: #05425e;
@@ -110,7 +110,8 @@
     ),
     linear-gradient(155deg, rgb(7 16 30 / 84%), rgb(4 11 22 / 78%));
   --lab-card-bg:
-    linear-gradient(180deg, var(--white-alpha-05), transparent 28%), rgb(6 15 28 / 72%);
+    linear-gradient(180deg, color-mix(in srgb, var(--raw-white) 5%, transparent), transparent 28%),
+    rgb(6 15 28 / 72%);
   --lab-control-bg:
     radial-gradient(
       circle at 84% 0%,

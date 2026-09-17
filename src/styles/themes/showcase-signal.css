@@ -1,0 +1,76 @@
+/* Signal Reactor 页面私有 palette。 */
+
+.signal-reactor {
+  --signal-bg-a: #0b0820;
+  --signal-bg-b: #1f0a2f;
+  --signal-color-beam: #7ef8ff;
+  --signal-color-glow: #ff66df;
+  --signal-crystal-a: #8ef5ff;
+  --signal-crystal-b: #ffd77d;
+  --signal-color-accent: #ff86cb;
+  --signal-surface-base: rgb(14 16 30 / 64%);
+  --signal-text-primary: #f7f5ff;
+  --signal-text-strong: var(--raw-white);
+  --signal-text-muted: rgb(239 241 255 / 82%);
+  --signal-text-soft: rgb(236 239 255 / 78%);
+  --signal-text-label: rgb(236 237 255 / 70%);
+  --signal-text-label-soft: rgb(236 237 255 / 66%);
+  --signal-text-panel: rgb(247 249 255 / 84%);
+  --signal-text-inverse: #130d19;
+  --signal-text-inverse-strong: #140f1a;
+  --signal-text-highlight: #fff8d5;
+  --signal-line-strong: color-mix(in srgb, var(--raw-white) 12%, transparent);
+  --signal-line-medium: rgb(255 255 255 / 10%);
+  --signal-line-soft: color-mix(in srgb, var(--raw-white) 8%, transparent);
+  --signal-line-active: rgb(255 255 255 / 36%);
+  --signal-surface-glass: color-mix(in srgb, var(--raw-white) 5%, transparent);
+  --signal-surface-glass-soft: color-mix(in srgb, var(--raw-white) 4%, transparent);
+  --signal-surface-panel: rgb(10 13 24 / 56%);
+  --signal-surface-panel-strong: rgb(10 13 24 / 66%);
+  --signal-canvas-white: var(--raw-white);
+  --signal-canvas-shadow: rgb(0 0 0 / 22%);
+  --signal-canvas-prism-shadow: rgb(26 34 54 / 34%);
+  --signal-stage-bg:
+    linear-gradient(180deg, color-mix(in srgb, var(--raw-white) 6%, transparent), transparent 14%),
+    rgb(8 10 20 / 52%);
+  --signal-modal-bg:
+    radial-gradient(
+      circle at top,
+      color-mix(in srgb, var(--raw-white) 8%, transparent),
+      transparent 42%
+    ),
+    linear-gradient(180deg, rgb(20 11 30 / 96%), rgb(10 12 24 / 96%));
+  --signal-shadow-panel: 0 28px 68px rgb(0 0 0 / 28%);
+  --signal-shadow-stage: 0 34px 100px rgb(0 0 0 / 34%);
+  --signal-shadow-modal: 0 34px 100px rgb(0 0 0 / 40%);
+  --signal-noise-mask: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--raw-black) 80%, transparent),
+    transparent 94%
+  );
+  --signal-text-stat: rgb(236 239 255 / 72%);
+  --signal-pulse-ring: 0 0 0 1px color-mix(in srgb, var(--raw-white) 10%, transparent);
+  --signal-rules-text: rgb(237 240 255 / 80%);
+  --signal-palette-text: rgb(245 247 255 / 84%);
+  --signal-result-copy: rgb(239 241 255 / 80%);
+}
+
+.signal-reactor--sunset {
+  --signal-bg-a: #16070e;
+  --signal-bg-b: #35111f;
+  --signal-color-beam: #ffb44d;
+  --signal-color-glow: #ff5e7e;
+  --signal-crystal-a: #ffd8a8;
+  --signal-crystal-b: #ff8ef0;
+  --signal-color-accent: #fff1ba;
+}
+
+.signal-reactor--lagoon {
+  --signal-bg-a: #031525;
+  --signal-bg-b: #0d2337;
+  --signal-color-beam: #72f9d4;
+  --signal-color-glow: #6fb7ff;
+  --signal-crystal-a: #92ffe9;
+  --signal-crystal-b: #b0d9ff;
+  --signal-color-accent: #f6ff9c;
+}

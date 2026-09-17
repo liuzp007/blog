@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 const fs = require('node:fs')
 const path = require('node:path')
+const postcss = require('postcss')
 
 const workspaceRoot = path.resolve(__dirname, '..')
 const targetDirs = ['src']
@@ -8,16 +9,13 @@ const validExt = new Set(['.scss', '.css', '.ts', '.tsx', '.js', '.jsx'])
 const styleExt = new Set(['.scss', '.css'])
 
 const allowedRootFiles = new Set([
-  'src/styles/tokens/base.css',
-  'src/styles/tokens/semantic.css',
+  'src/styles/tokens.css',
   'src/styles/1_tokens/base.css',
   'src/styles/1_tokens/components.css',
   'src/styles/1_tokens/typography.css',
-  'src/styles/2_globals/global-ui.css',
   'src/styles/themes/dark.css',
   'src/styles/themes/light.css',
-  'src/styles/themes/accessibility.css',
-  'src/styles/themes/legacy-shell.css'
+  'src/styles/themes/accessibility.css'
 ])
 
 const protectedGlobalTokenPrefixes = [
@@ -115,7 +113,7 @@ function isAllowedRootFile(filePath) {
 
 function isRawValueAllowed(filePath) {
   return (
-    filePath.startsWith('src/styles/tokens/') ||
+    filePath === 'src/styles/tokens.css' ||
     filePath.startsWith('src/styles/1_tokens/') ||
     filePath.startsWith('src/styles/themes/')
   )
@@ -267,6 +265,29 @@ async function main() {
     const rootMatches = collectLineMatches(content, rootRegex)
     const definitions = definitionsByFile.get(file.relative) || []
 
+    try {
+      postcss.parse(content, { from: file.absolute }).walkRules(rule => {
+        if (!rule.selector.includes('@')) return
+        addIssue(
+          errors,
+          '非法 at-rule 选择器',
+          file.relative,
+          rule.source && rule.source.start ? rule.source.start.line : undefined,
+          '普通规则 selector 中出现 at-rule 片段。',
+          `命中内容：${rule.selector.trim()}。这通常表示拆分 CSS 时留下悬空选择器。`
+        )
+      })
+    } catch (error) {
+      addIssue(
+        errors,
+        'CSS 解析失败',
+        file.relative,
+        undefined,
+        error.message,
+        '请先修复 CSS 语法，再继续样式审计。'
+      )
+    }
+
     if (!isAllowedRootFile(file.relative)) {
       rootMatches.forEach(match => {
         addIssue(
@@ -313,6 +334,18 @@ async function main() {
     const tokenUsages = collectTokenUsages(content)
     tokenUsages.forEach(usage => {
       usage.tokens.forEach(token => {
+        if (token.startsWith('--raw-') && !isRawValueAllowed(file.relative)) {
+          addIssue(
+            errors,
+            '非法 raw token 消费',
+            file.relative,
+            usage.line,
+            `业务层直接消费原始 token：${token}`,
+            '页面、组件和功能层请改用语义 token；raw token 只允许在核心 token/theme 层使用。'
+          )
+          return
+        }
+
         if (definedTokens.has(token) || isIgnoredUndefinedToken(token)) return
         addIssue(
           errors,
@@ -328,12 +361,14 @@ async function main() {
     if (!isRawValueAllowed(file.relative)) {
       const colorMatches = collectLineMatches(content, colorRegex)
       colorMatches.forEach(match => {
+        const staticColorValues = match.values.filter(value => !value.includes('${'))
+        if (!staticColorValues.length) return
         addIssue(
           warnings,
           '硬编码颜色',
           file.relative,
           match.line,
-          `检测到硬编码颜色：${match.values.join(', ')}`,
+          `检测到硬编码颜色：${staticColorValues.join(', ')}`,
           '请优先替换为语义 token、模块局部变量或已授权的 palette 变量。'
         )
       })
@@ -440,6 +475,9 @@ async function main() {
   printGroup('错误 / 非法 :root', errorGroups.get('非法 :root') || [])
   printGroup('错误 / 非法全局 token 定义', errorGroups.get('非法全局 token 定义') || [])
   printGroup('错误 / 未定义 token', errorGroups.get('未定义 token') || [])
+  printGroup('错误 / 非法 at-rule 选择器', errorGroups.get('非法 at-rule 选择器') || [])
+  printGroup('错误 / CSS 解析失败', errorGroups.get('CSS 解析失败') || [])
+  printGroup('错误 / 非法 raw token 消费', errorGroups.get('非法 raw token 消费') || [])
   printGroup('错误 / 内联样式', errorGroups.get('内联样式') || [])
 
   printGroup('警告 / 硬编码颜色', warningGroups.get('硬编码颜色') || [], 120)

@@ -1,0 +1,388 @@
+/* --- 基础设计令牌 --- */
+
+/**
+ * 基础设计 token。
+ * 规则：
+ * 1. 这里只放原始值和通用尺度，不直接表达业务语义。
+ * 2. 页面和组件不要直接消费 `--raw-*`，应优先使用 `semantic.css` 中的语义 token。
+ * 3. 如果只是想改“用途”的表现，应去改语义 token 或主题覆盖，而不是直接改业务样式。
+ * 4. 已存在 token 默认视为 frozen，优先追加新 token，不要无注释地复用旧 token 改语义。
+ */
+:root {
+  /**
+   * 原始色板（Raw Palette）
+   * 包含中性色、品牌色、强调色、状态色和代码高亮色。
+   * 这是整站颜色的来源层，不建议业务文件直接引用。
+   * 少量 `brand-link` / `code-*` 为历史过渡 raw token，当前冻结保留，不再新增同类命名。
+   */
+  --raw-white: #fff;
+  --raw-black: #000;
+  --raw-slate-950: #050b12;
+  --raw-slate-900: #08111d;
+  --raw-slate-850: #101010;
+  --raw-slate-845: #0d0d0d;
+  --raw-slate-840: #0a0a0a;
+  --raw-slate-825: #111;
+  --raw-slate-775: #1a1a1a;
+  --raw-slate-750: #1a1a2e;
+  --raw-slate-725: #2a2a2a;
+  --raw-slate-300: #cbd5e1;
+  --raw-slate-200: #e5e7eb;
+  --raw-slate-100: #e8e8e8;
+  --raw-gray-700: #333;
+  --raw-gray-500: #888;
+
+  /* 历史桥接色源：保留给 semantic alias 迁移使用，新 token 不要继续沿用用途化 raw 命名。 */
+  --raw-brand-link: #3e78ed;
+  --raw-cyan-400: #40ffff;
+  --raw-cyan-500: #0ff;
+  --raw-pink-500: #f26;
+  --raw-purple-500: #9945ff;
+  --raw-yellow-400: #ffd700;
+  --raw-orange-500: #e87a3d;
+  --raw-gold-500: #d4a84b;
+  --raw-indigo-500: #6366f1;
+  --raw-indigo-400: #94a3ff;
+  --raw-indigo-300: #a5b4fc;
+  --raw-success-500: #4ade80;
+  --raw-success-600: #52c41a;
+  --raw-warning-500: #fbbf24;
+  --raw-warning-600: #faad14;
+  --raw-danger-500: #f87171;
+  --raw-danger-600: #ef4444;
+  --raw-danger-700: #f5222d;
+
+  /* 代码高亮源色：当前仍作为 raw source 保留，后续不再扩张新的 `raw-code-*` 族。 */
+  --raw-code-violet: #8b5cf6;
+  --raw-code-green: #22c55e;
+
+  /**
+   * 中性色透明层（Neutral Alpha Layers）
+   * 用于玻璃态背景、边框、遮罩、悬浮态和阴影等透明叠加场景。
+   * 业务层优先通过语义 token 间接使用，不直接手写 rgba。
+   */
+
+  /**
+   * 状态色透明层（Status Alpha Layers）
+   * 用于成功、警告、危险等状态的弱提示背景、提示边框和代码语义高亮。
+   * 这组 token 主要服务组件层，业务页面不建议直接拼接使用。
+   */
+  --danger-alpha-10: rgb(245 34 45 / 10%);
+  --danger-alpha-soft: rgb(255 0 0 / 10%);
+  --danger-soft-alpha-20: rgb(248 113 113 / 20%);
+  --danger-soft-alpha-30: rgb(248 113 113 / 30%);
+  --success-alpha-20: rgb(74 222 128 / 20%);
+  --success-alpha-30: rgb(74 222 128 / 30%);
+  --warning-alpha-20: rgb(251 191 36 / 20%);
+  --warning-alpha-30: rgb(251 191 36 / 30%);
+
+  /**
+   * 代码高亮透明层（Code Highlight Alpha Layers）
+   * 这组 token 主要服务代码块主题与演示内容，不建议扩展成通用业务状态色。
+   */
+
+  /**
+   * 字体家族（Typography Families）
+   * body / heading / mono 分别对应正文、标题和代码区。
+   * brand / display / condensed / tech / wide / sans-sc / serif-sc 用于页面主题里的品牌正文、展示标题和强调字形。
+   * 页面层不要再直接硬编码 font-family，优先消费这里的语义字体变量。
+   */
+  --font-family-body: 'PingFang SC', 'Microsoft YaHei', 'Helvetica Neue', arial, sans-serif;
+  --font-family-heading: 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  --font-family-brand:
+    'IBM Plex Sans', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+  --font-family-brand-sc: 'IBM Plex Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  --font-family-sans-sc: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  --font-family-display: 'Cormorant Garamond', georgia, serif;
+  --font-family-condensed: 'DIN Condensed', 'Avenir Next Condensed', 'Oswald', sans-serif;
+  --font-family-tech: 'Orbitron', 'Segoe UI', sans-serif;
+  --font-family-wide: 'Unbounded', 'Segoe UI', sans-serif;
+  --font-family-mono: 'Fira Code', 'Courier New', monospace;
+  --font-family-system:
+    -apple-system, blinkmacsystemfont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell',
+    'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+
+  /**
+   * 字号刻度（Type Scale）
+   * 作为整站排版的基础刻度，标题、正文、按钮、标签都从这里推导。
+   */
+  --font-size-2xs: 12px;
+  --font-size-xs: 13px;
+  --font-size-sm: 14px;
+  --font-size-md: 16px;
+  --font-size-lg: 18px;
+  --font-size-xl: 20px;
+  --font-size-2xl: 24px;
+  --font-size-3xl: 32px;
+  --font-size-4xl: 40px;
+
+  /**
+   * 阅读节奏（Line Height & Weight）
+   * 统一文本的行高和字重，避免页面各自定义造成观感不一致。
+   */
+  --line-height-tight: 1.2;
+  --line-height-snug: 1.35;
+  --line-height-normal: 1.6;
+  --line-height-relaxed: 1.8;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  /**
+   * 间距刻度（Spacing Scale）
+   * 所有 margin / padding / gap 优先从这里取值，便于统一调节页面密度。
+   */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-12: 48px;
+
+  /**
+   * 控件高度（Control Height）
+   * 统一按钮、输入框、筛选器等交互控件的垂直尺寸。
+   */
+  --control-height-sm: 32px;
+  --control-height-md: 40px;
+  --control-height-lg: 48px;
+
+  /**
+   * 阴影层级（Elevation）
+   * 从轻微悬浮到强浮层使用不同层级，避免每个组件各写一套阴影。
+   */
+  --shadow-xs: 0 2px 6px color-mix(in srgb, var(--raw-black) 10%, transparent);
+  --shadow-sm: 0 1px 2px 0 color-mix(in srgb, var(--raw-black) 5%, transparent);
+  --shadow-md: 0 12px 32px color-mix(in srgb, var(--raw-black) 28%, transparent);
+  --shadow-lg: 0 10px 15px -3px color-mix(in srgb, var(--raw-black) 10%, transparent);
+  --shadow-xl: 0 20px 25px -5px color-mix(in srgb, var(--raw-black) 10%, transparent);
+
+  /**
+   * 动效节奏（Motion Tokens）
+   * 所有过渡时长和缓动函数统一走这里，后续接 reduced-motion 时可以整体收口。
+   */
+  --motion-fast: 160ms;
+  --motion-base: 240ms;
+  --motion-medium: 300ms;
+  --motion-slow: 480ms;
+  --motion-reveal: 720ms;
+  --easing-standard: cubic-bezier(0.4, 0, 0.2, 1);
+  --easing-entrance: cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* Tailwind 风格别名（向后兼容） */
+  --text-xs: 0.75rem; /* 12px */
+  --text-sm: 0.875rem; /* 14px */
+}
+
+/* --- 语义设计令牌 --- */
+
+/**
+ * 语义 token 层。
+ * 分层约定：
+ * 1. `--color-*` / `--text-*` / `--button-*` / `--card-*` 等是首选消费层。
+ * 2. `Compatibility Aliases` / `Legacy Aliases` 只做迁移兼容，不再继续扩张。
+ * 3. 页面 palette 如果需要局部特征色，应先落在 `src/styles/themes/*`，不要回写到这里。
+ */
+:root {
+  /* === Nexus v2.0 Design Tokens === */
+
+  /* 背景与表面 */
+
+  /* 强调色（Emphasis） */
+
+  /* 渐变色 */
+
+  /* 玻璃态 */
+
+  /* 缓动函数 */
+
+  /* 圆角体系 */
+  --radius-xs: 6px;
+  --radius-sm: 12px;
+  --radius-md: 18px;
+  --radius-lg: 24px;
+  --radius-xl: 32px;
+  --radius-2xl: 40px;
+  --radius-3xl: 48px;
+  --radius-4xl: 56px;
+  --radius-5xl: 64px;
+  --radius-pill: 50px;
+  --radius-full: 9999px;
+
+  /* 布局 */
+
+  /* 排版 */
+
+  /* 滚动条 */
+
+  /**
+   * 基础兼容别名（Compatibility Aliases）
+   * 用于平滑承接旧命名，减少迁移期间的破坏性修改。
+   * 新增样式优先使用下面更清晰的语义 token。
+   * 这一组视为兼容白名单，不再继续新增 alias。
+   */
+  --color-white: var(--raw-white);
+  --color-black: var(--raw-black);
+  --color-text-default: var(--raw-gray-700);
+
+  /**
+   * 页面与容器表面（Surfaces）
+   * 定义页面底色、面板、侧边栏、卡片等大面积载体的视觉层级。
+   * 页面和组件应优先消费这一层，而不是直接依赖主题文件中的 `--surface-*`。
+   */
+  --color-page-bg: var(--surface-page);
+  --color-page-bg-secondary: var(--surface-page-secondary);
+  --color-page-panel-start: var(--surface-panel-start);
+  --color-page-panel-mid: var(--surface-panel-mid);
+  --color-page-panel-end: var(--surface-panel-end);
+  --color-surface-base: var(--surface-base);
+  --color-surface-elevated: var(--surface-elevated);
+  --color-surface-muted: var(--surface-muted);
+  --color-surface-night: var(--surface-night);
+  --color-sidebar-surface: var(--surface-sidebar);
+  --color-sidebar-start: var(--surface-sidebar-start);
+  --color-sidebar-mid: var(--surface-sidebar-mid);
+  --color-sidebar-end: var(--surface-sidebar-end);
+
+  /**
+   * 文本语义（Text Semantics）
+   * primary / secondary / muted / soft / heading 分别对应主文案、次文案、弱化文案、辅助文案和标题。
+   */
+  --color-text-primary: var(--text-primary-strong);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
+  --color-text-soft: var(--text-soft);
+  --color-text-heading: var(--text-heading);
+
+  /**
+   * 品牌、强调与状态色（Brand, Accent & Status）
+   * 业务样式需要强调色、链接色、警告色时，应优先使用这一层。
+   * 除 Canvas / Three.js 等图形化场景外，不要直接消费 raw 色值。
+   */
+  --color-brand-link: var(--brand-link);
+  --color-brand-link-legacy: var(--brand-link);
+  --color-accent-cyan: var(--accent-primary);
+  --color-accent-cyan-bright: var(--accent-primary-bright);
+  --color-accent-cyan-soft: var(--accent-primary-soft);
+  --color-accent-pink: var(--accent-secondary);
+  --color-accent-purple: var(--accent-tertiary);
+  --color-accent-yellow: var(--accent-warning);
+  --color-accent-orange: var(--accent-warm);
+  --color-accent-gold: var(--accent-gold);
+  --color-indigo-500: var(--brand-emphasis);
+  --color-indigo-400: var(--brand-emphasis-soft);
+  --color-indigo-300: var(--brand-emphasis-muted);
+  --color-danger-strong: var(--status-danger-strong);
+  --color-warning-strong: var(--status-warning-strong);
+  --color-success-strong: var(--status-success-strong);
+  --color-success: var(--status-success);
+  --color-warning: var(--status-warning);
+  --color-danger: var(--status-danger);
+  --color-code-indigo: var(--brand-emphasis);
+  --color-code-violet: var(--accent-violet);
+  --color-code-green: var(--status-success-code);
+  --color-code-red: var(--status-danger-code);
+
+  /**
+   * 玻璃态、边框与状态环（Effects）
+   * 聚合常见的玻璃背景、边框强弱、卡片阴影和 focus / warning ring。
+   * 业务层应优先拿这里的“用途”变量，而不是重新拼透明值。
+   */
+
+  /* Surface / glass effects */
+  --glass-bg: var(--surface-glass);
+  --glass-bg-strong: var(--surface-glass-strong);
+  --glass-border: var(--border-subtle);
+  --glass-border-strong: var(--border-strong);
+
+  /* Shared component elevation */
+
+  /* Interaction / state rings */
+  --focus-ring: var(--state-focus-ring);
+
+  /**
+   * 历史兼容别名（Legacy Aliases）
+   * 主要用于旧页面渐进式迁移；新代码建议直接使用上方的标准命名。
+   * 这一组只减不增，新增样式禁止继续引用这里的旧出口。
+   */
+  --bg-primary: var(--color-surface-base);
+  --text-primary: var(--color-text-primary);
+  --text-secondary: var(--color-text-muted);
+  --accent-cyan: var(--color-accent-cyan);
+  --accent-cyan-glow: var(--accent-primary-glow);
+  --accent-pink: var(--color-accent-pink);
+  --accent-pink-glow: var(--accent-secondary-glow);
+  --accent-yellow: var(--color-accent-yellow);
+  --accent-warm: var(--color-accent-orange);
+  --accent-gold: var(--color-accent-gold);
+  --accent-glow: var(--accent-warm-glow);
+
+  /**
+   * 排版语义（Typography Semantics）
+   * 约束正文、说明文字和标题层级的尺寸与节奏。
+   * 页面标题、卡片标题和模块标题都应优先消费这一层。
+   */
+  --text-body-size: var(--font-size-sm);
+  --text-body-line-height: var(--line-height-normal);
+  --text-body-regular-weight: var(--font-weight-regular);
+  --text-body-relaxed-line-height: var(--line-height-relaxed);
+  --text-caption-size: var(--font-size-xs);
+  --text-meta-size: var(--font-size-xs);
+  --text-meta-line-height: var(--line-height-normal);
+  --text-label-size: var(--font-size-xs);
+  --text-eyebrow-size: var(--font-size-xs);
+  --text-eyebrow-letter-spacing: 0.12em;
+  --text-overline-size: var(--font-size-2xs);
+  --text-overline-letter-spacing: 0.18em;
+  --text-lead-size: var(--font-size-md);
+  --text-lead-line-height: var(--line-height-relaxed);
+  --heading-display-size: 56px;
+  --heading-1-size: var(--font-size-4xl);
+  --heading-2-size: var(--font-size-3xl);
+  --heading-3-size: var(--font-size-2xl);
+  --heading-4-size: var(--font-size-xl);
+  --heading-5-size: var(--font-size-lg);
+  --heading-6-size: var(--font-size-md);
+  --heading-card-size: var(--font-size-xl);
+  --heading-card-line-height: var(--line-height-snug);
+  --heading-line-height: var(--line-height-snug);
+  --heading-font-weight: var(--font-weight-bold);
+}
+
+/**
+ * 运行时排版模式覆写（Typography Modes）
+ * 因 `:root` 权限白名单约束，当前暂时与 semantic token 共存；
+ * 这里只允许覆盖字号模式，不承载页面或组件私有变量。
+ */
+:root[data-font-size='small'] {
+  /** 小号字体模式：适合需要更高信息密度的浏览场景。 */
+  --text-body-size: var(--font-size-xs);
+  --text-caption-size: var(--font-size-2xs);
+  --text-meta-size: var(--font-size-2xs);
+  --text-eyebrow-size: var(--font-size-2xs);
+  --text-lead-size: 15px;
+  --heading-display-size: 46px;
+  --heading-1-size: 36px;
+  --heading-2-size: 28px;
+  --heading-3-size: 22px;
+  --heading-4-size: 18px;
+  --heading-card-size: 18px;
+}
+
+:root[data-font-size='large'] {
+  /** 大号字体模式：兼顾无障碍与远距离阅读。 */
+  --text-body-size: var(--font-size-md);
+  --text-caption-size: var(--font-size-sm);
+  --text-meta-size: var(--font-size-sm);
+  --text-eyebrow-size: var(--font-size-sm);
+  --text-lead-size: 18px;
+  --heading-display-size: 64px;
+  --heading-1-size: 44px;
+  --heading-2-size: 34px;
+  --heading-3-size: 26px;
+  --heading-4-size: 22px;
+  --heading-card-size: 22px;
+}

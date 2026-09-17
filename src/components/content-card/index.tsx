@@ -140,7 +140,7 @@ const getTagClassName = (tag: ContentCardTagItem) => {
 }
 
 const ACTION_BTN_CLASS =
-  'content-card__action-button rounded-md border-none bg-transparent px-2 py-1 text-[var(--white-alpha-60)] transition-colors duration-200 hover:bg-[var(--indigo-alpha-10)] hover:text-[var(--color-indigo-500)] focus-visible:shadow-[0_0_0_2px_var(--focus-ring)]'
+  'content-card__action-button rounded-md border-none bg-transparent px-2 py-1 text-[color-mix(in srgb, var(--color-white) 60%, transparent)] transition-colors duration-200 hover:bg-[color-mix(in srgb, var(--color-indigo-500) 10%, transparent)] hover:text-[var(--color-indigo-500)] focus-visible:shadow-[0_0_0_2px_var(--focus-ring)]'
 
 const ContentCard: React.FC<ContentCardProps> = ({ item, onLike, onShare, onClick }) => {
   const [isLiked, setIsLiked] = useState(false)
@@ -161,7 +161,7 @@ const ContentCard: React.FC<ContentCardProps> = ({ item, onLike, onShare, onClic
         'content-card',
         'ui-card',
         'ui-card--showcase',
-        'block mb-6 overflow-hidden border-[var(--white-alpha-10)] bg-[var(--white-alpha-05)] p-0 [backdrop-filter:blur(10px)]',
+        'block mb-6 overflow-hidden border-[color-mix(in srgb, var(--color-white) 10%, transparent)] bg-[color-mix(in srgb, var(--color-white) 5%, transparent)] p-0 [backdrop-filter:blur(10px)]',
         onClick && 'content-card--interactive ui-card--interactive'
       ),
     [onClick]
@@ -223,10 +223,10 @@ const ContentCard: React.FC<ContentCardProps> = ({ item, onLike, onShare, onClic
       ) : (
         <div className="content-card__cover relative h-[200px] overflow-hidden">
           <div
-            className="content-card__progressive-image relative h-full overflow-hidden bg-[linear-gradient(135deg,var(--indigo-alpha-10),var(--code-violet-alpha-05))]"
+            className="content-card__progressive-image relative h-full overflow-hidden bg-[linear-gradient(135deg,color-mix(in srgb, var(--color-indigo-500) 10%, transparent),color-mix(in srgb, var(--color-code-violet) 5%, transparent))]"
             data-loaded={imageLoaded ? 'true' : 'false'}
           >
-            <div className="content-card__skeleton absolute inset-0 bg-[linear-gradient(90deg,var(--white-alpha-05)_0%,var(--white-alpha-10)_50%,var(--white-alpha-05)_100%)] bg-[length:200%_100%]" />
+            <div className="content-card__skeleton absolute inset-0 bg-[linear-gradient(90deg,color-mix(in srgb, var(--color-white) 5%, transparent)_0%,color-mix(in srgb, var(--color-white) 10%, transparent)_50%,color-mix(in srgb, var(--color-white) 5%, transparent)_100%)] bg-[length:200%_100%]" />
             {item.cover && (
               <img
                 className="content-card__cover-image h-full w-full object-cover"
@@ -236,7 +236,7 @@ const ContentCard: React.FC<ContentCardProps> = ({ item, onLike, onShare, onClic
               />
             )}
           </div>
-          <div className="content-card__overlay absolute inset-0 flex items-end bg-[linear-gradient(135deg,var(--black-alpha-10),var(--black-alpha-40))] p-4">
+          <div className="content-card__overlay absolute inset-0 flex items-end bg-[linear-gradient(135deg,color-mix(in srgb, var(--color-black) 10%, transparent),color-mix(in srgb, var(--color-black) 40%, transparent))] p-4">
             <div className="content-card__overlay-content text-[var(--color-white)]">
               <div className="content-card__overlay-title mb-1 text-[18px] font-semibold">
                 {item.title}
@@ -264,7 +264,7 @@ const ContentCard: React.FC<ContentCardProps> = ({ item, onLike, onShare, onClic
             <div className="content-card__title mb-1 text-[18px] font-semibold leading-[1.4] text-[var(--color-white)]">
               {item.title}
             </div>
-            <div className="content-card__meta flex flex-wrap items-center gap-x-3 gap-y-2 text-[12px] text-[var(--white-alpha-60)]">
+            <div className="content-card__meta flex flex-wrap items-center gap-x-3 gap-y-2 text-[12px] text-[color-mix(in srgb, var(--color-white) 60%, transparent)]">
               {item.meta?.date && (
                 <div className="content-card__meta-item inline-flex items-center gap-1">
                   <ClockCircleOutlined />
@@ -287,11 +287,11 @@ const ContentCard: React.FC<ContentCardProps> = ({ item, onLike, onShare, onClic
           </Space>
         </div>
 
-        <div className="content-card__description mb-4 overflow-hidden text-[var(--white-alpha-70)] [display:-webkit-box] leading-[1.6] [-webkit-box-orient:vertical] [-webkit-line-clamp:3]">
+        <div className="content-card__description mb-4 overflow-hidden text-[color-mix(in srgb, var(--color-white) 70%, transparent)] [display:-webkit-box] leading-[1.6] [-webkit-box-orient:vertical] [-webkit-line-clamp:3]">
           {item.description}
         </div>
 
-        <div className="content-card__footer flex items-center justify-between gap-3 border-t border-t-[var(--white-alpha-10)] pt-4 max-md:flex-col max-md:items-start">
+        <div className="content-card__footer flex items-center justify-between gap-3 border-t border-t-[color-mix(in srgb, var(--color-white) 10%, transparent)] pt-4 max-md:flex-col max-md:items-start">
           <div className="content-card__tags flex flex-wrap gap-2">
             {topicTags.map(tag => (
               <span key={tag.key} className={clsx(getTagClassName(tag), 'm-0')}>
@@ -338,20 +338,20 @@ const ContentCard: React.FC<ContentCardProps> = ({ item, onLike, onShare, onClic
       </div>
 
       {item.stats && (
-        <div className="content-card__stats flex items-center justify-between gap-3 border-t border-t-[var(--white-alpha-10)] bg-[var(--white-alpha-02)] px-5 py-4 max-md:flex-col max-md:items-start">
-          <div className="content-card__stat-item inline-flex items-center gap-1.5 text-[12px] text-[var(--white-alpha-60)]">
+        <div className="content-card__stats flex items-center justify-between gap-3 border-t border-t-[color-mix(in srgb, var(--color-white) 10%, transparent)] bg-[color-mix(in srgb, var(--color-white) 2%, transparent)] px-5 py-4 max-md:flex-col max-md:items-start">
+          <div className="content-card__stat-item inline-flex items-center gap-1.5 text-[12px] text-[color-mix(in srgb, var(--color-white) 60%, transparent)]">
             <EyeOutlined className="content-card__stat-icon text-[var(--color-indigo-500)]" />
             <span className="content-card__stat-value font-medium text-[var(--color-white)]">
               {viewCount.toLocaleString()}
             </span>
           </div>
-          <div className="content-card__stat-item inline-flex items-center gap-1.5 text-[12px] text-[var(--white-alpha-60)]">
+          <div className="content-card__stat-item inline-flex items-center gap-1.5 text-[12px] text-[color-mix(in srgb, var(--color-white) 60%, transparent)]">
             <HeartOutlined className="content-card__stat-icon text-[var(--color-indigo-500)]" />
             <span className="content-card__stat-value font-medium text-[var(--color-white)]">
               {item.stats.likes?.toLocaleString() || 0}
             </span>
           </div>
-          <div className="content-card__stat-item inline-flex items-center gap-1.5 text-[12px] text-[var(--white-alpha-60)]">
+          <div className="content-card__stat-item inline-flex items-center gap-1.5 text-[12px] text-[color-mix(in srgb, var(--color-white) 60%, transparent)]">
             <StarOutlined className="content-card__stat-icon text-[var(--color-indigo-500)]" />
             <span className="content-card__stat-value font-medium text-[var(--color-white)]">
               {item.stats.stars?.toLocaleString() || 0}
