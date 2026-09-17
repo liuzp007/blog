@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { load as AMapLoad } from '@amap/amap-jsapi-loader'
 import { Button } from 'antd'
 import {
@@ -9,13 +9,17 @@ import {
   type FootmarkStoryNode
 } from '../footmarkContent'
 
-const AMAP_KEY = import.meta.env.VITE_AMAP_KEY?.trim()
+const FOOTMARK_MAP_ZOOM = {
+  desktop: 4.7,
+  mobile: 4.2
+}
 
 interface FootmarkMapSceneProps {
   progress: number
   active: boolean
   quality: 'desktop' | 'mobile'
   activeCityId?: string | null
+  showCard?: boolean
   onCitySelect?: (cityId: string) => void
 }
 
@@ -35,6 +39,7 @@ export default function FootmarkMapScene({
   active,
   quality,
   activeCityId,
+  showCard = true,
   onCitySelect
 }: FootmarkMapSceneProps) {
   const isMobile = quality === 'mobile'
@@ -49,6 +54,7 @@ export default function FootmarkMapScene({
   const progressRef = useRef(progress)
   const qualityRef = useRef(quality)
   const activeCityIdRef = useRef(activeCityId)
+  const onCitySelectRef = useRef(onCitySelect)
   const detachMarkerListenerRef = useRef<(() => void) | null>(null)
   const [focusedNode, setFocusedNode] = useState<FootmarkStoryNode>(FOOTMARK_STORY_NODES[0])
   const [mapStatus, setMapStatus] = useState<'idle' | 'loading' | 'ready' | 'error'>('idle')
@@ -64,54 +70,50 @@ export default function FootmarkMapScene({
     progressRef.current = progress
     qualityRef.current = quality
     activeCityIdRef.current = activeCityId
-  }, [progress, quality, activeCityId])
+    onCitySelectRef.current = onCitySelect
+  }, [progress, quality, activeCityId, onCitySelect])
 
-  const syncMapState = (
-    nextProgress: number,
-    nextQuality: 'desktop' | 'mobile',
-    nextActiveCityId?: string | null
-  ) => {
-    if (!initializedRef.current || !mapRef.current) return
+  const syncMapState = useCallback(
+    (nextProgress: number, nextActiveCityId?: string | null) => {
+      if (!initializedRef.current || !mapRef.current) return
 
-    const safeProgress = clamp01(nextProgress)
-    const revealIndex = Math.max(1, Math.round(safeProgress * (routePath.length - 1)))
-    passedPolylineRef.current?.setPath(routePath.slice(0, revealIndex + 1))
+      const safeProgress = clamp01(nextProgress)
+      const revealIndex = Math.max(1, Math.round(safeProgress * (routePath.length - 1)))
+      passedPolylineRef.current?.setPath(routePath.slice(0, revealIndex + 1))
 
-    const progressIndex = Math.min(
-      FOOTMARK_STORY_NODES.length - 1,
-      Math.floor(safeProgress * FOOTMARK_STORY_NODES.length)
-    )
-    const activeIndex = nextActiveCityId
-      ? Math.max(
-          FOOTMARK_STORY_NODES.findIndex(item => item.id === nextActiveCityId),
-          0
-        )
-      : progressIndex
-
-    if (activeIndex !== focusIndexRef.current) {
-      focusIndexRef.current = activeIndex
-      const nextNode = FOOTMARK_STORY_NODES[activeIndex]
-      setFocusedNode(nextNode)
-      mapRef.current.setZoomAndCenter(
-        nextQuality === 'mobile' ? 5 : 5.8,
-        [nextNode.lng, nextNode.lat],
-        true
+      const progressIndex = Math.min(
+        FOOTMARK_STORY_NODES.length - 1,
+        Math.floor(safeProgress * FOOTMARK_STORY_NODES.length)
       )
-    }
+      const activeIndex = nextActiveCityId
+        ? Math.max(
+            FOOTMARK_STORY_NODES.findIndex(item => item.id === nextActiveCityId),
+            0
+          )
+        : progressIndex
 
-    const currentMarkers = markersRef.current
-    for (let i = 0; i < currentMarkers.length; i += 1) {
-      const node = FOOTMARK_STORY_NODES[i]
-      const isActive = nextActiveCityId ? i === activeIndex : i <= activeIndex
-      currentMarkers[i].setContent(`
+      if (activeIndex !== focusIndexRef.current) {
+        focusIndexRef.current = activeIndex
+        const nextNode = FOOTMARK_STORY_NODES[activeIndex]
+        setFocusedNode(nextNode)
+        mapRef.current.setCenter([nextNode.lng, nextNode.lat], true)
+      }
+
+      const currentMarkers = markersRef.current
+      for (let i = 0; i < currentMarkers.length; i += 1) {
+        const node = FOOTMARK_STORY_NODES[i]
+        const isActive = nextActiveCityId ? i === activeIndex : i <= activeIndex
+        currentMarkers[i].setContent(`
         <div class="footmark-mapMarker ${isActive ? 'is-active' : ''} footmark-mapMarker--${node.tone}" data-index="${i}">
           <span class="footmark-mapMarker__pulse"></span>
           <span class="footmark-mapMarker__dot"></span>
           <span class="footmark-mapMarker__label">${node.city}</span>
         </div>
       `)
-    }
-  }
+      }
+    },
+    [routePath]
+  )
 
   useEffect(() => {
     if (!active || initializedRef.current || !containerRef.current) return
@@ -119,16 +121,17 @@ export default function FootmarkMapScene({
     let alive = true
 
     const init = async () => {
+      const amapKey = import.meta.env.VITE_AMAP_KEY?.trim()
       setMapStatus('loading')
       setMapError('')
 
       try {
-        if (!AMAP_KEY) {
+        if (!amapKey) {
           throw new Error('未配置 VITE_AMAP_KEY，地图暂时无法加载。')
         }
 
         const AMap = await AMapLoad({
-          key: AMAP_KEY,
+          key: amapKey,
           version: '2.0',
           plugins: ['AMap.MoveAnimation']
         })
@@ -137,12 +140,18 @@ export default function FootmarkMapScene({
         AMapRef.current = AMap
         const map = new AMap.Map(containerRef.current, {
           viewMode: '3D',
-          zoom: quality === 'mobile' ? 4.2 : 4.7,
-          center: routePath[0],
+          zoom: FOOTMARK_MAP_ZOOM[quality],
+          zooms: [4, 5.8],
+          center: [104.5, 35.5],
           mapStyle: 'amap://styles/darkblue',
           pitch: quality === 'mobile' ? 20 : 34,
           rotation: quality === 'mobile' ? 0 : -12,
-          resizeEnable: true
+          resizeEnable: true,
+          zoomEnable: false,
+          doubleClickZoom: false,
+          scrollWheel: false,
+          touchZoom: false,
+          keyboardEnable: false
         })
         const routeStrokeColor = readElementCssVar(
           containerRef.current,
@@ -211,7 +220,7 @@ export default function FootmarkMapScene({
           const markerIndex = Number(indexAttr)
           const targetNode = FOOTMARK_STORY_NODES[markerIndex]
           if (!targetNode) return
-          onCitySelect?.(targetNode.id)
+          onCitySelectRef.current?.(targetNode.id)
         }
 
         containerRef.current.addEventListener('click', handleMarkerClick)
@@ -220,7 +229,7 @@ export default function FootmarkMapScene({
         }
 
         requestAnimationFrame(() => {
-          syncMapState(progressRef.current, qualityRef.current, activeCityIdRef.current)
+          syncMapState(progressRef.current, activeCityIdRef.current)
         })
       } catch (error) {
         if (!alive) return
@@ -235,11 +244,11 @@ export default function FootmarkMapScene({
     return () => {
       alive = false
     }
-  }, [active, onCitySelect, quality, reloadToken, routePath])
+  }, [active, quality, reloadToken, routePath, syncMapState])
 
   useEffect(() => {
-    syncMapState(progress, quality, activeCityId)
-  }, [activeCityId, progress, quality, routePath])
+    syncMapState(progress, activeCityId)
+  }, [activeCityId, progress, syncMapState])
 
   const focusedCity = useMemo(() => getFootmarkCityById(focusedNode.id), [focusedNode.id])
   const focusedWorks = useMemo(
@@ -272,7 +281,7 @@ export default function FootmarkMapScene({
       <div className="footmark-mapScene__canvas" ref={containerRef}>
         {mapStatus !== 'ready' ? (
           <div
-            className="footmark-mapScene__fallback absolute inset-6 z-[1] grid content-center gap-3 rounded-[24px] px-6 py-5 text-center backdrop-blur-md max-[640px]:inset-4 max-[640px]:px-4"
+            className="footmark-mapScene__status absolute inset-6 z-[1] grid content-center gap-3 rounded-[24px] px-6 py-5 text-center backdrop-blur-md max-[768px]:inset-4 max-[768px]:px-4"
             role={mapStatus === 'error' ? 'alert' : 'status'}
             aria-live="polite"
           >
@@ -280,7 +289,7 @@ export default function FootmarkMapScene({
             <p>
               {mapStatus === 'loading'
                 ? '正在连接地图服务并绘制足迹路线。'
-                : mapError || '地图服务暂时不可用，你仍然可以先查看当前城市与作品信息。'}
+                : mapError || '地图服务暂时不可用。'}
             </p>
             {mapStatus === 'error' ? (
               <Button onClick={() => setReloadToken(value => value + 1)}>重试地图加载</Button>
@@ -288,29 +297,31 @@ export default function FootmarkMapScene({
           </div>
         ) : null}
       </div>
-      <div className="footmark-mapScene__card">
-        <span className="footmark-mapScene__eyebrow ui-tag">{focusedNode.eyebrow}</span>
-        <h3 className="footmark-mapScene__title ui-card-title">{focusedNode.city}</h3>
-        <p className="footmark-mapScene__desc ui-body-text">
-          {isMobile
-            ? focusedCity?.story[0] || focusedCity?.summary || focusedNode.detail
-            : focusedCity?.summary || focusedNode.detail}
-        </p>
+      {showCard ? (
+        <div className="footmark-mapScene__card">
+          <span className="footmark-mapScene__eyebrow ui-tag">{focusedNode.eyebrow}</span>
+          <h3 className="footmark-mapScene__title ui-card-title">{focusedNode.city}</h3>
+          <p className="footmark-mapScene__desc ui-body-text">
+            {isMobile
+              ? focusedCity?.story[0] || focusedCity?.summary || focusedNode.detail
+              : focusedCity?.summary || focusedNode.detail}
+          </p>
 
-        <div className="footmark-mapScene__meta mt-4 grid gap-2 max-[640px]:mt-3 max-[640px]:grid-cols-2 max-[640px]:gap-x-[10px] max-[640px]:gap-y-1.5">
-          <span>{focusedWorks.length} 组作品</span>
-          <span>{focusedNode.title}</span>
+          <div className="footmark-mapScene__meta mt-4 grid gap-2 max-[768px]:mt-3 max-[768px]:grid-cols-2 max-[768px]:gap-x-[10px] max-[768px]:gap-y-1.5">
+            <span>{focusedWorks.length} 组作品</span>
+            <span>{focusedNode.title}</span>
+          </div>
+
+          <Button
+            type="primary"
+            className="footmark-mapScene__action"
+            onClick={() => onCitySelect?.(focusedNode.id)}
+            disabled={!focusedWorks.length}
+          >
+            {isMobile ? '打开作品记录' : '查看这座城市留下的作品'}
+          </Button>
         </div>
-
-        <Button
-          type="primary"
-          className="footmark-mapScene__action"
-          onClick={() => onCitySelect?.(focusedNode.id)}
-          disabled={!focusedWorks.length}
-        >
-          {isMobile ? '打开作品记录' : '查看这座城市留下的作品'}
-        </Button>
-      </div>
+      ) : null}
     </div>
   )
 }

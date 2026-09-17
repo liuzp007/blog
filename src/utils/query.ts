@@ -16,6 +16,12 @@ const DEFAULTS: QueryState = {
   sort: 'date_desc'
 }
 
+function parsePositiveInteger(value: string | null, fallback: number, max: number): number {
+  const parsed = Number.parseInt(value ?? '', 10)
+  if (!Number.isFinite(parsed)) return fallback
+  return Math.min(Math.max(1, parsed), max)
+}
+
 function parseSearchPart(input: string): URLSearchParams {
   const i = input.indexOf('?')
   const query = i >= 0 ? input.slice(i + 1) : input
@@ -24,8 +30,8 @@ function parseSearchPart(input: string): URLSearchParams {
 
 export function parseQuery(input: string): QueryState {
   const sp = parseSearchPart(input)
-  const page = Math.max(1, Number(sp.get('page') || DEFAULTS.page))
-  const pageSize = Math.max(1, Number(sp.get('pageSize') || DEFAULTS.pageSize))
+  const page = parsePositiveInteger(sp.get('page'), DEFAULTS.page, 10000)
+  const pageSize = parsePositiveInteger(sp.get('pageSize'), DEFAULTS.pageSize, 100)
   const sortParam = (sp.get('sort') || DEFAULTS.sort) as SortKey
   const sort: SortKey = VALID_SORT_KEYS.has(sortParam) ? sortParam : DEFAULTS.sort
   const q = sp.get('q') || undefined

@@ -1,10 +1,11 @@
 import { createRoot } from 'react-dom/client'
-import App from './App'
-import './index.css'
-import { store } from './store'
 import { Provider } from 'react-redux'
+import { PersistGate } from 'redux-persist/integration/react'
+import App from './App'
+import { persistor, store } from './store'
 import { setupGlobalErrorHandlers } from './utils/errorHandlers'
 import performanceMonitor from './utils/performanceMonitor'
+import './index.css'
 
 document.title = 'Blog • Roc'
 
@@ -19,7 +20,9 @@ if (!container) {
 const root = createRoot(container)
 root.render(
   <Provider store={store}>
-    <App />
+    <PersistGate loading={null} persistor={persistor}>
+      <App />
+    </PersistGate>
   </Provider>
 )
 

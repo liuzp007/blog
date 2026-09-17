@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useCallback, useMemo, memo } from 'react'
+import { useState, useEffect, useCallback, useMemo, memo } from 'react'
 import type { MouseEvent } from 'react'
 import clsx from 'clsx'
 import { Tooltip, Space } from 'antd'
@@ -13,7 +13,6 @@ import {
   TrophyOutlined
 } from '@ant-design/icons'
 import { motion } from 'framer-motion'
-import anime from 'animejs'
 import './index.css'
 
 export interface ContentItem {
@@ -147,8 +146,6 @@ const ContentCard: React.FC<ContentCardProps> = ({ item, onLike, onShare, onClic
   const [isLiked, setIsLiked] = useState(false)
   const [imageLoaded, setImageLoaded] = useState(false)
   const [viewCount, setViewCount] = useState(item.stats?.views || 0)
-  const cardRef = useRef<HTMLDivElement>(null)
-
   const difficultyTag = useMemo(
     () => buildDifficultyTag(item.meta?.difficulty),
     [item.meta?.difficulty]
@@ -184,16 +181,6 @@ const ContentCard: React.FC<ContentCardProps> = ({ item, onLike, onShare, onClic
 
   const handleCardClick = useCallback(() => {
     setViewCount(prev => prev + 1)
-
-    if (cardRef.current) {
-      anime({
-        targets: cardRef.current,
-        scale: [1, 0.95, 1],
-        duration: 200,
-        easing: 'easeInOutQuad'
-      })
-    }
-
     onClick?.(item)
   }, [item, onClick])
 
@@ -201,14 +188,6 @@ const ContentCard: React.FC<ContentCardProps> = ({ item, onLike, onShare, onClic
     (e: MouseEvent) => {
       e.stopPropagation()
       setIsLiked(prev => !prev)
-
-      anime({
-        targets: e.currentTarget,
-        scale: [1, 1.2, 1],
-        duration: 200,
-        easing: 'easeInOutQuad'
-      })
-
       onLike?.(item.id)
     },
     [item.id, onLike]
@@ -217,14 +196,6 @@ const ContentCard: React.FC<ContentCardProps> = ({ item, onLike, onShare, onClic
   const handleShare = useCallback(
     (e: MouseEvent) => {
       e.stopPropagation()
-
-      anime({
-        targets: e.currentTarget,
-        rotate: [0, 360],
-        duration: 400,
-        easing: 'easeInOutQuad'
-      })
-
       onShare?.(item)
     },
     [item, onShare]
@@ -237,10 +208,10 @@ const ContentCard: React.FC<ContentCardProps> = ({ item, onLike, onShare, onClic
   return (
     <motion.div
       className={cardClassName}
-      ref={cardRef}
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       whileHover={onClick ? { y: -4 } : undefined}
+      whileTap={onClick ? { scale: 0.95 } : undefined}
       transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
       onClick={onClick ? handleCardClick : undefined}
     >
@@ -331,25 +302,36 @@ const ContentCard: React.FC<ContentCardProps> = ({ item, onLike, onShare, onClic
 
           <div className="content-card__actions flex flex-wrap gap-2">
             <Tooltip title={isLiked ? '取消点赞' : '点赞'}>
-              <button
+              <motion.button
                 type="button"
                 className={clsx(ACTION_BTN_CLASS, isLiked && 'is-active')}
                 onClick={handleLike}
+                whileTap={{ scale: 1.2 }}
               >
                 <HeartOutlined />
-              </button>
+              </motion.button>
             </Tooltip>
 
             <Tooltip title="分享">
-              <button type="button" className={ACTION_BTN_CLASS} onClick={handleShare}>
+              <motion.button
+                type="button"
+                className={ACTION_BTN_CLASS}
+                onClick={handleShare}
+                whileTap={{ rotate: 360, scale: 0.95 }}
+              >
                 <ShareAltOutlined />
-              </button>
+              </motion.button>
             </Tooltip>
 
             <Tooltip title="收藏">
-              <button type="button" className={ACTION_BTN_CLASS} onClick={handleBookmark}>
+              <motion.button
+                type="button"
+                className={ACTION_BTN_CLASS}
+                onClick={handleBookmark}
+                whileTap={{ scale: 0.9 }}
+              >
                 <StarOutlined />
-              </button>
+              </motion.button>
             </Tooltip>
           </div>
         </div>

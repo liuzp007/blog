@@ -130,15 +130,14 @@ describe('Home 首页组件测试', () => {
 
   it('应该正确渲染首页', () => {
     renderHome()
-    expect(screen.getByText('探索')).toBeInTheDocument()
-    expect(screen.getByText('无限的代码')).toBeInTheDocument()
-    expect(screen.getByText('宇宙')).toBeInTheDocument()
+    expect(screen.getByText('前端开发 · 刘志鹏')).toBeInTheDocument()
+    expect(screen.getByText('用代码')).toBeInTheDocument()
+    expect(screen.getByText('前端体验')).toBeInTheDocument()
   })
 
   it('应该渲染所有主要部分', () => {
     renderHome()
 
-    expect(screen.getByText('Hello world')).toBeInTheDocument()
     expect(screen.getByText('精选文章信号源')).toBeInTheDocument()
     expect(screen.getAllByText('实验工坊').length).toBeGreaterThan(0)
     expect(screen.getAllByText('作品展').length).toBeGreaterThan(0)
@@ -191,10 +190,10 @@ describe('Home 首页组件测试', () => {
 
   it('应该渲染联系表单', () => {
     renderHome()
-    expect(screen.getByText('给我留言')).toBeInTheDocument()
-    expect(screen.getByLabelText('姓名')).toBeInTheDocument()
-    expect(screen.getByLabelText('邮箱')).toBeInTheDocument()
-    expect(screen.getByPlaceholderText('想说的话...')).toBeInTheDocument()
+    expect(screen.getAllByText('联系我').length).toBeGreaterThan(0)
+    expect(screen.getByPlaceholderText('怎么称呼？')).toBeInTheDocument()
+    expect(screen.getByPlaceholderText('怎么联系？')).toBeInTheDocument()
+    expect(screen.getByPlaceholderText('想对我说的话...')).toBeInTheDocument()
   })
 
   it('应该点击导航按钮调用history.push', async () => {

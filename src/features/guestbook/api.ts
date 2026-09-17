@@ -75,8 +75,3 @@ export async function createMessage(payload: GuestbookCreatePayload): Promise<Gu
   if (error) throw new Error(error.message)
   return toMessage(data as DbRow)
 }
-
-export async function deleteMessage(id: string): Promise<void> {
-  const { error } = await supabase.from('messages').update({ is_deleted: true }).eq('id', id)
-  if (error) throw new Error(error.message)
-}

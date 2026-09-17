@@ -21,8 +21,8 @@ describe('Header 组件测试', () => {
         <Header />
       </MemoryRouter>
     )
-    const header = document.querySelector('.headerWrap')
-    expect(header).toBeInTheDocument()
+    expect(screen.getByRole('navigation', { name: '主导航' })).toBeInTheDocument()
+    expect(screen.getByText('MY SPACE')).toBeInTheDocument()
   })
 
   it('应该包含导航链接', () => {

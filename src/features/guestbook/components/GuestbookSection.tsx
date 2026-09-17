@@ -4,7 +4,7 @@ import MessageForm from './MessageForm'
 import MessageList from './MessageList'
 
 export default function GuestbookSection() {
-  const { messages, loading, error, submitting, submitMessage, removeMessage } = useGuestbook()
+  const { messages, loading, error, submitting, submitMessage } = useGuestbook()
 
   return (
     <div className="guestbook-inner">
@@ -16,7 +16,6 @@ export default function GuestbookSection() {
         error={error}
         submitting={submitting}
         onReply={payload => submitMessage(payload)}
-        onDelete={removeMessage}
       />
     </div>
   )

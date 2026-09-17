@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from 'react'
+import { fetchMessages, createMessage } from '../api'
 import type { GuestbookMessage, GuestbookCreatePayload } from '../types'
-import { fetchMessages, createMessage, deleteMessage as apiDelete } from '../api'
 
 export function useGuestbook() {
   const [messages, setMessages] = useState<GuestbookMessage[]>([])
@@ -38,24 +38,12 @@ export function useGuestbook() {
         setMessages(prev => [msg, ...prev])
       }
       return msg
-    } catch (err: any) {
-      setError(err.message || '发布失败')
+    } catch (err: unknown) {
+      setError(err instanceof Error ? err.message : '发布失败')
       throw err
     } finally {
       setSubmitting(false)
     }
-  }, [])
-
-  const removeMessage = useCallback(async (id: string) => {
-    await apiDelete(id)
-    setMessages(prev =>
-      prev
-        .filter(m => m.id !== id)
-        .map(m => ({
-          ...m,
-          replies: m.replies?.filter(r => r.id !== id) || []
-        }))
-    )
   }, [])
 
   return {
@@ -64,7 +52,6 @@ export function useGuestbook() {
     error,
     submitting,
     submitMessage,
-    removeMessage,
     refresh: load
   }
 }

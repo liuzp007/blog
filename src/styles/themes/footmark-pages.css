@@ -36,6 +36,8 @@
   --footmark-text-detail-pager: rgb(223 236 250 / 78%);
   --footmark-text-detail-shot: #90d6ff;
   --footmark-text-detail-story: rgb(201 219 239 / 72%);
+  --footmark-heading-tracking: -0.04em;
+  --footmark-marker-tracking: 0.08em;
 
   /* --- 面层与渐变 --- */
   --footmark-surface-panel: rgb(8 17 31 / 72%);
@@ -81,6 +83,9 @@
   --footmark-detail-content-bg: rgb(7 15 28 / 72%);
   --footmark-map-action-bg: linear-gradient(135deg, #78d1ff 0%, #4b82ff 100%);
   --footmark-map-action-bg-hover: linear-gradient(135deg, #84daff 0%, #5a90ff 100%);
+  --footmark-map-action-text: #061524;
+  --footmark-blur-panel: 16px;
+  --footmark-blur-console: 18px;
   --footmark-stage-mask: linear-gradient(
     180deg,
     rgb(3 8 19 / 22%) 0%,

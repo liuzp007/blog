@@ -117,9 +117,9 @@ describe('Home Smoke Test', () => {
       </Provider>
     )
 
-    expect(screen.getByText('探索')).toBeInTheDocument()
-    expect(screen.getByText('无限的代码')).toBeInTheDocument()
-    expect(screen.getByText('宇宙')).toBeInTheDocument()
+    expect(screen.getByText('前端开发 · 刘志鹏')).toBeInTheDocument()
+    expect(screen.getByText('用代码')).toBeInTheDocument()
+    expect(screen.getByText('前端体验')).toBeInTheDocument()
     expect(screen.getByText('阅读最新文章')).toBeInTheDocument()
   })
 
@@ -149,8 +149,7 @@ describe('Home Smoke Test', () => {
       </Provider>
     )
 
-    const heroFx = screen.queryByTestId('hero-fx')
-    expect(heroFx).toHaveAttribute('data-enabled', 'false')
+    expect(screen.queryByTestId('hero-fx')).not.toBeInTheDocument()
 
     unmount()
   })

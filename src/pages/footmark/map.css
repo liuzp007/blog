@@ -1,0 +1,135 @@
+/* --- AMap 注入 marker 系统 --- */
+.footmark-mapMarker {
+  --footmark-map-marker-color: var(--footmark-marker-default);
+  --footmark-map-marker-shadow: var(--footmark-marker-default-shadow);
+
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-full);
+  opacity: 0.58;
+  cursor: pointer;
+  transition:
+    transform var(--motion-base) var(--easing-standard),
+    opacity var(--motion-base) var(--easing-standard);
+  transform: scale(0.92);
+}
+
+.footmark-mapMarker__pulse {
+  position: absolute;
+  inset: var(--space-1);
+  border-radius: var(--radius-full);
+  background: color-mix(in srgb, var(--footmark-map-marker-color) 18%, transparent);
+  animation: footmarkMarkerPulse 2.4s var(--easing-standard) infinite;
+}
+
+.footmark-mapMarker__dot {
+  position: relative;
+  z-index: 1;
+  width: 11px;
+  height: 11px;
+  border-radius: var(--radius-full);
+  background: var(--footmark-map-marker-color);
+  box-shadow:
+    0 0 0 var(--space-1) color-mix(in srgb, var(--footmark-map-marker-color) 22%, transparent),
+    0 0 var(--space-5) var(--footmark-map-marker-shadow);
+}
+
+.footmark-mapMarker__label {
+  position: absolute;
+  top: 50%;
+  left: calc(100% + var(--space-2));
+  z-index: 2;
+  padding: var(--space-1) var(--space-2);
+  font-size: var(--text-caption-size);
+  color: var(--footmark-text-marker-label);
+  background: var(--footmark-surface-panel-solid);
+  opacity: 0;
+  transition:
+    transform var(--motion-base) var(--easing-standard),
+    opacity var(--motion-base) var(--easing-standard);
+  border-radius: var(--radius-pill);
+  box-shadow: inset 0 0 0 1px var(--footmark-line-marker-label);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--footmark-marker-tracking);
+  white-space: nowrap;
+  transform: translate3d(-8px, -50%, 0);
+  pointer-events: none;
+}
+
+.footmark-mapMarker:hover,
+.footmark-mapMarker.is-active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.footmark-mapMarker:hover .footmark-mapMarker__label,
+.footmark-mapMarker.is-active .footmark-mapMarker__label {
+  opacity: 1;
+  transform: translate3d(0, -50%, 0);
+}
+
+.footmark-mapMarker--origin {
+  --footmark-map-marker-color: var(--footmark-marker-origin);
+  --footmark-map-marker-shadow: var(--footmark-marker-origin-shadow);
+}
+
+.footmark-mapMarker--growth {
+  --footmark-map-marker-color: var(--footmark-marker-growth);
+  --footmark-map-marker-shadow: var(--footmark-marker-growth-shadow);
+}
+
+.footmark-mapMarker--craft {
+  --footmark-map-marker-color: var(--footmark-marker-craft);
+  --footmark-map-marker-shadow: var(--footmark-marker-craft-shadow);
+}
+
+.footmark-mapMarker--horizon {
+  --footmark-map-marker-color: var(--footmark-marker-horizon);
+  --footmark-map-marker-shadow: var(--footmark-marker-horizon-shadow);
+}
+
+@keyframes footmarkMarkerPulse {
+  0% {
+    transform: scale(0.72);
+    opacity: 0.72;
+  }
+
+  70%,
+  100% {
+    transform: scale(1.24);
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .footmark-mapMarker__pulse {
+    animation: none;
+  }
+}
+
+@media (width <= 768px) {
+  .footmark-mapMarker {
+    width: 28px;
+    height: 28px;
+  }
+
+  .footmark-mapMarker__dot {
+    width: 9px;
+    height: 9px;
+  }
+
+  .footmark-mapMarker__label {
+    top: calc(100% + var(--space-2));
+    left: 50%;
+    font-size: var(--text-caption-size);
+    transform: translate3d(-50%, -4px, 0);
+  }
+
+  .footmark-mapMarker.is-active .footmark-mapMarker__label {
+    transform: translate3d(-50%, 0, 0);
+  }
+}

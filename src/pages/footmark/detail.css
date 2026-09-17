@@ -1,0 +1,178 @@
+/* --- 城市详情弹层与作品面板 --- */
+.footmark-detailModal .ant-modal-content,
+.footmark-detailDrawer .ant-drawer-content {
+  color: var(--footmark-text-heading);
+  background: var(--footmark-detail-modal-bg);
+}
+
+.footmark-detailModal .ant-modal-header,
+.footmark-detailDrawer .ant-drawer-header {
+  color: var(--footmark-text-heading);
+  background: transparent;
+  border-bottom-color: var(--footmark-line-detail-modal);
+}
+
+.footmark-detailModal .ant-modal-title,
+.footmark-detailDrawer .ant-drawer-title {
+  color: var(--footmark-text-heading);
+}
+
+.footmark-detailModal .ant-modal-close,
+.footmark-detailDrawer .ant-drawer-close {
+  color: var(--footmark-text-soft-strong);
+}
+
+.footmark-detail__eyebrow,
+.footmark-detail__head .ui-tag {
+  width: fit-content;
+  padding: var(--space-2) var(--space-3);
+  font-size: var(--text-eyebrow-size);
+  color: var(--footmark-text-accent-strong);
+  background: var(--footmark-surface-detail-eyebrow);
+  border-radius: var(--radius-pill);
+  font-weight: var(--tag-uppercase-weight);
+  letter-spacing: var(--text-eyebrow-letter-spacing);
+  text-transform: uppercase;
+}
+
+.footmark-detail__cityTitle,
+.footmark-detail__head .ui-display-title,
+.footmark-detail__head h2 {
+  margin: 0;
+  font-size: clamp(var(--heading-2-size), 4vw, var(--heading-1-size));
+  line-height: var(--heading-line-height);
+}
+
+.footmark-detail__citySummary,
+.footmark-detail__head .ui-lead-text,
+.footmark-detail__head p {
+  max-width: 680px;
+  margin: 0;
+  font-size: var(--text-body-size);
+  line-height: var(--text-body-relaxed-line-height);
+  color: var(--footmark-text-detail-copy);
+}
+
+.footmark-detail__mediaCard {
+  overflow: hidden;
+  background: var(--footmark-detail-card-bg);
+  border-radius: var(--radius-lg);
+  box-shadow: inset 0 0 0 1px var(--footmark-line-detail-card);
+}
+
+.footmark-detail__image,
+.footmark-detail__image .ant-image-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 220px;
+  object-fit: cover;
+}
+
+.footmark-detail__placeholder {
+  background: var(--footmark-detail-placeholder-bg);
+  box-shadow: inset 0 0 0 1px var(--footmark-line-detail-card);
+}
+
+.footmark-detail__placeholder strong {
+  font-size: var(--heading-card-size);
+  line-height: var(--heading-card-line-height);
+}
+
+.footmark-detail__placeholder span {
+  font-size: var(--text-body-size);
+  line-height: var(--text-body-relaxed-line-height);
+  color: var(--footmark-text-detail-placeholder);
+}
+
+.footmark-detail__content {
+  background: var(--footmark-detail-content-bg);
+  box-shadow: inset 0 0 0 1px var(--footmark-line-detail-content);
+}
+
+.footmark-detail__label {
+  display: block;
+  font-size: var(--text-meta-size);
+  color: var(--footmark-text-detail-label);
+  margin-bottom: var(--space-2);
+  letter-spacing: var(--text-eyebrow-letter-spacing);
+  text-transform: uppercase;
+}
+
+.footmark-detail__workTitle,
+.footmark-detail__workTop .ui-card-title,
+.footmark-detail__workTop h3 {
+  margin: 0;
+  font-size: var(--heading-card-size);
+  line-height: var(--heading-card-line-height);
+}
+
+.footmark-detail__pager {
+  color: var(--footmark-text-detail-pager);
+}
+
+.footmark-detail__shotAt {
+  margin: 0;
+  font-size: var(--text-meta-size);
+  color: var(--footmark-text-detail-shot);
+  letter-spacing: var(--text-overline-letter-spacing);
+  text-transform: uppercase;
+}
+
+.footmark-detail__description,
+.footmark-detail__content .ui-body-text {
+  margin: 0;
+  font-size: var(--text-body-size);
+  line-height: var(--text-body-relaxed-line-height);
+  color: var(--footmark-text-muted);
+}
+
+.footmark-detail__tags .ant-tag.ui-tag {
+  margin-inline-end: 0;
+  color: var(--footmark-text-strong);
+  background: var(--footmark-surface-detail-tag);
+  border-color: var(--footmark-line-tag);
+}
+
+.footmark-detail__workChip,
+.footmark-detail__workChip.ui-button-secondary {
+  height: auto;
+  padding: var(--space-3) var(--space-4);
+  color: var(--footmark-text-soft-strong);
+  background: var(--footmark-surface-chip-soft);
+  border-color: var(--footmark-line-detail-workchip);
+  border-radius: var(--radius-md);
+}
+
+.footmark-detail__workChip.is-active,
+.footmark-detail__workChip:hover,
+.footmark-detail__workChip:focus,
+.footmark-detail__workChip.ui-button-secondary:hover,
+.footmark-detail__workChip.ui-button-secondary:focus {
+  color: var(--footmark-text-strong);
+  background: var(--footmark-surface-chip-soft-hover);
+  border-color: var(--footmark-line-tag-hover);
+}
+
+.footmark-detail__storyText,
+.footmark-detail__story .ui-body-text,
+.footmark-detail__story p {
+  margin: 0;
+  font-size: var(--text-body-size);
+  line-height: var(--text-body-relaxed-line-height);
+  color: var(--footmark-text-detail-story);
+}
+
+@media (width <= 768px) {
+  .footmark-detail__cityTitle,
+  .footmark-detail__head .ui-display-title,
+  .footmark-detail__head h2 {
+    font-size: var(--heading-2-size);
+  }
+
+  .footmark-detail__workTitle,
+  .footmark-detail__workTop .ui-card-title,
+  .footmark-detail__workTop h3 {
+    font-size: var(--heading-3-size);
+  }
+}

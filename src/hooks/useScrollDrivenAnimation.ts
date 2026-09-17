@@ -1,78 +1,65 @@
 import { useEffect, useRef } from 'react'
-import gsap from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
-
-gsap.registerPlugin(ScrollTrigger)
+import { useMotionValueEvent, useReducedMotion, useScroll } from 'framer-motion'
+import type { UseScrollOptions } from 'framer-motion'
 
 type ScrollEffect = 'rotate3d' | 'diagonal'
+type ScrollOffsetPoint = NonNullable<UseScrollOptions['offset']>[number]
 
 interface UseScrollDrivenAnimationOptions {
   effect: ScrollEffect
-  /** 触发元素，默认为动画元素自身 */
   triggerRef?: React.RefObject<HTMLElement | null>
-  start?: string
-  end?: string
+  start?: ScrollOffsetPoint
+  end?: ScrollOffsetPoint
 }
 
 export function useScrollDrivenAnimation<T extends HTMLElement = HTMLDivElement>(
   options: UseScrollDrivenAnimationOptions
 ) {
-  const { effect, triggerRef, start = 'top 100%', end = 'top 35%' } = options
+  const { effect, triggerRef, start = 'start end', end = 'start center' } = options
   const ref = useRef<T>(null)
+  const prefersReducedMotion = useReducedMotion()
+  const targetRef = triggerRef ?? ref
+  const offset: UseScrollOptions['offset'] = [start, end]
+  const { scrollYProgress } = useScroll({ target: targetRef, offset })
+
+  const applyProgress = (progress: number) => {
+    const element = ref.current
+    if (!element) return
+
+    if (effect === 'rotate3d') {
+      element.style.transformOrigin = 'bottom center'
+      element.style.backfaceVisibility = 'hidden'
+      element.style.transform = `rotateX(${(1 - progress) * 90}deg)`
+      element.style.filter = `brightness(${0.5 + progress * 0.5})`
+    } else {
+      element.style.transform = `translate3d(${-5 * (1 - progress)}%, ${5 * (1 - progress)}%, 0)`
+      element.style.filter = ''
+    }
+
+    element.style.opacity = String(progress)
+  }
 
   useEffect(() => {
-    const el = ref.current
-    if (!el) return
+    const element = ref.current
+    const parent = element?.parentElement
+    if (!element || prefersReducedMotion) return
 
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
-
-    const parent = el.parentElement
-    const triggerEl = triggerRef?.current || el
-
-    let setup: (() => void) | undefined
-    let cleanup: (() => void) | undefined
-
-    switch (effect) {
-      case 'rotate3d':
-        setup = () => {
-          el.style.transformOrigin = 'bottom center'
-          el.style.backfaceVisibility = 'hidden'
-          if (parent) parent.style.perspective = '1000px'
-        }
-        cleanup = () => {
-          if (parent) parent.style.perspective = ''
-        }
-        gsap.set(el, { rotateX: 90, opacity: 0, filter: 'brightness(0.5)' })
-        gsap.to(el, {
-          rotateX: 0,
-          opacity: 1,
-          filter: 'brightness(1)',
-          ease: 'none',
-          scrollTrigger: { trigger: triggerEl, start, end, scrub: true }
-        })
-        break
-
-      case 'diagonal':
-        gsap.set(el, { xPercent: -5, yPercent: 5, opacity: 0 })
-        gsap.to(el, {
-          xPercent: 0,
-          yPercent: 0,
-          opacity: 1,
-          ease: 'none',
-          scrollTrigger: { trigger: triggerEl, start, end, scrub: true }
-        })
-        break
-    }
-
-    setup?.()
+    if (effect === 'rotate3d' && parent) parent.style.perspective = '1000px'
+    applyProgress(scrollYProgress.get())
 
     return () => {
-      cleanup?.()
-      ScrollTrigger.getAll().forEach(st => {
-        if (st.trigger === triggerEl) st.kill()
-      })
+      if (parent) parent.style.perspective = ''
+      element.style.transform = ''
+      element.style.transformOrigin = ''
+      element.style.backfaceVisibility = ''
+      element.style.filter = ''
+      element.style.opacity = ''
     }
-  }, [effect, triggerRef, start, end])
+  }, [effect, prefersReducedMotion, scrollYProgress])
+
+  useMotionValueEvent(scrollYProgress, 'change', progress => {
+    if (!prefersReducedMotion) applyProgress(progress)
+  })
 
   return ref
 }

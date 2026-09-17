@@ -17,11 +17,11 @@ import {
   ThunderboltOutlined
 } from '@ant-design/icons'
 import { Button, Drawer, message } from 'antd'
-import DanmakuGuestbook from '@/features/guestbook/components/DanmakuGuestbook'
-import ContactForm from '@/features/guestbook/components/ContactForm'
 import TiltCard from '@/components/ui/tilt-card'
 import ArticleSignalMediaCard from '@/features/content/ArticleSignalMediaCard'
 import { allMetas, allSeries } from '@/features/content/contentCatalog'
+import ContactForm from '@/features/guestbook/components/ContactForm'
+import DanmakuGuestbook from '@/features/guestbook/components/DanmakuGuestbook'
 import { useIdleMount } from '@/hooks/useIdleMount'
 import { usePerformanceTier } from '@/hooks/usePerformanceTier'
 import { useScrollDrivenAnimation } from '@/hooks/useScrollDrivenAnimation'
@@ -88,7 +88,7 @@ export default function Home({ history }: HomeProps) {
       { id: 'showcase', label: '作品展' },
       { id: 'interactive-demo', label: '互动' },
       { id: 'timeline', label: '轨迹' },
-      { id: 'contact', label: '联系' }
+      { id: 'guestbook', label: '联系' }
     ],
     []
   )
@@ -255,16 +255,18 @@ export default function Home({ history }: HomeProps) {
   return (
     <div className="HomeWrap">
       {messageContextHolder}
-      <audio id="myMusic" ref={audioRef} loop>
+      <audio id="myMusic" ref={audioRef} loop preload="none">
         <source src="/music/suddenly.mp3" type="audio/mp3" />
       </audio>
 
       <LineDog />
       <SignalWaveOverlay enabled={heroFxEnabled} />
 
-      <Suspense fallback={null}>
-        <HomeHeroFx enabled={heroFxEnabled} />
-      </Suspense>
+      {heroFxEnabled && (
+        <Suspense fallback={null}>
+          <HomeHeroFx enabled={heroFxEnabled} />
+        </Suspense>
+      )}
 
       <div className="home-landing">
         <header className={`hero-nav ${navScrolled ? 'hero-nav--scrolled' : ''}`}>

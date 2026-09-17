@@ -1013,14 +1013,12 @@
       "id": "CSS09",
       "title": "删除孤立 CSS 文件",
       "priority": "P2",
-      "isDone": true,
-      "status": "cancelled",
+      "isDone": false,
+      "status": "done",
       "files": [
-        "src/styles/styles.css",
-        "src/styles/palettes.css",
-        "src/styles/3_components/layout/animated-navigation-menu.css"
+        "src/styles/palettes.css"
       ],
-      "goal": "这些文件要么为空、要么未被任何文件 import：1) src/styles/styles.css — 0 字节空文件；2) src/styles/palettes.css — 空文件（CSS06 已标记）；3) src/styles/3_components/layout/animated-navigation-menu.css — 无引用。同时从 index.css 移除对应的 @import 语句。"
+      "goal": "已完成：styles.css 与 animated-navigation-menu.css 已不存在；palettes.css 已按 style-governance 恢复为非空页面 / feature palette 聚合入口并被 index.css 引用，保留是当前正确行为。"
     },
     {
       "id": "CSS10",
@@ -1107,10 +1105,10 @@
       "id": "CSS12",
       "title": "审计 components.css — 清理死 .ui-* 类",
       "priority": "P2",
-      "isDone": true,
-      "status": "cancelled",
+      "isDone": false,
+      "status": "done",
       "files": ["src/styles/components.css"],
-      "goal": "components.css 有 734 行 .ui-* 组件类。需要逐个 grep 确认引用情况：1) 跨 3+ 页面使用的类（如 ui-card、ui-tag、ui-button）保留；2) 仅 1 个页面使用的类，迁移到该页面的 index.css 并从 components.css 删除；3) 零引用的死类直接删除。预期可缩减 30-40%。"
+      "goal": "已完成：.ui-* 类从 66 个收敛到 47 个，删除 13 个零引用死类；所有现存类均有源码引用。单处使用的通用按钮 / 标签 / 卡片变体保留为设计系统 API，避免违反 token / .ui-* 分层规范。"
     },
     {
       "id": "CSS13",
@@ -1219,14 +1217,18 @@
       "id": "AR02",
       "title": "架构: 合并动画库 — 移除 gsap + animejs，统一用 framer-motion",
       "priority": "P1",
-      "isDone": true,
-      "status": "cancelled",
+      "isDone": false,
+      "status": "done",
       "files": [
         "src/components/content-card/index.tsx",
+        "src/components/collapsible-navigation/index.tsx",
+        "src/hooks/useScrollDrivenAnimation.ts",
+        "src/pages/footmark/index.tsx",
+        "src/types/global.d.ts",
         "src/pages/aboutme/index.tsx",
         "src/pages/home/index.tsx"
       ],
-      "goal": "项目同时使用 3 个动画库：framer-motion（37 文件）、animejs（3 文件）、gsap（1 文件）。方案：1) content-card 的 anime.js scale 动画改用 framer-motion；2) aboutme 的粒子/光标效果改用 framer-motion 或 CSS；3) home 的 gsap 动画改用 framer-motion；4) 移除 animejs 和 gsap 依赖。"
+      "goal": "已完成：移除 animejs 与 GSAP 源码引用；Footmark 滚动叙事改为原生 scroll/rAF + sticky 舞台；依赖与锁文件条目已同步删除。"
     },
     {
       "id": "AR03",
@@ -1290,10 +1292,10 @@
       "id": "VR01",
       "title": "性能: SearchBox 派生状态修复 — useEffect → 直接计算",
       "priority": "P2",
-      "isDone": true,
-      "status": "cancelled",
+      "isDone": false,
+      "status": "done",
       "files": ["src/features/search/SearchBox.tsx"],
-      "goal": "line 12: const [q, setQ] = useState(value) + useEffect(() => setQ(value), [value]) 是经典反模式(rerender-derived-state-no-effect)。props value 变化时触发多余 setState + 重渲染。应改为 const q = value 直接使用 props，或如果需要本地可编辑则用 const [q, setQ] = useState(value) + useEffect 仅做同步。"
+      "goal": "已完成：SearchBox 移除 props 同步 useEffect，受控模式直接消费 value，非受控模式保留内部状态。"
     },
 {
       "id": "VR02",
@@ -1335,10 +1337,10 @@
       "id": "VR05",
       "title": "性能: EnhancedBackground Three.js 应动态加载",
       "priority": "P1",
-      "isDone": true,
-      "status": "cancelled",
-      "files": ["src/components/enhanced-background/index.tsx"],
-      "goal": "bundle-dynamic-imports 规则：该组件直接 import { Canvas } from '@react-three/fiber' 等 ~500KB 依赖。即使用户只看一个不需要 3D 的页面，这些代码也会被打包。方案：将 Three.js 相关子组件用 React.lazy() + Suspense 动态加载，仅在 enabled=true 时才加载 3D 模块。注意：这与 AR01（移除 Three.js）相关，如果决定移除 Three.js 则此任务可取消。"
+      "isDone": false,
+      "status": "done",
+      "files": ["src/pages/home/index.tsx"],
+      "goal": "已完成：当前首页 HomeHeroFx 保持 lazy import，并且仅在 heroFxEnabled 为 true 时挂载，低性能 / 减少动效场景不再下载 3D chunk。"
     }
   ]
 }

@@ -1,942 +1,553 @@
-/* --- 页面根层与阶段背景 --- */
-.footmark-cosmos {
-  /* 页面私有颜色与阴影变量已迁移到 src/styles/themes/footmark-pages.css。 */
+/* --- Footmark Atlas Console 页面层 --- */
+.footmark-console-page {
   min-height: 100vh;
+  padding: clamp(var(--space-6), 4vw, var(--space-12));
   color: var(--footmark-text-primary);
   background: var(--footmark-page-bg);
   overflow-x: hidden;
 }
 
-.footmark-cosmos__scrollShell {
-  position: relative;
+.footmark-console-page__header {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: var(--space-8);
+  align-items: end;
+  max-width: 1680px;
+  margin: 0 auto var(--space-6);
 }
 
-.footmark-cosmos__stage {
+.footmark-console-page__kicker {
+  font-size: var(--text-eyebrow-size);
+  color: var(--footmark-text-eyebrow);
+  letter-spacing: var(--text-eyebrow-letter-spacing);
+  text-transform: uppercase;
+}
+
+.footmark-console-page__title {
+  max-width: 900px;
+  margin: var(--space-4) 0 0;
+  font-size: clamp(var(--heading-2-size), 4.4vw, var(--heading-display-size));
+  line-height: var(--heading-line-height);
+  color: var(--footmark-text-heading);
+  letter-spacing: var(--footmark-heading-tracking);
+}
+
+.footmark-console-page__intro {
+  max-width: 720px;
+  margin: var(--space-4) 0 0;
+  font-size: var(--text-lead-size);
+  line-height: var(--text-lead-line-height);
+  color: var(--footmark-text-muted-soft);
+}
+
+.footmark-console-page__headerActions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding-bottom: var(--space-2);
+}
+
+.footmark-console-page__backLink {
+  color: var(--footmark-text-link);
+  background: var(--footmark-surface-glass);
+  box-shadow: inset 0 0 0 1px var(--footmark-line-backlink);
+  backdrop-filter: blur(var(--footmark-blur-panel));
+}
+
+.footmark-console-page__mode {
+  font-size: var(--text-meta-size);
+  color: var(--footmark-text-meta);
+  letter-spacing: var(--text-eyebrow-letter-spacing);
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.footmark-console-page__layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) clamp(360px, 27vw, 430px);
+  gap: var(--space-5);
+  align-items: stretch;
+  max-width: 1680px;
+  margin: 0 auto;
+}
+
+.footmark-console-page__mapPanel {
   position: relative;
-  min-height: 100vh;
+  height: clamp(640px, calc(100vh - 260px), 860px);
+  min-height: 640px;
+  background: var(--footmark-surface-panel);
   overflow: hidden;
+  border-radius: var(--radius-xl);
+  box-shadow:
+    inset 0 0 0 1px var(--footmark-line-soft),
+    var(--footmark-shadow-panel-lg);
 }
 
-.footmark-cosmos__stage::before,
-.footmark-cosmos__stage::after {
-  content: '';
-  position: absolute;
-  pointer-events: none;
-  z-index: 1;
-}
-
-.footmark-cosmos.phase-orbit .footmark-cosmos__stage::before {
-  top: 18%;
-  right: 10%;
-  width: 520px;
-  height: 520px;
-  border-radius: 999px;
-  background: var(--footmark-orbit-glow);
-  filter: blur(6px);
-  opacity: 0.78;
-}
-
-.footmark-cosmos.phase-orbit .footmark-cosmos__stage::after {
-  top: 10%;
-  right: -2%;
-  width: 760px;
-  height: 760px;
-  border-radius: 999px;
-  border: 1px solid var(--footmark-orbit-ring-border);
-  box-shadow: var(--footmark-orbit-ring-shadow);
-  opacity: 0.42;
-  transform: perspective(960px) rotateX(74deg);
-}
-
-.footmark-cosmos.phase-cloud .footmark-cosmos__stage::before {
-  inset: auto;
-  top: 12%;
-  right: 9%;
-  width: 560px;
-  height: 560px;
-  border-radius: 999px;
-  background: var(--footmark-cloud-glow);
-  filter: blur(14px);
-}
-
-.footmark-cosmos.phase-cloud .footmark-cosmos__stage::after {
-  right: 0;
-  bottom: 0;
-  left: 0;
-  height: 180px;
-  background: var(--footmark-cloud-fade);
-}
-
-.footmark-cosmos.phase-earth .footmark-cosmos__stage::before {
-  top: 16%;
-  right: 12%;
-  width: 420px;
-  height: 420px;
-  border-radius: 999px;
-  background: var(--footmark-earth-glow);
-  filter: blur(8px);
-  opacity: 0.88;
-}
-
-.footmark-cosmos.phase-earth .footmark-cosmos__stage::after {
-  top: 8%;
-  right: 4%;
-  width: 620px;
-  height: 620px;
-  border-radius: 999px;
-  border: 1px solid var(--footmark-earth-ring-border);
-  box-shadow: var(--footmark-earth-ring-shadow);
-  opacity: 0.36;
-}
-
-.footmark-cosmos.is-map-phase .footmark-cosmos__stage::before,
-.footmark-cosmos.is-map-phase .footmark-cosmos__stage::after {
-  display: none;
-}
-
-/* --- 场景层：solar / cloud / map stack --- */
-.footmark-cosmos__sceneStack,
-.footmark-cosmos__sceneWrap,
-.footmark-cosmos__sceneLayer,
 .footmark-mapScene,
 .footmark-mapScene__canvas {
   position: absolute;
   inset: 0;
 }
 
-.footmark-cosmos__sceneStack {
-  pointer-events: none;
-}
-
-.footmark-cosmos__sceneWrap {
-  transition: opacity 0.24s ease-out;
-}
-
-.footmark-cosmos__sceneWrap--map {
-  transform: scale(1.02);
-}
-
-.footmark-cosmos__sceneWrap--map,
 .footmark-mapScene.is-interactive,
-.footmark-mapScene.is-interactive .footmark-mapScene__canvas,
-.footmark-mapScene.is-interactive .footmark-mapScene__card {
+.footmark-mapScene.is-interactive .footmark-mapScene__canvas {
   pointer-events: auto;
 }
 
-.footmark-cosmos__gradientMask {
-  position: absolute;
-  inset: 0;
-  background: var(--footmark-stage-mask);
-}
-
-.footmark-cosmos__hud,
-.footmark-cosmos__storyRail {
-  position: relative;
-  z-index: 3;
-}
-
-/* --- HUD 与首屏文案层 --- */
-.footmark-cosmos__backLink {
-  color: var(--footmark-text-link);
-  background: var(--footmark-surface-glass);
-  box-shadow: inset 0 0 0 1px var(--footmark-line-backlink);
-  backdrop-filter: blur(16px);
-}
-
-.footmark-cosmos__progressStop {
-  min-width: 78px;
-  padding: 10px 14px;
-  font-size: var(--text-meta-size);
-  color: var(--footmark-text-progress);
-  background: var(--footmark-surface-progress);
-  border-radius: 999px;
-  letter-spacing: var(--text-overline-letter-spacing);
-  text-transform: uppercase;
-  box-shadow: inset 0 0 0 1px var(--footmark-line-faint);
-}
-
-.footmark-cosmos__progressStop.is-active {
-  color: var(--footmark-text-progress-active);
-  background: var(--footmark-surface-progress-active);
-  box-shadow:
-    inset 0 0 0 1px var(--footmark-line-progress-active),
-    var(--footmark-shadow-progress-active);
-}
-
-.footmark-cosmos__copy {
-  background: var(--footmark-copy-bg);
-  border: none;
-  border-radius: 30px;
-  box-shadow:
-    inset 0 0 0 1px var(--footmark-line-copy),
-    var(--footmark-shadow-panel-lg);
-  backdrop-filter: blur(18px);
-}
-
-.footmark-cosmos__eyebrow {
-  width: fit-content;
-  padding: 8px 12px;
-  font-size: var(--text-eyebrow-size);
-  color: var(--footmark-text-eyebrow);
-  background: var(--footmark-surface-eyebrow);
-  border-radius: 999px;
-  box-shadow: inset 0 0 0 1px var(--footmark-line-eyebrow);
-  letter-spacing: 0.2em;
-}
-
-.footmark-cosmos__titleOverline {
-  margin: 0;
-  font-size: clamp(18px, 2vw, 24px);
-  font-weight: 500;
-  letter-spacing: 0.26em;
-  color: var(--footmark-text-copy-title);
-}
-
-.footmark-cosmos__heroTitle {
-  margin: 0;
-  font-size: clamp(34px, 5vw, var(--heading-display-size));
-  line-height: 1.08;
-  color: var(--footmark-text-heading);
-  letter-spacing: -0.04em;
-  text-wrap: balance;
-  text-shadow: 0 10px 36px var(--black-alpha-28);
-}
-
-.footmark-cosmos__heroDesc {
-  max-width: 480px;
-  margin: 0;
-  font-size: var(--text-lead-size);
-  line-height: var(--text-lead-line-height);
+.footmark-mapScene__status {
+  display: grid;
+  align-content: center;
+  justify-items: center;
   color: var(--footmark-text-soft);
-}
-
-.footmark-cosmos__statCard {
-  padding: 16px 18px;
-  background: var(--footmark-surface-note);
-  border: none;
-  border-radius: 22px;
-  box-shadow: inset 0 0 0 1px var(--footmark-line-stat);
-  backdrop-filter: blur(16px);
-}
-
-.footmark-cosmos__statLabel {
-  display: block;
-  font-size: var(--text-meta-size);
-  color: var(--footmark-text-label);
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-}
-
-.footmark-cosmos__statValue {
-  display: block;
-  margin-top: 12px;
-  font-size: var(--heading-card-size);
-  line-height: 1.2;
-}
-
-.footmark-cosmos__phaseNotes.is-dimmed {
-  opacity: 0.26;
-}
-
-.footmark-cosmos__note {
-  background: var(--footmark-surface-panel);
-  border: none;
-  box-shadow:
-    inset 0 0 0 1px var(--footmark-line-soft),
-    var(--footmark-shadow-panel);
-  backdrop-filter: blur(14px);
-}
-
-.footmark-cosmos__note .ui-body-text-strong {
-  color: var(--footmark-text-note);
-}
-
-.footmark-cosmos__note .anticon {
-  font-size: 18px;
-  color: var(--footmark-text-accent);
-  margin-top: 2px;
-}
-
-.footmark-cosmos__scrollCue {
-  z-index: 3;
-  padding: 10px 14px;
-  border-radius: 999px;
-  color: var(--footmark-text-muted);
   background: var(--footmark-surface-panel-soft);
-  box-shadow: inset 0 0 0 1px var(--footmark-line-scrollcue);
-  backdrop-filter: blur(18px);
-  transition:
-    opacity 0.24s ease,
-    transform 0.24s ease;
+  border-radius: var(--radius-lg);
+  box-shadow: inset 0 0 0 1px var(--footmark-line-soft);
+  backdrop-filter: blur(var(--footmark-blur-panel));
 }
 
-.footmark-cosmos__scrollCue.is-hidden {
-  opacity: 0;
-  transform: translateY(10px);
+.footmark-mapScene__status strong {
+  font-size: var(--heading-card-size);
+  color: var(--footmark-text-heading);
 }
 
-.footmark-cosmos__scrollCue .anticon {
-  font-size: 14px;
+.footmark-mapScene__status p {
+  max-width: 520px;
+  margin: 0;
+  font-size: var(--text-body-size);
+  line-height: var(--text-body-relaxed-line-height);
+  color: var(--footmark-text-muted);
 }
 
-.footmark-cosmos__storyRail {
-  opacity: 0;
-  transform: translateY(18px);
-  transition:
-    opacity 0.35s ease,
-    transform 0.35s ease;
-}
-
-.footmark-cosmos__storyRail.is-visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.footmark-cosmos__storyChip {
-  padding: 14px 12px;
-  color: var(--footmark-text-dim);
-  background: var(--footmark-surface-story);
-  transition:
-    opacity 0.24s ease,
-    transform 0.24s ease,
-    background 0.24s ease,
-    box-shadow 0.24s ease,
-    color 0.24s ease;
-  border-radius: 18px;
-  box-shadow: inset 0 0 0 1px var(--footmark-line-storychip);
-}
-
-.footmark-cosmos__storyChip span,
-.footmark-cosmos__storyChip strong {
-  display: block;
-}
-
-.footmark-cosmos__storyChip span {
-  color: inherit;
-}
-
-.footmark-cosmos__storyChip strong {
-  margin-top: 6px;
-  font-size: var(--text-meta-size);
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: inherit;
-}
-
-.footmark-cosmos__storyChip.is-active {
-  color: var(--footmark-text-strong);
-  background: var(--footmark-surface-story-active);
-  box-shadow:
-    inset 0 0 0 1px var(--footmark-line-storychip-active),
-    var(--footmark-shadow-chip);
-}
-
-/* --- 地图卡片层 --- */
-.footmark-mapScene__card {
+.footmark-console-page__mapOverlay {
   position: absolute;
-  bottom: 112px;
-  left: 28px;
-  width: min(440px, calc(100% - 56px));
-  padding: 22px 24px;
+  top: var(--space-5);
+  left: var(--space-5);
+  z-index: 3;
+  max-width: 280px;
+  padding: var(--space-4);
+  pointer-events: none;
   background: var(--footmark-surface-panel-strong);
-  border-radius: 24px;
+  border-radius: var(--radius-lg);
   box-shadow:
     inset 0 0 0 1px var(--footmark-line-map-card),
     var(--footmark-shadow-floating);
-  backdrop-filter: blur(16px);
+  backdrop-filter: blur(var(--footmark-blur-panel));
 }
 
-.footmark-mapScene__eyebrow,
-.footmark-mapScene__card .ui-tag {
-  display: inline-flex;
-  padding: 6px 10px;
-  font-size: var(--text-eyebrow-size);
-  color: var(--footmark-text-accent-strong);
-  background: var(--footmark-surface-map-eyebrow);
-  border-radius: 999px;
-  font-weight: var(--tag-uppercase-weight);
+.footmark-console-page__mapOverlay span,
+.footmark-console-page__telemetry dt {
+  display: block;
+  font-size: var(--text-caption-size);
+  color: var(--footmark-text-meta);
   letter-spacing: var(--text-eyebrow-letter-spacing);
   text-transform: uppercase;
 }
 
-.footmark-mapScene__title,
-.footmark-mapScene__card .ui-card-title,
-.footmark-mapScene__card h3 {
-  margin: 14px 0 10px;
-  font-size: clamp(24px, 3vw, var(--heading-card-size));
+.footmark-console-page__mapOverlay strong {
+  display: block;
+  font-size: var(--heading-card-size);
   line-height: var(--heading-card-line-height);
   color: var(--footmark-text-heading);
+  margin-top: var(--space-2);
 }
 
-.footmark-mapScene__desc,
-.footmark-mapScene__card .ui-body-text,
-.footmark-mapScene__card p {
+.footmark-console-page__mapOverlay p,
+.footmark-console-page__telemetry dd {
   margin: 0;
-  font-size: var(--text-body-size);
-  line-height: var(--text-body-relaxed-line-height);
-  color: var(--footmark-text-map-copy);
-}
-
-.footmark-mapScene__meta {
   font-size: var(--text-meta-size);
   line-height: var(--text-meta-line-height);
-  color: var(--footmark-text-meta);
+  color: var(--footmark-text-accent-strong);
 }
 
-.footmark-mapScene__meta .ui-meta-text,
-.footmark-mapScene__meta span {
-  color: inherit;
+.footmark-console-page__mapOverlay p {
+  margin-top: var(--space-1);
 }
 
-.footmark-mapScene__action,
-.footmark-mapScene__action.ui-button-primary {
-  height: var(--button-height-lg);
-  min-height: var(--button-height-lg);
-  font-size: var(--button-font-size);
-  background: var(--footmark-map-action-bg);
-  border: none;
-  margin-top: 18px;
-  padding-inline: var(--button-padding-inline-md);
-  border-radius: var(--button-radius-md);
-  font-weight: var(--button-font-weight);
-  box-shadow: var(--footmark-shadow-action);
-}
-
-.footmark-mapScene__action:hover,
-.footmark-mapScene__action:focus,
-.footmark-mapScene__action.ui-button-primary:hover,
-.footmark-mapScene__action.ui-button-primary:focus {
-  background: var(--footmark-map-action-bg-hover);
-}
-
-/* --- 地图 marker 系统 --- */
-.footmark-mapMarker {
-  --footmark-map-marker-color: var(--footmark-marker-default);
-  --footmark-map-marker-shadow: var(--footmark-marker-default-shadow);
-
-  position: relative;
-  display: inline-flex;
-  width: 36px;
-  height: 36px;
-  opacity: 0.56;
-  transition:
-    transform 0.24s ease,
-    opacity 0.24s ease;
-  align-items: center;
-  justify-content: center;
-  border-radius: 999px;
-  transform: scale(0.92);
-  cursor: pointer;
-}
-
-.footmark-mapMarker__pulse {
+.footmark-console-page__telemetry {
   position: absolute;
-  inset: 4px;
-  border-radius: 999px;
-  background: color-mix(in srgb, var(--footmark-map-marker-color) 18%, transparent);
-  animation: footmarkMarkerPulse 2.4s ease-out infinite;
-}
-
-.footmark-mapMarker__dot {
-  position: relative;
-  z-index: 1;
-  width: 11px;
-  height: 11px;
-  border-radius: 999px;
-  background: var(--footmark-map-marker-color);
-  box-shadow:
-    0 0 0 5px color-mix(in srgb, var(--footmark-map-marker-color) 22%, transparent),
-    0 0 18px var(--footmark-map-marker-shadow);
-}
-
-.footmark-mapMarker__label {
-  position: absolute;
-  top: 50%;
-  left: calc(100% + 8px);
-  z-index: 2;
-  padding: 6px 10px;
-  font-size: var(--text-caption-size);
-  color: var(--footmark-text-marker-label);
-  background: var(--footmark-surface-panel-solid);
-  opacity: 0;
-  transition:
-    transform 0.24s ease,
-    opacity 0.24s ease;
-  border-radius: 999px;
-  box-shadow: inset 0 0 0 1px var(--footmark-line-marker-label);
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  white-space: nowrap;
-  transform: translate3d(-8px, -50%, 0);
+  bottom: var(--space-5);
+  left: var(--space-5);
+  z-index: 3;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(84px, 1fr));
+  gap: var(--space-2);
+  margin: 0;
   pointer-events: none;
 }
 
-.footmark-mapMarker.is-active {
-  opacity: 1;
-  transform: scale(1);
+.footmark-console-page__telemetry div {
+  min-width: 0;
+  padding: var(--space-3);
+  background: var(--footmark-surface-panel-strong);
+  border-radius: var(--radius-md);
+  box-shadow: inset 0 0 0 1px var(--footmark-line-map-card);
+  backdrop-filter: blur(var(--footmark-blur-panel));
 }
 
-.footmark-mapMarker.is-active .footmark-mapMarker__label {
-  opacity: 1;
-  transform: translate3d(0, -50%, 0);
-}
-
-.footmark-mapMarker--origin {
-  --footmark-map-marker-color: var(--footmark-marker-origin);
-  --footmark-map-marker-shadow: var(--footmark-marker-origin-shadow);
-}
-
-.footmark-mapMarker--growth {
-  --footmark-map-marker-color: var(--footmark-marker-growth);
-  --footmark-map-marker-shadow: var(--footmark-marker-growth-shadow);
-}
-
-.footmark-mapMarker--craft {
-  --footmark-map-marker-color: var(--footmark-marker-craft);
-  --footmark-map-marker-shadow: var(--footmark-marker-craft-shadow);
-}
-
-.footmark-mapMarker--horizon {
-  --footmark-map-marker-color: var(--footmark-marker-horizon);
-  --footmark-map-marker-shadow: var(--footmark-marker-horizon-shadow);
-}
-
-@keyframes footmarkMarkerPulse {
-  0% {
-    transform: scale(0.72);
-    opacity: 0.72;
-  }
-
-  70% {
-    transform: scale(1.24);
-    opacity: 0;
-  }
-
-  100% {
-    transform: scale(1.24);
-    opacity: 0;
-  }
-}
-
-/* --- 地图总结卡层 --- */
-.footmark-cosmos__summaryHead {
-  background: var(--footmark-surface-summary-card);
-  border: none;
-  box-shadow: inset 0 0 0 1px var(--footmark-line-summary-card);
-}
-
-.footmark-cosmos__summaryKicker {
-  display: inline-flex;
-  padding: 7px 12px;
-  border-radius: 999px;
-  color: var(--footmark-text-accent-soft);
-  background: var(--footmark-surface-summary-kicker);
-  letter-spacing: 0.18em;
-}
-
-.footmark-cosmos__summaryTitle {
-  margin: 18px 0 10px;
-  font-size: clamp(28px, 5vw, 44px);
-  line-height: 1.1;
-}
-
-.footmark-cosmos__summaryDesc {
-  margin: 0;
-  color: var(--footmark-text-muted-soft);
-}
-
-.footmark-cosmos__summaryCard {
-  background: var(--footmark-surface-summary-card);
-  border: none;
-  border-radius: 24px;
-  box-shadow: inset 0 0 0 1px var(--footmark-line-summary-card);
-}
-
-.footmark-cosmos__summaryTag {
-  align-self: flex-start;
-  letter-spacing: 0.14em;
-}
-
-.footmark-cosmos__summaryCity {
-  margin: 18px 0 10px;
-}
-
-.footmark-cosmos__summaryText {
-  margin: 0;
-  color: var(--footmark-text-summary-copy);
-}
-
-.footmark-cosmos__summaryAction {
-  border-color: var(--footmark-line-chip);
+.footmark-console-page__telemetry dd {
+  font-size: var(--text-body-size);
   color: var(--footmark-text-strong);
-  background: var(--footmark-surface-chip);
+  overflow: hidden;
+  margin-top: var(--space-1);
+  font-weight: var(--font-weight-semibold);
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
-.footmark-cosmos__summaryAction:hover,
-.footmark-cosmos__summaryAction:focus {
-  border-color: var(--footmark-line-chip-hover);
+/* --- 右侧档案控制台 --- */
+.footmark-console {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  min-height: 0;
+  padding: var(--space-5);
+  overflow: auto;
+  background: var(--footmark-surface-panel);
+  border-radius: var(--radius-xl);
+  box-shadow:
+    inset 0 0 0 1px var(--footmark-line-soft),
+    var(--footmark-shadow-panel);
+  backdrop-filter: blur(var(--footmark-blur-console));
+}
+
+.footmark-console__header {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: var(--space-4);
+}
+
+.footmark-console__kicker {
+  font-size: var(--text-eyebrow-size);
+  color: var(--footmark-text-eyebrow);
+  letter-spacing: var(--text-eyebrow-letter-spacing);
+  text-transform: uppercase;
+}
+
+.footmark-console__title {
+  margin: var(--space-2) 0 0;
+  font-size: var(--heading-3-size);
+  line-height: var(--heading-line-height);
+  color: var(--footmark-text-heading);
+}
+
+.footmark-console__stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-2);
+  min-width: 190px;
+  margin: 0;
+}
+
+.footmark-console__stats div,
+.footmark-console__facts div {
+  min-width: 0;
+  padding: var(--space-2);
+  background: var(--footmark-surface-chip-soft);
+  border-radius: var(--radius-sm);
+}
+
+.footmark-console__stats dt,
+.footmark-console__facts dt {
+  font-size: var(--text-caption-size);
+  color: var(--footmark-text-label);
+  overflow: hidden;
+  letter-spacing: var(--text-eyebrow-letter-spacing);
+  text-overflow: ellipsis;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.footmark-console__stats dd,
+.footmark-console__facts dd {
+  margin: var(--space-1) 0 0;
+  font-size: var(--text-body-size);
   color: var(--footmark-text-strong);
-  background: var(--footmark-surface-chip-hover);
+  overflow: hidden;
+  font-weight: var(--font-weight-semibold);
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
-.footmark-cosmos__summaryCard--origin .footmark-cosmos__summaryTag {
-  color: var(--footmark-summary-origin-text);
-  background: var(--footmark-summary-origin-bg);
+.footmark-console__filters {
+  display: grid;
+  gap: var(--space-2);
 }
 
-.footmark-cosmos__summaryCard--growth .footmark-cosmos__summaryTag {
-  color: var(--footmark-summary-growth-text);
-  background: var(--footmark-summary-growth-bg);
+.footmark-console__filterLabel {
+  font-size: var(--text-caption-size);
+  color: var(--footmark-text-label);
+  letter-spacing: var(--text-eyebrow-letter-spacing);
+  text-transform: uppercase;
 }
 
-.footmark-cosmos__summaryCard--craft .footmark-cosmos__summaryTag {
-  color: var(--footmark-summary-craft-text);
-  background: var(--footmark-summary-craft-bg);
+.footmark-console__select {
+  width: 100%;
 }
 
-.footmark-cosmos__summaryCard--horizon .footmark-cosmos__summaryTag {
-  color: var(--footmark-summary-horizon-text);
-  background: var(--footmark-summary-horizon-bg);
+.footmark-console__select.ant-select .ant-select-selector {
+  border-radius: var(--input-radius);
 }
 
-.footmark-cosmos.is-map-phase .footmark-cosmos__copy {
-  background: var(--footmark-map-copy-bg);
+.footmark-console__select .ant-select-selection-item {
+  color: var(--footmark-text-strong);
 }
 
-.footmark-cosmos.is-map-phase .footmark-cosmos__titleOverline {
-  max-width: 240px;
-  font-size: 18px;
-  line-height: 1.04;
-  letter-spacing: 0.18em;
+.footmark-console__cityList {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-2);
 }
 
-.footmark-cosmos.is-map-phase .footmark-cosmos__statCard {
-  padding: 12px 14px;
-  border-radius: 18px;
+.footmark-console__cityButton {
+  display: grid;
+  min-height: 68px;
+  padding: var(--space-3);
+  text-align: left;
+  background: var(--footmark-surface-story);
+  border-color: var(--footmark-line-storychip);
+  border-radius: var(--radius-md);
+  transition:
+    background-color var(--motion-base) var(--easing-standard),
+    border-color var(--motion-base) var(--easing-standard),
+    transform var(--motion-base) var(--easing-standard);
 }
 
-.footmark-cosmos.is-map-phase .footmark-cosmos__statValue {
-  margin-top: 8px;
-  font-size: 18px;
+.footmark-console__cityButton:hover,
+.footmark-console__cityButton:focus,
+.footmark-console__cityButton.is-active {
+  background: var(--footmark-surface-story-active);
+  border-color: var(--footmark-line-storychip-active);
+  transform: translateY(-1px);
 }
 
-/* --- 城市详情弹层与作品面板 --- */
-.footmark-detailModal .ant-modal-content,
-.footmark-detailDrawer .ant-drawer-content {
-  color: var(--footmark-text-heading);
-  background: var(--footmark-detail-modal-bg);
+.footmark-console__cityName {
+  font-size: var(--text-body-size);
+  color: var(--footmark-text-strong);
+  font-weight: var(--font-weight-semibold);
 }
 
-.footmark-detailModal .ant-modal-header,
-.footmark-detailDrawer .ant-drawer-header {
-  color: var(--footmark-text-heading);
-  background: transparent;
-  border-bottom-color: var(--footmark-line-detail-modal);
+.footmark-console__cityMeta {
+  font-size: var(--text-caption-size);
+  color: var(--footmark-text-dim);
+  margin-top: var(--space-1);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
-.footmark-detailModal .ant-modal-title,
-.footmark-detailDrawer .ant-drawer-title {
-  color: var(--footmark-text-heading);
+.footmark-console__dossier {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  background: var(--footmark-surface-panel-strong);
+  border-radius: var(--radius-lg);
+  box-shadow: inset 0 0 0 1px var(--footmark-line-copy);
 }
 
-.footmark-detailModal .ant-modal-close,
-.footmark-detailDrawer .ant-drawer-close {
-  color: var(--footmark-text-soft-strong);
-}
-
-.footmark-detail__eyebrow,
-.footmark-detail__head .ui-tag {
+.footmark-console__dossierKicker {
   width: fit-content;
-  padding: 6px 10px;
+  padding: var(--space-2) var(--space-3);
   font-size: var(--text-eyebrow-size);
   color: var(--footmark-text-accent-strong);
-  background: var(--footmark-surface-detail-eyebrow);
-  border-radius: 999px;
+  background: var(--footmark-surface-map-eyebrow);
+  border-radius: var(--radius-pill);
   font-weight: var(--tag-uppercase-weight);
   letter-spacing: var(--text-eyebrow-letter-spacing);
   text-transform: uppercase;
 }
 
-.footmark-detail__cityTitle,
-.footmark-detail__head .ui-display-title,
-.footmark-detail__head h2 {
+.footmark-console__dossierCity {
   margin: 0;
-  font-size: clamp(30px, 4vw, var(--heading-1-size));
+  font-size: var(--heading-1-size);
   line-height: var(--heading-line-height);
+  color: var(--footmark-text-heading);
 }
 
-.footmark-detail__citySummary,
-.footmark-detail__head .ui-lead-text,
-.footmark-detail__head p {
-  max-width: 680px;
+.footmark-console__dossierHeadline {
   margin: 0;
   font-size: var(--text-body-size);
   line-height: var(--text-body-relaxed-line-height);
-  color: var(--footmark-text-detail-copy);
+  color: var(--footmark-text-strong);
+  font-weight: var(--font-weight-semibold);
 }
 
-.footmark-detail__mediaCard {
-  overflow: hidden;
-  border-radius: 22px;
-  background: var(--footmark-detail-card-bg);
-  box-shadow: inset 0 0 0 1px var(--footmark-line-detail-card);
-}
-
-.footmark-detail__image,
-.footmark-detail__image .ant-image-img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  min-height: 220px;
-  object-fit: cover;
-}
-
-.footmark-detail__placeholder {
-  background: var(--footmark-detail-placeholder-bg);
-  box-shadow: inset 0 0 0 1px var(--footmark-line-detail-card);
-}
-
-.footmark-detail__placeholder strong {
-  font-size: var(--heading-card-size);
-  line-height: var(--heading-card-line-height);
-}
-
-.footmark-detail__placeholder span {
-  font-size: var(--text-body-size);
-  line-height: var(--text-body-relaxed-line-height);
-  color: var(--footmark-text-detail-placeholder);
-}
-
-.footmark-detail__content {
-  background: var(--footmark-detail-content-bg);
-  box-shadow: inset 0 0 0 1px var(--footmark-line-detail-content);
-}
-
-.footmark-detail__label {
-  display: block;
-  font-size: var(--text-meta-size);
-  color: var(--footmark-text-detail-label);
-  margin-bottom: 6px;
-  letter-spacing: var(--text-eyebrow-letter-spacing);
-  text-transform: uppercase;
-}
-
-.footmark-detail__workTitle,
-.footmark-detail__workTop .ui-card-title,
-.footmark-detail__workTop h3 {
-  margin: 0;
-  font-size: var(--heading-card-size);
-  line-height: var(--heading-card-line-height);
-}
-
-.footmark-detail__pager {
-  color: var(--footmark-text-detail-pager);
-}
-
-.footmark-detail__shotAt {
-  margin: 0;
-  font-size: var(--text-meta-size);
-  color: var(--footmark-text-detail-shot);
-  letter-spacing: var(--text-overline-letter-spacing);
-  text-transform: uppercase;
-}
-
-.footmark-detail__description,
-.footmark-detail__content .ui-body-text {
+.footmark-console__dossierSummary,
+.footmark-console__work p,
+.footmark-console__workEmpty {
   margin: 0;
   font-size: var(--text-body-size);
   line-height: var(--text-body-relaxed-line-height);
   color: var(--footmark-text-muted);
 }
 
-.footmark-detail__tags .ant-tag.ui-tag {
-  margin-inline-end: 0;
-  border-color: var(--footmark-line-tag);
-  color: var(--footmark-text-strong);
-  background: var(--footmark-surface-detail-tag);
-}
-
-.footmark-detail__workChip,
-.footmark-detail__workChip.ui-button-secondary {
-  height: auto;
-  padding: 10px 14px;
-  border-radius: 14px;
-  border-color: var(--footmark-line-detail-workchip);
-  color: var(--footmark-text-soft-strong);
-  background: var(--footmark-surface-chip-soft);
-}
-
-.footmark-detail__workChip.is-active,
-.footmark-detail__workChip:hover,
-.footmark-detail__workChip:focus,
-.footmark-detail__workChip.ui-button-secondary:hover,
-.footmark-detail__workChip.ui-button-secondary:focus {
-  border-color: var(--footmark-line-tag-hover);
-  color: var(--footmark-text-strong);
-  background: var(--footmark-surface-chip-soft-hover);
-}
-
-.footmark-detail__storyText,
-.footmark-detail__story .ui-body-text,
-.footmark-detail__story p {
+.footmark-console__facts {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-2);
   margin: 0;
-  font-size: var(--text-body-size);
-  line-height: var(--text-body-relaxed-line-height);
-  color: var(--footmark-text-detail-story);
 }
 
-/* --- 响应式收口 --- */
-@media (width <= 900px) {
-  .footmark-mapScene__card {
-    right: 16px;
-    bottom: 210px;
-    left: 16px;
-    width: auto;
+.footmark-console__works {
+  display: grid;
+  gap: var(--space-2);
+  margin-top: auto;
+}
+
+.footmark-console__worksHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+
+.footmark-console__worksHead span {
+  font-size: var(--text-caption-size);
+  color: var(--footmark-text-label);
+  letter-spacing: var(--text-eyebrow-letter-spacing);
+  text-transform: uppercase;
+}
+
+.footmark-console__openButton.ant-btn {
+  color: var(--footmark-map-action-text);
+  background: var(--footmark-map-action-bg);
+  border: none;
+  border-radius: var(--button-radius-md);
+  box-shadow: var(--footmark-shadow-action);
+}
+
+.footmark-console__openButton.ant-btn:hover,
+.footmark-console__openButton.ant-btn:focus {
+  color: var(--footmark-map-action-text);
+  background: var(--footmark-map-action-bg-hover);
+}
+
+.footmark-console__work {
+  display: grid;
+  gap: var(--space-2);
+  padding: var(--space-3);
+  background: var(--footmark-surface-note);
+  border-radius: var(--radius-md);
+  box-shadow: inset 0 0 0 1px var(--footmark-line-detail-workchip);
+}
+
+.footmark-console__work strong {
+  font-size: var(--text-body-size);
+  color: var(--footmark-text-strong);
+}
+
+.footmark-console__work span {
+  display: block;
+  font-size: var(--text-caption-size);
+  color: var(--footmark-text-detail-shot);
+  margin-top: var(--space-1);
+  letter-spacing: var(--text-overline-letter-spacing);
+  text-transform: uppercase;
+}
+
+.footmark-console__workEmpty {
+  padding: var(--space-3);
+  color: var(--footmark-text-dim);
+  background: var(--footmark-surface-chip-soft);
+  border-radius: var(--radius-md);
+}
+
+/* --- 响应式 --- */
+@media (width <= 1100px) {
+  .footmark-console-page__header,
+  .footmark-console-page__layout {
+    grid-template-columns: 1fr;
   }
 
-  .footmark-cosmos.is-map-phase .footmark-cosmos__storyRail {
-    grid-template-columns: none;
+  .footmark-console-page__headerActions {
+    justify-content: space-between;
+    padding-bottom: 0;
+  }
+
+  .footmark-console-page__mapPanel {
+    height: min(72vh, 680px);
+    min-height: 480px;
+  }
+
+  .footmark-console {
+    overflow: visible;
+  }
+}
+
+@media (width <= 768px) {
+  .footmark-console-page {
+    padding: var(--space-4) var(--space-3) var(--space-6);
+  }
+
+  .footmark-console-page__title {
+    font-size: var(--heading-2-size);
+  }
+
+  .footmark-console-page__intro {
+    font-size: var(--text-body-size);
+  }
+
+  .footmark-console-page__headerActions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .footmark-console-page__mode {
+    white-space: normal;
+  }
+
+  .footmark-console-page__mapPanel {
+    height: 58vh;
+    min-height: 420px;
+    border-radius: var(--radius-lg);
+  }
+
+  .footmark-console-page__mapOverlay {
+    top: var(--space-3);
+    left: var(--space-3);
+    max-width: 210px;
+    padding: var(--space-3);
+  }
+
+  .footmark-console-page__telemetry {
+    right: var(--space-3);
+    bottom: var(--space-3);
+    left: var(--space-3);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .footmark-console {
+    padding: var(--space-4);
+    border-radius: var(--radius-lg);
+  }
+
+  .footmark-console__header,
+  .footmark-console__worksHead {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .footmark-console__stats {
+    min-width: 0;
+  }
+
+  .footmark-console__cityList {
     grid-auto-flow: column;
-    grid-auto-columns: minmax(132px, 1fr);
-    gap: 10px;
-    overflow: auto hidden;
-    padding-bottom: 4px;
+    grid-auto-columns: minmax(142px, 1fr);
+    grid-template-columns: none;
+    overflow-x: auto;
+    padding-bottom: var(--space-1);
     scrollbar-width: none;
   }
 
-  .footmark-cosmos.is-map-phase .footmark-cosmos__storyRail::-webkit-scrollbar {
+  .footmark-console__cityList::-webkit-scrollbar {
     display: none;
   }
 
-  .footmark-cosmos.is-map-phase .footmark-mapScene__card {
-    bottom: 118px;
-  }
-}
-
-@media (width <= 640px) {
-  .footmark-cosmos.is-map-phase .footmark-cosmos__backLink {
-    padding: 10px 14px;
-  }
-
-  .footmark-cosmos__heroDesc {
-    font-size: 15px;
-  }
-
-  .footmark-mapScene__card {
-    bottom: 188px;
-    padding: 18px;
-  }
-
-  .footmark-cosmos.is-map-phase .footmark-mapScene__card {
-    bottom: 176px;
-  }
-
-  .footmark-cosmos.is-map-phase .footmark-cosmos__storyRail {
-    display: none;
-  }
-
-  .footmark-cosmos.is-map-phase .footmark-cosmos__copy {
-    border-radius: 22px;
-    background: var(--footmark-map-copy-bg-mobile);
-  }
-
-  .footmark-cosmos.is-map-phase .footmark-cosmos__titleOverline {
-    display: none;
-  }
-
-  .footmark-cosmos.is-map-phase .footmark-cosmos__eyebrow {
-    padding: 6px 10px;
-    font-size: 10px;
-    letter-spacing: 0.14em;
-  }
-
-  .footmark-cosmos.is-map-phase .footmark-cosmos__statCard {
-    padding: 10px;
-  }
-
-  .footmark-cosmos.is-map-phase .footmark-cosmos__statLabel {
-    font-size: 10px;
-  }
-
-  .footmark-cosmos.is-map-phase .footmark-cosmos__statValue {
-    margin-top: 6px;
-    font-size: 15px;
-  }
-
-  .footmark-cosmos.is-map-phase .footmark-mapScene__card {
-    right: 12px;
-    bottom: calc(env(safe-area-inset-bottom, 0px) + 18px);
-    left: 12px;
-    width: auto;
-    padding: 16px 16px calc(env(safe-area-inset-bottom, 0px) + 16px);
-    background: var(--footmark-map-card-mobile-bg);
-    border-radius: 22px;
-  }
-
-  .footmark-cosmos.is-map-phase .footmark-mapScene__title,
-  .footmark-cosmos.is-map-phase .footmark-mapScene__card .ui-card-title,
-  .footmark-cosmos.is-map-phase .footmark-mapScene__card h3 {
-    margin: 12px 0 8px;
-    font-size: 24px;
-  }
-
-  .footmark-cosmos.is-map-phase .footmark-mapScene__desc,
-  .footmark-cosmos.is-map-phase .footmark-mapScene__card .ui-body-text,
-  .footmark-cosmos.is-map-phase .footmark-mapScene__card p {
-    display: -webkit-box;
-    overflow: hidden;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    line-height: 1.65;
-  }
-
-  .footmark-cosmos.is-map-phase .footmark-mapScene__meta {
-    font-size: 12px;
-  }
-
-  .footmark-cosmos.is-map-phase .footmark-mapScene__action {
-    width: 100%;
-    height: 46px;
-    min-height: 46px;
-    margin-top: 14px;
-    padding-inline: 14px;
-    border-radius: var(--button-radius-md);
-  }
-
-  .footmark-cosmos.is-map-phase .footmark-mapMarker {
-    width: 28px;
-    height: 28px;
-  }
-
-  .footmark-cosmos.is-map-phase .footmark-mapMarker__pulse {
-    inset: 3px;
-  }
-
-  .footmark-cosmos.is-map-phase .footmark-mapMarker__dot {
-    width: 9px;
-    height: 9px;
-  }
-
-  .footmark-cosmos.is-map-phase .footmark-mapMarker__label {
-    top: calc(100% + 8px);
-    left: 50%;
-    font-size: 11px;
-    transform: translate3d(-50%, -4px, 0);
-  }
-
-  .footmark-cosmos.is-map-phase .footmark-mapMarker.is-active .footmark-mapMarker__label {
-    transform: translate3d(-50%, 0, 0);
-  }
-
-  .footmark-detail__cityTitle,
-  .footmark-detail__head .ui-display-title,
-  .footmark-detail__head h2 {
-    font-size: 28px;
-  }
-
-  .footmark-detail__workTitle,
-  .footmark-detail__workTop .ui-card-title,
-  .footmark-detail__workTop h3 {
-    font-size: 22px;
+  .footmark-console__dossierCity {
+    font-size: var(--heading-2-size);
   }
 }

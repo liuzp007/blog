@@ -586,6 +586,96 @@ pnpm ci:check
 - 相关文件/命令：`pnpm lint --quiet`、`Grep` 工具
 - 注意事项：后续在 `RunCommand` 里写管道筛选时，先确认命令在当前 shell 可用；需要正则检索优先直接用工具层 `Grep`，不要默认依赖本地 `rg` 二进制。
 
+#### 22. 当前子 agent 模型不支持 `reasoning_effort: medium`
+- 问题描述：并行启动只读审计 agent 时，`spawn_agent` 指定 `reasoning_effort: medium`，四个任务全部失败，并提示当前 `glm-5.3` 模型不支持该推理档位。
+- 解决方法：去掉 `reasoning_effort` 覆盖参数，让子 agent 继承父线程默认配置后重试；不要继续切换其他未确认的档位。
+- 相关文件/命令：`multi_agent_v1.spawn_agent`、`reasoning_effort`
+- 注意事项：子 agent 模型能力与父线程可能不同；显式覆盖推理档前应确认该模型支持列表，优先使用默认继承配置。
+
+#### 23. 沙箱内启动 / 访问本地 preview 端口会被 EPERM 或连接拒绝拦截
+- 问题描述：执行 `pnpm preview --host 127.0.0.1 --port 4173` 时，沙箱内监听端口报 `listen EPERM`；服务用提升权限启动后，沙箱内 `curl 127.0.0.1:4173` 又报 `Failed to connect`。
+- 解决方法：preview 启动和本机 HTTP 只读验证都需要按流程申请提升权限；先提升启动 preview，再提升执行 `curl` 验证 `/` 与深链路由，结束后中断 preview 进程。
+- 相关文件/命令：`pnpm preview --host 127.0.0.1 --port 4173`、`curl http://127.0.0.1:4173/blog`
+- 注意事项：不要把 `EPERM` 误判为端口占用或 Vite 配置问题；先确认是否为沙箱网络 / 监听权限限制。
+
+#### 24. `node -e` 内联脚本里的正则和引号会被 zsh 预解析
+- 问题描述：把包含正则字面量、嵌套引号或 `$` 的 Node 脚本直接塞进 `node -e "..."` 时，zsh 会先解释特殊字符，导致正则被截断或 shell 报解析错误。
+- 解决方法：一次性检查 `Task.json` 这类脚本优先使用 `require()` / 字符串拼接；必须写正则或 `$` 时，先把脚本落到临时文件再执行，避免外层双引号与内层语法互相干扰。
+- 相关文件/命令：`Task.json`、`node -e`
+- 注意事项：内联脚本越复杂越容易被 shell 改写；验证任务队列这类低风险脚本也应优先选择无歧义写法。
+
+#### 25. 同一份文件不要把 Delete 与 Add 放进同一个 `apply_patch`
+- 问题描述：在同一组多文件补丁里，对同一个目标文件同时执行删除与新增相关段落时，一旦其中一个上下文漂移，整组补丁会原子失败，容易误判为源码语法问题。
+- 解决方法：按文件拆分补丁；锁文件这类重复键较多的文件，进一步按 6 个精确段落逐段执行 `apply_patch`，每段成功后再检查下一处。
+- 相关文件/命令：`pnpm-lock.yaml`、`apply_patch`
+- 注意事项：手工维护锁文件时先核对 importer、resolution、snapshot 三类条目；不要在一个大补丁里混合过多上下文。
+
+#### 26. Framer `useScroll` 的 offset 语法不能沿用 GSAP / IntersectionObserver 习惯
+- 问题描述：迁移滚动动画时沿用 `top 100%` / `top 35%`，TypeScript 会报 offset 类型不匹配；这不是 Framer 版本问题，而是它的边缘语法使用 `start`、`end`、`center` 等命名。
+- 解决方法：使用 Framer 导出的 `UseScrollOptions` 收窄自定义 hook 参数，并把默认区间改成 `start end` → `start center`。
+- 相关文件/命令：`src/hooks/useScrollDrivenAnimation.ts`、`pnpm exec tsc --noEmit`
+- 注意事项：迁移动画库时先确认目标库的 API 语义；仅加 `as any` 或强行断言会掩盖真实运行时问题。
+
+#### 27. Chrome 地址栏 `typeText` 可能被搜索提供商标点改写
+- 问题描述：用键盘向 Chrome 地址栏输入 `http://127.0.0.1:8081/footmark` 时，冒号和斜杠被当前搜索输入流吞掉，最终跳到搜索页并把本地地址改写成错误查询串。
+- 解决方法：先定位地址栏元素，再用 `setValue` 直接填入完整 URL 后回车；成功后以地址栏真实 value 为准确认，而不是只看窗口标题。
+- 相关文件/命令：Chrome Computer Use、`http://127.0.0.1:8081/footmark`
+- 注意事项：本地路由验收若出现奇怪的搜索引擎跳转，先读取地址栏当前值，再决定是否重试；不要误判为 Vite 服务不可用。
+
+#### 28. Vitest 精准执行要用 `pnpm exec vitest run`
+- 问题描述：执行 `pnpm test -- tests/pages/footmark-console.test.tsx --run` 时，额外 `--` 会让参数透传形态不符合预期，结果跑完整个测试集，容易把其他用例输出误认为目标文件失败原因。
+- 解决方法：精准执行改为 `pnpm exec vitest run tests/pages/footmark-console.test.tsx`；确需使用脚本包装时先确认 pnpm 参数透传后的最终命令。
+- 相关文件/命令：`tests/pages/footmark-console.test.tsx`、`pnpm exec vitest run`
+- 注意事项：判断聚焦测试是否生效，先看 Vitest 输出的测试文件数量，再分析失败原因。
+
+#### 29. 从 Stylelint 修复结果生成 `apply_patch` 时要去掉行号范围头
+- 问题描述：把 Stylelint `--fix` 生成的 unified diff 直接转换成 `apply_patch` 格式时，保留 `@@ -17,8 +17,8 @@` 这类范围头会被补丁解析器当作上下文，报“找不到上下文”。
+- 解决方法：先在 `/private/tmp` 生成修复参考文件并执行 Stylelint；再生成 unified diff，并把每段 hunk 头替换成裸 `@@`，最后通过 `apply_patch` 应用到仓库文件。
+- 相关文件/命令：`src/pages/footmark/index.css`、`src/pages/footmark/map.css`、`src/pages/footmark/detail.css`、`stylelint --fix`、`apply_patch`
+- 注意事项：不要在仓库里直接执行格式化修复；参考文件放临时目录，仓库落盘仍必须经过 `apply_patch`。
+
+#### 30. 格式化临时副本必须显式传入仓库 Prettier 配置
+- 问题描述：对 `/private/tmp` 里的 TSX 副本执行 Prettier 时，Prettier 找不到仓库根 `.prettierrc`，按默认双引号和分号格式生成补丁，导致仓库文件再次检查失败。
+- 解决方法：临时文件格式化命令显式加 `--config .prettierrc`，确认临时结果与仓库配置一致后再生成 `apply_patch`。
+- 相关文件/命令：`.prettierrc`、`src/pages/footmark/index.tsx`、`tests/pages/footmark-console.test.tsx`
+- 注意事项：凡是脱离仓库目录处理副本，都要显式带上配置文件；不能假设 Prettier 会向上查找仓库配置。
+
+#### 31. 手工把函数改成 `useCallback` 时必须同步修改签名与闭合
+- 问题描述：把 `syncMapState` 从普通函数改成 `useCallback` 时，只补了外层调用而没有把参数列表包成箭头函数签名，临时副本触发 TypeScript 解析错误；随后又在原 `) =>` 未删除时插入新签名，出现重复闭合。
+- 解决方法：一次性确认结构为 `useCallback((args) => { ... }, [deps])`，删除旧闭合后再复制到临时文件，用 `prettier --config .prettierrc` 验证语法并生成 `apply_patch`。
+- 相关文件/命令：`src/pages/footmark/components/FootmarkMapScene.tsx`、`prettier --config .prettierrc`
+- 注意事项：手工重构回调包装时先画清括号配对；不要在语法已损坏的文件上继续叠加格式化补丁。
+
+#### 32. Footmark 必须使用真实 AMap 且缺失 Key 时显式报错
+- 问题描述：本地启动 `/footmark` 后地图显示“未配置 VITE_AMAP_KEY”，检查发现 `.env.development`、`.env.production`、`.env.test` 都没有该变量；随后尝试的 SVG 本地降级方案被用户明确拒绝。
+- 解决方法：只保留真实 AMap 加载逻辑；缺失 Key 时显示错误与重试入口，并把历史源码中的 Key 迁移到被 Git 忽略的 `.env.local`。
+- 相关文件/命令：`.env.local`、`.env.development.example`、`.env.production.example`、`src/pages/footmark/components/FootmarkMapScene.tsx`
+- 注意事项：不要为 Footmark 增加无 Key 替代地图；配置缺失应显式暴露，真实 Key 不得写入示例文件或提交到仓库。
+
+#### 33. 迁移地图配置时要同时搜索 Git 历史里的硬编码 Key
+- 问题描述：当前 `.env.*` 均没有 `VITE_AMAP_KEY` 时，容易直接判断 Key 不存在；但旧版 `src/pages/footmark/compont/map/index.jsx` 曾把 AMap Key 硬编码在源码常量 `KEY` 中，重构后该配置没有迁移。
+- 解决方法：用 `git log --all -- src/pages/footmark` 找历史提交，再用 `git ls-tree -r` 定位旧组件 blob，只查看脱敏后的 `const KEY` 与 `AMapLoader.load` 上下文；确认后把 Key 迁移到被 `.gitignore` 忽略的 `.env.local`，不在输出和补丁展示中泄露。
+- 相关文件/命令：`.env.local`、`.gitignore`、`git ls-tree -r`、`git show <blob>`、`src/pages/footmark/components/FootmarkMapScene.tsx`
+- 注意事项：“当前配置不存在”不等于“项目从未配置过”；迁移第三方地图时必须检查旧实现和历史构建产物来源。
+
+#### 34. 当前 `apply_patch` 新增文件格式不使用 `@@`
+- 问题描述：为 `.env.local` 动态生成新增文件补丁时沿用旧格式，在 `*** Add File:` 后写了 `@@`，解析器报“Invalid patch hunk”。
+- 解决方法：先用 `/private/tmp` 的无敏感测试文件确认当前语法；新增文件格式应为 `*** Begin Patch`、`*** Add File: path`、`+内容`、`*** End Patch`，中间不写 `@@`。
+- 相关文件/命令：`.env.local`、`apply_patch`
+- 注意事项：动态生成补丁时不要为了调试输出真实 Key；先用占位内容验证格式再执行敏感写入。
+
+#### 35. Vitest mock 的 AMap 构造函数必须可用 `new` 调用
+- 问题描述：为地图限制逻辑新增测试时，用箭头函数实现 `vi.fn()` 后交给 `new AMap.Map()` / `new AMap.Bounds()` 调用，测试报 “is not a constructor”。
+- 解决方法：把 `Bounds`、`Map`、`Marker`、`Pixel`、`Polyline` 的 mock 实现改成命名普通函数并返回对象，保持可以被 `new` 调用，同时继续用 `vi.fn()` 收集参数。
+- 相关文件/命令：`tests/pages/footmark-map-scene.test.tsx`、`pnpm exec vitest run tests/pages/footmark-map-scene.test.tsx`
+- 注意事项：mock 浏览器 SDK 时先确认业务代码使用 `new` 还是普通调用；箭头函数即使包在 `vi.fn()` 里也不能充当构造函数。
+
+#### 36. 删除地图程序性缩放后要同步收敛回调参数
+- 问题描述：把城市切换从 `setZoomAndCenter` 改成 `setCenter` 后，`syncMapState` 的 `nextQuality` 参数不再使用，`pnpm exec tsc --noEmit` 报未使用参数。
+- 解决方法：同步删除回调签名、初始化调用、响应式调用里的 `quality` 参数，并清理 effect 依赖，再重跑聚焦测试、类型检查、格式检查和构建。
+- 相关文件/命令：`src/pages/footmark/components/FootmarkMapScene.tsx`、`pnpm exec tsc --noEmit`
+- 注意事项：删除实现细节时先沿调用链搜索参数和依赖；不要只改函数体导致类型检查中断。
+
 <!-- vnext:start -->
 ## Deploy with vnext
 

@@ -1,0 +1,11 @@
+/* 页面与内容 palette 聚合入口。 */
+@import url('./themes/home-pages.css');
+@import url('./themes/about-pages.css');
+@import url('./themes/blog-pages.css');
+@import url('./themes/blog-detail-pages.css');
+@import url('./themes/footmark-pages.css');
+@import url('./themes/showcase-pages.css');
+@import url('./themes/content-features.css');
+@import url('./themes/code-pages.css');
+@import url('./themes/legacy-code.css');
+@import url('./themes/legacy-shell.css');

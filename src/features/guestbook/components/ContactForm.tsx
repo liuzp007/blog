@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Input, Button, message as antMessage } from 'antd'
 import { sendEmail } from '@/utils/emailApi'
-import { sanitizeText, normalizeWhitespace, hasMaliciousContent } from '@/utils/sanitize'
+import { normalizeWhitespace, hasMaliciousContent } from '@/utils/sanitize'
 
 export default function ContactForm() {
   const [name, setName] = useState('')
@@ -27,20 +27,10 @@ export default function ContactForm() {
     }
     setSending(true)
     try {
-      const escName = sanitizeText(safeName)
-      const escEmail = sanitizeText(email.trim())
-      const escContent = sanitizeText(safeContent).replace(/\n/g, '<br>')
       await sendEmail({
-        subject: `来自「${safeName}」的联系邮件`,
-        html: `
-          <div style="font-family:-apple-system,sans-serif;max-width:480px;margin:0 auto;padding:24px;background:#111;color:#eee;border-radius:12px;">
-            <h2 style="margin:0 0 16px;font-size:18px;color:#d4a853;">新的联系邮件</h2>
-            <p style="margin:0 0 4px;font-size:14px;color:#888;">发件人：<strong style="color:#eee;">${escName}</strong></p>
-            <p style="margin:0 0 16px;font-size:14px;color:#888;">邮箱：<a href="mailto:${escEmail}" style="color:#5ba;">${escEmail}</a></p>
-            <div style="padding:12px 16px;background:rgba(255,255,255,0.05);border-radius:8px;font-size:15px;line-height:1.6;">${escContent}</div>
-            <p style="margin:16px 0 0;font-size:12px;color:#555;">${new Date().toLocaleString('zh-CN', { timeZone: 'Asia/Shanghai' })}</p>
-          </div>
-        `
+        name: safeName,
+        email: email.trim(),
+        content: safeContent
       })
       antMessage.success('邮件已发送，我会尽快回复')
       setName('')

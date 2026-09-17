@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useMemo, useState } from 'react'
 import { LeftOutlined, RightOutlined } from '@ant-design/icons'
 import { Button, Drawer, Image, Modal, Tag } from 'antd'
 import { getFootmarkMediaByIds, type FootmarkCity, type FootmarkWork } from '../footmarkContent'
@@ -21,15 +21,11 @@ function clampIndex(nextIndex: number, total: number) {
 function DetailBody({ city, works }: { city: FootmarkCity; works: FootmarkWork[] }) {
   const [activeWorkIndex, setActiveWorkIndex] = useState(0)
 
-  useEffect(() => {
-    setActiveWorkIndex(0)
-  }, [city.id, works.length])
-
-  const activeWork = works[activeWorkIndex]
+  const activeWork = works[activeWorkIndex] ?? works[0]
   const activeMedia = useMemo(() => getFootmarkMediaByIds(activeWork?.mediaIds || []), [activeWork])
 
   return (
-    <div className="footmark-detail grid gap-6 max-[640px]:gap-[18px]">
+    <div className="footmark-detail grid gap-6 max-[768px]:gap-[18px]">
       <div className="footmark-detail__head grid gap-2.5">
         <span className="footmark-detail__eyebrow ui-tag">{city.eyebrow}</span>
         <h2 className="footmark-detail__cityTitle ui-display-title">{city.name}</h2>
@@ -43,7 +39,7 @@ function DetailBody({ city, works }: { city: FootmarkCity; works: FootmarkWork[]
               <div
                 className={`footmark-detail__mediaGrid grid gap-3 ${
                   activeMedia.length > 1
-                    ? 'min-[641px]:grid-cols-2 max-[640px]:grid-cols-1'
+                    ? 'min-[769px]:grid-cols-2 max-[768px]:grid-cols-1'
                     : 'grid-cols-1'
                 }`}
               >
@@ -67,8 +63,8 @@ function DetailBody({ city, works }: { city: FootmarkCity; works: FootmarkWork[]
           )}
         </div>
 
-        <div className="footmark-detail__content grid content-start gap-4 px-5 py-[18px] max-[640px]:p-4">
-          <div className="footmark-detail__workTop flex items-start justify-between gap-3 max-[640px]:flex-col">
+        <div className="footmark-detail__content grid content-start gap-4 px-5 py-[18px] max-[768px]:p-4">
+          <div className="footmark-detail__workTop flex items-start justify-between gap-3 max-[768px]:flex-col">
             <div>
               <span className="footmark-detail__label ui-meta-text">当前作品</span>
               <h3 className="footmark-detail__workTitle ui-card-title">
@@ -81,14 +77,16 @@ function DetailBody({ city, works }: { city: FootmarkCity; works: FootmarkWork[]
                 <Button
                   shape="circle"
                   icon={<LeftOutlined />}
+                  aria-label="上一件作品"
                   onClick={() => setActiveWorkIndex(prev => clampIndex(prev - 1, works.length))}
                 />
-                <span>
+                <span aria-live="polite">
                   {activeWorkIndex + 1} / {works.length}
                 </span>
                 <Button
                   shape="circle"
                   icon={<RightOutlined />}
+                  aria-label="下一件作品"
                   onClick={() => setActiveWorkIndex(prev => clampIndex(prev + 1, works.length))}
                 />
               </div>
@@ -119,6 +117,7 @@ function DetailBody({ city, works }: { city: FootmarkCity; works: FootmarkWork[]
                 <Button
                   key={work.id}
                   className={`footmark-detail__workChip ${index === activeWorkIndex ? 'is-active' : ''}`}
+                  aria-pressed={index === activeWorkIndex}
                   onClick={() => setActiveWorkIndex(index)}
                 >
                   {work.title}
@@ -149,7 +148,7 @@ export default function FootmarkCityDetail({
 }: FootmarkCityDetailProps) {
   if (!city) return null
 
-  const content = <DetailBody city={city} works={works} />
+  const content = <DetailBody key={city.id} city={city} works={works} />
 
   if (isMobile) {
     return (

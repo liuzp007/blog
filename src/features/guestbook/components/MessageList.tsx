@@ -1,7 +1,7 @@
-import { Spin } from 'antd'
 import { MessageOutlined } from '@ant-design/icons'
-import type { GuestbookMessage } from '../types'
+import { Spin } from 'antd'
 import MessageItem from './MessageItem'
+import type { GuestbookMessage } from '../types'
 
 interface Props {
   messages: GuestbookMessage[]
@@ -9,17 +9,9 @@ interface Props {
   error: string | null
   submitting: boolean
   onReply: (payload: { author: string; content: string; replyToId?: string }) => void
-  onDelete: (id: string) => Promise<void>
 }
 
-export default function MessageList({
-  messages,
-  loading,
-  error,
-  submitting,
-  onReply,
-  onDelete
-}: Props) {
+export default function MessageList({ messages, loading, error, submitting, onReply }: Props) {
   if (loading) {
     return (
       <div className="guestbook-loading">
@@ -44,13 +36,7 @@ export default function MessageList({
   return (
     <div className="guestbook-message-list">
       {messages.map(msg => (
-        <MessageItem
-          key={msg.id}
-          msg={msg}
-          submitting={submitting}
-          onReply={onReply}
-          onDelete={onDelete}
-        />
+        <MessageItem key={msg.id} msg={msg} submitting={submitting} onReply={onReply} />
       ))}
     </div>
   )

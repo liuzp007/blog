@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback, memo } from 'react'
+import { useState, useCallback, memo } from 'react'
 import { Input, Button } from 'antd'
 
 interface SearchBoxProps {
@@ -9,7 +9,7 @@ interface SearchBoxProps {
 
 export default memo(function SearchBox({ value = '', onChange, onSubmit }: SearchBoxProps) {
   const [q, setQ] = useState(value)
-  useEffect(() => setQ(value), [value])
+  const query = value !== undefined ? value : q
 
   const handleChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -21,8 +21,8 @@ export default memo(function SearchBox({ value = '', onChange, onSubmit }: Searc
   )
 
   const handleSubmit = useCallback(() => {
-    onSubmit?.(q)
-  }, [q, onSubmit])
+    onSubmit?.(query)
+  }, [query, onSubmit])
 
   const handleClear = useCallback(() => {
     setQ('')

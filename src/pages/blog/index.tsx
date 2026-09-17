@@ -1,6 +1,6 @@
 import { useMemo, useState, useEffect, useCallback } from 'react'
 import { ArrowRightOutlined, BookOutlined } from '@ant-design/icons'
-import { Select, Pagination, Segmented } from 'antd'
+import { Alert, Select, Pagination, Segmented } from 'antd'
 import { Link, useHistory, useLocation } from 'react-router-dom'
 import ContentWrapper from '@/components/content-wrapper'
 import SectionNav from '@/components/section-nav'
@@ -172,6 +172,15 @@ export default function BlogIndex() {
         <div className="blog-nav-spacer h-[var(--blog-nav-space)]" aria-hidden="true" />
 
         <main>
+          {searchState.error && (
+            <Alert
+              className="mb-[18px]"
+              type="warning"
+              showIcon
+              message="搜索索引加载失败"
+              description="当前搜索不可用，已暂按全部文章浏览；请稍后刷新重试。"
+            />
+          )}
           <section
             id="overview"
             className="blog-lab__hero mb-[18px] overflow-hidden rounded-[18px] p-7 [scroll-margin-top:calc(var(--blog-nav-space)+24px)] max-[640px]:rounded-[14px] max-[640px]:px-4 max-[640px]:py-5"

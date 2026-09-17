@@ -29,12 +29,6 @@ export const USER_PREFERENCE_THEME_DATASET: Record<ThemePreference, string> = {
 
 export const PERSISTED_USER_PREFERENCE_KEYS: Array<keyof UserPreferencesState> = [
   'theme',
-  'animationSpeed',
-  'particleCount',
-  'autoRotate',
-  'postProcessing',
-  'language',
-  'soundEnabled',
   'reducedMotion',
   'highContrast',
   'fontSize'

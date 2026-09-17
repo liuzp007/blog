@@ -11,7 +11,6 @@ import {
   CompressOutlined
 } from '@ant-design/icons'
 import { motion, AnimatePresence, type Variants } from 'framer-motion'
-import anime from 'animejs'
 import { useAppSelector, useAppDispatch } from '../../store'
 import { toggleSidebar, setSidebarCollapsed } from '../../store/ui'
 import { MenuItem, ChildrenItem } from '../../data'
@@ -61,14 +60,6 @@ const CollapsibleNavigation: React.FC<CollapsibleNavigationProps> = ({
 
   const handleToggleCollapse = useCallback(() => {
     dispatch(toggleSidebar())
-    if (sidebarRef.current) {
-      anime({
-        targets: sidebarRef.current,
-        scale: [1, 0.98, 1],
-        duration: 200,
-        easing: 'easeInOutQuad'
-      })
-    }
   }, [dispatch])
 
   const handleTogglePin = useCallback(() => {

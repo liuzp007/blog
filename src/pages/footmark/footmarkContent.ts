@@ -26,6 +26,8 @@ export interface FootmarkWork {
   mediaIds: string[]
 }
 
+export type FootmarkTone = 'origin' | 'growth' | 'craft' | 'horizon'
+
 export interface FootmarkCity {
   id: string
   slug: string
@@ -37,7 +39,7 @@ export interface FootmarkCity {
   detail: string
   summary: string
   story: string[]
-  tone: 'origin' | 'growth' | 'craft' | 'horizon'
+  tone: FootmarkTone
   workIds: string[]
 }
 
@@ -46,7 +48,7 @@ export interface FootmarkStoryNode extends FootmarkRoutePoint {
   title: string
   eyebrow: string
   detail: string
-  tone: 'origin' | 'growth' | 'craft' | 'horizon'
+  tone: FootmarkTone
 }
 
 const MEDIA_SEED: FootmarkMedia[] = [

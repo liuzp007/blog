@@ -13,8 +13,7 @@
   .btn-danger,
   .ui-button-primary,
   .ui-button-secondary,
-  .ui-button-ghost,
-  .ui-button-danger
+  .ui-button-ghost
 ) {
   --ui-button-gap: var(--button-icon-gap);
 
@@ -42,8 +41,7 @@
   .btn-danger,
   .ui-button-primary,
   .ui-button-secondary,
-  .ui-button-ghost,
-  .ui-button-danger
+  .ui-button-ghost
 ) {
   display: inline-flex;
   align-items: center;
@@ -65,8 +63,7 @@
   .btn-danger,
   .ui-button-primary,
   .ui-button-secondary,
-  .ui-button-ghost,
-  .ui-button-danger
+  .ui-button-ghost
 ):focus-visible,
 :where(button, [type='button'], [type='submit'], [type='reset']):focus-visible {
   outline: none;
@@ -220,10 +217,6 @@
   border-radius: var(--button-radius-pill);
 }
 
-.ui-button-block {
-  width: 100%;
-}
-
 .ui-button-icon {
   --ui-button-padding-inline: 0;
 
@@ -278,8 +271,7 @@
   background: var(--ui-button-ghost-bg-hover, var(--button-ghost-bg-hover));
 }
 
-.btn-danger,
-.ui-button-danger {
+.btn-danger {
   color: var(--button-danger-text);
   background: var(--button-danger-bg);
   border: 1px solid var(--button-danger-border);
@@ -287,9 +279,7 @@
 }
 
 .btn-danger:hover,
-.btn-danger:focus,
-.ui-button-danger:hover,
-.ui-button-danger:focus {
+.btn-danger:focus {
   color: var(--button-danger-text);
   background: var(--button-danger-bg-hover);
   border-color: var(--button-danger-border);
@@ -299,8 +289,7 @@
   button:disabled,
   .ui-button-primary:disabled,
   .ui-button-secondary:disabled,
-  .ui-button-ghost:disabled,
-  .ui-button-danger:disabled
+  .ui-button-ghost:disabled
 ) {
   color: var(--button-disabled-text);
   background: var(--button-disabled-bg);
@@ -446,14 +435,6 @@
   );
 }
 
-.ui-tag--outline {
-  background: transparent;
-}
-
-.ui-tag--solid {
-  color: var(--color-white);
-}
-
 .ui-tag--interactive {
   cursor: pointer;
   transition:
@@ -469,30 +450,6 @@
   border-color: var(--card-border-interactive);
 }
 
-.ui-tag--accent {
-  color: var(--tag-accent-text);
-  background: var(--tag-accent-bg);
-  border-color: var(--tag-accent-border);
-}
-
-.ui-tag--success {
-  color: var(--tag-success-text);
-  background: var(--tag-success-bg);
-  border-color: var(--tag-success-border);
-}
-
-.ui-tag--warning {
-  color: var(--tag-warning-text);
-  background: var(--tag-warning-bg);
-  border-color: var(--tag-warning-border);
-}
-
-.ui-tag--danger {
-  color: var(--tag-danger-text);
-  background: var(--tag-danger-bg);
-  border-color: var(--tag-danger-border);
-}
-
 /**
  * 通用输入类
  * `ui-input` 兼容原生 input / textarea，以及 Ant Design Input / Select。
@@ -506,6 +463,8 @@
 ) {
   --ui-input-text: var(--input-text);
   --ui-input-font-size: var(--input-font-size);
+  --ui-input-height: var(--input-height);
+  --ui-input-padding-inline: var(--input-padding-inline);
 
   min-height: var(--ui-input-height, var(--input-height));
   font-size: var(--ui-input-font-size, var(--input-font-size));
@@ -515,25 +474,8 @@
     border-color var(--motion-base) var(--easing-standard),
     box-shadow var(--motion-base) var(--easing-standard),
     background-color var(--motion-base) var(--easing-standard);
-
-  /* padding-inline: var(--ui-input-padding-inline, var(--input-padding-inline)); */
   border-radius: var(--input-radius);
   border-color: var(--input-border);
-}
-
-.ui-input--sm {
-  --ui-input-height: var(--input-height-sm);
-  --ui-input-padding-inline: var(--input-padding-inline-sm);
-}
-
-.ui-input--md {
-  --ui-input-height: var(--input-height-md);
-  --ui-input-padding-inline: var(--input-padding-inline-md);
-}
-
-.ui-input--lg {
-  --ui-input-height: var(--input-height-lg);
-  --ui-input-padding-inline: var(--input-padding-inline-lg);
 }
 
 :where(input.ui-input, textarea.ui-input, .ant-input.ui-input)::placeholder {
@@ -582,33 +524,6 @@
   outline: none;
 }
 
-.ui-input-group {
-  display: grid;
-  gap: var(--space-2);
-}
-
-.ui-input-label {
-  margin: 0;
-  font-size: var(--input-label-size);
-  line-height: var(--line-height-normal);
-  color: var(--color-text-secondary);
-  font-weight: var(--font-weight-medium);
-}
-
-.ui-input-help {
-  margin: 0;
-  font-size: var(--input-help-size);
-  line-height: var(--line-height-normal);
-  color: var(--color-text-muted);
-}
-
-.ui-input-error {
-  margin: 0;
-  font-size: var(--input-help-size);
-  line-height: var(--line-height-normal);
-  color: var(--color-danger-strong);
-}
-
 /**
  * 通用卡片类
  * `.ui-card` 用于标准内容卡片，`.ui-card--interactive` 用于可点击或可 hover 的卡片。
@@ -634,10 +549,6 @@
 .ui-card--elevated {
   border-color: var(--card-border-strong);
   box-shadow: var(--card-shadow-hover);
-}
-
-.ui-card--muted {
-  background: var(--color-surface-muted);
 }
 
 .ui-card--metric {
@@ -697,18 +608,9 @@
   --ui-card-overline-letter-spacing: var(--card-timeline-overline-letter-spacing);
 }
 
-.ui-card__header,
-.ui-card__body,
-.ui-card__footer {
+.ui-card__body {
   display: grid;
   gap: var(--space-2);
-}
-
-.ui-card__meta {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-2);
-  align-items: center;
 }
 
 .ui-card--interactive {
