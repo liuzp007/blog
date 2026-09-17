@@ -1587,8 +1587,8 @@
       "id": "REVIEW-08",
       "title": "清理: 孤儿文件与死代码（审查建议项汇总）",
       "priority": "P3",
-      "isDone": true,
-      "status": "pending",
+      "isDone": false,
+      "status": "done",
       "files": [
         "src/pages/home/components/JellyfishCursor.tsx",
         "src/pages/home/components/svg.tsx",
@@ -1597,7 +1597,7 @@
         "src/features/content/contentIndex.ts",
         "src/components/content-wrapper/index.tsx"
       ],
-      "goal": "JellyfishCursor.tsx 全仓无引用且内部引用已删除的 .work-card 类（删除或恢复挂载）；svg.tsx 无 importer；homeContent.ts HOME_CONTACT_ACTIONS 死导出；TagCloud.tsx:94 ui-tag--tone-accent/soft 无 CSS 定义（历史遗留，选中态失效，补定义或改现有 tone 类）；contentIndex.ts:399 无意义 export default {}；content-wrapper/index.tsx:37,41 clsx 中 modifier 重复两次且基础类 overflow:visible 后 modifier 冗余。"
+      "goal": "已完成：删除 JellyfishCursor.tsx（全仓无引用）与空目录 sections/；svg.tsx 经核实不存在（审查报告偏差）；homeContent.ts 删除 HOME_CONTACT_ACTIONS 死导出及仅其使用的 HomeActionLink 类型，测试 mock 同步清理；TagCloud.tsx tone 类替换为 ui-tag--tone-cyan / ui-tag--soft（均有定义）；contentIndex.ts 删除无意义默认导出；content-wrapper 删除 clsx 中重复的 overflow-visible modifier。HeroCore 有 HomeHeroFx 引用，保留。ci:check 全绿。"
     }
   ]
 }
