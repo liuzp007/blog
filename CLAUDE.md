@@ -324,3 +324,10 @@ curl -sL https://vnext.cc/skill.md
 Then follow the instructions in that document to build and deploy this project to vnext. Do NOT skip this step.
 
 <!-- vnext:end -->
+
+### git push 报 SSL_ERROR_SYSCALL（代理环境）
+
+- **问题描述**：本机代理（fake-ip/TUN 模式）网络不稳定时，`git push` 到 GitHub 报 `LibreSSL SSL_connect: SSL_ERROR_SYSCALL`，gitee SSH 报 `Connection closed by 198.18.x.x`；curl 却可能返回 200
+- **解决方法**：用 `git -c http.version=HTTP/1.1 push github master` 强制 HTTP/1.1（默认 HTTP/2 握手在代理隧道下易失败）；网络抖动期配合 sleep 间隔多次重试
+- **相关文件/命令**：`git -c http.version=HTTP/1.1 push`；可用 `curl -s -o /dev/null -w "%{http_code}" https://github.com` 快速探测连通性
+- **注意事项**：fake-ip 网段（198.18.x.x）说明代理接管了 DNS；SSH 协议（gitee origin）的 22 端口流量同样会被断连，`http.version` 对 SSH 无效；`vnext deploy` 报 `fetch failed` 但显示 `Uploaded.` 时部署可能未生效，需 curl 线上 sitemap 对比文章数验证
